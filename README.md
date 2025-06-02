@@ -3,35 +3,90 @@ Go SDK for [Graphiant NaaS](https://www.graphiant.com).
 
 Refer [Graphiant Documentation](https://docs.graphiant.com/) to get started with our services.
 
+## Import
 
-## Install
+Graphiant-SDK-Go packages can be imported using Go tools. 
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/Graphiant-Inc/graphiant-sdk-go
-   cd graphiant-sdk-go/graphiant-sdk
-   ```
+```sh
+go get github.com/Graphiant-Inc/graphiant-sdk-go
+```
 
-2. **Install dependencies:**
-   ```sh
-   go mod tidy
-   ```
+List of published Graphiant-SDK-Go packages can be found in this repository under [Releases](https://github.com/Graphiant-Inc/graphiant-sdk-go/releases).
+
+```sh
+go get github.com/Graphiant-Inc/graphiant-sdk-go@v25.6.2
+```
+
+## Build
+
+Steps to install Graphiant-SDK-Go from source code.
+
+### Clone the repository
+```sh
+git clone https://github.com/Graphiant-Inc/graphiant-sdk-go
+cd graphiant-sdk-go/graphiant-sdk
+```
+
+### Install dependencies
+```sh
+go mod tidy
+```
 
 ## Test
 
-1. **Set environment variables for authentication:**
-   ```sh
-   export username=your_username
-   export password=your_password
-   ```
+Steps to sanity test Graphiant-SDK-Go from source code.
 
-2. **Run a quick test to validate the SDK:**
-   ```sh
-   cd test
-   go test -v -run Test_edge_summary
+### Set environment variables for Graphiant portal authentication
+```sh
+export username=<your_graphiant_portal_login_email>
+export password=<your_graphiant_portal_login_password>
+```
 
-   Note: This test should return the Edge devices in the enterprise
-   ```
+### Run sanity test
+```sh
+cd test
+go test -v -run Test_edge_summary
+```
+
+This test should return your enterprise edge device summary on Graphiant portal.
+
+```sh
+=== RUN   Test_edge_summary
+=== RUN   Test_edge_summary/Test_DefaultAPIService_V1AuthLoginPost
+    sanity_test.go:37: Calling V1AuthLoginPost
+    sanity_test.go:54: Auth token: {true graphiant gr-auth-848fc9fc-fcbc-417c-8292-c5629de06b0c-55b8a92b-7786-4c9c-9b96-f64aa8e7788f}
+    sanity_test.go:58: Calling V1EdgesSummaryGet
+    sanity_test.go:69: Edge summary response: [
+          {
+            "assignedOn": {
+              "nanos": 852650000,
+              "seconds": 1724282838
+            },
+            "deviceId": 30000056161,
+            "discoveredLocation": "Amsterdam, Saskatchewan, Canada",
+            "enterpriseId": 10000000000,
+            "firstAppearedOn": {
+              "nanos": 953831000,
+              "seconds": 1724282838
+            },
+
+<cropped>
+--- PASS: Test_edge_summary (1.80s)
+    --- PASS: Test_edge_summary/Test_DefaultAPIService_V1AuthLoginPost (1.80s)
+PASS
+ok      github.com/Graphiant-Inc/graphiant-sdk-go/test  2.155s
+
+```
+
+## Generate
+
+Steps to generate Graphiant-SDK-Go locally using Graphiant API docs. 
+
+```sh
+openapi-generator generate -i graphiant_api_docs_v25.6.2.json -g go --git-user-id Graphiant-Inc --git-repo-id graphiant-sdk-go --package-name graphiant_sdk
+```
+
+Note: Latest version of Graphiant API docs can be downloaded from Graphiant portal under "Support Hub" > "Developer Tools".
 
 ## License
 
