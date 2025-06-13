@@ -3,6 +3,7 @@
 *.a
 *.so
 git_push.sh
+.DS_Store
 
 # Folders
 _obj
