@@ -17,7 +17,7 @@ Refer [Graphiant Documentation](https://docs.graphiant.com/) to get started with
    go mod tidy
    ```
 
-## Run Tests
+## Test
 
 1. **Set environment variables for authentication:**
    ```sh
@@ -32,11 +32,6 @@ Refer [Graphiant Documentation](https://docs.graphiant.com/) to get started with
 
    Note: This test should return the Edge devices in the enterprise
    ```
-
-## Additional Information
-
-- Refer to [Graphiant Documentation](https://docs.graphiant.com/) for API usage and examples.
-- For any issues, please open an issue on this repository.
 
 ## License
 
