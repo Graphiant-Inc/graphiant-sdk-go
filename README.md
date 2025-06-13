@@ -5,7 +5,7 @@ Refer [Graphiant Documentation](https://docs.graphiant.com/) to get started with
 
 ## Import
 
-Graphiant-SDK-Go packages can be imported using Go tools. 
+Graphiant-SDK-Go package can be imported using Go tools. 
 
 ```sh
 go get github.com/Graphiant-Inc/graphiant-sdk-go
@@ -13,12 +13,13 @@ go get github.com/Graphiant-Inc/graphiant-sdk-go
 
 ## Build
 
-Steps to install Graphiant-SDK-Go from source code.
+Steps to build and install Graphiant-SDK-Go from source code.
 
-### Clone the repository
+### Clone the graphiant-sdk-go repository
+
 ```sh
 git clone https://github.com/Graphiant-Inc/graphiant-sdk-go
-cd graphiant-sdk-go/graphiant-sdk
+cd graphiant-sdk-go
 ```
 
 ### Install dependencies
@@ -28,9 +29,9 @@ go mod tidy
 
 ## Test
 
-Steps to sanity test Graphiant-SDK-Go from source code.
+Steps to sanity test Graphiant-SDK-Go.
 
-### Set environment variables for Graphiant portal authentication
+### Set environment variables for Graphiant API authentication
 ```sh
 export username=<your_graphiant_portal_login_email>
 export password=<your_graphiant_portal_login_password>
