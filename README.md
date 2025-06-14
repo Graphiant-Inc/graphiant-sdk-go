@@ -5,7 +5,7 @@ Refer [Graphiant Documentation](https://docs.graphiant.com/) to get started with
 
 ## Import
 
-Graphiant-SDK-Go package can be imported using Go tools. 
+Graphiant-SDK-Go package can be imported using Go tools. Refer [graphiant-sdk-go](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go) package on public Go package registry.
 
 ```sh
 go get github.com/Graphiant-Inc/graphiant-sdk-go
