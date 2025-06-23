@@ -1,7 +1,8 @@
 # Graphiant-SDK-Go
+
 Go SDK for [Graphiant NaaS](https://www.graphiant.com).
 
-Refer [Graphiant Documentation](https://docs.graphiant.com/) to get started with our services.
+Refer [Graphiant-SDK-Go User Guide](https://docs.graphiant.com/docs/graphiant-sdk-go) under [Automation Section](https://docs.graphiant.com/docs/automation) in [Graphiant Documentation](https://docs.graphiant.com/) for getting started instructions.
 
 ## Import
 
