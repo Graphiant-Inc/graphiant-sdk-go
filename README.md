@@ -11,9 +11,9 @@ Graphiant-SDK-Go package can be imported using Go tools. Refer [graphiant-sdk-go
 go get github.com/Graphiant-Inc/graphiant-sdk-go
 ```
 
-## Build
+## Install from source code
 
-Steps to build and install Graphiant-SDK-Go from source code.
+Steps to clone and install Graphiant-SDK-Go from source code.
 
 ### Clone the graphiant-sdk-go repository
 
