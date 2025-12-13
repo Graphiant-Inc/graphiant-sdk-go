@@ -60,6 +60,9 @@ jobs:
       - name: Build
         run: go build ./...
 
+      - name: Install test dependencies
+        run: go get github.com/stretchr/testify/assert
+
       - name: Run tests
         run: go test ./...
 
@@ -84,6 +87,33 @@ jobs:
           git push origin "$VERSION"
           
           echo "✅ Created and pushed tag: $VERSION"
+
+      - name: Verify module availability
+        if: inputs.create_tag == true
+        run: |
+          VERSION="${{ inputs.version }}"
+          # Ensure version starts with 'v'
+          if [[ ! "$VERSION" =~ ^v ]]; then
+            VERSION="v$VERSION"
+          fi
+          
+          echo "Verifying module is available via Go proxy..."
+          
+          # Wait a moment for the proxy to sync
+          sleep 10
+          
+          # Check if module is available via proxy
+          echo "Checking module availability via proxy.golang.org..."
+          GOPROXY=proxy.golang.org go list -m github.com/Graphiant-Inc/graphiant-sdk-go@$VERSION || {
+            echo "⚠️  Warning: Module not yet available via proxy (this may take a few minutes)"
+            echo "   Trying direct fetch instead..."
+          }
+          
+          # Test fetching the module
+          echo "Testing module fetch..."
+          go get github.com/Graphiant-Inc/graphiant-sdk-go@$VERSION
+          
+          echo "✅ Module verification complete"
 
       - name: Create GitHub Release
         if: inputs.create_tag == true
