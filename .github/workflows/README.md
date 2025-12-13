@@ -7,7 +7,6 @@ This directory contains GitHub Actions workflows for the Graphiant SDK Go packag
 ### `lint.yml` - Code Quality Checks
 Comprehensive linting workflow that runs multiple code quality checks in parallel:
 - **golangci-lint** - Comprehensive Go linter (runs multiple linters)
-- **gofmt** - Go code formatting check
 - **go vet** - Go static analysis tool
 
 ### `test.yml` - Testing
@@ -17,6 +16,8 @@ Runs all tests for the SDK:
   - Race condition detection (`-race`)
   - Code coverage reporting
   - Coverage reports uploaded to Codecov (Go 1.23 only)
+  - **Credential Support**: Optionally reads `GRAPHIANT_HOST`, `GRAPHIANT_USERNAME`, and `GRAPHIANT_PASSWORD` from GitHub secrets/variables
+  - Tests that require credentials will automatically skip if credentials are not configured
 
 ### `build.yml` - Build Module
 Builds and verifies the Go module:
@@ -39,6 +40,22 @@ Creates releases for the Go module:
 
 No secrets are required for the workflows. Go modules are published via git tags, which are automatically available through the Go module proxy.
 
+### Optional Secrets/Variables
+
+The `test.yml` workflow supports optional credentials for running integration tests:
+
+- **`GRAPHIANT_HOST`** (optional) - Graphiant API host (e.g., `https://api.graphiant.com`)
+- **`GRAPHIANT_USERNAME`** (optional) - Graphiant API username
+- **`GRAPHIANT_PASSWORD`** (optional) - Graphiant API password
+
+**Configuration:**
+- Set as **secrets** (recommended for sensitive data) or **variables** (for non-sensitive defaults)
+- Secrets take precedence over variables
+- If not configured, tests that require credentials will automatically skip
+- Configure in: Repository Settings → Secrets and variables → Actions
+
+**Note:** The workflow reads from both `secrets` and `vars`, with `secrets` taking precedence. This allows you to set default values in variables while keeping sensitive credentials in secrets.
+
 ### Workflow Triggers
 
 - **Pull Requests**: All workflows run on PRs to ensure code quality
@@ -57,13 +74,17 @@ While you can't run GitHub Actions locally, you can run the same commands:
 go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 golangci-lint run
 
-# Format check
-gofmt -s -l .
-
 # Static analysis
 go vet ./...
 
 # Testing
+# Without credentials (tests requiring credentials will skip)
+go test -v -race -coverprofile=coverage.out ./...
+
+# With credentials (for integration tests)
+export GRAPHIANT_HOST="https://api.graphiant.com"
+export GRAPHIANT_USERNAME="your_username"
+export GRAPHIANT_PASSWORD="your_password"
 go test -v -race -coverprofile=coverage.out ./...
 
 # Building

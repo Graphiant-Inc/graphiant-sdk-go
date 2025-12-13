@@ -18,14 +18,16 @@ import (
 )
 
 func Test_edge_summary(t *testing.T) {
+	// Skip test if credentials are not configured
+	username := os.Getenv("GRAPHIANT_USERNAME")
+	password := os.Getenv("GRAPHIANT_PASSWORD")
+	if username == "" || password == "" {
+		t.Skip("Skipping test - GRAPHIANT_USERNAME and GRAPHIANT_PASSWORD environment variables are required")
+	}
 
 	configuration := graphiant_sdk.NewConfiguration()
 	apiClient := graphiant_sdk.NewAPIClient(configuration)
 	t.Run("Test DefaultAPIService V1AuthLoginPost", func(t *testing.T) {
-		username := os.Getenv("GRAPHIANT_USERNAME")
-		password := os.Getenv("GRAPHIANT_PASSWORD")
-		require.NotEmpty(t, username, "username should not be empty")
-		require.NotEmpty(t, password, "password should not be empty")
 
 		authReq := graphiant_sdk.NewV1AuthLoginPostRequestWithDefaults()
 		authReq.SetUsername(username)

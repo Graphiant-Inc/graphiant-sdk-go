@@ -580,6 +580,8 @@ password := os.Getenv("GRAPHIANT_PASSWORD")
 host := os.Getenv("GRAPHIANT_HOST")
 ```
 
+**Note**: For detailed security policies, vulnerability reporting, and security best practices, see [SECURITY.md](SECURITY.md).
+
 ## 🤝 Contributing
 
 We welcome contributions! Please follow these steps:

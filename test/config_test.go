@@ -50,10 +50,14 @@ func UpdateDeviceStatus(deviceId int64, deviceStatus string) {
 	fmt.Printf("Calling V1DevicesBringupPutRequest : %v %v",
 		bringupReq.GetDeviceIds(), bringupReq.GetStatus())
 
-	apiClient.DefaultAPI.
+	_, _, err := apiClient.DefaultAPI.
 		V1DevicesBringupPut(context.Background()).
 		Authorization(token).
-		V1DevicesBringupPutRequest(*bringupReq).Execute()
+		V1DevicesBringupPutRequest(*bringupReq).
+		Execute()
+	if err != nil {
+		fmt.Printf("Failed to update device status: %v\n", err)
+	}
 
 }
 
