@@ -489,7 +489,7 @@ openapi-generator generate \
 # Install test dependencies
 go mod download
 
-# Run all tests
+# Run all tests (tests requiring credentials will skip if not configured)
 go test ./...
 
 # Run with verbose output
@@ -506,7 +506,23 @@ go tool cover -html=coverage.out
 go test -v ./... -run Test_edge_summary
 ```
 
-**Note**: The CI/CD pipeline automatically runs tests across multiple Go versions (1.21-1.23) on every pull request and push to main/develop branches.
+**Environment Variables for Tests:**
+
+Tests that require API access will automatically use the following environment variables if set:
+
+```bash
+export GRAPHIANT_HOST="https://api.graphiant.com"  # Optional: API host (defaults to https://api.graphiant.io)
+export GRAPHIANT_USERNAME="your_username"           # Required for integration tests
+export GRAPHIANT_PASSWORD="your_password"          # Required for integration tests
+```
+
+- **`GRAPHIANT_HOST`** (optional): API host URL. If not set, defaults to `https://api.graphiant.io`. Supports formats like `https://api.test.graphiant.io` or `gcs:https://api.test.graphiant.io` (the `gcs:` prefix is automatically removed).
+- **`GRAPHIANT_USERNAME`** (required for integration tests): Your Graphiant API username
+- **`GRAPHIANT_PASSWORD`** (required for integration tests): Your Graphiant API password
+
+Tests that require credentials will automatically skip if `GRAPHIANT_USERNAME` or `GRAPHIANT_PASSWORD` are not set, allowing the test suite to run successfully without credentials.
+
+**Note**: The CI/CD pipeline automatically runs tests across multiple Go versions (1.21-1.23) on every pull request and push to main/develop branches. The pipeline reads credentials from GitHub secrets/variables when available.
 
 ### Project Structure
 

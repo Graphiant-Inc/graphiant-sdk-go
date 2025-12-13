@@ -79,7 +79,7 @@ The project uses multiple linting tools to ensure code quality:
 ### Running Tests Locally
 
 ```bash
-# Run all tests
+# Run all tests (tests requiring credentials will skip if not configured)
 go test ./...
 
 # Run with verbose output
@@ -91,13 +91,33 @@ go test -race ./...
 # Run with coverage
 go test -coverprofile=coverage.out ./...
 go tool cover -html=coverage.out
+
+# Run specific test
+go test -v ./... -run Test_edge_summary
 ```
+
+### Environment Variables for Tests
+
+Tests that require API access will automatically use the following environment variables if set:
+
+```bash
+export GRAPHIANT_HOST="https://api.graphiant.com"  # Optional: API host (defaults to https://api.graphiant.io)
+export GRAPHIANT_USERNAME="your_username"           # Required for integration tests
+export GRAPHIANT_PASSWORD="your_password"           # Required for integration tests
+```
+
+- **`GRAPHIANT_HOST`** (optional): API host URL. If not set, defaults to `https://api.graphiant.io`. Supports formats like `https://api.test.graphiant.io` or `gcs:https://api.test.graphiant.io` (the `gcs:` prefix is automatically removed).
+- **`GRAPHIANT_USERNAME`** (required for integration tests): Your Graphiant API username
+- **`GRAPHIANT_PASSWORD`** (required for integration tests): Your Graphiant API password
+
+Tests that require credentials will automatically skip if `GRAPHIANT_USERNAME` or `GRAPHIANT_PASSWORD` are not set, allowing the test suite to run successfully without credentials.
 
 ### Test Structure
 
 - `test/` directory contains all test files
 - Tests use the `testify` framework for assertions
 - Tests are automatically run in CI/CD across Go 1.21, 1.22, and 1.23
+- Integration tests that require API access will skip gracefully if credentials are not configured
 
 ## Code Standards
 

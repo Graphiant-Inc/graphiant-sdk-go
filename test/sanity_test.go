@@ -11,6 +11,7 @@ import (
 	"encoding/json"
 	"io"
 	"os"
+	"strings"
 	"testing"
 
 	graphiant_sdk "github.com/Graphiant-Inc/graphiant-sdk-go"
@@ -26,6 +27,18 @@ func Test_edge_summary(t *testing.T) {
 	}
 
 	configuration := graphiant_sdk.NewConfiguration()
+
+	// Set host from environment variable if provided
+	if host := os.Getenv("GRAPHIANT_HOST"); host != "" {
+		// Remove any protocol prefix (e.g., "gcs:https://" -> "https://")
+		host = strings.TrimPrefix(host, "gcs:")
+		// Ensure it starts with https:// if no scheme is present
+		if !strings.HasPrefix(host, "http://") && !strings.HasPrefix(host, "https://") {
+			host = "https://" + strings.TrimPrefix(host, "//")
+		}
+		configuration.Servers[0].URL = host
+	}
+
 	apiClient := graphiant_sdk.NewAPIClient(configuration)
 	t.Run("Test DefaultAPIService V1AuthLoginPost", func(t *testing.T) {
 
