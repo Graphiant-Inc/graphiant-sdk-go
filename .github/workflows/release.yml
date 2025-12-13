@@ -1,0 +1,101 @@
+name: Release SDK
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., v1.2.3)'
+        required: true
+        type: string
+      create_tag:
+        description: 'Create git tag for release'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Check user permissions
+        run: |
+          PERMISSION=$(curl -s -H "Authorization: Bearer ${{ github.token }}" \
+            "https://api.github.com/repos/${{ github.repository }}/collaborators/${{ github.actor }}/permission" | \
+            jq -r '.permission')
+          
+          if [ "$PERMISSION" != "admin" ] && [ "$PERMISSION" != "maintain" ]; then
+            echo "❌ Error: Only repository admins and maintainers can trigger this workflow."
+            echo "   Current user: ${{ github.actor }}"
+            echo "   Permission level: $PERMISSION"
+            echo "   Required: admin or maintain"
+            exit 1
+          fi
+          
+          echo "✅ User ${{ github.actor }} has permission level: $PERMISSION"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache-dependency-path: go.sum
+
+      - name: Verify module
+        run: |
+          go mod verify
+          go mod tidy
+          if [ -n "$(git diff go.mod go.sum)" ]; then
+            echo "⚠️  Warning: go.mod or go.sum needs to be updated"
+            git diff go.mod go.sum
+          fi
+
+      - name: Build
+        run: go build ./...
+
+      - name: Run tests
+        run: go test ./...
+
+      - name: Create Git tag
+        if: inputs.create_tag == true
+        run: |
+          VERSION="${{ inputs.version }}"
+          # Ensure version starts with 'v'
+          if [[ ! "$VERSION" =~ ^v ]]; then
+            VERSION="v$VERSION"
+          fi
+          
+          # Check if tag already exists
+          if git rev-parse "$VERSION" >/dev/null 2>&1; then
+            echo "⚠️  Warning: Tag $VERSION already exists"
+            exit 1
+          fi
+          
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git tag -a "$VERSION" -m "Release $VERSION"
+          git push origin "$VERSION"
+          
+          echo "✅ Created and pushed tag: $VERSION"
+
+      - name: Create GitHub Release
+        if: inputs.create_tag == true
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ inputs.version }}
+          release_name: Release ${{ inputs.version }}
+          body: |
+            ## Release ${{ inputs.version }}
+            
+            See [CHANGELOG.md](CHANGELOG.md) for details.
+          draft: false
+          prerelease: false

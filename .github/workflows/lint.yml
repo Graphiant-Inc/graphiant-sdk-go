@@ -1,0 +1,79 @@
+name: Lint SDK
+
+on:
+  pull_request:
+    paths:
+      - '*.go'
+      - 'test/**'
+      - 'go.mod'
+      - 'go.sum'
+      - '.github/workflows/lint.yml'
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - '*.go'
+      - 'test/**'
+      - 'go.mod'
+      - 'go.sum'
+      - '.github/workflows/lint.yml'
+
+jobs:
+  golangci-lint:
+    name: Go Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache-dependency-path: go.sum
+
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest
+          args: --timeout=5m
+
+  gofmt:
+    name: Go Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Check formatting
+        run: |
+          if [ "$(gofmt -s -l . | grep -v vendor | wc -l)" -gt 0 ]; then
+            echo "The following files need formatting:"
+            gofmt -s -d .
+            exit 1
+          fi
+
+  govet:
+    name: Go Vet
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache-dependency-path: go.sum
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Run go vet
+        run: go vet ./...

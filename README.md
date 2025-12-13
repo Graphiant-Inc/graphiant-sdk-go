@@ -1,10 +1,11 @@
 # Graphiant SDK Go
 
-[![Go Version](https://img.shields.io/badge/go-1.18+-blue.svg)](https://golang.org/dl/)
+[![Go Version](https://img.shields.io/badge/go-1.21+-blue.svg)](https://golang.org/dl/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Reference](https://pkg.go.dev/badge/github.com/Graphiant-Inc/graphiant-sdk-go.svg)](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Graphiant-Inc/graphiant-sdk-go)](https://goreportcard.com/report/github.com/Graphiant-Inc/graphiant-sdk-go)
 [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://docs.graphiant.com/docs/graphiant-sdk-go)
+[![CI/CD](https://github.com/Graphiant-Inc/graphiant-sdk-go/actions/workflows/test.yml/badge.svg)](https://github.com/Graphiant-Inc/graphiant-sdk-go/actions)
 
 A comprehensive Go SDK for [Graphiant Network-as-a-Service (NaaS)](https://www.graphiant.com) offerings, providing seamless integration with Graphiant's network automation platform.
 
@@ -428,9 +429,20 @@ To find all endpoints and their request/response models:
 
 ### Prerequisites
 
-- Go 1.18 or higher
+- Go 1.21+ (1.23 recommended)
 - Git
 - OpenAPI Generator (for code generation)
+
+### CI/CD Workflows
+
+This repository uses GitHub Actions for continuous integration and deployment:
+
+- **Linting** (`lint.yml`): Runs golangci-lint, gofmt, and go vet on pull requests and pushes
+- **Testing** (`test.yml`): Runs `go test` with race detection and coverage across Go 1.21, 1.22, and 1.23
+- **Building** (`build.yml`): Builds and verifies the Go module
+- **Releasing** (`release.yml`): Creates git tags and GitHub releases (manual trigger, admin-only)
+
+See [`.github/workflows/README.md`](.github/workflows/README.md) for detailed workflow documentation.
 
 ### Building from Source
 
@@ -474,14 +486,27 @@ openapi-generator generate \
 ### Testing
 
 ```bash
-# Set environment variables for testing
-export GRAPHIANT_USERNAME="your_username"
-export GRAPHIANT_PASSWORD="your_password"
+# Install test dependencies
+go mod download
 
-# Run edge summary test
-go get github.com/stretchr/testify/assert
+# Run all tests
+go test ./...
+
+# Run with verbose output
+go test -v ./...
+
+# Run with race detection
+go test -race ./...
+
+# Run with coverage
+go test -coverprofile=coverage.out ./...
+go tool cover -html=coverage.out
+
+# Run specific test
 go test -v ./... -run Test_edge_summary
 ```
+
+**Note**: The CI/CD pipeline automatically runs tests across multiple Go versions (1.21-1.23) on every pull request and push to main/develop branches.
 
 ### Project Structure
 
@@ -557,11 +582,31 @@ host := os.Getenv("GRAPHIANT_HOST")
 
 ## 🤝 Contributing
 
+We welcome contributions! Please follow these steps:
+
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+3. Make your changes and ensure they pass local checks:
+   ```bash
+   # Format code
+   gofmt -s -w .
+   
+   # Run linting
+   golangci-lint run
+   
+   # Run static analysis
+   go vet ./...
+   
+   # Run tests
+   go test -v -race ./...
+   ```
+4. Commit your changes with a clear message (`git commit -m 'Add amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
+
+**Note**: All pull requests automatically run CI/CD checks (linting, testing across multiple Go versions). Ensure all checks pass before requesting review.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
 
 ## 📄 License
 
