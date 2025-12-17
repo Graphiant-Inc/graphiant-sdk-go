@@ -126,6 +126,6 @@ jobs:
           body: |
             ## Release ${{ inputs.version }}
             
-            See [CHANGELOG.md](CHANGELOG.md) for details.
+            See [CHANGELOG.md](CHANGELOG.md) for detailed release notes and version history.
           draft: false
           prerelease: false

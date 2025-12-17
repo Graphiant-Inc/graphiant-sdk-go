@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
-**DisconnectedReason** | Pointer to **string** |  | [optional] 
-**Hostname** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **int64** |  | [optional] 
-**SiteName** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**DisconnectedReason** | Pointer to **string** | the reason for the edge being disconnected | [optional] 
+**Hostname** | Pointer to **string** | the hostname of the edge | [optional] 
+**Id** | Pointer to **int64** | the id of the edge/device | [optional] 
+**SiteName** | Pointer to **string** | the name of the site | [optional] 
+**Status** | Pointer to **string** | the health status of the edge (Healthy, Impaired, Down) | [optional] 
 
 ## Methods
 

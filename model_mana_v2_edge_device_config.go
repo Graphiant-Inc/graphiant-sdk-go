@@ -35,6 +35,7 @@ type ManaV2EdgeDeviceConfig struct {
 	MaintenanceMode *bool `json:"maintenanceMode,omitempty"`
 	Name *string `json:"name,omitempty"`
 	NatPolicy *ManaV2NatPolicyConfig `json:"natPolicy,omitempty"`
+	NtpGlobalObject *map[string]ManaV2NullableNtpConfig `json:"ntpGlobalObject,omitempty"`
 	Ospfv2Enabled *bool `json:"ospfv2Enabled,omitempty"`
 	Ospfv3Enabled *bool `json:"ospfv3Enabled,omitempty"`
 	PrefixSets *map[string]ManaV2NullablePrefixSetConfig `json:"prefixSets,omitempty"`
@@ -580,6 +581,38 @@ func (o *ManaV2EdgeDeviceConfig) SetNatPolicy(v ManaV2NatPolicyConfig) {
 	o.NatPolicy = &v
 }
 
+// GetNtpGlobalObject returns the NtpGlobalObject field value if set, zero value otherwise.
+func (o *ManaV2EdgeDeviceConfig) GetNtpGlobalObject() map[string]ManaV2NullableNtpConfig {
+	if o == nil || IsNil(o.NtpGlobalObject) {
+		var ret map[string]ManaV2NullableNtpConfig
+		return ret
+	}
+	return *o.NtpGlobalObject
+}
+
+// GetNtpGlobalObjectOk returns a tuple with the NtpGlobalObject field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2EdgeDeviceConfig) GetNtpGlobalObjectOk() (*map[string]ManaV2NullableNtpConfig, bool) {
+	if o == nil || IsNil(o.NtpGlobalObject) {
+		return nil, false
+	}
+	return o.NtpGlobalObject, true
+}
+
+// HasNtpGlobalObject returns a boolean if a field has been set.
+func (o *ManaV2EdgeDeviceConfig) HasNtpGlobalObject() bool {
+	if o != nil && !IsNil(o.NtpGlobalObject) {
+		return true
+	}
+
+	return false
+}
+
+// SetNtpGlobalObject gets a reference to the given map[string]ManaV2NullableNtpConfig and assigns it to the NtpGlobalObject field.
+func (o *ManaV2EdgeDeviceConfig) SetNtpGlobalObject(v map[string]ManaV2NullableNtpConfig) {
+	o.NtpGlobalObject = &v
+}
+
 // GetOspfv2Enabled returns the Ospfv2Enabled field value if set, zero value otherwise.
 func (o *ManaV2EdgeDeviceConfig) GetOspfv2Enabled() bool {
 	if o == nil || IsNil(o.Ospfv2Enabled) {
@@ -1085,6 +1118,9 @@ func (o ManaV2EdgeDeviceConfig) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NatPolicy) {
 		toSerialize["natPolicy"] = o.NatPolicy
+	}
+	if !IsNil(o.NtpGlobalObject) {
+		toSerialize["ntpGlobalObject"] = o.NtpGlobalObject
 	}
 	if !IsNil(o.Ospfv2Enabled) {
 		toSerialize["ospfv2Enabled"] = o.Ospfv2Enabled

@@ -20,7 +20,9 @@ var _ MappedNullable = &V2MonitoringExtranetStatusDetailsGetResponse{}
 // V2MonitoringExtranetStatusDetailsGetResponse struct for V2MonitoringExtranetStatusDetailsGetResponse
 type V2MonitoringExtranetStatusDetailsGetResponse struct {
 	EdgeStatuses []StatsmonExtranetEdgeStatus `json:"edgeStatuses,omitempty"`
+	// the location of the site
 	Location *string `json:"location,omitempty"`
+	// the region of the site
 	Region *string `json:"region,omitempty"`
 	SiteStatus *StatsmonExtranetSiteStatus `json:"siteStatus,omitempty"`
 }

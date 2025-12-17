@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OutsideNatPrefix** | Pointer to **string** |  | [optional] 
-**Prefix** | Pointer to **string** |  | [optional] 
+**OutsideNatPrefix** | Pointer to **string** | Outside NAT prefix for the customer prefix | [optional] 
+**Prefix** | **string** | Prefix imported into the service (required) | 
 
 ## Methods
 
 ### NewManaV2B2bNat
 
-`func NewManaV2B2bNat() *ManaV2B2bNat`
+`func NewManaV2B2bNat(prefix string, ) *ManaV2B2bNat`
 
 NewManaV2B2bNat instantiates a new ManaV2B2bNat object
 This constructor will assign default values to properties that have it defined,
@@ -70,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetPrefix sets Prefix field to given value.
 
-### HasPrefix
-
-`func (o *ManaV2B2bNat) HasPrefix() bool`
-
-HasPrefix returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

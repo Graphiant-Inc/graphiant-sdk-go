@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OutsideNatPrefix** | Pointer to **string** | Optional nat prefix associated with a service prefix with an empty string indicating no NATing | [optional] 
-**ServicePrefix** | Pointer to **string** |  | [optional] 
+**ServicePrefix** | **string** | Service prefix for the NAT rule (required) | 
 
 ## Methods
 
 ### NewManaV2ExtranetConsumerNatRule
 
-`func NewManaV2ExtranetConsumerNatRule() *ManaV2ExtranetConsumerNatRule`
+`func NewManaV2ExtranetConsumerNatRule(servicePrefix string, ) *ManaV2ExtranetConsumerNatRule`
 
 NewManaV2ExtranetConsumerNatRule instantiates a new ManaV2ExtranetConsumerNatRule object
 This constructor will assign default values to properties that have it defined,
@@ -70,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetServicePrefix sets ServicePrefix field to given value.
 
-### HasServicePrefix
-
-`func (o *ManaV2ExtranetConsumerNatRule) HasServicePrefix() bool`
-
-HasServicePrefix returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

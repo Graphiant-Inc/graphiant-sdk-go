@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Connections** | Pointer to **map[string]int64** |  | [optional] 
 **ConnectionsV2** | Pointer to **map[string]float64** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** | the name of the connection | [optional] 
 
 ## Methods
 

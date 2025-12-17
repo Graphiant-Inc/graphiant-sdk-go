@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **string** | Description for the service | [optional] 
 **GlobalObjectDeviceSummaries** | Pointer to [**map[string]ManaV2GlobalObjectServiceSummaries**](ManaV2GlobalObjectServiceSummaries.md) |  | [optional] 
 **GlobalObjectSummaries** | Pointer to [**map[string]ManaV2GlobalObjectServiceSummaries**](ManaV2GlobalObjectServiceSummaries.md) |  | [optional] 
-**NatPools** | Pointer to **[]string** |  | [optional] 
+**NatPools** | **[]string** |  | 
 **PrefixTags** | Pointer to [**[]ManaV2B2bExtranetPrefixTag**](ManaV2B2bExtranetPrefixTag.md) |  | [optional] 
 **Profiles** | Pointer to [**[]ManaV2ApplicationProfile**](ManaV2ApplicationProfile.md) |  | [optional] 
-**ServiceLanSegment** | Pointer to **int64** |  | [optional] 
-**ServicePrefixes** | Pointer to **[]string** |  | [optional] 
-**Sites** | Pointer to [**[]ManaV2B2bSiteInformation**](ManaV2B2bSiteInformation.md) |  | [optional] 
+**ServiceLanSegment** | **int64** | LAN segment for the service (required) | 
+**ServicePrefixes** | **[]string** |  | 
+**Sites** | [**[]ManaV2B2bSiteInformation**](ManaV2B2bSiteInformation.md) |  | 
 **Sla** | Pointer to [**ManaV2SlaInformation**](ManaV2SlaInformation.md) |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Type** | **string** | Type of the service whether it is application or peering (required) | 
 **UnmatchedCustomers** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
 ### NewManaV2B2bExtranetProducerPolicy
 
-`func NewManaV2B2bExtranetProducerPolicy() *ManaV2B2bExtranetProducerPolicy`
+`func NewManaV2B2bExtranetProducerPolicy(natPools []string, serviceLanSegment int64, servicePrefixes []string, sites []ManaV2B2bSiteInformation, type_ string, ) *ManaV2B2bExtranetProducerPolicy`
 
 NewManaV2B2bExtranetProducerPolicy instantiates a new ManaV2B2bExtranetProducerPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -131,11 +131,6 @@ and a boolean to check if the value has been set.
 
 SetNatPools sets NatPools field to given value.
 
-### HasNatPools
-
-`func (o *ManaV2B2bExtranetProducerPolicy) HasNatPools() bool`
-
-HasNatPools returns a boolean if a field has been set.
 
 ### GetPrefixTags
 
@@ -206,11 +201,6 @@ and a boolean to check if the value has been set.
 
 SetServiceLanSegment sets ServiceLanSegment field to given value.
 
-### HasServiceLanSegment
-
-`func (o *ManaV2B2bExtranetProducerPolicy) HasServiceLanSegment() bool`
-
-HasServiceLanSegment returns a boolean if a field has been set.
 
 ### GetServicePrefixes
 
@@ -231,11 +221,6 @@ and a boolean to check if the value has been set.
 
 SetServicePrefixes sets ServicePrefixes field to given value.
 
-### HasServicePrefixes
-
-`func (o *ManaV2B2bExtranetProducerPolicy) HasServicePrefixes() bool`
-
-HasServicePrefixes returns a boolean if a field has been set.
 
 ### GetSites
 
@@ -256,11 +241,6 @@ and a boolean to check if the value has been set.
 
 SetSites sets Sites field to given value.
 
-### HasSites
-
-`func (o *ManaV2B2bExtranetProducerPolicy) HasSites() bool`
-
-HasSites returns a boolean if a field has been set.
 
 ### GetSla
 
@@ -331,11 +311,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *ManaV2B2bExtranetProducerPolicy) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetUnmatchedCustomers
 

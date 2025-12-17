@@ -19,7 +19,9 @@ var _ MappedNullable = &StatsmonExtranetServerStatus{}
 
 // StatsmonExtranetServerStatus struct for StatsmonExtranetServerStatus
 type StatsmonExtranetServerStatus struct {
+	// the IP address of the server
 	Address *string `json:"address,omitempty"`
+	// the health status of the server (Healthy, Impaired, Down)
 	Status *string `json:"status,omitempty"`
 }
 

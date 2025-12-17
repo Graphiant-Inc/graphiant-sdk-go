@@ -19,8 +19,11 @@ var _ MappedNullable = &StatsmonExtranetSiteStatus{}
 
 // StatsmonExtranetSiteStatus struct for StatsmonExtranetSiteStatus
 type StatsmonExtranetSiteStatus struct {
+	// the id of the site
 	Id *int64 `json:"id,omitempty"`
+	// the name of the site
 	Name *string `json:"name,omitempty"`
+	// the status of the site (Healthy, Impaired, Down)
 	Status *string `json:"status,omitempty"`
 	Statuses []StatsmonExtranetServerStatus `json:"statuses,omitempty"`
 }

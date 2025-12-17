@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ManaV2ApplicationProfile type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,21 @@ var _ MappedNullable = &ManaV2ApplicationProfile{}
 
 // ManaV2ApplicationProfile struct for ManaV2ApplicationProfile
 type ManaV2ApplicationProfile struct {
-	Ports []int32 `json:"ports,omitempty"`
-	Protocol *int32 `json:"protocol,omitempty"`
+	Ports []int32 `json:"ports"`
+	// Protocol for the application profile (required)
+	Protocol int32 `json:"protocol"`
 }
+
+type _ManaV2ApplicationProfile ManaV2ApplicationProfile
 
 // NewManaV2ApplicationProfile instantiates a new ManaV2ApplicationProfile object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManaV2ApplicationProfile() *ManaV2ApplicationProfile {
+func NewManaV2ApplicationProfile(ports []int32, protocol int32) *ManaV2ApplicationProfile {
 	this := ManaV2ApplicationProfile{}
+	this.Ports = ports
+	this.Protocol = protocol
 	return &this
 }
 
@@ -40,68 +47,52 @@ func NewManaV2ApplicationProfileWithDefaults() *ManaV2ApplicationProfile {
 	return &this
 }
 
-// GetPorts returns the Ports field value if set, zero value otherwise.
+// GetPorts returns the Ports field value
 func (o *ManaV2ApplicationProfile) GetPorts() []int32 {
-	if o == nil || IsNil(o.Ports) {
+	if o == nil {
 		var ret []int32
 		return ret
 	}
+
 	return o.Ports
 }
 
-// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
+// GetPortsOk returns a tuple with the Ports field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2ApplicationProfile) GetPortsOk() ([]int32, bool) {
-	if o == nil || IsNil(o.Ports) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Ports, true
 }
 
-// HasPorts returns a boolean if a field has been set.
-func (o *ManaV2ApplicationProfile) HasPorts() bool {
-	if o != nil && !IsNil(o.Ports) {
-		return true
-	}
-
-	return false
-}
-
-// SetPorts gets a reference to the given []int32 and assigns it to the Ports field.
+// SetPorts sets field value
 func (o *ManaV2ApplicationProfile) SetPorts(v []int32) {
 	o.Ports = v
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
+// GetProtocol returns the Protocol field value
 func (o *ManaV2ApplicationProfile) GetProtocol() int32 {
-	if o == nil || IsNil(o.Protocol) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Protocol
+
+	return o.Protocol
 }
 
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// GetProtocolOk returns a tuple with the Protocol field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2ApplicationProfile) GetProtocolOk() (*int32, bool) {
-	if o == nil || IsNil(o.Protocol) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Protocol, true
+	return &o.Protocol, true
 }
 
-// HasProtocol returns a boolean if a field has been set.
-func (o *ManaV2ApplicationProfile) HasProtocol() bool {
-	if o != nil && !IsNil(o.Protocol) {
-		return true
-	}
-
-	return false
-}
-
-// SetProtocol gets a reference to the given int32 and assigns it to the Protocol field.
+// SetProtocol sets field value
 func (o *ManaV2ApplicationProfile) SetProtocol(v int32) {
-	o.Protocol = &v
+	o.Protocol = v
 }
 
 func (o ManaV2ApplicationProfile) MarshalJSON() ([]byte, error) {
@@ -114,13 +105,47 @@ func (o ManaV2ApplicationProfile) MarshalJSON() ([]byte, error) {
 
 func (o ManaV2ApplicationProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ports) {
-		toSerialize["ports"] = o.Ports
-	}
-	if !IsNil(o.Protocol) {
-		toSerialize["protocol"] = o.Protocol
-	}
+	toSerialize["ports"] = o.Ports
+	toSerialize["protocol"] = o.Protocol
 	return toSerialize, nil
+}
+
+func (o *ManaV2ApplicationProfile) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"ports",
+		"protocol",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varManaV2ApplicationProfile := _ManaV2ApplicationProfile{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varManaV2ApplicationProfile)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ManaV2ApplicationProfile(varManaV2ApplicationProfile)
+
+	return err
 }
 
 type NullableManaV2ApplicationProfile struct {

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Location** | Pointer to [**ManaV2Location**](ManaV2Location.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Notes** | Pointer to **string** |  | [optional] 
+**NtpOps** | Pointer to **map[string]string** |  | [optional] 
 **PrefixSetOps** | Pointer to **map[string]string** |  | [optional] 
 **RouteTag** | Pointer to [**ManaV2RouteTag**](ManaV2RouteTag.md) |  | [optional] 
 **RoutingPolicyOps** | Pointer to **map[string]string** |  | [optional] 
@@ -186,6 +187,31 @@ SetNotes sets Notes field to given value.
 `func (o *ManaV2NewSite) HasNotes() bool`
 
 HasNotes returns a boolean if a field has been set.
+
+### GetNtpOps
+
+`func (o *ManaV2NewSite) GetNtpOps() map[string]string`
+
+GetNtpOps returns the NtpOps field if non-nil, zero value otherwise.
+
+### GetNtpOpsOk
+
+`func (o *ManaV2NewSite) GetNtpOpsOk() (*map[string]string, bool)`
+
+GetNtpOpsOk returns a tuple with the NtpOps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNtpOps
+
+`func (o *ManaV2NewSite) SetNtpOps(v map[string]string)`
+
+SetNtpOps sets NtpOps field to given value.
+
+### HasNtpOps
+
+`func (o *ManaV2NewSite) HasNtpOps() bool`
+
+HasNtpOps returns a boolean if a field has been set.
 
 ### GetPrefixSetOps
 

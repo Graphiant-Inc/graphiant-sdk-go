@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the V1ExtranetsB2bPeeringProducerPostRequest type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,22 @@ var _ MappedNullable = &V1ExtranetsB2bPeeringProducerPostRequest{}
 
 // V1ExtranetsB2bPeeringProducerPostRequest struct for V1ExtranetsB2bPeeringProducerPostRequest
 type V1ExtranetsB2bPeeringProducerPostRequest struct {
-	Policy *ManaV2B2bExtranetPeeringServiceProducerPolicy `json:"policy,omitempty"`
+	Policy ManaV2B2bExtranetPeeringServiceProducerPolicy `json:"policy"`
 	ServiceName *string `json:"serviceName,omitempty"`
-	Type *string `json:"type,omitempty"`
+	// Type of the service whether it is application or peering (required)
+	Type string `json:"type"`
 }
+
+type _V1ExtranetsB2bPeeringProducerPostRequest V1ExtranetsB2bPeeringProducerPostRequest
 
 // NewV1ExtranetsB2bPeeringProducerPostRequest instantiates a new V1ExtranetsB2bPeeringProducerPostRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1ExtranetsB2bPeeringProducerPostRequest() *V1ExtranetsB2bPeeringProducerPostRequest {
+func NewV1ExtranetsB2bPeeringProducerPostRequest(policy ManaV2B2bExtranetPeeringServiceProducerPolicy, type_ string) *V1ExtranetsB2bPeeringProducerPostRequest {
 	this := V1ExtranetsB2bPeeringProducerPostRequest{}
+	this.Policy = policy
+	this.Type = type_
 	return &this
 }
 
@@ -41,36 +48,28 @@ func NewV1ExtranetsB2bPeeringProducerPostRequestWithDefaults() *V1ExtranetsB2bPe
 	return &this
 }
 
-// GetPolicy returns the Policy field value if set, zero value otherwise.
+// GetPolicy returns the Policy field value
 func (o *V1ExtranetsB2bPeeringProducerPostRequest) GetPolicy() ManaV2B2bExtranetPeeringServiceProducerPolicy {
-	if o == nil || IsNil(o.Policy) {
+	if o == nil {
 		var ret ManaV2B2bExtranetPeeringServiceProducerPolicy
 		return ret
 	}
-	return *o.Policy
+
+	return o.Policy
 }
 
-// GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
+// GetPolicyOk returns a tuple with the Policy field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPeeringProducerPostRequest) GetPolicyOk() (*ManaV2B2bExtranetPeeringServiceProducerPolicy, bool) {
-	if o == nil || IsNil(o.Policy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Policy, true
+	return &o.Policy, true
 }
 
-// HasPolicy returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPeeringProducerPostRequest) HasPolicy() bool {
-	if o != nil && !IsNil(o.Policy) {
-		return true
-	}
-
-	return false
-}
-
-// SetPolicy gets a reference to the given ManaV2B2bExtranetPeeringServiceProducerPolicy and assigns it to the Policy field.
+// SetPolicy sets field value
 func (o *V1ExtranetsB2bPeeringProducerPostRequest) SetPolicy(v ManaV2B2bExtranetPeeringServiceProducerPolicy) {
-	o.Policy = &v
+	o.Policy = v
 }
 
 // GetServiceName returns the ServiceName field value if set, zero value otherwise.
@@ -105,36 +104,28 @@ func (o *V1ExtranetsB2bPeeringProducerPostRequest) SetServiceName(v string) {
 	o.ServiceName = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *V1ExtranetsB2bPeeringProducerPostRequest) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPeeringProducerPostRequest) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPeeringProducerPostRequest) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *V1ExtranetsB2bPeeringProducerPostRequest) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 func (o V1ExtranetsB2bPeeringProducerPostRequest) MarshalJSON() ([]byte, error) {
@@ -147,16 +138,50 @@ func (o V1ExtranetsB2bPeeringProducerPostRequest) MarshalJSON() ([]byte, error) 
 
 func (o V1ExtranetsB2bPeeringProducerPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Policy) {
-		toSerialize["policy"] = o.Policy
-	}
+	toSerialize["policy"] = o.Policy
 	if !IsNil(o.ServiceName) {
 		toSerialize["serviceName"] = o.ServiceName
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
+}
+
+func (o *V1ExtranetsB2bPeeringProducerPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"policy",
+		"type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1ExtranetsB2bPeeringProducerPostRequest := _V1ExtranetsB2bPeeringProducerPostRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1ExtranetsB2bPeeringProducerPostRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1ExtranetsB2bPeeringProducerPostRequest(varV1ExtranetsB2bPeeringProducerPostRequest)
+
+	return err
 }
 
 type NullableV1ExtranetsB2bPeeringProducerPostRequest struct {

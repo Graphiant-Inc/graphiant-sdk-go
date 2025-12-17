@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GlobalPrefixSets** | Pointer to [**map[string]ManaV2NullablePrefixSetConfig**](ManaV2NullablePrefixSetConfig.md) |  | [optional] 
 **IpfixExporters** | Pointer to [**map[string]ManaV2NullableIpfixExporterConfig**](ManaV2NullableIpfixExporterConfig.md) |  | [optional] 
+**Ntps** | Pointer to [**map[string]ManaV2NullableNtpConfig**](ManaV2NullableNtpConfig.md) |  | [optional] 
 **PrefixSets** | Pointer to [**map[string]ManaV2NullableEnterprisePrefixSetConfig**](ManaV2NullableEnterprisePrefixSetConfig.md) |  | [optional] 
 **RoutingPolicies** | Pointer to [**map[string]ManaV2NullableRoutingPolicyConfig**](ManaV2NullableRoutingPolicyConfig.md) |  | [optional] 
 **Snmps** | Pointer to [**map[string]ManaV2NullableSnmpConfig**](ManaV2NullableSnmpConfig.md) |  | [optional] 
@@ -81,6 +82,31 @@ SetIpfixExporters sets IpfixExporters field to given value.
 `func (o *V1GlobalConfigPatchRequest) HasIpfixExporters() bool`
 
 HasIpfixExporters returns a boolean if a field has been set.
+
+### GetNtps
+
+`func (o *V1GlobalConfigPatchRequest) GetNtps() map[string]ManaV2NullableNtpConfig`
+
+GetNtps returns the Ntps field if non-nil, zero value otherwise.
+
+### GetNtpsOk
+
+`func (o *V1GlobalConfigPatchRequest) GetNtpsOk() (*map[string]ManaV2NullableNtpConfig, bool)`
+
+GetNtpsOk returns a tuple with the Ntps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNtps
+
+`func (o *V1GlobalConfigPatchRequest) SetNtps(v map[string]ManaV2NullableNtpConfig)`
+
+SetNtps sets Ntps field to given value.
+
+### HasNtps
+
+`func (o *V1GlobalConfigPatchRequest) HasNtps() bool`
+
+HasNtps returns a boolean if a field has been set.
 
 ### GetPrefixSets
 

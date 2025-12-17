@@ -19,6 +19,7 @@ var _ MappedNullable = &V2ExtranetSitesUsagePostResponse{}
 
 // V2ExtranetSitesUsagePostResponse struct for V2ExtranetSitesUsagePostResponse
 type V2ExtranetSitesUsagePostResponse struct {
+	// the bandwidth allocation for the entity in kbps
 	BwAllocation *int32 `json:"bwAllocation,omitempty"`
 	DlStats []IpfixStats `json:"dlStats,omitempty"`
 	UlStats []IpfixStats `json:"ulStats,omitempty"`

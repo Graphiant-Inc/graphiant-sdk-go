@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **MaintenanceMode** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **NatPolicy** | Pointer to [**ManaV2NatPolicyConfig**](ManaV2NatPolicyConfig.md) |  | [optional] 
+**NtpGlobalObject** | Pointer to [**map[string]ManaV2NullableNtpConfig**](ManaV2NullableNtpConfig.md) |  | [optional] 
 **Ospfv2Enabled** | Pointer to **bool** |  | [optional] 
 **Ospfv3Enabled** | Pointer to **bool** |  | [optional] 
 **PrefixSets** | Pointer to [**map[string]ManaV2NullablePrefixSetConfig**](ManaV2NullablePrefixSetConfig.md) |  | [optional] 
@@ -453,6 +454,31 @@ SetNatPolicy sets NatPolicy field to given value.
 `func (o *ManaV2EdgeDeviceConfig) HasNatPolicy() bool`
 
 HasNatPolicy returns a boolean if a field has been set.
+
+### GetNtpGlobalObject
+
+`func (o *ManaV2EdgeDeviceConfig) GetNtpGlobalObject() map[string]ManaV2NullableNtpConfig`
+
+GetNtpGlobalObject returns the NtpGlobalObject field if non-nil, zero value otherwise.
+
+### GetNtpGlobalObjectOk
+
+`func (o *ManaV2EdgeDeviceConfig) GetNtpGlobalObjectOk() (*map[string]ManaV2NullableNtpConfig, bool)`
+
+GetNtpGlobalObjectOk returns a tuple with the NtpGlobalObject field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNtpGlobalObject
+
+`func (o *ManaV2EdgeDeviceConfig) SetNtpGlobalObject(v map[string]ManaV2NullableNtpConfig)`
+
+SetNtpGlobalObject sets NtpGlobalObject field to given value.
+
+### HasNtpGlobalObject
+
+`func (o *ManaV2EdgeDeviceConfig) HasNtpGlobalObject() bool`
+
+HasNtpGlobalObject returns a boolean if a field has been set.
 
 ### GetOspfv2Enabled
 

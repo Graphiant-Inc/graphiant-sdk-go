@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest type satisfies the MappedNullable interface at compile time
@@ -19,23 +21,36 @@ var _ MappedNullable = &V1ExtranetB2bMonitoringPeeringServiceConsumptionOverview
 
 // V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest struct for V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest
 type V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest struct {
+	// a filter to get usage for a specific customer
 	CustomerName *string `json:"customerName,omitempty"`
-	FlippedView *bool `json:"flippedView,omitempty"`
-	// the id associated with an entity - consumer_id for consumer, and service_id for the producer/service
-	Id *int64 `json:"id,omitempty"`
-	IsB2B *bool `json:"isB2B,omitempty"`
-	IsProvider *bool `json:"isProvider,omitempty"`
+	// whether to view the data from the consumer's perspective (true) or the provider's perspective (false) (required)
+	FlippedView bool `json:"flippedView"`
+	// the id associated with an entity - consumer_id for consumer, and service_id for the producer/service (required)
+	Id int64 `json:"id"`
+	// whether the entity is a b2b entity (true for b2b entity, false for local extranet entity) (required)
+	IsB2B bool `json:"isB2B"`
+	// whether the entity is a provider or consumer (required)
+	IsProvider bool `json:"isProvider"`
+	// a filter to get usage for a specific site
 	SiteId *int64 `json:"siteId,omitempty"`
-	TimeWindow *StatsmonTimeWindow `json:"timeWindow,omitempty"`
+	TimeWindow StatsmonTimeWindow `json:"timeWindow"`
+	// a filter to get usage for a specific vrf
 	VrfId *int64 `json:"vrfId,omitempty"`
 }
+
+type _V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest
 
 // NewV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest instantiates a new V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest() *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest {
+func NewV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest(flippedView bool, id int64, isB2B bool, isProvider bool, timeWindow StatsmonTimeWindow) *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest {
 	this := V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest{}
+	this.FlippedView = flippedView
+	this.Id = id
+	this.IsB2B = isB2B
+	this.IsProvider = isProvider
+	this.TimeWindow = timeWindow
 	return &this
 }
 
@@ -79,132 +94,100 @@ func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) Se
 	o.CustomerName = &v
 }
 
-// GetFlippedView returns the FlippedView field value if set, zero value otherwise.
+// GetFlippedView returns the FlippedView field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) GetFlippedView() bool {
-	if o == nil || IsNil(o.FlippedView) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.FlippedView
+
+	return o.FlippedView
 }
 
-// GetFlippedViewOk returns a tuple with the FlippedView field value if set, nil otherwise
+// GetFlippedViewOk returns a tuple with the FlippedView field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) GetFlippedViewOk() (*bool, bool) {
-	if o == nil || IsNil(o.FlippedView) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FlippedView, true
+	return &o.FlippedView, true
 }
 
-// HasFlippedView returns a boolean if a field has been set.
-func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) HasFlippedView() bool {
-	if o != nil && !IsNil(o.FlippedView) {
-		return true
-	}
-
-	return false
-}
-
-// SetFlippedView gets a reference to the given bool and assigns it to the FlippedView field.
+// SetFlippedView sets field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) SetFlippedView(v bool) {
-	o.FlippedView = &v
+	o.FlippedView = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) GetId() int64 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) GetIdOk() (*int64, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int64 and assigns it to the Id field.
+// SetId sets field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) SetId(v int64) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetIsB2B returns the IsB2B field value if set, zero value otherwise.
+// GetIsB2B returns the IsB2B field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) GetIsB2B() bool {
-	if o == nil || IsNil(o.IsB2B) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsB2B
+
+	return o.IsB2B
 }
 
-// GetIsB2BOk returns a tuple with the IsB2B field value if set, nil otherwise
+// GetIsB2BOk returns a tuple with the IsB2B field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) GetIsB2BOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsB2B) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsB2B, true
+	return &o.IsB2B, true
 }
 
-// HasIsB2B returns a boolean if a field has been set.
-func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) HasIsB2B() bool {
-	if o != nil && !IsNil(o.IsB2B) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsB2B gets a reference to the given bool and assigns it to the IsB2B field.
+// SetIsB2B sets field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) SetIsB2B(v bool) {
-	o.IsB2B = &v
+	o.IsB2B = v
 }
 
-// GetIsProvider returns the IsProvider field value if set, zero value otherwise.
+// GetIsProvider returns the IsProvider field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) GetIsProvider() bool {
-	if o == nil || IsNil(o.IsProvider) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsProvider
+
+	return o.IsProvider
 }
 
-// GetIsProviderOk returns a tuple with the IsProvider field value if set, nil otherwise
+// GetIsProviderOk returns a tuple with the IsProvider field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) GetIsProviderOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsProvider) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsProvider, true
+	return &o.IsProvider, true
 }
 
-// HasIsProvider returns a boolean if a field has been set.
-func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) HasIsProvider() bool {
-	if o != nil && !IsNil(o.IsProvider) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsProvider gets a reference to the given bool and assigns it to the IsProvider field.
+// SetIsProvider sets field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) SetIsProvider(v bool) {
-	o.IsProvider = &v
+	o.IsProvider = v
 }
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
@@ -239,36 +222,28 @@ func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) Se
 	o.SiteId = &v
 }
 
-// GetTimeWindow returns the TimeWindow field value if set, zero value otherwise.
+// GetTimeWindow returns the TimeWindow field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) GetTimeWindow() StatsmonTimeWindow {
-	if o == nil || IsNil(o.TimeWindow) {
+	if o == nil {
 		var ret StatsmonTimeWindow
 		return ret
 	}
-	return *o.TimeWindow
+
+	return o.TimeWindow
 }
 
-// GetTimeWindowOk returns a tuple with the TimeWindow field value if set, nil otherwise
+// GetTimeWindowOk returns a tuple with the TimeWindow field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) GetTimeWindowOk() (*StatsmonTimeWindow, bool) {
-	if o == nil || IsNil(o.TimeWindow) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TimeWindow, true
+	return &o.TimeWindow, true
 }
 
-// HasTimeWindow returns a boolean if a field has been set.
-func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) HasTimeWindow() bool {
-	if o != nil && !IsNil(o.TimeWindow) {
-		return true
-	}
-
-	return false
-}
-
-// SetTimeWindow gets a reference to the given StatsmonTimeWindow and assigns it to the TimeWindow field.
+// SetTimeWindow sets field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) SetTimeWindow(v StatsmonTimeWindow) {
-	o.TimeWindow = &v
+	o.TimeWindow = v
 }
 
 // GetVrfId returns the VrfId field value if set, zero value otherwise.
@@ -316,28 +291,59 @@ func (o V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) ToM
 	if !IsNil(o.CustomerName) {
 		toSerialize["customerName"] = o.CustomerName
 	}
-	if !IsNil(o.FlippedView) {
-		toSerialize["flippedView"] = o.FlippedView
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.IsB2B) {
-		toSerialize["isB2B"] = o.IsB2B
-	}
-	if !IsNil(o.IsProvider) {
-		toSerialize["isProvider"] = o.IsProvider
-	}
+	toSerialize["flippedView"] = o.FlippedView
+	toSerialize["id"] = o.Id
+	toSerialize["isB2B"] = o.IsB2B
+	toSerialize["isProvider"] = o.IsProvider
 	if !IsNil(o.SiteId) {
 		toSerialize["siteId"] = o.SiteId
 	}
-	if !IsNil(o.TimeWindow) {
-		toSerialize["timeWindow"] = o.TimeWindow
-	}
+	toSerialize["timeWindow"] = o.TimeWindow
 	if !IsNil(o.VrfId) {
 		toSerialize["vrfId"] = o.VrfId
 	}
 	return toSerialize, nil
+}
+
+func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"flippedView",
+		"id",
+		"isB2B",
+		"isProvider",
+		"timeWindow",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest := _V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest(varV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest)
+
+	return err
 }
 
 type NullableV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest struct {

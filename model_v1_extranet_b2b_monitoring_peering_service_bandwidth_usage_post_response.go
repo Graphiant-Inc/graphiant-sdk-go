@@ -19,6 +19,7 @@ var _ MappedNullable = &V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostR
 
 // V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostResponse struct for V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostResponse
 type V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostResponse struct {
+	// the bandwidth allocation for the entity in kbps
 	BwAllocation *int32 `json:"bwAllocation,omitempty"`
 	DlStats []IpfixStats `json:"dlStats,omitempty"`
 	UlStats []IpfixStats `json:"ulStats,omitempty"`

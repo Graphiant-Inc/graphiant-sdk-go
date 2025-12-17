@@ -25,6 +25,7 @@ type ManaV2NewSite struct {
 	Location *ManaV2Location `json:"location,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Notes *string `json:"notes,omitempty"`
+	NtpOps *map[string]string `json:"ntpOps,omitempty"`
 	PrefixSetOps *map[string]string `json:"prefixSetOps,omitempty"`
 	RouteTag *ManaV2RouteTag `json:"routeTag,omitempty"`
 	RoutingPolicyOps *map[string]string `json:"routingPolicyOps,omitempty"`
@@ -241,6 +242,38 @@ func (o *ManaV2NewSite) HasNotes() bool {
 // SetNotes gets a reference to the given string and assigns it to the Notes field.
 func (o *ManaV2NewSite) SetNotes(v string) {
 	o.Notes = &v
+}
+
+// GetNtpOps returns the NtpOps field value if set, zero value otherwise.
+func (o *ManaV2NewSite) GetNtpOps() map[string]string {
+	if o == nil || IsNil(o.NtpOps) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.NtpOps
+}
+
+// GetNtpOpsOk returns a tuple with the NtpOps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2NewSite) GetNtpOpsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.NtpOps) {
+		return nil, false
+	}
+	return o.NtpOps, true
+}
+
+// HasNtpOps returns a boolean if a field has been set.
+func (o *ManaV2NewSite) HasNtpOps() bool {
+	if o != nil && !IsNil(o.NtpOps) {
+		return true
+	}
+
+	return false
+}
+
+// SetNtpOps gets a reference to the given map[string]string and assigns it to the NtpOps field.
+func (o *ManaV2NewSite) SetNtpOps(v map[string]string) {
+	o.NtpOps = &v
 }
 
 // GetPrefixSetOps returns the PrefixSetOps field value if set, zero value otherwise.
@@ -494,6 +527,9 @@ func (o ManaV2NewSite) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Notes) {
 		toSerialize["notes"] = o.Notes
+	}
+	if !IsNil(o.NtpOps) {
+		toSerialize["ntpOps"] = o.NtpOps
 	}
 	if !IsNil(o.PrefixSetOps) {
 		toSerialize["prefixSetOps"] = o.PrefixSetOps

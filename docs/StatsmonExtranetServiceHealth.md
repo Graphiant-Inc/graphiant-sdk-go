@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerName** | Pointer to **string** |  | [optional] 
+**CustomerName** | Pointer to **string** | the name of the customer | [optional] 
 **CustomerPrefixHealth** | Pointer to [**StatsmonExtranetPrefixHealth**](StatsmonExtranetPrefixHealth.md) |  | [optional] 
-**OverallHealth** | Pointer to **string** |  | [optional] 
+**OverallHealth** | Pointer to **string** | the overall connectivity status of the service (Healthy, Impaired, Down) | [optional] 
 **ProducerPrefixHealth** | Pointer to [**StatsmonExtranetPrefixHealth**](StatsmonExtranetPrefixHealth.md) |  | [optional] 
 
 ## Methods

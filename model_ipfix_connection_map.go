@@ -21,6 +21,7 @@ var _ MappedNullable = &IpfixConnectionMap{}
 type IpfixConnectionMap struct {
 	Connections *map[string]int64 `json:"connections,omitempty"`
 	ConnectionsV2 *map[string]float64 `json:"connectionsV2,omitempty"`
+	// the name of the connection
 	Name *string `json:"name,omitempty"`
 }
 

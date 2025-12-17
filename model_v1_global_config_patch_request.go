@@ -21,6 +21,7 @@ var _ MappedNullable = &V1GlobalConfigPatchRequest{}
 type V1GlobalConfigPatchRequest struct {
 	GlobalPrefixSets *map[string]ManaV2NullablePrefixSetConfig `json:"globalPrefixSets,omitempty"`
 	IpfixExporters *map[string]ManaV2NullableIpfixExporterConfig `json:"ipfixExporters,omitempty"`
+	Ntps *map[string]ManaV2NullableNtpConfig `json:"ntps,omitempty"`
 	PrefixSets *map[string]ManaV2NullableEnterprisePrefixSetConfig `json:"prefixSets,omitempty"`
 	RoutingPolicies *map[string]ManaV2NullableRoutingPolicyConfig `json:"routingPolicies,omitempty"`
 	Snmps *map[string]ManaV2NullableSnmpConfig `json:"snmps,omitempty"`
@@ -108,6 +109,38 @@ func (o *V1GlobalConfigPatchRequest) HasIpfixExporters() bool {
 // SetIpfixExporters gets a reference to the given map[string]ManaV2NullableIpfixExporterConfig and assigns it to the IpfixExporters field.
 func (o *V1GlobalConfigPatchRequest) SetIpfixExporters(v map[string]ManaV2NullableIpfixExporterConfig) {
 	o.IpfixExporters = &v
+}
+
+// GetNtps returns the Ntps field value if set, zero value otherwise.
+func (o *V1GlobalConfigPatchRequest) GetNtps() map[string]ManaV2NullableNtpConfig {
+	if o == nil || IsNil(o.Ntps) {
+		var ret map[string]ManaV2NullableNtpConfig
+		return ret
+	}
+	return *o.Ntps
+}
+
+// GetNtpsOk returns a tuple with the Ntps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1GlobalConfigPatchRequest) GetNtpsOk() (*map[string]ManaV2NullableNtpConfig, bool) {
+	if o == nil || IsNil(o.Ntps) {
+		return nil, false
+	}
+	return o.Ntps, true
+}
+
+// HasNtps returns a boolean if a field has been set.
+func (o *V1GlobalConfigPatchRequest) HasNtps() bool {
+	if o != nil && !IsNil(o.Ntps) {
+		return true
+	}
+
+	return false
+}
+
+// SetNtps gets a reference to the given map[string]ManaV2NullableNtpConfig and assigns it to the Ntps field.
+func (o *V1GlobalConfigPatchRequest) SetNtps(v map[string]ManaV2NullableNtpConfig) {
+	o.Ntps = &v
 }
 
 // GetPrefixSets returns the PrefixSets field value if set, zero value otherwise.
@@ -317,6 +350,9 @@ func (o V1GlobalConfigPatchRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IpfixExporters) {
 		toSerialize["ipfixExporters"] = o.IpfixExporters
+	}
+	if !IsNil(o.Ntps) {
+		toSerialize["ntps"] = o.Ntps
 	}
 	if !IsNil(o.PrefixSets) {
 		toSerialize["prefixSets"] = o.PrefixSets

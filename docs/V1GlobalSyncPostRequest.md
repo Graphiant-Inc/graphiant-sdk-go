@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeviceIds** | Pointer to **[]int64** |  | [optional] 
 **IpfixExportedId** | Pointer to **int64** |  | [optional] 
+**NtpId** | Pointer to **int64** |  | [optional] 
 **PrefixSetId** | Pointer to **int64** |  | [optional] 
 **RoutingPolicyId** | Pointer to **int64** |  | [optional] 
 **SnmpId** | Pointer to **int64** |  | [optional] 
@@ -80,6 +81,31 @@ SetIpfixExportedId sets IpfixExportedId field to given value.
 `func (o *V1GlobalSyncPostRequest) HasIpfixExportedId() bool`
 
 HasIpfixExportedId returns a boolean if a field has been set.
+
+### GetNtpId
+
+`func (o *V1GlobalSyncPostRequest) GetNtpId() int64`
+
+GetNtpId returns the NtpId field if non-nil, zero value otherwise.
+
+### GetNtpIdOk
+
+`func (o *V1GlobalSyncPostRequest) GetNtpIdOk() (*int64, bool)`
+
+GetNtpIdOk returns a tuple with the NtpId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNtpId
+
+`func (o *V1GlobalSyncPostRequest) SetNtpId(v int64)`
+
+SetNtpId sets NtpId field to given value.
+
+### HasNtpId
+
+`func (o *V1GlobalSyncPostRequest) HasNtpId() bool`
+
+HasNtpId returns a boolean if a field has been set.
 
 ### GetPrefixSetId
 

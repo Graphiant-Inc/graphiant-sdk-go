@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IpfixExportedType** | Pointer to **bool** |  | [optional] 
+**NtpType** | Pointer to **bool** |  | [optional] 
 **PrefixSetType** | Pointer to **bool** |  | [optional] 
 **RoutingPolicyType** | Pointer to **bool** |  | [optional] 
 **SnmpType** | Pointer to **bool** |  | [optional] 
@@ -54,6 +55,31 @@ SetIpfixExportedType sets IpfixExportedType field to given value.
 `func (o *V1GlobalSummaryPostRequest) HasIpfixExportedType() bool`
 
 HasIpfixExportedType returns a boolean if a field has been set.
+
+### GetNtpType
+
+`func (o *V1GlobalSummaryPostRequest) GetNtpType() bool`
+
+GetNtpType returns the NtpType field if non-nil, zero value otherwise.
+
+### GetNtpTypeOk
+
+`func (o *V1GlobalSummaryPostRequest) GetNtpTypeOk() (*bool, bool)`
+
+GetNtpTypeOk returns a tuple with the NtpType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNtpType
+
+`func (o *V1GlobalSummaryPostRequest) SetNtpType(v bool)`
+
+SetNtpType sets NtpType field to given value.
+
+### HasNtpType
+
+`func (o *V1GlobalSummaryPostRequest) HasNtpType() bool`
+
+HasNtpType returns a boolean if a field has been set.
 
 ### GetPrefixSetType
 

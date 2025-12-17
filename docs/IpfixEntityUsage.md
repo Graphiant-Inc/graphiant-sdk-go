@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** | id of consumer or lan segment  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **int64** | id of the entity | [optional] 
+**Name** | Pointer to **string** | name of the entity | [optional] 
 **Usage** | Pointer to **float64** | usage in kbps | [optional] 
 
 ## Methods

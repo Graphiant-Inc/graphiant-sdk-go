@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Prefix** | Pointer to **string** |  | [optional] 
-**Tag** | Pointer to **string** |  | [optional] 
+**Prefix** | **string** | Prefix advertised by the service (required) | 
+**Tag** | Pointer to **string** | Tag for the prefix | [optional] 
 
 ## Methods
 
 ### NewManaV2B2bExtranetPrefixTag
 
-`func NewManaV2B2bExtranetPrefixTag() *ManaV2B2bExtranetPrefixTag`
+`func NewManaV2B2bExtranetPrefixTag(prefix string, ) *ManaV2B2bExtranetPrefixTag`
 
 NewManaV2B2bExtranetPrefixTag instantiates a new ManaV2B2bExtranetPrefixTag object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetPrefix sets Prefix field to given value.
 
-### HasPrefix
-
-`func (o *ManaV2B2bExtranetPrefixTag) HasPrefix() bool`
-
-HasPrefix returns a boolean if a field has been set.
 
 ### GetTag
 

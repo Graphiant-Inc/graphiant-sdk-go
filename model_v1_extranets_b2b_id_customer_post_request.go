@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the V1ExtranetsB2bIdCustomerPostRequest type satisfies the MappedNullable interface at compile time
@@ -19,15 +21,18 @@ var _ MappedNullable = &V1ExtranetsB2bIdCustomerPostRequest{}
 
 // V1ExtranetsB2bIdCustomerPostRequest struct for V1ExtranetsB2bIdCustomerPostRequest
 type V1ExtranetsB2bIdCustomerPostRequest struct {
-	Invites []ManaV2B2bExtranetApplicationInvite `json:"invites,omitempty"`
+	Invites []ManaV2B2bExtranetApplicationInvite `json:"invites"`
 }
+
+type _V1ExtranetsB2bIdCustomerPostRequest V1ExtranetsB2bIdCustomerPostRequest
 
 // NewV1ExtranetsB2bIdCustomerPostRequest instantiates a new V1ExtranetsB2bIdCustomerPostRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1ExtranetsB2bIdCustomerPostRequest() *V1ExtranetsB2bIdCustomerPostRequest {
+func NewV1ExtranetsB2bIdCustomerPostRequest(invites []ManaV2B2bExtranetApplicationInvite) *V1ExtranetsB2bIdCustomerPostRequest {
 	this := V1ExtranetsB2bIdCustomerPostRequest{}
+	this.Invites = invites
 	return &this
 }
 
@@ -39,34 +44,26 @@ func NewV1ExtranetsB2bIdCustomerPostRequestWithDefaults() *V1ExtranetsB2bIdCusto
 	return &this
 }
 
-// GetInvites returns the Invites field value if set, zero value otherwise.
+// GetInvites returns the Invites field value
 func (o *V1ExtranetsB2bIdCustomerPostRequest) GetInvites() []ManaV2B2bExtranetApplicationInvite {
-	if o == nil || IsNil(o.Invites) {
+	if o == nil {
 		var ret []ManaV2B2bExtranetApplicationInvite
 		return ret
 	}
+
 	return o.Invites
 }
 
-// GetInvitesOk returns a tuple with the Invites field value if set, nil otherwise
+// GetInvitesOk returns a tuple with the Invites field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bIdCustomerPostRequest) GetInvitesOk() ([]ManaV2B2bExtranetApplicationInvite, bool) {
-	if o == nil || IsNil(o.Invites) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Invites, true
 }
 
-// HasInvites returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bIdCustomerPostRequest) HasInvites() bool {
-	if o != nil && !IsNil(o.Invites) {
-		return true
-	}
-
-	return false
-}
-
-// SetInvites gets a reference to the given []ManaV2B2bExtranetApplicationInvite and assigns it to the Invites field.
+// SetInvites sets field value
 func (o *V1ExtranetsB2bIdCustomerPostRequest) SetInvites(v []ManaV2B2bExtranetApplicationInvite) {
 	o.Invites = v
 }
@@ -81,10 +78,45 @@ func (o V1ExtranetsB2bIdCustomerPostRequest) MarshalJSON() ([]byte, error) {
 
 func (o V1ExtranetsB2bIdCustomerPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Invites) {
-		toSerialize["invites"] = o.Invites
-	}
+	toSerialize["invites"] = o.Invites
 	return toSerialize, nil
+}
+
+func (o *V1ExtranetsB2bIdCustomerPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"invites",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1ExtranetsB2bIdCustomerPostRequest := _V1ExtranetsB2bIdCustomerPostRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1ExtranetsB2bIdCustomerPostRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1ExtranetsB2bIdCustomerPostRequest(varV1ExtranetsB2bIdCustomerPostRequest)
+
+	return err
 }
 
 type NullableV1ExtranetsB2bIdCustomerPostRequest struct {

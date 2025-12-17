@@ -21,6 +21,7 @@ var _ MappedNullable = &V1GlobalSyncPostRequest{}
 type V1GlobalSyncPostRequest struct {
 	DeviceIds []int64 `json:"deviceIds,omitempty"`
 	IpfixExportedId *int64 `json:"ipfixExportedId,omitempty"`
+	NtpId *int64 `json:"ntpId,omitempty"`
 	PrefixSetId *int64 `json:"prefixSetId,omitempty"`
 	RoutingPolicyId *int64 `json:"routingPolicyId,omitempty"`
 	SnmpId *int64 `json:"snmpId,omitempty"`
@@ -107,6 +108,38 @@ func (o *V1GlobalSyncPostRequest) HasIpfixExportedId() bool {
 // SetIpfixExportedId gets a reference to the given int64 and assigns it to the IpfixExportedId field.
 func (o *V1GlobalSyncPostRequest) SetIpfixExportedId(v int64) {
 	o.IpfixExportedId = &v
+}
+
+// GetNtpId returns the NtpId field value if set, zero value otherwise.
+func (o *V1GlobalSyncPostRequest) GetNtpId() int64 {
+	if o == nil || IsNil(o.NtpId) {
+		var ret int64
+		return ret
+	}
+	return *o.NtpId
+}
+
+// GetNtpIdOk returns a tuple with the NtpId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1GlobalSyncPostRequest) GetNtpIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.NtpId) {
+		return nil, false
+	}
+	return o.NtpId, true
+}
+
+// HasNtpId returns a boolean if a field has been set.
+func (o *V1GlobalSyncPostRequest) HasNtpId() bool {
+	if o != nil && !IsNil(o.NtpId) {
+		return true
+	}
+
+	return false
+}
+
+// SetNtpId gets a reference to the given int64 and assigns it to the NtpId field.
+func (o *V1GlobalSyncPostRequest) SetNtpId(v int64) {
+	o.NtpId = &v
 }
 
 // GetPrefixSetId returns the PrefixSetId field value if set, zero value otherwise.
@@ -284,6 +317,9 @@ func (o V1GlobalSyncPostRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IpfixExportedId) {
 		toSerialize["ipfixExportedId"] = o.IpfixExportedId
+	}
+	if !IsNil(o.NtpId) {
+		toSerialize["ntpId"] = o.NtpId
 	}
 	if !IsNil(o.PrefixSetId) {
 		toSerialize["prefixSetId"] = o.PrefixSetId

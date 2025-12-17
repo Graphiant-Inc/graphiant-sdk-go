@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** |  | [optional] 
+**Id** | **int64** | ID of the service being subscribed by the customer (required) | 
 **LanSegment** | Pointer to **int64** |  | [optional] 
-**Nat** | Pointer to [**[]ManaV2B2bNat**](ManaV2B2bNat.md) |  | [optional] 
-**NumCustomers** | Pointer to **int32** |  | [optional] 
-**ServicePrefixes** | Pointer to [**[]ManaV2B2bExtranetPrefixTag**](ManaV2B2bExtranetPrefixTag.md) |  | [optional] 
+**Nat** | [**[]ManaV2B2bNat**](ManaV2B2bNat.md) |  | 
+**NumCustomers** | Pointer to **int32** | Number of customers subscribed to the service | [optional] 
+**ServicePrefixes** | [**[]ManaV2B2bExtranetPrefixTag**](ManaV2B2bExtranetPrefixTag.md) |  | 
 
 ## Methods
 
 ### NewManaV2B2bExtranetMatchServiceToCustomer
 
-`func NewManaV2B2bExtranetMatchServiceToCustomer() *ManaV2B2bExtranetMatchServiceToCustomer`
+`func NewManaV2B2bExtranetMatchServiceToCustomer(id int64, nat []ManaV2B2bNat, servicePrefixes []ManaV2B2bExtranetPrefixTag, ) *ManaV2B2bExtranetMatchServiceToCustomer`
 
 NewManaV2B2bExtranetMatchServiceToCustomer instantiates a new ManaV2B2bExtranetMatchServiceToCustomer object
 This constructor will assign default values to properties that have it defined,
@@ -48,11 +48,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *ManaV2B2bExtranetMatchServiceToCustomer) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetLanSegment
 
@@ -98,11 +93,6 @@ and a boolean to check if the value has been set.
 
 SetNat sets Nat field to given value.
 
-### HasNat
-
-`func (o *ManaV2B2bExtranetMatchServiceToCustomer) HasNat() bool`
-
-HasNat returns a boolean if a field has been set.
 
 ### GetNumCustomers
 
@@ -148,11 +138,6 @@ and a boolean to check if the value has been set.
 
 SetServicePrefixes sets ServicePrefixes field to given value.
 
-### HasServicePrefixes
-
-`func (o *ManaV2B2bExtranetMatchServiceToCustomer) HasServicePrefixes() bool`
-
-HasServicePrefixes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

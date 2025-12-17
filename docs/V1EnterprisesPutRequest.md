@@ -12,7 +12,9 @@ Name | Type | Description | Notes
 **CloudProvider** | Pointer to **string** |  | [optional] 
 **CompanyName** | **string** |  (required) | 
 **CreditLimit** | Pointer to **int32** |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 **Logo** | Pointer to **string** |  | [optional] 
+**MarketplaceId** | Pointer to **string** |  | [optional] 
 **SmallLogo** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -224,6 +226,31 @@ SetCreditLimit sets CreditLimit field to given value.
 
 HasCreditLimit returns a boolean if a field has been set.
 
+### GetDescription
+
+`func (o *V1EnterprisesPutRequest) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *V1EnterprisesPutRequest) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *V1EnterprisesPutRequest) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *V1EnterprisesPutRequest) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
 ### GetLogo
 
 `func (o *V1EnterprisesPutRequest) GetLogo() string`
@@ -248,6 +275,31 @@ SetLogo sets Logo field to given value.
 `func (o *V1EnterprisesPutRequest) HasLogo() bool`
 
 HasLogo returns a boolean if a field has been set.
+
+### GetMarketplaceId
+
+`func (o *V1EnterprisesPutRequest) GetMarketplaceId() string`
+
+GetMarketplaceId returns the MarketplaceId field if non-nil, zero value otherwise.
+
+### GetMarketplaceIdOk
+
+`func (o *V1EnterprisesPutRequest) GetMarketplaceIdOk() (*string, bool)`
+
+GetMarketplaceIdOk returns a tuple with the MarketplaceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarketplaceId
+
+`func (o *V1EnterprisesPutRequest) SetMarketplaceId(v string)`
+
+SetMarketplaceId sets MarketplaceId field to given value.
+
+### HasMarketplaceId
+
+`func (o *V1EnterprisesPutRequest) HasMarketplaceId() bool`
+
+HasMarketplaceId returns a boolean if a field has been set.
 
 ### GetSmallLogo
 

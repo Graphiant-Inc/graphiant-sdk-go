@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** |  | [optional] 
-**IsProvider** | Pointer to **bool** |  | [optional] 
+**Id** | **int64** | the id of the service (required) | 
+**IsProvider** | **bool** | whether the entity is a provider/producer or consumer (required) | 
 
 ## Methods
 
 ### NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest
 
-`func NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest() *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest`
+`func NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest(id int64, isProvider bool, ) *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest`
 
 NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest instantiates a new V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetIsProvider
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetIsProvider sets IsProvider field to given value.
 
-### HasIsProvider
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) HasIsProvider() bool`
-
-HasIsProvider returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

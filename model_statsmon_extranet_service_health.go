@@ -19,8 +19,10 @@ var _ MappedNullable = &StatsmonExtranetServiceHealth{}
 
 // StatsmonExtranetServiceHealth struct for StatsmonExtranetServiceHealth
 type StatsmonExtranetServiceHealth struct {
+	// the name of the customer
 	CustomerName *string `json:"customerName,omitempty"`
 	CustomerPrefixHealth *StatsmonExtranetPrefixHealth `json:"customerPrefixHealth,omitempty"`
+	// the overall connectivity status of the service (Healthy, Impaired, Down)
 	OverallHealth *string `json:"overallHealth,omitempty"`
 	ProducerPrefixHealth *StatsmonExtranetPrefixHealth `json:"producerPrefixHealth,omitempty"`
 }

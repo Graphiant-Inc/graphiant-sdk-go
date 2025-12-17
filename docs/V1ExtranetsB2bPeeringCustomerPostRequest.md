@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Invite** | Pointer to [**ManaV2B2bExtranetPeeringServiceCustomerInvite**](ManaV2B2bExtranetPeeringServiceCustomerInvite.md) |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Invite** | [**ManaV2B2bExtranetPeeringServiceCustomerInvite**](ManaV2B2bExtranetPeeringServiceCustomerInvite.md) |  | 
+**Name** | **string** | Name of the peering service customer (required) | 
+**Type** | **string** | Type of the peerings servicecustomer whether it is a graphiant or non-graphiant (required) | 
 
 ## Methods
 
 ### NewV1ExtranetsB2bPeeringCustomerPostRequest
 
-`func NewV1ExtranetsB2bPeeringCustomerPostRequest() *V1ExtranetsB2bPeeringCustomerPostRequest`
+`func NewV1ExtranetsB2bPeeringCustomerPostRequest(invite ManaV2B2bExtranetPeeringServiceCustomerInvite, name string, type_ string, ) *V1ExtranetsB2bPeeringCustomerPostRequest`
 
 NewV1ExtranetsB2bPeeringCustomerPostRequest instantiates a new V1ExtranetsB2bPeeringCustomerPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetInvite sets Invite field to given value.
 
-### HasInvite
-
-`func (o *V1ExtranetsB2bPeeringCustomerPostRequest) HasInvite() bool`
-
-HasInvite returns a boolean if a field has been set.
 
 ### GetName
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *V1ExtranetsB2bPeeringCustomerPostRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetType
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *V1ExtranetsB2bPeeringCustomerPostRequest) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

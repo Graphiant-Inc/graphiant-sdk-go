@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ManaV2B2bNat type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,21 @@ var _ MappedNullable = &ManaV2B2bNat{}
 
 // ManaV2B2bNat struct for ManaV2B2bNat
 type ManaV2B2bNat struct {
+	// Outside NAT prefix for the customer prefix
 	OutsideNatPrefix *string `json:"outsideNatPrefix,omitempty"`
-	Prefix *string `json:"prefix,omitempty"`
+	// Prefix imported into the service (required)
+	Prefix string `json:"prefix"`
 }
+
+type _ManaV2B2bNat ManaV2B2bNat
 
 // NewManaV2B2bNat instantiates a new ManaV2B2bNat object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManaV2B2bNat() *ManaV2B2bNat {
+func NewManaV2B2bNat(prefix string) *ManaV2B2bNat {
 	this := ManaV2B2bNat{}
+	this.Prefix = prefix
 	return &this
 }
 
@@ -72,36 +79,28 @@ func (o *ManaV2B2bNat) SetOutsideNatPrefix(v string) {
 	o.OutsideNatPrefix = &v
 }
 
-// GetPrefix returns the Prefix field value if set, zero value otherwise.
+// GetPrefix returns the Prefix field value
 func (o *ManaV2B2bNat) GetPrefix() string {
-	if o == nil || IsNil(o.Prefix) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Prefix
+
+	return o.Prefix
 }
 
-// GetPrefixOk returns a tuple with the Prefix field value if set, nil otherwise
+// GetPrefixOk returns a tuple with the Prefix field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bNat) GetPrefixOk() (*string, bool) {
-	if o == nil || IsNil(o.Prefix) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Prefix, true
+	return &o.Prefix, true
 }
 
-// HasPrefix returns a boolean if a field has been set.
-func (o *ManaV2B2bNat) HasPrefix() bool {
-	if o != nil && !IsNil(o.Prefix) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrefix gets a reference to the given string and assigns it to the Prefix field.
+// SetPrefix sets field value
 func (o *ManaV2B2bNat) SetPrefix(v string) {
-	o.Prefix = &v
+	o.Prefix = v
 }
 
 func (o ManaV2B2bNat) MarshalJSON() ([]byte, error) {
@@ -117,10 +116,45 @@ func (o ManaV2B2bNat) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OutsideNatPrefix) {
 		toSerialize["outsideNatPrefix"] = o.OutsideNatPrefix
 	}
-	if !IsNil(o.Prefix) {
-		toSerialize["prefix"] = o.Prefix
-	}
+	toSerialize["prefix"] = o.Prefix
 	return toSerialize, nil
+}
+
+func (o *ManaV2B2bNat) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"prefix",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varManaV2B2bNat := _ManaV2B2bNat{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varManaV2B2bNat)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ManaV2B2bNat(varManaV2B2bNat)
+
+	return err
 }
 
 type NullableManaV2B2bNat struct {

@@ -14,7 +14,7 @@ import (
 )
 
 func TestVersion(t *testing.T) {
-	expectedVersion := "v25.11.1"
+	expectedVersion := "v25.12.1"
 	if openapiclient.Version != expectedVersion {
 		t.Errorf("Expected version %s, got %s", expectedVersion, openapiclient.Version)
 	}

@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerName** | Pointer to **string** |  | [optional] 
-**FlippedView** | Pointer to **bool** |  | [optional] 
-**Id** | Pointer to **int64** | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service | [optional] 
-**IsB2B** | Pointer to **bool** |  | [optional] 
-**IsProvider** | Pointer to **bool** |  | [optional] 
-**SiteId** | Pointer to **int64** |  | [optional] 
-**TimeWindow** | Pointer to [**StatsmonTimeWindow**](StatsmonTimeWindow.md) |  | [optional] 
-**VrfId** | Pointer to **int64** |  | [optional] 
+**CustomerName** | Pointer to **string** | a filter to get usage for a specific customer | [optional] 
+**FlippedView** | **bool** | whether to view the data from the consumer&#39;s perspective (true) or the provider&#39;s perspective (false) (required) | 
+**Id** | **int64** | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service (required) | 
+**IsB2B** | **bool** | whether the entity is a b2b entity (true for b2b entity, false for local extranet entity) (required) | 
+**IsProvider** | **bool** | whether the entity is a provider or consumer (required) | 
+**SiteId** | Pointer to **int64** | a filter to get usage for a specific site | [optional] 
+**TimeWindow** | [**StatsmonTimeWindow**](StatsmonTimeWindow.md) |  | 
+**VrfId** | Pointer to **int64** | a filter to get usage for a specific vrf | [optional] 
 
 ## Methods
 
 ### NewV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest
 
-`func NewV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest() *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest`
+`func NewV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest(flippedView bool, id int64, isB2B bool, isProvider bool, timeWindow StatsmonTimeWindow, ) *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest`
 
 NewV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest instantiates a new V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -76,11 +76,6 @@ and a boolean to check if the value has been set.
 
 SetFlippedView sets FlippedView field to given value.
 
-### HasFlippedView
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) HasFlippedView() bool`
-
-HasFlippedView returns a boolean if a field has been set.
 
 ### GetId
 
@@ -101,11 +96,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetIsB2B
 
@@ -126,11 +116,6 @@ and a boolean to check if the value has been set.
 
 SetIsB2B sets IsB2B field to given value.
 
-### HasIsB2B
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) HasIsB2B() bool`
-
-HasIsB2B returns a boolean if a field has been set.
 
 ### GetIsProvider
 
@@ -151,11 +136,6 @@ and a boolean to check if the value has been set.
 
 SetIsProvider sets IsProvider field to given value.
 
-### HasIsProvider
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) HasIsProvider() bool`
-
-HasIsProvider returns a boolean if a field has been set.
 
 ### GetSiteId
 
@@ -201,11 +181,6 @@ and a boolean to check if the value has been set.
 
 SetTimeWindow sets TimeWindow field to given value.
 
-### HasTimeWindow
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest) HasTimeWindow() bool`
-
-HasTimeWindow returns a boolean if a field has been set.
 
 ### GetVrfId
 

@@ -16,6 +16,7 @@ Refer [Graphiant Docs](https://docs.graphiant.com) to get started with [Graphian
 - **Official Documentation**: [Graphiant SDK Go Guide](https://docs.graphiant.com/docs/graphiant-sdk-go) <-> [Graphiant Automation Docs](https://docs.graphiant.com/docs/automation)
 - **API Reference**: [Graphiant SDK Go API Docs](docs/DefaultAPI.md) <-> [Graphiant Portal REST API Guide](https://docs.graphiant.com/docs/graphiant-portal-rest-api)
 - **Package**: [Go Package - graphiant-sdk-go](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go)
+- **Changelog**: [CHANGELOG.md](CHANGELOG.md) - Complete version history and release notes
 
 ## ✨ Features
 
@@ -360,13 +361,13 @@ func configureDeviceWhenReady(deviceID int64, config graphiant_sdk.V1DevicesDevi
 ### Available Wrapper Functions
 | `PollAndPutDeviceConfig(apiClient, token, deviceID, config)` | Poll device status and execute config when ready |
 
-## 🔄 Migration Guide: Upgrading from 25.10.2 to 25.11.1
+## 🔄 Migration Guide: Upgrading from 25.10.2 to 25.11.1+
 
-The 25.11.1 API is optimized to reuse redundant schemas. You may need to update your existing scripts to use the newer API names.
+The 25.11.1+ API is optimized to reuse redundant schemas. You may need to update your existing scripts to use the newer API names.
 
 ### Benefits of Upgrading
 
-The new API specification (25.11.1) brings significant improvements:
+The new API specification (25.11.1+) brings significant improvements:
 
 - **Reduced Specification Size**: The API specification file size has been reduced from **9.8M to 1.5M** (~85% reduction) through schema optimization and reuse
 - **Enhanced Documentation**: The new spec includes more comprehensive documentation for better developer experience
@@ -473,12 +474,12 @@ brew install openapi-generator  # macOS
 
 # Generate SDK
 openapi-generator generate \
-  -i graphiant_api_docs_v25.11.1.json \
+  -i graphiant_api_docs_v25.12.1.json \
   -g go \
   --git-user-id Graphiant-Inc \
   --git-repo-id graphiant-sdk-go \
   --package-name graphiant_sdk \
-  --additional-properties=packageVersion=25.11.1
+  --additional-properties=packageVersion=25.12.1
 ```
 
 > **Note**: Latest API documentation can be downloaded from the Graphiant portal under "Support Hub" > "Developer Tools".
@@ -630,10 +631,21 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 📋 Version History
+
+For a complete list of changes, new features, and version history, see [CHANGELOG.md](CHANGELOG.md).
+
+The changelog follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format and includes:
+- All releases from v25.6.1 (initial release) to the latest version
+- Detailed migration guides for major version updates
+- Breaking changes and deprecations
+- Bug fixes and security updates
+
 ## 🆘 Support
 
 - **Official Documentation**: [Graphiant SDK Go Guide](https://docs.graphiant.com/docs/graphiant-sdk-go) <-> [Graphiant Automation Docs](https://docs.graphiant.com/docs/automation)
 - **API Reference**: [Graphiant SDK Go API Docs](docs/DefaultAPI.md) <-> [Graphiant Portal REST API Guide](https://docs.graphiant.com/docs/graphiant-portal-rest-api)
+- **Changelog**: [CHANGELOG.md](CHANGELOG.md) - Version history and release notes
 - **Issues**: [GitHub Issues](https://github.com/Graphiant-Inc/graphiant-sdk-go/issues)
 - **Email**: support@graphiant.com
 

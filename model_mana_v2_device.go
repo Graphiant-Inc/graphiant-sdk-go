@@ -42,6 +42,7 @@ type ManaV2Device struct {
 	MaintenanceMode *bool `json:"maintenanceMode,omitempty"`
 	NatPolicy *ManaV2NatPolicy `json:"natPolicy,omitempty"`
 	Notes *string `json:"notes,omitempty"`
+	Ntp *ManaV2Ntp `json:"ntp,omitempty"`
 	OperStaled *bool `json:"operStaled,omitempty"`
 	OperStaledAt *GoogleProtobufTimestamp `json:"operStaledAt,omitempty"`
 	OperUpdatedAt *GoogleProtobufTimestamp `json:"operUpdatedAt,omitempty"`
@@ -817,6 +818,38 @@ func (o *ManaV2Device) HasNotes() bool {
 // SetNotes gets a reference to the given string and assigns it to the Notes field.
 func (o *ManaV2Device) SetNotes(v string) {
 	o.Notes = &v
+}
+
+// GetNtp returns the Ntp field value if set, zero value otherwise.
+func (o *ManaV2Device) GetNtp() ManaV2Ntp {
+	if o == nil || IsNil(o.Ntp) {
+		var ret ManaV2Ntp
+		return ret
+	}
+	return *o.Ntp
+}
+
+// GetNtpOk returns a tuple with the Ntp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2Device) GetNtpOk() (*ManaV2Ntp, bool) {
+	if o == nil || IsNil(o.Ntp) {
+		return nil, false
+	}
+	return o.Ntp, true
+}
+
+// HasNtp returns a boolean if a field has been set.
+func (o *ManaV2Device) HasNtp() bool {
+	if o != nil && !IsNil(o.Ntp) {
+		return true
+	}
+
+	return false
+}
+
+// SetNtp gets a reference to the given ManaV2Ntp and assigns it to the Ntp field.
+func (o *ManaV2Device) SetNtp(v ManaV2Ntp) {
+	o.Ntp = &v
 }
 
 // GetOperStaled returns the OperStaled field value if set, zero value otherwise.
@@ -1601,6 +1634,9 @@ func (o ManaV2Device) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Notes) {
 		toSerialize["notes"] = o.Notes
+	}
+	if !IsNil(o.Ntp) {
+		toSerialize["ntp"] = o.Ntp
 	}
 	if !IsNil(o.OperStaled) {
 		toSerialize["operStaled"] = o.OperStaled

@@ -12,10 +12,12 @@ Name | Type | Description | Notes
 **Counts** | Pointer to [**IamCounts**](IamCounts.md) |  | [optional] 
 **CreditLimit** | Pointer to **int32** |  | [optional] 
 **Customers** | Pointer to [**map[string]IamCustomer**](IamCustomer.md) |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 **EnterpriseId** | Pointer to **int64** |  | [optional] 
 **EulaAgreementDate** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **ImpersonationEnabled** | Pointer to **bool** |  | [optional] 
 **Logo** | Pointer to **string** |  | [optional] 
+**MarketplaceId** | Pointer to **string** |  | [optional] 
 **ParentCompanyName** | Pointer to **string** |  | [optional] 
 **ParentEnterpriseId** | Pointer to **int64** |  | [optional] 
 **PortalBanner** | Pointer to **string** |  | [optional] 
@@ -242,6 +244,31 @@ SetCustomers sets Customers field to given value.
 
 HasCustomers returns a boolean if a field has been set.
 
+### GetDescription
+
+`func (o *IamEnterprise) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *IamEnterprise) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *IamEnterprise) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *IamEnterprise) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
 ### GetEnterpriseId
 
 `func (o *IamEnterprise) GetEnterpriseId() int64`
@@ -341,6 +368,31 @@ SetLogo sets Logo field to given value.
 `func (o *IamEnterprise) HasLogo() bool`
 
 HasLogo returns a boolean if a field has been set.
+
+### GetMarketplaceId
+
+`func (o *IamEnterprise) GetMarketplaceId() string`
+
+GetMarketplaceId returns the MarketplaceId field if non-nil, zero value otherwise.
+
+### GetMarketplaceIdOk
+
+`func (o *IamEnterprise) GetMarketplaceIdOk() (*string, bool)`
+
+GetMarketplaceIdOk returns a tuple with the MarketplaceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarketplaceId
+
+`func (o *IamEnterprise) SetMarketplaceId(v string)`
+
+SetMarketplaceId sets MarketplaceId field to given value.
+
+### HasMarketplaceId
+
+`func (o *IamEnterprise) HasMarketplaceId() bool`
+
+HasMarketplaceId returns a boolean if a field has been set.
 
 ### GetParentCompanyName
 

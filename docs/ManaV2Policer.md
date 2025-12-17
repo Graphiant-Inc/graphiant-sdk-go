@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BurstSize** | Pointer to **int32** |  | [optional] 
-**Bw** | Pointer to **int32** |  | [optional] 
+**BurstSize** | **int32** | Burst size for the policer (required) | 
+**Bw** | **int32** | Bandwidth for the policer (required) | 
 
 ## Methods
 
 ### NewManaV2Policer
 
-`func NewManaV2Policer() *ManaV2Policer`
+`func NewManaV2Policer(burstSize int32, bw int32, ) *ManaV2Policer`
 
 NewManaV2Policer instantiates a new ManaV2Policer object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetBurstSize sets BurstSize field to given value.
 
-### HasBurstSize
-
-`func (o *ManaV2Policer) HasBurstSize() bool`
-
-HasBurstSize returns a boolean if a field has been set.
 
 ### GetBw
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetBw sets Bw field to given value.
 
-### HasBw
-
-`func (o *ManaV2Policer) HasBw() bool`
-
-HasBw returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

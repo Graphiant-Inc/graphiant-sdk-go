@@ -21,6 +21,7 @@ var _ MappedNullable = &V1GlobalConfigPatchResponse{}
 type V1GlobalConfigPatchResponse struct {
 	GlobalPrefixSets *map[string]int64 `json:"globalPrefixSets,omitempty"`
 	IpfixExporters *map[string]int64 `json:"ipfixExporters,omitempty"`
+	Ntps *map[string]int64 `json:"ntps,omitempty"`
 	PrefixSets *map[string]int64 `json:"prefixSets,omitempty"`
 	RoutingPolicies *map[string]int64 `json:"routingPolicies,omitempty"`
 	Snmps *map[string]int64 `json:"snmps,omitempty"`
@@ -109,6 +110,38 @@ func (o *V1GlobalConfigPatchResponse) HasIpfixExporters() bool {
 // SetIpfixExporters gets a reference to the given map[string]int64 and assigns it to the IpfixExporters field.
 func (o *V1GlobalConfigPatchResponse) SetIpfixExporters(v map[string]int64) {
 	o.IpfixExporters = &v
+}
+
+// GetNtps returns the Ntps field value if set, zero value otherwise.
+func (o *V1GlobalConfigPatchResponse) GetNtps() map[string]int64 {
+	if o == nil || IsNil(o.Ntps) {
+		var ret map[string]int64
+		return ret
+	}
+	return *o.Ntps
+}
+
+// GetNtpsOk returns a tuple with the Ntps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1GlobalConfigPatchResponse) GetNtpsOk() (*map[string]int64, bool) {
+	if o == nil || IsNil(o.Ntps) {
+		return nil, false
+	}
+	return o.Ntps, true
+}
+
+// HasNtps returns a boolean if a field has been set.
+func (o *V1GlobalConfigPatchResponse) HasNtps() bool {
+	if o != nil && !IsNil(o.Ntps) {
+		return true
+	}
+
+	return false
+}
+
+// SetNtps gets a reference to the given map[string]int64 and assigns it to the Ntps field.
+func (o *V1GlobalConfigPatchResponse) SetNtps(v map[string]int64) {
+	o.Ntps = &v
 }
 
 // GetPrefixSets returns the PrefixSets field value if set, zero value otherwise.
@@ -350,6 +383,9 @@ func (o V1GlobalConfigPatchResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IpfixExporters) {
 		toSerialize["ipfixExporters"] = o.IpfixExporters
+	}
+	if !IsNil(o.Ntps) {
+		toSerialize["ntps"] = o.Ntps
 	}
 	if !IsNil(o.PrefixSets) {
 		toSerialize["prefixSets"] = o.PrefixSets

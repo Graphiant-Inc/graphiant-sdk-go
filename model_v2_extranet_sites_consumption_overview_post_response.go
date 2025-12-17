@@ -22,6 +22,7 @@ type V2ExtranetSitesConsumptionOverviewPostResponse struct {
 	LanSegments []IpfixConnectionMap `json:"lanSegments,omitempty"`
 	Regions []IpfixConnectionMap `json:"regions,omitempty"`
 	Sites []IpfixConnectionMap `json:"sites,omitempty"`
+	// total service usage in kilo bytes
 	TotalUsage *float64 `json:"totalUsage,omitempty"`
 }
 

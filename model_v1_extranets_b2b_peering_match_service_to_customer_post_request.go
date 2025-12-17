@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,21 @@ var _ MappedNullable = &V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest{}
 
 // V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest struct for V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest
 type V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest struct {
-	Id *int64 `json:"id,omitempty"`
-	Service *ManaV2B2bExtranetMatchServiceToCustomer `json:"service,omitempty"`
+	// ID of the customer (required)
+	Id int64 `json:"id"`
+	Service ManaV2B2bExtranetMatchServiceToCustomer `json:"service"`
 }
+
+type _V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest
 
 // NewV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest instantiates a new V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest() *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest {
+func NewV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest(id int64, service ManaV2B2bExtranetMatchServiceToCustomer) *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest {
 	this := V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest{}
+	this.Id = id
+	this.Service = service
 	return &this
 }
 
@@ -40,68 +47,52 @@ func NewV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequestWithDefaults() *V1
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) GetId() int64 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) GetIdOk() (*int64, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int64 and assigns it to the Id field.
+// SetId sets field value
 func (o *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) SetId(v int64) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetService returns the Service field value if set, zero value otherwise.
+// GetService returns the Service field value
 func (o *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) GetService() ManaV2B2bExtranetMatchServiceToCustomer {
-	if o == nil || IsNil(o.Service) {
+	if o == nil {
 		var ret ManaV2B2bExtranetMatchServiceToCustomer
 		return ret
 	}
-	return *o.Service
+
+	return o.Service
 }
 
-// GetServiceOk returns a tuple with the Service field value if set, nil otherwise
+// GetServiceOk returns a tuple with the Service field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) GetServiceOk() (*ManaV2B2bExtranetMatchServiceToCustomer, bool) {
-	if o == nil || IsNil(o.Service) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Service, true
+	return &o.Service, true
 }
 
-// HasService returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) HasService() bool {
-	if o != nil && !IsNil(o.Service) {
-		return true
-	}
-
-	return false
-}
-
-// SetService gets a reference to the given ManaV2B2bExtranetMatchServiceToCustomer and assigns it to the Service field.
+// SetService sets field value
 func (o *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) SetService(v ManaV2B2bExtranetMatchServiceToCustomer) {
-	o.Service = &v
+	o.Service = v
 }
 
 func (o V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) MarshalJSON() ([]byte, error) {
@@ -114,13 +105,47 @@ func (o V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) MarshalJSON() ([
 
 func (o V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Service) {
-		toSerialize["service"] = o.Service
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["service"] = o.Service
 	return toSerialize, nil
+}
+
+func (o *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"service",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest := _V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest(varV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest)
+
+	return err
 }
 
 type NullableV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest struct {

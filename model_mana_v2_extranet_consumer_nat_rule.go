@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ManaV2ExtranetConsumerNatRule type satisfies the MappedNullable interface at compile time
@@ -21,15 +23,19 @@ var _ MappedNullable = &ManaV2ExtranetConsumerNatRule{}
 type ManaV2ExtranetConsumerNatRule struct {
 	// Optional nat prefix associated with a service prefix with an empty string indicating no NATing
 	OutsideNatPrefix *string `json:"outsideNatPrefix,omitempty"`
-	ServicePrefix *string `json:"servicePrefix,omitempty"`
+	// Service prefix for the NAT rule (required)
+	ServicePrefix string `json:"servicePrefix"`
 }
+
+type _ManaV2ExtranetConsumerNatRule ManaV2ExtranetConsumerNatRule
 
 // NewManaV2ExtranetConsumerNatRule instantiates a new ManaV2ExtranetConsumerNatRule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManaV2ExtranetConsumerNatRule() *ManaV2ExtranetConsumerNatRule {
+func NewManaV2ExtranetConsumerNatRule(servicePrefix string) *ManaV2ExtranetConsumerNatRule {
 	this := ManaV2ExtranetConsumerNatRule{}
+	this.ServicePrefix = servicePrefix
 	return &this
 }
 
@@ -73,36 +79,28 @@ func (o *ManaV2ExtranetConsumerNatRule) SetOutsideNatPrefix(v string) {
 	o.OutsideNatPrefix = &v
 }
 
-// GetServicePrefix returns the ServicePrefix field value if set, zero value otherwise.
+// GetServicePrefix returns the ServicePrefix field value
 func (o *ManaV2ExtranetConsumerNatRule) GetServicePrefix() string {
-	if o == nil || IsNil(o.ServicePrefix) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ServicePrefix
+
+	return o.ServicePrefix
 }
 
-// GetServicePrefixOk returns a tuple with the ServicePrefix field value if set, nil otherwise
+// GetServicePrefixOk returns a tuple with the ServicePrefix field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2ExtranetConsumerNatRule) GetServicePrefixOk() (*string, bool) {
-	if o == nil || IsNil(o.ServicePrefix) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ServicePrefix, true
+	return &o.ServicePrefix, true
 }
 
-// HasServicePrefix returns a boolean if a field has been set.
-func (o *ManaV2ExtranetConsumerNatRule) HasServicePrefix() bool {
-	if o != nil && !IsNil(o.ServicePrefix) {
-		return true
-	}
-
-	return false
-}
-
-// SetServicePrefix gets a reference to the given string and assigns it to the ServicePrefix field.
+// SetServicePrefix sets field value
 func (o *ManaV2ExtranetConsumerNatRule) SetServicePrefix(v string) {
-	o.ServicePrefix = &v
+	o.ServicePrefix = v
 }
 
 func (o ManaV2ExtranetConsumerNatRule) MarshalJSON() ([]byte, error) {
@@ -118,10 +116,45 @@ func (o ManaV2ExtranetConsumerNatRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OutsideNatPrefix) {
 		toSerialize["outsideNatPrefix"] = o.OutsideNatPrefix
 	}
-	if !IsNil(o.ServicePrefix) {
-		toSerialize["servicePrefix"] = o.ServicePrefix
-	}
+	toSerialize["servicePrefix"] = o.ServicePrefix
 	return toSerialize, nil
+}
+
+func (o *ManaV2ExtranetConsumerNatRule) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"servicePrefix",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varManaV2ExtranetConsumerNatRule := _ManaV2ExtranetConsumerNatRule{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varManaV2ExtranetConsumerNatRule)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ManaV2ExtranetConsumerNatRule(varManaV2ExtranetConsumerNatRule)
+
+	return err
 }
 
 type NullableManaV2ExtranetConsumerNatRule struct {

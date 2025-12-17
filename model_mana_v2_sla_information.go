@@ -19,8 +19,11 @@ var _ MappedNullable = &ManaV2SlaInformation{}
 
 // ManaV2SlaInformation struct for ManaV2SlaInformation
 type ManaV2SlaInformation struct {
+	// Backup circuit for the SLA information
 	BackupCircuit *string `json:"backupCircuit,omitempty"`
+	// Class for the SLA information
 	Class *string `json:"class,omitempty"`
+	// Primary circuit for the SLA information
 	PrimaryCircuit *string `json:"primaryCircuit,omitempty"`
 }
 

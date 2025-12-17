@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the V1ExtranetSitesUsageTopPostRequest type satisfies the MappedNullable interface at compile time
@@ -19,19 +21,28 @@ var _ MappedNullable = &V1ExtranetSitesUsageTopPostRequest{}
 
 // V1ExtranetSitesUsageTopPostRequest struct for V1ExtranetSitesUsageTopPostRequest
 type V1ExtranetSitesUsageTopPostRequest struct {
-	Id *int64 `json:"id,omitempty"`
-	IsB2B *bool `json:"isB2B,omitempty"`
-	IsProvider *bool `json:"isProvider,omitempty"`
+	// the id associated with an entity - consumer_id for consumer, and service_id for the producer/service (required)
+	Id int64 `json:"id"`
+	// whether the entity is a b2b entity (true for b2b entity, false for local extranet entity) (required)
+	IsB2B bool `json:"isB2B"`
+	// whether the entity is a provider or consumer (required)
+	IsProvider bool `json:"isProvider"`
 	ServiceId *int64 `json:"serviceId,omitempty"`
-	TimeWindow *StatsmonTimeWindow `json:"timeWindow,omitempty"`
+	TimeWindow StatsmonTimeWindow `json:"timeWindow"`
 }
+
+type _V1ExtranetSitesUsageTopPostRequest V1ExtranetSitesUsageTopPostRequest
 
 // NewV1ExtranetSitesUsageTopPostRequest instantiates a new V1ExtranetSitesUsageTopPostRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1ExtranetSitesUsageTopPostRequest() *V1ExtranetSitesUsageTopPostRequest {
+func NewV1ExtranetSitesUsageTopPostRequest(id int64, isB2B bool, isProvider bool, timeWindow StatsmonTimeWindow) *V1ExtranetSitesUsageTopPostRequest {
 	this := V1ExtranetSitesUsageTopPostRequest{}
+	this.Id = id
+	this.IsB2B = isB2B
+	this.IsProvider = isProvider
+	this.TimeWindow = timeWindow
 	return &this
 }
 
@@ -43,100 +54,76 @@ func NewV1ExtranetSitesUsageTopPostRequestWithDefaults() *V1ExtranetSitesUsageTo
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *V1ExtranetSitesUsageTopPostRequest) GetId() int64 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetSitesUsageTopPostRequest) GetIdOk() (*int64, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *V1ExtranetSitesUsageTopPostRequest) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int64 and assigns it to the Id field.
+// SetId sets field value
 func (o *V1ExtranetSitesUsageTopPostRequest) SetId(v int64) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetIsB2B returns the IsB2B field value if set, zero value otherwise.
+// GetIsB2B returns the IsB2B field value
 func (o *V1ExtranetSitesUsageTopPostRequest) GetIsB2B() bool {
-	if o == nil || IsNil(o.IsB2B) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsB2B
+
+	return o.IsB2B
 }
 
-// GetIsB2BOk returns a tuple with the IsB2B field value if set, nil otherwise
+// GetIsB2BOk returns a tuple with the IsB2B field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetSitesUsageTopPostRequest) GetIsB2BOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsB2B) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsB2B, true
+	return &o.IsB2B, true
 }
 
-// HasIsB2B returns a boolean if a field has been set.
-func (o *V1ExtranetSitesUsageTopPostRequest) HasIsB2B() bool {
-	if o != nil && !IsNil(o.IsB2B) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsB2B gets a reference to the given bool and assigns it to the IsB2B field.
+// SetIsB2B sets field value
 func (o *V1ExtranetSitesUsageTopPostRequest) SetIsB2B(v bool) {
-	o.IsB2B = &v
+	o.IsB2B = v
 }
 
-// GetIsProvider returns the IsProvider field value if set, zero value otherwise.
+// GetIsProvider returns the IsProvider field value
 func (o *V1ExtranetSitesUsageTopPostRequest) GetIsProvider() bool {
-	if o == nil || IsNil(o.IsProvider) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsProvider
+
+	return o.IsProvider
 }
 
-// GetIsProviderOk returns a tuple with the IsProvider field value if set, nil otherwise
+// GetIsProviderOk returns a tuple with the IsProvider field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetSitesUsageTopPostRequest) GetIsProviderOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsProvider) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsProvider, true
+	return &o.IsProvider, true
 }
 
-// HasIsProvider returns a boolean if a field has been set.
-func (o *V1ExtranetSitesUsageTopPostRequest) HasIsProvider() bool {
-	if o != nil && !IsNil(o.IsProvider) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsProvider gets a reference to the given bool and assigns it to the IsProvider field.
+// SetIsProvider sets field value
 func (o *V1ExtranetSitesUsageTopPostRequest) SetIsProvider(v bool) {
-	o.IsProvider = &v
+	o.IsProvider = v
 }
 
 // GetServiceId returns the ServiceId field value if set, zero value otherwise.
@@ -171,36 +158,28 @@ func (o *V1ExtranetSitesUsageTopPostRequest) SetServiceId(v int64) {
 	o.ServiceId = &v
 }
 
-// GetTimeWindow returns the TimeWindow field value if set, zero value otherwise.
+// GetTimeWindow returns the TimeWindow field value
 func (o *V1ExtranetSitesUsageTopPostRequest) GetTimeWindow() StatsmonTimeWindow {
-	if o == nil || IsNil(o.TimeWindow) {
+	if o == nil {
 		var ret StatsmonTimeWindow
 		return ret
 	}
-	return *o.TimeWindow
+
+	return o.TimeWindow
 }
 
-// GetTimeWindowOk returns a tuple with the TimeWindow field value if set, nil otherwise
+// GetTimeWindowOk returns a tuple with the TimeWindow field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetSitesUsageTopPostRequest) GetTimeWindowOk() (*StatsmonTimeWindow, bool) {
-	if o == nil || IsNil(o.TimeWindow) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TimeWindow, true
+	return &o.TimeWindow, true
 }
 
-// HasTimeWindow returns a boolean if a field has been set.
-func (o *V1ExtranetSitesUsageTopPostRequest) HasTimeWindow() bool {
-	if o != nil && !IsNil(o.TimeWindow) {
-		return true
-	}
-
-	return false
-}
-
-// SetTimeWindow gets a reference to the given StatsmonTimeWindow and assigns it to the TimeWindow field.
+// SetTimeWindow sets field value
 func (o *V1ExtranetSitesUsageTopPostRequest) SetTimeWindow(v StatsmonTimeWindow) {
-	o.TimeWindow = &v
+	o.TimeWindow = v
 }
 
 func (o V1ExtranetSitesUsageTopPostRequest) MarshalJSON() ([]byte, error) {
@@ -213,22 +192,54 @@ func (o V1ExtranetSitesUsageTopPostRequest) MarshalJSON() ([]byte, error) {
 
 func (o V1ExtranetSitesUsageTopPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.IsB2B) {
-		toSerialize["isB2B"] = o.IsB2B
-	}
-	if !IsNil(o.IsProvider) {
-		toSerialize["isProvider"] = o.IsProvider
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["isB2B"] = o.IsB2B
+	toSerialize["isProvider"] = o.IsProvider
 	if !IsNil(o.ServiceId) {
 		toSerialize["serviceId"] = o.ServiceId
 	}
-	if !IsNil(o.TimeWindow) {
-		toSerialize["timeWindow"] = o.TimeWindow
-	}
+	toSerialize["timeWindow"] = o.TimeWindow
 	return toSerialize, nil
+}
+
+func (o *V1ExtranetSitesUsageTopPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"isB2B",
+		"isProvider",
+		"timeWindow",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1ExtranetSitesUsageTopPostRequest := _V1ExtranetSitesUsageTopPostRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1ExtranetSitesUsageTopPostRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1ExtranetSitesUsageTopPostRequest(varV1ExtranetSitesUsageTopPostRequest)
+
+	return err
 }
 
 type NullableV1ExtranetSitesUsageTopPostRequest struct {

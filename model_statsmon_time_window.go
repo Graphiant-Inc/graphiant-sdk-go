@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the StatsmonTimeWindow type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,21 @@ var _ MappedNullable = &StatsmonTimeWindow{}
 
 // StatsmonTimeWindow struct for StatsmonTimeWindow
 type StatsmonTimeWindow struct {
-	BucketSizeSec *int32 `json:"bucketSizeSec,omitempty"`
+	// the size of the time window in seconds (required)
+	BucketSizeSec int32 `json:"bucketSizeSec"`
 	OldTs *GoogleProtobufTimestamp `json:"oldTs,omitempty"`
 	RecentTs *GoogleProtobufTimestamp `json:"recentTs,omitempty"`
 }
+
+type _StatsmonTimeWindow StatsmonTimeWindow
 
 // NewStatsmonTimeWindow instantiates a new StatsmonTimeWindow object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatsmonTimeWindow() *StatsmonTimeWindow {
+func NewStatsmonTimeWindow(bucketSizeSec int32) *StatsmonTimeWindow {
 	this := StatsmonTimeWindow{}
+	this.BucketSizeSec = bucketSizeSec
 	return &this
 }
 
@@ -41,36 +47,28 @@ func NewStatsmonTimeWindowWithDefaults() *StatsmonTimeWindow {
 	return &this
 }
 
-// GetBucketSizeSec returns the BucketSizeSec field value if set, zero value otherwise.
+// GetBucketSizeSec returns the BucketSizeSec field value
 func (o *StatsmonTimeWindow) GetBucketSizeSec() int32 {
-	if o == nil || IsNil(o.BucketSizeSec) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.BucketSizeSec
+
+	return o.BucketSizeSec
 }
 
-// GetBucketSizeSecOk returns a tuple with the BucketSizeSec field value if set, nil otherwise
+// GetBucketSizeSecOk returns a tuple with the BucketSizeSec field value
 // and a boolean to check if the value has been set.
 func (o *StatsmonTimeWindow) GetBucketSizeSecOk() (*int32, bool) {
-	if o == nil || IsNil(o.BucketSizeSec) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BucketSizeSec, true
+	return &o.BucketSizeSec, true
 }
 
-// HasBucketSizeSec returns a boolean if a field has been set.
-func (o *StatsmonTimeWindow) HasBucketSizeSec() bool {
-	if o != nil && !IsNil(o.BucketSizeSec) {
-		return true
-	}
-
-	return false
-}
-
-// SetBucketSizeSec gets a reference to the given int32 and assigns it to the BucketSizeSec field.
+// SetBucketSizeSec sets field value
 func (o *StatsmonTimeWindow) SetBucketSizeSec(v int32) {
-	o.BucketSizeSec = &v
+	o.BucketSizeSec = v
 }
 
 // GetOldTs returns the OldTs field value if set, zero value otherwise.
@@ -147,9 +145,7 @@ func (o StatsmonTimeWindow) MarshalJSON() ([]byte, error) {
 
 func (o StatsmonTimeWindow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BucketSizeSec) {
-		toSerialize["bucketSizeSec"] = o.BucketSizeSec
-	}
+	toSerialize["bucketSizeSec"] = o.BucketSizeSec
 	if !IsNil(o.OldTs) {
 		toSerialize["oldTs"] = o.OldTs
 	}
@@ -157,6 +153,43 @@ func (o StatsmonTimeWindow) ToMap() (map[string]interface{}, error) {
 		toSerialize["recentTs"] = o.RecentTs
 	}
 	return toSerialize, nil
+}
+
+func (o *StatsmonTimeWindow) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"bucketSizeSec",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStatsmonTimeWindow := _StatsmonTimeWindow{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStatsmonTimeWindow)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StatsmonTimeWindow(varStatsmonTimeWindow)
+
+	return err
 }
 
 type NullableStatsmonTimeWindow struct {

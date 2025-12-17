@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BucketSizeSec** | Pointer to **int32** |  | [optional] 
+**BucketSizeSec** | **int32** | the size of the time window in seconds (required) | 
 **OldTs** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **RecentTs** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewStatsmonTimeWindow
 
-`func NewStatsmonTimeWindow() *StatsmonTimeWindow`
+`func NewStatsmonTimeWindow(bucketSizeSec int32, ) *StatsmonTimeWindow`
 
 NewStatsmonTimeWindow instantiates a new StatsmonTimeWindow object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetBucketSizeSec sets BucketSizeSec field to given value.
 
-### HasBucketSizeSec
-
-`func (o *StatsmonTimeWindow) HasBucketSizeSec() bool`
-
-HasBucketSizeSec returns a boolean if a field has been set.
 
 ### GetOldTs
 

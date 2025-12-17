@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BwAllocationSiteLists** | Pointer to **int32** |  | [optional] 
-**BwAllocationSites** | Pointer to **int32** |  | [optional] 
+**BwAllocationSiteLists** | Pointer to **int32** | Total Bandwidth allocation for the service on these site lists | [optional] 
+**BwAllocationSites** | Pointer to **int32** | Total Bandwidth allocation for the service on these sites | [optional] 
 **PolicerSiteLists** | Pointer to [**ManaV2Policer**](ManaV2Policer.md) |  | [optional] 
 **PolicerSites** | Pointer to [**ManaV2Policer**](ManaV2Policer.md) |  | [optional] 
 **SiteLists** | Pointer to **[]int64** |  | [optional] 

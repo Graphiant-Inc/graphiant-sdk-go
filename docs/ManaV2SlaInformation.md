@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BackupCircuit** | Pointer to **string** |  | [optional] 
-**Class** | Pointer to **string** |  | [optional] 
-**PrimaryCircuit** | Pointer to **string** |  | [optional] 
+**BackupCircuit** | Pointer to **string** | Backup circuit for the SLA information | [optional] 
+**Class** | Pointer to **string** | Class for the SLA information | [optional] 
+**PrimaryCircuit** | Pointer to **string** | Primary circuit for the SLA information | [optional] 
 
 ## Methods
 

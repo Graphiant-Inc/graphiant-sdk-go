@@ -11,10 +11,11 @@ package graphiant_sdk
 
 import (
 	"context"
+	"testing"
+
 	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
@@ -26,10 +27,10 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1AccountEmailPatch(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1AccountEmailPatch(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
+		require.NotNil(t, httpRes)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -38,10 +39,10 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1AccountInfoPatch(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1AccountInfoPatch(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
+		require.NotNil(t, httpRes)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -62,10 +63,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1AccountMfaDelete(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1AccountMfaDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -98,10 +98,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1AccountPasswordPatch(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1AccountPasswordPatch(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -136,10 +135,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var alarmId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1AlarmMuteAlarmIdPut(context.Background(), alarmId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1AlarmMuteAlarmIdPut(context.Background(), alarmId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -248,10 +246,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1AuthDelete(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1AuthDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -296,10 +293,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1AuthMfaDelete(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1AuthMfaDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -308,10 +304,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1AuthMfaPatch(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1AuthMfaPatch(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -320,10 +315,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1AuthPatch(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1AuthPatch(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -332,10 +326,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1AuthPut(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1AuthPut(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1078,10 +1071,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var snapshotId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceSnapshotSnapshotIdDelete(context.Background(), snapshotId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DeviceSnapshotSnapshotIdDelete(context.Background(), snapshotId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1126,10 +1118,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesBringupPut(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DevicesBringupPut(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1248,10 +1239,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var deviceId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesDeviceIdDraftDelete(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DevicesDeviceIdDraftDelete(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1590,10 +1580,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesInventoryEnterprisePut(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DevicesInventoryEnterprisePut(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1638,10 +1627,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesInventorySerialNumDelete(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DevicesInventorySerialNumDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1734,10 +1722,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesUpgradeCancelPut(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DevicesUpgradeCancelPut(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1746,10 +1733,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesUpgradeSchedulePut(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DevicesUpgradeSchedulePut(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1774,10 +1760,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var archiveId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticArchiveDeleteArchiveIdDelete(context.Background(), archiveId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DiagnosticArchiveDeleteArchiveIdDelete(context.Background(), archiveId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1788,10 +1773,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var archiveId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticArchiveEditArchiveIdPut(context.Background(), archiveId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DiagnosticArchiveEditArchiveIdPut(context.Background(), archiveId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1816,10 +1800,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var deviceId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticBgpResetDeviceIdPut(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DiagnosticBgpResetDeviceIdPut(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1830,10 +1813,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var deviceId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticClearArpDeviceIdPut(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DiagnosticClearArpDeviceIdPut(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1856,10 +1838,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var deviceId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticInterfaceResetDeviceIdPut(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DiagnosticInterfaceResetDeviceIdPut(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1908,10 +1889,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticPacketcaptureStopPost(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DiagnosticPacketcaptureStopPost(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1920,10 +1900,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticPingPauseResumePost(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DiagnosticPingPauseResumePost(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1946,10 +1925,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var token string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticPingStopTokenPost(context.Background(), token).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DiagnosticPingStopTokenPost(context.Background(), token).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1960,10 +1938,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var deviceId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticRebootDeviceIdPut(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DiagnosticRebootDeviceIdPut(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -1974,10 +1951,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var deviceId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticResetIpsecSessionDeviceIdPut(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DiagnosticResetIpsecSessionDeviceIdPut(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -2158,10 +2134,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var enterpriseId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1EnterprisesEnterpriseIdDelete(context.Background(), enterpriseId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1EnterprisesEnterpriseIdDelete(context.Background(), enterpriseId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -2184,10 +2159,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1EnterprisesEulaPost(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1EnterprisesEulaPost(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -2220,10 +2194,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1EnterprisesPatch(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1EnterprisesPatch(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -2232,10 +2205,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1EnterprisesPut(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1EnterprisesPut(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -2244,10 +2216,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1EnterprisesSelfDelete(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1EnterprisesSelfDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3157,10 +3128,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var id int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalLanSegmentsIdDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1GlobalLanSegmentsIdDelete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3451,10 +3421,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1GroupsIdDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1GroupsIdDelete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3466,10 +3435,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 		var enterpriseId int64
 		var id string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1GroupsIdEnterprisesEnterpriseIdDelete(context.Background(), enterpriseId, id).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1GroupsIdEnterprisesEnterpriseIdDelete(context.Background(), enterpriseId, id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3480,10 +3448,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1GroupsIdEnterprisesPost(context.Background(), id).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1GroupsIdEnterprisesPost(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3523,10 +3490,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 		var id string
 		var memberId string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1GroupsIdMembersMemberIdDelete(context.Background(), id, memberId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1GroupsIdMembersMemberIdDelete(context.Background(), id, memberId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3537,10 +3503,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1GroupsIdMembersPost(context.Background(), id).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1GroupsIdMembersPost(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3551,10 +3516,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1GroupsIdPatch(context.Background(), id).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1GroupsIdPatch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3563,10 +3527,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1GroupsPut(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1GroupsPut(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3589,10 +3552,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1IdPasswordRecoverPatch(context.Background(), id).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1IdPasswordRecoverPatch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3769,10 +3731,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var id int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1PolicyPrefixSetsIdDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1PolicyPrefixSetsIdDelete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3929,10 +3890,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1PortalPrivatePost(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1PortalPrivatePost(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3941,10 +3901,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1PortalPrivateRegisterPost(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1PortalPrivateRegisterPost(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -3953,10 +3912,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1PortalPrivateSyncPost(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1PortalPrivateSyncPost(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -4091,10 +4049,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var siteId int64
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1SitesSiteIdDelete(context.Background(), siteId).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1SitesSiteIdDelete(context.Background(), siteId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -4143,10 +4100,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1SoftwareAutoUpgradeDefaultPut(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1SoftwareAutoUpgradeDefaultPut(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -4359,10 +4315,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1UsersIdDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1UsersIdDelete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -4429,10 +4384,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1UsersIdVerifyPatch(context.Background(), id).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1UsersIdVerifyPatch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -4441,10 +4395,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1UsersPut(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1UsersPut(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

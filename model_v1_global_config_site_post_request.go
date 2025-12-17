@@ -22,6 +22,7 @@ type V1GlobalConfigSitePostRequest struct {
 	GlobalPrefixSetOps *map[string]string `json:"globalPrefixSetOps,omitempty"`
 	IpfixExporterOps *map[string]string `json:"ipfixExporterOps,omitempty"`
 	IpfixExporterOpsV2 *map[string]ManaV2GlobalObjectOperationConfig `json:"ipfixExporterOpsV2,omitempty"`
+	NtpOps *map[string]string `json:"ntpOps,omitempty"`
 	PrefixSetOps *map[string]string `json:"prefixSetOps,omitempty"`
 	RoutingPolicyOps *map[string]string `json:"routingPolicyOps,omitempty"`
 	SiteId *int64 `json:"siteId,omitempty"`
@@ -142,6 +143,38 @@ func (o *V1GlobalConfigSitePostRequest) HasIpfixExporterOpsV2() bool {
 // SetIpfixExporterOpsV2 gets a reference to the given map[string]ManaV2GlobalObjectOperationConfig and assigns it to the IpfixExporterOpsV2 field.
 func (o *V1GlobalConfigSitePostRequest) SetIpfixExporterOpsV2(v map[string]ManaV2GlobalObjectOperationConfig) {
 	o.IpfixExporterOpsV2 = &v
+}
+
+// GetNtpOps returns the NtpOps field value if set, zero value otherwise.
+func (o *V1GlobalConfigSitePostRequest) GetNtpOps() map[string]string {
+	if o == nil || IsNil(o.NtpOps) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.NtpOps
+}
+
+// GetNtpOpsOk returns a tuple with the NtpOps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1GlobalConfigSitePostRequest) GetNtpOpsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.NtpOps) {
+		return nil, false
+	}
+	return o.NtpOps, true
+}
+
+// HasNtpOps returns a boolean if a field has been set.
+func (o *V1GlobalConfigSitePostRequest) HasNtpOps() bool {
+	if o != nil && !IsNil(o.NtpOps) {
+		return true
+	}
+
+	return false
+}
+
+// SetNtpOps gets a reference to the given map[string]string and assigns it to the NtpOps field.
+func (o *V1GlobalConfigSitePostRequest) SetNtpOps(v map[string]string) {
+	o.NtpOps = &v
 }
 
 // GetPrefixSetOps returns the PrefixSetOps field value if set, zero value otherwise.
@@ -386,6 +419,9 @@ func (o V1GlobalConfigSitePostRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IpfixExporterOpsV2) {
 		toSerialize["ipfixExporterOpsV2"] = o.IpfixExporterOpsV2
+	}
+	if !IsNil(o.NtpOps) {
+		toSerialize["ntpOps"] = o.NtpOps
 	}
 	if !IsNil(o.PrefixSetOps) {
 		toSerialize["prefixSetOps"] = o.PrefixSetOps

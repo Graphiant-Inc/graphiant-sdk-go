@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Backup** | Pointer to **string** |  | [optional] 
-**Class** | Pointer to **string** |  | [optional] 
-**Primary** | Pointer to **string** |  | [optional] 
-**Result** | Pointer to **string** |  | [optional] 
+**Backup** | Pointer to **string** | Backup circuit for the traffic policy action | [optional] 
+**Class** | Pointer to **string** | Class for the traffic policy action | [optional] 
+**Primary** | Pointer to **string** | Primary circuit for the traffic policy action | [optional] 
+**Result** | Pointer to **string** | Result for the traffic policy action | [optional] 
 
 ## Methods
 

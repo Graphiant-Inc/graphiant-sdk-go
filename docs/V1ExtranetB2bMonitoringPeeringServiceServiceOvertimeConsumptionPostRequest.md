@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service | [optional] 
-**IsB2B** | Pointer to **bool** |  | [optional] 
-**IsProvider** | Pointer to **bool** |  | [optional] 
-**SiteId** | Pointer to **int64** |  | [optional] 
+**Id** | **int64** | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service (required) | 
+**IsB2B** | **bool** | whether the entity is a b2b entity (true for b2b entity, false for local extranet entity) (required) | 
+**IsProvider** | **bool** | whether the entity is a provider or consumer (required) | 
+**SiteId** | Pointer to **int64** | a filter to get usage for a specific site | [optional] 
 **SubscriptionName** | Pointer to **string** | Optional subscription name for filter | [optional] 
-**TimeWindow** | Pointer to [**StatsmonTimeWindow**](StatsmonTimeWindow.md) |  | [optional] 
-**VrfId** | Pointer to **int64** |  | [optional] 
+**TimeWindow** | [**StatsmonTimeWindow**](StatsmonTimeWindow.md) |  | 
+**VrfId** | Pointer to **int64** | a filter to get usage for a specific vrf | [optional] 
 
 ## Methods
 
 ### NewV1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest
 
-`func NewV1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest() *V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest`
+`func NewV1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest(id int64, isB2B bool, isProvider bool, timeWindow StatsmonTimeWindow, ) *V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest`
 
 NewV1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest instantiates a new V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -50,11 +50,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetIsB2B
 
@@ -75,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetIsB2B sets IsB2B field to given value.
 
-### HasIsB2B
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest) HasIsB2B() bool`
-
-HasIsB2B returns a boolean if a field has been set.
 
 ### GetIsProvider
 
@@ -100,11 +90,6 @@ and a boolean to check if the value has been set.
 
 SetIsProvider sets IsProvider field to given value.
 
-### HasIsProvider
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest) HasIsProvider() bool`
-
-HasIsProvider returns a boolean if a field has been set.
 
 ### GetSiteId
 
@@ -175,11 +160,6 @@ and a boolean to check if the value has been set.
 
 SetTimeWindow sets TimeWindow field to given value.
 
-### HasTimeWindow
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest) HasTimeWindow() bool`
-
-HasTimeWindow returns a boolean if a field has been set.
 
 ### GetVrfId
 

@@ -19,9 +19,13 @@ var _ MappedNullable = &ManaV2TrafficPolicyAction{}
 
 // ManaV2TrafficPolicyAction struct for ManaV2TrafficPolicyAction
 type ManaV2TrafficPolicyAction struct {
+	// Backup circuit for the traffic policy action
 	Backup *string `json:"backup,omitempty"`
+	// Class for the traffic policy action
 	Class *string `json:"class,omitempty"`
+	// Primary circuit for the traffic policy action
 	Primary *string `json:"primary,omitempty"`
+	// Result for the traffic policy action
 	Result *string `json:"result,omitempty"`
 }
 

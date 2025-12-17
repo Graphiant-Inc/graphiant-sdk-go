@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **int64** | the id of the site | [optional] 
+**Name** | Pointer to **string** | the name of the site | [optional] 
+**Status** | Pointer to **string** | the status of the site (Healthy, Impaired, Down) | [optional] 
 **Statuses** | Pointer to [**[]StatsmonExtranetServerStatus**](StatsmonExtranetServerStatus.md) |  | [optional] 
 
 ## Methods

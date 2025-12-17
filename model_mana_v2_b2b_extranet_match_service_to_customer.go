@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ManaV2B2bExtranetMatchServiceToCustomer type satisfies the MappedNullable interface at compile time
@@ -19,19 +21,26 @@ var _ MappedNullable = &ManaV2B2bExtranetMatchServiceToCustomer{}
 
 // ManaV2B2bExtranetMatchServiceToCustomer struct for ManaV2B2bExtranetMatchServiceToCustomer
 type ManaV2B2bExtranetMatchServiceToCustomer struct {
-	Id *int64 `json:"id,omitempty"`
+	// ID of the service being subscribed by the customer (required)
+	Id int64 `json:"id"`
 	LanSegment *int64 `json:"lanSegment,omitempty"`
-	Nat []ManaV2B2bNat `json:"nat,omitempty"`
+	Nat []ManaV2B2bNat `json:"nat"`
+	// Number of customers subscribed to the service
 	NumCustomers *int32 `json:"numCustomers,omitempty"`
-	ServicePrefixes []ManaV2B2bExtranetPrefixTag `json:"servicePrefixes,omitempty"`
+	ServicePrefixes []ManaV2B2bExtranetPrefixTag `json:"servicePrefixes"`
 }
+
+type _ManaV2B2bExtranetMatchServiceToCustomer ManaV2B2bExtranetMatchServiceToCustomer
 
 // NewManaV2B2bExtranetMatchServiceToCustomer instantiates a new ManaV2B2bExtranetMatchServiceToCustomer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManaV2B2bExtranetMatchServiceToCustomer() *ManaV2B2bExtranetMatchServiceToCustomer {
+func NewManaV2B2bExtranetMatchServiceToCustomer(id int64, nat []ManaV2B2bNat, servicePrefixes []ManaV2B2bExtranetPrefixTag) *ManaV2B2bExtranetMatchServiceToCustomer {
 	this := ManaV2B2bExtranetMatchServiceToCustomer{}
+	this.Id = id
+	this.Nat = nat
+	this.ServicePrefixes = servicePrefixes
 	return &this
 }
 
@@ -43,36 +52,28 @@ func NewManaV2B2bExtranetMatchServiceToCustomerWithDefaults() *ManaV2B2bExtranet
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *ManaV2B2bExtranetMatchServiceToCustomer) GetId() int64 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetMatchServiceToCustomer) GetIdOk() (*int64, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetMatchServiceToCustomer) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int64 and assigns it to the Id field.
+// SetId sets field value
 func (o *ManaV2B2bExtranetMatchServiceToCustomer) SetId(v int64) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetLanSegment returns the LanSegment field value if set, zero value otherwise.
@@ -107,34 +108,26 @@ func (o *ManaV2B2bExtranetMatchServiceToCustomer) SetLanSegment(v int64) {
 	o.LanSegment = &v
 }
 
-// GetNat returns the Nat field value if set, zero value otherwise.
+// GetNat returns the Nat field value
 func (o *ManaV2B2bExtranetMatchServiceToCustomer) GetNat() []ManaV2B2bNat {
-	if o == nil || IsNil(o.Nat) {
+	if o == nil {
 		var ret []ManaV2B2bNat
 		return ret
 	}
+
 	return o.Nat
 }
 
-// GetNatOk returns a tuple with the Nat field value if set, nil otherwise
+// GetNatOk returns a tuple with the Nat field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetMatchServiceToCustomer) GetNatOk() ([]ManaV2B2bNat, bool) {
-	if o == nil || IsNil(o.Nat) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Nat, true
 }
 
-// HasNat returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetMatchServiceToCustomer) HasNat() bool {
-	if o != nil && !IsNil(o.Nat) {
-		return true
-	}
-
-	return false
-}
-
-// SetNat gets a reference to the given []ManaV2B2bNat and assigns it to the Nat field.
+// SetNat sets field value
 func (o *ManaV2B2bExtranetMatchServiceToCustomer) SetNat(v []ManaV2B2bNat) {
 	o.Nat = v
 }
@@ -171,34 +164,26 @@ func (o *ManaV2B2bExtranetMatchServiceToCustomer) SetNumCustomers(v int32) {
 	o.NumCustomers = &v
 }
 
-// GetServicePrefixes returns the ServicePrefixes field value if set, zero value otherwise.
+// GetServicePrefixes returns the ServicePrefixes field value
 func (o *ManaV2B2bExtranetMatchServiceToCustomer) GetServicePrefixes() []ManaV2B2bExtranetPrefixTag {
-	if o == nil || IsNil(o.ServicePrefixes) {
+	if o == nil {
 		var ret []ManaV2B2bExtranetPrefixTag
 		return ret
 	}
+
 	return o.ServicePrefixes
 }
 
-// GetServicePrefixesOk returns a tuple with the ServicePrefixes field value if set, nil otherwise
+// GetServicePrefixesOk returns a tuple with the ServicePrefixes field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetMatchServiceToCustomer) GetServicePrefixesOk() ([]ManaV2B2bExtranetPrefixTag, bool) {
-	if o == nil || IsNil(o.ServicePrefixes) {
+	if o == nil {
 		return nil, false
 	}
 	return o.ServicePrefixes, true
 }
 
-// HasServicePrefixes returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetMatchServiceToCustomer) HasServicePrefixes() bool {
-	if o != nil && !IsNil(o.ServicePrefixes) {
-		return true
-	}
-
-	return false
-}
-
-// SetServicePrefixes gets a reference to the given []ManaV2B2bExtranetPrefixTag and assigns it to the ServicePrefixes field.
+// SetServicePrefixes sets field value
 func (o *ManaV2B2bExtranetMatchServiceToCustomer) SetServicePrefixes(v []ManaV2B2bExtranetPrefixTag) {
 	o.ServicePrefixes = v
 }
@@ -213,22 +198,55 @@ func (o ManaV2B2bExtranetMatchServiceToCustomer) MarshalJSON() ([]byte, error) {
 
 func (o ManaV2B2bExtranetMatchServiceToCustomer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["id"] = o.Id
 	if !IsNil(o.LanSegment) {
 		toSerialize["lanSegment"] = o.LanSegment
 	}
-	if !IsNil(o.Nat) {
-		toSerialize["nat"] = o.Nat
-	}
+	toSerialize["nat"] = o.Nat
 	if !IsNil(o.NumCustomers) {
 		toSerialize["numCustomers"] = o.NumCustomers
 	}
-	if !IsNil(o.ServicePrefixes) {
-		toSerialize["servicePrefixes"] = o.ServicePrefixes
-	}
+	toSerialize["servicePrefixes"] = o.ServicePrefixes
 	return toSerialize, nil
+}
+
+func (o *ManaV2B2bExtranetMatchServiceToCustomer) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"nat",
+		"servicePrefixes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varManaV2B2bExtranetMatchServiceToCustomer := _ManaV2B2bExtranetMatchServiceToCustomer{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varManaV2B2bExtranetMatchServiceToCustomer)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ManaV2B2bExtranetMatchServiceToCustomer(varManaV2B2bExtranetMatchServiceToCustomer)
+
+	return err
 }
 
 type NullableManaV2B2bExtranetMatchServiceToCustomer struct {

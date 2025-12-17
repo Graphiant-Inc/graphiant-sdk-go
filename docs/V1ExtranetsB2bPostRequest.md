@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Policy** | Pointer to [**ManaV2B2bExtranetProducerPolicy**](ManaV2B2bExtranetProducerPolicy.md) |  | [optional] 
-**ServiceName** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Policy** | [**ManaV2B2bExtranetProducerPolicy**](ManaV2B2bExtranetProducerPolicy.md) |  | 
+**ServiceName** | **string** | Name of the service (required) | 
+**Type** | **string** | Type of the service whether it is application or peering (required) | 
 
 ## Methods
 
 ### NewV1ExtranetsB2bPostRequest
 
-`func NewV1ExtranetsB2bPostRequest() *V1ExtranetsB2bPostRequest`
+`func NewV1ExtranetsB2bPostRequest(policy ManaV2B2bExtranetProducerPolicy, serviceName string, type_ string, ) *V1ExtranetsB2bPostRequest`
 
 NewV1ExtranetsB2bPostRequest instantiates a new V1ExtranetsB2bPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetPolicy sets Policy field to given value.
 
-### HasPolicy
-
-`func (o *V1ExtranetsB2bPostRequest) HasPolicy() bool`
-
-HasPolicy returns a boolean if a field has been set.
 
 ### GetServiceName
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetServiceName sets ServiceName field to given value.
 
-### HasServiceName
-
-`func (o *V1ExtranetsB2bPostRequest) HasServiceName() bool`
-
-HasServiceName returns a boolean if a field has been set.
 
 ### GetType
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *V1ExtranetsB2bPostRequest) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

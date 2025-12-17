@@ -1,6 +1,6 @@
 module github.com/Graphiant-Inc/graphiant-sdk-go
 
-go 1.23
+go 1.18
 
 require (
 	github.com/stretchr/testify v1.11.1

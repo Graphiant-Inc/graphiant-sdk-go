@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest type satisfies the MappedNullable interface at compile time
@@ -19,18 +21,24 @@ var _ MappedNullable = &V1ExtranetB2bMonitoringPeeringServiceServiceCustomerList
 
 // V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest struct for V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest
 type V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest struct {
-	// service id
-	Id *int64 `json:"id,omitempty"`
-	IsProvider *bool `json:"isProvider,omitempty"`
-	TimeWindow *StatsmonTimeWindow `json:"timeWindow,omitempty"`
+	// service id (required)
+	Id int64 `json:"id"`
+	// whether the entity is a provider or consumer (required)
+	IsProvider bool `json:"isProvider"`
+	TimeWindow StatsmonTimeWindow `json:"timeWindow"`
 }
+
+type _V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest
 
 // NewV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest instantiates a new V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest() *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest {
+func NewV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest(id int64, isProvider bool, timeWindow StatsmonTimeWindow) *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest {
 	this := V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest{}
+	this.Id = id
+	this.IsProvider = isProvider
+	this.TimeWindow = timeWindow
 	return &this
 }
 
@@ -42,100 +50,76 @@ func NewV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequestWithD
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) GetId() int64 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) GetIdOk() (*int64, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int64 and assigns it to the Id field.
+// SetId sets field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) SetId(v int64) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetIsProvider returns the IsProvider field value if set, zero value otherwise.
+// GetIsProvider returns the IsProvider field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) GetIsProvider() bool {
-	if o == nil || IsNil(o.IsProvider) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsProvider
+
+	return o.IsProvider
 }
 
-// GetIsProviderOk returns a tuple with the IsProvider field value if set, nil otherwise
+// GetIsProviderOk returns a tuple with the IsProvider field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) GetIsProviderOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsProvider) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsProvider, true
+	return &o.IsProvider, true
 }
 
-// HasIsProvider returns a boolean if a field has been set.
-func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) HasIsProvider() bool {
-	if o != nil && !IsNil(o.IsProvider) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsProvider gets a reference to the given bool and assigns it to the IsProvider field.
+// SetIsProvider sets field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) SetIsProvider(v bool) {
-	o.IsProvider = &v
+	o.IsProvider = v
 }
 
-// GetTimeWindow returns the TimeWindow field value if set, zero value otherwise.
+// GetTimeWindow returns the TimeWindow field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) GetTimeWindow() StatsmonTimeWindow {
-	if o == nil || IsNil(o.TimeWindow) {
+	if o == nil {
 		var ret StatsmonTimeWindow
 		return ret
 	}
-	return *o.TimeWindow
+
+	return o.TimeWindow
 }
 
-// GetTimeWindowOk returns a tuple with the TimeWindow field value if set, nil otherwise
+// GetTimeWindowOk returns a tuple with the TimeWindow field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) GetTimeWindowOk() (*StatsmonTimeWindow, bool) {
-	if o == nil || IsNil(o.TimeWindow) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TimeWindow, true
+	return &o.TimeWindow, true
 }
 
-// HasTimeWindow returns a boolean if a field has been set.
-func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) HasTimeWindow() bool {
-	if o != nil && !IsNil(o.TimeWindow) {
-		return true
-	}
-
-	return false
-}
-
-// SetTimeWindow gets a reference to the given StatsmonTimeWindow and assigns it to the TimeWindow field.
+// SetTimeWindow sets field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) SetTimeWindow(v StatsmonTimeWindow) {
-	o.TimeWindow = &v
+	o.TimeWindow = v
 }
 
 func (o V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) MarshalJSON() ([]byte, error) {
@@ -148,16 +132,49 @@ func (o V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) Mar
 
 func (o V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.IsProvider) {
-		toSerialize["isProvider"] = o.IsProvider
-	}
-	if !IsNil(o.TimeWindow) {
-		toSerialize["timeWindow"] = o.TimeWindow
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["isProvider"] = o.IsProvider
+	toSerialize["timeWindow"] = o.TimeWindow
 	return toSerialize, nil
+}
+
+func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"isProvider",
+		"timeWindow",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest := _V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest(varV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest)
+
+	return err
 }
 
 type NullableV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest struct {

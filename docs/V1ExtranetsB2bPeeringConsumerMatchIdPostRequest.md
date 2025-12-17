@@ -6,17 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomerId** | Pointer to **int64** |  | [optional] 
 **GlobalObjectOps** | Pointer to [**map[string]ManaV2GlobalObjectServiceOps**](ManaV2GlobalObjectServiceOps.md) |  | [optional] 
-**Id** | Pointer to **int64** | ID of the service. | [optional] 
-**Nat** | Pointer to [**[]ManaV2B2bNat**](ManaV2B2bNat.md) |  | [optional] 
-**Policy** | Pointer to [**[]ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy**](ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy.md) |  | [optional] 
-**SiteInformation** | Pointer to [**[]ManaV2B2bSiteInformation**](ManaV2B2bSiteInformation.md) |  | [optional] 
+**Id** | **int64** | ID of the service which is being consumed by the customer (required) | 
+**Nat** | [**[]ManaV2B2bNat**](ManaV2B2bNat.md) |  | 
+**Policy** | [**[]ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy**](ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy.md) |  | 
+**SiteInformation** | [**[]ManaV2B2bSiteInformation**](ManaV2B2bSiteInformation.md) |  | 
 **SiteToSiteVpn** | Pointer to [**ManaV2GuestConsumerSiteToSiteVpnConfig**](ManaV2GuestConsumerSiteToSiteVpnConfig.md) |  | [optional] 
 
 ## Methods
 
 ### NewV1ExtranetsB2bPeeringConsumerMatchIdPostRequest
 
-`func NewV1ExtranetsB2bPeeringConsumerMatchIdPostRequest() *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest`
+`func NewV1ExtranetsB2bPeeringConsumerMatchIdPostRequest(id int64, nat []ManaV2B2bNat, policy []ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy, siteInformation []ManaV2B2bSiteInformation, ) *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest`
 
 NewV1ExtranetsB2bPeeringConsumerMatchIdPostRequest instantiates a new V1ExtranetsB2bPeeringConsumerMatchIdPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -100,11 +100,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetNat
 
@@ -125,11 +120,6 @@ and a boolean to check if the value has been set.
 
 SetNat sets Nat field to given value.
 
-### HasNat
-
-`func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) HasNat() bool`
-
-HasNat returns a boolean if a field has been set.
 
 ### GetPolicy
 
@@ -150,11 +140,6 @@ and a boolean to check if the value has been set.
 
 SetPolicy sets Policy field to given value.
 
-### HasPolicy
-
-`func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) HasPolicy() bool`
-
-HasPolicy returns a boolean if a field has been set.
 
 ### GetSiteInformation
 
@@ -175,11 +160,6 @@ and a boolean to check if the value has been set.
 
 SetSiteInformation sets SiteInformation field to given value.
 
-### HasSiteInformation
-
-`func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) HasSiteInformation() bool`
-
-HasSiteInformation returns a boolean if a field has been set.
 
 ### GetSiteToSiteVpn
 

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** |  | [optional] 
-**Service** | Pointer to [**ManaV2B2bExtranetMatchServiceToCustomer**](ManaV2B2bExtranetMatchServiceToCustomer.md) |  | [optional] 
+**Id** | **int64** | ID of the customer (required) | 
+**Service** | [**ManaV2B2bExtranetMatchServiceToCustomer**](ManaV2B2bExtranetMatchServiceToCustomer.md) |  | 
 
 ## Methods
 
 ### NewV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest
 
-`func NewV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest() *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest`
+`func NewV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest(id int64, service ManaV2B2bExtranetMatchServiceToCustomer, ) *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest`
 
 NewV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest instantiates a new V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetService
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetService sets Service field to given value.
 
-### HasService
-
-`func (o *V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest) HasService() bool`
-
-HasService returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

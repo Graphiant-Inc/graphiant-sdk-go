@@ -20,6 +20,7 @@ var _ MappedNullable = &V1GlobalSummaryPostRequest{}
 // V1GlobalSummaryPostRequest struct for V1GlobalSummaryPostRequest
 type V1GlobalSummaryPostRequest struct {
 	IpfixExportedType *bool `json:"ipfixExportedType,omitempty"`
+	NtpType *bool `json:"ntpType,omitempty"`
 	PrefixSetType *bool `json:"prefixSetType,omitempty"`
 	RoutingPolicyType *bool `json:"routingPolicyType,omitempty"`
 	SnmpType *bool `json:"snmpType,omitempty"`
@@ -74,6 +75,38 @@ func (o *V1GlobalSummaryPostRequest) HasIpfixExportedType() bool {
 // SetIpfixExportedType gets a reference to the given bool and assigns it to the IpfixExportedType field.
 func (o *V1GlobalSummaryPostRequest) SetIpfixExportedType(v bool) {
 	o.IpfixExportedType = &v
+}
+
+// GetNtpType returns the NtpType field value if set, zero value otherwise.
+func (o *V1GlobalSummaryPostRequest) GetNtpType() bool {
+	if o == nil || IsNil(o.NtpType) {
+		var ret bool
+		return ret
+	}
+	return *o.NtpType
+}
+
+// GetNtpTypeOk returns a tuple with the NtpType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1GlobalSummaryPostRequest) GetNtpTypeOk() (*bool, bool) {
+	if o == nil || IsNil(o.NtpType) {
+		return nil, false
+	}
+	return o.NtpType, true
+}
+
+// HasNtpType returns a boolean if a field has been set.
+func (o *V1GlobalSummaryPostRequest) HasNtpType() bool {
+	if o != nil && !IsNil(o.NtpType) {
+		return true
+	}
+
+	return false
+}
+
+// SetNtpType gets a reference to the given bool and assigns it to the NtpType field.
+func (o *V1GlobalSummaryPostRequest) SetNtpType(v bool) {
+	o.NtpType = &v
 }
 
 // GetPrefixSetType returns the PrefixSetType field value if set, zero value otherwise.
@@ -248,6 +281,9 @@ func (o V1GlobalSummaryPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.IpfixExportedType) {
 		toSerialize["ipfixExportedType"] = o.IpfixExportedType
+	}
+	if !IsNil(o.NtpType) {
+		toSerialize["ntpType"] = o.NtpType
 	}
 	if !IsNil(o.PrefixSetType) {
 		toSerialize["prefixSetType"] = o.PrefixSetType

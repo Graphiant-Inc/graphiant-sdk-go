@@ -22,6 +22,7 @@ type V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostResponse struct
 	FirstLevel []IpfixConnectionMap `json:"firstLevel,omitempty"`
 	SecondLevel []IpfixConnectionMap `json:"secondLevel,omitempty"`
 	ThirdLevel []IpfixConnectionMap `json:"thirdLevel,omitempty"`
+	// total service usage in kilo bytes
 	TotalUsage *float64 `json:"totalUsage,omitempty"`
 }
 

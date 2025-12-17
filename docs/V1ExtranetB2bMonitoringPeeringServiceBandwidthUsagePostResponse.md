@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BwAllocation** | Pointer to **int32** |  | [optional] 
+**BwAllocation** | Pointer to **int32** | the bandwidth allocation for the entity in kbps | [optional] 
 **DlStats** | Pointer to [**[]IpfixStats**](IpfixStats.md) |  | [optional] 
 **UlStats** | Pointer to [**[]IpfixStats**](IpfixStats.md) |  | [optional] 
 

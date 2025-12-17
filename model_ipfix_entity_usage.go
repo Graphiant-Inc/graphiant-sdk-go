@@ -19,8 +19,9 @@ var _ MappedNullable = &IpfixEntityUsage{}
 
 // IpfixEntityUsage struct for IpfixEntityUsage
 type IpfixEntityUsage struct {
-	// id of consumer or lan segment 
+	// id of the entity
 	Id *int64 `json:"id,omitempty"`
+	// name of the entity
 	Name *string `json:"name,omitempty"`
 	// usage in kbps
 	Usage *float64 `json:"usage,omitempty"`

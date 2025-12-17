@@ -190,6 +190,7 @@ Method | HTTP request | Description
 [**V1EdgesHardwareAssignedGet**](DefaultAPI.md#V1EdgesHardwareAssignedGet) | **Get** /v1/edges-hardware/assigned | 
 [**V1EdgesHardwareUnassignedGet**](DefaultAPI.md#V1EdgesHardwareUnassignedGet) | **Get** /v1/edges-hardware/unassigned | 
 [**V1EdgesSummaryGet**](DefaultAPI.md#V1EdgesSummaryGet) | **Get** /v1/edges-summary | 
+[**V1EdgesSummaryPost**](DefaultAPI.md#V1EdgesSummaryPost) | **Post** /v1/edges-summary | 
 [**V1EnterpriseAllocationGet**](DefaultAPI.md#V1EnterpriseAllocationGet) | **Get** /v1/enterprise/allocation | 
 [**V1EnterpriseConfigurationGet**](DefaultAPI.md#V1EnterpriseConfigurationGet) | **Get** /v1/enterprise/configuration | 
 [**V1EnterpriseConfigurationPut**](DefaultAPI.md#V1EnterpriseConfigurationPut) | **Put** /v1/enterprise/configuration | 
@@ -300,6 +301,9 @@ Method | HTTP request | Description
 [**V1GlobalLanSegmentsIdDelete**](DefaultAPI.md#V1GlobalLanSegmentsIdDelete) | **Delete** /v1/global/lan-segments/{id} | 
 [**V1GlobalLanSegmentsPost**](DefaultAPI.md#V1GlobalLanSegmentsPost) | **Post** /v1/global/lan-segments | 
 [**V1GlobalLanSegmentsVrfIdDevicesGet**](DefaultAPI.md#V1GlobalLanSegmentsVrfIdDevicesGet) | **Get** /v1/global/lan-segments/{vrfId}/devices | 
+[**V1GlobalNtpsDeviceGet**](DefaultAPI.md#V1GlobalNtpsDeviceGet) | **Get** /v1/global/ntps/device | 
+[**V1GlobalNtpsPost**](DefaultAPI.md#V1GlobalNtpsPost) | **Post** /v1/global/ntps | 
+[**V1GlobalNtpsSiteGet**](DefaultAPI.md#V1GlobalNtpsSiteGet) | **Get** /v1/global/ntps/site | 
 [**V1GlobalPrefixSetsDeviceGet**](DefaultAPI.md#V1GlobalPrefixSetsDeviceGet) | **Get** /v1/global/prefix-sets/device | 
 [**V1GlobalPrefixSetsPost**](DefaultAPI.md#V1GlobalPrefixSetsPost) | **Post** /v1/global/prefix-sets | 
 [**V1GlobalPrefixSetsSiteGet**](DefaultAPI.md#V1GlobalPrefixSetsSiteGet) | **Get** /v1/global/prefix-sets/site | 
@@ -526,7 +530,7 @@ Method | HTTP request | Description
 
 ## V1AccountEmailPatch
 
-> map[string]interface{} V1AccountEmailPatch(ctx).Authorization(authorization).V1AccountEmailPatchRequest(v1AccountEmailPatchRequest).Execute()
+> V1AccountEmailPatch(ctx).Authorization(authorization).V1AccountEmailPatchRequest(v1AccountEmailPatchRequest).Execute()
 
 
 
@@ -550,13 +554,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1AccountEmailPatch(context.Background()).Authorization(authorization).V1AccountEmailPatchRequest(v1AccountEmailPatchRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1AccountEmailPatch(context.Background()).Authorization(authorization).V1AccountEmailPatchRequest(v1AccountEmailPatchRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AccountEmailPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1AccountEmailPatch`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AccountEmailPatch`: %v\n", resp)
 }
 ```
 
@@ -576,7 +578,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -585,7 +587,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -594,7 +596,7 @@ Name | Type | Description  | Notes
 
 ## V1AccountInfoPatch
 
-> map[string]interface{} V1AccountInfoPatch(ctx).Authorization(authorization).V1AccountInfoPatchRequest(v1AccountInfoPatchRequest).Execute()
+> V1AccountInfoPatch(ctx).Authorization(authorization).V1AccountInfoPatchRequest(v1AccountInfoPatchRequest).Execute()
 
 
 
@@ -618,13 +620,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1AccountInfoPatch(context.Background()).Authorization(authorization).V1AccountInfoPatchRequest(v1AccountInfoPatchRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1AccountInfoPatch(context.Background()).Authorization(authorization).V1AccountInfoPatchRequest(v1AccountInfoPatchRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AccountInfoPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1AccountInfoPatch`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AccountInfoPatch`: %v\n", resp)
 }
 ```
 
@@ -644,7 +644,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -653,7 +653,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -730,7 +730,7 @@ Name | Type | Description  | Notes
 
 ## V1AccountMfaDelete
 
-> map[string]interface{} V1AccountMfaDelete(ctx).Authorization(authorization).Execute()
+> V1AccountMfaDelete(ctx).Authorization(authorization).Execute()
 
 
 
@@ -753,13 +753,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1AccountMfaDelete(context.Background()).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1AccountMfaDelete(context.Background()).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AccountMfaDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1AccountMfaDelete`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AccountMfaDelete`: %v\n", resp)
 }
 ```
 
@@ -778,7 +776,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -787,7 +785,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -930,7 +928,7 @@ Name | Type | Description  | Notes
 
 ## V1AccountPasswordPatch
 
-> map[string]interface{} V1AccountPasswordPatch(ctx).Authorization(authorization).V1AccountPasswordPatchRequest(v1AccountPasswordPatchRequest).Execute()
+> V1AccountPasswordPatch(ctx).Authorization(authorization).V1AccountPasswordPatchRequest(v1AccountPasswordPatchRequest).Execute()
 
 
 
@@ -954,13 +952,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1AccountPasswordPatch(context.Background()).Authorization(authorization).V1AccountPasswordPatchRequest(v1AccountPasswordPatchRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1AccountPasswordPatch(context.Background()).Authorization(authorization).V1AccountPasswordPatchRequest(v1AccountPasswordPatchRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AccountPasswordPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1AccountPasswordPatch`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AccountPasswordPatch`: %v\n", resp)
 }
 ```
 
@@ -980,7 +976,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -989,7 +985,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1128,7 +1124,7 @@ Name | Type | Description  | Notes
 
 ## V1AlarmMuteAlarmIdPut
 
-> map[string]interface{} V1AlarmMuteAlarmIdPut(ctx, alarmId).Authorization(authorization).V1AlarmMuteAlarmIdPutRequest(v1AlarmMuteAlarmIdPutRequest).Execute()
+> V1AlarmMuteAlarmIdPut(ctx, alarmId).Authorization(authorization).V1AlarmMuteAlarmIdPutRequest(v1AlarmMuteAlarmIdPutRequest).Execute()
 
 
 
@@ -1151,13 +1147,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1AlarmMuteAlarmIdPut(context.Background(), alarmId).Authorization(authorization).V1AlarmMuteAlarmIdPutRequest(v1AlarmMuteAlarmIdPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1AlarmMuteAlarmIdPut(context.Background(), alarmId).Authorization(authorization).V1AlarmMuteAlarmIdPutRequest(v1AlarmMuteAlarmIdPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AlarmMuteAlarmIdPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1AlarmMuteAlarmIdPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AlarmMuteAlarmIdPut`: %v\n", resp)
 }
 ```
 
@@ -1182,7 +1176,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -1191,7 +1185,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1744,7 +1738,7 @@ Name | Type | Description  | Notes
 
 ## V1AuthDelete
 
-> V1AuthDeleteResponse V1AuthDelete(ctx).Authorization(authorization).Execute()
+> V1AuthDelete(ctx).Authorization(authorization).Execute()
 
 
 
@@ -1767,13 +1761,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1AuthDelete(context.Background()).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1AuthDelete(context.Background()).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AuthDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1AuthDelete`: V1AuthDeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AuthDelete`: %v\n", resp)
 }
 ```
 
@@ -1792,7 +1784,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1AuthDeleteResponse**](V1AuthDeleteResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -1801,7 +1793,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2262,7 +2254,7 @@ Name | Type | Description  | Notes
 
 ## V1AuthMfaDelete
 
-> map[string]interface{} V1AuthMfaDelete(ctx).Authorization(authorization).Execute()
+> V1AuthMfaDelete(ctx).Authorization(authorization).Execute()
 
 
 
@@ -2285,13 +2277,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1AuthMfaDelete(context.Background()).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1AuthMfaDelete(context.Background()).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AuthMfaDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1AuthMfaDelete`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AuthMfaDelete`: %v\n", resp)
 }
 ```
 
@@ -2310,7 +2300,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -2319,7 +2309,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2328,7 +2318,7 @@ Name | Type | Description  | Notes
 
 ## V1AuthMfaPatch
 
-> map[string]interface{} V1AuthMfaPatch(ctx).Authorization(authorization).V1AuthMfaPatchRequest(v1AuthMfaPatchRequest).Execute()
+> V1AuthMfaPatch(ctx).Authorization(authorization).V1AuthMfaPatchRequest(v1AuthMfaPatchRequest).Execute()
 
 
 
@@ -2352,13 +2342,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1AuthMfaPatch(context.Background()).Authorization(authorization).V1AuthMfaPatchRequest(v1AuthMfaPatchRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1AuthMfaPatch(context.Background()).Authorization(authorization).V1AuthMfaPatchRequest(v1AuthMfaPatchRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AuthMfaPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1AuthMfaPatch`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AuthMfaPatch`: %v\n", resp)
 }
 ```
 
@@ -2378,7 +2366,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -2387,7 +2375,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2526,7 +2514,7 @@ Name | Type | Description  | Notes
 
 ## V1AuthMfaTypesPut
 
-> map[string]interface{} V1AuthMfaTypesPut(ctx).Authorization(authorization).V1AuthMfaTypesPutRequest(v1AuthMfaTypesPutRequest).Execute()
+> V1AuthMfaTypesPut(ctx).Authorization(authorization).V1AuthMfaTypesPutRequest(v1AuthMfaTypesPutRequest).Execute()
 
 
 
@@ -2550,13 +2538,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1AuthMfaTypesPut(context.Background()).Authorization(authorization).V1AuthMfaTypesPutRequest(v1AuthMfaTypesPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1AuthMfaTypesPut(context.Background()).Authorization(authorization).V1AuthMfaTypesPutRequest(v1AuthMfaTypesPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AuthMfaTypesPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1AuthMfaTypesPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AuthMfaTypesPut`: %v\n", resp)
 }
 ```
 
@@ -2576,7 +2562,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -2585,7 +2571,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2594,7 +2580,7 @@ Name | Type | Description  | Notes
 
 ## V1AuthPatch
 
-> V1AuthPatchResponse V1AuthPatch(ctx).Authorization(authorization).V1AuthPatchRequest(v1AuthPatchRequest).Execute()
+> V1AuthPatch(ctx).Authorization(authorization).V1AuthPatchRequest(v1AuthPatchRequest).Execute()
 
 
 
@@ -2618,13 +2604,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1AuthPatch(context.Background()).Authorization(authorization).V1AuthPatchRequest(v1AuthPatchRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1AuthPatch(context.Background()).Authorization(authorization).V1AuthPatchRequest(v1AuthPatchRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AuthPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1AuthPatch`: V1AuthPatchResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AuthPatch`: %v\n", resp)
 }
 ```
 
@@ -2644,7 +2628,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1AuthPatchResponse**](V1AuthPatchResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -2653,7 +2637,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2662,7 +2646,7 @@ Name | Type | Description  | Notes
 
 ## V1AuthPut
 
-> V1AuthPutResponse V1AuthPut(ctx).Authorization(authorization).V1AuthPutRequest(v1AuthPutRequest).Execute()
+> V1AuthPut(ctx).Authorization(authorization).V1AuthPutRequest(v1AuthPutRequest).Execute()
 
 
 
@@ -2686,13 +2670,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1AuthPut(context.Background()).Authorization(authorization).V1AuthPutRequest(v1AuthPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1AuthPut(context.Background()).Authorization(authorization).V1AuthPutRequest(v1AuthPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AuthPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1AuthPut`: V1AuthPutResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AuthPut`: %v\n", resp)
 }
 ```
 
@@ -2712,7 +2694,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1AuthPutResponse**](V1AuthPutResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -2721,7 +2703,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -7698,7 +7680,7 @@ Name | Type | Description  | Notes
 
 ## V1DeviceSnapshotSnapshotIdDelete
 
-> map[string]interface{} V1DeviceSnapshotSnapshotIdDelete(ctx, snapshotId).Authorization(authorization).Execute()
+> V1DeviceSnapshotSnapshotIdDelete(ctx, snapshotId).Authorization(authorization).Execute()
 
 
 
@@ -7722,13 +7704,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DeviceSnapshotSnapshotIdDelete(context.Background(), snapshotId).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1DeviceSnapshotSnapshotIdDelete(context.Background(), snapshotId).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DeviceSnapshotSnapshotIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DeviceSnapshotSnapshotIdDelete`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DeviceSnapshotSnapshotIdDelete`: %v\n", resp)
 }
 ```
 
@@ -7752,7 +7732,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -7761,7 +7741,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -7968,7 +7948,7 @@ Name | Type | Description  | Notes
 
 ## V1DevicesBringupPut
 
-> map[string]interface{} V1DevicesBringupPut(ctx).Authorization(authorization).V1DevicesBringupPutRequest(v1DevicesBringupPutRequest).Execute()
+> V1DevicesBringupPut(ctx).Authorization(authorization).V1DevicesBringupPutRequest(v1DevicesBringupPutRequest).Execute()
 
 
 
@@ -7990,13 +7970,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DevicesBringupPut(context.Background()).Authorization(authorization).V1DevicesBringupPutRequest(v1DevicesBringupPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DevicesBringupPut(context.Background()).Authorization(authorization).V1DevicesBringupPutRequest(v1DevicesBringupPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DevicesBringupPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DevicesBringupPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DevicesBringupPut`: %v\n", resp)
 }
 ```
 
@@ -8016,7 +7994,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -8025,7 +8003,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -8676,7 +8654,7 @@ Name | Type | Description  | Notes
 
 ## V1DevicesDeviceIdDraftDelete
 
-> map[string]interface{} V1DevicesDeviceIdDraftDelete(ctx, deviceId).Authorization(authorization).Execute()
+> V1DevicesDeviceIdDraftDelete(ctx, deviceId).Authorization(authorization).Execute()
 
 
 
@@ -8700,13 +8678,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DevicesDeviceIdDraftDelete(context.Background(), deviceId).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1DevicesDeviceIdDraftDelete(context.Background(), deviceId).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DevicesDeviceIdDraftDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DevicesDeviceIdDraftDelete`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DevicesDeviceIdDraftDelete`: %v\n", resp)
 }
 ```
 
@@ -8730,7 +8706,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -8739,7 +8715,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -10450,7 +10426,7 @@ Name | Type | Description  | Notes
 
 ## V1DevicesInventoryEnterprisePut
 
-> map[string]interface{} V1DevicesInventoryEnterprisePut(ctx).Authorization(authorization).V1DevicesInventoryEnterprisePutRequest(v1DevicesInventoryEnterprisePutRequest).Execute()
+> V1DevicesInventoryEnterprisePut(ctx).Authorization(authorization).V1DevicesInventoryEnterprisePutRequest(v1DevicesInventoryEnterprisePutRequest).Execute()
 
 
 
@@ -10472,13 +10448,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DevicesInventoryEnterprisePut(context.Background()).Authorization(authorization).V1DevicesInventoryEnterprisePutRequest(v1DevicesInventoryEnterprisePutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DevicesInventoryEnterprisePut(context.Background()).Authorization(authorization).V1DevicesInventoryEnterprisePutRequest(v1DevicesInventoryEnterprisePutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DevicesInventoryEnterprisePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DevicesInventoryEnterprisePut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DevicesInventoryEnterprisePut`: %v\n", resp)
 }
 ```
 
@@ -10498,7 +10472,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -10507,7 +10481,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -10712,7 +10686,7 @@ Name | Type | Description  | Notes
 
 ## V1DevicesInventorySerialNumDelete
 
-> map[string]interface{} V1DevicesInventorySerialNumDelete(ctx).Authorization(authorization).DeviceSerials(deviceSerials).Execute()
+> V1DevicesInventorySerialNumDelete(ctx).Authorization(authorization).DeviceSerials(deviceSerials).Execute()
 
 
 
@@ -10734,13 +10708,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DevicesInventorySerialNumDelete(context.Background()).Authorization(authorization).DeviceSerials(deviceSerials).Execute()
+	r, err := apiClient.DefaultAPI.V1DevicesInventorySerialNumDelete(context.Background()).Authorization(authorization).DeviceSerials(deviceSerials).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DevicesInventorySerialNumDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DevicesInventorySerialNumDelete`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DevicesInventorySerialNumDelete`: %v\n", resp)
 }
 ```
 
@@ -10760,7 +10732,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -10769,7 +10741,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -11452,7 +11424,7 @@ Name | Type | Description  | Notes
 
 ## V1DevicesUpgradeCancelPut
 
-> map[string]interface{} V1DevicesUpgradeCancelPut(ctx).Authorization(authorization).V1DevicesUpgradeCancelPutRequest(v1DevicesUpgradeCancelPutRequest).Execute()
+> V1DevicesUpgradeCancelPut(ctx).Authorization(authorization).V1DevicesUpgradeCancelPutRequest(v1DevicesUpgradeCancelPutRequest).Execute()
 
 
 
@@ -11474,13 +11446,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DevicesUpgradeCancelPut(context.Background()).Authorization(authorization).V1DevicesUpgradeCancelPutRequest(v1DevicesUpgradeCancelPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DevicesUpgradeCancelPut(context.Background()).Authorization(authorization).V1DevicesUpgradeCancelPutRequest(v1DevicesUpgradeCancelPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DevicesUpgradeCancelPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DevicesUpgradeCancelPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DevicesUpgradeCancelPut`: %v\n", resp)
 }
 ```
 
@@ -11500,7 +11470,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -11509,7 +11479,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -11518,7 +11488,7 @@ Name | Type | Description  | Notes
 
 ## V1DevicesUpgradeSchedulePut
 
-> map[string]interface{} V1DevicesUpgradeSchedulePut(ctx).Authorization(authorization).V1DevicesUpgradeSchedulePutRequest(v1DevicesUpgradeSchedulePutRequest).Execute()
+> V1DevicesUpgradeSchedulePut(ctx).Authorization(authorization).V1DevicesUpgradeSchedulePutRequest(v1DevicesUpgradeSchedulePutRequest).Execute()
 
 
 
@@ -11540,13 +11510,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DevicesUpgradeSchedulePut(context.Background()).Authorization(authorization).V1DevicesUpgradeSchedulePutRequest(v1DevicesUpgradeSchedulePutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DevicesUpgradeSchedulePut(context.Background()).Authorization(authorization).V1DevicesUpgradeSchedulePutRequest(v1DevicesUpgradeSchedulePutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DevicesUpgradeSchedulePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DevicesUpgradeSchedulePut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DevicesUpgradeSchedulePut`: %v\n", resp)
 }
 ```
 
@@ -11566,7 +11534,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -11575,7 +11543,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -11658,7 +11626,7 @@ Name | Type | Description  | Notes
 
 ## V1DiagnosticArchiveDeleteArchiveIdDelete
 
-> map[string]interface{} V1DiagnosticArchiveDeleteArchiveIdDelete(ctx, archiveId).Authorization(authorization).Execute()
+> V1DiagnosticArchiveDeleteArchiveIdDelete(ctx, archiveId).Authorization(authorization).Execute()
 
 
 
@@ -11682,13 +11650,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DiagnosticArchiveDeleteArchiveIdDelete(context.Background(), archiveId).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1DiagnosticArchiveDeleteArchiveIdDelete(context.Background(), archiveId).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DiagnosticArchiveDeleteArchiveIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DiagnosticArchiveDeleteArchiveIdDelete`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DiagnosticArchiveDeleteArchiveIdDelete`: %v\n", resp)
 }
 ```
 
@@ -11712,7 +11678,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -11721,7 +11687,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -11730,7 +11696,7 @@ Name | Type | Description  | Notes
 
 ## V1DiagnosticArchiveEditArchiveIdPut
 
-> map[string]interface{} V1DiagnosticArchiveEditArchiveIdPut(ctx, archiveId).Authorization(authorization).V1DiagnosticArchiveEditArchiveIdPutRequest(v1DiagnosticArchiveEditArchiveIdPutRequest).Execute()
+> V1DiagnosticArchiveEditArchiveIdPut(ctx, archiveId).Authorization(authorization).V1DiagnosticArchiveEditArchiveIdPutRequest(v1DiagnosticArchiveEditArchiveIdPutRequest).Execute()
 
 
 
@@ -11755,13 +11721,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DiagnosticArchiveEditArchiveIdPut(context.Background(), archiveId).Authorization(authorization).V1DiagnosticArchiveEditArchiveIdPutRequest(v1DiagnosticArchiveEditArchiveIdPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DiagnosticArchiveEditArchiveIdPut(context.Background(), archiveId).Authorization(authorization).V1DiagnosticArchiveEditArchiveIdPutRequest(v1DiagnosticArchiveEditArchiveIdPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DiagnosticArchiveEditArchiveIdPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DiagnosticArchiveEditArchiveIdPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DiagnosticArchiveEditArchiveIdPut`: %v\n", resp)
 }
 ```
 
@@ -11786,7 +11750,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -11795,7 +11759,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -11876,7 +11840,7 @@ Name | Type | Description  | Notes
 
 ## V1DiagnosticBgpResetDeviceIdPut
 
-> map[string]interface{} V1DiagnosticBgpResetDeviceIdPut(ctx, deviceId).Authorization(authorization).V1DiagnosticBgpResetDeviceIdPutRequest(v1DiagnosticBgpResetDeviceIdPutRequest).Execute()
+> V1DiagnosticBgpResetDeviceIdPut(ctx, deviceId).Authorization(authorization).V1DiagnosticBgpResetDeviceIdPutRequest(v1DiagnosticBgpResetDeviceIdPutRequest).Execute()
 
 
 
@@ -11901,13 +11865,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DiagnosticBgpResetDeviceIdPut(context.Background(), deviceId).Authorization(authorization).V1DiagnosticBgpResetDeviceIdPutRequest(v1DiagnosticBgpResetDeviceIdPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DiagnosticBgpResetDeviceIdPut(context.Background(), deviceId).Authorization(authorization).V1DiagnosticBgpResetDeviceIdPutRequest(v1DiagnosticBgpResetDeviceIdPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DiagnosticBgpResetDeviceIdPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DiagnosticBgpResetDeviceIdPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DiagnosticBgpResetDeviceIdPut`: %v\n", resp)
 }
 ```
 
@@ -11932,7 +11894,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -11941,7 +11903,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -11950,7 +11912,7 @@ Name | Type | Description  | Notes
 
 ## V1DiagnosticClearArpDeviceIdPut
 
-> map[string]interface{} V1DiagnosticClearArpDeviceIdPut(ctx, deviceId).Authorization(authorization).V1DiagnosticClearArpDeviceIdPutRequest(v1DiagnosticClearArpDeviceIdPutRequest).Execute()
+> V1DiagnosticClearArpDeviceIdPut(ctx, deviceId).Authorization(authorization).V1DiagnosticClearArpDeviceIdPutRequest(v1DiagnosticClearArpDeviceIdPutRequest).Execute()
 
 
 
@@ -11975,13 +11937,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DiagnosticClearArpDeviceIdPut(context.Background(), deviceId).Authorization(authorization).V1DiagnosticClearArpDeviceIdPutRequest(v1DiagnosticClearArpDeviceIdPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DiagnosticClearArpDeviceIdPut(context.Background(), deviceId).Authorization(authorization).V1DiagnosticClearArpDeviceIdPutRequest(v1DiagnosticClearArpDeviceIdPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DiagnosticClearArpDeviceIdPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DiagnosticClearArpDeviceIdPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DiagnosticClearArpDeviceIdPut`: %v\n", resp)
 }
 ```
 
@@ -12006,7 +11966,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -12015,7 +11975,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -12090,7 +12050,7 @@ Name | Type | Description  | Notes
 
 ## V1DiagnosticInterfaceResetDeviceIdPut
 
-> map[string]interface{} V1DiagnosticInterfaceResetDeviceIdPut(ctx, deviceId).Authorization(authorization).V1DiagnosticInterfaceResetDeviceIdPutRequest(v1DiagnosticInterfaceResetDeviceIdPutRequest).Execute()
+> V1DiagnosticInterfaceResetDeviceIdPut(ctx, deviceId).Authorization(authorization).V1DiagnosticInterfaceResetDeviceIdPutRequest(v1DiagnosticInterfaceResetDeviceIdPutRequest).Execute()
 
 
 
@@ -12115,13 +12075,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DiagnosticInterfaceResetDeviceIdPut(context.Background(), deviceId).Authorization(authorization).V1DiagnosticInterfaceResetDeviceIdPutRequest(v1DiagnosticInterfaceResetDeviceIdPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DiagnosticInterfaceResetDeviceIdPut(context.Background(), deviceId).Authorization(authorization).V1DiagnosticInterfaceResetDeviceIdPutRequest(v1DiagnosticInterfaceResetDeviceIdPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DiagnosticInterfaceResetDeviceIdPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DiagnosticInterfaceResetDeviceIdPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DiagnosticInterfaceResetDeviceIdPut`: %v\n", resp)
 }
 ```
 
@@ -12146,7 +12104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -12155,7 +12113,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -12376,7 +12334,7 @@ Name | Type | Description  | Notes
 
 ## V1DiagnosticPacketcaptureStopPost
 
-> map[string]interface{} V1DiagnosticPacketcaptureStopPost(ctx).Authorization(authorization).V1DiagnosticPacketcaptureStopPostRequest(v1DiagnosticPacketcaptureStopPostRequest).Execute()
+> V1DiagnosticPacketcaptureStopPost(ctx).Authorization(authorization).V1DiagnosticPacketcaptureStopPostRequest(v1DiagnosticPacketcaptureStopPostRequest).Execute()
 
 
 
@@ -12400,13 +12358,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DiagnosticPacketcaptureStopPost(context.Background()).Authorization(authorization).V1DiagnosticPacketcaptureStopPostRequest(v1DiagnosticPacketcaptureStopPostRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DiagnosticPacketcaptureStopPost(context.Background()).Authorization(authorization).V1DiagnosticPacketcaptureStopPostRequest(v1DiagnosticPacketcaptureStopPostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DiagnosticPacketcaptureStopPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DiagnosticPacketcaptureStopPost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DiagnosticPacketcaptureStopPost`: %v\n", resp)
 }
 ```
 
@@ -12426,7 +12382,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -12435,7 +12391,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -12444,7 +12400,7 @@ Name | Type | Description  | Notes
 
 ## V1DiagnosticPingPauseResumePost
 
-> V1DiagnosticPingPauseResumePostResponse V1DiagnosticPingPauseResumePost(ctx).Authorization(authorization).V1DiagnosticPingPauseResumePostRequest(v1DiagnosticPingPauseResumePostRequest).Execute()
+> V1DiagnosticPingPauseResumePost(ctx).Authorization(authorization).V1DiagnosticPingPauseResumePostRequest(v1DiagnosticPingPauseResumePostRequest).Execute()
 
 
 
@@ -12468,13 +12424,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DiagnosticPingPauseResumePost(context.Background()).Authorization(authorization).V1DiagnosticPingPauseResumePostRequest(v1DiagnosticPingPauseResumePostRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DiagnosticPingPauseResumePost(context.Background()).Authorization(authorization).V1DiagnosticPingPauseResumePostRequest(v1DiagnosticPingPauseResumePostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DiagnosticPingPauseResumePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DiagnosticPingPauseResumePost`: V1DiagnosticPingPauseResumePostResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DiagnosticPingPauseResumePost`: %v\n", resp)
 }
 ```
 
@@ -12494,7 +12448,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1DiagnosticPingPauseResumePostResponse**](V1DiagnosticPingPauseResumePostResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -12503,7 +12457,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -12580,7 +12534,7 @@ Name | Type | Description  | Notes
 
 ## V1DiagnosticPingStopTokenPost
 
-> map[string]interface{} V1DiagnosticPingStopTokenPost(ctx, token).Authorization(authorization).Body(body).Execute()
+> V1DiagnosticPingStopTokenPost(ctx, token).Authorization(authorization).Body(body).Execute()
 
 
 
@@ -12605,13 +12559,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DiagnosticPingStopTokenPost(context.Background(), token).Authorization(authorization).Body(body).Execute()
+	r, err := apiClient.DefaultAPI.V1DiagnosticPingStopTokenPost(context.Background(), token).Authorization(authorization).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DiagnosticPingStopTokenPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DiagnosticPingStopTokenPost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DiagnosticPingStopTokenPost`: %v\n", resp)
 }
 ```
 
@@ -12636,7 +12588,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -12645,7 +12597,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -12654,7 +12606,7 @@ Name | Type | Description  | Notes
 
 ## V1DiagnosticRebootDeviceIdPut
 
-> map[string]interface{} V1DiagnosticRebootDeviceIdPut(ctx, deviceId).Authorization(authorization).V1DiagnosticRebootDeviceIdPutRequest(v1DiagnosticRebootDeviceIdPutRequest).Execute()
+> V1DiagnosticRebootDeviceIdPut(ctx, deviceId).Authorization(authorization).V1DiagnosticRebootDeviceIdPutRequest(v1DiagnosticRebootDeviceIdPutRequest).Execute()
 
 
 
@@ -12679,13 +12631,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DiagnosticRebootDeviceIdPut(context.Background(), deviceId).Authorization(authorization).V1DiagnosticRebootDeviceIdPutRequest(v1DiagnosticRebootDeviceIdPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DiagnosticRebootDeviceIdPut(context.Background(), deviceId).Authorization(authorization).V1DiagnosticRebootDeviceIdPutRequest(v1DiagnosticRebootDeviceIdPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DiagnosticRebootDeviceIdPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DiagnosticRebootDeviceIdPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DiagnosticRebootDeviceIdPut`: %v\n", resp)
 }
 ```
 
@@ -12710,7 +12660,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -12719,7 +12669,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -12728,7 +12678,7 @@ Name | Type | Description  | Notes
 
 ## V1DiagnosticResetIpsecSessionDeviceIdPut
 
-> map[string]interface{} V1DiagnosticResetIpsecSessionDeviceIdPut(ctx, deviceId).Authorization(authorization).V1DiagnosticResetIpsecSessionDeviceIdPutRequest(v1DiagnosticResetIpsecSessionDeviceIdPutRequest).Execute()
+> V1DiagnosticResetIpsecSessionDeviceIdPut(ctx, deviceId).Authorization(authorization).V1DiagnosticResetIpsecSessionDeviceIdPutRequest(v1DiagnosticResetIpsecSessionDeviceIdPutRequest).Execute()
 
 
 
@@ -12753,13 +12703,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DiagnosticResetIpsecSessionDeviceIdPut(context.Background(), deviceId).Authorization(authorization).V1DiagnosticResetIpsecSessionDeviceIdPutRequest(v1DiagnosticResetIpsecSessionDeviceIdPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1DiagnosticResetIpsecSessionDeviceIdPut(context.Background(), deviceId).Authorization(authorization).V1DiagnosticResetIpsecSessionDeviceIdPutRequest(v1DiagnosticResetIpsecSessionDeviceIdPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DiagnosticResetIpsecSessionDeviceIdPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1DiagnosticResetIpsecSessionDeviceIdPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1DiagnosticResetIpsecSessionDeviceIdPut`: %v\n", resp)
 }
 ```
 
@@ -12784,7 +12732,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -12793,7 +12741,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -13328,6 +13276,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## V1EdgesSummaryPost
+
+> V1EdgesSummaryPostResponse V1EdgesSummaryPost(ctx).Authorization(authorization).V1EdgesSummaryPostRequest(v1EdgesSummaryPostRequest).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1EdgesSummaryPostRequest := *openapiclient.NewV1EdgesSummaryPostRequest() // V1EdgesSummaryPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1EdgesSummaryPost(context.Background()).Authorization(authorization).V1EdgesSummaryPostRequest(v1EdgesSummaryPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1EdgesSummaryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EdgesSummaryPost`: V1EdgesSummaryPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1EdgesSummaryPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1EdgesSummaryPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1EdgesSummaryPostRequest** | [**V1EdgesSummaryPostRequest**](V1EdgesSummaryPostRequest.md) |  | 
+
+### Return type
+
+[**V1EdgesSummaryPostResponse**](V1EdgesSummaryPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V1EnterpriseAllocationGet
 
 > V1EnterpriseAllocationGetResponse V1EnterpriseAllocationGet(ctx).Authorization(authorization).Execute()
@@ -13736,7 +13750,7 @@ Name | Type | Description  | Notes
 
 ## V1EnterprisesEnterpriseIdDelete
 
-> V1EnterprisesEnterpriseIdDeleteResponse V1EnterprisesEnterpriseIdDelete(ctx, enterpriseId).Authorization(authorization).Execute()
+> V1EnterprisesEnterpriseIdDelete(ctx, enterpriseId).Authorization(authorization).Execute()
 
 
 
@@ -13760,13 +13774,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1EnterprisesEnterpriseIdDelete(context.Background(), enterpriseId).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1EnterprisesEnterpriseIdDelete(context.Background(), enterpriseId).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1EnterprisesEnterpriseIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1EnterprisesEnterpriseIdDelete`: V1EnterprisesEnterpriseIdDeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1EnterprisesEnterpriseIdDelete`: %v\n", resp)
 }
 ```
 
@@ -13790,7 +13802,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1EnterprisesEnterpriseIdDeleteResponse**](V1EnterprisesEnterpriseIdDeleteResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -13799,7 +13811,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -13878,7 +13890,7 @@ Name | Type | Description  | Notes
 
 ## V1EnterprisesEulaPost
 
-> map[string]interface{} V1EnterprisesEulaPost(ctx).Authorization(authorization).Body(body).Execute()
+> V1EnterprisesEulaPost(ctx).Authorization(authorization).Body(body).Execute()
 
 
 
@@ -13902,13 +13914,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1EnterprisesEulaPost(context.Background()).Authorization(authorization).Body(body).Execute()
+	r, err := apiClient.DefaultAPI.V1EnterprisesEulaPost(context.Background()).Authorization(authorization).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1EnterprisesEulaPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1EnterprisesEulaPost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1EnterprisesEulaPost`: %v\n", resp)
 }
 ```
 
@@ -13928,7 +13938,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -13937,7 +13947,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -14082,7 +14092,7 @@ Name | Type | Description  | Notes
 
 ## V1EnterprisesPatch
 
-> map[string]interface{} V1EnterprisesPatch(ctx).Authorization(authorization).V1EnterprisesPatchRequest(v1EnterprisesPatchRequest).Execute()
+> V1EnterprisesPatch(ctx).Authorization(authorization).V1EnterprisesPatchRequest(v1EnterprisesPatchRequest).Execute()
 
 
 
@@ -14106,13 +14116,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1EnterprisesPatch(context.Background()).Authorization(authorization).V1EnterprisesPatchRequest(v1EnterprisesPatchRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1EnterprisesPatch(context.Background()).Authorization(authorization).V1EnterprisesPatchRequest(v1EnterprisesPatchRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1EnterprisesPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1EnterprisesPatch`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1EnterprisesPatch`: %v\n", resp)
 }
 ```
 
@@ -14132,7 +14140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -14141,7 +14149,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -14150,7 +14158,7 @@ Name | Type | Description  | Notes
 
 ## V1EnterprisesPut
 
-> map[string]interface{} V1EnterprisesPut(ctx).Authorization(authorization).V1EnterprisesPutRequest(v1EnterprisesPutRequest).Execute()
+> V1EnterprisesPut(ctx).Authorization(authorization).V1EnterprisesPutRequest(v1EnterprisesPutRequest).Execute()
 
 
 
@@ -14174,13 +14182,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1EnterprisesPut(context.Background()).Authorization(authorization).V1EnterprisesPutRequest(v1EnterprisesPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1EnterprisesPut(context.Background()).Authorization(authorization).V1EnterprisesPutRequest(v1EnterprisesPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1EnterprisesPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1EnterprisesPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1EnterprisesPut`: %v\n", resp)
 }
 ```
 
@@ -14200,7 +14206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -14209,7 +14215,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -14218,7 +14224,7 @@ Name | Type | Description  | Notes
 
 ## V1EnterprisesSelfDelete
 
-> V1EnterprisesSelfDeleteResponse V1EnterprisesSelfDelete(ctx).Authorization(authorization).Execute()
+> V1EnterprisesSelfDelete(ctx).Authorization(authorization).Execute()
 
 
 
@@ -14241,13 +14247,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1EnterprisesSelfDelete(context.Background()).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1EnterprisesSelfDelete(context.Background()).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1EnterprisesSelfDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1EnterprisesSelfDelete`: V1EnterprisesSelfDeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1EnterprisesSelfDelete`: %v\n", resp)
 }
 ```
 
@@ -14266,7 +14270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1EnterprisesSelfDeleteResponse**](V1EnterprisesSelfDeleteResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -14275,7 +14279,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -14570,7 +14574,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostRequest() // V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostRequest | 
+	v1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostRequest(int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -14638,7 +14642,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetB2bMonitoringPeeringServiceConsumersUsageTopPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceConsumersUsageTopPostRequest() // V1ExtranetB2bMonitoringPeeringServiceConsumersUsageTopPostRequest | 
+	v1ExtranetB2bMonitoringPeeringServiceConsumersUsageTopPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceConsumersUsageTopPostRequest(int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V1ExtranetB2bMonitoringPeeringServiceConsumersUsageTopPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -14706,7 +14710,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest() // V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest | 
+	v1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest(true, int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -14774,7 +14778,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest() // V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest | 
+	v1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest(int64(1), true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -14826,6 +14830,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -14840,7 +14846,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest() // V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest | 
+	v1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest(int64(1), false) // V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -14908,7 +14914,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest() // V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest | 
+	v1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest(int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -14976,7 +14982,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetSitesUsagePostRequest := *openapiclient.NewV1ExtranetSitesUsagePostRequest() // V1ExtranetSitesUsagePostRequest | 
+	v1ExtranetSitesUsagePostRequest := *openapiclient.NewV1ExtranetSitesUsagePostRequest(int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V1ExtranetSitesUsagePostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -15044,7 +15050,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetSitesUsageTopPostRequest := *openapiclient.NewV1ExtranetSitesUsageTopPostRequest() // V1ExtranetSitesUsageTopPostRequest | 
+	v1ExtranetSitesUsageTopPostRequest := *openapiclient.NewV1ExtranetSitesUsageTopPostRequest(int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V1ExtranetSitesUsageTopPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -15093,6 +15099,8 @@ Name | Type | Description  | Notes
 ## V1ExtranetsB2bConsumerDeviceStatusIdGet
 
 > V1ExtranetsB2bConsumerDeviceStatusIdGetResponse V1ExtranetsB2bConsumerDeviceStatusIdGet(ctx, id).Authorization(authorization).Execute()
+
+
 
 
 
@@ -15166,6 +15174,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -15233,6 +15243,8 @@ Name | Type | Description  | Notes
 ## V1ExtranetsB2bConsumerIdGet
 
 > V1ExtranetsB2bConsumerIdGetResponse V1ExtranetsB2bConsumerIdGet(ctx, id).Authorization(authorization).Execute()
+
+
 
 
 
@@ -15306,6 +15318,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -15372,6 +15386,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -15433,6 +15449,8 @@ Name | Type | Description  | Notes
 ## V1ExtranetsB2bCustomerIdDelete
 
 > map[string]interface{} V1ExtranetsB2bCustomerIdDelete(ctx, id).Authorization(authorization).Execute()
+
+
 
 
 
@@ -15506,6 +15524,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -15576,6 +15596,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -15637,6 +15659,8 @@ Name | Type | Description  | Notes
 ## V1ExtranetsB2bGeneralServicesSummaryGet
 
 > V1ExtranetsB2bGeneralServicesSummaryGetResponse V1ExtranetsB2bGeneralServicesSummaryGet(ctx).Authorization(authorization).Execute()
+
+
 
 
 
@@ -15704,6 +15728,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -15718,8 +15744,8 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 | 
-	v1ExtranetsB2bIdCustomerPostRequest := *openapiclient.NewV1ExtranetsB2bIdCustomerPostRequest() // V1ExtranetsB2bIdCustomerPostRequest | 
+	id := int64(1234567891011) // int64 | Service ID of the application customer is invited to
+	v1ExtranetsB2bIdCustomerPostRequest := *openapiclient.NewV1ExtranetsB2bIdCustomerPostRequest([]openapiclient.ManaV2B2bExtranetApplicationInvite{*openapiclient.NewManaV2B2bExtranetApplicationInvite("example string", int32(123), int32(123), int64(1234567891011), int32(123))}) // V1ExtranetsB2bIdCustomerPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -15739,7 +15765,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **int64** | Service ID of the application customer is invited to | 
 
 ### Other Parameters
 
@@ -15773,6 +15799,8 @@ Name | Type | Description  | Notes
 ## V1ExtranetsB2bIdCustomerSummaryGet
 
 > V1ExtranetsB2bIdCustomerSummaryGetResponse V1ExtranetsB2bIdCustomerSummaryGet(ctx, id).Authorization(authorization).Execute()
+
+
 
 
 
@@ -15846,6 +15874,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -15860,7 +15890,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 | 
+	id := int64(1234567891011) // int64 | ID of the producer service to be deleted
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -15880,7 +15910,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **int64** | ID of the producer service to be deleted | 
 
 ### Other Parameters
 
@@ -15913,6 +15943,8 @@ Name | Type | Description  | Notes
 ## V1ExtranetsB2bIdProducerGet
 
 > V1ExtranetsB2bIdProducerGetResponse V1ExtranetsB2bIdProducerGet(ctx, id).Authorization(authorization).Type_(type_).Execute()
+
+
 
 
 
@@ -15988,6 +16020,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16002,8 +16036,8 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 | 
-	v1ExtranetsB2bIdPutRequest := *openapiclient.NewV1ExtranetsB2bIdPutRequest() // V1ExtranetsB2bIdPutRequest | 
+	id := int64(1234567891011) // int64 | ID of the B2B Application service
+	v1ExtranetsB2bIdPutRequest := *openapiclient.NewV1ExtranetsB2bIdPutRequest(*openapiclient.NewManaV2B2bExtranetProducerPolicy([]string{"example string"}, int64(1234567891011), []string{"example string"}, []openapiclient.ManaV2B2bSiteInformation{*openapiclient.NewManaV2B2bSiteInformation()}, "ENUM_VALUE")) // V1ExtranetsB2bIdPutRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16023,7 +16057,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **int64** | ID of the B2B Application service | 
 
 ### Other Parameters
 
@@ -16057,6 +16091,8 @@ Name | Type | Description  | Notes
 ## V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet
 
 > V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponse V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet(ctx, customerId).Authorization(authorization).Execute()
+
+
 
 
 
@@ -16130,6 +16166,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16200,6 +16238,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16214,8 +16254,8 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	matchId := int64(1234567891011) // int64 | 
-	v1ExtranetsB2bPeeringConsumerMatchIdPostRequest := *openapiclient.NewV1ExtranetsB2bPeeringConsumerMatchIdPostRequest() // V1ExtranetsB2bPeeringConsumerMatchIdPostRequest | 
+	matchId := int64(1234567891011) // int64 | ID of the match for the customer subscription of the service
+	v1ExtranetsB2bPeeringConsumerMatchIdPostRequest := *openapiclient.NewV1ExtranetsB2bPeeringConsumerMatchIdPostRequest(int64(1234567891011), []openapiclient.ManaV2B2bNat{*openapiclient.NewManaV2B2bNat("10.1.2.0/24")}, []openapiclient.ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy{*openapiclient.NewManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy()}, []openapiclient.ManaV2B2bSiteInformation{*openapiclient.NewManaV2B2bSiteInformation()}) // V1ExtranetsB2bPeeringConsumerMatchIdPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16235,7 +16275,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**matchId** | **int64** |  | 
+**matchId** | **int64** | ID of the match for the customer subscription of the service | 
 
 ### Other Parameters
 
@@ -16272,6 +16312,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16286,7 +16328,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 | 
+	id := int64(1234567891011) // int64 | ID of the peering service customer
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16306,7 +16348,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **int64** | ID of the peering service customer | 
 
 ### Other Parameters
 
@@ -16342,6 +16384,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16356,7 +16400,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 | 
+	id := int64(1234567891011) // int64 | ID of the peering service customer
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16376,7 +16420,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **int64** | ID of the peering service customer | 
 
 ### Other Parameters
 
@@ -16412,6 +16456,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16426,7 +16472,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetsB2bPeeringCustomerPostRequest := *openapiclient.NewV1ExtranetsB2bPeeringCustomerPostRequest() // V1ExtranetsB2bPeeringCustomerPostRequest | 
+	v1ExtranetsB2bPeeringCustomerPostRequest := *openapiclient.NewV1ExtranetsB2bPeeringCustomerPostRequest(*openapiclient.NewManaV2B2bExtranetPeeringServiceCustomerInvite([]string{"example string"}, int32(123)), "example string", "ENUM_VALUE") // V1ExtranetsB2bPeeringCustomerPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16474,7 +16520,7 @@ Name | Type | Description  | Notes
 
 ## V1ExtranetsB2bPeeringMatchServiceToCustomerIdDelete
 
-> map[string]interface{} V1ExtranetsB2bPeeringMatchServiceToCustomerIdDelete(ctx, id).Authorization(authorization).Execute()
+> V1ExtranetsB2bPeeringMatchServiceToCustomerIdDeleteResponse V1ExtranetsB2bPeeringMatchServiceToCustomerIdDelete(ctx, id).Authorization(authorization).Execute()
 
 
 
@@ -16494,7 +16540,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 | id for service to customer match
+	id := int64(1234567891011) // int64 | ID for the service to customer match to be deleted
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16503,7 +16549,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1ExtranetsB2bPeeringMatchServiceToCustomerIdDelete`: map[string]interface{}
+	// response from `V1ExtranetsB2bPeeringMatchServiceToCustomerIdDelete`: V1ExtranetsB2bPeeringMatchServiceToCustomerIdDeleteResponse
 	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerIdDelete`: %v\n", resp)
 }
 ```
@@ -16514,7 +16560,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** | id for service to customer match | 
+**id** | **int64** | ID for the service to customer match to be deleted | 
 
 ### Other Parameters
 
@@ -16528,7 +16574,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**V1ExtranetsB2bPeeringMatchServiceToCustomerIdDeleteResponse**](V1ExtranetsB2bPeeringMatchServiceToCustomerIdDeleteResponse.md)
 
 ### Authorization
 
@@ -16566,7 +16612,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 | service id
+	id := int64(1234567891011) // int64 | Service id for which match details are requested
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16586,7 +16632,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** | service id | 
+**id** | **int64** | Service id for which match details are requested | 
 
 ### Other Parameters
 
@@ -16622,6 +16668,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16636,7 +16684,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest := *openapiclient.NewV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest() // V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest | 
+	v1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest := *openapiclient.NewV1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest(int64(1234567891011), *openapiclient.NewManaV2B2bExtranetMatchServiceToCustomer(int64(1234567891011), []openapiclient.ManaV2B2bNat{*openapiclient.NewManaV2B2bNat("10.1.2.0/24")}, []openapiclient.ManaV2B2bExtranetPrefixTag{*openapiclient.NewManaV2B2bExtranetPrefixTag("10.1.2.0/24")})) // V1ExtranetsB2bPeeringMatchServiceToCustomerPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16688,6 +16736,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16702,7 +16752,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 | 
+	id := int64(1234567891011) // int64 | ID of the customer
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16722,7 +16772,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **int64** | ID of the customer | 
 
 ### Other Parameters
 
@@ -16758,6 +16808,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16772,7 +16824,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 | 
+	id := int64(1234567891011) // int64 | ID of the service
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16792,7 +16844,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **int64** | ID of the service | 
 
 ### Other Parameters
 
@@ -16828,6 +16880,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16842,7 +16896,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 | 
+	id := int64(1234567891011) // int64 | ID of the customer
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16862,7 +16916,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **int64** | ID of the customer | 
 
 ### Other Parameters
 
@@ -16898,6 +16952,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16912,7 +16968,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetsB2bPeeringProducerPostRequest := *openapiclient.NewV1ExtranetsB2bPeeringProducerPostRequest() // V1ExtranetsB2bPeeringProducerPostRequest | 
+	v1ExtranetsB2bPeeringProducerPostRequest := *openapiclient.NewV1ExtranetsB2bPeeringProducerPostRequest(*openapiclient.NewManaV2B2bExtranetPeeringServiceProducerPolicy([]openapiclient.ManaV2B2bExtranetPrefixTag{*openapiclient.NewManaV2B2bExtranetPrefixTag("10.1.2.0/24")}, int64(1234567891011), []openapiclient.ManaV2B2bSiteInformation{*openapiclient.NewManaV2B2bSiteInformation()}, "ENUM_VALUE"), "ENUM_VALUE") // V1ExtranetsB2bPeeringProducerPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16964,6 +17020,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -16978,7 +17036,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetsB2bPostRequest := *openapiclient.NewV1ExtranetsB2bPostRequest() // V1ExtranetsB2bPostRequest | 
+	v1ExtranetsB2bPostRequest := *openapiclient.NewV1ExtranetsB2bPostRequest(*openapiclient.NewManaV2B2bExtranetProducerPolicy([]string{"example string"}, int64(1234567891011), []string{"example string"}, []openapiclient.ManaV2B2bSiteInformation{*openapiclient.NewManaV2B2bSiteInformation()}, "ENUM_VALUE"), "example string", "ENUM_VALUE") // V1ExtranetsB2bPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -17027,6 +17085,8 @@ Name | Type | Description  | Notes
 ## V1ExtranetsB2bProducerDeviceStatusIdGet
 
 > V1ExtranetsB2bProducerDeviceStatusIdGetResponse V1ExtranetsB2bProducerDeviceStatusIdGet(ctx, id).Authorization(authorization).Execute()
+
+
 
 
 
@@ -17097,6 +17157,8 @@ Name | Type | Description  | Notes
 ## V1ExtranetsB2bProducersSummaryGet
 
 > V1ExtranetsB2bProducersSummaryGetResponse V1ExtranetsB2bProducersSummaryGet(ctx).Authorization(authorization).Execute()
+
+
 
 
 
@@ -20651,7 +20713,7 @@ Name | Type | Description  | Notes
 
 ## V1GlobalLanSegmentsIdDelete
 
-> V1GlobalLanSegmentsIdDeleteResponse V1GlobalLanSegmentsIdDelete(ctx, id).Authorization(authorization).Execute()
+> V1GlobalLanSegmentsIdDelete(ctx, id).Authorization(authorization).Execute()
 
 
 
@@ -20675,13 +20737,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GlobalLanSegmentsIdDelete(context.Background(), id).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1GlobalLanSegmentsIdDelete(context.Background(), id).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalLanSegmentsIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1GlobalLanSegmentsIdDelete`: V1GlobalLanSegmentsIdDeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GlobalLanSegmentsIdDelete`: %v\n", resp)
 }
 ```
 
@@ -20705,7 +20765,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1GlobalLanSegmentsIdDeleteResponse**](V1GlobalLanSegmentsIdDeleteResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -20714,7 +20774,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -20846,6 +20906,206 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V1GlobalLanSegmentsVrfIdDevicesGetResponse**](V1GlobalLanSegmentsVrfIdDevicesGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1GlobalNtpsDeviceGet
+
+> V1GlobalNtpsDeviceGetResponse V1GlobalNtpsDeviceGet(ctx).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1GlobalNtpsDeviceGet(context.Background()).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalNtpsDeviceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1GlobalNtpsDeviceGet`: V1GlobalNtpsDeviceGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GlobalNtpsDeviceGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1GlobalNtpsDeviceGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+[**V1GlobalNtpsDeviceGetResponse**](V1GlobalNtpsDeviceGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1GlobalNtpsPost
+
+> V1GlobalNtpsPostResponse V1GlobalNtpsPost(ctx).Authorization(authorization).V1GlobalNtpsPostRequest(v1GlobalNtpsPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1GlobalNtpsPostRequest := *openapiclient.NewV1GlobalNtpsPostRequest() // V1GlobalNtpsPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1GlobalNtpsPost(context.Background()).Authorization(authorization).V1GlobalNtpsPostRequest(v1GlobalNtpsPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalNtpsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1GlobalNtpsPost`: V1GlobalNtpsPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GlobalNtpsPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1GlobalNtpsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1GlobalNtpsPostRequest** | [**V1GlobalNtpsPostRequest**](V1GlobalNtpsPostRequest.md) |  | 
+
+### Return type
+
+[**V1GlobalNtpsPostResponse**](V1GlobalNtpsPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1GlobalNtpsSiteGet
+
+> V1GlobalNtpsSiteGetResponse V1GlobalNtpsSiteGet(ctx).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1GlobalNtpsSiteGet(context.Background()).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalNtpsSiteGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1GlobalNtpsSiteGet`: V1GlobalNtpsSiteGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GlobalNtpsSiteGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1GlobalNtpsSiteGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+[**V1GlobalNtpsSiteGetResponse**](V1GlobalNtpsSiteGetResponse.md)
 
 ### Authorization
 
@@ -21329,7 +21589,7 @@ Name | Type | Description  | Notes
 
 ## V1GlobalSiteListsIdDelete
 
-> V1GlobalSiteListsIdDeleteResponse V1GlobalSiteListsIdDelete(ctx, id).Authorization(authorization).Execute()
+> V1GlobalSiteListsIdDelete(ctx, id).Authorization(authorization).Execute()
 
 
 
@@ -21353,13 +21613,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GlobalSiteListsIdDelete(context.Background(), id).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1GlobalSiteListsIdDelete(context.Background(), id).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalSiteListsIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1GlobalSiteListsIdDelete`: V1GlobalSiteListsIdDeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GlobalSiteListsIdDelete`: %v\n", resp)
 }
 ```
 
@@ -21383,7 +21641,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1GlobalSiteListsIdDeleteResponse**](V1GlobalSiteListsIdDeleteResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -21392,7 +21650,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -22621,7 +22879,7 @@ Name | Type | Description  | Notes
 
 ## V1GroupsIdDelete
 
-> V1GroupsIdDeleteResponse V1GroupsIdDelete(ctx, id).Authorization(authorization).Execute()
+> V1GroupsIdDelete(ctx, id).Authorization(authorization).Execute()
 
 
 
@@ -22645,13 +22903,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GroupsIdDelete(context.Background(), id).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1GroupsIdDelete(context.Background(), id).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GroupsIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1GroupsIdDelete`: V1GroupsIdDeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GroupsIdDelete`: %v\n", resp)
 }
 ```
 
@@ -22675,7 +22931,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1GroupsIdDeleteResponse**](V1GroupsIdDeleteResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -22684,7 +22940,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -22693,7 +22949,7 @@ Name | Type | Description  | Notes
 
 ## V1GroupsIdEnterprisesEnterpriseIdDelete
 
-> V1GroupsIdEnterprisesEnterpriseIdDeleteResponse V1GroupsIdEnterprisesEnterpriseIdDelete(ctx, enterpriseId, id).Authorization(authorization).Execute()
+> V1GroupsIdEnterprisesEnterpriseIdDelete(ctx, enterpriseId, id).Authorization(authorization).Execute()
 
 
 
@@ -22718,13 +22974,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GroupsIdEnterprisesEnterpriseIdDelete(context.Background(), enterpriseId, id).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1GroupsIdEnterprisesEnterpriseIdDelete(context.Background(), enterpriseId, id).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GroupsIdEnterprisesEnterpriseIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1GroupsIdEnterprisesEnterpriseIdDelete`: V1GroupsIdEnterprisesEnterpriseIdDeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GroupsIdEnterprisesEnterpriseIdDelete`: %v\n", resp)
 }
 ```
 
@@ -22750,7 +23004,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1GroupsIdEnterprisesEnterpriseIdDeleteResponse**](V1GroupsIdEnterprisesEnterpriseIdDeleteResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -22759,7 +23013,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -22768,7 +23022,7 @@ Name | Type | Description  | Notes
 
 ## V1GroupsIdEnterprisesPost
 
-> map[string]interface{} V1GroupsIdEnterprisesPost(ctx, id).Authorization(authorization).V1GroupsIdEnterprisesPostRequest(v1GroupsIdEnterprisesPostRequest).Execute()
+> V1GroupsIdEnterprisesPost(ctx, id).Authorization(authorization).V1GroupsIdEnterprisesPostRequest(v1GroupsIdEnterprisesPostRequest).Execute()
 
 
 
@@ -22793,13 +23047,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GroupsIdEnterprisesPost(context.Background(), id).Authorization(authorization).V1GroupsIdEnterprisesPostRequest(v1GroupsIdEnterprisesPostRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1GroupsIdEnterprisesPost(context.Background(), id).Authorization(authorization).V1GroupsIdEnterprisesPostRequest(v1GroupsIdEnterprisesPostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GroupsIdEnterprisesPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1GroupsIdEnterprisesPost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GroupsIdEnterprisesPost`: %v\n", resp)
 }
 ```
 
@@ -22824,7 +23076,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -22833,7 +23085,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -22914,7 +23166,7 @@ Name | Type | Description  | Notes
 
 ## V1GroupsIdMembersDeletePost
 
-> V1GroupsIdMembersDeletePostResponse V1GroupsIdMembersDeletePost(ctx, id).Authorization(authorization).V1GroupsIdMembersDeletePostRequest(v1GroupsIdMembersDeletePostRequest).Execute()
+> V1GroupsIdMembersDeletePost(ctx, id).Authorization(authorization).V1GroupsIdMembersDeletePostRequest(v1GroupsIdMembersDeletePostRequest).Execute()
 
 
 
@@ -22939,13 +23191,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GroupsIdMembersDeletePost(context.Background(), id).Authorization(authorization).V1GroupsIdMembersDeletePostRequest(v1GroupsIdMembersDeletePostRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1GroupsIdMembersDeletePost(context.Background(), id).Authorization(authorization).V1GroupsIdMembersDeletePostRequest(v1GroupsIdMembersDeletePostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GroupsIdMembersDeletePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1GroupsIdMembersDeletePost`: V1GroupsIdMembersDeletePostResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GroupsIdMembersDeletePost`: %v\n", resp)
 }
 ```
 
@@ -22970,7 +23220,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1GroupsIdMembersDeletePostResponse**](V1GroupsIdMembersDeletePostResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -22979,7 +23229,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -23060,7 +23310,7 @@ Name | Type | Description  | Notes
 
 ## V1GroupsIdMembersMemberIdDelete
 
-> V1GroupsIdMembersMemberIdDeleteResponse V1GroupsIdMembersMemberIdDelete(ctx, id, memberId).Authorization(authorization).Execute()
+> V1GroupsIdMembersMemberIdDelete(ctx, id, memberId).Authorization(authorization).Execute()
 
 
 
@@ -23085,13 +23335,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GroupsIdMembersMemberIdDelete(context.Background(), id, memberId).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1GroupsIdMembersMemberIdDelete(context.Background(), id, memberId).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GroupsIdMembersMemberIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1GroupsIdMembersMemberIdDelete`: V1GroupsIdMembersMemberIdDeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GroupsIdMembersMemberIdDelete`: %v\n", resp)
 }
 ```
 
@@ -23117,7 +23365,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1GroupsIdMembersMemberIdDeleteResponse**](V1GroupsIdMembersMemberIdDeleteResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -23126,7 +23374,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -23135,7 +23383,7 @@ Name | Type | Description  | Notes
 
 ## V1GroupsIdMembersPost
 
-> V1GroupsIdMembersPostResponse V1GroupsIdMembersPost(ctx, id).Authorization(authorization).V1GroupsIdMembersPostRequest(v1GroupsIdMembersPostRequest).Execute()
+> V1GroupsIdMembersPost(ctx, id).Authorization(authorization).V1GroupsIdMembersPostRequest(v1GroupsIdMembersPostRequest).Execute()
 
 
 
@@ -23160,13 +23408,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GroupsIdMembersPost(context.Background(), id).Authorization(authorization).V1GroupsIdMembersPostRequest(v1GroupsIdMembersPostRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1GroupsIdMembersPost(context.Background(), id).Authorization(authorization).V1GroupsIdMembersPostRequest(v1GroupsIdMembersPostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GroupsIdMembersPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1GroupsIdMembersPost`: V1GroupsIdMembersPostResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GroupsIdMembersPost`: %v\n", resp)
 }
 ```
 
@@ -23191,7 +23437,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1GroupsIdMembersPostResponse**](V1GroupsIdMembersPostResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -23200,7 +23446,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -23209,7 +23455,7 @@ Name | Type | Description  | Notes
 
 ## V1GroupsIdPatch
 
-> V1GroupsIdPatchResponse V1GroupsIdPatch(ctx, id).Authorization(authorization).V1GroupsIdPatchRequest(v1GroupsIdPatchRequest).Execute()
+> V1GroupsIdPatch(ctx, id).Authorization(authorization).V1GroupsIdPatchRequest(v1GroupsIdPatchRequest).Execute()
 
 
 
@@ -23234,13 +23480,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GroupsIdPatch(context.Background(), id).Authorization(authorization).V1GroupsIdPatchRequest(v1GroupsIdPatchRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1GroupsIdPatch(context.Background(), id).Authorization(authorization).V1GroupsIdPatchRequest(v1GroupsIdPatchRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GroupsIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1GroupsIdPatch`: V1GroupsIdPatchResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GroupsIdPatch`: %v\n", resp)
 }
 ```
 
@@ -23265,7 +23509,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1GroupsIdPatchResponse**](V1GroupsIdPatchResponse.md)
+ (empty response body)
 
 ### Authorization
 
@@ -23274,7 +23518,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -23283,7 +23527,7 @@ Name | Type | Description  | Notes
 
 ## V1GroupsPut
 
-> map[string]interface{} V1GroupsPut(ctx).Authorization(authorization).V1GroupsPutRequest(v1GroupsPutRequest).Execute()
+> V1GroupsPut(ctx).Authorization(authorization).V1GroupsPutRequest(v1GroupsPutRequest).Execute()
 
 
 
@@ -23307,13 +23551,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GroupsPut(context.Background()).Authorization(authorization).V1GroupsPutRequest(v1GroupsPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1GroupsPut(context.Background()).Authorization(authorization).V1GroupsPutRequest(v1GroupsPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GroupsPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1GroupsPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1GroupsPut`: %v\n", resp)
 }
 ```
 
@@ -23333,7 +23575,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -23342,7 +23584,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -23417,7 +23659,7 @@ Name | Type | Description  | Notes
 
 ## V1IdPasswordRecoverPatch
 
-> map[string]interface{} V1IdPasswordRecoverPatch(ctx, id).Authorization(authorization).Body(body).Execute()
+> V1IdPasswordRecoverPatch(ctx, id).Authorization(authorization).Body(body).Execute()
 
 
 
@@ -23442,13 +23684,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1IdPasswordRecoverPatch(context.Background(), id).Authorization(authorization).Body(body).Execute()
+	r, err := apiClient.DefaultAPI.V1IdPasswordRecoverPatch(context.Background(), id).Authorization(authorization).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1IdPasswordRecoverPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1IdPasswordRecoverPatch`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1IdPasswordRecoverPatch`: %v\n", resp)
 }
 ```
 
@@ -23473,7 +23713,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -23482,7 +23722,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -24381,7 +24621,7 @@ Name | Type | Description  | Notes
 
 ## V1OnboardingCloudinitDelete
 
-> map[string]interface{} V1OnboardingCloudinitDelete(ctx).Authorization(authorization).Execute()
+> V1OnboardingCloudinitDelete(ctx).Authorization(authorization).Execute()
 
 
 
@@ -24404,13 +24644,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1OnboardingCloudinitDelete(context.Background()).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1OnboardingCloudinitDelete(context.Background()).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1OnboardingCloudinitDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1OnboardingCloudinitDelete`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1OnboardingCloudinitDelete`: %v\n", resp)
 }
 ```
 
@@ -24429,7 +24667,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -24438,7 +24676,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -24647,7 +24885,7 @@ Name | Type | Description  | Notes
 
 ## V1PolicyPrefixSetsIdDelete
 
-> map[string]interface{} V1PolicyPrefixSetsIdDelete(ctx, id).Authorization(authorization).Execute()
+> V1PolicyPrefixSetsIdDelete(ctx, id).Authorization(authorization).Execute()
 
 
 
@@ -24671,13 +24909,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1PolicyPrefixSetsIdDelete(context.Background(), id).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1PolicyPrefixSetsIdDelete(context.Background(), id).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1PolicyPrefixSetsIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PolicyPrefixSetsIdDelete`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1PolicyPrefixSetsIdDelete`: %v\n", resp)
 }
 ```
 
@@ -24701,7 +24937,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -24710,7 +24946,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -25531,7 +25767,7 @@ Name | Type | Description  | Notes
 
 ## V1PortalPrivatePost
 
-> map[string]interface{} V1PortalPrivatePost(ctx).Authorization(authorization).V1PortalPrivatePostRequest(v1PortalPrivatePostRequest).Execute()
+> V1PortalPrivatePost(ctx).Authorization(authorization).V1PortalPrivatePostRequest(v1PortalPrivatePostRequest).Execute()
 
 
 
@@ -25553,13 +25789,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1PortalPrivatePost(context.Background()).Authorization(authorization).V1PortalPrivatePostRequest(v1PortalPrivatePostRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1PortalPrivatePost(context.Background()).Authorization(authorization).V1PortalPrivatePostRequest(v1PortalPrivatePostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1PortalPrivatePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PortalPrivatePost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1PortalPrivatePost`: %v\n", resp)
 }
 ```
 
@@ -25579,7 +25813,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -25588,7 +25822,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -25597,7 +25831,7 @@ Name | Type | Description  | Notes
 
 ## V1PortalPrivateRegisterPost
 
-> map[string]interface{} V1PortalPrivateRegisterPost(ctx).Authorization(authorization).V1PortalPrivateRegisterPostRequest(v1PortalPrivateRegisterPostRequest).Execute()
+> V1PortalPrivateRegisterPost(ctx).Authorization(authorization).V1PortalPrivateRegisterPostRequest(v1PortalPrivateRegisterPostRequest).Execute()
 
 
 
@@ -25619,13 +25853,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1PortalPrivateRegisterPost(context.Background()).Authorization(authorization).V1PortalPrivateRegisterPostRequest(v1PortalPrivateRegisterPostRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1PortalPrivateRegisterPost(context.Background()).Authorization(authorization).V1PortalPrivateRegisterPostRequest(v1PortalPrivateRegisterPostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1PortalPrivateRegisterPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PortalPrivateRegisterPost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1PortalPrivateRegisterPost`: %v\n", resp)
 }
 ```
 
@@ -25645,7 +25877,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -25654,7 +25886,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -25663,7 +25895,7 @@ Name | Type | Description  | Notes
 
 ## V1PortalPrivateSyncPost
 
-> map[string]interface{} V1PortalPrivateSyncPost(ctx).Authorization(authorization).V1PortalPrivateSyncPostRequest(v1PortalPrivateSyncPostRequest).Execute()
+> V1PortalPrivateSyncPost(ctx).Authorization(authorization).V1PortalPrivateSyncPostRequest(v1PortalPrivateSyncPostRequest).Execute()
 
 
 
@@ -25685,13 +25917,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1PortalPrivateSyncPost(context.Background()).Authorization(authorization).V1PortalPrivateSyncPostRequest(v1PortalPrivateSyncPostRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1PortalPrivateSyncPost(context.Background()).Authorization(authorization).V1PortalPrivateSyncPostRequest(v1PortalPrivateSyncPostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1PortalPrivateSyncPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PortalPrivateSyncPost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1PortalPrivateSyncPost`: %v\n", resp)
 }
 ```
 
@@ -25711,7 +25941,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -25720,7 +25950,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -26407,7 +26637,7 @@ Name | Type | Description  | Notes
 
 ## V1SitesSiteIdDelete
 
-> map[string]interface{} V1SitesSiteIdDelete(ctx, siteId).Authorization(authorization).Execute()
+> V1SitesSiteIdDelete(ctx, siteId).Authorization(authorization).Execute()
 
 
 
@@ -26431,13 +26661,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1SitesSiteIdDelete(context.Background(), siteId).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1SitesSiteIdDelete(context.Background(), siteId).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SitesSiteIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1SitesSiteIdDelete`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SitesSiteIdDelete`: %v\n", resp)
 }
 ```
 
@@ -26461,7 +26689,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -26470,7 +26698,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -26689,7 +26917,7 @@ Name | Type | Description  | Notes
 
 ## V1SoftwareAutoUpgradeDefaultPut
 
-> map[string]interface{} V1SoftwareAutoUpgradeDefaultPut(ctx).Authorization(authorization).V1SoftwareAutoUpgradeDefaultPutRequest(v1SoftwareAutoUpgradeDefaultPutRequest).Execute()
+> V1SoftwareAutoUpgradeDefaultPut(ctx).Authorization(authorization).V1SoftwareAutoUpgradeDefaultPutRequest(v1SoftwareAutoUpgradeDefaultPutRequest).Execute()
 
 
 
@@ -26711,13 +26939,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1SoftwareAutoUpgradeDefaultPut(context.Background()).Authorization(authorization).V1SoftwareAutoUpgradeDefaultPutRequest(v1SoftwareAutoUpgradeDefaultPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1SoftwareAutoUpgradeDefaultPut(context.Background()).Authorization(authorization).V1SoftwareAutoUpgradeDefaultPutRequest(v1SoftwareAutoUpgradeDefaultPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SoftwareAutoUpgradeDefaultPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1SoftwareAutoUpgradeDefaultPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SoftwareAutoUpgradeDefaultPut`: %v\n", resp)
 }
 ```
 
@@ -26737,7 +26963,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -26746,7 +26972,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -28107,7 +28333,7 @@ Name | Type | Description  | Notes
 
 ## V1UsersIdDelete
 
-> map[string]interface{} V1UsersIdDelete(ctx, id).Authorization(authorization).Execute()
+> V1UsersIdDelete(ctx, id).Authorization(authorization).Execute()
 
 
 
@@ -28131,13 +28357,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1UsersIdDelete(context.Background(), id).Authorization(authorization).Execute()
+	r, err := apiClient.DefaultAPI.V1UsersIdDelete(context.Background(), id).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1UsersIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1UsersIdDelete`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1UsersIdDelete`: %v\n", resp)
 }
 ```
 
@@ -28161,7 +28385,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -28170,7 +28394,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -28467,7 +28691,7 @@ Name | Type | Description  | Notes
 
 ## V1UsersIdVerifyPatch
 
-> map[string]interface{} V1UsersIdVerifyPatch(ctx, id).Authorization(authorization).Body(body).Execute()
+> V1UsersIdVerifyPatch(ctx, id).Authorization(authorization).Body(body).Execute()
 
 
 
@@ -28492,13 +28716,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1UsersIdVerifyPatch(context.Background(), id).Authorization(authorization).Body(body).Execute()
+	r, err := apiClient.DefaultAPI.V1UsersIdVerifyPatch(context.Background(), id).Authorization(authorization).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1UsersIdVerifyPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1UsersIdVerifyPatch`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1UsersIdVerifyPatch`: %v\n", resp)
 }
 ```
 
@@ -28523,7 +28745,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -28532,7 +28754,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -28541,7 +28763,7 @@ Name | Type | Description  | Notes
 
 ## V1UsersPut
 
-> map[string]interface{} V1UsersPut(ctx).Authorization(authorization).V1UsersPutRequest(v1UsersPutRequest).Execute()
+> V1UsersPut(ctx).Authorization(authorization).V1UsersPutRequest(v1UsersPutRequest).Execute()
 
 
 
@@ -28565,13 +28787,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1UsersPut(context.Background()).Authorization(authorization).V1UsersPutRequest(v1UsersPutRequest).Execute()
+	r, err := apiClient.DefaultAPI.V1UsersPut(context.Background()).Authorization(authorization).V1UsersPutRequest(v1UsersPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1UsersPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1UsersPut`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1UsersPut`: %v\n", resp)
 }
 ```
 
@@ -28591,7 +28811,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -28600,7 +28820,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -32289,7 +32509,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v2ExtranetConsumersUsageTopPostRequest := *openapiclient.NewV2ExtranetConsumersUsageTopPostRequest() // V2ExtranetConsumersUsageTopPostRequest | 
+	v2ExtranetConsumersUsageTopPostRequest := *openapiclient.NewV2ExtranetConsumersUsageTopPostRequest(int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V2ExtranetConsumersUsageTopPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -32357,7 +32577,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v2ExtranetLanSegmentsUsageTopPostRequest := *openapiclient.NewV2ExtranetLanSegmentsUsageTopPostRequest() // V2ExtranetLanSegmentsUsageTopPostRequest | 
+	v2ExtranetLanSegmentsUsageTopPostRequest := *openapiclient.NewV2ExtranetLanSegmentsUsageTopPostRequest(int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V2ExtranetLanSegmentsUsageTopPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -32425,7 +32645,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v2ExtranetServiceOvertimeConsumptionPostRequest := *openapiclient.NewV2ExtranetServiceOvertimeConsumptionPostRequest() // V2ExtranetServiceOvertimeConsumptionPostRequest | 
+	v2ExtranetServiceOvertimeConsumptionPostRequest := *openapiclient.NewV2ExtranetServiceOvertimeConsumptionPostRequest(int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V2ExtranetServiceOvertimeConsumptionPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -32493,7 +32713,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v2ExtranetSitesConsumptionOverviewPostRequest := *openapiclient.NewV2ExtranetSitesConsumptionOverviewPostRequest() // V2ExtranetSitesConsumptionOverviewPostRequest | 
+	v2ExtranetSitesConsumptionOverviewPostRequest := *openapiclient.NewV2ExtranetSitesConsumptionOverviewPostRequest(true, int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V2ExtranetSitesConsumptionOverviewPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -32561,7 +32781,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v2ExtranetSitesUsagePostRequest := *openapiclient.NewV2ExtranetSitesUsagePostRequest() // V2ExtranetSitesUsagePostRequest | 
+	v2ExtranetSitesUsagePostRequest := *openapiclient.NewV2ExtranetSitesUsagePostRequest(int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V2ExtranetSitesUsagePostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -32629,7 +32849,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v2ExtranetTotalUsagePostRequest := *openapiclient.NewV2ExtranetTotalUsagePostRequest() // V2ExtranetTotalUsagePostRequest | 
+	v2ExtranetTotalUsagePostRequest := *openapiclient.NewV2ExtranetTotalUsagePostRequest(int64(1), true, true, *openapiclient.NewStatsmonTimeWindow(int32(300))) // V2ExtranetTotalUsagePostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -33492,7 +33712,9 @@ Name | Type | Description  | Notes
 
 ## V2MonitoringExtranetEdgeStatusGet
 
-> V2MonitoringExtranetEdgeStatusGetResponse V2MonitoringExtranetEdgeStatusGet(ctx).Authorization(authorization).Execute()
+> V2MonitoringExtranetEdgeStatusGetResponse V2MonitoringExtranetEdgeStatusGet(ctx).Authorization(authorization).Id(id).IsProvider(isProvider).Execute()
+
+
 
 
 
@@ -33510,10 +33732,12 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1) // int64 | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service
+	isProvider := true // bool | whether the entity is a provider or consumer
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V2MonitoringExtranetEdgeStatusGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V2MonitoringExtranetEdgeStatusGet(context.Background()).Authorization(authorization).Id(id).IsProvider(isProvider).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2MonitoringExtranetEdgeStatusGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -33535,6 +33759,8 @@ Other parameters are passed through a pointer to a apiV2MonitoringExtranetEdgeSt
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **id** | **int64** | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service | 
+ **isProvider** | **bool** | whether the entity is a provider or consumer | 
 
 ### Return type
 
@@ -33560,6 +33786,8 @@ Name | Type | Description  | Notes
 
 
 
+
+
 ### Example
 
 ```go
@@ -33574,7 +33802,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v2MonitoringExtranetLogDetailsPostRequest := *openapiclient.NewV2MonitoringExtranetLogDetailsPostRequest() // V2MonitoringExtranetLogDetailsPostRequest | 
+	v2MonitoringExtranetLogDetailsPostRequest := *openapiclient.NewV2MonitoringExtranetLogDetailsPostRequest(int64(1), true, true) // V2MonitoringExtranetLogDetailsPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -33622,7 +33850,9 @@ Name | Type | Description  | Notes
 
 ## V2MonitoringExtranetServiceStatusDetailsGet
 
-> V2MonitoringExtranetServiceStatusDetailsGetResponse V2MonitoringExtranetServiceStatusDetailsGet(ctx).Authorization(authorization).Execute()
+> V2MonitoringExtranetServiceStatusDetailsGetResponse V2MonitoringExtranetServiceStatusDetailsGet(ctx).Authorization(authorization).Id(id).IsProvider(isProvider).Execute()
+
+
 
 
 
@@ -33640,10 +33870,12 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1) // int64 | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service
+	isProvider := true // bool | whether the entity is a provider or consumer
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V2MonitoringExtranetServiceStatusDetailsGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V2MonitoringExtranetServiceStatusDetailsGet(context.Background()).Authorization(authorization).Id(id).IsProvider(isProvider).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2MonitoringExtranetServiceStatusDetailsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -33665,6 +33897,8 @@ Other parameters are passed through a pointer to a apiV2MonitoringExtranetServic
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **id** | **int64** | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service | 
+ **isProvider** | **bool** | whether the entity is a provider or consumer | 
 
 ### Return type
 
@@ -33686,7 +33920,9 @@ Name | Type | Description  | Notes
 
 ## V2MonitoringExtranetServiceStatusGet
 
-> V2MonitoringExtranetServiceStatusGetResponse V2MonitoringExtranetServiceStatusGet(ctx).Authorization(authorization).Execute()
+> V2MonitoringExtranetServiceStatusGetResponse V2MonitoringExtranetServiceStatusGet(ctx).Authorization(authorization).Id(id).IsProvider(isProvider).Execute()
+
+
 
 
 
@@ -33704,10 +33940,12 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1) // int64 | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service
+	isProvider := true // bool | whether the entity is a provider or consumer
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V2MonitoringExtranetServiceStatusGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V2MonitoringExtranetServiceStatusGet(context.Background()).Authorization(authorization).Id(id).IsProvider(isProvider).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2MonitoringExtranetServiceStatusGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -33729,6 +33967,8 @@ Other parameters are passed through a pointer to a apiV2MonitoringExtranetServic
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **id** | **int64** | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service | 
+ **isProvider** | **bool** | whether the entity is a provider or consumer | 
 
 ### Return type
 
@@ -33750,7 +33990,9 @@ Name | Type | Description  | Notes
 
 ## V2MonitoringExtranetSiteStatusGet
 
-> V2MonitoringExtranetSiteStatusGetResponse V2MonitoringExtranetSiteStatusGet(ctx).Authorization(authorization).Execute()
+> V2MonitoringExtranetSiteStatusGetResponse V2MonitoringExtranetSiteStatusGet(ctx).Authorization(authorization).Id(id).IsProvider(isProvider).Execute()
+
+
 
 
 
@@ -33768,10 +34010,12 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1) // int64 | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service
+	isProvider := true // bool | whether the entity is a provider or consumer
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V2MonitoringExtranetSiteStatusGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V2MonitoringExtranetSiteStatusGet(context.Background()).Authorization(authorization).Id(id).IsProvider(isProvider).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2MonitoringExtranetSiteStatusGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -33793,6 +34037,8 @@ Other parameters are passed through a pointer to a apiV2MonitoringExtranetSiteSt
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **id** | **int64** | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service | 
+ **isProvider** | **bool** | whether the entity is a provider or consumer | 
 
 ### Return type
 
@@ -33814,7 +34060,9 @@ Name | Type | Description  | Notes
 
 ## V2MonitoringExtranetStatusDetailsGet
 
-> V2MonitoringExtranetStatusDetailsGetResponse V2MonitoringExtranetStatusDetailsGet(ctx).Authorization(authorization).Execute()
+> V2MonitoringExtranetStatusDetailsGetResponse V2MonitoringExtranetStatusDetailsGet(ctx).Authorization(authorization).Id(id).IsProvider(isProvider).ServerAddress(serverAddress).SiteId(siteId).Execute()
+
+
 
 
 
@@ -33832,10 +34080,14 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1) // int64 | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service
+	isProvider := true // bool | whether the entity is a provider or consumer
+	serverAddress := "192.168.1.1" // string | the address of the server
+	siteId := int64(1) // int64 | the id of the site
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V2MonitoringExtranetStatusDetailsGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V2MonitoringExtranetStatusDetailsGet(context.Background()).Authorization(authorization).Id(id).IsProvider(isProvider).ServerAddress(serverAddress).SiteId(siteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2MonitoringExtranetStatusDetailsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -33857,6 +34109,10 @@ Other parameters are passed through a pointer to a apiV2MonitoringExtranetStatus
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **id** | **int64** | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service | 
+ **isProvider** | **bool** | whether the entity is a provider or consumer | 
+ **serverAddress** | **string** | the address of the server | 
+ **siteId** | **int64** | the id of the site | 
 
 ### Return type
 

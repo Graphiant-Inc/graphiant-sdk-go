@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ManaV2B2bExtranetApplicationInvite type satisfies the MappedNullable interface at compile time
@@ -19,20 +21,32 @@ var _ MappedNullable = &ManaV2B2bExtranetApplicationInvite{}
 
 // ManaV2B2bExtranetApplicationInvite struct for ManaV2B2bExtranetApplicationInvite
 type ManaV2B2bExtranetApplicationInvite struct {
-	AdminEmail *string `json:"adminEmail,omitempty"`
-	ConsumerBurstSize *int32 `json:"consumerBurstSize,omitempty"`
-	ConsumerBwSite *int32 `json:"consumerBwSite,omitempty"`
-	EnterpriseId *int64 `json:"enterpriseId,omitempty"`
-	MaximumSiteCount *int32 `json:"maximumSiteCount,omitempty"`
+	// Admin email of the customer (required)
+	AdminEmail string `json:"adminEmail"`
+	// Maximum Burst size per site for the customer (required)
+	ConsumerBurstSize int32 `json:"consumerBurstSize"`
+	// Maximum Bandwidth allocation per site for the customer (required)
+	ConsumerBwSite int32 `json:"consumerBwSite"`
+	// Enterprise ID of the customer (required)
+	EnterpriseId int64 `json:"enterpriseId"`
+	// Maximum number of sites for the customer (required)
+	MaximumSiteCount int32 `json:"maximumSiteCount"`
 	ServicePrefixes []string `json:"servicePrefixes,omitempty"`
 }
+
+type _ManaV2B2bExtranetApplicationInvite ManaV2B2bExtranetApplicationInvite
 
 // NewManaV2B2bExtranetApplicationInvite instantiates a new ManaV2B2bExtranetApplicationInvite object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManaV2B2bExtranetApplicationInvite() *ManaV2B2bExtranetApplicationInvite {
+func NewManaV2B2bExtranetApplicationInvite(adminEmail string, consumerBurstSize int32, consumerBwSite int32, enterpriseId int64, maximumSiteCount int32) *ManaV2B2bExtranetApplicationInvite {
 	this := ManaV2B2bExtranetApplicationInvite{}
+	this.AdminEmail = adminEmail
+	this.ConsumerBurstSize = consumerBurstSize
+	this.ConsumerBwSite = consumerBwSite
+	this.EnterpriseId = enterpriseId
+	this.MaximumSiteCount = maximumSiteCount
 	return &this
 }
 
@@ -44,164 +58,124 @@ func NewManaV2B2bExtranetApplicationInviteWithDefaults() *ManaV2B2bExtranetAppli
 	return &this
 }
 
-// GetAdminEmail returns the AdminEmail field value if set, zero value otherwise.
+// GetAdminEmail returns the AdminEmail field value
 func (o *ManaV2B2bExtranetApplicationInvite) GetAdminEmail() string {
-	if o == nil || IsNil(o.AdminEmail) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AdminEmail
+
+	return o.AdminEmail
 }
 
-// GetAdminEmailOk returns a tuple with the AdminEmail field value if set, nil otherwise
+// GetAdminEmailOk returns a tuple with the AdminEmail field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetApplicationInvite) GetAdminEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.AdminEmail) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AdminEmail, true
+	return &o.AdminEmail, true
 }
 
-// HasAdminEmail returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetApplicationInvite) HasAdminEmail() bool {
-	if o != nil && !IsNil(o.AdminEmail) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdminEmail gets a reference to the given string and assigns it to the AdminEmail field.
+// SetAdminEmail sets field value
 func (o *ManaV2B2bExtranetApplicationInvite) SetAdminEmail(v string) {
-	o.AdminEmail = &v
+	o.AdminEmail = v
 }
 
-// GetConsumerBurstSize returns the ConsumerBurstSize field value if set, zero value otherwise.
+// GetConsumerBurstSize returns the ConsumerBurstSize field value
 func (o *ManaV2B2bExtranetApplicationInvite) GetConsumerBurstSize() int32 {
-	if o == nil || IsNil(o.ConsumerBurstSize) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ConsumerBurstSize
+
+	return o.ConsumerBurstSize
 }
 
-// GetConsumerBurstSizeOk returns a tuple with the ConsumerBurstSize field value if set, nil otherwise
+// GetConsumerBurstSizeOk returns a tuple with the ConsumerBurstSize field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetApplicationInvite) GetConsumerBurstSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.ConsumerBurstSize) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ConsumerBurstSize, true
+	return &o.ConsumerBurstSize, true
 }
 
-// HasConsumerBurstSize returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetApplicationInvite) HasConsumerBurstSize() bool {
-	if o != nil && !IsNil(o.ConsumerBurstSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetConsumerBurstSize gets a reference to the given int32 and assigns it to the ConsumerBurstSize field.
+// SetConsumerBurstSize sets field value
 func (o *ManaV2B2bExtranetApplicationInvite) SetConsumerBurstSize(v int32) {
-	o.ConsumerBurstSize = &v
+	o.ConsumerBurstSize = v
 }
 
-// GetConsumerBwSite returns the ConsumerBwSite field value if set, zero value otherwise.
+// GetConsumerBwSite returns the ConsumerBwSite field value
 func (o *ManaV2B2bExtranetApplicationInvite) GetConsumerBwSite() int32 {
-	if o == nil || IsNil(o.ConsumerBwSite) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ConsumerBwSite
+
+	return o.ConsumerBwSite
 }
 
-// GetConsumerBwSiteOk returns a tuple with the ConsumerBwSite field value if set, nil otherwise
+// GetConsumerBwSiteOk returns a tuple with the ConsumerBwSite field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetApplicationInvite) GetConsumerBwSiteOk() (*int32, bool) {
-	if o == nil || IsNil(o.ConsumerBwSite) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ConsumerBwSite, true
+	return &o.ConsumerBwSite, true
 }
 
-// HasConsumerBwSite returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetApplicationInvite) HasConsumerBwSite() bool {
-	if o != nil && !IsNil(o.ConsumerBwSite) {
-		return true
-	}
-
-	return false
-}
-
-// SetConsumerBwSite gets a reference to the given int32 and assigns it to the ConsumerBwSite field.
+// SetConsumerBwSite sets field value
 func (o *ManaV2B2bExtranetApplicationInvite) SetConsumerBwSite(v int32) {
-	o.ConsumerBwSite = &v
+	o.ConsumerBwSite = v
 }
 
-// GetEnterpriseId returns the EnterpriseId field value if set, zero value otherwise.
+// GetEnterpriseId returns the EnterpriseId field value
 func (o *ManaV2B2bExtranetApplicationInvite) GetEnterpriseId() int64 {
-	if o == nil || IsNil(o.EnterpriseId) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.EnterpriseId
+
+	return o.EnterpriseId
 }
 
-// GetEnterpriseIdOk returns a tuple with the EnterpriseId field value if set, nil otherwise
+// GetEnterpriseIdOk returns a tuple with the EnterpriseId field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetApplicationInvite) GetEnterpriseIdOk() (*int64, bool) {
-	if o == nil || IsNil(o.EnterpriseId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnterpriseId, true
+	return &o.EnterpriseId, true
 }
 
-// HasEnterpriseId returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetApplicationInvite) HasEnterpriseId() bool {
-	if o != nil && !IsNil(o.EnterpriseId) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnterpriseId gets a reference to the given int64 and assigns it to the EnterpriseId field.
+// SetEnterpriseId sets field value
 func (o *ManaV2B2bExtranetApplicationInvite) SetEnterpriseId(v int64) {
-	o.EnterpriseId = &v
+	o.EnterpriseId = v
 }
 
-// GetMaximumSiteCount returns the MaximumSiteCount field value if set, zero value otherwise.
+// GetMaximumSiteCount returns the MaximumSiteCount field value
 func (o *ManaV2B2bExtranetApplicationInvite) GetMaximumSiteCount() int32 {
-	if o == nil || IsNil(o.MaximumSiteCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MaximumSiteCount
+
+	return o.MaximumSiteCount
 }
 
-// GetMaximumSiteCountOk returns a tuple with the MaximumSiteCount field value if set, nil otherwise
+// GetMaximumSiteCountOk returns a tuple with the MaximumSiteCount field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetApplicationInvite) GetMaximumSiteCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.MaximumSiteCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaximumSiteCount, true
+	return &o.MaximumSiteCount, true
 }
 
-// HasMaximumSiteCount returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetApplicationInvite) HasMaximumSiteCount() bool {
-	if o != nil && !IsNil(o.MaximumSiteCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaximumSiteCount gets a reference to the given int32 and assigns it to the MaximumSiteCount field.
+// SetMaximumSiteCount sets field value
 func (o *ManaV2B2bExtranetApplicationInvite) SetMaximumSiteCount(v int32) {
-	o.MaximumSiteCount = &v
+	o.MaximumSiteCount = v
 }
 
 // GetServicePrefixes returns the ServicePrefixes field value if set, zero value otherwise.
@@ -246,25 +220,56 @@ func (o ManaV2B2bExtranetApplicationInvite) MarshalJSON() ([]byte, error) {
 
 func (o ManaV2B2bExtranetApplicationInvite) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AdminEmail) {
-		toSerialize["adminEmail"] = o.AdminEmail
-	}
-	if !IsNil(o.ConsumerBurstSize) {
-		toSerialize["consumerBurstSize"] = o.ConsumerBurstSize
-	}
-	if !IsNil(o.ConsumerBwSite) {
-		toSerialize["consumerBwSite"] = o.ConsumerBwSite
-	}
-	if !IsNil(o.EnterpriseId) {
-		toSerialize["enterpriseId"] = o.EnterpriseId
-	}
-	if !IsNil(o.MaximumSiteCount) {
-		toSerialize["maximumSiteCount"] = o.MaximumSiteCount
-	}
+	toSerialize["adminEmail"] = o.AdminEmail
+	toSerialize["consumerBurstSize"] = o.ConsumerBurstSize
+	toSerialize["consumerBwSite"] = o.ConsumerBwSite
+	toSerialize["enterpriseId"] = o.EnterpriseId
+	toSerialize["maximumSiteCount"] = o.MaximumSiteCount
 	if !IsNil(o.ServicePrefixes) {
 		toSerialize["servicePrefixes"] = o.ServicePrefixes
 	}
 	return toSerialize, nil
+}
+
+func (o *ManaV2B2bExtranetApplicationInvite) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"adminEmail",
+		"consumerBurstSize",
+		"consumerBwSite",
+		"enterpriseId",
+		"maximumSiteCount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varManaV2B2bExtranetApplicationInvite := _ManaV2B2bExtranetApplicationInvite{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varManaV2B2bExtranetApplicationInvite)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ManaV2B2bExtranetApplicationInvite(varManaV2B2bExtranetApplicationInvite)
+
+	return err
 }
 
 type NullableManaV2B2bExtranetApplicationInvite struct {

@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the V1ExtranetsB2bPostRequest type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,24 @@ var _ MappedNullable = &V1ExtranetsB2bPostRequest{}
 
 // V1ExtranetsB2bPostRequest struct for V1ExtranetsB2bPostRequest
 type V1ExtranetsB2bPostRequest struct {
-	Policy *ManaV2B2bExtranetProducerPolicy `json:"policy,omitempty"`
-	ServiceName *string `json:"serviceName,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Policy ManaV2B2bExtranetProducerPolicy `json:"policy"`
+	// Name of the service (required)
+	ServiceName string `json:"serviceName"`
+	// Type of the service whether it is application or peering (required)
+	Type string `json:"type"`
 }
+
+type _V1ExtranetsB2bPostRequest V1ExtranetsB2bPostRequest
 
 // NewV1ExtranetsB2bPostRequest instantiates a new V1ExtranetsB2bPostRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1ExtranetsB2bPostRequest() *V1ExtranetsB2bPostRequest {
+func NewV1ExtranetsB2bPostRequest(policy ManaV2B2bExtranetProducerPolicy, serviceName string, type_ string) *V1ExtranetsB2bPostRequest {
 	this := V1ExtranetsB2bPostRequest{}
+	this.Policy = policy
+	this.ServiceName = serviceName
+	this.Type = type_
 	return &this
 }
 
@@ -41,100 +50,76 @@ func NewV1ExtranetsB2bPostRequestWithDefaults() *V1ExtranetsB2bPostRequest {
 	return &this
 }
 
-// GetPolicy returns the Policy field value if set, zero value otherwise.
+// GetPolicy returns the Policy field value
 func (o *V1ExtranetsB2bPostRequest) GetPolicy() ManaV2B2bExtranetProducerPolicy {
-	if o == nil || IsNil(o.Policy) {
+	if o == nil {
 		var ret ManaV2B2bExtranetProducerPolicy
 		return ret
 	}
-	return *o.Policy
+
+	return o.Policy
 }
 
-// GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
+// GetPolicyOk returns a tuple with the Policy field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPostRequest) GetPolicyOk() (*ManaV2B2bExtranetProducerPolicy, bool) {
-	if o == nil || IsNil(o.Policy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Policy, true
+	return &o.Policy, true
 }
 
-// HasPolicy returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPostRequest) HasPolicy() bool {
-	if o != nil && !IsNil(o.Policy) {
-		return true
-	}
-
-	return false
-}
-
-// SetPolicy gets a reference to the given ManaV2B2bExtranetProducerPolicy and assigns it to the Policy field.
+// SetPolicy sets field value
 func (o *V1ExtranetsB2bPostRequest) SetPolicy(v ManaV2B2bExtranetProducerPolicy) {
-	o.Policy = &v
+	o.Policy = v
 }
 
-// GetServiceName returns the ServiceName field value if set, zero value otherwise.
+// GetServiceName returns the ServiceName field value
 func (o *V1ExtranetsB2bPostRequest) GetServiceName() string {
-	if o == nil || IsNil(o.ServiceName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ServiceName
+
+	return o.ServiceName
 }
 
-// GetServiceNameOk returns a tuple with the ServiceName field value if set, nil otherwise
+// GetServiceNameOk returns a tuple with the ServiceName field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPostRequest) GetServiceNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ServiceName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ServiceName, true
+	return &o.ServiceName, true
 }
 
-// HasServiceName returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPostRequest) HasServiceName() bool {
-	if o != nil && !IsNil(o.ServiceName) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceName gets a reference to the given string and assigns it to the ServiceName field.
+// SetServiceName sets field value
 func (o *V1ExtranetsB2bPostRequest) SetServiceName(v string) {
-	o.ServiceName = &v
+	o.ServiceName = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *V1ExtranetsB2bPostRequest) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPostRequest) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPostRequest) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *V1ExtranetsB2bPostRequest) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 func (o V1ExtranetsB2bPostRequest) MarshalJSON() ([]byte, error) {
@@ -147,16 +132,49 @@ func (o V1ExtranetsB2bPostRequest) MarshalJSON() ([]byte, error) {
 
 func (o V1ExtranetsB2bPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Policy) {
-		toSerialize["policy"] = o.Policy
-	}
-	if !IsNil(o.ServiceName) {
-		toSerialize["serviceName"] = o.ServiceName
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["policy"] = o.Policy
+	toSerialize["serviceName"] = o.ServiceName
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
+}
+
+func (o *V1ExtranetsB2bPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"policy",
+		"serviceName",
+		"type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1ExtranetsB2bPostRequest := _V1ExtranetsB2bPostRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1ExtranetsB2bPostRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1ExtranetsB2bPostRequest(varV1ExtranetsB2bPostRequest)
+
+	return err
 }
 
 type NullableV1ExtranetsB2bPostRequest struct {

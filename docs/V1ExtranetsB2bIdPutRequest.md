@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Policy** | Pointer to [**ManaV2B2bExtranetProducerPolicy**](ManaV2B2bExtranetProducerPolicy.md) |  | [optional] 
+**Policy** | [**ManaV2B2bExtranetProducerPolicy**](ManaV2B2bExtranetProducerPolicy.md) |  | 
 
 ## Methods
 
 ### NewV1ExtranetsB2bIdPutRequest
 
-`func NewV1ExtranetsB2bIdPutRequest() *V1ExtranetsB2bIdPutRequest`
+`func NewV1ExtranetsB2bIdPutRequest(policy ManaV2B2bExtranetProducerPolicy, ) *V1ExtranetsB2bIdPutRequest`
 
 NewV1ExtranetsB2bIdPutRequest instantiates a new V1ExtranetsB2bIdPutRequest object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetPolicy sets Policy field to given value.
 
-### HasPolicy
-
-`func (o *V1ExtranetsB2bIdPutRequest) HasPolicy() bool`
-
-HasPolicy returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

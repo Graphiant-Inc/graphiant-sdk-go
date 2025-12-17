@@ -19,9 +19,13 @@ var _ MappedNullable = &V2MonitoringExtranetLogDetailsPostResponseLogDetails{}
 
 // V2MonitoringExtranetLogDetailsPostResponseLogDetails struct for V2MonitoringExtranetLogDetailsPostResponseLogDetails
 type V2MonitoringExtranetLogDetailsPostResponseLogDetails struct {
+	// the hostname of the log
 	Hostname *string `json:"hostname,omitempty"`
+	// the reason for the log
 	Reason *string `json:"reason,omitempty"`
+	// the address of the server
 	ServerAddress *string `json:"serverAddress,omitempty"`
+	// the name of the site
 	SiteName *string `json:"siteName,omitempty"`
 	Ts *GoogleProtobufTimestamp `json:"ts,omitempty"`
 }

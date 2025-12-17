@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** | the id of a producer/service | [optional] 
-**IsB2B** | Pointer to **bool** |  | [optional] 
-**IsProvider** | Pointer to **bool** |  | [optional] 
-**TimeWindow** | Pointer to [**StatsmonTimeWindow**](StatsmonTimeWindow.md) |  | [optional] 
+**Id** | **int64** | the id of a producer/service (required) | 
+**IsB2B** | **bool** | whether the entity is a b2b entity (true for b2b entity, false for local extranet entity) (required) | 
+**IsProvider** | **bool** | whether the entity is a provider or consumer (required) | 
+**TimeWindow** | [**StatsmonTimeWindow**](StatsmonTimeWindow.md) |  | 
 
 ## Methods
 
 ### NewV2ExtranetConsumersUsageTopPostRequest
 
-`func NewV2ExtranetConsumersUsageTopPostRequest() *V2ExtranetConsumersUsageTopPostRequest`
+`func NewV2ExtranetConsumersUsageTopPostRequest(id int64, isB2B bool, isProvider bool, timeWindow StatsmonTimeWindow, ) *V2ExtranetConsumersUsageTopPostRequest`
 
 NewV2ExtranetConsumersUsageTopPostRequest instantiates a new V2ExtranetConsumersUsageTopPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -47,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *V2ExtranetConsumersUsageTopPostRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetIsB2B
 
@@ -72,11 +67,6 @@ and a boolean to check if the value has been set.
 
 SetIsB2B sets IsB2B field to given value.
 
-### HasIsB2B
-
-`func (o *V2ExtranetConsumersUsageTopPostRequest) HasIsB2B() bool`
-
-HasIsB2B returns a boolean if a field has been set.
 
 ### GetIsProvider
 
@@ -97,11 +87,6 @@ and a boolean to check if the value has been set.
 
 SetIsProvider sets IsProvider field to given value.
 
-### HasIsProvider
-
-`func (o *V2ExtranetConsumersUsageTopPostRequest) HasIsProvider() bool`
-
-HasIsProvider returns a boolean if a field has been set.
 
 ### GetTimeWindow
 
@@ -122,11 +107,6 @@ and a boolean to check if the value has been set.
 
 SetTimeWindow sets TimeWindow field to given value.
 
-### HasTimeWindow
-
-`func (o *V2ExtranetConsumersUsageTopPostRequest) HasTimeWindow() bool`
-
-HasTimeWindow returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

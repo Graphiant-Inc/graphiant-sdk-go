@@ -20,10 +20,15 @@ var _ MappedNullable = &StatsmonExtranetEdgeStatus{}
 // StatsmonExtranetEdgeStatus struct for StatsmonExtranetEdgeStatus
 type StatsmonExtranetEdgeStatus struct {
 	CreatedAt *GoogleProtobufTimestamp `json:"createdAt,omitempty"`
+	// the reason for the edge being disconnected
 	DisconnectedReason *string `json:"disconnectedReason,omitempty"`
+	// the hostname of the edge
 	Hostname *string `json:"hostname,omitempty"`
+	// the id of the edge/device
 	Id *int64 `json:"id,omitempty"`
+	// the name of the site
 	SiteName *string `json:"siteName,omitempty"`
+	// the health status of the edge (Healthy, Impaired, Down)
 	Status *string `json:"status,omitempty"`
 }
 

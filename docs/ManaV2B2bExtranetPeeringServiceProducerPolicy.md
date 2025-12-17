@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **string** | Description for the service | [optional] 
 **GlobalObjectOps** | Pointer to [**map[string]ManaV2GlobalObjectServiceOps**](ManaV2GlobalObjectServiceOps.md) |  | [optional] 
-**PrefixTags** | Pointer to [**[]ManaV2B2bExtranetPrefixTag**](ManaV2B2bExtranetPrefixTag.md) |  | [optional] 
-**ServiceLanSegment** | Pointer to **int64** |  | [optional] 
-**Site** | Pointer to [**[]ManaV2B2bSiteInformation**](ManaV2B2bSiteInformation.md) |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**PrefixTags** | [**[]ManaV2B2bExtranetPrefixTag**](ManaV2B2bExtranetPrefixTag.md) |  | 
+**ServiceLanSegment** | **int64** | LAN segment ID for the service (required) | 
+**Site** | [**[]ManaV2B2bSiteInformation**](ManaV2B2bSiteInformation.md) |  | 
+**Type** | **string** | Type of the service whether it is application or peering (required) | 
 
 ## Methods
 
 ### NewManaV2B2bExtranetPeeringServiceProducerPolicy
 
-`func NewManaV2B2bExtranetPeeringServiceProducerPolicy() *ManaV2B2bExtranetPeeringServiceProducerPolicy`
+`func NewManaV2B2bExtranetPeeringServiceProducerPolicy(prefixTags []ManaV2B2bExtranetPrefixTag, serviceLanSegment int64, site []ManaV2B2bSiteInformation, type_ string, ) *ManaV2B2bExtranetPeeringServiceProducerPolicy`
 
 NewManaV2B2bExtranetPeeringServiceProducerPolicy instantiates a new ManaV2B2bExtranetPeeringServiceProducerPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -99,11 +99,6 @@ and a boolean to check if the value has been set.
 
 SetPrefixTags sets PrefixTags field to given value.
 
-### HasPrefixTags
-
-`func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) HasPrefixTags() bool`
-
-HasPrefixTags returns a boolean if a field has been set.
 
 ### GetServiceLanSegment
 
@@ -124,11 +119,6 @@ and a boolean to check if the value has been set.
 
 SetServiceLanSegment sets ServiceLanSegment field to given value.
 
-### HasServiceLanSegment
-
-`func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) HasServiceLanSegment() bool`
-
-HasServiceLanSegment returns a boolean if a field has been set.
 
 ### GetSite
 
@@ -149,11 +139,6 @@ and a boolean to check if the value has been set.
 
 SetSite sets Site field to given value.
 
-### HasSite
-
-`func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) HasSite() bool`
-
-HasSite returns a boolean if a field has been set.
 
 ### GetType
 
@@ -174,11 +159,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

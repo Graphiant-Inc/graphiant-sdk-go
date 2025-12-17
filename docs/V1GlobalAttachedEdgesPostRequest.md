@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IpfixExportedIds** | Pointer to **[]int64** |  | [optional] 
+**NtpIds** | Pointer to **[]int64** |  | [optional] 
 **PrefixSetIds** | Pointer to **[]int64** |  | [optional] 
 **RoutingPolicyIds** | Pointer to **[]int64** |  | [optional] 
 **SnmpIds** | Pointer to **[]int64** |  | [optional] 
@@ -54,6 +55,31 @@ SetIpfixExportedIds sets IpfixExportedIds field to given value.
 `func (o *V1GlobalAttachedEdgesPostRequest) HasIpfixExportedIds() bool`
 
 HasIpfixExportedIds returns a boolean if a field has been set.
+
+### GetNtpIds
+
+`func (o *V1GlobalAttachedEdgesPostRequest) GetNtpIds() []int64`
+
+GetNtpIds returns the NtpIds field if non-nil, zero value otherwise.
+
+### GetNtpIdsOk
+
+`func (o *V1GlobalAttachedEdgesPostRequest) GetNtpIdsOk() (*[]int64, bool)`
+
+GetNtpIdsOk returns a tuple with the NtpIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNtpIds
+
+`func (o *V1GlobalAttachedEdgesPostRequest) SetNtpIds(v []int64)`
+
+SetNtpIds sets NtpIds field to given value.
+
+### HasNtpIds
+
+`func (o *V1GlobalAttachedEdgesPostRequest) HasNtpIds() bool`
+
+HasNtpIds returns a boolean if a field has been set.
 
 ### GetPrefixSetIds
 

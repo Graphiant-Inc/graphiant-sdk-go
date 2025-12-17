@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **FirstLevel** | Pointer to [**[]IpfixConnectionMap**](IpfixConnectionMap.md) |  | [optional] 
 **SecondLevel** | Pointer to [**[]IpfixConnectionMap**](IpfixConnectionMap.md) |  | [optional] 
 **ThirdLevel** | Pointer to [**[]IpfixConnectionMap**](IpfixConnectionMap.md) |  | [optional] 
-**TotalUsage** | Pointer to **float64** |  | [optional] 
+**TotalUsage** | Pointer to **float64** | total service usage in kilo bytes | [optional] 
 
 ## Methods
 

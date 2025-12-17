@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ManaV2B2bExtranetPeeringServiceCustomerInvite type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,21 @@ var _ MappedNullable = &ManaV2B2bExtranetPeeringServiceCustomerInvite{}
 
 // ManaV2B2bExtranetPeeringServiceCustomerInvite struct for ManaV2B2bExtranetPeeringServiceCustomerInvite
 type ManaV2B2bExtranetPeeringServiceCustomerInvite struct {
-	AdminEmail []string `json:"adminEmail,omitempty"`
-	MaximumNumberOfSites *int32 `json:"maximumNumberOfSites,omitempty"`
+	AdminEmail []string `json:"adminEmail"`
+	// Maximum number of sites for the peering service customer (required)
+	MaximumNumberOfSites int32 `json:"maximumNumberOfSites"`
 }
+
+type _ManaV2B2bExtranetPeeringServiceCustomerInvite ManaV2B2bExtranetPeeringServiceCustomerInvite
 
 // NewManaV2B2bExtranetPeeringServiceCustomerInvite instantiates a new ManaV2B2bExtranetPeeringServiceCustomerInvite object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManaV2B2bExtranetPeeringServiceCustomerInvite() *ManaV2B2bExtranetPeeringServiceCustomerInvite {
+func NewManaV2B2bExtranetPeeringServiceCustomerInvite(adminEmail []string, maximumNumberOfSites int32) *ManaV2B2bExtranetPeeringServiceCustomerInvite {
 	this := ManaV2B2bExtranetPeeringServiceCustomerInvite{}
+	this.AdminEmail = adminEmail
+	this.MaximumNumberOfSites = maximumNumberOfSites
 	return &this
 }
 
@@ -40,68 +47,52 @@ func NewManaV2B2bExtranetPeeringServiceCustomerInviteWithDefaults() *ManaV2B2bEx
 	return &this
 }
 
-// GetAdminEmail returns the AdminEmail field value if set, zero value otherwise.
+// GetAdminEmail returns the AdminEmail field value
 func (o *ManaV2B2bExtranetPeeringServiceCustomerInvite) GetAdminEmail() []string {
-	if o == nil || IsNil(o.AdminEmail) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.AdminEmail
 }
 
-// GetAdminEmailOk returns a tuple with the AdminEmail field value if set, nil otherwise
+// GetAdminEmailOk returns a tuple with the AdminEmail field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetPeeringServiceCustomerInvite) GetAdminEmailOk() ([]string, bool) {
-	if o == nil || IsNil(o.AdminEmail) {
+	if o == nil {
 		return nil, false
 	}
 	return o.AdminEmail, true
 }
 
-// HasAdminEmail returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetPeeringServiceCustomerInvite) HasAdminEmail() bool {
-	if o != nil && !IsNil(o.AdminEmail) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdminEmail gets a reference to the given []string and assigns it to the AdminEmail field.
+// SetAdminEmail sets field value
 func (o *ManaV2B2bExtranetPeeringServiceCustomerInvite) SetAdminEmail(v []string) {
 	o.AdminEmail = v
 }
 
-// GetMaximumNumberOfSites returns the MaximumNumberOfSites field value if set, zero value otherwise.
+// GetMaximumNumberOfSites returns the MaximumNumberOfSites field value
 func (o *ManaV2B2bExtranetPeeringServiceCustomerInvite) GetMaximumNumberOfSites() int32 {
-	if o == nil || IsNil(o.MaximumNumberOfSites) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MaximumNumberOfSites
+
+	return o.MaximumNumberOfSites
 }
 
-// GetMaximumNumberOfSitesOk returns a tuple with the MaximumNumberOfSites field value if set, nil otherwise
+// GetMaximumNumberOfSitesOk returns a tuple with the MaximumNumberOfSites field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetPeeringServiceCustomerInvite) GetMaximumNumberOfSitesOk() (*int32, bool) {
-	if o == nil || IsNil(o.MaximumNumberOfSites) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaximumNumberOfSites, true
+	return &o.MaximumNumberOfSites, true
 }
 
-// HasMaximumNumberOfSites returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetPeeringServiceCustomerInvite) HasMaximumNumberOfSites() bool {
-	if o != nil && !IsNil(o.MaximumNumberOfSites) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaximumNumberOfSites gets a reference to the given int32 and assigns it to the MaximumNumberOfSites field.
+// SetMaximumNumberOfSites sets field value
 func (o *ManaV2B2bExtranetPeeringServiceCustomerInvite) SetMaximumNumberOfSites(v int32) {
-	o.MaximumNumberOfSites = &v
+	o.MaximumNumberOfSites = v
 }
 
 func (o ManaV2B2bExtranetPeeringServiceCustomerInvite) MarshalJSON() ([]byte, error) {
@@ -114,13 +105,47 @@ func (o ManaV2B2bExtranetPeeringServiceCustomerInvite) MarshalJSON() ([]byte, er
 
 func (o ManaV2B2bExtranetPeeringServiceCustomerInvite) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AdminEmail) {
-		toSerialize["adminEmail"] = o.AdminEmail
-	}
-	if !IsNil(o.MaximumNumberOfSites) {
-		toSerialize["maximumNumberOfSites"] = o.MaximumNumberOfSites
-	}
+	toSerialize["adminEmail"] = o.AdminEmail
+	toSerialize["maximumNumberOfSites"] = o.MaximumNumberOfSites
 	return toSerialize, nil
+}
+
+func (o *ManaV2B2bExtranetPeeringServiceCustomerInvite) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"adminEmail",
+		"maximumNumberOfSites",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varManaV2B2bExtranetPeeringServiceCustomerInvite := _ManaV2B2bExtranetPeeringServiceCustomerInvite{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varManaV2B2bExtranetPeeringServiceCustomerInvite)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ManaV2B2bExtranetPeeringServiceCustomerInvite(varManaV2B2bExtranetPeeringServiceCustomerInvite)
+
+	return err
 }
 
 type NullableManaV2B2bExtranetPeeringServiceCustomerInvite struct {

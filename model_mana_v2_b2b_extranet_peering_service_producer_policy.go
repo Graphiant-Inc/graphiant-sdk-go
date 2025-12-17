@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ManaV2B2bExtranetPeeringServiceProducerPolicy type satisfies the MappedNullable interface at compile time
@@ -19,20 +21,29 @@ var _ MappedNullable = &ManaV2B2bExtranetPeeringServiceProducerPolicy{}
 
 // ManaV2B2bExtranetPeeringServiceProducerPolicy struct for ManaV2B2bExtranetPeeringServiceProducerPolicy
 type ManaV2B2bExtranetPeeringServiceProducerPolicy struct {
+	// Description for the service
 	Description *string `json:"description,omitempty"`
 	GlobalObjectOps *map[string]ManaV2GlobalObjectServiceOps `json:"globalObjectOps,omitempty"`
-	PrefixTags []ManaV2B2bExtranetPrefixTag `json:"prefixTags,omitempty"`
-	ServiceLanSegment *int64 `json:"serviceLanSegment,omitempty"`
-	Site []ManaV2B2bSiteInformation `json:"site,omitempty"`
-	Type *string `json:"type,omitempty"`
+	PrefixTags []ManaV2B2bExtranetPrefixTag `json:"prefixTags"`
+	// LAN segment ID for the service (required)
+	ServiceLanSegment int64 `json:"serviceLanSegment"`
+	Site []ManaV2B2bSiteInformation `json:"site"`
+	// Type of the service whether it is application or peering (required)
+	Type string `json:"type"`
 }
+
+type _ManaV2B2bExtranetPeeringServiceProducerPolicy ManaV2B2bExtranetPeeringServiceProducerPolicy
 
 // NewManaV2B2bExtranetPeeringServiceProducerPolicy instantiates a new ManaV2B2bExtranetPeeringServiceProducerPolicy object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManaV2B2bExtranetPeeringServiceProducerPolicy() *ManaV2B2bExtranetPeeringServiceProducerPolicy {
+func NewManaV2B2bExtranetPeeringServiceProducerPolicy(prefixTags []ManaV2B2bExtranetPrefixTag, serviceLanSegment int64, site []ManaV2B2bSiteInformation, type_ string) *ManaV2B2bExtranetPeeringServiceProducerPolicy {
 	this := ManaV2B2bExtranetPeeringServiceProducerPolicy{}
+	this.PrefixTags = prefixTags
+	this.ServiceLanSegment = serviceLanSegment
+	this.Site = site
+	this.Type = type_
 	return &this
 }
 
@@ -108,132 +119,100 @@ func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) SetGlobalObjectOps(v map
 	o.GlobalObjectOps = &v
 }
 
-// GetPrefixTags returns the PrefixTags field value if set, zero value otherwise.
+// GetPrefixTags returns the PrefixTags field value
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) GetPrefixTags() []ManaV2B2bExtranetPrefixTag {
-	if o == nil || IsNil(o.PrefixTags) {
+	if o == nil {
 		var ret []ManaV2B2bExtranetPrefixTag
 		return ret
 	}
+
 	return o.PrefixTags
 }
 
-// GetPrefixTagsOk returns a tuple with the PrefixTags field value if set, nil otherwise
+// GetPrefixTagsOk returns a tuple with the PrefixTags field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) GetPrefixTagsOk() ([]ManaV2B2bExtranetPrefixTag, bool) {
-	if o == nil || IsNil(o.PrefixTags) {
+	if o == nil {
 		return nil, false
 	}
 	return o.PrefixTags, true
 }
 
-// HasPrefixTags returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) HasPrefixTags() bool {
-	if o != nil && !IsNil(o.PrefixTags) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrefixTags gets a reference to the given []ManaV2B2bExtranetPrefixTag and assigns it to the PrefixTags field.
+// SetPrefixTags sets field value
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) SetPrefixTags(v []ManaV2B2bExtranetPrefixTag) {
 	o.PrefixTags = v
 }
 
-// GetServiceLanSegment returns the ServiceLanSegment field value if set, zero value otherwise.
+// GetServiceLanSegment returns the ServiceLanSegment field value
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) GetServiceLanSegment() int64 {
-	if o == nil || IsNil(o.ServiceLanSegment) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.ServiceLanSegment
+
+	return o.ServiceLanSegment
 }
 
-// GetServiceLanSegmentOk returns a tuple with the ServiceLanSegment field value if set, nil otherwise
+// GetServiceLanSegmentOk returns a tuple with the ServiceLanSegment field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) GetServiceLanSegmentOk() (*int64, bool) {
-	if o == nil || IsNil(o.ServiceLanSegment) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ServiceLanSegment, true
+	return &o.ServiceLanSegment, true
 }
 
-// HasServiceLanSegment returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) HasServiceLanSegment() bool {
-	if o != nil && !IsNil(o.ServiceLanSegment) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceLanSegment gets a reference to the given int64 and assigns it to the ServiceLanSegment field.
+// SetServiceLanSegment sets field value
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) SetServiceLanSegment(v int64) {
-	o.ServiceLanSegment = &v
+	o.ServiceLanSegment = v
 }
 
-// GetSite returns the Site field value if set, zero value otherwise.
+// GetSite returns the Site field value
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) GetSite() []ManaV2B2bSiteInformation {
-	if o == nil || IsNil(o.Site) {
+	if o == nil {
 		var ret []ManaV2B2bSiteInformation
 		return ret
 	}
+
 	return o.Site
 }
 
-// GetSiteOk returns a tuple with the Site field value if set, nil otherwise
+// GetSiteOk returns a tuple with the Site field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) GetSiteOk() ([]ManaV2B2bSiteInformation, bool) {
-	if o == nil || IsNil(o.Site) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Site, true
 }
 
-// HasSite returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) HasSite() bool {
-	if o != nil && !IsNil(o.Site) {
-		return true
-	}
-
-	return false
-}
-
-// SetSite gets a reference to the given []ManaV2B2bSiteInformation and assigns it to the Site field.
+// SetSite sets field value
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) SetSite(v []ManaV2B2bSiteInformation) {
 	o.Site = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 func (o ManaV2B2bExtranetPeeringServiceProducerPolicy) MarshalJSON() ([]byte, error) {
@@ -252,19 +231,51 @@ func (o ManaV2B2bExtranetPeeringServiceProducerPolicy) ToMap() (map[string]inter
 	if !IsNil(o.GlobalObjectOps) {
 		toSerialize["globalObjectOps"] = o.GlobalObjectOps
 	}
-	if !IsNil(o.PrefixTags) {
-		toSerialize["prefixTags"] = o.PrefixTags
-	}
-	if !IsNil(o.ServiceLanSegment) {
-		toSerialize["serviceLanSegment"] = o.ServiceLanSegment
-	}
-	if !IsNil(o.Site) {
-		toSerialize["site"] = o.Site
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["prefixTags"] = o.PrefixTags
+	toSerialize["serviceLanSegment"] = o.ServiceLanSegment
+	toSerialize["site"] = o.Site
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
+}
+
+func (o *ManaV2B2bExtranetPeeringServiceProducerPolicy) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"prefixTags",
+		"serviceLanSegment",
+		"site",
+		"type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varManaV2B2bExtranetPeeringServiceProducerPolicy := _ManaV2B2bExtranetPeeringServiceProducerPolicy{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varManaV2B2bExtranetPeeringServiceProducerPolicy)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ManaV2B2bExtranetPeeringServiceProducerPolicy(varManaV2B2bExtranetPeeringServiceProducerPolicy)
+
+	return err
 }
 
 type NullableManaV2B2bExtranetPeeringServiceProducerPolicy struct {

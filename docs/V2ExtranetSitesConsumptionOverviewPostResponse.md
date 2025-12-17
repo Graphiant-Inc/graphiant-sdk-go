@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **LanSegments** | Pointer to [**[]IpfixConnectionMap**](IpfixConnectionMap.md) |  | [optional] 
 **Regions** | Pointer to [**[]IpfixConnectionMap**](IpfixConnectionMap.md) |  | [optional] 
 **Sites** | Pointer to [**[]IpfixConnectionMap**](IpfixConnectionMap.md) |  | [optional] 
-**TotalUsage** | Pointer to **float64** |  | [optional] 
+**TotalUsage** | Pointer to **float64** | total service usage in kilo bytes | [optional] 
 
 ## Methods
 

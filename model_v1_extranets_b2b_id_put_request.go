@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the V1ExtranetsB2bIdPutRequest type satisfies the MappedNullable interface at compile time
@@ -19,15 +21,18 @@ var _ MappedNullable = &V1ExtranetsB2bIdPutRequest{}
 
 // V1ExtranetsB2bIdPutRequest struct for V1ExtranetsB2bIdPutRequest
 type V1ExtranetsB2bIdPutRequest struct {
-	Policy *ManaV2B2bExtranetProducerPolicy `json:"policy,omitempty"`
+	Policy ManaV2B2bExtranetProducerPolicy `json:"policy"`
 }
+
+type _V1ExtranetsB2bIdPutRequest V1ExtranetsB2bIdPutRequest
 
 // NewV1ExtranetsB2bIdPutRequest instantiates a new V1ExtranetsB2bIdPutRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1ExtranetsB2bIdPutRequest() *V1ExtranetsB2bIdPutRequest {
+func NewV1ExtranetsB2bIdPutRequest(policy ManaV2B2bExtranetProducerPolicy) *V1ExtranetsB2bIdPutRequest {
 	this := V1ExtranetsB2bIdPutRequest{}
+	this.Policy = policy
 	return &this
 }
 
@@ -39,36 +44,28 @@ func NewV1ExtranetsB2bIdPutRequestWithDefaults() *V1ExtranetsB2bIdPutRequest {
 	return &this
 }
 
-// GetPolicy returns the Policy field value if set, zero value otherwise.
+// GetPolicy returns the Policy field value
 func (o *V1ExtranetsB2bIdPutRequest) GetPolicy() ManaV2B2bExtranetProducerPolicy {
-	if o == nil || IsNil(o.Policy) {
+	if o == nil {
 		var ret ManaV2B2bExtranetProducerPolicy
 		return ret
 	}
-	return *o.Policy
+
+	return o.Policy
 }
 
-// GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
+// GetPolicyOk returns a tuple with the Policy field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bIdPutRequest) GetPolicyOk() (*ManaV2B2bExtranetProducerPolicy, bool) {
-	if o == nil || IsNil(o.Policy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Policy, true
+	return &o.Policy, true
 }
 
-// HasPolicy returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bIdPutRequest) HasPolicy() bool {
-	if o != nil && !IsNil(o.Policy) {
-		return true
-	}
-
-	return false
-}
-
-// SetPolicy gets a reference to the given ManaV2B2bExtranetProducerPolicy and assigns it to the Policy field.
+// SetPolicy sets field value
 func (o *V1ExtranetsB2bIdPutRequest) SetPolicy(v ManaV2B2bExtranetProducerPolicy) {
-	o.Policy = &v
+	o.Policy = v
 }
 
 func (o V1ExtranetsB2bIdPutRequest) MarshalJSON() ([]byte, error) {
@@ -81,10 +78,45 @@ func (o V1ExtranetsB2bIdPutRequest) MarshalJSON() ([]byte, error) {
 
 func (o V1ExtranetsB2bIdPutRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Policy) {
-		toSerialize["policy"] = o.Policy
-	}
+	toSerialize["policy"] = o.Policy
 	return toSerialize, nil
+}
+
+func (o *V1ExtranetsB2bIdPutRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"policy",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1ExtranetsB2bIdPutRequest := _V1ExtranetsB2bIdPutRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1ExtranetsB2bIdPutRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1ExtranetsB2bIdPutRequest(varV1ExtranetsB2bIdPutRequest)
+
+	return err
 }
 
 type NullableV1ExtranetsB2bIdPutRequest struct {

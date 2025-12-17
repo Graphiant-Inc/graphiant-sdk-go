@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GlobalPrefixSets** | Pointer to **map[string]int64** |  | [optional] 
 **IpfixExporters** | Pointer to **map[string]int64** |  | [optional] 
+**Ntps** | Pointer to **map[string]int64** |  | [optional] 
 **PrefixSets** | Pointer to **map[string]int64** |  | [optional] 
 **RoutingPolicies** | Pointer to **map[string]int64** |  | [optional] 
 **Snmps** | Pointer to **map[string]int64** |  | [optional] 
@@ -82,6 +83,31 @@ SetIpfixExporters sets IpfixExporters field to given value.
 `func (o *V1GlobalConfigPatchResponse) HasIpfixExporters() bool`
 
 HasIpfixExporters returns a boolean if a field has been set.
+
+### GetNtps
+
+`func (o *V1GlobalConfigPatchResponse) GetNtps() map[string]int64`
+
+GetNtps returns the Ntps field if non-nil, zero value otherwise.
+
+### GetNtpsOk
+
+`func (o *V1GlobalConfigPatchResponse) GetNtpsOk() (*map[string]int64, bool)`
+
+GetNtpsOk returns a tuple with the Ntps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNtps
+
+`func (o *V1GlobalConfigPatchResponse) SetNtps(v map[string]int64)`
+
+SetNtps sets Ntps field to given value.
+
+### HasNtps
+
+`func (o *V1GlobalConfigPatchResponse) HasNtps() bool`
+
+HasNtps returns a boolean if a field has been set.
 
 ### GetPrefixSets
 

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EdgeStatuses** | Pointer to [**[]StatsmonExtranetEdgeStatus**](StatsmonExtranetEdgeStatus.md) |  | [optional] 
-**Location** | Pointer to **string** |  | [optional] 
-**Region** | Pointer to **string** |  | [optional] 
+**Location** | Pointer to **string** | the location of the site | [optional] 
+**Region** | Pointer to **string** | the region of the site | [optional] 
 **SiteStatus** | Pointer to [**StatsmonExtranetSiteStatus**](StatsmonExtranetSiteStatus.md) |  | [optional] 
 
 ## Methods

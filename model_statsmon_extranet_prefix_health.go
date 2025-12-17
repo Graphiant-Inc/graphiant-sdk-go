@@ -19,6 +19,7 @@ var _ MappedNullable = &StatsmonExtranetPrefixHealth{}
 
 // StatsmonExtranetPrefixHealth struct for StatsmonExtranetPrefixHealth
 type StatsmonExtranetPrefixHealth struct {
+	// the health status of the prefix (Healthy, Impaired, Down)
 	Health *string `json:"health,omitempty"`
 	MissingPrefixes []string `json:"missingPrefixes,omitempty"`
 }

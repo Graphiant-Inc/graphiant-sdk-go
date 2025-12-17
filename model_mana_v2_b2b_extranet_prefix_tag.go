@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ManaV2B2bExtranetPrefixTag type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,21 @@ var _ MappedNullable = &ManaV2B2bExtranetPrefixTag{}
 
 // ManaV2B2bExtranetPrefixTag struct for ManaV2B2bExtranetPrefixTag
 type ManaV2B2bExtranetPrefixTag struct {
-	Prefix *string `json:"prefix,omitempty"`
+	// Prefix advertised by the service (required)
+	Prefix string `json:"prefix"`
+	// Tag for the prefix
 	Tag *string `json:"tag,omitempty"`
 }
+
+type _ManaV2B2bExtranetPrefixTag ManaV2B2bExtranetPrefixTag
 
 // NewManaV2B2bExtranetPrefixTag instantiates a new ManaV2B2bExtranetPrefixTag object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManaV2B2bExtranetPrefixTag() *ManaV2B2bExtranetPrefixTag {
+func NewManaV2B2bExtranetPrefixTag(prefix string) *ManaV2B2bExtranetPrefixTag {
 	this := ManaV2B2bExtranetPrefixTag{}
+	this.Prefix = prefix
 	return &this
 }
 
@@ -40,36 +47,28 @@ func NewManaV2B2bExtranetPrefixTagWithDefaults() *ManaV2B2bExtranetPrefixTag {
 	return &this
 }
 
-// GetPrefix returns the Prefix field value if set, zero value otherwise.
+// GetPrefix returns the Prefix field value
 func (o *ManaV2B2bExtranetPrefixTag) GetPrefix() string {
-	if o == nil || IsNil(o.Prefix) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Prefix
+
+	return o.Prefix
 }
 
-// GetPrefixOk returns a tuple with the Prefix field value if set, nil otherwise
+// GetPrefixOk returns a tuple with the Prefix field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2B2bExtranetPrefixTag) GetPrefixOk() (*string, bool) {
-	if o == nil || IsNil(o.Prefix) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Prefix, true
+	return &o.Prefix, true
 }
 
-// HasPrefix returns a boolean if a field has been set.
-func (o *ManaV2B2bExtranetPrefixTag) HasPrefix() bool {
-	if o != nil && !IsNil(o.Prefix) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrefix gets a reference to the given string and assigns it to the Prefix field.
+// SetPrefix sets field value
 func (o *ManaV2B2bExtranetPrefixTag) SetPrefix(v string) {
-	o.Prefix = &v
+	o.Prefix = v
 }
 
 // GetTag returns the Tag field value if set, zero value otherwise.
@@ -114,13 +113,48 @@ func (o ManaV2B2bExtranetPrefixTag) MarshalJSON() ([]byte, error) {
 
 func (o ManaV2B2bExtranetPrefixTag) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Prefix) {
-		toSerialize["prefix"] = o.Prefix
-	}
+	toSerialize["prefix"] = o.Prefix
 	if !IsNil(o.Tag) {
 		toSerialize["tag"] = o.Tag
 	}
 	return toSerialize, nil
+}
+
+func (o *ManaV2B2bExtranetPrefixTag) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"prefix",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varManaV2B2bExtranetPrefixTag := _ManaV2B2bExtranetPrefixTag{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varManaV2B2bExtranetPrefixTag)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ManaV2B2bExtranetPrefixTag(varManaV2B2bExtranetPrefixTag)
+
+	return err
 }
 
 type NullableManaV2B2bExtranetPrefixTag struct {

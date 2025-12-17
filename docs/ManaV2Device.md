@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **MaintenanceMode** | Pointer to **bool** |  | [optional] 
 **NatPolicy** | Pointer to [**ManaV2NatPolicy**](ManaV2NatPolicy.md) |  | [optional] 
 **Notes** | Pointer to **string** |  | [optional] 
+**Ntp** | Pointer to [**ManaV2Ntp**](ManaV2Ntp.md) |  | [optional] 
 **OperStaled** | Pointer to **bool** |  | [optional] 
 **OperStaledAt** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **OperUpdatedAt** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
@@ -643,6 +644,31 @@ SetNotes sets Notes field to given value.
 `func (o *ManaV2Device) HasNotes() bool`
 
 HasNotes returns a boolean if a field has been set.
+
+### GetNtp
+
+`func (o *ManaV2Device) GetNtp() ManaV2Ntp`
+
+GetNtp returns the Ntp field if non-nil, zero value otherwise.
+
+### GetNtpOk
+
+`func (o *ManaV2Device) GetNtpOk() (*ManaV2Ntp, bool)`
+
+GetNtpOk returns a tuple with the Ntp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNtp
+
+`func (o *ManaV2Device) SetNtp(v ManaV2Ntp)`
+
+SetNtp sets Ntp field to given value.
+
+### HasNtp
+
+`func (o *ManaV2Device) HasNtp() bool`
+
+HasNtp returns a boolean if a field has been set.
 
 ### GetOperStaled
 

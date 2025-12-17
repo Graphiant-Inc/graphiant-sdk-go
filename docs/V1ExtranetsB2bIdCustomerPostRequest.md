@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Invites** | Pointer to [**[]ManaV2B2bExtranetApplicationInvite**](ManaV2B2bExtranetApplicationInvite.md) |  | [optional] 
+**Invites** | [**[]ManaV2B2bExtranetApplicationInvite**](ManaV2B2bExtranetApplicationInvite.md) |  | 
 
 ## Methods
 
 ### NewV1ExtranetsB2bIdCustomerPostRequest
 
-`func NewV1ExtranetsB2bIdCustomerPostRequest() *V1ExtranetsB2bIdCustomerPostRequest`
+`func NewV1ExtranetsB2bIdCustomerPostRequest(invites []ManaV2B2bExtranetApplicationInvite, ) *V1ExtranetsB2bIdCustomerPostRequest`
 
 NewV1ExtranetsB2bIdCustomerPostRequest instantiates a new V1ExtranetsB2bIdCustomerPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetInvites sets Invites field to given value.
 
-### HasInvites
-
-`func (o *V1ExtranetsB2bIdCustomerPostRequest) HasInvites() bool`
-
-HasInvites returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

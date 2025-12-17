@@ -20,7 +20,9 @@ var _ MappedNullable = &V2ExtranetConsumersUsageTopPostResponse{}
 // V2ExtranetConsumersUsageTopPostResponse struct for V2ExtranetConsumersUsageTopPostResponse
 type V2ExtranetConsumersUsageTopPostResponse struct {
 	TopConsumers []IpfixEntityUsage `json:"topConsumers,omitempty"`
+	// total number of customers
 	TotalCustomers *int64 `json:"totalCustomers,omitempty"`
+	// total service usage in kilo bytes
 	TotalUsage *float64 `json:"totalUsage,omitempty"`
 }
 

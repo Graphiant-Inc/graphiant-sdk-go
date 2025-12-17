@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ManaV2Policer type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,22 @@ var _ MappedNullable = &ManaV2Policer{}
 
 // ManaV2Policer struct for ManaV2Policer
 type ManaV2Policer struct {
-	BurstSize *int32 `json:"burstSize,omitempty"`
-	Bw *int32 `json:"bw,omitempty"`
+	// Burst size for the policer (required)
+	BurstSize int32 `json:"burstSize"`
+	// Bandwidth for the policer (required)
+	Bw int32 `json:"bw"`
 }
+
+type _ManaV2Policer ManaV2Policer
 
 // NewManaV2Policer instantiates a new ManaV2Policer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManaV2Policer() *ManaV2Policer {
+func NewManaV2Policer(burstSize int32, bw int32) *ManaV2Policer {
 	this := ManaV2Policer{}
+	this.BurstSize = burstSize
+	this.Bw = bw
 	return &this
 }
 
@@ -40,68 +48,52 @@ func NewManaV2PolicerWithDefaults() *ManaV2Policer {
 	return &this
 }
 
-// GetBurstSize returns the BurstSize field value if set, zero value otherwise.
+// GetBurstSize returns the BurstSize field value
 func (o *ManaV2Policer) GetBurstSize() int32 {
-	if o == nil || IsNil(o.BurstSize) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.BurstSize
+
+	return o.BurstSize
 }
 
-// GetBurstSizeOk returns a tuple with the BurstSize field value if set, nil otherwise
+// GetBurstSizeOk returns a tuple with the BurstSize field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2Policer) GetBurstSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.BurstSize) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BurstSize, true
+	return &o.BurstSize, true
 }
 
-// HasBurstSize returns a boolean if a field has been set.
-func (o *ManaV2Policer) HasBurstSize() bool {
-	if o != nil && !IsNil(o.BurstSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetBurstSize gets a reference to the given int32 and assigns it to the BurstSize field.
+// SetBurstSize sets field value
 func (o *ManaV2Policer) SetBurstSize(v int32) {
-	o.BurstSize = &v
+	o.BurstSize = v
 }
 
-// GetBw returns the Bw field value if set, zero value otherwise.
+// GetBw returns the Bw field value
 func (o *ManaV2Policer) GetBw() int32 {
-	if o == nil || IsNil(o.Bw) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Bw
+
+	return o.Bw
 }
 
-// GetBwOk returns a tuple with the Bw field value if set, nil otherwise
+// GetBwOk returns a tuple with the Bw field value
 // and a boolean to check if the value has been set.
 func (o *ManaV2Policer) GetBwOk() (*int32, bool) {
-	if o == nil || IsNil(o.Bw) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Bw, true
+	return &o.Bw, true
 }
 
-// HasBw returns a boolean if a field has been set.
-func (o *ManaV2Policer) HasBw() bool {
-	if o != nil && !IsNil(o.Bw) {
-		return true
-	}
-
-	return false
-}
-
-// SetBw gets a reference to the given int32 and assigns it to the Bw field.
+// SetBw sets field value
 func (o *ManaV2Policer) SetBw(v int32) {
-	o.Bw = &v
+	o.Bw = v
 }
 
 func (o ManaV2Policer) MarshalJSON() ([]byte, error) {
@@ -114,13 +106,47 @@ func (o ManaV2Policer) MarshalJSON() ([]byte, error) {
 
 func (o ManaV2Policer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BurstSize) {
-		toSerialize["burstSize"] = o.BurstSize
-	}
-	if !IsNil(o.Bw) {
-		toSerialize["bw"] = o.Bw
-	}
+	toSerialize["burstSize"] = o.BurstSize
+	toSerialize["bw"] = o.Bw
 	return toSerialize, nil
+}
+
+func (o *ManaV2Policer) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"burstSize",
+		"bw",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varManaV2Policer := _ManaV2Policer{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varManaV2Policer)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ManaV2Policer(varManaV2Policer)
+
+	return err
 }
 
 type NullableManaV2Policer struct {

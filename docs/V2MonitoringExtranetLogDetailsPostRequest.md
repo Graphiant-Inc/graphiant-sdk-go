@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** |  | [optional] 
-**IsB2B** | Pointer to **bool** |  | [optional] 
-**IsProvider** | Pointer to **bool** |  | [optional] 
+**Id** | **int64** | the id associated with an entity - consumer_id for consumer, and service_id for the producer/service (required) | 
+**IsB2B** | **bool** | whether the entity is a b2b entity (true for b2b entity, false for local extranet entity) (required) | 
+**IsProvider** | **bool** | whether the entity is a provider or consumer (required) | 
 
 ## Methods
 
 ### NewV2MonitoringExtranetLogDetailsPostRequest
 
-`func NewV2MonitoringExtranetLogDetailsPostRequest() *V2MonitoringExtranetLogDetailsPostRequest`
+`func NewV2MonitoringExtranetLogDetailsPostRequest(id int64, isB2B bool, isProvider bool, ) *V2MonitoringExtranetLogDetailsPostRequest`
 
 NewV2MonitoringExtranetLogDetailsPostRequest instantiates a new V2MonitoringExtranetLogDetailsPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *V2MonitoringExtranetLogDetailsPostRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetIsB2B
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetIsB2B sets IsB2B field to given value.
 
-### HasIsB2B
-
-`func (o *V2MonitoringExtranetLogDetailsPostRequest) HasIsB2B() bool`
-
-HasIsB2B returns a boolean if a field has been set.
 
 ### GetIsProvider
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetIsProvider sets IsProvider field to given value.
 
-### HasIsProvider
-
-`func (o *V2MonitoringExtranetLogDetailsPostRequest) HasIsProvider() bool`
-
-HasIsProvider returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

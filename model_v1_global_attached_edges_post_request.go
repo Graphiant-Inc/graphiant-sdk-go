@@ -20,6 +20,7 @@ var _ MappedNullable = &V1GlobalAttachedEdgesPostRequest{}
 // V1GlobalAttachedEdgesPostRequest struct for V1GlobalAttachedEdgesPostRequest
 type V1GlobalAttachedEdgesPostRequest struct {
 	IpfixExportedIds []int64 `json:"ipfixExportedIds,omitempty"`
+	NtpIds []int64 `json:"ntpIds,omitempty"`
 	PrefixSetIds []int64 `json:"prefixSetIds,omitempty"`
 	RoutingPolicyIds []int64 `json:"routingPolicyIds,omitempty"`
 	SnmpIds []int64 `json:"snmpIds,omitempty"`
@@ -74,6 +75,38 @@ func (o *V1GlobalAttachedEdgesPostRequest) HasIpfixExportedIds() bool {
 // SetIpfixExportedIds gets a reference to the given []int64 and assigns it to the IpfixExportedIds field.
 func (o *V1GlobalAttachedEdgesPostRequest) SetIpfixExportedIds(v []int64) {
 	o.IpfixExportedIds = v
+}
+
+// GetNtpIds returns the NtpIds field value if set, zero value otherwise.
+func (o *V1GlobalAttachedEdgesPostRequest) GetNtpIds() []int64 {
+	if o == nil || IsNil(o.NtpIds) {
+		var ret []int64
+		return ret
+	}
+	return o.NtpIds
+}
+
+// GetNtpIdsOk returns a tuple with the NtpIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1GlobalAttachedEdgesPostRequest) GetNtpIdsOk() ([]int64, bool) {
+	if o == nil || IsNil(o.NtpIds) {
+		return nil, false
+	}
+	return o.NtpIds, true
+}
+
+// HasNtpIds returns a boolean if a field has been set.
+func (o *V1GlobalAttachedEdgesPostRequest) HasNtpIds() bool {
+	if o != nil && !IsNil(o.NtpIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetNtpIds gets a reference to the given []int64 and assigns it to the NtpIds field.
+func (o *V1GlobalAttachedEdgesPostRequest) SetNtpIds(v []int64) {
+	o.NtpIds = v
 }
 
 // GetPrefixSetIds returns the PrefixSetIds field value if set, zero value otherwise.
@@ -248,6 +281,9 @@ func (o V1GlobalAttachedEdgesPostRequest) ToMap() (map[string]interface{}, error
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.IpfixExportedIds) {
 		toSerialize["ipfixExportedIds"] = o.IpfixExportedIds
+	}
+	if !IsNil(o.NtpIds) {
+		toSerialize["ntpIds"] = o.NtpIds
 	}
 	if !IsNil(o.PrefixSetIds) {
 		toSerialize["prefixSetIds"] = o.PrefixSetIds

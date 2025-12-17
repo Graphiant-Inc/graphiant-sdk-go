@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** |  | [optional] 
 **EnterpriseIds** | Pointer to **[]int64** |  | [optional] 
+**EnterprisePermissions** | Pointer to [**map[string]IamEnterprisePermissions**](IamEnterprisePermissions.md) |  | [optional] 
 **GroupType** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -81,6 +82,31 @@ SetEnterpriseIds sets EnterpriseIds field to given value.
 `func (o *IamGroup) HasEnterpriseIds() bool`
 
 HasEnterpriseIds returns a boolean if a field has been set.
+
+### GetEnterprisePermissions
+
+`func (o *IamGroup) GetEnterprisePermissions() map[string]IamEnterprisePermissions`
+
+GetEnterprisePermissions returns the EnterprisePermissions field if non-nil, zero value otherwise.
+
+### GetEnterprisePermissionsOk
+
+`func (o *IamGroup) GetEnterprisePermissionsOk() (*map[string]IamEnterprisePermissions, bool)`
+
+GetEnterprisePermissionsOk returns a tuple with the EnterprisePermissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnterprisePermissions
+
+`func (o *IamGroup) SetEnterprisePermissions(v map[string]IamEnterprisePermissions)`
+
+SetEnterprisePermissions sets EnterprisePermissions field to given value.
+
+### HasEnterprisePermissions
+
+`func (o *IamGroup) HasEnterprisePermissions() bool`
+
+HasEnterprisePermissions returns a boolean if a field has been set.
 
 ### GetGroupType
 

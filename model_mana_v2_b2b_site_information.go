@@ -19,7 +19,9 @@ var _ MappedNullable = &ManaV2B2bSiteInformation{}
 
 // ManaV2B2bSiteInformation struct for ManaV2B2bSiteInformation
 type ManaV2B2bSiteInformation struct {
+	// Total Bandwidth allocation for the service on these site lists
 	BwAllocationSiteLists *int32 `json:"bwAllocationSiteLists,omitempty"`
+	// Total Bandwidth allocation for the service on these sites
 	BwAllocationSites *int32 `json:"bwAllocationSites,omitempty"`
 	PolicerSiteLists *ManaV2Policer `json:"policerSiteLists,omitempty"`
 	PolicerSites *ManaV2Policer `json:"policerSites,omitempty"`

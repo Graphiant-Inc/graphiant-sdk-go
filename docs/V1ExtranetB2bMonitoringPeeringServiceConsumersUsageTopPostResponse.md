@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TopConsumers** | Pointer to [**[]IpfixEntityUsage**](IpfixEntityUsage.md) |  | [optional] 
-**TotalCustomers** | Pointer to **int64** |  | [optional] 
-**TotalUsage** | Pointer to **float64** |  | [optional] 
+**TotalCustomers** | Pointer to **int64** | total number of customers | [optional] 
+**TotalUsage** | Pointer to **float64** | total service usage in kilo bytes | [optional] 
 
 ## Methods
 

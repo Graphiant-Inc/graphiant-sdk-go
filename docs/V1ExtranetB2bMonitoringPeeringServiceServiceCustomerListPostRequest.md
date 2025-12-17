@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** | service id | [optional] 
-**IsProvider** | Pointer to **bool** |  | [optional] 
-**TimeWindow** | Pointer to [**StatsmonTimeWindow**](StatsmonTimeWindow.md) |  | [optional] 
+**Id** | **int64** | service id (required) | 
+**IsProvider** | **bool** | whether the entity is a provider or consumer (required) | 
+**TimeWindow** | [**StatsmonTimeWindow**](StatsmonTimeWindow.md) |  | 
 
 ## Methods
 
 ### NewV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest
 
-`func NewV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest() *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest`
+`func NewV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest(id int64, isProvider bool, timeWindow StatsmonTimeWindow, ) *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest`
 
 NewV1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest instantiates a new V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetIsProvider
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetIsProvider sets IsProvider field to given value.
 
-### HasIsProvider
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) HasIsProvider() bool`
-
-HasIsProvider returns a boolean if a field has been set.
 
 ### GetTimeWindow
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetTimeWindow sets TimeWindow field to given value.
 
-### HasTimeWindow
-
-`func (o *V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPostRequest) HasTimeWindow() bool`
-
-HasTimeWindow returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the V1ExtranetsB2bPeeringConsumerMatchIdPostRequest type satisfies the MappedNullable interface at compile time
@@ -21,20 +23,26 @@ var _ MappedNullable = &V1ExtranetsB2bPeeringConsumerMatchIdPostRequest{}
 type V1ExtranetsB2bPeeringConsumerMatchIdPostRequest struct {
 	CustomerId *int64 `json:"customerId,omitempty"`
 	GlobalObjectOps *map[string]ManaV2GlobalObjectServiceOps `json:"globalObjectOps,omitempty"`
-	// ID of the service.
-	Id *int64 `json:"id,omitempty"`
-	Nat []ManaV2B2bNat `json:"nat,omitempty"`
-	Policy []ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy `json:"policy,omitempty"`
-	SiteInformation []ManaV2B2bSiteInformation `json:"siteInformation,omitempty"`
+	// ID of the service which is being consumed by the customer (required)
+	Id int64 `json:"id"`
+	Nat []ManaV2B2bNat `json:"nat"`
+	Policy []ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy `json:"policy"`
+	SiteInformation []ManaV2B2bSiteInformation `json:"siteInformation"`
 	SiteToSiteVpn *ManaV2GuestConsumerSiteToSiteVpnConfig `json:"siteToSiteVpn,omitempty"`
 }
+
+type _V1ExtranetsB2bPeeringConsumerMatchIdPostRequest V1ExtranetsB2bPeeringConsumerMatchIdPostRequest
 
 // NewV1ExtranetsB2bPeeringConsumerMatchIdPostRequest instantiates a new V1ExtranetsB2bPeeringConsumerMatchIdPostRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1ExtranetsB2bPeeringConsumerMatchIdPostRequest() *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest {
+func NewV1ExtranetsB2bPeeringConsumerMatchIdPostRequest(id int64, nat []ManaV2B2bNat, policy []ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy, siteInformation []ManaV2B2bSiteInformation) *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest {
 	this := V1ExtranetsB2bPeeringConsumerMatchIdPostRequest{}
+	this.Id = id
+	this.Nat = nat
+	this.Policy = policy
+	this.SiteInformation = siteInformation
 	return &this
 }
 
@@ -110,130 +118,98 @@ func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) SetGlobalObjectOps(v m
 	o.GlobalObjectOps = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) GetId() int64 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) GetIdOk() (*int64, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int64 and assigns it to the Id field.
+// SetId sets field value
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) SetId(v int64) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetNat returns the Nat field value if set, zero value otherwise.
+// GetNat returns the Nat field value
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) GetNat() []ManaV2B2bNat {
-	if o == nil || IsNil(o.Nat) {
+	if o == nil {
 		var ret []ManaV2B2bNat
 		return ret
 	}
+
 	return o.Nat
 }
 
-// GetNatOk returns a tuple with the Nat field value if set, nil otherwise
+// GetNatOk returns a tuple with the Nat field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) GetNatOk() ([]ManaV2B2bNat, bool) {
-	if o == nil || IsNil(o.Nat) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Nat, true
 }
 
-// HasNat returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) HasNat() bool {
-	if o != nil && !IsNil(o.Nat) {
-		return true
-	}
-
-	return false
-}
-
-// SetNat gets a reference to the given []ManaV2B2bNat and assigns it to the Nat field.
+// SetNat sets field value
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) SetNat(v []ManaV2B2bNat) {
 	o.Nat = v
 }
 
-// GetPolicy returns the Policy field value if set, zero value otherwise.
+// GetPolicy returns the Policy field value
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) GetPolicy() []ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy {
-	if o == nil || IsNil(o.Policy) {
+	if o == nil {
 		var ret []ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy
 		return ret
 	}
+
 	return o.Policy
 }
 
-// GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
+// GetPolicyOk returns a tuple with the Policy field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) GetPolicyOk() ([]ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy, bool) {
-	if o == nil || IsNil(o.Policy) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Policy, true
 }
 
-// HasPolicy returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) HasPolicy() bool {
-	if o != nil && !IsNil(o.Policy) {
-		return true
-	}
-
-	return false
-}
-
-// SetPolicy gets a reference to the given []ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy and assigns it to the Policy field.
+// SetPolicy sets field value
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) SetPolicy(v []ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy) {
 	o.Policy = v
 }
 
-// GetSiteInformation returns the SiteInformation field value if set, zero value otherwise.
+// GetSiteInformation returns the SiteInformation field value
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) GetSiteInformation() []ManaV2B2bSiteInformation {
-	if o == nil || IsNil(o.SiteInformation) {
+	if o == nil {
 		var ret []ManaV2B2bSiteInformation
 		return ret
 	}
+
 	return o.SiteInformation
 }
 
-// GetSiteInformationOk returns a tuple with the SiteInformation field value if set, nil otherwise
+// GetSiteInformationOk returns a tuple with the SiteInformation field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) GetSiteInformationOk() ([]ManaV2B2bSiteInformation, bool) {
-	if o == nil || IsNil(o.SiteInformation) {
+	if o == nil {
 		return nil, false
 	}
 	return o.SiteInformation, true
 }
 
-// HasSiteInformation returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) HasSiteInformation() bool {
-	if o != nil && !IsNil(o.SiteInformation) {
-		return true
-	}
-
-	return false
-}
-
-// SetSiteInformation gets a reference to the given []ManaV2B2bSiteInformation and assigns it to the SiteInformation field.
+// SetSiteInformation sets field value
 func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) SetSiteInformation(v []ManaV2B2bSiteInformation) {
 	o.SiteInformation = v
 }
@@ -286,22 +262,54 @@ func (o V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) ToMap() (map[string]int
 	if !IsNil(o.GlobalObjectOps) {
 		toSerialize["globalObjectOps"] = o.GlobalObjectOps
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Nat) {
-		toSerialize["nat"] = o.Nat
-	}
-	if !IsNil(o.Policy) {
-		toSerialize["policy"] = o.Policy
-	}
-	if !IsNil(o.SiteInformation) {
-		toSerialize["siteInformation"] = o.SiteInformation
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["nat"] = o.Nat
+	toSerialize["policy"] = o.Policy
+	toSerialize["siteInformation"] = o.SiteInformation
 	if !IsNil(o.SiteToSiteVpn) {
 		toSerialize["siteToSiteVpn"] = o.SiteToSiteVpn
 	}
 	return toSerialize, nil
+}
+
+func (o *V1ExtranetsB2bPeeringConsumerMatchIdPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"nat",
+		"policy",
+		"siteInformation",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1ExtranetsB2bPeeringConsumerMatchIdPostRequest := _V1ExtranetsB2bPeeringConsumerMatchIdPostRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1ExtranetsB2bPeeringConsumerMatchIdPostRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1ExtranetsB2bPeeringConsumerMatchIdPostRequest(varV1ExtranetsB2bPeeringConsumerMatchIdPostRequest)
+
+	return err
 }
 
 type NullableV1ExtranetsB2bPeeringConsumerMatchIdPostRequest struct {

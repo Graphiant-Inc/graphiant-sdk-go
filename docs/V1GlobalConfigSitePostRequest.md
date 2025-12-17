@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **GlobalPrefixSetOps** | Pointer to **map[string]string** |  | [optional] 
 **IpfixExporterOps** | Pointer to **map[string]string** |  | [optional] 
 **IpfixExporterOpsV2** | Pointer to [**map[string]ManaV2GlobalObjectOperationConfig**](ManaV2GlobalObjectOperationConfig.md) |  | [optional] 
+**NtpOps** | Pointer to **map[string]string** |  | [optional] 
 **PrefixSetOps** | Pointer to **map[string]string** |  | [optional] 
 **RoutingPolicyOps** | Pointer to **map[string]string** |  | [optional] 
 **SiteId** | Pointer to **int64** |  | [optional] 
@@ -108,6 +109,31 @@ SetIpfixExporterOpsV2 sets IpfixExporterOpsV2 field to given value.
 `func (o *V1GlobalConfigSitePostRequest) HasIpfixExporterOpsV2() bool`
 
 HasIpfixExporterOpsV2 returns a boolean if a field has been set.
+
+### GetNtpOps
+
+`func (o *V1GlobalConfigSitePostRequest) GetNtpOps() map[string]string`
+
+GetNtpOps returns the NtpOps field if non-nil, zero value otherwise.
+
+### GetNtpOpsOk
+
+`func (o *V1GlobalConfigSitePostRequest) GetNtpOpsOk() (*map[string]string, bool)`
+
+GetNtpOpsOk returns a tuple with the NtpOps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNtpOps
+
+`func (o *V1GlobalConfigSitePostRequest) SetNtpOps(v map[string]string)`
+
+SetNtpOps sets NtpOps field to given value.
+
+### HasNtpOps
+
+`func (o *V1GlobalConfigSitePostRequest) HasNtpOps() bool`
+
+HasNtpOps returns a boolean if a field has been set.
 
 ### GetPrefixSetOps
 

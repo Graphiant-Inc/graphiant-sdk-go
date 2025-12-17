@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Address** | Pointer to **string** | the IP address of the server | [optional] 
+**Status** | Pointer to **string** | the health status of the server (Healthy, Impaired, Down) | [optional] 
 
 ## Methods
 

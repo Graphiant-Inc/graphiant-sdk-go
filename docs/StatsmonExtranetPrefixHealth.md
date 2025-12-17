@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Health** | Pointer to **string** |  | [optional] 
+**Health** | Pointer to **string** | the health status of the prefix (Healthy, Impaired, Down) | [optional] 
 **MissingPrefixes** | Pointer to **[]string** |  | [optional] 
 
 ## Methods

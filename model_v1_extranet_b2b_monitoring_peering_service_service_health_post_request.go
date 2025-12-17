@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,22 @@ var _ MappedNullable = &V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRe
 
 // V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest struct for V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest
 type V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest struct {
-	Id *int64 `json:"id,omitempty"`
-	IsProvider *bool `json:"isProvider,omitempty"`
+	// the id of the service (required)
+	Id int64 `json:"id"`
+	// whether the entity is a provider/producer or consumer (required)
+	IsProvider bool `json:"isProvider"`
 }
+
+type _V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest
 
 // NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest instantiates a new V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest() *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest {
+func NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest(id int64, isProvider bool) *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest {
 	this := V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest{}
+	this.Id = id
+	this.IsProvider = isProvider
 	return &this
 }
 
@@ -40,68 +48,52 @@ func NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequestWithDefault
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) GetId() int64 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) GetIdOk() (*int64, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int64 and assigns it to the Id field.
+// SetId sets field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) SetId(v int64) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetIsProvider returns the IsProvider field value if set, zero value otherwise.
+// GetIsProvider returns the IsProvider field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) GetIsProvider() bool {
-	if o == nil || IsNil(o.IsProvider) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsProvider
+
+	return o.IsProvider
 }
 
-// GetIsProviderOk returns a tuple with the IsProvider field value if set, nil otherwise
+// GetIsProviderOk returns a tuple with the IsProvider field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) GetIsProviderOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsProvider) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsProvider, true
+	return &o.IsProvider, true
 }
 
-// HasIsProvider returns a boolean if a field has been set.
-func (o *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) HasIsProvider() bool {
-	if o != nil && !IsNil(o.IsProvider) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsProvider gets a reference to the given bool and assigns it to the IsProvider field.
+// SetIsProvider sets field value
 func (o *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) SetIsProvider(v bool) {
-	o.IsProvider = &v
+	o.IsProvider = v
 }
 
 func (o V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) MarshalJSON() ([]byte, error) {
@@ -114,13 +106,47 @@ func (o V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) MarshalJS
 
 func (o V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.IsProvider) {
-		toSerialize["isProvider"] = o.IsProvider
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["isProvider"] = o.IsProvider
 	return toSerialize, nil
+}
+
+func (o *V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"isProvider",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest := _V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest(varV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest)
+
+	return err
 }
 
 type NullableV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest struct {

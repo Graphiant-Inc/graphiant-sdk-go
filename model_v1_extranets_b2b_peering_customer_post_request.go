@@ -12,6 +12,8 @@ package graphiant_sdk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the V1ExtranetsB2bPeeringCustomerPostRequest type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,24 @@ var _ MappedNullable = &V1ExtranetsB2bPeeringCustomerPostRequest{}
 
 // V1ExtranetsB2bPeeringCustomerPostRequest struct for V1ExtranetsB2bPeeringCustomerPostRequest
 type V1ExtranetsB2bPeeringCustomerPostRequest struct {
-	Invite *ManaV2B2bExtranetPeeringServiceCustomerInvite `json:"invite,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Invite ManaV2B2bExtranetPeeringServiceCustomerInvite `json:"invite"`
+	// Name of the peering service customer (required)
+	Name string `json:"name"`
+	// Type of the peerings servicecustomer whether it is a graphiant or non-graphiant (required)
+	Type string `json:"type"`
 }
+
+type _V1ExtranetsB2bPeeringCustomerPostRequest V1ExtranetsB2bPeeringCustomerPostRequest
 
 // NewV1ExtranetsB2bPeeringCustomerPostRequest instantiates a new V1ExtranetsB2bPeeringCustomerPostRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1ExtranetsB2bPeeringCustomerPostRequest() *V1ExtranetsB2bPeeringCustomerPostRequest {
+func NewV1ExtranetsB2bPeeringCustomerPostRequest(invite ManaV2B2bExtranetPeeringServiceCustomerInvite, name string, type_ string) *V1ExtranetsB2bPeeringCustomerPostRequest {
 	this := V1ExtranetsB2bPeeringCustomerPostRequest{}
+	this.Invite = invite
+	this.Name = name
+	this.Type = type_
 	return &this
 }
 
@@ -41,100 +50,76 @@ func NewV1ExtranetsB2bPeeringCustomerPostRequestWithDefaults() *V1ExtranetsB2bPe
 	return &this
 }
 
-// GetInvite returns the Invite field value if set, zero value otherwise.
+// GetInvite returns the Invite field value
 func (o *V1ExtranetsB2bPeeringCustomerPostRequest) GetInvite() ManaV2B2bExtranetPeeringServiceCustomerInvite {
-	if o == nil || IsNil(o.Invite) {
+	if o == nil {
 		var ret ManaV2B2bExtranetPeeringServiceCustomerInvite
 		return ret
 	}
-	return *o.Invite
+
+	return o.Invite
 }
 
-// GetInviteOk returns a tuple with the Invite field value if set, nil otherwise
+// GetInviteOk returns a tuple with the Invite field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPeeringCustomerPostRequest) GetInviteOk() (*ManaV2B2bExtranetPeeringServiceCustomerInvite, bool) {
-	if o == nil || IsNil(o.Invite) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Invite, true
+	return &o.Invite, true
 }
 
-// HasInvite returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPeeringCustomerPostRequest) HasInvite() bool {
-	if o != nil && !IsNil(o.Invite) {
-		return true
-	}
-
-	return false
-}
-
-// SetInvite gets a reference to the given ManaV2B2bExtranetPeeringServiceCustomerInvite and assigns it to the Invite field.
+// SetInvite sets field value
 func (o *V1ExtranetsB2bPeeringCustomerPostRequest) SetInvite(v ManaV2B2bExtranetPeeringServiceCustomerInvite) {
-	o.Invite = &v
+	o.Invite = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *V1ExtranetsB2bPeeringCustomerPostRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPeeringCustomerPostRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPeeringCustomerPostRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *V1ExtranetsB2bPeeringCustomerPostRequest) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *V1ExtranetsB2bPeeringCustomerPostRequest) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *V1ExtranetsB2bPeeringCustomerPostRequest) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *V1ExtranetsB2bPeeringCustomerPostRequest) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *V1ExtranetsB2bPeeringCustomerPostRequest) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 func (o V1ExtranetsB2bPeeringCustomerPostRequest) MarshalJSON() ([]byte, error) {
@@ -147,16 +132,49 @@ func (o V1ExtranetsB2bPeeringCustomerPostRequest) MarshalJSON() ([]byte, error) 
 
 func (o V1ExtranetsB2bPeeringCustomerPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Invite) {
-		toSerialize["invite"] = o.Invite
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["invite"] = o.Invite
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
+}
+
+func (o *V1ExtranetsB2bPeeringCustomerPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"invite",
+		"name",
+		"type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1ExtranetsB2bPeeringCustomerPostRequest := _V1ExtranetsB2bPeeringCustomerPostRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1ExtranetsB2bPeeringCustomerPostRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1ExtranetsB2bPeeringCustomerPostRequest(varV1ExtranetsB2bPeeringCustomerPostRequest)
+
+	return err
 }
 
 type NullableV1ExtranetsB2bPeeringCustomerPostRequest struct {

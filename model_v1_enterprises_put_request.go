@@ -31,7 +31,9 @@ type V1EnterprisesPutRequest struct {
 	//  (required)
 	CompanyName string `json:"companyName"`
 	CreditLimit *int32 `json:"creditLimit,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Logo *string `json:"logo,omitempty"`
+	MarketplaceId *string `json:"marketplaceId,omitempty"`
 	SmallLogo *string `json:"smallLogo,omitempty"`
 }
 
@@ -296,6 +298,38 @@ func (o *V1EnterprisesPutRequest) SetCreditLimit(v int32) {
 	o.CreditLimit = &v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *V1EnterprisesPutRequest) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1EnterprisesPutRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *V1EnterprisesPutRequest) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *V1EnterprisesPutRequest) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetLogo returns the Logo field value if set, zero value otherwise.
 func (o *V1EnterprisesPutRequest) GetLogo() string {
 	if o == nil || IsNil(o.Logo) {
@@ -326,6 +360,38 @@ func (o *V1EnterprisesPutRequest) HasLogo() bool {
 // SetLogo gets a reference to the given string and assigns it to the Logo field.
 func (o *V1EnterprisesPutRequest) SetLogo(v string) {
 	o.Logo = &v
+}
+
+// GetMarketplaceId returns the MarketplaceId field value if set, zero value otherwise.
+func (o *V1EnterprisesPutRequest) GetMarketplaceId() string {
+	if o == nil || IsNil(o.MarketplaceId) {
+		var ret string
+		return ret
+	}
+	return *o.MarketplaceId
+}
+
+// GetMarketplaceIdOk returns a tuple with the MarketplaceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1EnterprisesPutRequest) GetMarketplaceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.MarketplaceId) {
+		return nil, false
+	}
+	return o.MarketplaceId, true
+}
+
+// HasMarketplaceId returns a boolean if a field has been set.
+func (o *V1EnterprisesPutRequest) HasMarketplaceId() bool {
+	if o != nil && !IsNil(o.MarketplaceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetMarketplaceId gets a reference to the given string and assigns it to the MarketplaceId field.
+func (o *V1EnterprisesPutRequest) SetMarketplaceId(v string) {
+	o.MarketplaceId = &v
 }
 
 // GetSmallLogo returns the SmallLogo field value if set, zero value otherwise.
@@ -390,8 +456,14 @@ func (o V1EnterprisesPutRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreditLimit) {
 		toSerialize["creditLimit"] = o.CreditLimit
 	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	if !IsNil(o.Logo) {
 		toSerialize["logo"] = o.Logo
+	}
+	if !IsNil(o.MarketplaceId) {
+		toSerialize["marketplaceId"] = o.MarketplaceId
 	}
 	if !IsNil(o.SmallLogo) {
 		toSerialize["smallLogo"] = o.SmallLogo

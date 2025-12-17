@@ -21,6 +21,7 @@ var _ MappedNullable = &IamGroup{}
 type IamGroup struct {
 	Description *string `json:"description,omitempty"`
 	EnterpriseIds []int64 `json:"enterpriseIds,omitempty"`
+	EnterprisePermissions *map[string]IamEnterprisePermissions `json:"enterprisePermissions,omitempty"`
 	GroupType *string `json:"groupType,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -108,6 +109,38 @@ func (o *IamGroup) HasEnterpriseIds() bool {
 // SetEnterpriseIds gets a reference to the given []int64 and assigns it to the EnterpriseIds field.
 func (o *IamGroup) SetEnterpriseIds(v []int64) {
 	o.EnterpriseIds = v
+}
+
+// GetEnterprisePermissions returns the EnterprisePermissions field value if set, zero value otherwise.
+func (o *IamGroup) GetEnterprisePermissions() map[string]IamEnterprisePermissions {
+	if o == nil || IsNil(o.EnterprisePermissions) {
+		var ret map[string]IamEnterprisePermissions
+		return ret
+	}
+	return *o.EnterprisePermissions
+}
+
+// GetEnterprisePermissionsOk returns a tuple with the EnterprisePermissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IamGroup) GetEnterprisePermissionsOk() (*map[string]IamEnterprisePermissions, bool) {
+	if o == nil || IsNil(o.EnterprisePermissions) {
+		return nil, false
+	}
+	return o.EnterprisePermissions, true
+}
+
+// HasEnterprisePermissions returns a boolean if a field has been set.
+func (o *IamGroup) HasEnterprisePermissions() bool {
+	if o != nil && !IsNil(o.EnterprisePermissions) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnterprisePermissions gets a reference to the given map[string]IamEnterprisePermissions and assigns it to the EnterprisePermissions field.
+func (o *IamGroup) SetEnterprisePermissions(v map[string]IamEnterprisePermissions) {
+	o.EnterprisePermissions = &v
 }
 
 // GetGroupType returns the GroupType field value if set, zero value otherwise.
@@ -317,6 +350,9 @@ func (o IamGroup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnterpriseIds) {
 		toSerialize["enterpriseIds"] = o.EnterpriseIds
+	}
+	if !IsNil(o.EnterprisePermissions) {
+		toSerialize["enterprisePermissions"] = o.EnterprisePermissions
 	}
 	if !IsNil(o.GroupType) {
 		toSerialize["groupType"] = o.GroupType

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdminEmail** | Pointer to **[]string** |  | [optional] 
-**MaximumNumberOfSites** | Pointer to **int32** |  | [optional] 
+**AdminEmail** | **[]string** |  | 
+**MaximumNumberOfSites** | **int32** | Maximum number of sites for the peering service customer (required) | 
 
 ## Methods
 
 ### NewManaV2B2bExtranetPeeringServiceCustomerInvite
 
-`func NewManaV2B2bExtranetPeeringServiceCustomerInvite() *ManaV2B2bExtranetPeeringServiceCustomerInvite`
+`func NewManaV2B2bExtranetPeeringServiceCustomerInvite(adminEmail []string, maximumNumberOfSites int32, ) *ManaV2B2bExtranetPeeringServiceCustomerInvite`
 
 NewManaV2B2bExtranetPeeringServiceCustomerInvite instantiates a new ManaV2B2bExtranetPeeringServiceCustomerInvite object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetAdminEmail sets AdminEmail field to given value.
 
-### HasAdminEmail
-
-`func (o *ManaV2B2bExtranetPeeringServiceCustomerInvite) HasAdminEmail() bool`
-
-HasAdminEmail returns a boolean if a field has been set.
 
 ### GetMaximumNumberOfSites
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetMaximumNumberOfSites sets MaximumNumberOfSites field to given value.
 
-### HasMaximumNumberOfSites
-
-`func (o *ManaV2B2bExtranetPeeringServiceCustomerInvite) HasMaximumNumberOfSites() bool`
-
-HasMaximumNumberOfSites returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

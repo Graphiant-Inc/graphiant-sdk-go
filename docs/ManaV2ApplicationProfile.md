@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ports** | Pointer to **[]int32** |  | [optional] 
-**Protocol** | Pointer to **int32** |  | [optional] 
+**Ports** | **[]int32** |  | 
+**Protocol** | **int32** | Protocol for the application profile (required) | 
 
 ## Methods
 
 ### NewManaV2ApplicationProfile
 
-`func NewManaV2ApplicationProfile() *ManaV2ApplicationProfile`
+`func NewManaV2ApplicationProfile(ports []int32, protocol int32, ) *ManaV2ApplicationProfile`
 
 NewManaV2ApplicationProfile instantiates a new ManaV2ApplicationProfile object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetPorts sets Ports field to given value.
 
-### HasPorts
-
-`func (o *ManaV2ApplicationProfile) HasPorts() bool`
-
-HasPorts returns a boolean if a field has been set.
 
 ### GetProtocol
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetProtocol sets Protocol field to given value.
 
-### HasProtocol
-
-`func (o *ManaV2ApplicationProfile) HasProtocol() bool`
-
-HasProtocol returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

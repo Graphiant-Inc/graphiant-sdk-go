@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Hostname** | Pointer to **string** |  | [optional] 
-**Reason** | Pointer to **string** |  | [optional] 
-**ServerAddress** | Pointer to **string** |  | [optional] 
-**SiteName** | Pointer to **string** |  | [optional] 
+**Hostname** | Pointer to **string** | the hostname of the log | [optional] 
+**Reason** | Pointer to **string** | the reason for the log | [optional] 
+**ServerAddress** | Pointer to **string** | the address of the server | [optional] 
+**SiteName** | Pointer to **string** | the name of the site | [optional] 
 **Ts** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 
 ## Methods

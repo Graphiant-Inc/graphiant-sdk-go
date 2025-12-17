@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SiteId** | Pointer to **int64** |  | [optional] 
-**SiteName** | Pointer to **string** |  | [optional] 
-**Usage** | Pointer to **float64** | service usage in kilo bytes | [optional] 
+**SiteId** | Pointer to **int64** | the id of the site | [optional] 
+**SiteName** | Pointer to **string** | the name of the site | [optional] 
+**Usage** | Pointer to **float64** | usage/consumption of the service on the site in kilo bytes | [optional] 
 
 ## Methods
 

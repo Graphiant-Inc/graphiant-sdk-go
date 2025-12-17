@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdminEmail** | Pointer to **string** |  | [optional] 
-**ConsumerBurstSize** | Pointer to **int32** |  | [optional] 
-**ConsumerBwSite** | Pointer to **int32** |  | [optional] 
-**EnterpriseId** | Pointer to **int64** |  | [optional] 
-**MaximumSiteCount** | Pointer to **int32** |  | [optional] 
+**AdminEmail** | **string** | Admin email of the customer (required) | 
+**ConsumerBurstSize** | **int32** | Maximum Burst size per site for the customer (required) | 
+**ConsumerBwSite** | **int32** | Maximum Bandwidth allocation per site for the customer (required) | 
+**EnterpriseId** | **int64** | Enterprise ID of the customer (required) | 
+**MaximumSiteCount** | **int32** | Maximum number of sites for the customer (required) | 
 **ServicePrefixes** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
 ### NewManaV2B2bExtranetApplicationInvite
 
-`func NewManaV2B2bExtranetApplicationInvite() *ManaV2B2bExtranetApplicationInvite`
+`func NewManaV2B2bExtranetApplicationInvite(adminEmail string, consumerBurstSize int32, consumerBwSite int32, enterpriseId int64, maximumSiteCount int32, ) *ManaV2B2bExtranetApplicationInvite`
 
 NewManaV2B2bExtranetApplicationInvite instantiates a new ManaV2B2bExtranetApplicationInvite object
 This constructor will assign default values to properties that have it defined,
@@ -49,11 +49,6 @@ and a boolean to check if the value has been set.
 
 SetAdminEmail sets AdminEmail field to given value.
 
-### HasAdminEmail
-
-`func (o *ManaV2B2bExtranetApplicationInvite) HasAdminEmail() bool`
-
-HasAdminEmail returns a boolean if a field has been set.
 
 ### GetConsumerBurstSize
 
@@ -74,11 +69,6 @@ and a boolean to check if the value has been set.
 
 SetConsumerBurstSize sets ConsumerBurstSize field to given value.
 
-### HasConsumerBurstSize
-
-`func (o *ManaV2B2bExtranetApplicationInvite) HasConsumerBurstSize() bool`
-
-HasConsumerBurstSize returns a boolean if a field has been set.
 
 ### GetConsumerBwSite
 
@@ -99,11 +89,6 @@ and a boolean to check if the value has been set.
 
 SetConsumerBwSite sets ConsumerBwSite field to given value.
 
-### HasConsumerBwSite
-
-`func (o *ManaV2B2bExtranetApplicationInvite) HasConsumerBwSite() bool`
-
-HasConsumerBwSite returns a boolean if a field has been set.
 
 ### GetEnterpriseId
 
@@ -124,11 +109,6 @@ and a boolean to check if the value has been set.
 
 SetEnterpriseId sets EnterpriseId field to given value.
 
-### HasEnterpriseId
-
-`func (o *ManaV2B2bExtranetApplicationInvite) HasEnterpriseId() bool`
-
-HasEnterpriseId returns a boolean if a field has been set.
 
 ### GetMaximumSiteCount
 
@@ -149,11 +129,6 @@ and a boolean to check if the value has been set.
 
 SetMaximumSiteCount sets MaximumSiteCount field to given value.
 
-### HasMaximumSiteCount
-
-`func (o *ManaV2B2bExtranetApplicationInvite) HasMaximumSiteCount() bool`
-
-HasMaximumSiteCount returns a boolean if a field has been set.
 
 ### GetServicePrefixes
 

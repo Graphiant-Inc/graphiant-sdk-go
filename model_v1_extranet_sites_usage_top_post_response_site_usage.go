@@ -19,9 +19,11 @@ var _ MappedNullable = &V1ExtranetSitesUsageTopPostResponseSiteUsage{}
 
 // V1ExtranetSitesUsageTopPostResponseSiteUsage struct for V1ExtranetSitesUsageTopPostResponseSiteUsage
 type V1ExtranetSitesUsageTopPostResponseSiteUsage struct {
+	// the id of the site
 	SiteId *int64 `json:"siteId,omitempty"`
+	// the name of the site
 	SiteName *string `json:"siteName,omitempty"`
-	// service usage in kilo bytes
+	// usage/consumption of the service on the site in kilo bytes
 	Usage *float64 `json:"usage,omitempty"`
 }
 
