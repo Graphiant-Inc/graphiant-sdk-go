@@ -77,16 +77,15 @@ jobs:
           
           # Check if tag already exists
           if git rev-parse "$VERSION" >/dev/null 2>&1; then
-            echo "⚠️  Warning: Tag $VERSION already exists"
-            exit 1
+            echo "ℹ️  Tag $VERSION already exists, skipping tag creation"
+            echo "✅ Using existing tag: $VERSION"
+          else
+            git config user.name "GitHub Actions"
+            git config user.email "actions@github.com"
+            git tag -a "$VERSION" -m "Release $VERSION"
+            git push origin "$VERSION"
+            echo "✅ Created and pushed tag: $VERSION"
           fi
-          
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git tag -a "$VERSION" -m "Release $VERSION"
-          git push origin "$VERSION"
-          
-          echo "✅ Created and pushed tag: $VERSION"
 
       - name: Verify module availability
         if: inputs.create_tag == true
@@ -117,15 +116,33 @@ jobs:
 
       - name: Create GitHub Release
         if: inputs.create_tag == true
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ inputs.version }}
-          release_name: Release ${{ inputs.version }}
-          body: |
-            ## Release ${{ inputs.version }}
+        run: |
+          VERSION="${{ inputs.version }}"
+          # Ensure version starts with 'v'
+          if [[ ! "$VERSION" =~ ^v ]]; then
+            VERSION="v$VERSION"
+          fi
+          
+          # Check if release already exists
+          RELEASE_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/tags/$VERSION" | \
+            jq -r '.id // empty')
+          
+          if [ -n "$RELEASE_ID" ] && [ "$RELEASE_ID" != "null" ]; then
+            echo "ℹ️  Release for tag $VERSION already exists (ID: $RELEASE_ID), skipping release creation"
+            echo "✅ Using existing release: $VERSION"
+          else
+            # Create new release
+            RELEASE_BODY="## Release $VERSION"$'\n\n'"See [CHANGELOG.md](CHANGELOG.md) for detailed release notes and version history."
             
-            See [CHANGELOG.md](CHANGELOG.md) for detailed release notes and version history.
-          draft: false
-          prerelease: false
+            curl -X POST \
+              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/${{ github.repository }}/releases" \
+              -d "$(jq -n \
+                --arg tag "$VERSION" \
+                --arg name "Release $VERSION" \
+                --arg body "$RELEASE_BODY" \
+                '{tag_name: $tag, name: $name, body: $body, draft: false, prerelease: false}')"
+            echo "✅ Created GitHub release: $VERSION"
+          fi
