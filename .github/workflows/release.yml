@@ -104,14 +104,14 @@ jobs:
           
           # Check if module is available via proxy
           echo "Checking module availability via proxy.golang.org..."
-          GOPROXY=proxy.golang.org go list -m github.com/Graphiant-Inc/graphiant-sdk-go@$VERSION || {
+          GOPROXY=proxy.golang.org go list -m github.com/Graphiant-Inc/graphiant-sdk-go || {
             echo "⚠️  Warning: Module not yet available via proxy (this may take a few minutes)"
             echo "   Trying direct fetch instead..."
           }
           
           # Test fetching the module
           echo "Testing module fetch..."
-          go get github.com/Graphiant-Inc/graphiant-sdk-go@$VERSION
+          go get github.com/Graphiant-Inc/graphiant-sdk-go
           
           echo "✅ Module verification complete"
 
