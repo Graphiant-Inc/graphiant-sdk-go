@@ -1,5 +1,8 @@
 name: Build SDK
 
+permissions:
+  contents: read
+
 on:
   pull_request:
     paths:
