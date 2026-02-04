@@ -7,6 +7,10 @@ Name | Type | Description | Notes
 **Auth** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
 **AccountType** | Pointer to **string** |  | [optional] 
+**Email** | Pointer to **string** | User email address (returned for MFA users) | [optional] 
+**MfaType** | Pointer to **string** | MFA type (returned for MFA users) | [optional] 
+**StateToken** | Pointer to **string** | State token for MFA verification (returned for MFA users) | [optional] 
+**Status** | Pointer to **string** | Authentication status (returned for MFA users) | [optional] 
 
 ## Methods
 
@@ -101,6 +105,106 @@ SetAccountType sets AccountType field to given value.
 `func (o *V1AuthLoginPostResponse) HasAccountType() bool`
 
 HasAccountType returns a boolean if a field has been set.
+
+### GetEmail
+
+`func (o *V1AuthLoginPostResponse) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *V1AuthLoginPostResponse) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *V1AuthLoginPostResponse) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+### HasEmail
+
+`func (o *V1AuthLoginPostResponse) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
+
+### GetMfaType
+
+`func (o *V1AuthLoginPostResponse) GetMfaType() string`
+
+GetMfaType returns the MfaType field if non-nil, zero value otherwise.
+
+### GetMfaTypeOk
+
+`func (o *V1AuthLoginPostResponse) GetMfaTypeOk() (*string, bool)`
+
+GetMfaTypeOk returns a tuple with the MfaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMfaType
+
+`func (o *V1AuthLoginPostResponse) SetMfaType(v string)`
+
+SetMfaType sets MfaType field to given value.
+
+### HasMfaType
+
+`func (o *V1AuthLoginPostResponse) HasMfaType() bool`
+
+HasMfaType returns a boolean if a field has been set.
+
+### GetStateToken
+
+`func (o *V1AuthLoginPostResponse) GetStateToken() string`
+
+GetStateToken returns the StateToken field if non-nil, zero value otherwise.
+
+### GetStateTokenOk
+
+`func (o *V1AuthLoginPostResponse) GetStateTokenOk() (*string, bool)`
+
+GetStateTokenOk returns a tuple with the StateToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStateToken
+
+`func (o *V1AuthLoginPostResponse) SetStateToken(v string)`
+
+SetStateToken sets StateToken field to given value.
+
+### HasStateToken
+
+`func (o *V1AuthLoginPostResponse) HasStateToken() bool`
+
+HasStateToken returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *V1AuthLoginPostResponse) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *V1AuthLoginPostResponse) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *V1AuthLoginPostResponse) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *V1AuthLoginPostResponse) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

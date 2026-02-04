@@ -4,8 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ConsumerId** | Pointer to **int64** |  | [optional] 
 **ConsumerPrefixes** | Pointer to **[]string** |  | [optional] 
 **Customer** | Pointer to [**ManaV2B2BExtranetServiceCustomerMatchDetailsCustomer**](ManaV2B2BExtranetServiceCustomerMatchDetailsCustomer.md) |  | [optional] 
+**OldConsumerPrefixes** | Pointer to **[]string** |  | [optional] 
+**OldServicePrefixes** | Pointer to [**[]ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix**](ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix.md) |  | [optional] 
 **Service** | Pointer to [**ManaV2B2BExtranetServiceCustomerMatchDetailsService**](ManaV2B2BExtranetServiceCustomerMatchDetailsService.md) |  | [optional] 
 **ServicePrefixes** | Pointer to [**[]ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix**](ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix.md) |  | [optional] 
 
@@ -27,6 +30,31 @@ will change when the set of required properties is changed
 NewManaV2B2bExtranetServiceCustomerMatchDetailsWithDefaults instantiates a new ManaV2B2bExtranetServiceCustomerMatchDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetConsumerId
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetConsumerId() int64`
+
+GetConsumerId returns the ConsumerId field if non-nil, zero value otherwise.
+
+### GetConsumerIdOk
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetConsumerIdOk() (*int64, bool)`
+
+GetConsumerIdOk returns a tuple with the ConsumerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConsumerId
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) SetConsumerId(v int64)`
+
+SetConsumerId sets ConsumerId field to given value.
+
+### HasConsumerId
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) HasConsumerId() bool`
+
+HasConsumerId returns a boolean if a field has been set.
 
 ### GetConsumerPrefixes
 
@@ -77,6 +105,56 @@ SetCustomer sets Customer field to given value.
 `func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) HasCustomer() bool`
 
 HasCustomer returns a boolean if a field has been set.
+
+### GetOldConsumerPrefixes
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetOldConsumerPrefixes() []string`
+
+GetOldConsumerPrefixes returns the OldConsumerPrefixes field if non-nil, zero value otherwise.
+
+### GetOldConsumerPrefixesOk
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetOldConsumerPrefixesOk() (*[]string, bool)`
+
+GetOldConsumerPrefixesOk returns a tuple with the OldConsumerPrefixes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOldConsumerPrefixes
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) SetOldConsumerPrefixes(v []string)`
+
+SetOldConsumerPrefixes sets OldConsumerPrefixes field to given value.
+
+### HasOldConsumerPrefixes
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) HasOldConsumerPrefixes() bool`
+
+HasOldConsumerPrefixes returns a boolean if a field has been set.
+
+### GetOldServicePrefixes
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetOldServicePrefixes() []ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix`
+
+GetOldServicePrefixes returns the OldServicePrefixes field if non-nil, zero value otherwise.
+
+### GetOldServicePrefixesOk
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetOldServicePrefixesOk() (*[]ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix, bool)`
+
+GetOldServicePrefixesOk returns a tuple with the OldServicePrefixes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOldServicePrefixes
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) SetOldServicePrefixes(v []ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix)`
+
+SetOldServicePrefixes sets OldServicePrefixes field to given value.
+
+### HasOldServicePrefixes
+
+`func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) HasOldServicePrefixes() bool`
+
+HasOldServicePrefixes returns a boolean if a field has been set.
 
 ### GetService
 

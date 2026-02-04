@@ -1157,6 +1157,32 @@ paths:
           description: OK
       security:
       - jwtAuth: []
+  /v2/assurance/create-dnsproxy-entry:
+    post:
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v2AssuranceCreateDnsproxyEntryPostRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2AssuranceCreateDnsproxyEntryPostResponse'
+          description: OK
+      security:
+      - jwtAuth: []
   /v2/assurance/create-user-report:
     post:
       parameters:
@@ -1211,6 +1237,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/v2AssuranceDeleteclassifiedapplicationDeleteResponse'
+          description: OK
+      security:
+      - jwtAuth: []
+  /v2/assurance/delete-dnsproxy-entry:
+    delete:
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2AssuranceDeleteDnsproxyEntryDeleteResponse'
           description: OK
       security:
       - jwtAuth: []
@@ -1851,6 +1897,26 @@ paths:
           description: OK
       security:
       - jwtAuth: []
+  /v2/assurance/read-dnsproxy-list:
+    get:
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2AssuranceReadDnsproxyListGetResponse'
+          description: OK
+      security:
+      - jwtAuth: []
   /v2/assurance/read-user-report-list:
     get:
       parameters:
@@ -1894,6 +1960,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/v2AssuranceUpdateclassifiedapplicationPostResponse'
+          description: OK
+      security:
+      - jwtAuth: []
+  /v2/assurance/update-dnsproxy-entry:
+    post:
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v2AssuranceUpdateDnsproxyEntryPostRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2AssuranceUpdateDnsproxyEntryPostResponse'
           description: OK
       security:
       - jwtAuth: []
@@ -9733,6 +9825,70 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/v1GlobalSyncPostResponse'
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/extranets-b2b-peering/consumer/{id}/prefixes:
+    put:
+      description: Update B2B extranet peering service consumer
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: consumer id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 1234567891011
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ExtranetsB2bPeeringConsumerIdPrefixesPutResponse'
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/extranets-b2b-peering/match/service-to-customer/service-status:
+    put:
+      description: Pause B2B match service to customer
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutResponse'
           description: OK
       security:
       - jwtAuth: []
@@ -20774,6 +20930,109 @@ components:
             $ref: '#/components/schemas/assuranceServer'
           type: array
       type: object
+    v2AssuranceCreateDnsproxyEntryPostRequest:
+      properties:
+        dnsproxyEntry:
+          $ref: '#/components/schemas/assuranceDnsProxyEntry'
+      type: object
+    assuranceDnsProxyEntry:
+      example:
+        protocol: example string
+        name: DNSPROXY_EXCEPTION_DNS
+        portList:
+        - example string
+        - example string
+        dnsproxyEntryId: example string
+        nameText: example string
+        ipList:
+        - example string
+        - example string
+      properties:
+        dnsproxyEntryId:
+          description: dns proxy table entry id (required)
+          example: example string
+          type: string
+        ipList:
+          items:
+            description: IP list to exclude (required)
+            example: example string
+            type: string
+          type: array
+        name:
+          description: name of the entry  (required)
+          example: DNSPROXY_EXCEPTION_DNS
+          type: string
+        nameText:
+          description: user defined name of the record (required)
+          example: example string
+          type: string
+        portList:
+          items:
+            description: port list to exclude (required)
+            example: example string
+            type: string
+          type: array
+        protocol:
+          description: protocol to exclude (required)
+          example: example string
+          type: string
+      required:
+      - dnsproxyEntryId
+      - ipList
+      - name
+      - nameText
+      - portList
+      - protocol
+      type: object
+    v2AssuranceCreateDnsproxyEntryPostResponse:
+      example:
+        dnsproxyEntryId: example string
+      properties:
+        dnsproxyEntryId:
+          description: dns proxy table entry id (required)
+          example: example string
+          type: string
+      type: object
+    v2AssuranceUpdateDnsproxyEntryPostRequest:
+      properties:
+        dnsproxyEntry:
+          $ref: '#/components/schemas/assuranceDnsProxyEntry'
+      type: object
+    v2AssuranceUpdateDnsproxyEntryPostResponse:
+      properties: {}
+      type: object
+    v2AssuranceDeleteDnsproxyEntryDeleteResponse:
+      properties: {}
+      type: object
+    v2AssuranceReadDnsproxyListGetResponse:
+      example:
+        dnsproxyList:
+        - protocol: example string
+          name: DNSPROXY_EXCEPTION_DNS
+          portList:
+          - example string
+          - example string
+          dnsproxyEntryId: example string
+          nameText: example string
+          ipList:
+          - example string
+          - example string
+        - protocol: example string
+          name: DNSPROXY_EXCEPTION_DNS
+          portList:
+          - example string
+          - example string
+          dnsproxyEntryId: example string
+          nameText: example string
+          ipList:
+          - example string
+          - example string
+      properties:
+        dnsproxyList:
+          items:
+            $ref: '#/components/schemas/assuranceDnsProxyEntry'
+          type: array
+      type: object
     v1AuditLogsPostRequest:
       properties:
         cursorRef:
@@ -23319,6 +23578,7 @@ components:
           acceptEula: true
           customers:
             key:
+              marketplaceId: example string
               impersonationEnabled: true
               counts:
                 activeUpCount: 1234567891011
@@ -23335,6 +23595,7 @@ components:
                 emptySitesCount: 1234567891011
                 impairedSitesCount: 1234567891011
               companyName: example string
+              description: example string
               enterpriseId: 1234567891011
               adminEmail: example string
           enterpriseId: 1234567891011
@@ -23373,6 +23634,7 @@ components:
           acceptEula: true
           customers:
             key:
+              marketplaceId: example string
               impersonationEnabled: true
               counts:
                 activeUpCount: 1234567891011
@@ -23389,6 +23651,7 @@ components:
                 emptySitesCount: 1234567891011
                 impairedSitesCount: 1234567891011
               companyName: example string
+              description: example string
               enterpriseId: 1234567891011
               adminEmail: example string
           enterpriseId: 1234567891011
@@ -23435,6 +23698,7 @@ components:
         acceptEula: true
         customers:
           key:
+            marketplaceId: example string
             impersonationEnabled: true
             counts:
               activeUpCount: 1234567891011
@@ -23451,6 +23715,7 @@ components:
               emptySitesCount: 1234567891011
               impairedSitesCount: 1234567891011
             companyName: example string
+            description: example string
             enterpriseId: 1234567891011
             adminEmail: example string
         enterpriseId: 1234567891011
@@ -23591,6 +23856,7 @@ components:
       type: object
     iamCustomer:
       example:
+        marketplaceId: example string
         impersonationEnabled: true
         counts:
           activeUpCount: 1234567891011
@@ -23607,6 +23873,7 @@ components:
           emptySitesCount: 1234567891011
           impairedSitesCount: 1234567891011
         companyName: example string
+        description: example string
         enterpriseId: 1234567891011
         adminEmail: example string
       properties:
@@ -23618,6 +23885,9 @@ components:
           type: string
         counts:
           $ref: '#/components/schemas/iamCounts'
+        description:
+          example: example string
+          type: string
         enterpriseId:
           example: 1234567891011
           format: int64
@@ -23625,6 +23895,9 @@ components:
         impersonationEnabled:
           example: true
           type: boolean
+        marketplaceId:
+          example: example string
+          type: string
       type: object
     v1EnterprisesManagedGetResponse:
       example:
@@ -23677,6 +23950,7 @@ components:
           acceptEula: true
           customers:
             key:
+              marketplaceId: example string
               impersonationEnabled: true
               counts:
                 activeUpCount: 1234567891011
@@ -23693,6 +23967,7 @@ components:
                 emptySitesCount: 1234567891011
                 impairedSitesCount: 1234567891011
               companyName: example string
+              description: example string
               enterpriseId: 1234567891011
               adminEmail: example string
           enterpriseId: 1234567891011
@@ -23731,6 +24006,7 @@ components:
           acceptEula: true
           customers:
             key:
+              marketplaceId: example string
               impersonationEnabled: true
               counts:
                 activeUpCount: 1234567891011
@@ -23747,6 +24023,7 @@ components:
                 emptySitesCount: 1234567891011
                 impairedSitesCount: 1234567891011
               companyName: example string
+              description: example string
               enterpriseId: 1234567891011
               adminEmail: example string
           enterpriseId: 1234567891011
@@ -24070,6 +24347,7 @@ components:
           acceptEula: true
           customers:
             key:
+              marketplaceId: example string
               impersonationEnabled: true
               counts:
                 activeUpCount: 1234567891011
@@ -24086,6 +24364,7 @@ components:
                 emptySitesCount: 1234567891011
                 impairedSitesCount: 1234567891011
               companyName: example string
+              description: example string
               enterpriseId: 1234567891011
               adminEmail: example string
           enterpriseId: 1234567891011
@@ -24124,6 +24403,7 @@ components:
           acceptEula: true
           customers:
             key:
+              marketplaceId: example string
               impersonationEnabled: true
               counts:
                 activeUpCount: 1234567891011
@@ -24140,6 +24420,7 @@ components:
                 emptySitesCount: 1234567891011
                 impairedSitesCount: 1234567891011
               companyName: example string
+              description: example string
               enterpriseId: 1234567891011
               adminEmail: example string
           enterpriseId: 1234567891011
@@ -32932,6 +33213,10 @@ components:
             nanos: 123
           staticRoutesEnabled: true
           hostname: example string
+          slaConformance:
+            duration: 1234567891011
+            interval: 1234567891011
+            dampeningFactor: 1234567891011
           configUpdatedAt:
             seconds: 1234567891011
             nanos: 123
@@ -34171,6 +34456,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -34895,6 +35210,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -38137,6 +38482,10 @@ components:
             nanos: 123
           staticRoutesEnabled: true
           hostname: example string
+          slaConformance:
+            duration: 1234567891011
+            interval: 1234567891011
+            dampeningFactor: 1234567891011
           configUpdatedAt:
             seconds: 1234567891011
             nanos: 123
@@ -39376,6 +39725,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -40100,6 +40479,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -43360,6 +43769,10 @@ components:
           nanos: 123
         staticRoutesEnabled: true
         hostname: example string
+        slaConformance:
+          duration: 1234567891011
+          interval: 1234567891011
+          dampeningFactor: 1234567891011
         configUpdatedAt:
           seconds: 1234567891011
           nanos: 123
@@ -44599,6 +45012,36 @@ components:
           circuitName: example string
           phyAddress: example string
           securityZone: example string
+          macsec:
+            keyServerPriority: 1234567891011
+            sakConfigurations:
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            splitSakConfigByLagMember: true
+            transparentVlan: true
+            encryptionEnforcementMode: ENUM_VALUE
+            pskConfigurations:
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            enabled: true
           speedMbps: 123
           tcpMssV4: 123
           lldpEnabled: true
@@ -45323,6 +45766,36 @@ components:
           circuitName: example string
           phyAddress: example string
           securityZone: example string
+          macsec:
+            keyServerPriority: 1234567891011
+            sakConfigurations:
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            splitSakConfigByLagMember: true
+            transparentVlan: true
+            encryptionEnforcementMode: ENUM_VALUE
+            pskConfigurations:
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            enabled: true
           speedMbps: 123
           tcpMssV4: 123
           lldpEnabled: true
@@ -46397,6 +46870,8 @@ components:
           type: string
         site:
           $ref: '#/components/schemas/manaV2Site'
+        slaConformance:
+          $ref: '#/components/schemas/manaV2SlaConformance'
         snmp:
           $ref: '#/components/schemas/manaV2Snmp'
         softwareVersion:
@@ -48190,6 +48665,36 @@ components:
         circuitName: example string
         phyAddress: example string
         securityZone: example string
+        macsec:
+          keyServerPriority: 1234567891011
+          sakConfigurations:
+          - rekeyInterval: 1000
+            replayProtectionWindowSize: 1000
+            cipherSuite: ENUM_VALUE
+            lagMemberInterfaceId: 1
+          - rekeyInterval: 1000
+            replayProtectionWindowSize: 1000
+            cipherSuite: ENUM_VALUE
+            lagMemberInterfaceId: 1
+          splitSakConfigByLagMember: true
+          transparentVlan: true
+          encryptionEnforcementMode: ENUM_VALUE
+          pskConfigurations:
+          - ckn: Corp-MACsec-CKN
+            nickname: PSK1
+            startTime:
+              seconds: 1234567891011
+              nanos: 123
+            cak: 1234567890abcdef1234567890abcdef
+            cakCryptographicAlgorithm: AES_128_CMAC
+          - ckn: Corp-MACsec-CKN
+            nickname: PSK1
+            startTime:
+              seconds: 1234567891011
+              nanos: 123
+            cak: 1234567890abcdef1234567890abcdef
+            cakCryptographicAlgorithm: AES_128_CMAC
+          enabled: true
         speedMbps: 123
         tcpMssV4: 123
         lldpEnabled: true
@@ -48246,6 +48751,8 @@ components:
         lldpEnabled:
           example: true
           type: boolean
+        macsec:
+          $ref: '#/components/schemas/manaV2InterfaceMaCsec'
         maxTransmissionUnit:
           example: 123
           format: int32
@@ -48709,6 +49216,120 @@ components:
         timer:
           example: ENUM_VALUE
           type: string
+      type: object
+    manaV2InterfaceMaCsec:
+      example:
+        keyServerPriority: 1234567891011
+        sakConfigurations:
+        - rekeyInterval: 1000
+          replayProtectionWindowSize: 1000
+          cipherSuite: ENUM_VALUE
+          lagMemberInterfaceId: 1
+        - rekeyInterval: 1000
+          replayProtectionWindowSize: 1000
+          cipherSuite: ENUM_VALUE
+          lagMemberInterfaceId: 1
+        splitSakConfigByLagMember: true
+        transparentVlan: true
+        encryptionEnforcementMode: ENUM_VALUE
+        pskConfigurations:
+        - ckn: Corp-MACsec-CKN
+          nickname: PSK1
+          startTime:
+            seconds: 1234567891011
+            nanos: 123
+          cak: 1234567890abcdef1234567890abcdef
+          cakCryptographicAlgorithm: AES_128_CMAC
+        - ckn: Corp-MACsec-CKN
+          nickname: PSK1
+          startTime:
+            seconds: 1234567891011
+            nanos: 123
+          cak: 1234567890abcdef1234567890abcdef
+          cakCryptographicAlgorithm: AES_128_CMAC
+        enabled: true
+      properties:
+        enabled:
+          example: true
+          type: boolean
+        encryptionEnforcementMode:
+          example: ENUM_VALUE
+          type: string
+        keyServerPriority:
+          example: 1234567891011
+          format: int64
+          type: integer
+        pskConfigurations:
+          items:
+            $ref: '#/components/schemas/manaV2PskConfiguration'
+          type: array
+        sakConfigurations:
+          items:
+            $ref: '#/components/schemas/manaV2SakConfiguration'
+          type: array
+        splitSakConfigByLagMember:
+          example: true
+          type: boolean
+        transparentVlan:
+          example: true
+          type: boolean
+      type: object
+    manaV2PskConfiguration:
+      example:
+        ckn: Corp-MACsec-CKN
+        nickname: PSK1
+        startTime:
+          seconds: 1234567891011
+          nanos: 123
+        cak: 1234567890abcdef1234567890abcdef
+        cakCryptographicAlgorithm: AES_128_CMAC
+      properties:
+        cak:
+          description: The Connection Authentication Key (CAK)
+          example: 1234567890abcdef1234567890abcdef
+          type: string
+        cakCryptographicAlgorithm:
+          description: The cryptographic algorithm for the CAK (required)
+          example: AES_128_CMAC
+          type: string
+        ckn:
+          description: The Connection Key Name (CKN) (required)
+          example: Corp-MACsec-CKN
+          type: string
+        nickname:
+          description: The nickname of the PSK (required)
+          example: PSK1
+          type: string
+        startTime:
+          $ref: '#/components/schemas/googleProtobufTimestamp'
+      type: object
+    manaV2SakConfiguration:
+      example:
+        rekeyInterval: 1000
+        replayProtectionWindowSize: 1000
+        cipherSuite: ENUM_VALUE
+        lagMemberInterfaceId: 1
+      properties:
+        cipherSuite:
+          description: The cipher suite (required)
+          example: ENUM_VALUE
+          type: string
+        lagMemberInterfaceId:
+          description: The interface ID (required for when each lag member has a different
+            MACsec configuration - when split_sak_config_by_lag_member is true) (required)
+          example: 1
+          format: int64
+          type: integer
+        rekeyInterval:
+          description: The rekey interval in seconds. 0 means disabled
+          example: 1000
+          format: int64
+          type: integer
+        replayProtectionWindowSize:
+          description: The replay protection window size in seconds. 0 means disabled
+          example: 1000
+          format: int64
+          type: integer
       type: object
     manaV2InterfaceSfpOpticalStrength:
       example:
@@ -52553,6 +53174,25 @@ components:
         tagValue:
           example: 123
           format: int32
+          type: integer
+      type: object
+    manaV2SlaConformance:
+      example:
+        duration: 1234567891011
+        interval: 1234567891011
+        dampeningFactor: 1234567891011
+      properties:
+        dampeningFactor:
+          example: 1234567891011
+          format: int64
+          type: integer
+        duration:
+          example: 1234567891011
+          format: int64
+          type: integer
+        interval:
+          example: 1234567891011
+          format: int64
           type: integer
       type: object
     manaV2Snmp:
@@ -56788,6 +57428,10 @@ components:
             nanos: 123
           staticRoutesEnabled: true
           hostname: example string
+          slaConformance:
+            duration: 1234567891011
+            interval: 1234567891011
+            dampeningFactor: 1234567891011
           configUpdatedAt:
             seconds: 1234567891011
             nanos: 123
@@ -58027,6 +58671,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -58751,6 +59425,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -61915,6 +62619,8 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/manaV2NullableIPsecTunnelConfig'
           type: object
+        slaConformance:
+          $ref: '#/components/schemas/manaV2NullableSlaConformance'
         snmp:
           $ref: '#/components/schemas/manaV2NullableSnmpConfig'
         snmpGlobalObject:
@@ -62094,6 +62800,8 @@ components:
         loopback:
           example: true
           type: boolean
+        macsec:
+          $ref: '#/components/schemas/manaV2NullableMaCsecConfiguration'
         maxTransmissionUnit:
           example: 123
           format: int32
@@ -62129,6 +62837,70 @@ components:
           $ref: '#/components/schemas/manaV2NullableTcpMssV4'
         v6TcpMss:
           $ref: '#/components/schemas/manaV2NullableTcpMssV6'
+      type: object
+    manaV2NullableMaCsecConfiguration:
+      properties:
+        macsec:
+          $ref: '#/components/schemas/manaV2MaCsecConfiguration'
+      type: object
+    manaV2MaCsecConfiguration:
+      properties:
+        enabled:
+          description: Whether MACsec is enabled or disabled (required)
+          example: true
+          type: boolean
+        encryptionEnforcementMode:
+          description: The encryption enforcement mode (required)
+          example: MACSEC_ENFORCEMENT_MODE_SHOULD_ENCRYPT
+          type: string
+        globalSakConfiguration:
+          $ref: '#/components/schemas/manaV2NullableSakConfiguration'
+        keyServerPriority:
+          description: The priority of the key server. Lower number means higher priority.
+          example: 255
+          format: int64
+          type: integer
+        pskConfigurations:
+          items:
+            $ref: '#/components/schemas/manaV2PskConfiguration'
+          type: array
+        pskConfigurationsByNickname:
+          additionalProperties:
+            $ref: '#/components/schemas/manaV2NullablePskConfiguration'
+          type: object
+        sakConfigurations:
+          items:
+            $ref: '#/components/schemas/manaV2SakConfiguration'
+          type: array
+        sakConfigurationsByLagMemberInterfaceId:
+          additionalProperties:
+            $ref: '#/components/schemas/manaV2NullableSakConfiguration'
+          type: object
+        splitSakConfigByLagMember:
+          description: Whether to allow individual SAK configurations for each lag
+            member
+          example: true
+          type: boolean
+        transparentVlan:
+          description: Whether transparent VLAN is enabled or disabled
+          example: true
+          type: boolean
+      required:
+      - enabled
+      - encryptionEnforcementMode
+      - globalSakConfiguration
+      - pskConfigurationsByNickname
+      - sakConfigurationsByLagMemberInterfaceId
+      type: object
+    manaV2NullableSakConfiguration:
+      properties:
+        sak:
+          $ref: '#/components/schemas/manaV2SakConfiguration'
+      type: object
+    manaV2NullablePskConfiguration:
+      properties:
+        psk:
+          $ref: '#/components/schemas/manaV2PskConfiguration'
       type: object
     manaV2NullableInterfaceVlanConfig:
       properties:
@@ -62236,6 +63008,8 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/manaV2NullableLagMemberInterface'
           type: object
+        macsec:
+          $ref: '#/components/schemas/manaV2NullableMaCsecConfiguration'
         minimumMembers:
           example: 123
           format: int32
@@ -62516,6 +63290,11 @@ components:
             example: example string
             type: string
           type: array
+      type: object
+    manaV2NullableSlaConformance:
+      properties:
+        slaConformance:
+          $ref: '#/components/schemas/manaV2SlaConformance'
       type: object
     manaV2NullableSnmpConfig:
       properties:
@@ -65490,6 +66269,10 @@ components:
             nanos: 123
           staticRoutesEnabled: true
           hostname: example string
+          slaConformance:
+            duration: 1234567891011
+            interval: 1234567891011
+            dampeningFactor: 1234567891011
           configUpdatedAt:
             seconds: 1234567891011
             nanos: 123
@@ -66729,6 +67512,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -67453,6 +68266,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -70695,6 +71538,10 @@ components:
             nanos: 123
           staticRoutesEnabled: true
           hostname: example string
+          slaConformance:
+            duration: 1234567891011
+            interval: 1234567891011
+            dampeningFactor: 1234567891011
           configUpdatedAt:
             seconds: 1234567891011
             nanos: 123
@@ -71934,6 +72781,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -72658,6 +73535,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -76008,6 +76915,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -77247,6 +78158,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -77971,6 +78912,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -81213,6 +82184,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -82452,6 +83427,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -83176,6 +84181,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -86529,6 +87564,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -87768,6 +88807,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -88492,6 +89561,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -91734,6 +92833,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -92973,6 +94076,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -93697,6 +94830,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -100053,6 +101216,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -101292,6 +102459,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -102016,6 +103213,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -105258,6 +106485,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -106497,6 +107728,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -107221,6 +108482,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -110574,6 +111865,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -111813,6 +113108,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -112537,6 +113862,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -115779,6 +117134,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -117018,6 +118377,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -117742,6 +119131,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -124108,6 +125527,10 @@ components:
               nanos: 123
             staticRoutesEnabled: true
             hostname: example string
+            slaConformance:
+              duration: 1234567891011
+              interval: 1234567891011
+              dampeningFactor: 1234567891011
             configUpdatedAt:
               seconds: 1234567891011
               nanos: 123
@@ -125347,6 +126770,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -126071,6 +127524,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -129313,6 +130796,10 @@ components:
               nanos: 123
             staticRoutesEnabled: true
             hostname: example string
+            slaConformance:
+              duration: 1234567891011
+              interval: 1234567891011
+              dampeningFactor: 1234567891011
             configUpdatedAt:
               seconds: 1234567891011
               nanos: 123
@@ -130552,6 +132039,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -131276,6 +132793,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -134629,6 +136176,10 @@ components:
               nanos: 123
             staticRoutesEnabled: true
             hostname: example string
+            slaConformance:
+              duration: 1234567891011
+              interval: 1234567891011
+              dampeningFactor: 1234567891011
             configUpdatedAt:
               seconds: 1234567891011
               nanos: 123
@@ -135868,6 +137419,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -136592,6 +138173,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -139834,6 +141445,10 @@ components:
               nanos: 123
             staticRoutesEnabled: true
             hostname: example string
+            slaConformance:
+              duration: 1234567891011
+              interval: 1234567891011
+              dampeningFactor: 1234567891011
             configUpdatedAt:
               seconds: 1234567891011
               nanos: 123
@@ -141073,6 +142688,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -141797,6 +143442,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -148204,6 +149879,10 @@ components:
             nanos: 123
           staticRoutesEnabled: true
           hostname: example string
+          slaConformance:
+            duration: 1234567891011
+            interval: 1234567891011
+            dampeningFactor: 1234567891011
           configUpdatedAt:
             seconds: 1234567891011
             nanos: 123
@@ -149443,6 +151122,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -150167,6 +151876,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -153409,6 +155148,10 @@ components:
             nanos: 123
           staticRoutesEnabled: true
           hostname: example string
+          slaConformance:
+            duration: 1234567891011
+            interval: 1234567891011
+            dampeningFactor: 1234567891011
           configUpdatedAt:
             seconds: 1234567891011
             nanos: 123
@@ -154648,6 +156391,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -155372,6 +157145,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -158821,6 +160624,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -160060,6 +161867,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -160784,6 +162621,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -164026,6 +165893,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -165265,6 +167136,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -165989,6 +167890,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -169342,6 +171273,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -170581,6 +172516,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -171305,6 +173270,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -174547,6 +176542,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -175786,6 +177785,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -176510,6 +178539,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -183011,6 +185070,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -184250,6 +186313,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -184974,6 +187067,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -188216,6 +190339,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -189455,6 +191582,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -190179,6 +192336,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -193532,6 +195719,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -194771,6 +196962,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -195495,6 +197716,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -198737,6 +200988,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -199976,6 +202231,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -200700,6 +202985,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -207068,6 +209383,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -208307,6 +210626,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -209031,6 +211380,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -212273,6 +214652,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -213512,6 +215895,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -214236,6 +216649,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -217589,6 +220032,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -218828,6 +221275,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -219552,6 +222029,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -222794,6 +225301,10 @@ components:
                 nanos: 123
               staticRoutesEnabled: true
               hostname: example string
+              slaConformance:
+                duration: 1234567891011
+                interval: 1234567891011
+                dampeningFactor: 1234567891011
               configUpdatedAt:
                 seconds: 1234567891011
                 nanos: 123
@@ -224033,6 +226544,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -224757,6 +227298,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -233124,6 +235695,10 @@ components:
             nanos: 123
           staticRoutesEnabled: true
           hostname: example string
+          slaConformance:
+            duration: 1234567891011
+            interval: 1234567891011
+            dampeningFactor: 1234567891011
           configUpdatedAt:
             seconds: 1234567891011
             nanos: 123
@@ -234363,6 +236938,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -235087,6 +237692,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -238329,6 +240964,10 @@ components:
             nanos: 123
           staticRoutesEnabled: true
           hostname: example string
+          slaConformance:
+            duration: 1234567891011
+            interval: 1234567891011
+            dampeningFactor: 1234567891011
           configUpdatedAt:
             seconds: 1234567891011
             nanos: 123
@@ -239568,6 +242207,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -240292,6 +242961,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -241929,6 +244628,29 @@ components:
           items:
             $ref: '#/components/schemas/manaV2B2bExtranetMatchServiceToCustomer'
           type: array
+      type: object
+    v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest:
+      properties:
+        id:
+          description: match ID for the customer's service subscription (required)
+          example: 1234567891011
+          format: int64
+          type: integer
+        status:
+          description: "Customer’s service status: Paused or Active (required)"
+          example: B2B_PEERING_SERVICE_STATUS_PAUSED
+          type: string
+      required:
+      - id
+      - status
+      type: object
+    v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutResponse:
+      example:
+        status: ENUM_VALUE
+      properties:
+        status:
+          example: ENUM_VALUE
+          type: string
       type: object
     v1ExtranetsB2bPeeringMatchServicesSummaryIdGetResponse:
       example:
@@ -243760,6 +246482,10 @@ components:
         - consumerPrefixes:
           - example string
           - example string
+          oldConsumerPrefixes:
+          - example string
+          - example string
+          consumerId: 1234567891011
           service:
             contactEmail:
             - example string
@@ -243769,6 +246495,13 @@ components:
             id: 1234567891011
             serviceName: example string
           servicePrefixes:
+          - prefix: example string
+            tag: example string
+            customerTranslatedPrefix: example string
+          - prefix: example string
+            tag: example string
+            customerTranslatedPrefix: example string
+          oldServicePrefixes:
           - prefix: example string
             tag: example string
             customerTranslatedPrefix: example string
@@ -243785,6 +246518,10 @@ components:
         - consumerPrefixes:
           - example string
           - example string
+          oldConsumerPrefixes:
+          - example string
+          - example string
+          consumerId: 1234567891011
           service:
             contactEmail:
             - example string
@@ -243794,6 +246531,13 @@ components:
             id: 1234567891011
             serviceName: example string
           servicePrefixes:
+          - prefix: example string
+            tag: example string
+            customerTranslatedPrefix: example string
+          - prefix: example string
+            tag: example string
+            customerTranslatedPrefix: example string
+          oldServicePrefixes:
           - prefix: example string
             tag: example string
             customerTranslatedPrefix: example string
@@ -243818,6 +246562,10 @@ components:
         consumerPrefixes:
         - example string
         - example string
+        oldConsumerPrefixes:
+        - example string
+        - example string
+        consumerId: 1234567891011
         service:
           contactEmail:
           - example string
@@ -243833,6 +246581,13 @@ components:
         - prefix: example string
           tag: example string
           customerTranslatedPrefix: example string
+        oldServicePrefixes:
+        - prefix: example string
+          tag: example string
+          customerTranslatedPrefix: example string
+        - prefix: example string
+          tag: example string
+          customerTranslatedPrefix: example string
         customer:
           emails:
           - example string
@@ -243841,6 +246596,10 @@ components:
           id: 1234567891011
           numSites: 123
       properties:
+        consumerId:
+          example: 1234567891011
+          format: int64
+          type: integer
         consumerPrefixes:
           items:
             example: example string
@@ -243848,6 +246607,15 @@ components:
           type: array
         customer:
           $ref: '#/components/schemas/manaV2B2BExtranetServiceCustomerMatchDetailsCustomer'
+        oldConsumerPrefixes:
+          items:
+            example: example string
+            type: string
+          type: array
+        oldServicePrefixes:
+          items:
+            $ref: '#/components/schemas/manaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix'
+          type: array
         service:
           $ref: '#/components/schemas/manaV2B2BExtranetServiceCustomerMatchDetailsService'
         servicePrefixes:
@@ -243882,6 +246650,22 @@ components:
           minimum: 0
           type: integer
       type: object
+    manaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix:
+      example:
+        prefix: example string
+        tag: example string
+        customerTranslatedPrefix: example string
+      properties:
+        customerTranslatedPrefix:
+          example: example string
+          type: string
+        prefix:
+          example: example string
+          type: string
+        tag:
+          example: example string
+          type: string
+      type: object
     manaV2B2BExtranetServiceCustomerMatchDetailsService:
       example:
         contactEmail:
@@ -243908,22 +246692,6 @@ components:
           format: int64
           type: integer
         serviceName:
-          example: example string
-          type: string
-      type: object
-    manaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix:
-      example:
-        prefix: example string
-        tag: example string
-        customerTranslatedPrefix: example string
-      properties:
-        customerTranslatedPrefix:
-          example: example string
-          type: string
-        prefix:
-          example: example string
-          type: string
-        tag:
           example: example string
           type: string
       type: object
@@ -244188,6 +246956,23 @@ components:
             $ref: '#/components/schemas/manaV2B2bSiteInformation'
           type: array
       type: object
+    v1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest:
+      properties:
+        servicePrefixes:
+          items:
+            $ref: '#/components/schemas/manaV2B2bNat'
+          type: array
+      required:
+      - servicePrefixes
+      type: object
+    v1ExtranetsB2bPeeringConsumerIdPrefixesPutResponse:
+      example:
+        consumerActiviyId: example string
+      properties:
+        consumerActiviyId:
+          example: example string
+          type: string
+      type: object
     v1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponse:
       example:
         emails:
@@ -244368,6 +247153,10 @@ components:
           consumerPrefixes:
           - example string
           - example string
+          oldConsumerPrefixes:
+          - example string
+          - example string
+          consumerId: 1234567891011
           service:
             contactEmail:
             - example string
@@ -244377,6 +247166,13 @@ components:
             id: 1234567891011
             serviceName: example string
           servicePrefixes:
+          - prefix: example string
+            tag: example string
+            customerTranslatedPrefix: example string
+          - prefix: example string
+            tag: example string
+            customerTranslatedPrefix: example string
+          oldServicePrefixes:
           - prefix: example string
             tag: example string
             customerTranslatedPrefix: example string
@@ -246404,6 +249200,36 @@ components:
           circuitName: example string
           phyAddress: example string
           securityZone: example string
+          macsec:
+            keyServerPriority: 1234567891011
+            sakConfigurations:
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            splitSakConfigByLagMember: true
+            transparentVlan: true
+            encryptionEnforcementMode: ENUM_VALUE
+            pskConfigurations:
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            enabled: true
           speedMbps: 123
           tcpMssV4: 123
           lldpEnabled: true
@@ -247128,6 +249954,36 @@ components:
           circuitName: example string
           phyAddress: example string
           securityZone: example string
+          macsec:
+            keyServerPriority: 1234567891011
+            sakConfigurations:
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            splitSakConfigByLagMember: true
+            transparentVlan: true
+            encryptionEnforcementMode: ENUM_VALUE
+            pskConfigurations:
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            enabled: true
           speedMbps: 123
           tcpMssV4: 123
           lldpEnabled: true
@@ -247905,6 +250761,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -248635,6 +251521,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -249391,6 +252307,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -250121,6 +253067,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -250883,6 +253859,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -251613,6 +254619,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -252369,6 +255405,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -253099,6 +256165,36 @@ components:
                 circuitName: example string
                 phyAddress: example string
                 securityZone: example string
+                macsec:
+                  keyServerPriority: 1234567891011
+                  sakConfigurations:
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  - rekeyInterval: 1000
+                    replayProtectionWindowSize: 1000
+                    cipherSuite: ENUM_VALUE
+                    lagMemberInterfaceId: 1
+                  splitSakConfigByLagMember: true
+                  transparentVlan: true
+                  encryptionEnforcementMode: ENUM_VALUE
+                  pskConfigurations:
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  - ckn: Corp-MACsec-CKN
+                    nickname: PSK1
+                    startTime:
+                      seconds: 1234567891011
+                      nanos: 123
+                    cak: 1234567890abcdef1234567890abcdef
+                    cakCryptographicAlgorithm: AES_128_CMAC
+                  enabled: true
                 speedMbps: 123
                 tcpMssV4: 123
                 lldpEnabled: true
@@ -253869,6 +256965,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -254599,6 +257725,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -255355,6 +258511,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -256085,6 +259271,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -256866,6 +260082,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -257596,6 +260842,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -258406,6 +261682,36 @@ components:
           circuitName: example string
           phyAddress: example string
           securityZone: example string
+          macsec:
+            keyServerPriority: 1234567891011
+            sakConfigurations:
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            splitSakConfigByLagMember: true
+            transparentVlan: true
+            encryptionEnforcementMode: ENUM_VALUE
+            pskConfigurations:
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            enabled: true
           speedMbps: 123
           tcpMssV4: 123
           lldpEnabled: true
@@ -259136,6 +262442,36 @@ components:
           circuitName: example string
           phyAddress: example string
           securityZone: example string
+          macsec:
+            keyServerPriority: 1234567891011
+            sakConfigurations:
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            - rekeyInterval: 1000
+              replayProtectionWindowSize: 1000
+              cipherSuite: ENUM_VALUE
+              lagMemberInterfaceId: 1
+            splitSakConfigByLagMember: true
+            transparentVlan: true
+            encryptionEnforcementMode: ENUM_VALUE
+            pskConfigurations:
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            - ckn: Corp-MACsec-CKN
+              nickname: PSK1
+              startTime:
+                seconds: 1234567891011
+                nanos: 123
+              cak: 1234567890abcdef1234567890abcdef
+              cakCryptographicAlgorithm: AES_128_CMAC
+            enabled: true
           speedMbps: 123
           tcpMssV4: 123
           lldpEnabled: true
@@ -266584,6 +269920,10 @@ components:
               nanos: 123
             staticRoutesEnabled: true
             hostname: example string
+            slaConformance:
+              duration: 1234567891011
+              interval: 1234567891011
+              dampeningFactor: 1234567891011
             configUpdatedAt:
               seconds: 1234567891011
               nanos: 123
@@ -267823,6 +271163,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -268547,6 +271917,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -271800,6 +275200,10 @@ components:
             nanos: 123
           staticRoutesEnabled: true
           hostname: example string
+          slaConformance:
+            duration: 1234567891011
+            interval: 1234567891011
+            dampeningFactor: 1234567891011
           configUpdatedAt:
             seconds: 1234567891011
             nanos: 123
@@ -273039,6 +276443,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -273763,6 +277197,36 @@ components:
             circuitName: example string
             phyAddress: example string
             securityZone: example string
+            macsec:
+              keyServerPriority: 1234567891011
+              sakConfigurations:
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              - rekeyInterval: 1000
+                replayProtectionWindowSize: 1000
+                cipherSuite: ENUM_VALUE
+                lagMemberInterfaceId: 1
+              splitSakConfigByLagMember: true
+              transparentVlan: true
+              encryptionEnforcementMode: ENUM_VALUE
+              pskConfigurations:
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              - ckn: Corp-MACsec-CKN
+                nickname: PSK1
+                startTime:
+                  seconds: 1234567891011
+                  nanos: 123
+                cak: 1234567890abcdef1234567890abcdef
+                cakCryptographicAlgorithm: AES_128_CMAC
+              enabled: true
             speedMbps: 123
             tcpMssV4: 123
             lldpEnabled: true
@@ -277048,6 +280512,10 @@ components:
               nanos: 123
             staticRoutesEnabled: true
             hostname: example string
+            slaConformance:
+              duration: 1234567891011
+              interval: 1234567891011
+              dampeningFactor: 1234567891011
             configUpdatedAt:
               seconds: 1234567891011
               nanos: 123
@@ -278287,6 +281755,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -279011,6 +282509,36 @@ components:
               circuitName: example string
               phyAddress: example string
               securityZone: example string
+              macsec:
+                keyServerPriority: 1234567891011
+                sakConfigurations:
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                - rekeyInterval: 1000
+                  replayProtectionWindowSize: 1000
+                  cipherSuite: ENUM_VALUE
+                  lagMemberInterfaceId: 1
+                splitSakConfigByLagMember: true
+                transparentVlan: true
+                encryptionEnforcementMode: ENUM_VALUE
+                pskConfigurations:
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                - ckn: Corp-MACsec-CKN
+                  nickname: PSK1
+                  startTime:
+                    seconds: 1234567891011
+                    nanos: 123
+                  cak: 1234567890abcdef1234567890abcdef
+                  cakCryptographicAlgorithm: AES_128_CMAC
+                enabled: true
               speedMbps: 123
               tcpMssV4: 123
               lldpEnabled: true
@@ -301670,8 +305198,12 @@ components:
     v1AuthLoginPostResponse:
       example:
         auth: true
+        mfaType: TOTP
         accountType: enterprise
+        stateToken: state-token-12345
+        email: user@example.com
         token: gr-auth-12345678-1234-1234-1234-123456789012-87654321-4321-4321-4321-210987654321
+        status: AwaitingMfa
       properties:
         auth:
           example: true
@@ -301687,6 +305219,22 @@ components:
           - msp
           - graphiant
           example: enterprise
+          type: string
+        email:
+          description: User email address (returned for MFA users)
+          example: user@example.com
+          type: string
+        mfaType:
+          description: MFA type (returned for MFA users)
+          example: TOTP
+          type: string
+        stateToken:
+          description: State token for MFA verification (returned for MFA users)
+          example: state-token-12345
+          type: string
+        status:
+          description: Authentication status (returned for MFA users)
+          example: AwaitingMfa
           type: string
       type: object
     v1AuthLoginTempPostRequest:

@@ -58,6 +58,7 @@ type ManaV2Device struct {
 	Segments []ManaV2Vrf `json:"segments,omitempty"`
 	SerialNumber *string `json:"serialNumber,omitempty"`
 	Site *ManaV2Site `json:"site,omitempty"`
+	SlaConformance *ManaV2SlaConformance `json:"slaConformance,omitempty"`
 	Snmp *ManaV2Snmp `json:"snmp,omitempty"`
 	SoftwareVersion *string `json:"softwareVersion,omitempty"`
 	StaticRoutesEnabled *bool `json:"staticRoutesEnabled,omitempty"`
@@ -1332,6 +1333,38 @@ func (o *ManaV2Device) SetSite(v ManaV2Site) {
 	o.Site = &v
 }
 
+// GetSlaConformance returns the SlaConformance field value if set, zero value otherwise.
+func (o *ManaV2Device) GetSlaConformance() ManaV2SlaConformance {
+	if o == nil || IsNil(o.SlaConformance) {
+		var ret ManaV2SlaConformance
+		return ret
+	}
+	return *o.SlaConformance
+}
+
+// GetSlaConformanceOk returns a tuple with the SlaConformance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2Device) GetSlaConformanceOk() (*ManaV2SlaConformance, bool) {
+	if o == nil || IsNil(o.SlaConformance) {
+		return nil, false
+	}
+	return o.SlaConformance, true
+}
+
+// HasSlaConformance returns a boolean if a field has been set.
+func (o *ManaV2Device) HasSlaConformance() bool {
+	if o != nil && !IsNil(o.SlaConformance) {
+		return true
+	}
+
+	return false
+}
+
+// SetSlaConformance gets a reference to the given ManaV2SlaConformance and assigns it to the SlaConformance field.
+func (o *ManaV2Device) SetSlaConformance(v ManaV2SlaConformance) {
+	o.SlaConformance = &v
+}
+
 // GetSnmp returns the Snmp field value if set, zero value otherwise.
 func (o *ManaV2Device) GetSnmp() ManaV2Snmp {
 	if o == nil || IsNil(o.Snmp) {
@@ -1682,6 +1715,9 @@ func (o ManaV2Device) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Site) {
 		toSerialize["site"] = o.Site
+	}
+	if !IsNil(o.SlaConformance) {
+		toSerialize["slaConformance"] = o.SlaConformance
 	}
 	if !IsNil(o.Snmp) {
 		toSerialize["snmp"] = o.Snmp

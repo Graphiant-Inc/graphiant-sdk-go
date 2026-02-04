@@ -3694,6 +3694,100 @@
           }
         }
       },
+      "v2AssuranceCreateDnsproxyEntryPostRequest": {
+        "type": "object",
+        "properties": {
+          "dnsproxyEntry": {
+            "$ref": "#/components/schemas/assuranceDnsProxyEntry"
+          }
+        }
+      },
+      "assuranceDnsProxyEntry": {
+        "type": "object",
+        "properties": {
+          "dnsproxyEntryId": {
+            "type": "string",
+            "example": "example string",
+            "description": "dns proxy table entry id (required)"
+          },
+          "ipList": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "IP list to exclude (required)"
+            }
+          },
+          "name": {
+            "type": "string",
+            "example": "DNSPROXY_EXCEPTION_DNS",
+            "description": "name of the entry  (required)"
+          },
+          "nameText": {
+            "type": "string",
+            "example": "example string",
+            "description": "user defined name of the record (required)"
+          },
+          "portList": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "port list to exclude (required)"
+            }
+          },
+          "protocol": {
+            "type": "string",
+            "example": "example string",
+            "description": "protocol to exclude (required)"
+          }
+        },
+        "required": [
+          "dnsproxyEntryId",
+          "ipList",
+          "name",
+          "nameText",
+          "portList",
+          "protocol"
+        ]
+      },
+      "v2AssuranceCreateDnsproxyEntryPostResponse": {
+        "type": "object",
+        "properties": {
+          "dnsproxyEntryId": {
+            "type": "string",
+            "example": "example string",
+            "description": "dns proxy table entry id (required)"
+          }
+        }
+      },
+      "v2AssuranceUpdateDnsproxyEntryPostRequest": {
+        "type": "object",
+        "properties": {
+          "dnsproxyEntry": {
+            "$ref": "#/components/schemas/assuranceDnsProxyEntry"
+          }
+        }
+      },
+      "v2AssuranceUpdateDnsproxyEntryPostResponse": {
+        "type": "object",
+        "properties": {}
+      },
+      "v2AssuranceDeleteDnsproxyEntryDeleteResponse": {
+        "type": "object",
+        "properties": {}
+      },
+      "v2AssuranceReadDnsproxyListGetResponse": {
+        "type": "object",
+        "properties": {
+          "dnsproxyList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceDnsProxyEntry"
+            }
+          }
+        }
+      },
       "v1AuditLogsPostRequest": {
         "type": "object",
         "properties": {
@@ -5925,6 +6019,10 @@
           "counts": {
             "$ref": "#/components/schemas/iamCounts"
           },
+          "description": {
+            "type": "string",
+            "example": "example string"
+          },
           "enterpriseId": {
             "type": "integer",
             "format": "int64",
@@ -5933,6 +6031,10 @@
           "impersonationEnabled": {
             "type": "boolean",
             "example": true
+          },
+          "marketplaceId": {
+            "type": "string",
+            "example": "example string"
           }
         }
       },
@@ -9152,6 +9254,9 @@
           "site": {
             "$ref": "#/components/schemas/manaV2Site"
           },
+          "slaConformance": {
+            "$ref": "#/components/schemas/manaV2SlaConformance"
+          },
           "snmp": {
             "$ref": "#/components/schemas/manaV2Snmp"
           },
@@ -9922,6 +10027,9 @@
             "type": "boolean",
             "example": true
           },
+          "macsec": {
+            "$ref": "#/components/schemas/manaV2InterfaceMaCsec"
+          },
           "maxTransmissionUnit": {
             "type": "integer",
             "format": "int32",
@@ -10340,6 +10448,100 @@
           "timer": {
             "type": "string",
             "example": "ENUM_VALUE"
+          }
+        }
+      },
+      "manaV2InterfaceMaCsec": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "example": true
+          },
+          "encryptionEnforcementMode": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "keyServerPriority": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "pskConfigurations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2PskConfiguration"
+            }
+          },
+          "sakConfigurations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2SakConfiguration"
+            }
+          },
+          "splitSakConfigByLagMember": {
+            "type": "boolean",
+            "example": true
+          },
+          "transparentVlan": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      },
+      "manaV2PskConfiguration": {
+        "type": "object",
+        "properties": {
+          "cak": {
+            "type": "string",
+            "example": "1234567890abcdef1234567890abcdef",
+            "description": "The Connection Authentication Key (CAK)"
+          },
+          "cakCryptographicAlgorithm": {
+            "type": "string",
+            "example": "AES_128_CMAC",
+            "description": "The cryptographic algorithm for the CAK (required)"
+          },
+          "ckn": {
+            "type": "string",
+            "example": "Corp-MACsec-CKN",
+            "description": "The Connection Key Name (CKN) (required)"
+          },
+          "nickname": {
+            "type": "string",
+            "example": "PSK1",
+            "description": "The nickname of the PSK (required)"
+          },
+          "startTime": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          }
+        }
+      },
+      "manaV2SakConfiguration": {
+        "type": "object",
+        "properties": {
+          "cipherSuite": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "The cipher suite (required)"
+          },
+          "lagMemberInterfaceId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1,
+            "description": "The interface ID (required for when each lag member has a different MACsec configuration - when split_sak_config_by_lag_member is true) (required)"
+          },
+          "rekeyInterval": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1000,
+            "description": "The rekey interval in seconds. 0 means disabled"
+          },
+          "replayProtectionWindowSize": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1000,
+            "description": "The replay protection window size in seconds. 0 means disabled"
           }
         }
       },
@@ -11893,6 +12095,26 @@
             "type": "integer",
             "format": "int32",
             "example": 123
+          }
+        }
+      },
+      "manaV2SlaConformance": {
+        "type": "object",
+        "properties": {
+          "dampeningFactor": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "duration": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "interval": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
           }
         }
       },
@@ -16077,6 +16299,9 @@
               "$ref": "#/components/schemas/manaV2NullableIPsecTunnelConfig"
             }
           },
+          "slaConformance": {
+            "$ref": "#/components/schemas/manaV2NullableSlaConformance"
+          },
           "snmp": {
             "$ref": "#/components/schemas/manaV2NullableSnmpConfig"
           },
@@ -16332,6 +16557,9 @@
             "type": "boolean",
             "example": true
           },
+          "macsec": {
+            "$ref": "#/components/schemas/manaV2NullableMaCsecConfiguration"
+          },
           "maxTransmissionUnit": {
             "type": "integer",
             "format": "int32",
@@ -16376,6 +16604,95 @@
           },
           "v6TcpMss": {
             "$ref": "#/components/schemas/manaV2NullableTcpMssV6"
+          }
+        }
+      },
+      "manaV2NullableMaCsecConfiguration": {
+        "type": "object",
+        "properties": {
+          "macsec": {
+            "$ref": "#/components/schemas/manaV2MaCsecConfiguration"
+          }
+        }
+      },
+      "manaV2MaCsecConfiguration": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "example": "true",
+            "description": "Whether MACsec is enabled or disabled (required)"
+          },
+          "encryptionEnforcementMode": {
+            "type": "string",
+            "example": "MACSEC_ENFORCEMENT_MODE_SHOULD_ENCRYPT",
+            "description": "The encryption enforcement mode (required)"
+          },
+          "globalSakConfiguration": {
+            "$ref": "#/components/schemas/manaV2NullableSakConfiguration"
+          },
+          "keyServerPriority": {
+            "type": "integer",
+            "format": "int64",
+            "example": 255,
+            "description": "The priority of the key server. Lower number means higher priority."
+          },
+          "pskConfigurations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2PskConfiguration"
+            }
+          },
+          "pskConfigurationsByNickname": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2NullablePskConfiguration"
+            }
+          },
+          "sakConfigurations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2SakConfiguration"
+            }
+          },
+          "sakConfigurationsByLagMemberInterfaceId": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2NullableSakConfiguration"
+            }
+          },
+          "splitSakConfigByLagMember": {
+            "type": "boolean",
+            "example": "true",
+            "description": "Whether to allow individual SAK configurations for each lag member"
+          },
+          "transparentVlan": {
+            "type": "boolean",
+            "example": "true",
+            "description": "Whether transparent VLAN is enabled or disabled"
+          }
+        },
+        "required": [
+          "enabled",
+          "encryptionEnforcementMode",
+          "globalSakConfiguration",
+          "pskConfigurationsByNickname",
+          "sakConfigurationsByLagMemberInterfaceId"
+        ]
+      },
+      "manaV2NullableSakConfiguration": {
+        "type": "object",
+        "properties": {
+          "sak": {
+            "$ref": "#/components/schemas/manaV2SakConfiguration"
+          }
+        }
+      },
+      "manaV2NullablePskConfiguration": {
+        "type": "object",
+        "properties": {
+          "psk": {
+            "$ref": "#/components/schemas/manaV2PskConfiguration"
           }
         }
       },
@@ -16524,6 +16841,9 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/manaV2NullableLagMemberInterface"
             }
+          },
+          "macsec": {
+            "$ref": "#/components/schemas/manaV2NullableMaCsecConfiguration"
           },
           "minimumMembers": {
             "type": "integer",
@@ -16861,6 +17181,14 @@
               "type": "string",
               "example": "example string"
             }
+          }
+        }
+      },
+      "manaV2NullableSlaConformance": {
+        "type": "object",
+        "properties": {
+          "slaConformance": {
+            "$ref": "#/components/schemas/manaV2SlaConformance"
           }
         }
       },
@@ -18380,6 +18708,35 @@
           }
         }
       },
+      "v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "match ID for the customer's service subscription (required)"
+          },
+          "status": {
+            "type": "string",
+            "example": "B2B_PEERING_SERVICE_STATUS_PAUSED",
+            "description": "Customer’s service status: Paused or Active (required)"
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ]
+      },
+      "v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        }
+      },
       "v1ExtranetsB2bPeeringMatchServicesSummaryIdGetResponse": {
         "type": "object",
         "properties": {
@@ -19257,6 +19614,11 @@
       "manaV2B2bExtranetServiceCustomerMatchDetails": {
         "type": "object",
         "properties": {
+          "consumerId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
           "consumerPrefixes": {
             "type": "array",
             "items": {
@@ -19266,6 +19628,19 @@
           },
           "customer": {
             "$ref": "#/components/schemas/manaV2B2BExtranetServiceCustomerMatchDetailsCustomer"
+          },
+          "oldConsumerPrefixes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          "oldServicePrefixes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix"
+            }
           },
           "service": {
             "$ref": "#/components/schemas/manaV2B2BExtranetServiceCustomerMatchDetailsService"
@@ -19305,6 +19680,23 @@
           }
         }
       },
+      "manaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix": {
+        "type": "object",
+        "properties": {
+          "customerTranslatedPrefix": {
+            "type": "string",
+            "example": "example string"
+          },
+          "prefix": {
+            "type": "string",
+            "example": "example string"
+          },
+          "tag": {
+            "type": "string",
+            "example": "example string"
+          }
+        }
+      },
       "manaV2B2BExtranetServiceCustomerMatchDetailsService": {
         "type": "object",
         "properties": {
@@ -19329,23 +19721,6 @@
             "example": 1234567891011
           },
           "serviceName": {
-            "type": "string",
-            "example": "example string"
-          }
-        }
-      },
-      "manaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix": {
-        "type": "object",
-        "properties": {
-          "customerTranslatedPrefix": {
-            "type": "string",
-            "example": "example string"
-          },
-          "prefix": {
-            "type": "string",
-            "example": "example string"
-          },
-          "tag": {
             "type": "string",
             "example": "example string"
           }
@@ -19532,6 +19907,29 @@
             "items": {
               "$ref": "#/components/schemas/manaV2B2bSiteInformation"
             }
+          }
+        }
+      },
+      "v1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest": {
+        "type": "object",
+        "properties": {
+          "servicePrefixes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2bNat"
+            }
+          }
+        },
+        "required": [
+          "servicePrefixes"
+        ]
+      },
+      "v1ExtranetsB2bPeeringConsumerIdPrefixesPutResponse": {
+        "type": "object",
+        "properties": {
+          "consumerActiviyId": {
+            "type": "string",
+            "example": "example string"
           }
         }
       },
@@ -32715,6 +33113,26 @@
               "graphiant"
             ],
             "example": "enterprise"
+          },
+          "email": {
+            "type": "string",
+            "example": "user@example.com",
+            "description": "User email address (returned for MFA users)"
+          },
+          "mfaType": {
+            "type": "string",
+            "example": "TOTP",
+            "description": "MFA type (returned for MFA users)"
+          },
+          "stateToken": {
+            "type": "string",
+            "example": "state-token-12345",
+            "description": "State token for MFA verification (returned for MFA users)"
+          },
+          "status": {
+            "type": "string",
+            "example": "AwaitingMfa",
+            "description": "Authentication status (returned for MFA users)"
           }
         }
       },
@@ -34764,6 +35182,48 @@
         }
       }
     },
+    "/v2/assurance/create-dnsproxy-entry": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v2AssuranceCreateDnsproxyEntryPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceCreateDnsproxyEntryPostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2/assurance/create-user-report": {
       "post": {
         "security": [
@@ -34846,6 +35306,38 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/v2AssuranceDeleteclassifiedapplicationDeleteResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/assurance/delete-dnsproxy-entry": {
+      "delete": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceDeleteDnsproxyEntryDeleteResponse"
                 }
               }
             }
@@ -35875,6 +36367,38 @@
         }
       }
     },
+    "/v2/assurance/read-dnsproxy-list": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceReadDnsproxyListGetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2/assurance/read-user-report-list": {
       "get": {
         "security": [
@@ -35942,6 +36466,48 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/v2AssuranceUpdateclassifiedapplicationPostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/assurance/update-dnsproxy-entry": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v2AssuranceUpdateDnsproxyEntryPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceUpdateDnsproxyEntryPostResponse"
                 }
               }
             }
@@ -47606,6 +48172,103 @@
           }
         },
         "description": "Tries synching device with the global objects"
+      }
+    },
+    "/v1/extranets-b2b-peering/consumer/{id}/prefixes": {
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "consumer id",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetsB2bPeeringConsumerIdPrefixesPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update B2B extranet peering service consumer"
+      }
+    },
+    "/v1/extranets-b2b-peering/match/service-to-customer/service-status": {
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Pause B2B match service to customer"
       }
     },
     "/v1/version": {

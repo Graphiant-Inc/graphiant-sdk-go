@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Lan** | Pointer to **string** |  | [optional] 
 **LldpEnabled** | Pointer to **bool** |  | [optional] 
 **Loopback** | Pointer to **bool** |  | [optional] 
+**Macsec** | Pointer to [**ManaV2NullableMaCsecConfiguration**](ManaV2NullableMaCsecConfiguration.md) |  | [optional] 
 **MaxTransmissionUnit** | Pointer to **int32** |  | [optional] 
 **SecurityZone** | Pointer to **string** |  | [optional] 
 **Speed** | Pointer to **int64** |  | [optional] 
@@ -318,6 +319,31 @@ SetLoopback sets Loopback field to given value.
 `func (o *ManaV2InterfaceConfig) HasLoopback() bool`
 
 HasLoopback returns a boolean if a field has been set.
+
+### GetMacsec
+
+`func (o *ManaV2InterfaceConfig) GetMacsec() ManaV2NullableMaCsecConfiguration`
+
+GetMacsec returns the Macsec field if non-nil, zero value otherwise.
+
+### GetMacsecOk
+
+`func (o *ManaV2InterfaceConfig) GetMacsecOk() (*ManaV2NullableMaCsecConfiguration, bool)`
+
+GetMacsecOk returns a tuple with the Macsec field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMacsec
+
+`func (o *ManaV2InterfaceConfig) SetMacsec(v ManaV2NullableMaCsecConfiguration)`
+
+SetMacsec sets Macsec field to given value.
+
+### HasMacsec
+
+`func (o *ManaV2InterfaceConfig) HasMacsec() bool`
+
+HasMacsec returns a boolean if a field has been set.
 
 ### GetMaxTransmissionUnit
 

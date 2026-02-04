@@ -7,8 +7,10 @@ Name | Type | Description | Notes
 **AdminEmail** | Pointer to **string** |  | [optional] 
 **CompanyName** | Pointer to **string** |  | [optional] 
 **Counts** | Pointer to [**IamCounts**](IamCounts.md) |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 **EnterpriseId** | Pointer to **int64** |  | [optional] 
 **ImpersonationEnabled** | Pointer to **bool** |  | [optional] 
+**MarketplaceId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -104,6 +106,31 @@ SetCounts sets Counts field to given value.
 
 HasCounts returns a boolean if a field has been set.
 
+### GetDescription
+
+`func (o *IamCustomer) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *IamCustomer) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *IamCustomer) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *IamCustomer) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
 ### GetEnterpriseId
 
 `func (o *IamCustomer) GetEnterpriseId() int64`
@@ -153,6 +180,31 @@ SetImpersonationEnabled sets ImpersonationEnabled field to given value.
 `func (o *IamCustomer) HasImpersonationEnabled() bool`
 
 HasImpersonationEnabled returns a boolean if a field has been set.
+
+### GetMarketplaceId
+
+`func (o *IamCustomer) GetMarketplaceId() string`
+
+GetMarketplaceId returns the MarketplaceId field if non-nil, zero value otherwise.
+
+### GetMarketplaceIdOk
+
+`func (o *IamCustomer) GetMarketplaceIdOk() (*string, bool)`
+
+GetMarketplaceIdOk returns a tuple with the MarketplaceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarketplaceId
+
+`func (o *IamCustomer) SetMarketplaceId(v string)`
+
+SetMarketplaceId sets MarketplaceId field to given value.
+
+### HasMarketplaceId
+
+`func (o *IamCustomer) HasMarketplaceId() bool`
+
+HasMarketplaceId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -22,8 +22,10 @@ type IamCustomer struct {
 	AdminEmail *string `json:"adminEmail,omitempty"`
 	CompanyName *string `json:"companyName,omitempty"`
 	Counts *IamCounts `json:"counts,omitempty"`
+	Description *string `json:"description,omitempty"`
 	EnterpriseId *int64 `json:"enterpriseId,omitempty"`
 	ImpersonationEnabled *bool `json:"impersonationEnabled,omitempty"`
+	MarketplaceId *string `json:"marketplaceId,omitempty"`
 }
 
 // NewIamCustomer instantiates a new IamCustomer object
@@ -139,6 +141,38 @@ func (o *IamCustomer) SetCounts(v IamCounts) {
 	o.Counts = &v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *IamCustomer) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IamCustomer) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *IamCustomer) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *IamCustomer) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetEnterpriseId returns the EnterpriseId field value if set, zero value otherwise.
 func (o *IamCustomer) GetEnterpriseId() int64 {
 	if o == nil || IsNil(o.EnterpriseId) {
@@ -203,6 +237,38 @@ func (o *IamCustomer) SetImpersonationEnabled(v bool) {
 	o.ImpersonationEnabled = &v
 }
 
+// GetMarketplaceId returns the MarketplaceId field value if set, zero value otherwise.
+func (o *IamCustomer) GetMarketplaceId() string {
+	if o == nil || IsNil(o.MarketplaceId) {
+		var ret string
+		return ret
+	}
+	return *o.MarketplaceId
+}
+
+// GetMarketplaceIdOk returns a tuple with the MarketplaceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IamCustomer) GetMarketplaceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.MarketplaceId) {
+		return nil, false
+	}
+	return o.MarketplaceId, true
+}
+
+// HasMarketplaceId returns a boolean if a field has been set.
+func (o *IamCustomer) HasMarketplaceId() bool {
+	if o != nil && !IsNil(o.MarketplaceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetMarketplaceId gets a reference to the given string and assigns it to the MarketplaceId field.
+func (o *IamCustomer) SetMarketplaceId(v string) {
+	o.MarketplaceId = &v
+}
+
 func (o IamCustomer) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -222,11 +288,17 @@ func (o IamCustomer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Counts) {
 		toSerialize["counts"] = o.Counts
 	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	if !IsNil(o.EnterpriseId) {
 		toSerialize["enterpriseId"] = o.EnterpriseId
 	}
 	if !IsNil(o.ImpersonationEnabled) {
 		toSerialize["impersonationEnabled"] = o.ImpersonationEnabled
+	}
+	if !IsNil(o.MarketplaceId) {
+		toSerialize["marketplaceId"] = o.MarketplaceId
 	}
 	return toSerialize, nil
 }

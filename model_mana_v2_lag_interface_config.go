@@ -26,6 +26,7 @@ type ManaV2LagInterfaceConfig struct {
 	Ipv6 *ManaV2InterfaceIpConfig `json:"ipv6,omitempty"`
 	Lacp *ManaV2LacpConfig `json:"lacp,omitempty"`
 	LagMembers *map[string]ManaV2NullableLagMemberInterface `json:"lagMembers,omitempty"`
+	Macsec *ManaV2NullableMaCsecConfiguration `json:"macsec,omitempty"`
 	MinimumMembers *int32 `json:"minimumMembers,omitempty"`
 	Mtu *int32 `json:"mtu,omitempty"`
 	Segment *string `json:"segment,omitempty"`
@@ -273,6 +274,38 @@ func (o *ManaV2LagInterfaceConfig) SetLagMembers(v map[string]ManaV2NullableLagM
 	o.LagMembers = &v
 }
 
+// GetMacsec returns the Macsec field value if set, zero value otherwise.
+func (o *ManaV2LagInterfaceConfig) GetMacsec() ManaV2NullableMaCsecConfiguration {
+	if o == nil || IsNil(o.Macsec) {
+		var ret ManaV2NullableMaCsecConfiguration
+		return ret
+	}
+	return *o.Macsec
+}
+
+// GetMacsecOk returns a tuple with the Macsec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2LagInterfaceConfig) GetMacsecOk() (*ManaV2NullableMaCsecConfiguration, bool) {
+	if o == nil || IsNil(o.Macsec) {
+		return nil, false
+	}
+	return o.Macsec, true
+}
+
+// HasMacsec returns a boolean if a field has been set.
+func (o *ManaV2LagInterfaceConfig) HasMacsec() bool {
+	if o != nil && !IsNil(o.Macsec) {
+		return true
+	}
+
+	return false
+}
+
+// SetMacsec gets a reference to the given ManaV2NullableMaCsecConfiguration and assigns it to the Macsec field.
+func (o *ManaV2LagInterfaceConfig) SetMacsec(v ManaV2NullableMaCsecConfiguration) {
+	o.Macsec = &v
+}
+
 // GetMinimumMembers returns the MinimumMembers field value if set, zero value otherwise.
 func (o *ManaV2LagInterfaceConfig) GetMinimumMembers() int32 {
 	if o == nil || IsNil(o.MinimumMembers) {
@@ -431,6 +464,9 @@ func (o ManaV2LagInterfaceConfig) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LagMembers) {
 		toSerialize["lagMembers"] = o.LagMembers
+	}
+	if !IsNil(o.Macsec) {
+		toSerialize["macsec"] = o.Macsec
 	}
 	if !IsNil(o.MinimumMembers) {
 		toSerialize["minimumMembers"] = o.MinimumMembers

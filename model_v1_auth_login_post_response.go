@@ -22,6 +22,14 @@ type V1AuthLoginPostResponse struct {
 	Auth *bool `json:"auth,omitempty"`
 	Token *string `json:"token,omitempty"`
 	AccountType *string `json:"accountType,omitempty"`
+	// User email address (returned for MFA users)
+	Email *string `json:"email,omitempty"`
+	// MFA type (returned for MFA users)
+	MfaType *string `json:"mfaType,omitempty"`
+	// State token for MFA verification (returned for MFA users)
+	StateToken *string `json:"stateToken,omitempty"`
+	// Authentication status (returned for MFA users)
+	Status *string `json:"status,omitempty"`
 }
 
 // NewV1AuthLoginPostResponse instantiates a new V1AuthLoginPostResponse object
@@ -137,6 +145,134 @@ func (o *V1AuthLoginPostResponse) SetAccountType(v string) {
 	o.AccountType = &v
 }
 
+// GetEmail returns the Email field value if set, zero value otherwise.
+func (o *V1AuthLoginPostResponse) GetEmail() string {
+	if o == nil || IsNil(o.Email) {
+		var ret string
+		return ret
+	}
+	return *o.Email
+}
+
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1AuthLoginPostResponse) GetEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.Email) {
+		return nil, false
+	}
+	return o.Email, true
+}
+
+// HasEmail returns a boolean if a field has been set.
+func (o *V1AuthLoginPostResponse) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
+func (o *V1AuthLoginPostResponse) SetEmail(v string) {
+	o.Email = &v
+}
+
+// GetMfaType returns the MfaType field value if set, zero value otherwise.
+func (o *V1AuthLoginPostResponse) GetMfaType() string {
+	if o == nil || IsNil(o.MfaType) {
+		var ret string
+		return ret
+	}
+	return *o.MfaType
+}
+
+// GetMfaTypeOk returns a tuple with the MfaType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1AuthLoginPostResponse) GetMfaTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.MfaType) {
+		return nil, false
+	}
+	return o.MfaType, true
+}
+
+// HasMfaType returns a boolean if a field has been set.
+func (o *V1AuthLoginPostResponse) HasMfaType() bool {
+	if o != nil && !IsNil(o.MfaType) {
+		return true
+	}
+
+	return false
+}
+
+// SetMfaType gets a reference to the given string and assigns it to the MfaType field.
+func (o *V1AuthLoginPostResponse) SetMfaType(v string) {
+	o.MfaType = &v
+}
+
+// GetStateToken returns the StateToken field value if set, zero value otherwise.
+func (o *V1AuthLoginPostResponse) GetStateToken() string {
+	if o == nil || IsNil(o.StateToken) {
+		var ret string
+		return ret
+	}
+	return *o.StateToken
+}
+
+// GetStateTokenOk returns a tuple with the StateToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1AuthLoginPostResponse) GetStateTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.StateToken) {
+		return nil, false
+	}
+	return o.StateToken, true
+}
+
+// HasStateToken returns a boolean if a field has been set.
+func (o *V1AuthLoginPostResponse) HasStateToken() bool {
+	if o != nil && !IsNil(o.StateToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetStateToken gets a reference to the given string and assigns it to the StateToken field.
+func (o *V1AuthLoginPostResponse) SetStateToken(v string) {
+	o.StateToken = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *V1AuthLoginPostResponse) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1AuthLoginPostResponse) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *V1AuthLoginPostResponse) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *V1AuthLoginPostResponse) SetStatus(v string) {
+	o.Status = &v
+}
+
 func (o V1AuthLoginPostResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -155,6 +291,18 @@ func (o V1AuthLoginPostResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AccountType) {
 		toSerialize["accountType"] = o.AccountType
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.MfaType) {
+		toSerialize["mfaType"] = o.MfaType
+	}
+	if !IsNil(o.StateToken) {
+		toSerialize["stateToken"] = o.StateToken
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }

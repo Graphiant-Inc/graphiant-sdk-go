@@ -232,6 +232,7 @@ Method | HTTP request | Description
 [**V1ExtranetsB2bIdProducerGet**](DefaultAPI.md#V1ExtranetsB2bIdProducerGet) | **Get** /v1/extranets-b2b/{id}/producer | 
 [**V1ExtranetsB2bIdPut**](DefaultAPI.md#V1ExtranetsB2bIdPut) | **Put** /v1/extranets-b2b/{id} | 
 [**V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet**](DefaultAPI.md#V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet) | **Get** /v1/extranets-b2b-peering/consumer/{customerId}/consumer-details | 
+[**V1ExtranetsB2bPeeringConsumerIdPrefixesPut**](DefaultAPI.md#V1ExtranetsB2bPeeringConsumerIdPrefixesPut) | **Put** /v1/extranets-b2b-peering/consumer/{id}/prefixes | 
 [**V1ExtranetsB2bPeeringConsumerMatchIdMatchDetailsGet**](DefaultAPI.md#V1ExtranetsB2bPeeringConsumerMatchIdMatchDetailsGet) | **Get** /v1/extranets-b2b-peering/consumer/{matchId}/match-details | 
 [**V1ExtranetsB2bPeeringConsumerMatchIdPost**](DefaultAPI.md#V1ExtranetsB2bPeeringConsumerMatchIdPost) | **Post** /v1/extranets-b2b-peering/consumer/{matchId} | 
 [**V1ExtranetsB2bPeeringCustomerIdDelete**](DefaultAPI.md#V1ExtranetsB2bPeeringCustomerIdDelete) | **Delete** /v1/extranets-b2b-peering/customer/{id} | 
@@ -240,6 +241,7 @@ Method | HTTP request | Description
 [**V1ExtranetsB2bPeeringMatchServiceToCustomerIdDelete**](DefaultAPI.md#V1ExtranetsB2bPeeringMatchServiceToCustomerIdDelete) | **Delete** /v1/extranets-b2b-peering/match/service-to-customer/{id} | 
 [**V1ExtranetsB2bPeeringMatchServiceToCustomerIdGet**](DefaultAPI.md#V1ExtranetsB2bPeeringMatchServiceToCustomerIdGet) | **Get** /v1/extranets-b2b-peering/match/service-to-customer/{id} | 
 [**V1ExtranetsB2bPeeringMatchServiceToCustomerPost**](DefaultAPI.md#V1ExtranetsB2bPeeringMatchServiceToCustomerPost) | **Post** /v1/extranets-b2b-peering/match/service-to-customer | 
+[**V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPut**](DefaultAPI.md#V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPut) | **Put** /v1/extranets-b2b-peering/match/service-to-customer/service-status | 
 [**V1ExtranetsB2bPeeringMatchServicesSummaryIdGet**](DefaultAPI.md#V1ExtranetsB2bPeeringMatchServicesSummaryIdGet) | **Get** /v1/extranets-b2b-peering/match/services/summary/{id} | 
 [**V1ExtranetsB2bPeeringProducerIdGet**](DefaultAPI.md#V1ExtranetsB2bPeeringProducerIdGet) | **Get** /v1/extranets-b2b-peering/producer/{id} | 
 [**V1ExtranetsB2bPeeringProducerIdMatchingCustomersSummaryGet**](DefaultAPI.md#V1ExtranetsB2bPeeringProducerIdMatchingCustomersSummaryGet) | **Get** /v1/extranets-b2b-peering/producer/{id}/matching-customers-summary | 
@@ -446,8 +448,10 @@ Method | HTTP request | Description
 [**V2AssuranceBucketServicesPost**](DefaultAPI.md#V2AssuranceBucketServicesPost) | **Post** /v2/assurance/bucket-services | 
 [**V2AssuranceBucketTopologiesPost**](DefaultAPI.md#V2AssuranceBucketTopologiesPost) | **Post** /v2/assurance/bucket-topologies | 
 [**V2AssuranceBucketdetailsPost**](DefaultAPI.md#V2AssuranceBucketdetailsPost) | **Post** /v2/assurance/bucketdetails | 
+[**V2AssuranceCreateDnsproxyEntryPost**](DefaultAPI.md#V2AssuranceCreateDnsproxyEntryPost) | **Post** /v2/assurance/create-dnsproxy-entry | 
 [**V2AssuranceCreateUserReportPost**](DefaultAPI.md#V2AssuranceCreateUserReportPost) | **Post** /v2/assurance/create-user-report | 
 [**V2AssuranceCreateclassifiedapplicationPost**](DefaultAPI.md#V2AssuranceCreateclassifiedapplicationPost) | **Post** /v2/assurance/createclassifiedapplication | 
+[**V2AssuranceDeleteDnsproxyEntryDelete**](DefaultAPI.md#V2AssuranceDeleteDnsproxyEntryDelete) | **Delete** /v2/assurance/delete-dnsproxy-entry | 
 [**V2AssuranceDeleteUserReportDelete**](DefaultAPI.md#V2AssuranceDeleteUserReportDelete) | **Delete** /v2/assurance/delete-user-report | 
 [**V2AssuranceDeleteclassifiedapplicationDelete**](DefaultAPI.md#V2AssuranceDeleteclassifiedapplicationDelete) | **Delete** /v2/assurance/deleteclassifiedapplication | 
 [**V2AssuranceDownloadUserReportGet**](DefaultAPI.md#V2AssuranceDownloadUserReportGet) | **Get** /v2/assurance/download-user-report | 
@@ -455,6 +459,7 @@ Method | HTTP request | Description
 [**V2AssuranceEnterprisesummaryPost**](DefaultAPI.md#V2AssuranceEnterprisesummaryPost) | **Post** /v2/assurance/enterprisesummary | 
 [**V2AssuranceFlowSummaryPost**](DefaultAPI.md#V2AssuranceFlowSummaryPost) | **Post** /v2/assurance/flow-summary | 
 [**V2AssuranceGetclassifiedapplicationlistGet**](DefaultAPI.md#V2AssuranceGetclassifiedapplicationlistGet) | **Get** /v2/assurance/getclassifiedapplicationlist | 
+[**V2AssuranceReadDnsproxyListGet**](DefaultAPI.md#V2AssuranceReadDnsproxyListGet) | **Get** /v2/assurance/read-dnsproxy-list | 
 [**V2AssuranceReadUserReportListGet**](DefaultAPI.md#V2AssuranceReadUserReportListGet) | **Get** /v2/assurance/read-user-report-list | 
 [**V2AssuranceScoredetailsPost**](DefaultAPI.md#V2AssuranceScoredetailsPost) | **Post** /v2/assurance/scoredetails | 
 [**V2AssuranceTopologyClientSessionDetailsPost**](DefaultAPI.md#V2AssuranceTopologyClientSessionDetailsPost) | **Post** /v2/assurance/topology-client-session-details | 
@@ -466,6 +471,7 @@ Method | HTTP request | Description
 [**V2AssuranceTopologyRegionSummaryPost**](DefaultAPI.md#V2AssuranceTopologyRegionSummaryPost) | **Post** /v2/assurance/topology-region-summary | 
 [**V2AssuranceTopologySiteSummariesPost**](DefaultAPI.md#V2AssuranceTopologySiteSummariesPost) | **Post** /v2/assurance/topology-site-summaries | 
 [**V2AssuranceUnclassifiedapplicationprofilesummaryPost**](DefaultAPI.md#V2AssuranceUnclassifiedapplicationprofilesummaryPost) | **Post** /v2/assurance/unclassifiedapplicationprofilesummary | 
+[**V2AssuranceUpdateDnsproxyEntryPost**](DefaultAPI.md#V2AssuranceUpdateDnsproxyEntryPost) | **Post** /v2/assurance/update-dnsproxy-entry | 
 [**V2AssuranceUpdateclassifiedapplicationPost**](DefaultAPI.md#V2AssuranceUpdateclassifiedapplicationPost) | **Post** /v2/assurance/updateclassifiedapplication | 
 [**V2AssuranceVersionPost**](DefaultAPI.md#V2AssuranceVersionPost) | **Post** /v2/assurance/version | 
 [**V2AuditLogsPost**](DefaultAPI.md#V2AuditLogsPost) | **Post** /v2/audit/logs | 
@@ -16160,6 +16166,80 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## V1ExtranetsB2bPeeringConsumerIdPrefixesPut
+
+> V1ExtranetsB2bPeeringConsumerIdPrefixesPutResponse V1ExtranetsB2bPeeringConsumerIdPrefixesPut(ctx, id).Authorization(authorization).V1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest(v1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | consumer id
+	v1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest := *openapiclient.NewV1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest([]openapiclient.ManaV2B2bNat{*openapiclient.NewManaV2B2bNat("10.1.2.0/24")}) // V1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringConsumerIdPrefixesPut(context.Background(), id).Authorization(authorization).V1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest(v1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetsB2bPeeringConsumerIdPrefixesPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetsB2bPeeringConsumerIdPrefixesPut`: V1ExtranetsB2bPeeringConsumerIdPrefixesPutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetsB2bPeeringConsumerIdPrefixesPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** | consumer id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest** | [**V1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest**](V1ExtranetsB2bPeeringConsumerIdPrefixesPutRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetsB2bPeeringConsumerIdPrefixesPutResponse**](V1ExtranetsB2bPeeringConsumerIdPrefixesPutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V1ExtranetsB2bPeeringConsumerMatchIdMatchDetailsGet
 
 > V1ExtranetsB2bPeeringConsumerMatchIdMatchDetailsGetResponse V1ExtranetsB2bPeeringConsumerMatchIdMatchDetailsGet(ctx, matchId).Authorization(authorization).Execute()
@@ -16715,6 +16795,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V1ExtranetsB2bPeeringMatchServiceToCustomerPostResponse**](V1ExtranetsB2bPeeringMatchServiceToCustomerPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPut
+
+> V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutResponse V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPut(ctx).Authorization(authorization).V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest(v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest := *openapiclient.NewV1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest(int64(1234567891011), "B2B_PEERING_SERVICE_STATUS_PAUSED") // V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPut(context.Background()).Authorization(authorization).V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest(v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPut`: V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest** | [**V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest**](V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutResponse**](V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutResponse.md)
 
 ### Authorization
 
@@ -30761,6 +30909,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## V2AssuranceCreateDnsproxyEntryPost
+
+> V2AssuranceCreateDnsproxyEntryPostResponse V2AssuranceCreateDnsproxyEntryPost(ctx).Authorization(authorization).V2AssuranceCreateDnsproxyEntryPostRequest(v2AssuranceCreateDnsproxyEntryPostRequest).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v2AssuranceCreateDnsproxyEntryPostRequest := *openapiclient.NewV2AssuranceCreateDnsproxyEntryPostRequest() // V2AssuranceCreateDnsproxyEntryPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V2AssuranceCreateDnsproxyEntryPost(context.Background()).Authorization(authorization).V2AssuranceCreateDnsproxyEntryPostRequest(v2AssuranceCreateDnsproxyEntryPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2AssuranceCreateDnsproxyEntryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2AssuranceCreateDnsproxyEntryPost`: V2AssuranceCreateDnsproxyEntryPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V2AssuranceCreateDnsproxyEntryPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2AssuranceCreateDnsproxyEntryPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v2AssuranceCreateDnsproxyEntryPostRequest** | [**V2AssuranceCreateDnsproxyEntryPostRequest**](V2AssuranceCreateDnsproxyEntryPostRequest.md) |  | 
+
+### Return type
+
+[**V2AssuranceCreateDnsproxyEntryPostResponse**](V2AssuranceCreateDnsproxyEntryPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V2AssuranceCreateUserReportPost
 
 > V2AssuranceCreateUserReportPostResponse V2AssuranceCreateUserReportPost(ctx).Authorization(authorization).V2AssuranceCreateUserReportPostRequest(v2AssuranceCreateUserReportPostRequest).Execute()
@@ -30886,6 +31100,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2AssuranceDeleteDnsproxyEntryDelete
+
+> map[string]interface{} V2AssuranceDeleteDnsproxyEntryDelete(ctx).Authorization(authorization).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V2AssuranceDeleteDnsproxyEntryDelete(context.Background()).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2AssuranceDeleteDnsproxyEntryDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2AssuranceDeleteDnsproxyEntryDelete`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V2AssuranceDeleteDnsproxyEntryDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2AssuranceDeleteDnsproxyEntryDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -31336,6 +31614,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V2AssuranceGetclassifiedapplicationlistGetResponse**](V2AssuranceGetclassifiedapplicationlistGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2AssuranceReadDnsproxyListGet
+
+> V2AssuranceReadDnsproxyListGetResponse V2AssuranceReadDnsproxyListGet(ctx).Authorization(authorization).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V2AssuranceReadDnsproxyListGet(context.Background()).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2AssuranceReadDnsproxyListGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2AssuranceReadDnsproxyListGet`: V2AssuranceReadDnsproxyListGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V2AssuranceReadDnsproxyListGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2AssuranceReadDnsproxyListGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+[**V2AssuranceReadDnsproxyListGetResponse**](V2AssuranceReadDnsproxyListGetResponse.md)
 
 ### Authorization
 
@@ -32060,6 +32402,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V2AssuranceUnclassifiedapplicationprofilesummaryPostResponse**](V2AssuranceUnclassifiedapplicationprofilesummaryPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2AssuranceUpdateDnsproxyEntryPost
+
+> map[string]interface{} V2AssuranceUpdateDnsproxyEntryPost(ctx).Authorization(authorization).V2AssuranceUpdateDnsproxyEntryPostRequest(v2AssuranceUpdateDnsproxyEntryPostRequest).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v2AssuranceUpdateDnsproxyEntryPostRequest := *openapiclient.NewV2AssuranceUpdateDnsproxyEntryPostRequest() // V2AssuranceUpdateDnsproxyEntryPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V2AssuranceUpdateDnsproxyEntryPost(context.Background()).Authorization(authorization).V2AssuranceUpdateDnsproxyEntryPostRequest(v2AssuranceUpdateDnsproxyEntryPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2AssuranceUpdateDnsproxyEntryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2AssuranceUpdateDnsproxyEntryPost`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V2AssuranceUpdateDnsproxyEntryPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2AssuranceUpdateDnsproxyEntryPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v2AssuranceUpdateDnsproxyEntryPostRequest** | [**V2AssuranceUpdateDnsproxyEntryPostRequest**](V2AssuranceUpdateDnsproxyEntryPostRequest.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 

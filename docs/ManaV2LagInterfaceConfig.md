@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Ipv6** | Pointer to [**ManaV2InterfaceIpConfig**](ManaV2InterfaceIpConfig.md) |  | [optional] 
 **Lacp** | Pointer to [**ManaV2LacpConfig**](ManaV2LacpConfig.md) |  | [optional] 
 **LagMembers** | Pointer to [**map[string]ManaV2NullableLagMemberInterface**](ManaV2NullableLagMemberInterface.md) |  | [optional] 
+**Macsec** | Pointer to [**ManaV2NullableMaCsecConfiguration**](ManaV2NullableMaCsecConfiguration.md) |  | [optional] 
 **MinimumMembers** | Pointer to **int32** |  | [optional] 
 **Mtu** | Pointer to **int32** |  | [optional] 
 **Segment** | Pointer to **string** |  | [optional] 
@@ -209,6 +210,31 @@ SetLagMembers sets LagMembers field to given value.
 `func (o *ManaV2LagInterfaceConfig) HasLagMembers() bool`
 
 HasLagMembers returns a boolean if a field has been set.
+
+### GetMacsec
+
+`func (o *ManaV2LagInterfaceConfig) GetMacsec() ManaV2NullableMaCsecConfiguration`
+
+GetMacsec returns the Macsec field if non-nil, zero value otherwise.
+
+### GetMacsecOk
+
+`func (o *ManaV2LagInterfaceConfig) GetMacsecOk() (*ManaV2NullableMaCsecConfiguration, bool)`
+
+GetMacsecOk returns a tuple with the Macsec field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMacsec
+
+`func (o *ManaV2LagInterfaceConfig) SetMacsec(v ManaV2NullableMaCsecConfiguration)`
+
+SetMacsec sets Macsec field to given value.
+
+### HasMacsec
+
+`func (o *ManaV2LagInterfaceConfig) HasMacsec() bool`
+
+HasMacsec returns a boolean if a field has been set.
 
 ### GetMinimumMembers
 

@@ -45,6 +45,7 @@ type ManaV2EdgeDeviceConfig struct {
 	Segments *map[string]ManaV2VrfConfig `json:"segments,omitempty"`
 	Site *ManaV2NewSite `json:"site,omitempty"`
 	SiteToSiteVpn *map[string]ManaV2NullableIPsecTunnelConfig `json:"siteToSiteVpn,omitempty"`
+	SlaConformance *ManaV2NullableSlaConformance `json:"slaConformance,omitempty"`
 	Snmp *ManaV2NullableSnmpConfig `json:"snmp,omitempty"`
 	SnmpGlobalObject *map[string]ManaV2NullableSnmpConfig `json:"snmpGlobalObject,omitempty"`
 	StaticRoutesEnabled *bool `json:"staticRoutesEnabled,omitempty"`
@@ -901,6 +902,38 @@ func (o *ManaV2EdgeDeviceConfig) SetSiteToSiteVpn(v map[string]ManaV2NullableIPs
 	o.SiteToSiteVpn = &v
 }
 
+// GetSlaConformance returns the SlaConformance field value if set, zero value otherwise.
+func (o *ManaV2EdgeDeviceConfig) GetSlaConformance() ManaV2NullableSlaConformance {
+	if o == nil || IsNil(o.SlaConformance) {
+		var ret ManaV2NullableSlaConformance
+		return ret
+	}
+	return *o.SlaConformance
+}
+
+// GetSlaConformanceOk returns a tuple with the SlaConformance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2EdgeDeviceConfig) GetSlaConformanceOk() (*ManaV2NullableSlaConformance, bool) {
+	if o == nil || IsNil(o.SlaConformance) {
+		return nil, false
+	}
+	return o.SlaConformance, true
+}
+
+// HasSlaConformance returns a boolean if a field has been set.
+func (o *ManaV2EdgeDeviceConfig) HasSlaConformance() bool {
+	if o != nil && !IsNil(o.SlaConformance) {
+		return true
+	}
+
+	return false
+}
+
+// SetSlaConformance gets a reference to the given ManaV2NullableSlaConformance and assigns it to the SlaConformance field.
+func (o *ManaV2EdgeDeviceConfig) SetSlaConformance(v ManaV2NullableSlaConformance) {
+	o.SlaConformance = &v
+}
+
 // GetSnmp returns the Snmp field value if set, zero value otherwise.
 func (o *ManaV2EdgeDeviceConfig) GetSnmp() ManaV2NullableSnmpConfig {
 	if o == nil || IsNil(o.Snmp) {
@@ -1148,6 +1181,9 @@ func (o ManaV2EdgeDeviceConfig) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SiteToSiteVpn) {
 		toSerialize["siteToSiteVpn"] = o.SiteToSiteVpn
+	}
+	if !IsNil(o.SlaConformance) {
+		toSerialize["slaConformance"] = o.SlaConformance
 	}
 	if !IsNil(o.Snmp) {
 		toSerialize["snmp"] = o.Snmp

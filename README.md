@@ -14,9 +14,9 @@ Refer [Graphiant Docs](https://docs.graphiant.com) to get started with [Graphian
 ## 📚 Documentation
 
 - **Official Documentation**: [Graphiant SDK Go Guide](https://docs.graphiant.com/docs/graphiant-sdk-go) <-> [Graphiant Automation Docs](https://docs.graphiant.com/docs/automation)
-- **API Reference**: [Graphiant SDK Go API Docs](docs/DefaultAPI.md) <-> [Graphiant Portal REST API Guide](https://docs.graphiant.com/docs/graphiant-portal-rest-api)
+- **API Reference**: [Graphiant SDK Go API Docs](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/DefaultAPI.md) <-> [Graphiant Portal REST API Guide](https://docs.graphiant.com/docs/graphiant-portal-rest-api)
 - **Package**: [Go Package - graphiant-sdk-go](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go)
-- **Changelog**: [CHANGELOG.md](CHANGELOG.md) - Complete version history and release notes
+- **Changelog**: [CHANGELOG.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/CHANGELOG.md) - Complete version history and release notes
 
 ## ✨ Features
 
@@ -337,7 +337,7 @@ func handleApiErrors(client *graphiant_sdk.APIClient, bearerToken string) {
 
 ## 🎯 Convenient Wrapper Functions
 
-The SDK includes high-level wrapper functions in `api_custom.go` that simplify common operations:
+The SDK includes high-level wrapper functions in [api_custom.go](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/api_custom.go) that simplify common operations:
 
 ### Allow Device Configuration only when the device is Ready
 
@@ -387,7 +387,7 @@ Response API names no longer include HTTP status codes. Update your imports and 
 - `Put204Response` → `PutResponse`
 - `Post201Response` → `PostResponse`
 
-> **Note**: The vast majority of response APIs have been updated. A few exceptions may remain (e.g., `V1AuthRefreshGet200Response`), but these are rare edge cases. When in doubt, check the current API file (`api_default.go`) or the model documentation.
+> **Note**: The vast majority of response APIs have been updated. A few exceptions may remain (e.g., `V1AuthRefreshGet200Response`), but these are rare edge cases. When in doubt, check the current API file ([api_default.go](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/api_default.go)) or the model documentation.
 
 #### 2. Find and Rename Inner Property API Names
 
@@ -399,7 +399,7 @@ To find the new API name:
    - `V1GlobalSummaryPost200Response` → `V1GlobalSummaryPostResponse`
 
 2. **Step 2**: Check the documentation for the inner property's new API name:
-   - Open `docs/V1GlobalSummaryPostResponse.md`
+   - Open [docs/V1GlobalSummaryPostResponse.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/V1GlobalSummaryPostResponse.md)
    - Find the property (e.g., `summaries`)
    - Note the new API name (e.g., `ManaV2GlobalObjectSummary`)
 
@@ -409,8 +409,8 @@ To find the new API name:
 
 To find all endpoints and their request/response models:
 
-- **API Reference**: See `default_api.go` or `docs/DefaultApi.md`
-- **Model Documentation**: Check individual model files in `docs/` directory (e.g., `docs/V1GlobalSummaryPostResponse.md`)
+- **API Reference**: See [api_default.go](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/api_default.go) or [docs/DefaultAPI.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/DefaultAPI.md)
+- **Model Documentation**: Check individual model files in the [docs/](https://github.com/Graphiant-Inc/graphiant-sdk-go/tree/main/docs) directory (e.g., [docs/V1GlobalSummaryPostResponse.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/V1GlobalSummaryPostResponse.md))
 
 ### Migration Checklist
 
@@ -422,8 +422,8 @@ To find all endpoints and their request/response models:
 
 ### Need Help?
 
-- Check the [API Reference](docs/DefaultApi.md) for endpoint details
-- Review model documentation in the `docs/` directory
+- Check the [API Reference](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/DefaultAPI.md) for endpoint details
+- Review model documentation in the [docs/](https://github.com/Graphiant-Inc/graphiant-sdk-go/tree/main/docs) directory
 - See [Support](#-support) section for additional resources
 
 ## 🛠️ Development
@@ -438,12 +438,12 @@ To find all endpoints and their request/response models:
 
 This repository uses GitHub Actions for continuous integration and deployment:
 
-- **Linting** (`lint.yml`): Runs golangci-lint, gofmt, and go vet on pull requests and pushes
-- **Testing** (`test.yml`): Runs `go test` with race detection and coverage across Go 1.21, 1.22, and 1.23
-- **Building** (`build.yml`): Builds and verifies the Go module
-- **Releasing** (`release.yml`): Creates git tags and GitHub releases (manual trigger, admin-only)
+- **Linting** ([lint.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/lint.yml)): Runs golangci-lint, gofmt, and go vet on pull requests and pushes
+- **Testing** ([test.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/test.yml)): Runs `go test` with race detection and coverage across Go 1.21, 1.22, and 1.23
+- **Building** ([build.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/build.yml)): Builds and verifies the Go module
+- **Releasing** ([release.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/release.yml)): Creates git tags and GitHub releases (manual trigger, admin-only)
 
-See [`.github/workflows/README.md`](.github/workflows/README.md) for detailed workflow documentation.
+See [.github/workflows/README.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/README.md) for detailed workflow documentation.
 
 ### Building from Source
 
@@ -474,12 +474,12 @@ brew install openapi-generator  # macOS
 
 # Generate SDK
 openapi-generator generate \
-  -i graphiant_api_docs_v25.12.1.json \
+  -i graphiant_api_docs_v26.1.1.json \
   -g go \
   --git-user-id Graphiant-Inc \
   --git-repo-id graphiant-sdk-go \
   --package-name graphiant_sdk \
-  --additional-properties=packageVersion=25.12.1
+  --additional-properties=packageVersion=26.1.1
 ```
 
 > **Note**: Latest API documentation can be downloaded from the Graphiant portal under "Support Hub" > "Developer Tools".
@@ -597,7 +597,7 @@ password := os.Getenv("GRAPHIANT_PASSWORD")
 host := os.Getenv("GRAPHIANT_HOST")
 ```
 
-**Note**: For detailed security policies, vulnerability reporting, and security best practices, see [SECURITY.md](SECURITY.md).
+**Note**: For detailed security policies, vulnerability reporting, and security best practices, see [SECURITY.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/SECURITY.md).
 
 ## 🤝 Contributing
 
@@ -625,15 +625,15 @@ We welcome contributions! Please follow these steps:
 
 **Note**: All pull requests automatically run CI/CD checks (linting, testing across multiple Go versions). Ensure all checks pass before requesting review.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
+See [CONTRIBUTING.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/CONTRIBUTING.md) for detailed contribution guidelines.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/LICENSE) file for details.
 
 ## 📋 Version History
 
-For a complete list of changes, new features, and version history, see [CHANGELOG.md](CHANGELOG.md).
+For a complete list of changes, new features, and version history, see [CHANGELOG.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/CHANGELOG.md).
 
 The changelog follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format and includes:
 - All releases from v25.6.1 (initial release) to the latest version
@@ -644,8 +644,8 @@ The changelog follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) f
 ## 🆘 Support
 
 - **Official Documentation**: [Graphiant SDK Go Guide](https://docs.graphiant.com/docs/graphiant-sdk-go) <-> [Graphiant Automation Docs](https://docs.graphiant.com/docs/automation)
-- **API Reference**: [Graphiant SDK Go API Docs](docs/DefaultAPI.md) <-> [Graphiant Portal REST API Guide](https://docs.graphiant.com/docs/graphiant-portal-rest-api)
-- **Changelog**: [CHANGELOG.md](CHANGELOG.md) - Version history and release notes
+- **API Reference**: [Graphiant SDK Go API Docs](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/DefaultAPI.md) <-> [Graphiant Portal REST API Guide](https://docs.graphiant.com/docs/graphiant-portal-rest-api)
+- **Changelog**: [CHANGELOG.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/CHANGELOG.md) - Version history and release notes
 - **Issues**: [GitHub Issues](https://github.com/Graphiant-Inc/graphiant-sdk-go/issues)
 - **Email**: support@graphiant.com
 

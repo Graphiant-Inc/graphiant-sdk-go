@@ -7,6 +7,10 @@ Name | Type | Description | Notes
 **Auth** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
 **AccountType** | Pointer to **string** |  | [optional] 
+**Email** | Pointer to **string** | User email address (returned for MFA users) | [optional] 
+**MfaType** | Pointer to **string** | MFA type (returned for MFA users) | [optional] 
+**StateToken** | Pointer to **string** | State token for MFA verification (returned for MFA users) | [optional] 
+**Status** | Pointer to **string** | Authentication status (returned for MFA users) | [optional] 
 **EntryPoint** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -102,6 +106,106 @@ SetAccountType sets AccountType field to given value.
 `func (o *V1AuthRefreshGet200Response) HasAccountType() bool`
 
 HasAccountType returns a boolean if a field has been set.
+
+### GetEmail
+
+`func (o *V1AuthRefreshGet200Response) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *V1AuthRefreshGet200Response) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *V1AuthRefreshGet200Response) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+### HasEmail
+
+`func (o *V1AuthRefreshGet200Response) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
+
+### GetMfaType
+
+`func (o *V1AuthRefreshGet200Response) GetMfaType() string`
+
+GetMfaType returns the MfaType field if non-nil, zero value otherwise.
+
+### GetMfaTypeOk
+
+`func (o *V1AuthRefreshGet200Response) GetMfaTypeOk() (*string, bool)`
+
+GetMfaTypeOk returns a tuple with the MfaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMfaType
+
+`func (o *V1AuthRefreshGet200Response) SetMfaType(v string)`
+
+SetMfaType sets MfaType field to given value.
+
+### HasMfaType
+
+`func (o *V1AuthRefreshGet200Response) HasMfaType() bool`
+
+HasMfaType returns a boolean if a field has been set.
+
+### GetStateToken
+
+`func (o *V1AuthRefreshGet200Response) GetStateToken() string`
+
+GetStateToken returns the StateToken field if non-nil, zero value otherwise.
+
+### GetStateTokenOk
+
+`func (o *V1AuthRefreshGet200Response) GetStateTokenOk() (*string, bool)`
+
+GetStateTokenOk returns a tuple with the StateToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStateToken
+
+`func (o *V1AuthRefreshGet200Response) SetStateToken(v string)`
+
+SetStateToken sets StateToken field to given value.
+
+### HasStateToken
+
+`func (o *V1AuthRefreshGet200Response) HasStateToken() bool`
+
+HasStateToken returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *V1AuthRefreshGet200Response) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *V1AuthRefreshGet200Response) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *V1AuthRefreshGet200Response) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *V1AuthRefreshGet200Response) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 ### GetEntryPoint
 

@@ -43,6 +43,7 @@ Name | Type | Description | Notes
 **Segments** | Pointer to [**[]ManaV2Vrf**](ManaV2Vrf.md) |  | [optional] 
 **SerialNumber** | Pointer to **string** |  | [optional] 
 **Site** | Pointer to [**ManaV2Site**](ManaV2Site.md) |  | [optional] 
+**SlaConformance** | Pointer to [**ManaV2SlaConformance**](ManaV2SlaConformance.md) |  | [optional] 
 **Snmp** | Pointer to [**ManaV2Snmp**](ManaV2Snmp.md) |  | [optional] 
 **SoftwareVersion** | Pointer to **string** |  | [optional] 
 **StaticRoutesEnabled** | Pointer to **bool** |  | [optional] 
@@ -1044,6 +1045,31 @@ SetSite sets Site field to given value.
 `func (o *ManaV2Device) HasSite() bool`
 
 HasSite returns a boolean if a field has been set.
+
+### GetSlaConformance
+
+`func (o *ManaV2Device) GetSlaConformance() ManaV2SlaConformance`
+
+GetSlaConformance returns the SlaConformance field if non-nil, zero value otherwise.
+
+### GetSlaConformanceOk
+
+`func (o *ManaV2Device) GetSlaConformanceOk() (*ManaV2SlaConformance, bool)`
+
+GetSlaConformanceOk returns a tuple with the SlaConformance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlaConformance
+
+`func (o *ManaV2Device) SetSlaConformance(v ManaV2SlaConformance)`
+
+SetSlaConformance sets SlaConformance field to given value.
+
+### HasSlaConformance
+
+`func (o *ManaV2Device) HasSlaConformance() bool`
+
+HasSlaConformance returns a boolean if a field has been set.
 
 ### GetSnmp
 

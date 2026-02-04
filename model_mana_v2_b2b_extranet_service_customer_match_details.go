@@ -19,8 +19,11 @@ var _ MappedNullable = &ManaV2B2bExtranetServiceCustomerMatchDetails{}
 
 // ManaV2B2bExtranetServiceCustomerMatchDetails struct for ManaV2B2bExtranetServiceCustomerMatchDetails
 type ManaV2B2bExtranetServiceCustomerMatchDetails struct {
+	ConsumerId *int64 `json:"consumerId,omitempty"`
 	ConsumerPrefixes []string `json:"consumerPrefixes,omitempty"`
 	Customer *ManaV2B2BExtranetServiceCustomerMatchDetailsCustomer `json:"customer,omitempty"`
+	OldConsumerPrefixes []string `json:"oldConsumerPrefixes,omitempty"`
+	OldServicePrefixes []ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix `json:"oldServicePrefixes,omitempty"`
 	Service *ManaV2B2BExtranetServiceCustomerMatchDetailsService `json:"service,omitempty"`
 	ServicePrefixes []ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix `json:"servicePrefixes,omitempty"`
 }
@@ -40,6 +43,38 @@ func NewManaV2B2bExtranetServiceCustomerMatchDetails() *ManaV2B2bExtranetService
 func NewManaV2B2bExtranetServiceCustomerMatchDetailsWithDefaults() *ManaV2B2bExtranetServiceCustomerMatchDetails {
 	this := ManaV2B2bExtranetServiceCustomerMatchDetails{}
 	return &this
+}
+
+// GetConsumerId returns the ConsumerId field value if set, zero value otherwise.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetConsumerId() int64 {
+	if o == nil || IsNil(o.ConsumerId) {
+		var ret int64
+		return ret
+	}
+	return *o.ConsumerId
+}
+
+// GetConsumerIdOk returns a tuple with the ConsumerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetConsumerIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.ConsumerId) {
+		return nil, false
+	}
+	return o.ConsumerId, true
+}
+
+// HasConsumerId returns a boolean if a field has been set.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) HasConsumerId() bool {
+	if o != nil && !IsNil(o.ConsumerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetConsumerId gets a reference to the given int64 and assigns it to the ConsumerId field.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) SetConsumerId(v int64) {
+	o.ConsumerId = &v
 }
 
 // GetConsumerPrefixes returns the ConsumerPrefixes field value if set, zero value otherwise.
@@ -104,6 +139,70 @@ func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) HasCustomer() bool {
 // SetCustomer gets a reference to the given ManaV2B2BExtranetServiceCustomerMatchDetailsCustomer and assigns it to the Customer field.
 func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) SetCustomer(v ManaV2B2BExtranetServiceCustomerMatchDetailsCustomer) {
 	o.Customer = &v
+}
+
+// GetOldConsumerPrefixes returns the OldConsumerPrefixes field value if set, zero value otherwise.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetOldConsumerPrefixes() []string {
+	if o == nil || IsNil(o.OldConsumerPrefixes) {
+		var ret []string
+		return ret
+	}
+	return o.OldConsumerPrefixes
+}
+
+// GetOldConsumerPrefixesOk returns a tuple with the OldConsumerPrefixes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetOldConsumerPrefixesOk() ([]string, bool) {
+	if o == nil || IsNil(o.OldConsumerPrefixes) {
+		return nil, false
+	}
+	return o.OldConsumerPrefixes, true
+}
+
+// HasOldConsumerPrefixes returns a boolean if a field has been set.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) HasOldConsumerPrefixes() bool {
+	if o != nil && !IsNil(o.OldConsumerPrefixes) {
+		return true
+	}
+
+	return false
+}
+
+// SetOldConsumerPrefixes gets a reference to the given []string and assigns it to the OldConsumerPrefixes field.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) SetOldConsumerPrefixes(v []string) {
+	o.OldConsumerPrefixes = v
+}
+
+// GetOldServicePrefixes returns the OldServicePrefixes field value if set, zero value otherwise.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetOldServicePrefixes() []ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix {
+	if o == nil || IsNil(o.OldServicePrefixes) {
+		var ret []ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix
+		return ret
+	}
+	return o.OldServicePrefixes
+}
+
+// GetOldServicePrefixesOk returns a tuple with the OldServicePrefixes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) GetOldServicePrefixesOk() ([]ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix, bool) {
+	if o == nil || IsNil(o.OldServicePrefixes) {
+		return nil, false
+	}
+	return o.OldServicePrefixes, true
+}
+
+// HasOldServicePrefixes returns a boolean if a field has been set.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) HasOldServicePrefixes() bool {
+	if o != nil && !IsNil(o.OldServicePrefixes) {
+		return true
+	}
+
+	return false
+}
+
+// SetOldServicePrefixes gets a reference to the given []ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix and assigns it to the OldServicePrefixes field.
+func (o *ManaV2B2bExtranetServiceCustomerMatchDetails) SetOldServicePrefixes(v []ManaV2B2BExtranetServiceCustomerMatchDetailsProducerPrefix) {
+	o.OldServicePrefixes = v
 }
 
 // GetService returns the Service field value if set, zero value otherwise.
@@ -180,11 +279,20 @@ func (o ManaV2B2bExtranetServiceCustomerMatchDetails) MarshalJSON() ([]byte, err
 
 func (o ManaV2B2bExtranetServiceCustomerMatchDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ConsumerId) {
+		toSerialize["consumerId"] = o.ConsumerId
+	}
 	if !IsNil(o.ConsumerPrefixes) {
 		toSerialize["consumerPrefixes"] = o.ConsumerPrefixes
 	}
 	if !IsNil(o.Customer) {
 		toSerialize["customer"] = o.Customer
+	}
+	if !IsNil(o.OldConsumerPrefixes) {
+		toSerialize["oldConsumerPrefixes"] = o.OldConsumerPrefixes
+	}
+	if !IsNil(o.OldServicePrefixes) {
+		toSerialize["oldServicePrefixes"] = o.OldServicePrefixes
 	}
 	if !IsNil(o.Service) {
 		toSerialize["service"] = o.Service

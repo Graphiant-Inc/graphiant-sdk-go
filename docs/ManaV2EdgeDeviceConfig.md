@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **Segments** | Pointer to [**map[string]ManaV2VrfConfig**](ManaV2VrfConfig.md) |  | [optional] 
 **Site** | Pointer to [**ManaV2NewSite**](ManaV2NewSite.md) |  | [optional] 
 **SiteToSiteVpn** | Pointer to [**map[string]ManaV2NullableIPsecTunnelConfig**](ManaV2NullableIPsecTunnelConfig.md) |  | [optional] 
+**SlaConformance** | Pointer to [**ManaV2NullableSlaConformance**](ManaV2NullableSlaConformance.md) |  | [optional] 
 **Snmp** | Pointer to [**ManaV2NullableSnmpConfig**](ManaV2NullableSnmpConfig.md) |  | [optional] 
 **SnmpGlobalObject** | Pointer to [**map[string]ManaV2NullableSnmpConfig**](ManaV2NullableSnmpConfig.md) |  | [optional] 
 **StaticRoutesEnabled** | Pointer to **bool** |  | [optional] 
@@ -704,6 +705,31 @@ SetSiteToSiteVpn sets SiteToSiteVpn field to given value.
 `func (o *ManaV2EdgeDeviceConfig) HasSiteToSiteVpn() bool`
 
 HasSiteToSiteVpn returns a boolean if a field has been set.
+
+### GetSlaConformance
+
+`func (o *ManaV2EdgeDeviceConfig) GetSlaConformance() ManaV2NullableSlaConformance`
+
+GetSlaConformance returns the SlaConformance field if non-nil, zero value otherwise.
+
+### GetSlaConformanceOk
+
+`func (o *ManaV2EdgeDeviceConfig) GetSlaConformanceOk() (*ManaV2NullableSlaConformance, bool)`
+
+GetSlaConformanceOk returns a tuple with the SlaConformance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlaConformance
+
+`func (o *ManaV2EdgeDeviceConfig) SetSlaConformance(v ManaV2NullableSlaConformance)`
+
+SetSlaConformance sets SlaConformance field to given value.
+
+### HasSlaConformance
+
+`func (o *ManaV2EdgeDeviceConfig) HasSlaConformance() bool`
+
+HasSlaConformance returns a boolean if a field has been set.
 
 ### GetSnmp
 

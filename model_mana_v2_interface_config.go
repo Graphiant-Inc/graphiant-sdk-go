@@ -30,6 +30,7 @@ type ManaV2InterfaceConfig struct {
 	Lan *string `json:"lan,omitempty"`
 	LldpEnabled *bool `json:"lldpEnabled,omitempty"`
 	Loopback *bool `json:"loopback,omitempty"`
+	Macsec *ManaV2NullableMaCsecConfiguration `json:"macsec,omitempty"`
 	MaxTransmissionUnit *int32 `json:"maxTransmissionUnit,omitempty"`
 	SecurityZone *string `json:"securityZone,omitempty"`
 	Speed *int64 `json:"speed,omitempty"`
@@ -410,6 +411,38 @@ func (o *ManaV2InterfaceConfig) SetLoopback(v bool) {
 	o.Loopback = &v
 }
 
+// GetMacsec returns the Macsec field value if set, zero value otherwise.
+func (o *ManaV2InterfaceConfig) GetMacsec() ManaV2NullableMaCsecConfiguration {
+	if o == nil || IsNil(o.Macsec) {
+		var ret ManaV2NullableMaCsecConfiguration
+		return ret
+	}
+	return *o.Macsec
+}
+
+// GetMacsecOk returns a tuple with the Macsec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2InterfaceConfig) GetMacsecOk() (*ManaV2NullableMaCsecConfiguration, bool) {
+	if o == nil || IsNil(o.Macsec) {
+		return nil, false
+	}
+	return o.Macsec, true
+}
+
+// HasMacsec returns a boolean if a field has been set.
+func (o *ManaV2InterfaceConfig) HasMacsec() bool {
+	if o != nil && !IsNil(o.Macsec) {
+		return true
+	}
+
+	return false
+}
+
+// SetMacsec gets a reference to the given ManaV2NullableMaCsecConfiguration and assigns it to the Macsec field.
+func (o *ManaV2InterfaceConfig) SetMacsec(v ManaV2NullableMaCsecConfiguration) {
+	o.Macsec = &v
+}
+
 // GetMaxTransmissionUnit returns the MaxTransmissionUnit field value if set, zero value otherwise.
 func (o *ManaV2InterfaceConfig) GetMaxTransmissionUnit() int32 {
 	if o == nil || IsNil(o.MaxTransmissionUnit) {
@@ -740,6 +773,9 @@ func (o ManaV2InterfaceConfig) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Loopback) {
 		toSerialize["loopback"] = o.Loopback
+	}
+	if !IsNil(o.Macsec) {
+		toSerialize["macsec"] = o.Macsec
 	}
 	if !IsNil(o.MaxTransmissionUnit) {
 		toSerialize["maxTransmissionUnit"] = o.MaxTransmissionUnit

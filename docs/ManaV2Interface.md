@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **LagInterface** | Pointer to [**ManaV2LagInterface**](ManaV2LagInterface.md) |  | [optional] 
 **Lan** | Pointer to **string** |  | [optional] 
 **LldpEnabled** | Pointer to **bool** |  | [optional] 
+**Macsec** | Pointer to [**ManaV2InterfaceMaCsec**](ManaV2InterfaceMaCsec.md) |  | [optional] 
 **MaxTransmissionUnit** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **OperUpdatedAt** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
@@ -455,6 +456,31 @@ SetLldpEnabled sets LldpEnabled field to given value.
 `func (o *ManaV2Interface) HasLldpEnabled() bool`
 
 HasLldpEnabled returns a boolean if a field has been set.
+
+### GetMacsec
+
+`func (o *ManaV2Interface) GetMacsec() ManaV2InterfaceMaCsec`
+
+GetMacsec returns the Macsec field if non-nil, zero value otherwise.
+
+### GetMacsecOk
+
+`func (o *ManaV2Interface) GetMacsecOk() (*ManaV2InterfaceMaCsec, bool)`
+
+GetMacsecOk returns a tuple with the Macsec field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMacsec
+
+`func (o *ManaV2Interface) SetMacsec(v ManaV2InterfaceMaCsec)`
+
+SetMacsec sets Macsec field to given value.
+
+### HasMacsec
+
+`func (o *ManaV2Interface) HasMacsec() bool`
+
+HasMacsec returns a boolean if a field has been set.
 
 ### GetMaxTransmissionUnit
 

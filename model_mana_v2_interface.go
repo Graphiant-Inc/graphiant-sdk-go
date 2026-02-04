@@ -35,6 +35,7 @@ type ManaV2Interface struct {
 	LagInterface *ManaV2LagInterface `json:"lagInterface,omitempty"`
 	Lan *string `json:"lan,omitempty"`
 	LldpEnabled *bool `json:"lldpEnabled,omitempty"`
+	Macsec *ManaV2InterfaceMaCsec `json:"macsec,omitempty"`
 	MaxTransmissionUnit *int32 `json:"maxTransmissionUnit,omitempty"`
 	Name *string `json:"name,omitempty"`
 	OperUpdatedAt *GoogleProtobufTimestamp `json:"operUpdatedAt,omitempty"`
@@ -580,6 +581,38 @@ func (o *ManaV2Interface) HasLldpEnabled() bool {
 // SetLldpEnabled gets a reference to the given bool and assigns it to the LldpEnabled field.
 func (o *ManaV2Interface) SetLldpEnabled(v bool) {
 	o.LldpEnabled = &v
+}
+
+// GetMacsec returns the Macsec field value if set, zero value otherwise.
+func (o *ManaV2Interface) GetMacsec() ManaV2InterfaceMaCsec {
+	if o == nil || IsNil(o.Macsec) {
+		var ret ManaV2InterfaceMaCsec
+		return ret
+	}
+	return *o.Macsec
+}
+
+// GetMacsecOk returns a tuple with the Macsec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2Interface) GetMacsecOk() (*ManaV2InterfaceMaCsec, bool) {
+	if o == nil || IsNil(o.Macsec) {
+		return nil, false
+	}
+	return o.Macsec, true
+}
+
+// HasMacsec returns a boolean if a field has been set.
+func (o *ManaV2Interface) HasMacsec() bool {
+	if o != nil && !IsNil(o.Macsec) {
+		return true
+	}
+
+	return false
+}
+
+// SetMacsec gets a reference to the given ManaV2InterfaceMaCsec and assigns it to the Macsec field.
+func (o *ManaV2Interface) SetMacsec(v ManaV2InterfaceMaCsec) {
+	o.Macsec = &v
 }
 
 // GetMaxTransmissionUnit returns the MaxTransmissionUnit field value if set, zero value otherwise.
@@ -1151,6 +1184,9 @@ func (o ManaV2Interface) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LldpEnabled) {
 		toSerialize["lldpEnabled"] = o.LldpEnabled
+	}
+	if !IsNil(o.Macsec) {
+		toSerialize["macsec"] = o.Macsec
 	}
 	if !IsNil(o.MaxTransmissionUnit) {
 		toSerialize["maxTransmissionUnit"] = o.MaxTransmissionUnit
