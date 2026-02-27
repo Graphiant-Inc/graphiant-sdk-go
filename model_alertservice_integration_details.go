@@ -22,6 +22,7 @@ type AlertserviceIntegrationDetails struct {
 	OpsgenieKey *string `json:"opsgenieKey,omitempty"`
 	OpsrampDetails *string `json:"opsrampDetails,omitempty"`
 	WebhookUrl *string `json:"webhookUrl,omitempty"`
+	ZendeskDetails *AlertserviceZendeskDetails `json:"zendeskDetails,omitempty"`
 }
 
 // NewAlertserviceIntegrationDetails instantiates a new AlertserviceIntegrationDetails object
@@ -137,6 +138,38 @@ func (o *AlertserviceIntegrationDetails) SetWebhookUrl(v string) {
 	o.WebhookUrl = &v
 }
 
+// GetZendeskDetails returns the ZendeskDetails field value if set, zero value otherwise.
+func (o *AlertserviceIntegrationDetails) GetZendeskDetails() AlertserviceZendeskDetails {
+	if o == nil || IsNil(o.ZendeskDetails) {
+		var ret AlertserviceZendeskDetails
+		return ret
+	}
+	return *o.ZendeskDetails
+}
+
+// GetZendeskDetailsOk returns a tuple with the ZendeskDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertserviceIntegrationDetails) GetZendeskDetailsOk() (*AlertserviceZendeskDetails, bool) {
+	if o == nil || IsNil(o.ZendeskDetails) {
+		return nil, false
+	}
+	return o.ZendeskDetails, true
+}
+
+// HasZendeskDetails returns a boolean if a field has been set.
+func (o *AlertserviceIntegrationDetails) HasZendeskDetails() bool {
+	if o != nil && !IsNil(o.ZendeskDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetZendeskDetails gets a reference to the given AlertserviceZendeskDetails and assigns it to the ZendeskDetails field.
+func (o *AlertserviceIntegrationDetails) SetZendeskDetails(v AlertserviceZendeskDetails) {
+	o.ZendeskDetails = &v
+}
+
 func (o AlertserviceIntegrationDetails) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -155,6 +188,9 @@ func (o AlertserviceIntegrationDetails) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.WebhookUrl) {
 		toSerialize["webhookUrl"] = o.WebhookUrl
+	}
+	if !IsNil(o.ZendeskDetails) {
+		toSerialize["zendeskDetails"] = o.ZendeskDetails
 	}
 	return toSerialize, nil
 }

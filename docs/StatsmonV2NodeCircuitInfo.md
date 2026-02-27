@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AverageUplinkUtilization** | Pointer to **float64** |  | [optional] 
 **CircuitCarrier** | Pointer to **string** |  | [optional] 
 **CircuitName** | Pointer to **string** |  | [optional] 
+**ConnectedRegionName** | Pointer to **string** |  | [optional] 
 **CurrentDownlinkUtilization** | Pointer to **float64** |  | [optional] 
 **CurrentUplinkUtilization** | Pointer to **float64** |  | [optional] 
 **DeviceId** | Pointer to **int64** |  | [optional] 
@@ -138,6 +139,31 @@ SetCircuitName sets CircuitName field to given value.
 `func (o *StatsmonV2NodeCircuitInfo) HasCircuitName() bool`
 
 HasCircuitName returns a boolean if a field has been set.
+
+### GetConnectedRegionName
+
+`func (o *StatsmonV2NodeCircuitInfo) GetConnectedRegionName() string`
+
+GetConnectedRegionName returns the ConnectedRegionName field if non-nil, zero value otherwise.
+
+### GetConnectedRegionNameOk
+
+`func (o *StatsmonV2NodeCircuitInfo) GetConnectedRegionNameOk() (*string, bool)`
+
+GetConnectedRegionNameOk returns a tuple with the ConnectedRegionName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectedRegionName
+
+`func (o *StatsmonV2NodeCircuitInfo) SetConnectedRegionName(v string)`
+
+SetConnectedRegionName sets ConnectedRegionName field to given value.
+
+### HasConnectedRegionName
+
+`func (o *StatsmonV2NodeCircuitInfo) HasConnectedRegionName() bool`
+
+HasConnectedRegionName returns a boolean if a field has been set.
 
 ### GetCurrentDownlinkUtilization
 

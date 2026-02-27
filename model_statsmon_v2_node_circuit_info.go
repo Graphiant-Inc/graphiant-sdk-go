@@ -23,6 +23,7 @@ type StatsmonV2NodeCircuitInfo struct {
 	AverageUplinkUtilization *float64 `json:"averageUplinkUtilization,omitempty"`
 	CircuitCarrier *string `json:"circuitCarrier,omitempty"`
 	CircuitName *string `json:"circuitName,omitempty"`
+	ConnectedRegionName *string `json:"connectedRegionName,omitempty"`
 	CurrentDownlinkUtilization *float64 `json:"currentDownlinkUtilization,omitempty"`
 	CurrentUplinkUtilization *float64 `json:"currentUplinkUtilization,omitempty"`
 	DeviceId *int64 `json:"deviceId,omitempty"`
@@ -179,6 +180,38 @@ func (o *StatsmonV2NodeCircuitInfo) HasCircuitName() bool {
 // SetCircuitName gets a reference to the given string and assigns it to the CircuitName field.
 func (o *StatsmonV2NodeCircuitInfo) SetCircuitName(v string) {
 	o.CircuitName = &v
+}
+
+// GetConnectedRegionName returns the ConnectedRegionName field value if set, zero value otherwise.
+func (o *StatsmonV2NodeCircuitInfo) GetConnectedRegionName() string {
+	if o == nil || IsNil(o.ConnectedRegionName) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectedRegionName
+}
+
+// GetConnectedRegionNameOk returns a tuple with the ConnectedRegionName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StatsmonV2NodeCircuitInfo) GetConnectedRegionNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ConnectedRegionName) {
+		return nil, false
+	}
+	return o.ConnectedRegionName, true
+}
+
+// HasConnectedRegionName returns a boolean if a field has been set.
+func (o *StatsmonV2NodeCircuitInfo) HasConnectedRegionName() bool {
+	if o != nil && !IsNil(o.ConnectedRegionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedRegionName gets a reference to the given string and assigns it to the ConnectedRegionName field.
+func (o *StatsmonV2NodeCircuitInfo) SetConnectedRegionName(v string) {
+	o.ConnectedRegionName = &v
 }
 
 // GetCurrentDownlinkUtilization returns the CurrentDownlinkUtilization field value if set, zero value otherwise.
@@ -554,6 +587,9 @@ func (o StatsmonV2NodeCircuitInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CircuitName) {
 		toSerialize["circuitName"] = o.CircuitName
+	}
+	if !IsNil(o.ConnectedRegionName) {
+		toSerialize["connectedRegionName"] = o.ConnectedRegionName
 	}
 	if !IsNil(o.CurrentDownlinkUtilization) {
 		toSerialize["currentDownlinkUtilization"] = o.CurrentDownlinkUtilization

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **NodeInfo** | Pointer to [**StatsmonV2NodeDeviceInfo**](StatsmonV2NodeDeviceInfo.md) |  | [optional] 
+**PreferredRegionName** | Pointer to **string** |  | [optional] 
 **Quality** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
@@ -155,6 +156,31 @@ SetNodeInfo sets NodeInfo field to given value.
 `func (o *StatsmonV2Node) HasNodeInfo() bool`
 
 HasNodeInfo returns a boolean if a field has been set.
+
+### GetPreferredRegionName
+
+`func (o *StatsmonV2Node) GetPreferredRegionName() string`
+
+GetPreferredRegionName returns the PreferredRegionName field if non-nil, zero value otherwise.
+
+### GetPreferredRegionNameOk
+
+`func (o *StatsmonV2Node) GetPreferredRegionNameOk() (*string, bool)`
+
+GetPreferredRegionNameOk returns a tuple with the PreferredRegionName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreferredRegionName
+
+`func (o *StatsmonV2Node) SetPreferredRegionName(v string)`
+
+SetPreferredRegionName sets PreferredRegionName field to given value.
+
+### HasPreferredRegionName
+
+`func (o *StatsmonV2Node) HasPreferredRegionName() bool`
+
+HasPreferredRegionName returns a boolean if a field has been set.
 
 ### GetQuality
 

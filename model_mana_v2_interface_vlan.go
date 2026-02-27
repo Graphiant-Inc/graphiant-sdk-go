@@ -25,6 +25,8 @@ type ManaV2InterfaceVlan struct {
 	Description *string `json:"description,omitempty"`
 	Duplex *string `json:"duplex,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
+	GatewayAddressV4 *string `json:"gatewayAddressV4,omitempty"`
+	GatewayAddressV6 *string `json:"gatewayAddressV6,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Ipv4 *ManaV2InterfaceAddress `json:"ipv4,omitempty"`
 	Ipv6 *ManaV2InterfaceAddress `json:"ipv6,omitempty"`
@@ -251,6 +253,70 @@ func (o *ManaV2InterfaceVlan) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *ManaV2InterfaceVlan) SetEnabled(v bool) {
 	o.Enabled = &v
+}
+
+// GetGatewayAddressV4 returns the GatewayAddressV4 field value if set, zero value otherwise.
+func (o *ManaV2InterfaceVlan) GetGatewayAddressV4() string {
+	if o == nil || IsNil(o.GatewayAddressV4) {
+		var ret string
+		return ret
+	}
+	return *o.GatewayAddressV4
+}
+
+// GetGatewayAddressV4Ok returns a tuple with the GatewayAddressV4 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2InterfaceVlan) GetGatewayAddressV4Ok() (*string, bool) {
+	if o == nil || IsNil(o.GatewayAddressV4) {
+		return nil, false
+	}
+	return o.GatewayAddressV4, true
+}
+
+// HasGatewayAddressV4 returns a boolean if a field has been set.
+func (o *ManaV2InterfaceVlan) HasGatewayAddressV4() bool {
+	if o != nil && !IsNil(o.GatewayAddressV4) {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayAddressV4 gets a reference to the given string and assigns it to the GatewayAddressV4 field.
+func (o *ManaV2InterfaceVlan) SetGatewayAddressV4(v string) {
+	o.GatewayAddressV4 = &v
+}
+
+// GetGatewayAddressV6 returns the GatewayAddressV6 field value if set, zero value otherwise.
+func (o *ManaV2InterfaceVlan) GetGatewayAddressV6() string {
+	if o == nil || IsNil(o.GatewayAddressV6) {
+		var ret string
+		return ret
+	}
+	return *o.GatewayAddressV6
+}
+
+// GetGatewayAddressV6Ok returns a tuple with the GatewayAddressV6 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2InterfaceVlan) GetGatewayAddressV6Ok() (*string, bool) {
+	if o == nil || IsNil(o.GatewayAddressV6) {
+		return nil, false
+	}
+	return o.GatewayAddressV6, true
+}
+
+// HasGatewayAddressV6 returns a boolean if a field has been set.
+func (o *ManaV2InterfaceVlan) HasGatewayAddressV6() bool {
+	if o != nil && !IsNil(o.GatewayAddressV6) {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayAddressV6 gets a reference to the given string and assigns it to the GatewayAddressV6 field.
+func (o *ManaV2InterfaceVlan) SetGatewayAddressV6(v string) {
+	o.GatewayAddressV6 = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -824,6 +890,12 @@ func (o ManaV2InterfaceVlan) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.GatewayAddressV4) {
+		toSerialize["gatewayAddressV4"] = o.GatewayAddressV4
+	}
+	if !IsNil(o.GatewayAddressV6) {
+		toSerialize["gatewayAddressV6"] = o.GatewayAddressV6
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

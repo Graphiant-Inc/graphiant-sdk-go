@@ -21,6 +21,7 @@ var _ MappedNullable = &V2DeviceDeviceIdTopologyPostRequest{}
 type V2DeviceDeviceIdTopologyPostRequest struct {
 	SnapshotTime *GoogleProtobufTimestamp `json:"snapshotTime,omitempty"`
 	TimeWindow *StatsmonV2TimeWindow `json:"timeWindow,omitempty"`
+	Version *int32 `json:"version,omitempty"`
 }
 
 // NewV2DeviceDeviceIdTopologyPostRequest instantiates a new V2DeviceDeviceIdTopologyPostRequest object
@@ -104,6 +105,38 @@ func (o *V2DeviceDeviceIdTopologyPostRequest) SetTimeWindow(v StatsmonV2TimeWind
 	o.TimeWindow = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *V2DeviceDeviceIdTopologyPostRequest) GetVersion() int32 {
+	if o == nil || IsNil(o.Version) {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V2DeviceDeviceIdTopologyPostRequest) GetVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.Version) {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *V2DeviceDeviceIdTopologyPostRequest) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *V2DeviceDeviceIdTopologyPostRequest) SetVersion(v int32) {
+	o.Version = &v
+}
+
 func (o V2DeviceDeviceIdTopologyPostRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -119,6 +152,9 @@ func (o V2DeviceDeviceIdTopologyPostRequest) ToMap() (map[string]interface{}, er
 	}
 	if !IsNil(o.TimeWindow) {
 		toSerialize["timeWindow"] = o.TimeWindow
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil
 }

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **EnterpriseId** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **IsActive** | Pointer to **bool** |  | [optional] 
+**LastScanned** | Pointer to **int64** | last scanned time for integrations (zendesk) | [optional] 
 **NickName** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
@@ -181,6 +182,31 @@ SetIsActive sets IsActive field to given value.
 `func (o *AlertserviceIntegration) HasIsActive() bool`
 
 HasIsActive returns a boolean if a field has been set.
+
+### GetLastScanned
+
+`func (o *AlertserviceIntegration) GetLastScanned() int64`
+
+GetLastScanned returns the LastScanned field if non-nil, zero value otherwise.
+
+### GetLastScannedOk
+
+`func (o *AlertserviceIntegration) GetLastScannedOk() (*int64, bool)`
+
+GetLastScannedOk returns a tuple with the LastScanned field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastScanned
+
+`func (o *AlertserviceIntegration) SetLastScanned(v int64)`
+
+SetLastScanned sets LastScanned field to given value.
+
+### HasLastScanned
+
+`func (o *AlertserviceIntegration) HasLastScanned() bool`
+
+HasLastScanned returns a boolean if a field has been set.
 
 ### GetNickName
 

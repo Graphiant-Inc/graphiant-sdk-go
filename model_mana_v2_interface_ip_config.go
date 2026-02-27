@@ -21,6 +21,7 @@ var _ MappedNullable = &ManaV2InterfaceIpConfig{}
 type ManaV2InterfaceIpConfig struct {
 	Address *ManaV2NullableAddress `json:"address,omitempty"`
 	Dhcp *ManaV2InterfaceDhcpConfig `json:"dhcp,omitempty"`
+	Gw *ManaV2NullableGatewayConfig `json:"gw,omitempty"`
 	Vrrp *ManaV2NullableVrrpGroupConfig `json:"vrrp,omitempty"`
 }
 
@@ -105,6 +106,38 @@ func (o *ManaV2InterfaceIpConfig) SetDhcp(v ManaV2InterfaceDhcpConfig) {
 	o.Dhcp = &v
 }
 
+// GetGw returns the Gw field value if set, zero value otherwise.
+func (o *ManaV2InterfaceIpConfig) GetGw() ManaV2NullableGatewayConfig {
+	if o == nil || IsNil(o.Gw) {
+		var ret ManaV2NullableGatewayConfig
+		return ret
+	}
+	return *o.Gw
+}
+
+// GetGwOk returns a tuple with the Gw field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2InterfaceIpConfig) GetGwOk() (*ManaV2NullableGatewayConfig, bool) {
+	if o == nil || IsNil(o.Gw) {
+		return nil, false
+	}
+	return o.Gw, true
+}
+
+// HasGw returns a boolean if a field has been set.
+func (o *ManaV2InterfaceIpConfig) HasGw() bool {
+	if o != nil && !IsNil(o.Gw) {
+		return true
+	}
+
+	return false
+}
+
+// SetGw gets a reference to the given ManaV2NullableGatewayConfig and assigns it to the Gw field.
+func (o *ManaV2InterfaceIpConfig) SetGw(v ManaV2NullableGatewayConfig) {
+	o.Gw = &v
+}
+
 // GetVrrp returns the Vrrp field value if set, zero value otherwise.
 func (o *ManaV2InterfaceIpConfig) GetVrrp() ManaV2NullableVrrpGroupConfig {
 	if o == nil || IsNil(o.Vrrp) {
@@ -152,6 +185,9 @@ func (o ManaV2InterfaceIpConfig) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Dhcp) {
 		toSerialize["dhcp"] = o.Dhcp
+	}
+	if !IsNil(o.Gw) {
+		toSerialize["gw"] = o.Gw
 	}
 	if !IsNil(o.Vrrp) {
 		toSerialize["vrrp"] = o.Vrrp

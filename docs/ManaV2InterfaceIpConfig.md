@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to [**ManaV2NullableAddress**](ManaV2NullableAddress.md) |  | [optional] 
 **Dhcp** | Pointer to [**ManaV2InterfaceDhcpConfig**](ManaV2InterfaceDhcpConfig.md) |  | [optional] 
+**Gw** | Pointer to [**ManaV2NullableGatewayConfig**](ManaV2NullableGatewayConfig.md) |  | [optional] 
 **Vrrp** | Pointer to [**ManaV2NullableVrrpGroupConfig**](ManaV2NullableVrrpGroupConfig.md) |  | [optional] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetDhcp sets Dhcp field to given value.
 `func (o *ManaV2InterfaceIpConfig) HasDhcp() bool`
 
 HasDhcp returns a boolean if a field has been set.
+
+### GetGw
+
+`func (o *ManaV2InterfaceIpConfig) GetGw() ManaV2NullableGatewayConfig`
+
+GetGw returns the Gw field if non-nil, zero value otherwise.
+
+### GetGwOk
+
+`func (o *ManaV2InterfaceIpConfig) GetGwOk() (*ManaV2NullableGatewayConfig, bool)`
+
+GetGwOk returns a tuple with the Gw field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGw
+
+`func (o *ManaV2InterfaceIpConfig) SetGw(v ManaV2NullableGatewayConfig)`
+
+SetGw sets Gw field to given value.
+
+### HasGw
+
+`func (o *ManaV2InterfaceIpConfig) HasGw() bool`
+
+HasGw returns a boolean if a field has been set.
 
 ### GetVrrp
 

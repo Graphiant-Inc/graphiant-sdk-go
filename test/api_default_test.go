@@ -11,11 +11,10 @@ package graphiant_sdk
 
 import (
 	"context"
-	"testing"
-
-	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"testing"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
 )
 
 func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
@@ -25,31 +24,29 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AccountEmailPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1AccountEmailPatch(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, httpRes)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
 	t.Run("Test DefaultAPIService V1AccountInfoPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1AccountInfoPatch(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, httpRes)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
 	t.Run("Test DefaultAPIService V1AccountMfaConfirmationPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1AccountMfaConfirmationPost(context.Background()).Execute()
 
@@ -61,7 +58,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AccountMfaDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1AccountMfaDelete(context.Background()).Execute()
 
@@ -72,7 +69,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AccountMfaGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1AccountMfaGet(context.Background()).Execute()
 
@@ -84,7 +81,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AccountMfaPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1AccountMfaPut(context.Background()).Execute()
 
@@ -96,7 +93,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AccountPasswordPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1AccountPasswordPatch(context.Background()).Execute()
 
@@ -107,7 +104,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ActivityLogsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ActivityLogsPost(context.Background()).Execute()
 
@@ -117,58 +114,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1AlarmHistoryGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1AlarmHistoryGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1AlarmMuteAlarmIdPut", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var alarmId int64
-
-		httpRes, err := apiClient.DefaultAPI.V1AlarmMuteAlarmIdPut(context.Background(), alarmId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1AlarmsEventsGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1AlarmsEventsGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1AlarmsListGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1AlarmsListGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1AppsAppSummaryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1AppsAppSummaryPost(context.Background()).Execute()
 
@@ -180,7 +128,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AppsBandwidthPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1AppsBandwidthPost(context.Background()).Execute()
 
@@ -192,7 +140,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AppsDeviceDeviceIdTopPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -206,7 +154,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AppsSiteSiteIdTopPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var siteId int64
 
@@ -220,7 +168,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AppsVisualizationPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1AppsVisualizationPost(context.Background()).Execute()
 
@@ -232,7 +180,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AuditLogsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1AuditLogsPost(context.Background()).Execute()
 
@@ -244,7 +192,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AuthDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1AuthDelete(context.Background()).Execute()
 
@@ -253,9 +201,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1AuthGcsPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1AuthGcsPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1AuthGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1AuthGet(context.Background()).Execute()
 
@@ -265,9 +225,20 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1AuthLoginCallbackPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.DefaultAPI.V1AuthLoginCallbackPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1AuthLoginPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1AuthLoginPost(context.Background()).Execute()
 
@@ -279,7 +250,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AuthLoginPreGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1AuthLoginPreGet(context.Background()).Execute()
 
@@ -289,9 +260,32 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1AuthLoginSamlGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.DefaultAPI.V1AuthLoginSamlGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1AuthLoginTempPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1AuthLoginTempPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1AuthMfaDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1AuthMfaDelete(context.Background()).Execute()
 
@@ -302,7 +296,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AuthMfaPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1AuthMfaPatch(context.Background()).Execute()
 
@@ -311,9 +305,44 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1AuthMfaPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1AuthMfaPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1AuthMfaTypesGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1AuthMfaTypesGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1AuthMfaTypesPut", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.DefaultAPI.V1AuthMfaTypesPut(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1AuthPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1AuthPatch(context.Background()).Execute()
 
@@ -324,7 +353,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1AuthPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1AuthPut(context.Background()).Execute()
 
@@ -333,9 +362,45 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1AuthRefreshGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1AuthRefreshGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1AuthSessionGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1AuthSessionGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1AuthSessionRootGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1AuthSessionRootGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1AuthUserGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1AuthUserGet(context.Background()).Execute()
 
@@ -347,7 +412,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BackboneHealthDeviceDeviceIdPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -361,7 +426,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BackboneHealthEtWanMatrixGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BackboneHealthEtWanMatrixGet(context.Background()).Execute()
 
@@ -373,7 +438,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BackboneHealthEtetSlaMatrixGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BackboneHealthEtetSlaMatrixGet(context.Background()).Execute()
 
@@ -385,7 +450,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BackboneHealthFilterGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BackboneHealthFilterGet(context.Background()).Execute()
 
@@ -397,7 +462,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BackboneHealthOverviewPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BackboneHealthOverviewPost(context.Background()).Execute()
 
@@ -409,7 +474,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BackboneHealthTopDevicesByAlertsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BackboneHealthTopDevicesByAlertsPost(context.Background()).Execute()
 
@@ -421,7 +486,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BwtrackerEnterpriseCsvPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerEnterpriseCsvPost(context.Background()).Execute()
 
@@ -433,7 +498,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BwtrackerEnterpriseDetailsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerEnterpriseDetailsPost(context.Background()).Execute()
 
@@ -445,7 +510,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BwtrackerEnterpriseSummaryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerEnterpriseSummaryPost(context.Background()).Execute()
 
@@ -455,45 +520,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1BwtrackerRegionCloudChartPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionCloudChartPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1BwtrackerRegionCloudCsvPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionCloudCsvPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1BwtrackerRegionCloudSummaryPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionCloudSummaryPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1BwtrackerRegionEdgeChartPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionEdgeChartPost(context.Background()).Execute()
 
@@ -505,7 +534,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BwtrackerRegionEdgeCsvPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionEdgeCsvPost(context.Background()).Execute()
 
@@ -517,7 +546,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BwtrackerRegionEdgeDetailsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionEdgeDetailsPost(context.Background()).Execute()
 
@@ -529,7 +558,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BwtrackerRegionEdgeSummaryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionEdgeSummaryPost(context.Background()).Execute()
 
@@ -539,9 +568,57 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1BwtrackerRegionGatewayChartPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionGatewayChartPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1BwtrackerRegionGatewayCsvPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionGatewayCsvPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1BwtrackerRegionGatewayDetailsPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionGatewayDetailsPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1BwtrackerRegionGatewaySummaryPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionGatewaySummaryPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1BwtrackerRegionSiteChartPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionSiteChartPost(context.Background()).Execute()
 
@@ -553,7 +630,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BwtrackerRegionSiteDetailsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionSiteDetailsPost(context.Background()).Execute()
 
@@ -563,9 +640,45 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1BwtrackerRegionSiteGatewayChartPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionSiteGatewayChartPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1BwtrackerRegionSiteGatewayDetailsPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionSiteGatewayDetailsPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1BwtrackerRegionSiteGatewaySummaryPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionSiteGatewaySummaryPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1BwtrackerRegionSiteSummaryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerRegionSiteSummaryPost(context.Background()).Execute()
 
@@ -577,7 +690,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1BwtrackerSiteCsvPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerSiteCsvPost(context.Background()).Execute()
 
@@ -587,9 +700,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1BwtrackerSiteGatewayCsvPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1BwtrackerSiteGatewayCsvPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1DataAssuranceAssurancesApplicationsBucketAppNameGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var bucketAppName string
 
@@ -603,7 +728,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DataAssuranceAssurancesGlobalGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DataAssuranceAssurancesGlobalGet(context.Background()).Execute()
 
@@ -615,7 +740,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DataAssuranceAssurancesGlobalIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -629,7 +754,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DataAssuranceAssurancesGlobalIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -643,7 +768,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DataAssuranceAssurancesGlobalIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -657,7 +782,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DataAssuranceAssurancesGlobalPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DataAssuranceAssurancesGlobalPost(context.Background()).Execute()
 
@@ -669,7 +794,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DataAssuranceFlexAlgosGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DataAssuranceFlexAlgosGet(context.Background()).Execute()
 
@@ -679,21 +804,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DeviceRoutingBgpNbrStatsGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingBgpNbrStatsGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1DeviceRoutingBgpNbridGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingBgpNbridGet(context.Background()).Execute()
 
@@ -705,7 +818,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingBgpNbrsCountersGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingBgpNbrsCountersGet(context.Background()).Execute()
 
@@ -717,7 +830,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingBgpNbrsDetailsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingBgpNbrsDetailsGet(context.Background()).Execute()
 
@@ -729,7 +842,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingBgpNbrsPerAfiPrefixGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingBgpNbrsPerAfiPrefixGet(context.Background()).Execute()
 
@@ -741,7 +854,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOdpNbridGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOdpNbridGet(context.Background()).Execute()
 
@@ -753,7 +866,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv2AreaInterfaceGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv2AreaInterfaceGet(context.Background()).Execute()
 
@@ -765,7 +878,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv2AreaInterfaceNbridGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv2AreaInterfaceNbridGet(context.Background()).Execute()
 
@@ -775,21 +888,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv2AreaInterfaceidGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv2AreaInterfaceidGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv2AreaLsdbGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv2AreaLsdbGet(context.Background()).Execute()
 
@@ -801,7 +902,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv2AreaNbrGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv2AreaNbrGet(context.Background()).Execute()
 
@@ -813,7 +914,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv2AreaidGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv2AreaidGet(context.Background()).Execute()
 
@@ -825,7 +926,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv2LsdbGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv2LsdbGet(context.Background()).Execute()
 
@@ -837,7 +938,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv2RibGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv2RibGet(context.Background()).Execute()
 
@@ -849,7 +950,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv2StatisticsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv2StatisticsGet(context.Background()).Execute()
 
@@ -861,7 +962,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv3AreaInterfaceGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv3AreaInterfaceGet(context.Background()).Execute()
 
@@ -871,33 +972,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv3AreaInterfaceNbridGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv3AreaInterfaceNbridGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv3AreaInterfaceidGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv3AreaInterfaceidGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv3AreaLsdbGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv3AreaLsdbGet(context.Background()).Execute()
 
@@ -909,7 +986,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv3AreaNbrGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv3AreaNbrGet(context.Background()).Execute()
 
@@ -921,7 +998,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv3AreaidGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv3AreaidGet(context.Background()).Execute()
 
@@ -933,7 +1010,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv3LsdbGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv3LsdbGet(context.Background()).Execute()
 
@@ -945,7 +1022,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv3RibGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv3RibGet(context.Background()).Execute()
 
@@ -957,7 +1034,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingOspfv3StatisticsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingOspfv3StatisticsGet(context.Background()).Execute()
 
@@ -969,7 +1046,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingRibRouteCountPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingRibRouteCountPost(context.Background()).Execute()
 
@@ -981,7 +1058,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceRoutingVrfBgpEibgpRouteCountGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingVrfBgpEibgpRouteCountGet(context.Background()).Execute()
 
@@ -991,21 +1068,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DeviceRoutingVrfBgpGraphiantEirouteCountGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingVrfBgpGraphiantEirouteCountGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1DeviceRoutingVrfBgpRouteCountPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceRoutingVrfBgpRouteCountPost(context.Background()).Execute()
 
@@ -1017,7 +1082,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceSnapshotDeviceIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1031,7 +1096,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceSnapshotGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceSnapshotGet(context.Background()).Execute()
 
@@ -1043,7 +1108,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceSnapshotPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceSnapshotPost(context.Background()).Execute()
 
@@ -1055,7 +1120,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceSnapshotPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceSnapshotPut(context.Background()).Execute()
 
@@ -1067,7 +1132,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceSnapshotSnapshotIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var snapshotId int64
 
@@ -1080,7 +1145,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceStatusHistoryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceStatusHistoryPost(context.Background()).Execute()
 
@@ -1092,7 +1157,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DeviceStatusPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DeviceStatusPost(context.Background()).Execute()
 
@@ -1104,7 +1169,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesBringupPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesBringupPost(context.Background()).Execute()
 
@@ -1116,7 +1181,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesBringupPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1DevicesBringupPut(context.Background()).Execute()
 
@@ -1127,7 +1192,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesBringupTokenPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesBringupTokenPost(context.Background()).Execute()
 
@@ -1139,7 +1204,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesClearNewFlagPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesClearNewFlagPost(context.Background()).Execute()
 
@@ -1151,7 +1216,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdArpGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1165,7 +1230,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdCandidateCircuitsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1179,7 +1244,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdCircuitsVrfAssociationsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1193,7 +1258,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdConfigPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1207,7 +1272,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdConnectivityGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1219,9 +1284,23 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1DevicesDeviceIdControllerPeersPut", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesDeviceIdControllerPeersPut(context.Background(), deviceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdDhcpServerLeasesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1235,7 +1314,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdDraftDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1248,7 +1327,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdDraftGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1262,7 +1341,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdDraftPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1274,23 +1353,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DevicesDeviceIdEdgesGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var deviceId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesDeviceIdEdgesGet(context.Background(), deviceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1304,7 +1369,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdInterfacesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1318,7 +1383,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdJobsJobIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 		var jobId int64
@@ -1331,23 +1396,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DevicesDeviceIdNdcacheGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var deviceId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesDeviceIdNdcacheGet(context.Background(), deviceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdOspfv2DefaultOriginateGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1361,7 +1412,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdOspfv3DefaultOriginateGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1375,7 +1426,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdPolicyApplicationsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1387,23 +1438,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DevicesDeviceIdPolicyCustomapplicationsGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var deviceId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesDeviceIdPolicyCustomapplicationsGet(context.Background(), deviceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdPolicyZonepairsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1417,7 +1454,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdSlicePeersGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1431,7 +1468,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdTwampCoreGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1443,23 +1480,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DevicesDeviceIdVersionsCompareGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var deviceId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesDeviceIdVersionsCompareGet(context.Background(), deviceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdVersionsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1473,7 +1496,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdVersionsVersionGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 		var version int32
@@ -1486,23 +1509,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DevicesDeviceIdVrfBgpAsGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var deviceId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesDeviceIdVrfBgpAsGet(context.Background(), deviceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdVrfProtocolsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1516,7 +1525,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesDeviceIdVrrpGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1530,7 +1539,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesGet(context.Background()).Execute()
 
@@ -1542,7 +1551,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesInventoryApproveReturnPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesInventoryApproveReturnPost(context.Background()).Execute()
 
@@ -1554,7 +1563,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesInventoryClearNewFlagPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesInventoryClearNewFlagPost(context.Background()).Execute()
 
@@ -1566,7 +1575,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesInventoryClearReturnPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesInventoryClearReturnPost(context.Background()).Execute()
 
@@ -1578,7 +1587,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesInventoryEnterprisePut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1DevicesInventoryEnterprisePut(context.Background()).Execute()
 
@@ -1589,7 +1598,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesInventoryGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesInventoryGet(context.Background()).Execute()
 
@@ -1601,7 +1610,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesInventoryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesInventoryPost(context.Background()).Execute()
 
@@ -1613,7 +1622,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesInventoryRequestReturnPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesInventoryRequestReturnPost(context.Background()).Execute()
 
@@ -1625,7 +1634,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesInventorySerialNumDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1DevicesInventorySerialNumDelete(context.Background()).Execute()
 
@@ -1634,11 +1643,11 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DevicesInventorySerialNumPost", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V1DevicesOauthAuthorizationGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesInventorySerialNumPost(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesOauthAuthorizationGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -1646,11 +1655,22 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DevicesOauthRedirectGet", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V1DevicesOauthGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesOauthRedirectGet(context.Background()).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1DevicesOauthGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1DevicesOauthPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesOauthPost(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -1660,7 +1680,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesRmaPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesRmaPost(context.Background()).Execute()
 
@@ -1672,7 +1692,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesRoutingVrfProtocolRouteCountGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesRoutingVrfProtocolRouteCountGet(context.Background()).Execute()
 
@@ -1684,7 +1704,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesRunningVersionPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesRunningVersionPost(context.Background()).Execute()
 
@@ -1696,7 +1716,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesSessionStatusPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesSessionStatusPost(context.Background()).Execute()
 
@@ -1708,7 +1728,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesSummaryGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DevicesSummaryGet(context.Background()).Execute()
 
@@ -1720,7 +1740,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesUpgradeCancelPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1DevicesUpgradeCancelPut(context.Background()).Execute()
 
@@ -1731,7 +1751,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DevicesUpgradeSchedulePut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1DevicesUpgradeSchedulePut(context.Background()).Execute()
 
@@ -1742,7 +1762,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticArchiveCreateDeviceIdPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1756,7 +1776,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticArchiveDeleteArchiveIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var archiveId int64
 
@@ -1769,7 +1789,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticArchiveEditArchiveIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var archiveId int64
 
@@ -1782,7 +1802,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticArchivesDeviceIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1796,7 +1816,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticBgpResetDeviceIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1809,7 +1829,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticClearArpDeviceIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1822,7 +1842,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticGnmiPingGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticGnmiPingGet(context.Background()).Execute()
 
@@ -1834,7 +1854,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticInterfaceResetDeviceIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1847,7 +1867,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticOtpDeviceIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1861,7 +1881,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticPacketcapturePcapIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var pcapId int64
 
@@ -1875,7 +1895,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticPacketcaptureStartPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticPacketcaptureStartPost(context.Background()).Execute()
 
@@ -1887,7 +1907,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticPacketcaptureStopPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1DiagnosticPacketcaptureStopPost(context.Background()).Execute()
 
@@ -1896,20 +1916,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1DiagnosticPingPauseResumePost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.DefaultAPI.V1DiagnosticPingPauseResumePost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1DiagnosticPingPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticPingPost(context.Background()).Execute()
 
@@ -1921,7 +1930,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticPingStopTokenPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var token string
 
@@ -1934,7 +1943,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticRebootDeviceIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1947,7 +1956,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticResetIpsecSessionDeviceIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -1960,7 +1969,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticSpeedtestPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticSpeedtestPost(context.Background()).Execute()
 
@@ -1972,7 +1981,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticSpeedtestProvidersGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticSpeedtestProvidersGet(context.Background()).Execute()
 
@@ -1984,7 +1993,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticSpeedtestReportPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticSpeedtestReportPut(context.Background()).Execute()
 
@@ -1996,7 +2005,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticSpeedtestServersGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticSpeedtestServersGet(context.Background()).Execute()
 
@@ -2008,7 +2017,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1DiagnosticTraceroutePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1DiagnosticTraceroutePost(context.Background()).Execute()
 
@@ -2020,7 +2029,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EdgesHardwareAssignedGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1EdgesHardwareAssignedGet(context.Background()).Execute()
 
@@ -2032,7 +2041,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EdgesHardwareUnassignedGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1EdgesHardwareUnassignedGet(context.Background()).Execute()
 
@@ -2044,7 +2053,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EdgesSummaryGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1EdgesSummaryGet(context.Background()).Execute()
 
@@ -2054,9 +2063,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1EdgesSummaryPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1EdgesSummaryPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1EnterpriseAllocationGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1EnterpriseAllocationGet(context.Background()).Execute()
 
@@ -2068,7 +2089,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterpriseConfigurationGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1EnterpriseConfigurationGet(context.Background()).Execute()
 
@@ -2080,7 +2101,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterpriseConfigurationPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1EnterpriseConfigurationPut(context.Background()).Execute()
 
@@ -2092,7 +2113,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterpriseContractPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1EnterpriseContractPut(context.Background()).Execute()
 
@@ -2104,7 +2125,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterpriseSnapshotGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1EnterpriseSnapshotGet(context.Background()).Execute()
 
@@ -2116,7 +2137,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterprisesEnterpriseIdAdminGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var enterpriseId int64
 
@@ -2130,7 +2151,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterprisesEnterpriseIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var enterpriseId int64
 
@@ -2143,7 +2164,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterprisesEnterpriseIdDeviceStatusGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var enterpriseId int64
 
@@ -2157,7 +2178,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterprisesEulaPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1EnterprisesEulaPost(context.Background()).Execute()
 
@@ -2168,7 +2189,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterprisesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1EnterprisesGet(context.Background()).Execute()
 
@@ -2180,7 +2201,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterprisesManagedGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1EnterprisesManagedGet(context.Background()).Execute()
 
@@ -2192,7 +2213,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterprisesPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1EnterprisesPatch(context.Background()).Execute()
 
@@ -2203,7 +2224,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1EnterprisesPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1EnterprisesPut(context.Background()).Execute()
 
@@ -2212,22 +2233,11 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1EnterprisesSelfDelete", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.DefaultAPI.V1EnterprisesSelfDelete(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1EventDeviceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1EventDeviceGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePost(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -2235,23 +2245,11 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1EventEnterpriseGet", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V1ExtranetB2bMonitoringPeeringServiceConsumersUsageTopPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1EventEnterpriseGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1EventSystemAckPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1EventSystemAckPost(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetB2bMonitoringPeeringServiceConsumersUsageTopPost(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -2259,11 +2257,11 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1EventSystemGet", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1EventSystemGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPost(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -2271,11 +2269,35 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1ExtranetSitesUsagePost", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetSitesUsagePost(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetB2bMonitoringPeeringServiceServiceHealthPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetB2bMonitoringPeeringServiceServiceHealthPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPost(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -2285,7 +2307,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetSitesUsageTopPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetSitesUsageTopPost(context.Background()).Execute()
 
@@ -2297,7 +2319,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bConsumerDeviceStatusIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2311,7 +2333,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bConsumerIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2325,7 +2347,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bConsumerIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2339,7 +2361,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bConsumerPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bConsumerPost(context.Background()).Execute()
 
@@ -2351,7 +2373,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bConsumerSummaryGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bConsumerSummaryGet(context.Background()).Execute()
 
@@ -2363,7 +2385,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bCustomerIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2377,7 +2399,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bCustomerInfoIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2389,9 +2411,33 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1ExtranetsB2bGeneralCustomersSummaryGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bGeneralCustomersSummaryGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bGeneralServicesSummaryGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bGeneralServicesSummaryGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1ExtranetsB2bIdCustomerPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2405,7 +2451,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bIdCustomerSummaryGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2419,7 +2465,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2433,7 +2479,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bIdProducerGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2447,7 +2493,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2459,9 +2505,211 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var customerId int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet(context.Background(), customerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringConsumerIdPrefixesPut", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringConsumerIdPrefixesPut(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringConsumerMatchIdMatchDetailsGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var matchId int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringConsumerMatchIdMatchDetailsGet(context.Background(), matchId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringConsumerMatchIdPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var matchId int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringConsumerMatchIdPost(context.Background(), matchId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringCustomerIdDelete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringCustomerIdDelete(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringCustomerIdGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringCustomerIdGet(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringCustomerPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringCustomerPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringMatchServiceToCustomerIdDelete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerIdDelete(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringMatchServiceToCustomerIdGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerIdGet(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringMatchServiceToCustomerPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPut", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPut(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringMatchServicesSummaryIdGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringMatchServicesSummaryIdGet(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringProducerIdGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringProducerIdGet(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringProducerIdMatchingCustomersSummaryGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringProducerIdMatchingCustomersSummaryGet(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1ExtranetsB2bPeeringProducerPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringProducerPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1ExtranetsB2bPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bPost(context.Background()).Execute()
 
@@ -2473,7 +2721,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bProducerDeviceStatusIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2487,7 +2735,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsB2bProducersSummaryGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsB2bProducersSummaryGet(context.Background()).Execute()
 
@@ -2499,7 +2747,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsGet(context.Background()).Execute()
 
@@ -2511,7 +2759,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsIdApplyPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2525,7 +2773,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2539,7 +2787,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2553,7 +2801,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2567,7 +2815,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsIdStatusGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2581,7 +2829,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsMonitoringLanSegmentsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsMonitoringLanSegmentsGet(context.Background()).Execute()
 
@@ -2593,7 +2841,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsMonitoringNatUsageGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsMonitoringNatUsageGet(context.Background()).Execute()
 
@@ -2605,7 +2853,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsMonitoringTrafficSecurityPolicyPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsMonitoringTrafficSecurityPolicyPost(context.Background()).Execute()
 
@@ -2617,7 +2865,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsPost(context.Background()).Execute()
 
@@ -2629,7 +2877,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsResolvePolicyTargetPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsResolvePolicyTargetPost(context.Background()).Execute()
 
@@ -2641,7 +2889,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ExtranetsSourceSegmentsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ExtranetsSourceSegmentsPost(context.Background()).Execute()
 
@@ -2653,7 +2901,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1FlowsFlowTablePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1FlowsFlowTablePost(context.Background()).Execute()
 
@@ -2665,7 +2913,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1FlowsTopologyPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1FlowsTopologyPost(context.Background()).Execute()
 
@@ -2677,7 +2925,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GatewaysDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GatewaysDelete(context.Background()).Execute()
 
@@ -2687,9 +2935,23 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1GatewaysGuestConsumerMatchIdGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var matchId int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1GatewaysGuestConsumerMatchIdGet(context.Background(), matchId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1GatewaysIdDetailsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -2703,7 +2965,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GatewaysIpsecRegionsRegionIdVrfsVrfIdInsideSubnetGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var regionId int32
 		var vrfId int64
@@ -2718,7 +2980,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GatewaysPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GatewaysPost(context.Background()).Execute()
 
@@ -2730,7 +2992,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GatewaysPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GatewaysPut(context.Background()).Execute()
 
@@ -2740,9 +3002,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1GatewaysReferenceConsumerGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1GatewaysReferenceConsumerGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1GatewaysRegionsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GatewaysRegionsGet(context.Background()).Execute()
 
@@ -2754,7 +3028,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GatewaysStatusPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GatewaysStatusPost(context.Background()).Execute()
 
@@ -2766,7 +3040,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GatewaysSummaryGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GatewaysSummaryGet(context.Background()).Execute()
 
@@ -2778,7 +3052,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsAppListOptionsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalAppsAppListOptionsGet(context.Background()).Execute()
 
@@ -2790,7 +3064,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsAppListsAppListIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var appListId int64
 
@@ -2804,7 +3078,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsAppListsAppListIdDetailsAppsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var appListId int64
 
@@ -2818,7 +3092,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsAppListsAppListIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var appListId int64
 
@@ -2832,7 +3106,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsAppListsAppListIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var appListId int64
 
@@ -2846,7 +3120,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsAppListsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalAppsAppListsGet(context.Background()).Execute()
 
@@ -2858,7 +3132,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsAppListsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalAppsAppListsPost(context.Background()).Execute()
 
@@ -2870,7 +3144,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsCategoriesCategoryIdAppsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var categoryId int64
 
@@ -2884,7 +3158,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsCategoriesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalAppsCategoriesGet(context.Background()).Execute()
 
@@ -2896,7 +3170,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsCustomAppIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var appId int64
 
@@ -2910,7 +3184,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsCustomAppIdDetailsAppListsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var appId int64
 
@@ -2924,7 +3198,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsCustomAppIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var appId int64
 
@@ -2938,7 +3212,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsCustomAppIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var appId int64
 
@@ -2952,7 +3226,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsCustomGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalAppsCustomGet(context.Background()).Execute()
 
@@ -2964,7 +3238,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsCustomPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalAppsCustomPost(context.Background()).Execute()
 
@@ -2976,7 +3250,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAppsGraphiantGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalAppsGraphiantGet(context.Background()).Execute()
 
@@ -2988,7 +3262,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalAttachedEdgesPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalAttachedEdgesPost(context.Background()).Execute()
 
@@ -3000,7 +3274,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalConfigPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalConfigPatch(context.Background()).Execute()
 
@@ -3010,21 +3284,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1GlobalConfigSitePost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalConfigSitePost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1GlobalDeviceStatusGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalDeviceStatusGet(context.Background()).Execute()
 
@@ -3036,7 +3298,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalIpfixDeviceGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalIpfixDeviceGet(context.Background()).Execute()
 
@@ -3048,7 +3310,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalIpfixPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalIpfixPost(context.Background()).Execute()
 
@@ -3060,7 +3322,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalIpfixSiteGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalIpfixSiteGet(context.Background()).Execute()
 
@@ -3072,7 +3334,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalIpsecProfileGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalIpsecProfileGet(context.Background()).Execute()
 
@@ -3084,7 +3346,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalIpsecProfileIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -3098,7 +3360,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalIpsecProfileVpnProfileIdSiteToSiteGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var vpnProfileId int64
 
@@ -3112,7 +3374,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalLanSegmentsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalLanSegmentsGet(context.Background()).Execute()
 
@@ -3124,7 +3386,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalLanSegmentsIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -3137,7 +3399,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalLanSegmentsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalLanSegmentsPost(context.Background()).Execute()
 
@@ -3149,7 +3411,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalLanSegmentsVrfIdDevicesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var vrfId int64
 
@@ -3161,11 +3423,35 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1GlobalPrefixSetsDeviceGet", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V1GlobalNtpsDeviceGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalPrefixSetsDeviceGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalNtpsDeviceGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1GlobalNtpsPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalNtpsPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1GlobalNtpsSiteGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalNtpsSiteGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -3175,7 +3461,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalPrefixSetsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalPrefixSetsPost(context.Background()).Execute()
 
@@ -3185,33 +3471,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1GlobalPrefixSetsSiteGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalPrefixSetsSiteGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1GlobalRoutingPoliciesDeviceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalRoutingPoliciesDeviceGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1GlobalRoutingPoliciesPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalRoutingPoliciesPost(context.Background()).Execute()
 
@@ -3221,11 +3483,52 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1GlobalRoutingPoliciesSiteGet", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V1GlobalSiteListsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalRoutingPoliciesSiteGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSiteListsGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1GlobalSiteListsIdDelete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		httpRes, err := apiClient.DefaultAPI.V1GlobalSiteListsIdDelete(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1GlobalSiteListsIdGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSiteListsIdGet(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1GlobalSiteListsIdPut", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSiteListsIdPut(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -3235,7 +3538,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalSiteListsIdSitesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -3247,9 +3550,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1GlobalSiteListsPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSiteListsPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1GlobalSiteStatusGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSiteStatusGet(context.Background()).Execute()
 
@@ -3261,7 +3576,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalSnmpsDeviceGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSnmpsDeviceGet(context.Background()).Execute()
 
@@ -3273,7 +3588,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalSnmpsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSnmpsPost(context.Background()).Execute()
 
@@ -3285,7 +3600,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalSnmpsSiteGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSnmpsSiteGet(context.Background()).Execute()
 
@@ -3297,7 +3612,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalSummaryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSummaryPost(context.Background()).Execute()
 
@@ -3309,7 +3624,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalSyncPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSyncPost(context.Background()).Execute()
 
@@ -3321,7 +3636,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalSyslogsDeviceGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSyslogsDeviceGet(context.Background()).Execute()
 
@@ -3333,7 +3648,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalSyslogsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSyslogsPost(context.Background()).Execute()
 
@@ -3345,7 +3660,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GlobalSyslogsSiteGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalSyslogsSiteGet(context.Background()).Execute()
 
@@ -3355,21 +3670,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1GlobalTrafficPoliciesDeviceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalTrafficPoliciesDeviceGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1GlobalTrafficPoliciesPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalTrafficPoliciesPost(context.Background()).Execute()
 
@@ -3379,21 +3682,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1GlobalTrafficPoliciesSiteGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1GlobalTrafficPoliciesSiteGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1GroupsEnterprisesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GroupsEnterprisesGet(context.Background()).Execute()
 
@@ -3405,7 +3696,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GroupsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GroupsGet(context.Background()).Execute()
 
@@ -3417,7 +3708,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GroupsIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -3430,7 +3721,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GroupsIdEnterprisesEnterpriseIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var enterpriseId int64
 		var id string
@@ -3444,7 +3735,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GroupsIdEnterprisesPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -3455,23 +3746,22 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1GroupsIdGet", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V1GroupsIdMembersDeletePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1GroupsIdGet(context.Background(), id).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1GroupsIdMembersDeletePost(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
 	t.Run("Test DefaultAPIService V1GroupsIdMembersGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -3485,7 +3775,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GroupsIdMembersMemberIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var memberId string
@@ -3499,7 +3789,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GroupsIdMembersPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -3512,7 +3802,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GroupsIdPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -3525,7 +3815,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GroupsPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1GroupsPut(context.Background()).Execute()
 
@@ -3536,7 +3826,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1GroupsRootGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1GroupsRootGet(context.Background()).Execute()
 
@@ -3546,22 +3836,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1IdPasswordRecoverPatch", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V1InvitationEmailPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		var id string
-
-		httpRes, err := apiClient.DefaultAPI.V1IdPasswordRecoverPatch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.V1InvitationEmailPost(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
 	t.Run("Test DefaultAPIService V1LanSegmentsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1LanSegmentsGet(context.Background()).Execute()
 
@@ -3573,7 +3862,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1LldpInterfaceIdNeighborsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var interfaceId int64
 
@@ -3587,7 +3876,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1LldpInterfaceIdSummaryGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var interfaceId int64
 
@@ -3601,7 +3890,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1LldpInterfaceIdVendorsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var interfaceId int64
 
@@ -3615,7 +3904,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1LogsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1LogsPost(context.Background()).Execute()
 
@@ -3625,69 +3914,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1MonitoringCircuitsBandwidthPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1MonitoringCircuitsBandwidthPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1MonitoringCircuitsIncidentsPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1MonitoringCircuitsIncidentsPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1MonitoringCircuitsSummaryPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1MonitoringCircuitsSummaryPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1MonitoringCircuitsUtilizationPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1MonitoringCircuitsUtilizationPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1MonitoringCircuitsVisualizationPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1MonitoringCircuitsVisualizationPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1NatEntriesDeviceIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -3701,7 +3930,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1NatUtilizationDeviceIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -3713,9 +3942,44 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1OnboardingCloudinitDelete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.DefaultAPI.V1OnboardingCloudinitDelete(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1OnboardingCloudinitGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1OnboardingCloudinitGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1OnboardingCloudinitPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1OnboardingCloudinitPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1PolicyApplicationsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1PolicyApplicationsGet(context.Background()).Execute()
 
@@ -3725,48 +3989,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1PolicyPrefixSetsIdDelete", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id int64
-
-		httpRes, err := apiClient.DefaultAPI.V1PolicyPrefixSetsIdDelete(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1PolicyPrefixSetsIdPut", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1PolicyPrefixSetsIdPut(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1PolicyPrefixSetsPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1PolicyPrefixSetsPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1PolicyRouteTagSetsIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -3780,7 +4005,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1PolicyRouteTagSetsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1PolicyRouteTagSetsPost(context.Background()).Execute()
 
@@ -3792,7 +4017,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1PolicyRouteTagSetsTagDetailGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1PolicyRouteTagSetsTagDetailGet(context.Background()).Execute()
 
@@ -3804,7 +4029,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1PolicyRouteTagSetsTagsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1PolicyRouteTagSetsTagsGet(context.Background()).Execute()
 
@@ -3816,7 +4041,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1PolicyRouteTagSetsTagsSummaryGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1PolicyRouteTagSetsTagsSummaryGet(context.Background()).Execute()
 
@@ -3826,102 +4051,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1PortalApikeysDelete", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1PortalApikeysDelete(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1PortalApikeysGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1PortalApikeysGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1PortalApikeysPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1PortalApikeysPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1PortalPrivateDetailsGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1PortalPrivateDetailsGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1PortalPrivateInventoryDetailsGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1PortalPrivateInventoryDetailsGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1PortalPrivatePost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.DefaultAPI.V1PortalPrivatePost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1PortalPrivateRegisterPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.DefaultAPI.V1PortalPrivateRegisterPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V1PortalPrivateSyncPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.DefaultAPI.V1PortalPrivateSyncPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1PresharedkeyGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1PresharedkeyGet(context.Background()).Execute()
 
@@ -3933,7 +4065,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1QosCircuitProfilesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1QosCircuitProfilesGet(context.Background()).Execute()
 
@@ -3945,7 +4077,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1RegionsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1RegionsGet(context.Background()).Execute()
 
@@ -3957,7 +4089,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SearchGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1SearchGet(context.Background()).Execute()
 
@@ -3969,7 +4101,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SiteDetailsSitelistsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1SiteDetailsSitelistsPost(context.Background()).Execute()
 
@@ -3981,7 +4113,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SiteIdDetailsInterfacesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int64
 
@@ -3995,7 +4127,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SitesDetailsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1SitesDetailsGet(context.Background()).Execute()
 
@@ -4007,7 +4139,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SitesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1SitesGet(context.Background()).Execute()
 
@@ -4019,7 +4151,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SitesPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1SitesPost(context.Background()).Execute()
 
@@ -4031,7 +4163,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SitesSiteIdCircuitsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var siteId int64
 
@@ -4045,7 +4177,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SitesSiteIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var siteId int64
 
@@ -4058,7 +4190,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SitesSiteIdDevicesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var siteId int64
 
@@ -4072,7 +4204,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SitesSiteIdPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var siteId int64
 
@@ -4086,7 +4218,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SoftwareAutoUpgradeDefaultGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1SoftwareAutoUpgradeDefaultGet(context.Background()).Execute()
 
@@ -4098,7 +4230,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SoftwareAutoUpgradeDefaultPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1SoftwareAutoUpgradeDefaultPut(context.Background()).Execute()
 
@@ -4109,7 +4241,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SoftwareGcsreleaseUploadNotesPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1SoftwareGcsreleaseUploadNotesPost(context.Background()).Execute()
 
@@ -4119,21 +4251,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1SoftwareReleaseNotesGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V1SoftwareReleaseNotesGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V1SoftwareReleasesDownloadGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1SoftwareReleasesDownloadGet(context.Background()).Execute()
 
@@ -4145,7 +4265,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SoftwareReleasesSummaryGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1SoftwareReleasesSummaryGet(context.Background()).Execute()
 
@@ -4157,7 +4277,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SoftwareRunningDetailsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1SoftwareRunningDetailsGet(context.Background()).Execute()
 
@@ -4169,7 +4289,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1SoftwareRunningSummaryGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1SoftwareRunningSummaryGet(context.Background()).Execute()
 
@@ -4181,7 +4301,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1TalkersDeviceDeviceIdTopPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -4195,7 +4315,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1TalkersSiteSiteIdTopPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var siteId int64
 
@@ -4207,9 +4327,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1TempPasswordPut", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1TempPasswordPut(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1TroubleshootingDeviceDeviceIdPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -4223,7 +4355,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1TroubleshootingEnterprisePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1TroubleshootingEnterprisePost(context.Background()).Execute()
 
@@ -4235,7 +4367,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1TroubleshootingFilterGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1TroubleshootingFilterGet(context.Background()).Execute()
 
@@ -4247,7 +4379,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1TroubleshootingSiteConnectivityStatusGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1TroubleshootingSiteConnectivityStatusGet(context.Background()).Execute()
 
@@ -4259,7 +4391,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1TroubleshootingSiteSiteIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var siteId int64
 
@@ -4273,7 +4405,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1TroubleshootingTopSitesByAlertsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1TroubleshootingTopSitesByAlertsPost(context.Background()).Execute()
 
@@ -4283,23 +4415,48 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V1TtTtIdentityDeviceStatusGet", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V1UsersEmailPasswordPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		var ttIdentity string
+		var email string
 
-		resp, httpRes, err := apiClient.DefaultAPI.V1TtTtIdentityDeviceStatusGet(context.Background(), ttIdentity).Execute()
+		httpRes, err := apiClient.DefaultAPI.V1UsersEmailPasswordPatch(context.Background(), email).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1UsersEmailRecoveryGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var email string
+
+		httpRes, err := apiClient.DefaultAPI.V1UsersEmailRecoveryGet(context.Background(), email).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V1UsersEmailVerifiedPatch", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var email string
+
+		httpRes, err := apiClient.DefaultAPI.V1UsersEmailVerifiedPatch(context.Background(), email).Execute()
+
+		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
 	t.Run("Test DefaultAPIService V1UsersGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1UsersGet(context.Background()).Execute()
 
@@ -4311,7 +4468,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1UsersIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -4324,7 +4481,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1UsersIdEnterprisesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -4338,7 +4495,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1UsersIdGroupsEnterprisesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -4352,7 +4509,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1UsersIdGroupsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -4366,7 +4523,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1UsersIdGroupsRootGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -4380,7 +4537,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1UsersIdVerifyPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -4391,9 +4548,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V1UsersPasswordsExpirePost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V1UsersPasswordsExpirePost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V1UsersPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.V1UsersPut(context.Background()).Execute()
 
@@ -4404,7 +4573,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1VersionPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1VersionPost(context.Background()).Execute()
 
@@ -4416,7 +4585,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V1ZonesGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V1ZonesGet(context.Background()).Execute()
 
@@ -4428,7 +4597,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AckCreateupdatePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AckCreateupdatePost(context.Background()).Execute()
 
@@ -4438,9 +4607,33 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V2AggregatedNotificationEnableDisablePost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V2AggregatedNotificationEnableDisablePost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V2AggregatedNotificationGetStateGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V2AggregatedNotificationGetStateGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V2AllowlistByEnterpriseGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AllowlistByEnterpriseGet(context.Background()).Execute()
 
@@ -4452,7 +4645,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AllowlistCreatePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AllowlistCreatePost(context.Background()).Execute()
 
@@ -4464,7 +4657,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AllowlistDeletebyalertidAlertIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var alertId string
 
@@ -4478,7 +4671,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AllowlistDeletebyentityidEntityIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var entityId string
 
@@ -4492,7 +4685,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AllowlistRuleIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var ruleId string
 
@@ -4506,7 +4699,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssistantAddToConversationPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssistantAddToConversationPost(context.Background()).Execute()
 
@@ -4516,13 +4709,35 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V2AssistantConversationIdDelete", func(t *testing.T) {
+	t.Run("Test DefaultAPIService V2AssistantConversationContextHistoryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		var conversationId int64
+		resp, httpRes, err := apiClient.DefaultAPI.V2AssistantConversationContextHistoryPost(context.Background()).Execute()
 
-		resp, httpRes, err := apiClient.DefaultAPI.V2AssistantConversationIdDelete(context.Background(), conversationId).Execute()
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V2AssistantConversationInterfaceEnableDisablePost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V2AssistantConversationInterfaceEnableDisablePost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DefaultAPIService V2AssistantConversationInterfaceStateGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V2AssistantConversationInterfaceStateGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -4532,7 +4747,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssistantDeleteConversationChatConversationIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var conversationId string
 
@@ -4544,23 +4759,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V2AssistantDeleteConversationConversationIdDelete", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var conversationId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.V2AssistantDeleteConversationConversationIdDelete(context.Background(), conversationId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V2AssistantGetConversationDetailsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssistantGetConversationDetailsPost(context.Background()).Execute()
 
@@ -4572,7 +4773,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssistantGetConversationsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssistantGetConversationsPost(context.Background()).Execute()
 
@@ -4584,7 +4785,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssistantUpdateConversationNamePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssistantUpdateConversationNamePost(context.Background()).Execute()
 
@@ -4596,7 +4797,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssistantVersionPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssistantVersionPost(context.Background()).Execute()
 
@@ -4608,7 +4809,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceApplicationdetailsbynamePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceApplicationdetailsbynamePost(context.Background()).Execute()
 
@@ -4620,7 +4821,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceApplicationprofilesummaryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceApplicationprofilesummaryPost(context.Background()).Execute()
 
@@ -4630,21 +4831,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V2AssuranceBucketAppServersAllGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceBucketAppServersAllGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V2AssuranceBucketAppServersPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceBucketAppServersPost(context.Background()).Execute()
 
@@ -4656,7 +4845,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceBucketAppsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceBucketAppsPost(context.Background()).Execute()
 
@@ -4666,9 +4855,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V2AssuranceBucketServicesPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceBucketServicesPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V2AssuranceBucketTopologiesPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceBucketTopologiesPost(context.Background()).Execute()
 
@@ -4680,7 +4881,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceBucketdetailsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceBucketdetailsPost(context.Background()).Execute()
 
@@ -4690,9 +4891,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V2AssuranceCreateDnsproxyEntryPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceCreateDnsproxyEntryPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V2AssuranceCreateUserReportPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceCreateUserReportPost(context.Background()).Execute()
 
@@ -4704,7 +4917,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceCreateclassifiedapplicationPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceCreateclassifiedapplicationPost(context.Background()).Execute()
 
@@ -4714,9 +4927,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V2AssuranceDeleteDnsproxyEntryDelete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceDeleteDnsproxyEntryDelete(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V2AssuranceDeleteUserReportDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceDeleteUserReportDelete(context.Background()).Execute()
 
@@ -4728,7 +4953,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceDeleteclassifiedapplicationDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceDeleteclassifiedapplicationDelete(context.Background()).Execute()
 
@@ -4740,7 +4965,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceDownloadUserReportGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceDownloadUserReportGet(context.Background()).Execute()
 
@@ -4750,21 +4975,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V2AssuranceEndpointIntelPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceEndpointIntelPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V2AssuranceEnterprisesummaryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceEnterprisesummaryPost(context.Background()).Execute()
 
@@ -4774,21 +4987,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V2AssuranceFlowSummaryPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceFlowSummaryPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V2AssuranceGetclassifiedapplicationlistGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceGetclassifiedapplicationlistGet(context.Background()).Execute()
 
@@ -4798,9 +4999,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V2AssuranceReadDnsproxyListGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceReadDnsproxyListGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V2AssuranceReadUserReportListGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceReadUserReportListGet(context.Background()).Execute()
 
@@ -4812,7 +5025,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceScoredetailsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceScoredetailsPost(context.Background()).Execute()
 
@@ -4824,7 +5037,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceTopologyClientSessionDetailsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceTopologyClientSessionDetailsPost(context.Background()).Execute()
 
@@ -4836,7 +5049,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceTopologyClientSessionsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceTopologyClientSessionsPost(context.Background()).Execute()
 
@@ -4848,7 +5061,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceTopologyClientSummariesPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceTopologyClientSummariesPost(context.Background()).Execute()
 
@@ -4858,21 +5071,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V2AssuranceTopologyFlowsPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceTopologyFlowsPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V2AssuranceTopologyInventoryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceTopologyInventoryPost(context.Background()).Execute()
 
@@ -4884,7 +5085,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceTopologyOverviewPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceTopologyOverviewPost(context.Background()).Execute()
 
@@ -4896,7 +5097,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceTopologyRegionSummaryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceTopologyRegionSummaryPost(context.Background()).Execute()
 
@@ -4908,7 +5109,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceTopologySiteSummariesPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceTopologySiteSummariesPost(context.Background()).Execute()
 
@@ -4920,7 +5121,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2AssuranceUnclassifiedapplicationprofilesummaryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceUnclassifiedapplicationprofilesummaryPost(context.Background()).Execute()
 
@@ -4930,9 +5131,21 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService V2AssuranceUpdateDnsproxyEntryPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceUpdateDnsproxyEntryPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService V2AssuranceUpdateclassifiedapplicationPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceUpdateclassifiedapplicationPost(context.Background()).Execute()
 
@@ -4942,21 +5155,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V2AssuranceVersionPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V2AssuranceVersionPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V2AuditLogsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2AuditLogsPost(context.Background()).Execute()
 
@@ -4968,7 +5169,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2ChildalertlistPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2ChildalertlistPost(context.Background()).Execute()
 
@@ -4980,7 +5181,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2DeviceDeviceIdLanSegmentsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -4994,7 +5195,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2DeviceDeviceIdTopologyPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var deviceId int64
 
@@ -5008,7 +5209,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2ExtranetConsumersUsageTopPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2ExtranetConsumersUsageTopPost(context.Background()).Execute()
 
@@ -5020,7 +5221,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2ExtranetLanSegmentsUsageTopPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2ExtranetLanSegmentsUsageTopPost(context.Background()).Execute()
 
@@ -5032,7 +5233,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2ExtranetServiceOvertimeConsumptionPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2ExtranetServiceOvertimeConsumptionPost(context.Background()).Execute()
 
@@ -5044,7 +5245,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2ExtranetSitesConsumptionOverviewPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2ExtranetSitesConsumptionOverviewPost(context.Background()).Execute()
 
@@ -5056,7 +5257,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2ExtranetSitesUsagePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2ExtranetSitesUsagePost(context.Background()).Execute()
 
@@ -5068,7 +5269,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2ExtranetTotalUsagePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2ExtranetTotalUsagePost(context.Background()).Execute()
 
@@ -5080,7 +5281,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2ExtranetsMonitoringConsumersPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2ExtranetsMonitoringConsumersPost(context.Background()).Execute()
 
@@ -5092,7 +5293,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2IntegrationGetallEnterpriseIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var enterpriseId int64
 
@@ -5106,7 +5307,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2IntegrationIntegrationIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var integrationId int64
 
@@ -5120,7 +5321,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2IntegrationIntegrationIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var integrationId int64
 
@@ -5134,7 +5335,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2IntegrationPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2IntegrationPost(context.Background()).Execute()
 
@@ -5146,7 +5347,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2IntegrationTestEnterpriseIdIntegrationIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var enterpriseId int64
 		var integrationId int64
@@ -5161,7 +5362,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringBfdPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringBfdPost(context.Background()).Execute()
 
@@ -5173,7 +5374,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringBgpPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringBgpPost(context.Background()).Execute()
 
@@ -5185,7 +5386,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringCircuitsBandwidthPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringCircuitsBandwidthPost(context.Background()).Execute()
 
@@ -5197,7 +5398,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringCircuitsSummaryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringCircuitsSummaryPost(context.Background()).Execute()
 
@@ -5209,7 +5410,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringCircuitsUtilizationPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringCircuitsUtilizationPost(context.Background()).Execute()
 
@@ -5221,7 +5422,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringCircuitsVisualizationPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringCircuitsVisualizationPost(context.Background()).Execute()
 
@@ -5233,7 +5434,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringExtranetEdgeStatusGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringExtranetEdgeStatusGet(context.Background()).Execute()
 
@@ -5245,7 +5446,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringExtranetLogDetailsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringExtranetLogDetailsPost(context.Background()).Execute()
 
@@ -5257,7 +5458,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringExtranetServiceStatusDetailsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringExtranetServiceStatusDetailsGet(context.Background()).Execute()
 
@@ -5269,7 +5470,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringExtranetServiceStatusGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringExtranetServiceStatusGet(context.Background()).Execute()
 
@@ -5281,7 +5482,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringExtranetSiteStatusGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringExtranetSiteStatusGet(context.Background()).Execute()
 
@@ -5293,7 +5494,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringExtranetStatusDetailsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringExtranetStatusDetailsGet(context.Background()).Execute()
 
@@ -5305,7 +5506,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringIkeErrorHistoryPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringIkeErrorHistoryPost(context.Background()).Execute()
 
@@ -5317,7 +5518,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringInterfacePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringInterfacePost(context.Background()).Execute()
 
@@ -5329,7 +5530,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringIpsecPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringIpsecPost(context.Background()).Execute()
 
@@ -5339,21 +5540,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V2MonitoringOspfPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringOspfPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V2MonitoringPolicyPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringPolicyPost(context.Background()).Execute()
 
@@ -5365,7 +5554,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringQueueInstantPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringQueueInstantPost(context.Background()).Execute()
 
@@ -5375,21 +5564,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V2MonitoringQueuePost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringQueuePost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V2MonitoringSegmentRouteCountsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringSegmentRouteCountsPost(context.Background()).Execute()
 
@@ -5401,7 +5578,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringSiteCircuitsBandwidthSiteIdPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var siteId int64
 
@@ -5415,7 +5592,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringSiteTwampSiteIdPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var siteId int64
 
@@ -5427,21 +5604,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V2MonitoringSystemGenericPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringSystemGenericPost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V2MonitoringSystemPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringSystemPost(context.Background()).Execute()
 
@@ -5453,7 +5618,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2MonitoringTwampPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2MonitoringTwampPost(context.Background()).Execute()
 
@@ -5465,7 +5630,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2NotificationCreatePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2NotificationCreatePost(context.Background()).Execute()
 
@@ -5477,7 +5642,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2NotificationDeletePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2NotificationDeletePost(context.Background()).Execute()
 
@@ -5489,7 +5654,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2NotificationEnabledisablePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2NotificationEnabledisablePost(context.Background()).Execute()
 
@@ -5501,7 +5666,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2NotificationUpdatePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2NotificationUpdatePost(context.Background()).Execute()
 
@@ -5513,7 +5678,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2NotificationlistPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2NotificationlistPost(context.Background()).Execute()
 
@@ -5525,7 +5690,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2NotificationmutelistCreatePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2NotificationmutelistCreatePost(context.Background()).Execute()
 
@@ -5537,7 +5702,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2NotificationmutelistDeletebyalertidAlertIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var alertId string
 
@@ -5551,7 +5716,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2NotificationmutelistDeletebyentityidEntityIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var entityId string
 
@@ -5565,7 +5730,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2NotificationmutelistRuleIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var ruleId string
 
@@ -5579,7 +5744,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2ParentalertlistPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2ParentalertlistPost(context.Background()).Execute()
 
@@ -5591,7 +5756,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2RuleEnabledisablePost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2RuleEnabledisablePost(context.Background()).Execute()
 
@@ -5603,7 +5768,7 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2RulelistPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2RulelistPost(context.Background()).Execute()
 
@@ -5613,23 +5778,9 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService V2SiteSiteIdDetailPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var siteId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.V2SiteSiteIdDetailPost(context.Background(), siteId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DefaultAPIService V2SiteSiteIdLanSegmentsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var siteId int64
 
@@ -5643,23 +5794,11 @@ func Test_graphiant_sdk_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService V2SiteSiteIdTopologyPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var siteId int64
 
 		resp, httpRes, err := apiClient.DefaultAPI.V2SiteSiteIdTopologyPost(context.Background(), siteId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DefaultAPIService V2VersionPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.V2VersionPost(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

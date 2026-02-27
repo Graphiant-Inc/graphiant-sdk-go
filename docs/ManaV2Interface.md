@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Duplex** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
+**GatewayAddressV4** | Pointer to **string** |  | [optional] 
+**GatewayAddressV6** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **IpSec** | Pointer to [**ManaV2InterfaceIPsec**](ManaV2InterfaceIPsec.md) |  | [optional] 
 **Ipv4** | Pointer to [**ManaV2InterfaceAddress**](ManaV2InterfaceAddress.md) |  | [optional] 
@@ -256,6 +258,56 @@ SetEnabled sets Enabled field to given value.
 `func (o *ManaV2Interface) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### GetGatewayAddressV4
+
+`func (o *ManaV2Interface) GetGatewayAddressV4() string`
+
+GetGatewayAddressV4 returns the GatewayAddressV4 field if non-nil, zero value otherwise.
+
+### GetGatewayAddressV4Ok
+
+`func (o *ManaV2Interface) GetGatewayAddressV4Ok() (*string, bool)`
+
+GetGatewayAddressV4Ok returns a tuple with the GatewayAddressV4 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayAddressV4
+
+`func (o *ManaV2Interface) SetGatewayAddressV4(v string)`
+
+SetGatewayAddressV4 sets GatewayAddressV4 field to given value.
+
+### HasGatewayAddressV4
+
+`func (o *ManaV2Interface) HasGatewayAddressV4() bool`
+
+HasGatewayAddressV4 returns a boolean if a field has been set.
+
+### GetGatewayAddressV6
+
+`func (o *ManaV2Interface) GetGatewayAddressV6() string`
+
+GetGatewayAddressV6 returns the GatewayAddressV6 field if non-nil, zero value otherwise.
+
+### GetGatewayAddressV6Ok
+
+`func (o *ManaV2Interface) GetGatewayAddressV6Ok() (*string, bool)`
+
+GetGatewayAddressV6Ok returns a tuple with the GatewayAddressV6 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayAddressV6
+
+`func (o *ManaV2Interface) SetGatewayAddressV6(v string)`
+
+SetGatewayAddressV6 sets GatewayAddressV6 field to given value.
+
+### HasGatewayAddressV6
+
+`func (o *ManaV2Interface) HasGatewayAddressV6() bool`
+
+HasGatewayAddressV6 returns a boolean if a field has been set.
 
 ### GetId
 

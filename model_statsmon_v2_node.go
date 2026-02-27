@@ -24,6 +24,7 @@ type StatsmonV2Node struct {
 	Id *int32 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	NodeInfo *StatsmonV2NodeDeviceInfo `json:"nodeInfo,omitempty"`
+	PreferredRegionName *string `json:"preferredRegionName,omitempty"`
 	Quality *string `json:"quality,omitempty"`
 	Type *string `json:"type,omitempty"`
 }
@@ -205,6 +206,38 @@ func (o *StatsmonV2Node) SetNodeInfo(v StatsmonV2NodeDeviceInfo) {
 	o.NodeInfo = &v
 }
 
+// GetPreferredRegionName returns the PreferredRegionName field value if set, zero value otherwise.
+func (o *StatsmonV2Node) GetPreferredRegionName() string {
+	if o == nil || IsNil(o.PreferredRegionName) {
+		var ret string
+		return ret
+	}
+	return *o.PreferredRegionName
+}
+
+// GetPreferredRegionNameOk returns a tuple with the PreferredRegionName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StatsmonV2Node) GetPreferredRegionNameOk() (*string, bool) {
+	if o == nil || IsNil(o.PreferredRegionName) {
+		return nil, false
+	}
+	return o.PreferredRegionName, true
+}
+
+// HasPreferredRegionName returns a boolean if a field has been set.
+func (o *StatsmonV2Node) HasPreferredRegionName() bool {
+	if o != nil && !IsNil(o.PreferredRegionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetPreferredRegionName gets a reference to the given string and assigns it to the PreferredRegionName field.
+func (o *StatsmonV2Node) SetPreferredRegionName(v string) {
+	o.PreferredRegionName = &v
+}
+
 // GetQuality returns the Quality field value if set, zero value otherwise.
 func (o *StatsmonV2Node) GetQuality() string {
 	if o == nil || IsNil(o.Quality) {
@@ -293,6 +326,9 @@ func (o StatsmonV2Node) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NodeInfo) {
 		toSerialize["nodeInfo"] = o.NodeInfo
+	}
+	if !IsNil(o.PreferredRegionName) {
+		toSerialize["preferredRegionName"] = o.PreferredRegionName
 	}
 	if !IsNil(o.Quality) {
 		toSerialize["quality"] = o.Quality

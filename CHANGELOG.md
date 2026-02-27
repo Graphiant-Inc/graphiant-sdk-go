@@ -5,6 +5,16 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [26.2.1] - 2026-02-26
+
+### Added
+- Updated to API specification version 26.2.1
+- Added new API models including `AlertserviceZendeskDetails`, `IamFailedUser`, `ManaV2NullableGatewayConfig`, and `V1UsersPasswordsExpirePost` request/response schemas
+
+### Changed
+- Updated version constant to v26.2.1
+- Regenerated SDK client, docs, and tests to align operation and model names with Graphiant portal API v26.2.1
+
 ## [26.1.1] - 2026-02-01
 
 ### Added
@@ -144,6 +154,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Release Date | Key Features |
 |---------|--------------|--------------|
+| 26.2.1 | 2026-02-26 | API v26.2.1 support, regenerated SDK/tests |
 | 26.1.1 | 2026-02-01 | API v26.1.1 support |
 | 25.12.1 | 2025-12-17 | API v25.12.1 support |
 | 25.11.1 | 2025-11-11 | Major API optimization, schema reuse |

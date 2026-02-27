@@ -25,6 +25,8 @@ type AlertserviceIntegration struct {
 	EnterpriseId *string `json:"enterpriseId,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	IsActive *bool `json:"isActive,omitempty"`
+	// last scanned time for integrations (zendesk)
+	LastScanned *int64 `json:"lastScanned,omitempty"`
 	NickName *string `json:"nickName,omitempty"`
 	Type *string `json:"type,omitempty"`
 }
@@ -238,6 +240,38 @@ func (o *AlertserviceIntegration) SetIsActive(v bool) {
 	o.IsActive = &v
 }
 
+// GetLastScanned returns the LastScanned field value if set, zero value otherwise.
+func (o *AlertserviceIntegration) GetLastScanned() int64 {
+	if o == nil || IsNil(o.LastScanned) {
+		var ret int64
+		return ret
+	}
+	return *o.LastScanned
+}
+
+// GetLastScannedOk returns a tuple with the LastScanned field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertserviceIntegration) GetLastScannedOk() (*int64, bool) {
+	if o == nil || IsNil(o.LastScanned) {
+		return nil, false
+	}
+	return o.LastScanned, true
+}
+
+// HasLastScanned returns a boolean if a field has been set.
+func (o *AlertserviceIntegration) HasLastScanned() bool {
+	if o != nil && !IsNil(o.LastScanned) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastScanned gets a reference to the given int64 and assigns it to the LastScanned field.
+func (o *AlertserviceIntegration) SetLastScanned(v int64) {
+	o.LastScanned = &v
+}
+
 // GetNickName returns the NickName field value if set, zero value otherwise.
 func (o *AlertserviceIntegration) GetNickName() string {
 	if o == nil || IsNil(o.NickName) {
@@ -329,6 +363,9 @@ func (o AlertserviceIntegration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsActive) {
 		toSerialize["isActive"] = o.IsActive
+	}
+	if !IsNil(o.LastScanned) {
+		toSerialize["lastScanned"] = o.LastScanned
 	}
 	if !IsNil(o.NickName) {
 		toSerialize["nickName"] = o.NickName
