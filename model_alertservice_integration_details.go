@@ -21,6 +21,7 @@ var _ MappedNullable = &AlertserviceIntegrationDetails{}
 type AlertserviceIntegrationDetails struct {
 	OpsgenieKey *string `json:"opsgenieKey,omitempty"`
 	OpsrampDetails *string `json:"opsrampDetails,omitempty"`
+	PagerdutyRoutingKey *string `json:"pagerdutyRoutingKey,omitempty"`
 	WebhookUrl *string `json:"webhookUrl,omitempty"`
 	ZendeskDetails *AlertserviceZendeskDetails `json:"zendeskDetails,omitempty"`
 }
@@ -106,6 +107,38 @@ func (o *AlertserviceIntegrationDetails) SetOpsrampDetails(v string) {
 	o.OpsrampDetails = &v
 }
 
+// GetPagerdutyRoutingKey returns the PagerdutyRoutingKey field value if set, zero value otherwise.
+func (o *AlertserviceIntegrationDetails) GetPagerdutyRoutingKey() string {
+	if o == nil || IsNil(o.PagerdutyRoutingKey) {
+		var ret string
+		return ret
+	}
+	return *o.PagerdutyRoutingKey
+}
+
+// GetPagerdutyRoutingKeyOk returns a tuple with the PagerdutyRoutingKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertserviceIntegrationDetails) GetPagerdutyRoutingKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.PagerdutyRoutingKey) {
+		return nil, false
+	}
+	return o.PagerdutyRoutingKey, true
+}
+
+// HasPagerdutyRoutingKey returns a boolean if a field has been set.
+func (o *AlertserviceIntegrationDetails) HasPagerdutyRoutingKey() bool {
+	if o != nil && !IsNil(o.PagerdutyRoutingKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetPagerdutyRoutingKey gets a reference to the given string and assigns it to the PagerdutyRoutingKey field.
+func (o *AlertserviceIntegrationDetails) SetPagerdutyRoutingKey(v string) {
+	o.PagerdutyRoutingKey = &v
+}
+
 // GetWebhookUrl returns the WebhookUrl field value if set, zero value otherwise.
 func (o *AlertserviceIntegrationDetails) GetWebhookUrl() string {
 	if o == nil || IsNil(o.WebhookUrl) {
@@ -185,6 +218,9 @@ func (o AlertserviceIntegrationDetails) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.OpsrampDetails) {
 		toSerialize["opsrampDetails"] = o.OpsrampDetails
+	}
+	if !IsNil(o.PagerdutyRoutingKey) {
+		toSerialize["pagerdutyRoutingKey"] = o.PagerdutyRoutingKey
 	}
 	if !IsNil(o.WebhookUrl) {
 		toSerialize["webhookUrl"] = o.WebhookUrl

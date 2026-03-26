@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OpsgenieKey** | Pointer to **string** |  | [optional] 
 **OpsrampDetails** | Pointer to **string** |  | [optional] 
+**PagerdutyRoutingKey** | Pointer to **string** |  | [optional] 
 **WebhookUrl** | Pointer to **string** |  | [optional] 
 **ZendeskDetails** | Pointer to [**AlertserviceZendeskDetails**](AlertserviceZendeskDetails.md) |  | [optional] 
 
@@ -77,6 +78,31 @@ SetOpsrampDetails sets OpsrampDetails field to given value.
 `func (o *AlertserviceIntegrationDetails) HasOpsrampDetails() bool`
 
 HasOpsrampDetails returns a boolean if a field has been set.
+
+### GetPagerdutyRoutingKey
+
+`func (o *AlertserviceIntegrationDetails) GetPagerdutyRoutingKey() string`
+
+GetPagerdutyRoutingKey returns the PagerdutyRoutingKey field if non-nil, zero value otherwise.
+
+### GetPagerdutyRoutingKeyOk
+
+`func (o *AlertserviceIntegrationDetails) GetPagerdutyRoutingKeyOk() (*string, bool)`
+
+GetPagerdutyRoutingKeyOk returns a tuple with the PagerdutyRoutingKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPagerdutyRoutingKey
+
+`func (o *AlertserviceIntegrationDetails) SetPagerdutyRoutingKey(v string)`
+
+SetPagerdutyRoutingKey sets PagerdutyRoutingKey field to given value.
+
+### HasPagerdutyRoutingKey
+
+`func (o *AlertserviceIntegrationDetails) HasPagerdutyRoutingKey() bool`
+
+HasPagerdutyRoutingKey returns a boolean if a field has been set.
 
 ### GetWebhookUrl
 

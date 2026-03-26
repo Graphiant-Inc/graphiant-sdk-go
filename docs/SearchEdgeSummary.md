@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssignedOn** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
+**CanaryMode** | Pointer to **string** |  | [optional] 
+**ConnectedRegions** | Pointer to **[]string** |  | [optional] 
 **DeviceId** | Pointer to **int64** |  | [optional] 
 **DiscoveredLocation** | Pointer to **string** |  | [optional] 
 **EnterpriseId** | Pointer to **int64** |  | [optional] 
@@ -76,6 +78,56 @@ SetAssignedOn sets AssignedOn field to given value.
 `func (o *SearchEdgeSummary) HasAssignedOn() bool`
 
 HasAssignedOn returns a boolean if a field has been set.
+
+### GetCanaryMode
+
+`func (o *SearchEdgeSummary) GetCanaryMode() string`
+
+GetCanaryMode returns the CanaryMode field if non-nil, zero value otherwise.
+
+### GetCanaryModeOk
+
+`func (o *SearchEdgeSummary) GetCanaryModeOk() (*string, bool)`
+
+GetCanaryModeOk returns a tuple with the CanaryMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCanaryMode
+
+`func (o *SearchEdgeSummary) SetCanaryMode(v string)`
+
+SetCanaryMode sets CanaryMode field to given value.
+
+### HasCanaryMode
+
+`func (o *SearchEdgeSummary) HasCanaryMode() bool`
+
+HasCanaryMode returns a boolean if a field has been set.
+
+### GetConnectedRegions
+
+`func (o *SearchEdgeSummary) GetConnectedRegions() []string`
+
+GetConnectedRegions returns the ConnectedRegions field if non-nil, zero value otherwise.
+
+### GetConnectedRegionsOk
+
+`func (o *SearchEdgeSummary) GetConnectedRegionsOk() (*[]string, bool)`
+
+GetConnectedRegionsOk returns a tuple with the ConnectedRegions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectedRegions
+
+`func (o *SearchEdgeSummary) SetConnectedRegions(v []string)`
+
+SetConnectedRegions sets ConnectedRegions field to given value.
+
+### HasConnectedRegions
+
+`func (o *SearchEdgeSummary) HasConnectedRegions() bool`
+
+HasConnectedRegions returns a boolean if a field has been set.
 
 ### GetDeviceId
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **NotificationName** | Pointer to **string** | Name of the notification record (required) | [optional] 
 **OpsgenieList** | Pointer to **[]string** |  | [optional] 
 **OpsrampList** | Pointer to **[]string** |  | [optional] 
+**PagerdutyList** | Pointer to **[]string** |  | [optional] 
 **RecipientList** | Pointer to **[]string** |  | [optional] 
 **TeamsList** | Pointer to **[]string** |  | [optional] 
 
@@ -233,6 +234,31 @@ SetOpsrampList sets OpsrampList field to given value.
 `func (o *AlertserviceNotificationBody) HasOpsrampList() bool`
 
 HasOpsrampList returns a boolean if a field has been set.
+
+### GetPagerdutyList
+
+`func (o *AlertserviceNotificationBody) GetPagerdutyList() []string`
+
+GetPagerdutyList returns the PagerdutyList field if non-nil, zero value otherwise.
+
+### GetPagerdutyListOk
+
+`func (o *AlertserviceNotificationBody) GetPagerdutyListOk() (*[]string, bool)`
+
+GetPagerdutyListOk returns a tuple with the PagerdutyList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPagerdutyList
+
+`func (o *AlertserviceNotificationBody) SetPagerdutyList(v []string)`
+
+SetPagerdutyList sets PagerdutyList field to given value.
+
+### HasPagerdutyList
+
+`func (o *AlertserviceNotificationBody) HasPagerdutyList() bool`
+
+HasPagerdutyList returns a boolean if a field has been set.
 
 ### GetRecipientList
 

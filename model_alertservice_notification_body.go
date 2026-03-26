@@ -33,6 +33,7 @@ type AlertserviceNotificationBody struct {
 	NotificationName *string `json:"notificationName,omitempty"`
 	OpsgenieList []string `json:"opsgenieList,omitempty"`
 	OpsrampList []string `json:"opsrampList,omitempty"`
+	PagerdutyList []string `json:"pagerdutyList,omitempty"`
 	RecipientList []string `json:"recipientList,omitempty"`
 	TeamsList []string `json:"teamsList,omitempty"`
 }
@@ -310,6 +311,38 @@ func (o *AlertserviceNotificationBody) SetOpsrampList(v []string) {
 	o.OpsrampList = v
 }
 
+// GetPagerdutyList returns the PagerdutyList field value if set, zero value otherwise.
+func (o *AlertserviceNotificationBody) GetPagerdutyList() []string {
+	if o == nil || IsNil(o.PagerdutyList) {
+		var ret []string
+		return ret
+	}
+	return o.PagerdutyList
+}
+
+// GetPagerdutyListOk returns a tuple with the PagerdutyList field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertserviceNotificationBody) GetPagerdutyListOk() ([]string, bool) {
+	if o == nil || IsNil(o.PagerdutyList) {
+		return nil, false
+	}
+	return o.PagerdutyList, true
+}
+
+// HasPagerdutyList returns a boolean if a field has been set.
+func (o *AlertserviceNotificationBody) HasPagerdutyList() bool {
+	if o != nil && !IsNil(o.PagerdutyList) {
+		return true
+	}
+
+	return false
+}
+
+// SetPagerdutyList gets a reference to the given []string and assigns it to the PagerdutyList field.
+func (o *AlertserviceNotificationBody) SetPagerdutyList(v []string) {
+	o.PagerdutyList = v
+}
+
 // GetRecipientList returns the RecipientList field value if set, zero value otherwise.
 func (o *AlertserviceNotificationBody) GetRecipientList() []string {
 	if o == nil || IsNil(o.RecipientList) {
@@ -407,6 +440,9 @@ func (o AlertserviceNotificationBody) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OpsrampList) {
 		toSerialize["opsrampList"] = o.OpsrampList
+	}
+	if !IsNil(o.PagerdutyList) {
+		toSerialize["pagerdutyList"] = o.PagerdutyList
 	}
 	if !IsNil(o.RecipientList) {
 		toSerialize["recipientList"] = o.RecipientList

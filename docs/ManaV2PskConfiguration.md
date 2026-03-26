@@ -5,10 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Cak** | Pointer to **string** | The Connection Authentication Key (CAK) | [optional] 
-**CakCryptographicAlgorithm** | Pointer to **string** | The cryptographic algorithm for the CAK (required) | [optional] 
+**CakCryptographicAlgorithm** | Pointer to **string** | The cryptographic algorithm for the CAK, SAK Cipher Suite is implicitly selected based on this field. (required) | [optional] 
 **Ckn** | Pointer to **string** | The Connection Key Name (CKN) (required) | [optional] 
 **Nickname** | Pointer to **string** | The nickname of the PSK (required) | [optional] 
 **StartTime** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
+**UseXpnForCipherSuite** | Pointer to **bool** | Whether to use XPN for the cipher suite. If true, AES_128_GCM_XPN or AES_256_GCM_XPN is selected based on the cmac algorithm. If false, AES_128_GCM or AES_256_GCM is selected based on the cmac algorithm. | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetStartTime sets StartTime field to given value.
 `func (o *ManaV2PskConfiguration) HasStartTime() bool`
 
 HasStartTime returns a boolean if a field has been set.
+
+### GetUseXpnForCipherSuite
+
+`func (o *ManaV2PskConfiguration) GetUseXpnForCipherSuite() bool`
+
+GetUseXpnForCipherSuite returns the UseXpnForCipherSuite field if non-nil, zero value otherwise.
+
+### GetUseXpnForCipherSuiteOk
+
+`func (o *ManaV2PskConfiguration) GetUseXpnForCipherSuiteOk() (*bool, bool)`
+
+GetUseXpnForCipherSuiteOk returns a tuple with the UseXpnForCipherSuite field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseXpnForCipherSuite
+
+`func (o *ManaV2PskConfiguration) SetUseXpnForCipherSuite(v bool)`
+
+SetUseXpnForCipherSuite sets UseXpnForCipherSuite field to given value.
+
+### HasUseXpnForCipherSuite
+
+`func (o *ManaV2PskConfiguration) HasUseXpnForCipherSuite() bool`
+
+HasUseXpnForCipherSuite returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
