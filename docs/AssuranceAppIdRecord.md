@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AppIdKey** | Pointer to **string** |  | [optional] 
 **AppName** | Pointer to **string** |  | [optional] 
 **AppType** | Pointer to **string** |  | [optional] 
+**BlockedPolicyList** | Pointer to **[]string** |  | [optional] 
 **BlockedReasonList** | Pointer to **[]string** |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
 **ClassficationField** | Pointer to **string** |  | [optional] 
@@ -224,6 +225,31 @@ SetAppType sets AppType field to given value.
 `func (o *AssuranceAppIdRecord) HasAppType() bool`
 
 HasAppType returns a boolean if a field has been set.
+
+### GetBlockedPolicyList
+
+`func (o *AssuranceAppIdRecord) GetBlockedPolicyList() []string`
+
+GetBlockedPolicyList returns the BlockedPolicyList field if non-nil, zero value otherwise.
+
+### GetBlockedPolicyListOk
+
+`func (o *AssuranceAppIdRecord) GetBlockedPolicyListOk() (*[]string, bool)`
+
+GetBlockedPolicyListOk returns a tuple with the BlockedPolicyList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlockedPolicyList
+
+`func (o *AssuranceAppIdRecord) SetBlockedPolicyList(v []string)`
+
+SetBlockedPolicyList sets BlockedPolicyList field to given value.
+
+### HasBlockedPolicyList
+
+`func (o *AssuranceAppIdRecord) HasBlockedPolicyList() bool`
+
+HasBlockedPolicyList returns a boolean if a field has been set.
 
 ### GetBlockedReasonList
 

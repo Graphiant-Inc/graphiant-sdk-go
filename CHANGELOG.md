@@ -4,6 +4,69 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.3.1] - 2026-03-26
+
+### Added
+- **API endpoints:** none
+- **Models:**
+  - Added `manaV2BgpDynamicNeighborOperPeer`
+  - Added `manaV2NullableMaCsecRekeyInterval`
+  - Added `manaV2NullableMaCsecReplayProtectionWindowSize`
+
+### Changed
+- Updated to API specification version 26.3.1
+- **Version:**
+  - Updated version constant to v26.3.1
+  - Updated API documentation reference to `graphiant_api_docs_v26.3.1.json`
+- **Documentation:** updated SDK generation example in README to use `graphiant_api_docs_v26.3.1.json` and `packageVersion=26.3.1`
+- **API endpoints (updated):**
+  - `GET /v1/device/routing/ospfv2/statistics`
+  - `GET /v1/device/routing/ospfv3/statistics`
+  - `POST /v1/device/routing/rib/route-count`
+  - `GET /v1/devices/inventory`
+  - `DELETE /v1/devices/inventory/serial-num`
+  - `GET /v1/devices/routing/vrf/protocol-route-count`
+  - `GET /v1/devices/{deviceId}/circuits/vrf-associations`
+  - `GET /v1/devices/{deviceId}/vrf/protocols`
+  - `GET /v1/devices/{deviceId}/vrrp`
+  - `GET /v1/diagnostic/speedtest-servers`
+  - `GET /v1/edges-hardware/assigned`
+  - `GET /v1/edges-summary`
+  - `GET /v1/enterprises`
+  - `GET /v1/enterprises/managed`
+  - `GET /v1/extranets-b2b-peering/consumer/{customerId}/consumer-details`
+  - `GET /v1/extranets-b2b-peering/match/service-to-customer/{id}`
+  - `GET /v1/extranets-monitoring/lan-segments`
+  - `GET /v1/extranets-monitoring/nat-usage`
+  - `GET /v1/global/device-status`
+  - `GET /v1/global/ipfix/device`
+  - `GET /v1/global/ntps/device`
+  - `GET /v1/global/ntps/site`
+  - `GET /v1/global/site-status`
+  - `GET /v1/global/snmps/device`
+  - `GET /v1/global/syslogs/device`
+  - `GET /v1/software/releases/download`
+  - `GET /v1/users/{id}/enterprises`
+  - `GET /v1/users/{id}/groups`
+  - `GET /v1/users/{id}/groups/enterprises`
+  - `GET /v1/users/{id}/groups/root`
+  - `DELETE /v2/assurance/deleteclassifiedapplication`
+  - `GET /v2/monitoring/extranet/edge-status`
+  - `GET /v2/monitoring/extranet/service-status`
+  - `GET /v2/monitoring/extranet/service-status/details`
+  - `GET /v2/monitoring/extranet/site-status`
+  - `GET /v2/monitoring/extranet/status-details`
+- **Models:** updated (1390 schema changes in OpenAPI spec)
+
+### Removed
+- **API endpoints:** none
+- **Models:**
+  - Removed `healthcheckOdpStatusDetails`
+  - Removed `healthcheckOnboardingStatusDetails`
+  - Removed `healthcheckStatusDetails`
+  - Removed `healthcheckT2StatusDetails`
+  - Removed `v1HealthcheckDevicesGetResponse`
+
 ## [26.2.1] - 2026-02-26
 
 ### Added
@@ -249,6 +312,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 | Version | Release Date | Key Features |
 |---------|--------------|--------------|
+| 26.3.1 | 2026-03-26 | API v26.3.1 support, regenerated SDK/tests |
 | 26.2.1 | 2026-02-26 | API v26.2.1 support, regenerated SDK/tests |
 | 26.1.1 | 2026-02-01 | API v26.1.1 support |
 | 25.12.1 | 2025-12-17 | API v25.12.1 support |

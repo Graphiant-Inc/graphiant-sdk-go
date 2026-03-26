@@ -19,13 +19,12 @@ var _ MappedNullable = &ManaV2SakConfiguration{}
 
 // ManaV2SakConfiguration struct for ManaV2SakConfiguration
 type ManaV2SakConfiguration struct {
-	// The cipher suite (required)
 	CipherSuite *string `json:"cipherSuite,omitempty"`
 	// The interface ID (required for when each lag member has a different MACsec configuration - when split_sak_config_by_lag_member is true) (required)
 	LagMemberInterfaceId *int64 `json:"lagMemberInterfaceId,omitempty"`
-	// The rekey interval in seconds. 0 means disabled
+	NullableRekeyInterval *ManaV2NullableMaCsecRekeyInterval `json:"nullableRekeyInterval,omitempty"`
+	NullableReplayProtectionWindowSize *ManaV2NullableMaCsecReplayProtectionWindowSize `json:"nullableReplayProtectionWindowSize,omitempty"`
 	RekeyInterval *int64 `json:"rekeyInterval,omitempty"`
-	// The replay protection window size in seconds. 0 means disabled
 	ReplayProtectionWindowSize *int64 `json:"replayProtectionWindowSize,omitempty"`
 }
 
@@ -110,6 +109,70 @@ func (o *ManaV2SakConfiguration) SetLagMemberInterfaceId(v int64) {
 	o.LagMemberInterfaceId = &v
 }
 
+// GetNullableRekeyInterval returns the NullableRekeyInterval field value if set, zero value otherwise.
+func (o *ManaV2SakConfiguration) GetNullableRekeyInterval() ManaV2NullableMaCsecRekeyInterval {
+	if o == nil || IsNil(o.NullableRekeyInterval) {
+		var ret ManaV2NullableMaCsecRekeyInterval
+		return ret
+	}
+	return *o.NullableRekeyInterval
+}
+
+// GetNullableRekeyIntervalOk returns a tuple with the NullableRekeyInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2SakConfiguration) GetNullableRekeyIntervalOk() (*ManaV2NullableMaCsecRekeyInterval, bool) {
+	if o == nil || IsNil(o.NullableRekeyInterval) {
+		return nil, false
+	}
+	return o.NullableRekeyInterval, true
+}
+
+// HasNullableRekeyInterval returns a boolean if a field has been set.
+func (o *ManaV2SakConfiguration) HasNullableRekeyInterval() bool {
+	if o != nil && !IsNil(o.NullableRekeyInterval) {
+		return true
+	}
+
+	return false
+}
+
+// SetNullableRekeyInterval gets a reference to the given ManaV2NullableMaCsecRekeyInterval and assigns it to the NullableRekeyInterval field.
+func (o *ManaV2SakConfiguration) SetNullableRekeyInterval(v ManaV2NullableMaCsecRekeyInterval) {
+	o.NullableRekeyInterval = &v
+}
+
+// GetNullableReplayProtectionWindowSize returns the NullableReplayProtectionWindowSize field value if set, zero value otherwise.
+func (o *ManaV2SakConfiguration) GetNullableReplayProtectionWindowSize() ManaV2NullableMaCsecReplayProtectionWindowSize {
+	if o == nil || IsNil(o.NullableReplayProtectionWindowSize) {
+		var ret ManaV2NullableMaCsecReplayProtectionWindowSize
+		return ret
+	}
+	return *o.NullableReplayProtectionWindowSize
+}
+
+// GetNullableReplayProtectionWindowSizeOk returns a tuple with the NullableReplayProtectionWindowSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2SakConfiguration) GetNullableReplayProtectionWindowSizeOk() (*ManaV2NullableMaCsecReplayProtectionWindowSize, bool) {
+	if o == nil || IsNil(o.NullableReplayProtectionWindowSize) {
+		return nil, false
+	}
+	return o.NullableReplayProtectionWindowSize, true
+}
+
+// HasNullableReplayProtectionWindowSize returns a boolean if a field has been set.
+func (o *ManaV2SakConfiguration) HasNullableReplayProtectionWindowSize() bool {
+	if o != nil && !IsNil(o.NullableReplayProtectionWindowSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetNullableReplayProtectionWindowSize gets a reference to the given ManaV2NullableMaCsecReplayProtectionWindowSize and assigns it to the NullableReplayProtectionWindowSize field.
+func (o *ManaV2SakConfiguration) SetNullableReplayProtectionWindowSize(v ManaV2NullableMaCsecReplayProtectionWindowSize) {
+	o.NullableReplayProtectionWindowSize = &v
+}
+
 // GetRekeyInterval returns the RekeyInterval field value if set, zero value otherwise.
 func (o *ManaV2SakConfiguration) GetRekeyInterval() int64 {
 	if o == nil || IsNil(o.RekeyInterval) {
@@ -189,6 +252,12 @@ func (o ManaV2SakConfiguration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LagMemberInterfaceId) {
 		toSerialize["lagMemberInterfaceId"] = o.LagMemberInterfaceId
+	}
+	if !IsNil(o.NullableRekeyInterval) {
+		toSerialize["nullableRekeyInterval"] = o.NullableRekeyInterval
+	}
+	if !IsNil(o.NullableReplayProtectionWindowSize) {
+		toSerialize["nullableReplayProtectionWindowSize"] = o.NullableReplayProtectionWindowSize
 	}
 	if !IsNil(o.RekeyInterval) {
 		toSerialize["rekeyInterval"] = o.RekeyInterval

@@ -27,6 +27,7 @@ type ManaV2BgpNeighbor struct {
 	BgpType *string `json:"bgpType,omitempty"`
 	// Set when default route needs to be advertised in BGP domain
 	DefaultOriginate *string `json:"defaultOriginate,omitempty"`
+	DynamicNeighborPeers []ManaV2BgpDynamicNeighborOperPeer `json:"dynamicNeighborPeers,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
 	HoldTimer *int32 `json:"holdTimer,omitempty"`
 	Id *int64 `json:"id,omitempty"`
@@ -287,6 +288,38 @@ func (o *ManaV2BgpNeighbor) HasDefaultOriginate() bool {
 // SetDefaultOriginate gets a reference to the given string and assigns it to the DefaultOriginate field.
 func (o *ManaV2BgpNeighbor) SetDefaultOriginate(v string) {
 	o.DefaultOriginate = &v
+}
+
+// GetDynamicNeighborPeers returns the DynamicNeighborPeers field value if set, zero value otherwise.
+func (o *ManaV2BgpNeighbor) GetDynamicNeighborPeers() []ManaV2BgpDynamicNeighborOperPeer {
+	if o == nil || IsNil(o.DynamicNeighborPeers) {
+		var ret []ManaV2BgpDynamicNeighborOperPeer
+		return ret
+	}
+	return o.DynamicNeighborPeers
+}
+
+// GetDynamicNeighborPeersOk returns a tuple with the DynamicNeighborPeers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2BgpNeighbor) GetDynamicNeighborPeersOk() ([]ManaV2BgpDynamicNeighborOperPeer, bool) {
+	if o == nil || IsNil(o.DynamicNeighborPeers) {
+		return nil, false
+	}
+	return o.DynamicNeighborPeers, true
+}
+
+// HasDynamicNeighborPeers returns a boolean if a field has been set.
+func (o *ManaV2BgpNeighbor) HasDynamicNeighborPeers() bool {
+	if o != nil && !IsNil(o.DynamicNeighborPeers) {
+		return true
+	}
+
+	return false
+}
+
+// SetDynamicNeighborPeers gets a reference to the given []ManaV2BgpDynamicNeighborOperPeer and assigns it to the DynamicNeighborPeers field.
+func (o *ManaV2BgpNeighbor) SetDynamicNeighborPeers(v []ManaV2BgpDynamicNeighborOperPeer) {
+	o.DynamicNeighborPeers = v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
@@ -831,6 +864,9 @@ func (o ManaV2BgpNeighbor) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DefaultOriginate) {
 		toSerialize["defaultOriginate"] = o.DefaultOriginate
+	}
+	if !IsNil(o.DynamicNeighborPeers) {
+		toSerialize["dynamicNeighborPeers"] = o.DynamicNeighborPeers
 	}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled

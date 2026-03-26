@@ -7341,7 +7341,7 @@ Name | Type | Description  | Notes
 
 ## V1DevicesDeviceIdCircuitsVrfAssociationsGet
 
-> V1DevicesDeviceIdCircuitsVrfAssociationsGetResponse V1DevicesDeviceIdCircuitsVrfAssociationsGet(ctx, deviceId).Authorization(authorization).Execute()
+> V1DevicesDeviceIdCircuitsVrfAssociationsGetResponse V1DevicesDeviceIdCircuitsVrfAssociationsGet(ctx, deviceId).Authorization(authorization).CircuitNames(circuitNames).Execute()
 
 
 
@@ -7362,10 +7362,11 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	deviceId := int64(1234567891011) // int64 | 
+	circuitNames := []string{"isp"} // []string | Circuit name configured of wan interface (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DevicesDeviceIdCircuitsVrfAssociationsGet(context.Background(), deviceId).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1DevicesDeviceIdCircuitsVrfAssociationsGet(context.Background(), deviceId).Authorization(authorization).CircuitNames(circuitNames).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DevicesDeviceIdCircuitsVrfAssociationsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7392,6 +7393,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
 
+ **circuitNames** | **[]string** | Circuit name configured of wan interface | 
 
 ### Return type
 
@@ -8713,7 +8715,7 @@ Name | Type | Description  | Notes
 
 ## V1DevicesDeviceIdVrfProtocolsGet
 
-> V1DevicesDeviceIdVrfProtocolsGetResponse V1DevicesDeviceIdVrfProtocolsGet(ctx, deviceId).Authorization(authorization).Execute()
+> V1DevicesDeviceIdVrfProtocolsGetResponse V1DevicesDeviceIdVrfProtocolsGet(ctx, deviceId).Authorization(authorization).VrfName(vrfName).Execute()
 
 
 
@@ -8732,10 +8734,11 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	deviceId := int64(1234567891011) // int64 | 
+	vrfName := "lan-1-business" // string | Valid Configured Vrf Name
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DevicesDeviceIdVrfProtocolsGet(context.Background(), deviceId).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1DevicesDeviceIdVrfProtocolsGet(context.Background(), deviceId).Authorization(authorization).VrfName(vrfName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DevicesDeviceIdVrfProtocolsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8762,6 +8765,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
 
+ **vrfName** | **string** | Valid Configured Vrf Name | 
 
 ### Return type
 
@@ -8783,7 +8787,7 @@ Name | Type | Description  | Notes
 
 ## V1DevicesDeviceIdVrrpGet
 
-> V1DevicesDeviceIdVrrpGetResponse V1DevicesDeviceIdVrrpGet(ctx, deviceId).Authorization(authorization).Execute()
+> V1DevicesDeviceIdVrrpGetResponse V1DevicesDeviceIdVrrpGet(ctx, deviceId).Authorization(authorization).GroupId(groupId).InterfaceName(interfaceName).Execute()
 
 
 
@@ -8804,10 +8808,12 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	deviceId := int64(1234567891011) // int64 | 
+	groupId := int32(1000000) // int32 | VRRP configured group id (optional)
+	interfaceName := "GigabitEthernet0/2" // string | interface name (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DevicesDeviceIdVrrpGet(context.Background(), deviceId).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1DevicesDeviceIdVrrpGet(context.Background(), deviceId).Authorization(authorization).GroupId(groupId).InterfaceName(interfaceName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DevicesDeviceIdVrrpGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8834,6 +8840,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
 
+ **groupId** | **int32** | VRRP configured group id | 
+ **interfaceName** | **string** | interface name | 
 
 ### Return type
 
@@ -9183,7 +9191,7 @@ Name | Type | Description  | Notes
 
 ## V1DevicesInventoryGet
 
-> V1DevicesInventoryGetResponse V1DevicesInventoryGet(ctx).Authorization(authorization).Execute()
+> V1DevicesInventoryGetResponse V1DevicesInventoryGet(ctx).Authorization(authorization).NotAssigned(notAssigned).Execute()
 
 
 
@@ -9201,10 +9209,11 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	notAssigned := true // bool |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DevicesInventoryGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1DevicesInventoryGet(context.Background()).Authorization(authorization).NotAssigned(notAssigned).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DevicesInventoryGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9226,6 +9235,7 @@ Other parameters are passed through a pointer to a apiV1DevicesInventoryGetReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **notAssigned** | **bool** |  | 
 
 ### Return type
 
@@ -11472,8 +11482,8 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	deviceId := int64(30000000555) // int64 | Unique identifier for a specific device
-	provider := "Ookla" // string | supported provider for speedtest utility (optional)
-	vrfName := "isp-red" // string | Configured Wan Circuit Name (optional)
+	provider := "ookla" // string | supported provider for speedtest utility
+	vrfName := "c-gigabitethernet1" // string | Configured Wan Circuit Name
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -11591,7 +11601,7 @@ Name | Type | Description  | Notes
 
 ## V1EdgesHardwareAssignedGet
 
-> V1EdgesHardwareAssignedGetResponse V1EdgesHardwareAssignedGet(ctx).Authorization(authorization).Execute()
+> V1EdgesHardwareAssignedGetResponse V1EdgesHardwareAssignedGet(ctx).Authorization(authorization).EnterpriseId(enterpriseId).Execute()
 
 
 
@@ -11609,10 +11619,11 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	enterpriseId := int64(1234567891011) // int64 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1EdgesHardwareAssignedGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1EdgesHardwareAssignedGet(context.Background()).Authorization(authorization).EnterpriseId(enterpriseId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1EdgesHardwareAssignedGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11634,6 +11645,7 @@ Other parameters are passed through a pointer to a apiV1EdgesHardwareAssignedGet
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **enterpriseId** | **int64** |  | 
 
 ### Return type
 
@@ -11719,7 +11731,7 @@ Name | Type | Description  | Notes
 
 ## V1EdgesSummaryGet
 
-> V1EdgesSummaryGetResponse V1EdgesSummaryGet(ctx).Authorization(authorization).Execute()
+> V1EdgesSummaryGetResponse V1EdgesSummaryGet(ctx).Authorization(authorization).EnterpriseId(enterpriseId).IsRequested(isRequested).UpgradeSummary(upgradeSummary).Execute()
 
 
 
@@ -11737,10 +11749,13 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	enterpriseId := int64(1234567891011) // int64 |  (optional)
+	isRequested := true // bool |  (optional)
+	upgradeSummary := true // bool |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1EdgesSummaryGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1EdgesSummaryGet(context.Background()).Authorization(authorization).EnterpriseId(enterpriseId).IsRequested(isRequested).UpgradeSummary(upgradeSummary).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1EdgesSummaryGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11762,6 +11777,9 @@ Other parameters are passed through a pointer to a apiV1EdgesSummaryGetRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **enterpriseId** | **int64** |  | 
+ **isRequested** | **bool** |  | 
+ **upgradeSummary** | **bool** |  | 
 
 ### Return type
 
@@ -12551,7 +12569,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	type_ := "ENUM_VALUE" // string | 
+	type_ := "ENUM_VALUE" // string | msp or enterprise
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -12577,7 +12595,7 @@ Other parameters are passed through a pointer to a apiV1EnterprisesManagedGetReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
- **type_** | **string** |  | 
+ **type_** | **string** | msp or enterprise | 
 
 ### Return type
 
@@ -13023,7 +13041,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	v1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest(int64(1), false) // V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest | 
+	v1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest := *openapiclient.NewV1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest(int64(1), true) // V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -14199,7 +14217,7 @@ Name | Type | Description  | Notes
 
 ## V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet
 
-> V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponse V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet(ctx, customerId).Authorization(authorization).Execute()
+> V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponse V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet(ctx, customerId).Authorization(authorization).ServiceId(serviceId).Execute()
 
 
 
@@ -14220,10 +14238,11 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	customerId := int64(1234567891011) // int64 | 
+	serviceId := int64(1234567891011) // int64 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet(context.Background(), customerId).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet(context.Background(), customerId).Authorization(authorization).ServiceId(serviceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14250,6 +14269,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
 
+ **serviceId** | **int64** |  | 
 
 ### Return type
 
@@ -14775,7 +14795,7 @@ Name | Type | Description  | Notes
 
 ## V1ExtranetsB2bPeeringMatchServiceToCustomerIdGet
 
-> V1ExtranetsB2bPeeringMatchServiceToCustomerIdGetResponse V1ExtranetsB2bPeeringMatchServiceToCustomerIdGet(ctx, id).Authorization(authorization).Execute()
+> V1ExtranetsB2bPeeringMatchServiceToCustomerIdGetResponse V1ExtranetsB2bPeeringMatchServiceToCustomerIdGet(ctx, id).Authorization(authorization).CustomerId(customerId).Execute()
 
 
 
@@ -14796,10 +14816,11 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	id := int64(1234567891011) // int64 | Service id for which match details are requested
+	customerId := int64(1234567891011) // int64 | Customer id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerIdGet(context.Background(), id).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerIdGet(context.Background(), id).Authorization(authorization).CustomerId(customerId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetsB2bPeeringMatchServiceToCustomerIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14826,6 +14847,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
 
+ **customerId** | **int64** | Customer id | 
 
 ### Return type
 
@@ -15909,7 +15931,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 |  (optional)
+	id := int64(800) // int64 | Extranet Service Id (optional)
 	isProvider := true // bool |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -15936,7 +15958,7 @@ Other parameters are passed through a pointer to a apiV1ExtranetsMonitoringLanSe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
- **id** | **int64** |  | 
+ **id** | **int64** | Extranet Service Id | 
  **isProvider** | **bool** |  | 
 
 ### Return type
@@ -15977,7 +15999,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := int64(1234567891011) // int64 |  (optional)
+	id := int64(800) // int64 | Extranet Service Id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -16003,7 +16025,7 @@ Other parameters are passed through a pointer to a apiV1ExtranetsMonitoringNatUs
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
- **id** | **int64** |  | 
+ **id** | **int64** | Extranet Service Id | 
 
 ### Return type
 
@@ -18360,7 +18382,7 @@ Name | Type | Description  | Notes
 
 ## V1GlobalDeviceStatusGet
 
-> V1GlobalDeviceStatusGetResponse V1GlobalDeviceStatusGet(ctx).Authorization(authorization).IpfixExportedId(ipfixExportedId).NtpId(ntpId).SnmpId(snmpId).SyslogServerId(syslogServerId).TrafficPolicyId(trafficPolicyId).Execute()
+> V1GlobalDeviceStatusGetResponse V1GlobalDeviceStatusGet(ctx).Authorization(authorization).IpfixExportedId(ipfixExportedId).NtpId(ntpId).PrefixSetId(prefixSetId).RoutingPolicyId(routingPolicyId).SnmpId(snmpId).SyslogServerId(syslogServerId).TrafficPolicyId(trafficPolicyId).Execute()
 
 
 
@@ -18382,13 +18404,15 @@ func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	ipfixExportedId := int64(1234567891011) // int64 |  (optional)
 	ntpId := int64(1234567891011) // int64 |  (optional)
+	prefixSetId := int64(1234567891011) // int64 |  (optional)
+	routingPolicyId := int64(1234567891011) // int64 |  (optional)
 	snmpId := int64(1234567891011) // int64 |  (optional)
 	syslogServerId := int64(1234567891011) // int64 |  (optional)
 	trafficPolicyId := int64(1234567891011) // int64 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GlobalDeviceStatusGet(context.Background()).Authorization(authorization).IpfixExportedId(ipfixExportedId).NtpId(ntpId).SnmpId(snmpId).SyslogServerId(syslogServerId).TrafficPolicyId(trafficPolicyId).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1GlobalDeviceStatusGet(context.Background()).Authorization(authorization).IpfixExportedId(ipfixExportedId).NtpId(ntpId).PrefixSetId(prefixSetId).RoutingPolicyId(routingPolicyId).SnmpId(snmpId).SyslogServerId(syslogServerId).TrafficPolicyId(trafficPolicyId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalDeviceStatusGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -18412,6 +18436,8 @@ Name | Type | Description  | Notes
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **ipfixExportedId** | **int64** |  | 
  **ntpId** | **int64** |  | 
+ **prefixSetId** | **int64** |  | 
+ **routingPolicyId** | **int64** |  | 
  **snmpId** | **int64** |  | 
  **syslogServerId** | **int64** |  | 
  **trafficPolicyId** | **int64** |  | 
@@ -18436,7 +18462,7 @@ Name | Type | Description  | Notes
 
 ## V1GlobalIpfixDeviceGet
 
-> V1GlobalIpfixDeviceGetResponse V1GlobalIpfixDeviceGet(ctx).Authorization(authorization).Execute()
+> V1GlobalIpfixDeviceGetResponse V1GlobalIpfixDeviceGet(ctx).Authorization(authorization).DeviceId(deviceId).Execute()
 
 
 
@@ -18456,10 +18482,11 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	deviceId := int64(1234567891011) // int64 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GlobalIpfixDeviceGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1GlobalIpfixDeviceGet(context.Background()).Authorization(authorization).DeviceId(deviceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalIpfixDeviceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -18481,6 +18508,7 @@ Other parameters are passed through a pointer to a apiV1GlobalIpfixDeviceGetRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **deviceId** | **int64** |  | 
 
 ### Return type
 
@@ -19124,7 +19152,7 @@ Name | Type | Description  | Notes
 
 ## V1GlobalNtpsDeviceGet
 
-> V1GlobalNtpsDeviceGetResponse V1GlobalNtpsDeviceGet(ctx).Authorization(authorization).Execute()
+> V1GlobalNtpsDeviceGetResponse V1GlobalNtpsDeviceGet(ctx).Authorization(authorization).DeviceId(deviceId).Execute()
 
 
 
@@ -19144,10 +19172,11 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	deviceId := int64(1234567891011) // int64 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GlobalNtpsDeviceGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1GlobalNtpsDeviceGet(context.Background()).Authorization(authorization).DeviceId(deviceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalNtpsDeviceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -19169,6 +19198,7 @@ Other parameters are passed through a pointer to a apiV1GlobalNtpsDeviceGetReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **deviceId** | **int64** |  | 
 
 ### Return type
 
@@ -19258,7 +19288,7 @@ Name | Type | Description  | Notes
 
 ## V1GlobalNtpsSiteGet
 
-> V1GlobalNtpsSiteGetResponse V1GlobalNtpsSiteGet(ctx).Authorization(authorization).Execute()
+> V1GlobalNtpsSiteGetResponse V1GlobalNtpsSiteGet(ctx).Authorization(authorization).SiteId(siteId).Execute()
 
 
 
@@ -19278,10 +19308,11 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	siteId := int64(1234567891011) // int64 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GlobalNtpsSiteGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1GlobalNtpsSiteGet(context.Background()).Authorization(authorization).SiteId(siteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalNtpsSiteGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -19303,6 +19334,7 @@ Other parameters are passed through a pointer to a apiV1GlobalNtpsSiteGetRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **siteId** | **int64** |  | 
 
 ### Return type
 
@@ -19882,7 +19914,7 @@ Name | Type | Description  | Notes
 
 ## V1GlobalSiteStatusGet
 
-> V1GlobalSiteStatusGetResponse V1GlobalSiteStatusGet(ctx).Authorization(authorization).IpfixExportedSiteId(ipfixExportedSiteId).NtpSiteId(ntpSiteId).SnmpSiteId(snmpSiteId).SyslogServerSiteId(syslogServerSiteId).Execute()
+> V1GlobalSiteStatusGetResponse V1GlobalSiteStatusGet(ctx).Authorization(authorization).IpfixExportedSiteId(ipfixExportedSiteId).NtpSiteId(ntpSiteId).PrefixSetSiteId(prefixSetSiteId).RoutingPolicySiteId(routingPolicySiteId).SnmpSiteId(snmpSiteId).SyslogServerSiteId(syslogServerSiteId).TrafficPolicySiteId(trafficPolicySiteId).Execute()
 
 
 
@@ -19904,12 +19936,15 @@ func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	ipfixExportedSiteId := int64(1234567891011) // int64 |  (optional)
 	ntpSiteId := int64(1234567891011) // int64 |  (optional)
+	prefixSetSiteId := int64(1234567891011) // int64 |  (optional)
+	routingPolicySiteId := int64(1234567891011) // int64 |  (optional)
 	snmpSiteId := int64(1234567891011) // int64 |  (optional)
 	syslogServerSiteId := int64(1234567891011) // int64 |  (optional)
+	trafficPolicySiteId := int64(1234567891011) // int64 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GlobalSiteStatusGet(context.Background()).Authorization(authorization).IpfixExportedSiteId(ipfixExportedSiteId).NtpSiteId(ntpSiteId).SnmpSiteId(snmpSiteId).SyslogServerSiteId(syslogServerSiteId).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1GlobalSiteStatusGet(context.Background()).Authorization(authorization).IpfixExportedSiteId(ipfixExportedSiteId).NtpSiteId(ntpSiteId).PrefixSetSiteId(prefixSetSiteId).RoutingPolicySiteId(routingPolicySiteId).SnmpSiteId(snmpSiteId).SyslogServerSiteId(syslogServerSiteId).TrafficPolicySiteId(trafficPolicySiteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalSiteStatusGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -19933,8 +19968,11 @@ Name | Type | Description  | Notes
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **ipfixExportedSiteId** | **int64** |  | 
  **ntpSiteId** | **int64** |  | 
+ **prefixSetSiteId** | **int64** |  | 
+ **routingPolicySiteId** | **int64** |  | 
  **snmpSiteId** | **int64** |  | 
  **syslogServerSiteId** | **int64** |  | 
+ **trafficPolicySiteId** | **int64** |  | 
 
 ### Return type
 
@@ -19956,7 +19994,7 @@ Name | Type | Description  | Notes
 
 ## V1GlobalSnmpsDeviceGet
 
-> V1GlobalSnmpsDeviceGetResponse V1GlobalSnmpsDeviceGet(ctx).Authorization(authorization).Execute()
+> V1GlobalSnmpsDeviceGetResponse V1GlobalSnmpsDeviceGet(ctx).Authorization(authorization).DeviceId(deviceId).Execute()
 
 
 
@@ -19976,10 +20014,11 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	deviceId := int64(1234567891011) // int64 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GlobalSnmpsDeviceGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1GlobalSnmpsDeviceGet(context.Background()).Authorization(authorization).DeviceId(deviceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalSnmpsDeviceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -20001,6 +20040,7 @@ Other parameters are passed through a pointer to a apiV1GlobalSnmpsDeviceGetRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **deviceId** | **int64** |  | 
 
 ### Return type
 
@@ -20294,7 +20334,7 @@ Name | Type | Description  | Notes
 
 ## V1GlobalSyslogsDeviceGet
 
-> V1GlobalSyslogsDeviceGetResponse V1GlobalSyslogsDeviceGet(ctx).Authorization(authorization).Execute()
+> V1GlobalSyslogsDeviceGetResponse V1GlobalSyslogsDeviceGet(ctx).Authorization(authorization).DeviceId(deviceId).Execute()
 
 
 
@@ -20314,10 +20354,11 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	deviceId := int64(1234567891011) // int64 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GlobalSyslogsDeviceGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1GlobalSyslogsDeviceGet(context.Background()).Authorization(authorization).DeviceId(deviceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalSyslogsDeviceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -20339,6 +20380,7 @@ Other parameters are passed through a pointer to a apiV1GlobalSyslogsDeviceGetRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **deviceId** | **int64** |  | 
 
 ### Return type
 
@@ -23656,7 +23698,7 @@ Name | Type | Description  | Notes
 
 ## V1SoftwareReleasesDownloadGet
 
-> V1SoftwareReleasesDownloadGetResponse V1SoftwareReleasesDownloadGet(ctx).Authorization(authorization).Execute()
+> V1SoftwareReleasesDownloadGetResponse V1SoftwareReleasesDownloadGet(ctx).Authorization(authorization).ImageExt(imageExt).Version(version).Execute()
 
 
 
@@ -23674,10 +23716,12 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	imageExt := "qcow2" // string | GNOS Image type (qcow2 or ova)
+	version := "9999.202406130322" // string | GNOS Image version
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1SoftwareReleasesDownloadGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1SoftwareReleasesDownloadGet(context.Background()).Authorization(authorization).ImageExt(imageExt).Version(version).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SoftwareReleasesDownloadGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -23699,6 +23743,8 @@ Other parameters are passed through a pointer to a apiV1SoftwareReleasesDownload
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **imageExt** | **string** | GNOS Image type (qcow2 or ova) | 
+ **version** | **string** | GNOS Image version | 
 
 ### Return type
 
@@ -24900,7 +24946,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := "example string" // string | 
+	id := "example string" // string | userId
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -24920,7 +24966,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** | userId | 
 
 ### Other Parameters
 
@@ -24972,7 +25018,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := "example string" // string | 
+	id := "example string" // string | userId
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -24992,7 +25038,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** | userId | 
 
 ### Other Parameters
 
@@ -25044,7 +25090,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := "example string" // string | 
+	id := "example string" // string | userId
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -25064,7 +25110,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** | userId | 
 
 ### Other Parameters
 
@@ -25116,7 +25162,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	id := "example string" // string | 
+	id := "example string" // string | userId
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -25136,7 +25182,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** | userId | 
 
 ### Other Parameters
 

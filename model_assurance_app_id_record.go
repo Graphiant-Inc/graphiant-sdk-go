@@ -26,6 +26,7 @@ type AssuranceAppIdRecord struct {
 	AppIdKey *string `json:"appIdKey,omitempty"`
 	AppName *string `json:"appName,omitempty"`
 	AppType *string `json:"appType,omitempty"`
+	BlockedPolicyList []string `json:"blockedPolicyList,omitempty"`
 	BlockedReasonList []string `json:"blockedReasonList,omitempty"`
 	Category *string `json:"category,omitempty"`
 	ClassficationField *string `json:"classficationField,omitempty"`
@@ -286,6 +287,38 @@ func (o *AssuranceAppIdRecord) HasAppType() bool {
 // SetAppType gets a reference to the given string and assigns it to the AppType field.
 func (o *AssuranceAppIdRecord) SetAppType(v string) {
 	o.AppType = &v
+}
+
+// GetBlockedPolicyList returns the BlockedPolicyList field value if set, zero value otherwise.
+func (o *AssuranceAppIdRecord) GetBlockedPolicyList() []string {
+	if o == nil || IsNil(o.BlockedPolicyList) {
+		var ret []string
+		return ret
+	}
+	return o.BlockedPolicyList
+}
+
+// GetBlockedPolicyListOk returns a tuple with the BlockedPolicyList field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceAppIdRecord) GetBlockedPolicyListOk() ([]string, bool) {
+	if o == nil || IsNil(o.BlockedPolicyList) {
+		return nil, false
+	}
+	return o.BlockedPolicyList, true
+}
+
+// HasBlockedPolicyList returns a boolean if a field has been set.
+func (o *AssuranceAppIdRecord) HasBlockedPolicyList() bool {
+	if o != nil && !IsNil(o.BlockedPolicyList) {
+		return true
+	}
+
+	return false
+}
+
+// SetBlockedPolicyList gets a reference to the given []string and assigns it to the BlockedPolicyList field.
+func (o *AssuranceAppIdRecord) SetBlockedPolicyList(v []string) {
+	o.BlockedPolicyList = v
 }
 
 // GetBlockedReasonList returns the BlockedReasonList field value if set, zero value otherwise.
@@ -926,6 +959,9 @@ func (o AssuranceAppIdRecord) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AppType) {
 		toSerialize["appType"] = o.AppType
+	}
+	if !IsNil(o.BlockedPolicyList) {
+		toSerialize["blockedPolicyList"] = o.BlockedPolicyList
 	}
 	if !IsNil(o.BlockedReasonList) {
 		toSerialize["blockedReasonList"] = o.BlockedReasonList

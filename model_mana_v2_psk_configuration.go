@@ -21,13 +21,15 @@ var _ MappedNullable = &ManaV2PskConfiguration{}
 type ManaV2PskConfiguration struct {
 	// The Connection Authentication Key (CAK)
 	Cak *string `json:"cak,omitempty"`
-	// The cryptographic algorithm for the CAK (required)
+	// The cryptographic algorithm for the CAK, SAK Cipher Suite is implicitly selected based on this field. (required)
 	CakCryptographicAlgorithm *string `json:"cakCryptographicAlgorithm,omitempty"`
 	// The Connection Key Name (CKN) (required)
 	Ckn *string `json:"ckn,omitempty"`
 	// The nickname of the PSK (required)
 	Nickname *string `json:"nickname,omitempty"`
 	StartTime *GoogleProtobufTimestamp `json:"startTime,omitempty"`
+	// Whether to use XPN for the cipher suite. If true, AES_128_GCM_XPN or AES_256_GCM_XPN is selected based on the cmac algorithm. If false, AES_128_GCM or AES_256_GCM is selected based on the cmac algorithm.
+	UseXpnForCipherSuite *bool `json:"useXpnForCipherSuite,omitempty"`
 }
 
 // NewManaV2PskConfiguration instantiates a new ManaV2PskConfiguration object
@@ -207,6 +209,38 @@ func (o *ManaV2PskConfiguration) SetStartTime(v GoogleProtobufTimestamp) {
 	o.StartTime = &v
 }
 
+// GetUseXpnForCipherSuite returns the UseXpnForCipherSuite field value if set, zero value otherwise.
+func (o *ManaV2PskConfiguration) GetUseXpnForCipherSuite() bool {
+	if o == nil || IsNil(o.UseXpnForCipherSuite) {
+		var ret bool
+		return ret
+	}
+	return *o.UseXpnForCipherSuite
+}
+
+// GetUseXpnForCipherSuiteOk returns a tuple with the UseXpnForCipherSuite field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2PskConfiguration) GetUseXpnForCipherSuiteOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseXpnForCipherSuite) {
+		return nil, false
+	}
+	return o.UseXpnForCipherSuite, true
+}
+
+// HasUseXpnForCipherSuite returns a boolean if a field has been set.
+func (o *ManaV2PskConfiguration) HasUseXpnForCipherSuite() bool {
+	if o != nil && !IsNil(o.UseXpnForCipherSuite) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseXpnForCipherSuite gets a reference to the given bool and assigns it to the UseXpnForCipherSuite field.
+func (o *ManaV2PskConfiguration) SetUseXpnForCipherSuite(v bool) {
+	o.UseXpnForCipherSuite = &v
+}
+
 func (o ManaV2PskConfiguration) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -231,6 +265,9 @@ func (o ManaV2PskConfiguration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.StartTime) {
 		toSerialize["startTime"] = o.StartTime
+	}
+	if !IsNil(o.UseXpnForCipherSuite) {
+		toSerialize["useXpnForCipherSuite"] = o.UseXpnForCipherSuite
 	}
 	return toSerialize, nil
 }

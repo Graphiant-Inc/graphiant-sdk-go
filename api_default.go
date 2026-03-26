@@ -13941,11 +13941,18 @@ type ApiV1DevicesDeviceIdCircuitsVrfAssociationsGetRequest struct {
 	ApiService *DefaultAPIService
 	authorization *string
 	deviceId int64
+	circuitNames *[]string
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1DevicesDeviceIdCircuitsVrfAssociationsGetRequest) Authorization(authorization string) ApiV1DevicesDeviceIdCircuitsVrfAssociationsGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// Circuit name configured of wan interface
+func (r ApiV1DevicesDeviceIdCircuitsVrfAssociationsGetRequest) CircuitNames(circuitNames []string) ApiV1DevicesDeviceIdCircuitsVrfAssociationsGetRequest {
+	r.circuitNames = &circuitNames
 	return r
 }
 
@@ -13995,6 +14002,17 @@ func (a *DefaultAPIService) V1DevicesDeviceIdCircuitsVrfAssociationsGetExecute(r
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.circuitNames != nil {
+		t := *r.circuitNames
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "circuitNames", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "circuitNames", t, "form", "multi")
+		}
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -16400,11 +16418,18 @@ type ApiV1DevicesDeviceIdVrfProtocolsGetRequest struct {
 	ApiService *DefaultAPIService
 	authorization *string
 	deviceId int64
+	vrfName *string
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1DevicesDeviceIdVrfProtocolsGetRequest) Authorization(authorization string) ApiV1DevicesDeviceIdVrfProtocolsGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// Valid Configured Vrf Name
+func (r ApiV1DevicesDeviceIdVrfProtocolsGetRequest) VrfName(vrfName string) ApiV1DevicesDeviceIdVrfProtocolsGetRequest {
+	r.vrfName = &vrfName
 	return r
 }
 
@@ -16451,7 +16476,11 @@ func (a *DefaultAPIService) V1DevicesDeviceIdVrfProtocolsGetExecute(r ApiV1Devic
 	if r.authorization == nil {
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
+	if r.vrfName == nil {
+		return localVarReturnValue, nil, reportError("vrfName is required and must be specified")
+	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "vrfName", r.vrfName, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -16526,11 +16555,25 @@ type ApiV1DevicesDeviceIdVrrpGetRequest struct {
 	ApiService *DefaultAPIService
 	authorization *string
 	deviceId int64
+	groupId *int32
+	interfaceName *string
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1DevicesDeviceIdVrrpGetRequest) Authorization(authorization string) ApiV1DevicesDeviceIdVrrpGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// VRRP configured group id
+func (r ApiV1DevicesDeviceIdVrrpGetRequest) GroupId(groupId int32) ApiV1DevicesDeviceIdVrrpGetRequest {
+	r.groupId = &groupId
+	return r
+}
+
+// interface name
+func (r ApiV1DevicesDeviceIdVrrpGetRequest) InterfaceName(interfaceName string) ApiV1DevicesDeviceIdVrrpGetRequest {
+	r.interfaceName = &interfaceName
 	return r
 }
 
@@ -16580,6 +16623,12 @@ func (a *DefaultAPIService) V1DevicesDeviceIdVrrpGetExecute(r ApiV1DevicesDevice
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.groupId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "groupId", r.groupId, "form", "")
+	}
+	if r.interfaceName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "interfaceName", r.interfaceName, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -17298,11 +17347,18 @@ type ApiV1DevicesInventoryGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	authorization *string
+	notAssigned *bool
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1DevicesInventoryGetRequest) Authorization(authorization string) ApiV1DevicesInventoryGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1DevicesInventoryGetRequest) NotAssigned(notAssigned bool) ApiV1DevicesInventoryGetRequest {
+	r.notAssigned = &notAssigned
 	return r
 }
 
@@ -17347,6 +17403,9 @@ func (a *DefaultAPIService) V1DevicesInventoryGetExecute(r ApiV1DevicesInventory
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.notAssigned != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "notAssigned", r.notAssigned, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -21704,14 +21763,16 @@ func (a *DefaultAPIService) V1DiagnosticSpeedtestServersGetExecute(r ApiV1Diagno
 	if *r.deviceId < 0 {
 		return localVarReturnValue, nil, reportError("deviceId must be greater than 0")
 	}
+	if r.provider == nil {
+		return localVarReturnValue, nil, reportError("provider is required and must be specified")
+	}
+	if r.vrfName == nil {
+		return localVarReturnValue, nil, reportError("vrfName is required and must be specified")
+	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
-	if r.provider != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "form", "")
-	}
-	if r.vrfName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "vrfName", r.vrfName, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "vrfName", r.vrfName, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -21920,11 +21981,18 @@ type ApiV1EdgesHardwareAssignedGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	authorization *string
+	enterpriseId *int64
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1EdgesHardwareAssignedGetRequest) Authorization(authorization string) ApiV1EdgesHardwareAssignedGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1EdgesHardwareAssignedGetRequest) EnterpriseId(enterpriseId int64) ApiV1EdgesHardwareAssignedGetRequest {
+	r.enterpriseId = &enterpriseId
 	return r
 }
 
@@ -21969,6 +22037,9 @@ func (a *DefaultAPIService) V1EdgesHardwareAssignedGetExecute(r ApiV1EdgesHardwa
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.enterpriseId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enterpriseId", r.enterpriseId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -22164,11 +22235,32 @@ type ApiV1EdgesSummaryGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	authorization *string
+	enterpriseId *int64
+	isRequested *bool
+	upgradeSummary *bool
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1EdgesSummaryGetRequest) Authorization(authorization string) ApiV1EdgesSummaryGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1EdgesSummaryGetRequest) EnterpriseId(enterpriseId int64) ApiV1EdgesSummaryGetRequest {
+	r.enterpriseId = &enterpriseId
+	return r
+}
+
+// 
+func (r ApiV1EdgesSummaryGetRequest) IsRequested(isRequested bool) ApiV1EdgesSummaryGetRequest {
+	r.isRequested = &isRequested
+	return r
+}
+
+// 
+func (r ApiV1EdgesSummaryGetRequest) UpgradeSummary(upgradeSummary bool) ApiV1EdgesSummaryGetRequest {
+	r.upgradeSummary = &upgradeSummary
 	return r
 }
 
@@ -22213,6 +22305,15 @@ func (a *DefaultAPIService) V1EdgesSummaryGetExecute(r ApiV1EdgesSummaryGetReque
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.enterpriseId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enterpriseId", r.enterpriseId, "form", "")
+	}
+	if r.isRequested != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isRequested", r.isRequested, "form", "")
+	}
+	if r.upgradeSummary != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "upgradeSummary", r.upgradeSummary, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -23720,7 +23821,7 @@ func (r ApiV1EnterprisesManagedGetRequest) Authorization(authorization string) A
 	return r
 }
 
-// 
+// msp or enterprise
 func (r ApiV1EnterprisesManagedGetRequest) Type_(type_ string) ApiV1EnterprisesManagedGetRequest {
 	r.type_ = &type_
 	return r
@@ -26859,11 +26960,18 @@ type ApiV1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetRequest struct 
 	ApiService *DefaultAPIService
 	authorization *string
 	customerId int64
+	serviceId *int64
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetRequest) Authorization(authorization string) ApiV1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetRequest) ServiceId(serviceId int64) ApiV1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetRequest {
+	r.serviceId = &serviceId
 	return r
 }
 
@@ -26913,6 +27021,9 @@ func (a *DefaultAPIService) V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetai
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.serviceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "serviceId", r.serviceId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -27912,11 +28023,18 @@ type ApiV1ExtranetsB2bPeeringMatchServiceToCustomerIdGetRequest struct {
 	ApiService *DefaultAPIService
 	authorization *string
 	id int64
+	customerId *int64
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1ExtranetsB2bPeeringMatchServiceToCustomerIdGetRequest) Authorization(authorization string) ApiV1ExtranetsB2bPeeringMatchServiceToCustomerIdGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// Customer id
+func (r ApiV1ExtranetsB2bPeeringMatchServiceToCustomerIdGetRequest) CustomerId(customerId int64) ApiV1ExtranetsB2bPeeringMatchServiceToCustomerIdGetRequest {
+	r.customerId = &customerId
 	return r
 }
 
@@ -27965,7 +28083,11 @@ func (a *DefaultAPIService) V1ExtranetsB2bPeeringMatchServiceToCustomerIdGetExec
 	if r.authorization == nil {
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
+	if r.customerId == nil {
+		return localVarReturnValue, nil, reportError("customerId is required and must be specified")
+	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "customerId", r.customerId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -29999,7 +30121,7 @@ func (r ApiV1ExtranetsMonitoringLanSegmentsGetRequest) Authorization(authorizati
 	return r
 }
 
-// 
+// Extranet Service Id
 func (r ApiV1ExtranetsMonitoringLanSegmentsGetRequest) Id(id int64) ApiV1ExtranetsMonitoringLanSegmentsGetRequest {
 	r.id = &id
 	return r
@@ -30140,7 +30262,7 @@ func (r ApiV1ExtranetsMonitoringNatUsageGetRequest) Authorization(authorization 
 	return r
 }
 
-// 
+// Extranet Service Id
 func (r ApiV1ExtranetsMonitoringNatUsageGetRequest) Id(id int64) ApiV1ExtranetsMonitoringNatUsageGetRequest {
 	r.id = &id
 	return r
@@ -30186,10 +30308,11 @@ func (a *DefaultAPIService) V1ExtranetsMonitoringNatUsageGetExecute(r ApiV1Extra
 	if r.authorization == nil {
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
-
-	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	if r.id == nil {
+		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -34708,6 +34831,8 @@ type ApiV1GlobalDeviceStatusGetRequest struct {
 	authorization *string
 	ipfixExportedId *int64
 	ntpId *int64
+	prefixSetId *int64
+	routingPolicyId *int64
 	snmpId *int64
 	syslogServerId *int64
 	trafficPolicyId *int64
@@ -34728,6 +34853,18 @@ func (r ApiV1GlobalDeviceStatusGetRequest) IpfixExportedId(ipfixExportedId int64
 // 
 func (r ApiV1GlobalDeviceStatusGetRequest) NtpId(ntpId int64) ApiV1GlobalDeviceStatusGetRequest {
 	r.ntpId = &ntpId
+	return r
+}
+
+// 
+func (r ApiV1GlobalDeviceStatusGetRequest) PrefixSetId(prefixSetId int64) ApiV1GlobalDeviceStatusGetRequest {
+	r.prefixSetId = &prefixSetId
+	return r
+}
+
+// 
+func (r ApiV1GlobalDeviceStatusGetRequest) RoutingPolicyId(routingPolicyId int64) ApiV1GlobalDeviceStatusGetRequest {
+	r.routingPolicyId = &routingPolicyId
 	return r
 }
 
@@ -34797,6 +34934,12 @@ func (a *DefaultAPIService) V1GlobalDeviceStatusGetExecute(r ApiV1GlobalDeviceSt
 	}
 	if r.ntpId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ntpId", r.ntpId, "form", "")
+	}
+	if r.prefixSetId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "prefixSetId", r.prefixSetId, "form", "")
+	}
+	if r.routingPolicyId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "routingPolicyId", r.routingPolicyId, "form", "")
 	}
 	if r.snmpId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "snmpId", r.snmpId, "form", "")
@@ -34880,11 +35023,18 @@ type ApiV1GlobalIpfixDeviceGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	authorization *string
+	deviceId *int64
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1GlobalIpfixDeviceGetRequest) Authorization(authorization string) ApiV1GlobalIpfixDeviceGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1GlobalIpfixDeviceGetRequest) DeviceId(deviceId int64) ApiV1GlobalIpfixDeviceGetRequest {
+	r.deviceId = &deviceId
 	return r
 }
 
@@ -34931,6 +35081,9 @@ func (a *DefaultAPIService) V1GlobalIpfixDeviceGetExecute(r ApiV1GlobalIpfixDevi
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.deviceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -36157,11 +36310,18 @@ type ApiV1GlobalNtpsDeviceGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	authorization *string
+	deviceId *int64
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1GlobalNtpsDeviceGetRequest) Authorization(authorization string) ApiV1GlobalNtpsDeviceGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1GlobalNtpsDeviceGetRequest) DeviceId(deviceId int64) ApiV1GlobalNtpsDeviceGetRequest {
+	r.deviceId = &deviceId
 	return r
 }
 
@@ -36208,6 +36368,9 @@ func (a *DefaultAPIService) V1GlobalNtpsDeviceGetExecute(r ApiV1GlobalNtpsDevice
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.deviceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -36416,11 +36579,18 @@ type ApiV1GlobalNtpsSiteGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	authorization *string
+	siteId *int64
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1GlobalNtpsSiteGetRequest) Authorization(authorization string) ApiV1GlobalNtpsSiteGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1GlobalNtpsSiteGetRequest) SiteId(siteId int64) ApiV1GlobalNtpsSiteGetRequest {
+	r.siteId = &siteId
 	return r
 }
 
@@ -36467,6 +36637,9 @@ func (a *DefaultAPIService) V1GlobalNtpsSiteGetExecute(r ApiV1GlobalNtpsSiteGetR
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.siteId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "siteId", r.siteId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -37583,8 +37756,11 @@ type ApiV1GlobalSiteStatusGetRequest struct {
 	authorization *string
 	ipfixExportedSiteId *int64
 	ntpSiteId *int64
+	prefixSetSiteId *int64
+	routingPolicySiteId *int64
 	snmpSiteId *int64
 	syslogServerSiteId *int64
+	trafficPolicySiteId *int64
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
@@ -37606,6 +37782,18 @@ func (r ApiV1GlobalSiteStatusGetRequest) NtpSiteId(ntpSiteId int64) ApiV1GlobalS
 }
 
 // 
+func (r ApiV1GlobalSiteStatusGetRequest) PrefixSetSiteId(prefixSetSiteId int64) ApiV1GlobalSiteStatusGetRequest {
+	r.prefixSetSiteId = &prefixSetSiteId
+	return r
+}
+
+// 
+func (r ApiV1GlobalSiteStatusGetRequest) RoutingPolicySiteId(routingPolicySiteId int64) ApiV1GlobalSiteStatusGetRequest {
+	r.routingPolicySiteId = &routingPolicySiteId
+	return r
+}
+
+// 
 func (r ApiV1GlobalSiteStatusGetRequest) SnmpSiteId(snmpSiteId int64) ApiV1GlobalSiteStatusGetRequest {
 	r.snmpSiteId = &snmpSiteId
 	return r
@@ -37614,6 +37802,12 @@ func (r ApiV1GlobalSiteStatusGetRequest) SnmpSiteId(snmpSiteId int64) ApiV1Globa
 // 
 func (r ApiV1GlobalSiteStatusGetRequest) SyslogServerSiteId(syslogServerSiteId int64) ApiV1GlobalSiteStatusGetRequest {
 	r.syslogServerSiteId = &syslogServerSiteId
+	return r
+}
+
+// 
+func (r ApiV1GlobalSiteStatusGetRequest) TrafficPolicySiteId(trafficPolicySiteId int64) ApiV1GlobalSiteStatusGetRequest {
+	r.trafficPolicySiteId = &trafficPolicySiteId
 	return r
 }
 
@@ -37666,11 +37860,20 @@ func (a *DefaultAPIService) V1GlobalSiteStatusGetExecute(r ApiV1GlobalSiteStatus
 	if r.ntpSiteId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ntpSiteId", r.ntpSiteId, "form", "")
 	}
+	if r.prefixSetSiteId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "prefixSetSiteId", r.prefixSetSiteId, "form", "")
+	}
+	if r.routingPolicySiteId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "routingPolicySiteId", r.routingPolicySiteId, "form", "")
+	}
 	if r.snmpSiteId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "snmpSiteId", r.snmpSiteId, "form", "")
 	}
 	if r.syslogServerSiteId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "syslogServerSiteId", r.syslogServerSiteId, "form", "")
+	}
+	if r.trafficPolicySiteId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "trafficPolicySiteId", r.trafficPolicySiteId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -37745,11 +37948,18 @@ type ApiV1GlobalSnmpsDeviceGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	authorization *string
+	deviceId *int64
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1GlobalSnmpsDeviceGetRequest) Authorization(authorization string) ApiV1GlobalSnmpsDeviceGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1GlobalSnmpsDeviceGetRequest) DeviceId(deviceId int64) ApiV1GlobalSnmpsDeviceGetRequest {
+	r.deviceId = &deviceId
 	return r
 }
 
@@ -37796,6 +38006,9 @@ func (a *DefaultAPIService) V1GlobalSnmpsDeviceGetExecute(r ApiV1GlobalSnmpsDevi
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.deviceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -38408,11 +38621,18 @@ type ApiV1GlobalSyslogsDeviceGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	authorization *string
+	deviceId *int64
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1GlobalSyslogsDeviceGetRequest) Authorization(authorization string) ApiV1GlobalSyslogsDeviceGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1GlobalSyslogsDeviceGetRequest) DeviceId(deviceId int64) ApiV1GlobalSyslogsDeviceGetRequest {
+	r.deviceId = &deviceId
 	return r
 }
 
@@ -38459,6 +38679,9 @@ func (a *DefaultAPIService) V1GlobalSyslogsDeviceGetExecute(r ApiV1GlobalSyslogs
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.deviceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -44656,11 +44879,25 @@ type ApiV1SoftwareReleasesDownloadGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	authorization *string
+	imageExt *string
+	version *string
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1SoftwareReleasesDownloadGetRequest) Authorization(authorization string) ApiV1SoftwareReleasesDownloadGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// GNOS Image type (qcow2 or ova)
+func (r ApiV1SoftwareReleasesDownloadGetRequest) ImageExt(imageExt string) ApiV1SoftwareReleasesDownloadGetRequest {
+	r.imageExt = &imageExt
+	return r
+}
+
+// GNOS Image version
+func (r ApiV1SoftwareReleasesDownloadGetRequest) Version(version string) ApiV1SoftwareReleasesDownloadGetRequest {
+	r.version = &version
 	return r
 }
 
@@ -44704,7 +44941,15 @@ func (a *DefaultAPIService) V1SoftwareReleasesDownloadGetExecute(r ApiV1Software
 	if r.authorization == nil {
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
+	if r.imageExt == nil {
+		return localVarReturnValue, nil, reportError("imageExt is required and must be specified")
+	}
+	if r.version == nil {
+		return localVarReturnValue, nil, reportError("version is required and must be specified")
+	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "imageExt", r.imageExt, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "version", r.version, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -46961,7 +47206,7 @@ V1UsersIdEnterprisesGet Method for V1UsersIdEnterprisesGet
 Get all enterprises a specific user can access.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id 
+ @param id userId
  @return ApiV1UsersIdEnterprisesGetRequest
 */
 func (a *DefaultAPIService) V1UsersIdEnterprisesGet(ctx context.Context, id string) ApiV1UsersIdEnterprisesGetRequest {
@@ -47089,7 +47334,7 @@ V1UsersIdGroupsEnterprisesGet Method for V1UsersIdGroupsEnterprisesGet
 Get enterprise-specific groups for a user.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id 
+ @param id userId
  @return ApiV1UsersIdGroupsEnterprisesGetRequest
 */
 func (a *DefaultAPIService) V1UsersIdGroupsEnterprisesGet(ctx context.Context, id string) ApiV1UsersIdGroupsEnterprisesGetRequest {
@@ -47217,7 +47462,7 @@ V1UsersIdGroupsGet Method for V1UsersIdGroupsGet
 Get all groups that a specific user belongs to.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id 
+ @param id userId
  @return ApiV1UsersIdGroupsGetRequest
 */
 func (a *DefaultAPIService) V1UsersIdGroupsGet(ctx context.Context, id string) ApiV1UsersIdGroupsGetRequest {
@@ -47345,7 +47590,7 @@ V1UsersIdGroupsRootGet Method for V1UsersIdGroupsRootGet
 Get root-level groups for a user.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id 
+ @param id userId
  @return ApiV1UsersIdGroupsRootGetRequest
 */
 func (a *DefaultAPIService) V1UsersIdGroupsRootGet(ctx context.Context, id string) ApiV1UsersIdGroupsRootGetRequest {

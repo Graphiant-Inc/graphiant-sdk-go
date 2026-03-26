@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CipherSuite** | Pointer to **string** | The cipher suite (required) | [optional] 
+**CipherSuite** | Pointer to **string** |  | [optional] 
 **LagMemberInterfaceId** | Pointer to **int64** | The interface ID (required for when each lag member has a different MACsec configuration - when split_sak_config_by_lag_member is true) (required) | [optional] 
-**RekeyInterval** | Pointer to **int64** | The rekey interval in seconds. 0 means disabled | [optional] 
-**ReplayProtectionWindowSize** | Pointer to **int64** | The replay protection window size in seconds. 0 means disabled | [optional] 
+**NullableRekeyInterval** | Pointer to [**ManaV2NullableMaCsecRekeyInterval**](ManaV2NullableMaCsecRekeyInterval.md) |  | [optional] 
+**NullableReplayProtectionWindowSize** | Pointer to [**ManaV2NullableMaCsecReplayProtectionWindowSize**](ManaV2NullableMaCsecReplayProtectionWindowSize.md) |  | [optional] 
+**RekeyInterval** | Pointer to **int64** |  | [optional] 
+**ReplayProtectionWindowSize** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -77,6 +79,56 @@ SetLagMemberInterfaceId sets LagMemberInterfaceId field to given value.
 `func (o *ManaV2SakConfiguration) HasLagMemberInterfaceId() bool`
 
 HasLagMemberInterfaceId returns a boolean if a field has been set.
+
+### GetNullableRekeyInterval
+
+`func (o *ManaV2SakConfiguration) GetNullableRekeyInterval() ManaV2NullableMaCsecRekeyInterval`
+
+GetNullableRekeyInterval returns the NullableRekeyInterval field if non-nil, zero value otherwise.
+
+### GetNullableRekeyIntervalOk
+
+`func (o *ManaV2SakConfiguration) GetNullableRekeyIntervalOk() (*ManaV2NullableMaCsecRekeyInterval, bool)`
+
+GetNullableRekeyIntervalOk returns a tuple with the NullableRekeyInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNullableRekeyInterval
+
+`func (o *ManaV2SakConfiguration) SetNullableRekeyInterval(v ManaV2NullableMaCsecRekeyInterval)`
+
+SetNullableRekeyInterval sets NullableRekeyInterval field to given value.
+
+### HasNullableRekeyInterval
+
+`func (o *ManaV2SakConfiguration) HasNullableRekeyInterval() bool`
+
+HasNullableRekeyInterval returns a boolean if a field has been set.
+
+### GetNullableReplayProtectionWindowSize
+
+`func (o *ManaV2SakConfiguration) GetNullableReplayProtectionWindowSize() ManaV2NullableMaCsecReplayProtectionWindowSize`
+
+GetNullableReplayProtectionWindowSize returns the NullableReplayProtectionWindowSize field if non-nil, zero value otherwise.
+
+### GetNullableReplayProtectionWindowSizeOk
+
+`func (o *ManaV2SakConfiguration) GetNullableReplayProtectionWindowSizeOk() (*ManaV2NullableMaCsecReplayProtectionWindowSize, bool)`
+
+GetNullableReplayProtectionWindowSizeOk returns a tuple with the NullableReplayProtectionWindowSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNullableReplayProtectionWindowSize
+
+`func (o *ManaV2SakConfiguration) SetNullableReplayProtectionWindowSize(v ManaV2NullableMaCsecReplayProtectionWindowSize)`
+
+SetNullableReplayProtectionWindowSize sets NullableReplayProtectionWindowSize field to given value.
+
+### HasNullableReplayProtectionWindowSize
+
+`func (o *ManaV2SakConfiguration) HasNullableReplayProtectionWindowSize() bool`
+
+HasNullableReplayProtectionWindowSize returns a boolean if a field has been set.
 
 ### GetRekeyInterval
 

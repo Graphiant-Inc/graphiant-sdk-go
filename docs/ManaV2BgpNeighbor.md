@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **BfdNeighbor** | Pointer to [**ManaV2BfdNeighbor**](ManaV2BfdNeighbor.md) |  | [optional] 
 **BgpType** | Pointer to **string** |  | [optional] 
 **DefaultOriginate** | Pointer to **string** | Set when default route needs to be advertised in BGP domain | [optional] 
+**DynamicNeighborPeers** | Pointer to [**[]ManaV2BgpDynamicNeighborOperPeer**](ManaV2BgpDynamicNeighborOperPeer.md) |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **HoldTimer** | Pointer to **int32** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
@@ -221,6 +222,31 @@ SetDefaultOriginate sets DefaultOriginate field to given value.
 `func (o *ManaV2BgpNeighbor) HasDefaultOriginate() bool`
 
 HasDefaultOriginate returns a boolean if a field has been set.
+
+### GetDynamicNeighborPeers
+
+`func (o *ManaV2BgpNeighbor) GetDynamicNeighborPeers() []ManaV2BgpDynamicNeighborOperPeer`
+
+GetDynamicNeighborPeers returns the DynamicNeighborPeers field if non-nil, zero value otherwise.
+
+### GetDynamicNeighborPeersOk
+
+`func (o *ManaV2BgpNeighbor) GetDynamicNeighborPeersOk() (*[]ManaV2BgpDynamicNeighborOperPeer, bool)`
+
+GetDynamicNeighborPeersOk returns a tuple with the DynamicNeighborPeers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDynamicNeighborPeers
+
+`func (o *ManaV2BgpNeighbor) SetDynamicNeighborPeers(v []ManaV2BgpDynamicNeighborOperPeer)`
+
+SetDynamicNeighborPeers sets DynamicNeighborPeers field to given value.
+
+### HasDynamicNeighborPeers
+
+`func (o *ManaV2BgpNeighbor) HasDynamicNeighborPeers() bool`
+
+HasDynamicNeighborPeers returns a boolean if a field has been set.
 
 ### GetEnabled
 

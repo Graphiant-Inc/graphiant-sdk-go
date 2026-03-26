@@ -20,6 +20,8 @@ var _ MappedNullable = &SearchEdgeSummary{}
 // SearchEdgeSummary struct for SearchEdgeSummary
 type SearchEdgeSummary struct {
 	AssignedOn *GoogleProtobufTimestamp `json:"assignedOn,omitempty"`
+	CanaryMode *string `json:"canaryMode,omitempty"`
+	ConnectedRegions []string `json:"connectedRegions,omitempty"`
 	DeviceId *int64 `json:"deviceId,omitempty"`
 	DiscoveredLocation *string `json:"discoveredLocation,omitempty"`
 	EnterpriseId *int64 `json:"enterpriseId,omitempty"`
@@ -96,6 +98,70 @@ func (o *SearchEdgeSummary) HasAssignedOn() bool {
 // SetAssignedOn gets a reference to the given GoogleProtobufTimestamp and assigns it to the AssignedOn field.
 func (o *SearchEdgeSummary) SetAssignedOn(v GoogleProtobufTimestamp) {
 	o.AssignedOn = &v
+}
+
+// GetCanaryMode returns the CanaryMode field value if set, zero value otherwise.
+func (o *SearchEdgeSummary) GetCanaryMode() string {
+	if o == nil || IsNil(o.CanaryMode) {
+		var ret string
+		return ret
+	}
+	return *o.CanaryMode
+}
+
+// GetCanaryModeOk returns a tuple with the CanaryMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchEdgeSummary) GetCanaryModeOk() (*string, bool) {
+	if o == nil || IsNil(o.CanaryMode) {
+		return nil, false
+	}
+	return o.CanaryMode, true
+}
+
+// HasCanaryMode returns a boolean if a field has been set.
+func (o *SearchEdgeSummary) HasCanaryMode() bool {
+	if o != nil && !IsNil(o.CanaryMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetCanaryMode gets a reference to the given string and assigns it to the CanaryMode field.
+func (o *SearchEdgeSummary) SetCanaryMode(v string) {
+	o.CanaryMode = &v
+}
+
+// GetConnectedRegions returns the ConnectedRegions field value if set, zero value otherwise.
+func (o *SearchEdgeSummary) GetConnectedRegions() []string {
+	if o == nil || IsNil(o.ConnectedRegions) {
+		var ret []string
+		return ret
+	}
+	return o.ConnectedRegions
+}
+
+// GetConnectedRegionsOk returns a tuple with the ConnectedRegions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchEdgeSummary) GetConnectedRegionsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ConnectedRegions) {
+		return nil, false
+	}
+	return o.ConnectedRegions, true
+}
+
+// HasConnectedRegions returns a boolean if a field has been set.
+func (o *SearchEdgeSummary) HasConnectedRegions() bool {
+	if o != nil && !IsNil(o.ConnectedRegions) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedRegions gets a reference to the given []string and assigns it to the ConnectedRegions field.
+func (o *SearchEdgeSummary) SetConnectedRegions(v []string) {
+	o.ConnectedRegions = v
 }
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
@@ -974,6 +1040,12 @@ func (o SearchEdgeSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AssignedOn) {
 		toSerialize["assignedOn"] = o.AssignedOn
+	}
+	if !IsNil(o.CanaryMode) {
+		toSerialize["canaryMode"] = o.CanaryMode
+	}
+	if !IsNil(o.ConnectedRegions) {
+		toSerialize["connectedRegions"] = o.ConnectedRegions
 	}
 	if !IsNil(o.DeviceId) {
 		toSerialize["deviceId"] = o.DeviceId
