@@ -7,41 +7,57 @@
 [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://docs.graphiant.com/docs/graphiant-sdk-go)
 [![CI/CD](https://github.com/Graphiant-Inc/graphiant-sdk-go/actions/workflows/test.yml/badge.svg)](https://github.com/Graphiant-Inc/graphiant-sdk-go/actions)
 
-A comprehensive Go SDK for [Graphiant Network-as-a-Service (NaaS)](https://www.graphiant.com) offerings, providing seamless integration with Graphiant's network automation platform.
+A Go client for [Graphiant Network-as-a-Service (NaaS)](https://www.graphiant.com), generated from the Graphiant OpenAPI specification.
 
-Refer [Graphiant Docs](https://docs.graphiant.com) to get started with [Graphiant Network-as-a-Service (NaaS)](https://www.graphiant.com) offerings.
+More product context: [Graphiant Docs](https://docs.graphiant.com).
 
-## 📚 Documentation
+## Table of contents
 
-- **Official Documentation**: [Graphiant SDK Go Guide](https://docs.graphiant.com/docs/graphiant-sdk-go) <-> [Graphiant Automation Docs](https://docs.graphiant.com/docs/automation)
-- **API Reference**: [Graphiant SDK Go API Docs](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/DefaultAPI.md) <-> [Graphiant Portal REST API Guide](https://docs.graphiant.com/docs/graphiant-portal-rest-api)
-- **Package**: [Go Package - graphiant-sdk-go](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go)
-- **Changelog**: [CHANGELOG.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/CHANGELOG.md) - Complete version history and release notes
+| Section | Contents |
+|--------|----------|
+| [Documentation & links](#documentation--links) | Official guides, API reference, pkg.go.dev |
+| [Features](#features) | What the SDK provides |
+| [Quick start](#quick-start) | Install and minimal example |
+| [Advanced usage](#advanced-usage) | Patterns and error handling |
+| [Convenient wrapper functions](#convenient-wrapper-functions) | `api_custom.go` helpers |
+| [Development](#development) | Build, test, code generation |
+| [API reference (overview)](#api-reference) | Core types and common endpoints |
+| [Security](#security) | Auth and environment variables |
+| [Contributing](#contributing) | PR workflow |
+| [License](#license) | MIT |
+| [Version history](#version-history) | Changelog |
+| [Support](#support) | Links and contact |
+| [Related projects](#related-projects) | Other SDKs |
 
-## ✨ Features
+## Documentation & links
 
-- **Complete API Coverage**: Full access to all Graphiant REST API endpoints
-- **Type Safety**: Generated from OpenAPI specification for complete type safety
-- **Authentication**: Built-in bearer token authentication
-- **Device Management**: Comprehensive device configuration and monitoring
-- **Network Operations**: Circuit management, BGP configuration, and routing
-- **Monitoring**: Real-time network monitoring and metrics collection
-- **Error Handling**: Robust error handling with detailed error messages
-- **Extranet Management**: Extranet service configuration and monitoring
-- **Integration Ready**: Third-party integration capabilities
-- **Convenient Wrappers**: High-level wrapper functions for device config update operations
+| Resource | Link |
+|----------|------|
+| **SDK guide** | [Graphiant SDK Go](https://docs.graphiant.com/docs/graphiant-sdk-go) |
+| **Automation** | [Graphiant Automation](https://docs.graphiant.com/docs/automation) |
+| **REST API** | [Graphiant Portal REST API](https://docs.graphiant.com/docs/graphiant-portal-rest-api) |
+| **Method index (repo)** | [DefaultAPI.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/DefaultAPI.md) |
+| **Package** | [pkg.go.dev](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go) |
+| **Changelog** | [CHANGELOG.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/CHANGELOG.md) |
 
-## 🚀 Quick Start
+## Features
 
-### Installation
+- **Full REST coverage** — Generated client for Graphiant API endpoints.
+- **Typed models** — OpenAPI-generated structs and accessors.
+- **Bearer auth** — Username/password login or a token you supply.
+- **Helpers** — Optional wrappers in `api_custom.go` (e.g. device config polling).
 
-Install the SDK using Go modules:
+## Quick start
+
+### 1. Install
 
 ```bash
 go get github.com/Graphiant-Inc/graphiant-sdk-go
 ```
 
-### Basic Usage
+### 2. Basic usage
+
+The default API base URL is `https://api.graphiant.com`. Use that host (not the portal URL) for `Configuration.Host`.
 
 ```go
 package main
@@ -51,15 +67,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/Graphiant-Inc/graphiant-sdk-go"
 )
 
 func main() {
-	// Create configuration
 	config := graphiant_sdk.NewConfiguration()
-	config.Host = "https://portal.graphiant.com" // or your custom host
+	config.Host = "https://api.graphiant.com" // or your tenant API host
 	
 	// Create API client
 	client := graphiant_sdk.NewAPIClient(config)
@@ -361,71 +375,6 @@ func configureDeviceWhenReady(deviceID int64, config graphiant_sdk.V1DevicesDevi
 ### Available Wrapper Functions
 | `PollAndPutDeviceConfig(apiClient, token, deviceID, config)` | Poll device status and execute config when ready |
 
-## 🔄 Migration Guide: Upgrading from 25.10.2 to 25.11.1+
-
-The 25.11.1+ API is optimized to reuse redundant schemas. You may need to update your existing scripts to use the newer API names.
-
-### Benefits of Upgrading
-
-The new API specification (25.11.1+) brings significant improvements:
-
-- **Reduced Specification Size**: The API specification file size has been reduced from **9.8M to 1.5M** (~85% reduction) through schema optimization and reuse
-- **Enhanced Documentation**: The new spec includes more comprehensive documentation for better developer experience
-- **Cleaner API Names**: Response APIs no longer include HTTP status codes, making imports and type references more intuitive
-- **Reusable Schemas**: Child APIs now use reusable schema names, meaning **common schemas share the same inner API names across different endpoints**. This reduces code duplication, improves maintainability, and allows you to reuse the same imports and type references for similar data structures
-
-### Important Changes
-
-#### 1. Remove Status Code from API Names
-
-Response API names no longer include HTTP status codes. Update your imports and type references:
-
-**Common patterns to update:**
-- `Post200Response` → `PostResponse`
-- `Get200Response` → `GetResponse`
-- `Put202Response` → `PutResponse`
-- `Put204Response` → `PutResponse`
-- `Post201Response` → `PostResponse`
-
-> **Note**: The vast majority of response APIs have been updated. A few exceptions may remain (e.g., `V1AuthRefreshGet200Response`), but these are rare edge cases. When in doubt, check the current API file ([api_default.go](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/api_default.go)) or the model documentation.
-
-#### 2. Find and Rename Inner Property API Names
-
-Inner APIs have been renamed to use reusable schema names. **Because schemas are now reused, common schemas will share the same inner API names across different endpoints.** This means you can reuse the same import and type references for similar data structures.
-
-To find the new API name:
-
-1. **Step 1**: Find the top-level API name by removing the status code (if it exists) and trimming to `Response`:
-   - `V1GlobalSummaryPost200Response` → `V1GlobalSummaryPostResponse`
-
-2. **Step 2**: Check the documentation for the inner property's new API name:
-   - Open [docs/V1GlobalSummaryPostResponse.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/V1GlobalSummaryPostResponse.md)
-   - Find the property (e.g., `summaries`)
-   - Note the new API name (e.g., `ManaV2GlobalObjectSummary`)
-
-**Key Benefit**: If multiple endpoints use the same schema structure, they will now share the same inner API name. For example, if both `V1GlobalSummaryPostResponse` and `V1EdgesSummaryGetResponse` use the same summary schema, they will both use `ManaV2GlobalObjectSummary` as the inner API type.
-
-#### 3. Finding Endpoint Request/Response Models
-
-To find all endpoints and their request/response models:
-
-- **API Reference**: See [api_default.go](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/api_default.go) or [docs/DefaultAPI.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/DefaultAPI.md)
-- **Model Documentation**: Check individual model files in the [docs/](https://github.com/Graphiant-Inc/graphiant-sdk-go/tree/main/docs) directory (e.g., [docs/V1GlobalSummaryPostResponse.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/V1GlobalSummaryPostResponse.md))
-
-### Migration Checklist
-
-- [ ] Search and replace all `200Response`, `202Response`, `201Response`, `204Response` patterns
-- [ ] Update imports for response APIs
-- [ ] Find and update inner API references (check documentation files)
-- [ ] Test all API calls with new API names
-- [ ] Update type hints and annotations
-
-### Need Help?
-
-- Check the [API Reference](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/DefaultAPI.md) for endpoint details
-- Review model documentation in the [docs/](https://github.com/Graphiant-Inc/graphiant-sdk-go/tree/main/docs) directory
-- See [Support](#-support) section for additional resources
-
 ## 🛠️ Development
 
 ### Prerequisites
@@ -637,7 +586,6 @@ For a complete list of changes, new features, and version history, see [CHANGELO
 
 The changelog follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format and includes:
 - All releases from v25.6.1 (initial release) to the latest version
-- Detailed migration guides for major version updates
 - Breaking changes and deprecations
 - Bug fixes and security updates
 
