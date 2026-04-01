@@ -4,9 +4,9 @@
 
 We actively support the following versions with security updates:
 
-| Version | Supported          | Notes                    |
-| ------- | ------------------ | ------------------------ |
-| 26.3.x  | :white_check_mark: | Current stable release   |
+| Version | Supported          | Notes                                    |
+| ------- | ------------------ | ---------------------------------------- |
+| 26.3.x  | :white_check_mark: | Current stable release (latest: **26.3.2**) |
 | 26.2.x  | :white_check_mark: | Previous release         |
 | 26.1.x  | :white_check_mark: | Older supported release  |
 | 25.12.x | :white_check_mark: | Legacy release           |

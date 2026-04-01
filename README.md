@@ -428,10 +428,10 @@ openapi-generator generate \
   --git-user-id Graphiant-Inc \
   --git-repo-id graphiant-sdk-go \
   --package-name graphiant_sdk \
-  --additional-properties=packageVersion=26.3.1
+  --additional-properties=packageVersion=26.3.2
 ```
 
-> **Note**: Latest API documentation can be downloaded from the Graphiant portal under "Support Hub" > "Developer Tools".
+> **Note:** Download the latest API bundle from the Graphiant portal under **Support Hub** → **Developer Tools**. Set **`packageVersion`** to the SDK release you are publishing (this branch: **26.3.2**). The **`-i`** filename reflects the API doc bundle version (here `graphiant_api_docs_v26.3.1.json`) and may stay the same across patch releases when the spec is unchanged.
 
 ### Testing
 
