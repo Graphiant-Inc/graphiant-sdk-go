@@ -4,6 +4,14 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.3.2] - 2026-03-27
+
+### Changed
+- **Version:** SDK **v26.3.2** (same OpenAPI bundle filename as 26.3.1: `graphiant_api_docs_v26.3.1.json`; no API spec change for this patch).
+
+### Documentation
+- README: clarified **`packageVersion`** vs **`-i`** spec filename for regeneration; **SECURITY.md** supported-versions note for current patch.
+
 ## [26.3.1] - 2026-03-26
 
 ### Added
@@ -312,6 +320,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 | Version | Release Date | Key Features |
 |---------|--------------|--------------|
+| 26.3.2 | 2026-03-27 | Patch release v26.3.2; docs; same API bundle as 26.3.1 |
 | 26.3.1 | 2026-03-26 | API v26.3.1 support, regenerated SDK/tests |
 | 26.2.1 | 2026-02-26 | API v26.2.1 support, regenerated SDK/tests |
 | 26.1.1 | 2026-02-01 | API v26.1.1 support |
