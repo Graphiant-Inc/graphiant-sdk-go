@@ -31,8 +31,7 @@ func GetDeviceStatus(apiClient *APIClient, token string, deviceId int64) bool {
 
 func PutDeviceConfig(apiClient *APIClient, token string, deviceId int64, deviceConfig V1DevicesDeviceIdConfigPutRequest) *http.Response {
 
-	configJSON, _ := json.MarshalIndent(deviceConfig, "", "  ")
-	fmt.Printf("Executing config put request for device %d...\nConfig: %s\n", deviceId, string(configJSON))
+	fmt.Printf("Executing config put request for device %d...\n", deviceId)
 
 	_, httpRes, err := apiClient.DefaultAPI.
 		V1DevicesDeviceIdConfigPut(context.Background(), deviceId).
@@ -41,15 +40,17 @@ func PutDeviceConfig(apiClient *APIClient, token string, deviceId int64, deviceC
 
 	if err != nil {
 		if httpRes != nil {
-			body, _ := io.ReadAll(httpRes.Body)
-			fmt.Printf("Error executing config put request: %v\nHTTP Status: %d\nResponse Body: %s\n", err, httpRes.StatusCode, string(body))
+			// Drain and discard response body to avoid logging potentially sensitive data.
+			_, _ = io.ReadAll(httpRes.Body)
+			fmt.Printf("Error executing config put request for device %d: %v (HTTP Status: %d)\n", deviceId, err, httpRes.StatusCode)
 		} else {
-			fmt.Printf("Error executing config put request: %v\n", err)
+			fmt.Printf("Error executing config put request for device %d: %v\n", deviceId, err)
 		}
 		return nil
 	}
-	body, _ := io.ReadAll(httpRes.Body)
-	fmt.Printf("Config put response: %s, http status: %v\n", string(body), httpRes.StatusCode)
+	// Read and discard response body without logging its potentially sensitive contents.
+	_, _ = io.ReadAll(httpRes.Body)
+	fmt.Printf("Config put request for device %d completed successfully with HTTP status: %v\n", deviceId, httpRes.StatusCode)
 	return httpRes
 
 }
