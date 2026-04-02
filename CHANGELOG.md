@@ -6,11 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [26.3.2] - 2026-03-27
 
+### Added
+- **`GRAPHIANT_ACCESS_TOKEN`** support aligned with **graphiant-sdk-python**: `AccessTokenFromEnv`, `AuthorizationBearerFromEnv`, `ConfigureHostFromEnv`, **`AuthorizationBearerFromEnvOrLogin`** / **`LoginBearerFromEnvCredentials`** (fallback to **`GRAPHIANT_USERNAME`** / **`GRAPHIANT_PASSWORD`** when token unset) in **`auth_env.go`** (optional **`GRAPHIANT_API_HOST`** / **`GRAPHIANT_HOST`** for API base URL).
+
 ### Changed
 - **Version:** SDK **v26.3.2** (same OpenAPI bundle filename as 26.3.1: `graphiant_api_docs_v26.3.1.json`; no API spec change for this patch).
 
 ### Documentation
-- README: clarified **`packageVersion`** vs **`-i`** spec filename for regeneration; **SECURITY.md** supported-versions note for current patch.
+- README: **`GRAPHIANT_ACCESS_TOKEN`** quick start and environment-variable table; clarified **`packageVersion`** vs **`-i`** spec filename for regeneration; **SECURITY.md** supported-versions note for current patch.
 
 ## [26.3.1] - 2026-03-26
 

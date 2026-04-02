@@ -1,4 +1,6 @@
 # OpenAPI Generator Ignore
+auth_env.go
+auth_env_test.go
 LICENSE
 README.md
 .gitignore

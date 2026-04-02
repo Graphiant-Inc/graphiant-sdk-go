@@ -17,7 +17,7 @@ More product context: [Graphiant Docs](https://docs.graphiant.com).
 |--------|----------|
 | [Documentation & links](#documentation--links) | Official guides, API reference, pkg.go.dev |
 | [Features](#features) | What the SDK provides |
-| [Quick start](#quick-start) | Install and minimal example |
+| [Quick start](#quick-start) | Install, password login, and **`GRAPHIANT_ACCESS_TOKEN`** |
 | [Advanced usage](#advanced-usage) | Patterns and error handling |
 | [Convenient wrapper functions](#convenient-wrapper-functions) | `api_custom.go` helpers |
 | [Development](#development) | Build, test, code generation |
@@ -45,6 +45,7 @@ More product context: [Graphiant Docs](https://docs.graphiant.com).
 - **Full REST coverage** — Generated client for Graphiant API endpoints.
 - **Typed models** — OpenAPI-generated structs and accessors.
 - **Bearer auth** — Username/password login or a token you supply.
+- **Environment variables** — Same **`GRAPHIANT_ACCESS_TOKEN`** / **`GRAPHIANT_USERNAME`** + **`GRAPHIANT_PASSWORD`** as [graphiant-sdk-python](https://github.com/Graphiant-Inc/graphiant-sdk-python): prefer token from env, else **`POST /v1/auth/login`** via **`AuthorizationBearerFromEnvOrLogin`** (also **`AuthorizationBearerFromEnv`**, **`AccessTokenFromEnv`**, **`ConfigureHostFromEnv`**) in `auth_env.go`.
 - **Helpers** — Optional wrappers in `api_custom.go` (e.g. device config polling).
 
 ## Quick start
@@ -130,6 +131,58 @@ func main() {
 	}
 }
 ```
+
+### 3. Token or username/password (same pattern as Python SDK)
+
+1. If **`GRAPHIANT_ACCESS_TOKEN`** is set (e.g. after **`graphiant login`** and **`source ~/.graphiant/env.sh`**), that raw JWT is used—no login call.
+2. If the token is **not** set, **`AuthorizationBearerFromEnvOrLogin`** uses **`GRAPHIANT_USERNAME`** and **`GRAPHIANT_PASSWORD`** with **`POST /v1/auth/login`**.
+
+Optionally set **`GRAPHIANT_API_HOST`** (or **`GRAPHIANT_HOST`**) and call **`ConfigureHostFromEnv(config)`** after **`NewConfiguration()`**.
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	cfg := graphiant_sdk.NewConfiguration()
+	graphiant_sdk.ConfigureHostFromEnv(cfg)
+	client := graphiant_sdk.NewAPIClient(cfg)
+
+	authz, err := graphiant_sdk.AuthorizationBearerFromEnvOrLogin(context.Background(), client)
+	if err != nil {
+		log.Fatalf("auth: %v", err)
+	}
+
+	resp, _, err := client.DefaultAPI.
+		V1EdgesSummaryGet(context.Background()).
+		Authorization(authz).
+		Execute()
+	if err != nil {
+		log.Fatalf("request failed: %v", err)
+	}
+	edges := resp.GetEdgesSummary()
+	fmt.Fprintf(os.Stdout, "devices: %d\n", len(edges))
+}
+```
+
+```bash
+# Option A — bearer only (same as Python)
+export GRAPHIANT_ACCESS_TOKEN="your_jwt"
+
+# Option B — password login when token is unset
+export GRAPHIANT_USERNAME="your_username"
+export GRAPHIANT_PASSWORD="your_password"
+```
+
+Do **not** set a second bearer via context API keys when using `Authorization(...)` on the request, or some gateways may reject duplicate `Authorization` headers.
 
 ## 🔧 Advanced Usage
 
@@ -534,16 +587,30 @@ graphiant-sdk-go/
 
 ### Environment Variables
 
+| Variable | Purpose |
+|----------|---------|
+| **`GRAPHIANT_ACCESS_TOKEN`** | Raw bearer JWT (same as Python SDK). Use with **`AuthorizationBearerFromEnv()`** for API calls. Typical source: `graphiant login` then `source ~/.graphiant/env.sh`. |
+| **`GRAPHIANT_API_HOST`** | API base URL (e.g. `https://api.graphiant.com`). Preferred name; use with **`ConfigureHostFromEnv`**. |
+| **`GRAPHIANT_HOST`** | Alternative API base URL for tools/tests; used if **`GRAPHIANT_API_HOST`** is empty. May include a `gcs:` prefix (stripped by **`ConfigureHostFromEnv`**). |
+| **`GRAPHIANT_USERNAME`** / **`GRAPHIANT_PASSWORD`** | Used when **`GRAPHIANT_ACCESS_TOKEN`** is unset: **`AuthorizationBearerFromEnvOrLogin`** calls **`POST /v1/auth/login`**. Also used by integration tests. |
+
 ```bash
-export GRAPHIANT_HOST="https://portal.graphiant.com"
+# Bearer-only automation (aligned with graphiant-sdk-python)
+export GRAPHIANT_ACCESS_TOKEN="your_jwt"
+export GRAPHIANT_API_HOST="https://api.graphiant.com"   # optional
+
+# Password / test flows
 export GRAPHIANT_USERNAME="your_username"
 export GRAPHIANT_PASSWORD="your_password"
+export GRAPHIANT_HOST="https://api.graphiant.com"      # optional; see table above
 ```
 
 ```go
+token := graphiant_sdk.AccessTokenFromEnv()
+authHeader := graphiant_sdk.AuthorizationBearerFromEnv()
+// Or: authHeader, err := graphiant_sdk.AuthorizationBearerFromEnvOrLogin(ctx, client)
 username := os.Getenv("GRAPHIANT_USERNAME")
 password := os.Getenv("GRAPHIANT_PASSWORD")
-host := os.Getenv("GRAPHIANT_HOST")
 ```
 
 **Note**: For detailed security policies, vulnerability reporting, and security best practices, see [SECURITY.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/SECURITY.md).
