@@ -244,14 +244,59 @@ func parameterToJson(obj interface{}) (string, error) {
 	return string(jsonBuf), err
 }
 
+// debugLogRequest logs basic request information without logging the body.
+func debugLogRequest(req *http.Request) {
+	if req == nil {
+		return
+	}
+	var b strings.Builder
+	// Request line
+	fmt.Fprintf(&b, "%s %s %s\n", req.Method, req.URL.String(), req.Proto)
+	// Headers (with basic redaction for sensitive ones)
+	for name, values := range req.Header {
+		lowerName := strings.ToLower(name)
+		if lowerName == "authorization" || lowerName == "proxy-authorization" {
+			fmt.Fprintf(&b, "%s: %s\n", name, "***REDACTED***")
+			continue
+		}
+		for _, v := range values {
+			fmt.Fprintf(&b, "%s: %s\n", name, v)
+		}
+	}
+	log.Printf("\n%s\n", b.String())
+}
+
+// debugLogResponse logs basic response information without logging the body.
+func debugLogResponse(resp *http.Response) {
+	if resp == nil {
+		return
+	}
+	var b strings.Builder
+	// Status line
+	urlStr := ""
+	if resp.Request != nil && resp.Request.URL != nil {
+		urlStr = resp.Request.URL.String()
+	}
+	fmt.Fprintf(&b, "%s %s\n", resp.Status, urlStr)
+	// Headers (with basic redaction for sensitive ones)
+	for name, values := range resp.Header {
+		lowerName := strings.ToLower(name)
+		if lowerName == "set-cookie" {
+			// Cookies may contain sensitive data; redact entire header.
+			fmt.Fprintf(&b, "%s: %s\n", name, "***REDACTED***")
+			continue
+		}
+		for _, v := range values {
+			fmt.Fprintf(&b, "%s: %s\n", name, v)
+		}
+	}
+	log.Printf("\n%s\n", b.String())
+}
+
 // callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	if c.cfg.Debug {
-		dump, err := httputil.DumpRequestOut(request, true)
-		if err != nil {
-			return nil, err
-		}
-		log.Printf("\n%s\n", string(dump))
+		debugLogRequest(request)
 	}
 
 	resp, err := c.cfg.HTTPClient.Do(request)
@@ -260,11 +305,7 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	}
 
 	if c.cfg.Debug {
-		dump, err := httputil.DumpResponse(resp, true)
-		if err != nil {
-			return resp, err
-		}
-		log.Printf("\n%s\n", string(dump))
+		debugLogResponse(resp)
 	}
 	return resp, err
 }
