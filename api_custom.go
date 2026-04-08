@@ -41,9 +41,9 @@ func PutDeviceConfig(apiClient *APIClient, token string, deviceId int64, deviceC
 		if httpRes != nil {
 			// Drain and discard response body to avoid logging potentially sensitive data.
 			_, _ = io.ReadAll(httpRes.Body)
-			fmt.Printf("Error executing config put request for device %d: %v (HTTP Status: %d)\n", deviceId, err, httpRes.StatusCode)
+			fmt.Printf("Error executing config put request for device %d (HTTP Status: %d). Error details omitted from log.\n", deviceId, httpRes.StatusCode)
 		} else {
-			fmt.Printf("Error executing config put request for device %d: %v\n", deviceId, err)
+			fmt.Printf("Error executing config put request for device %d. Error details omitted from log.\n", deviceId)
 		}
 		return nil
 	}
