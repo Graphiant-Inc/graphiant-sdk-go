@@ -1765,6 +1765,64 @@ paths:
           description: OK
       security:
       - jwtAuth: []
+  /v1/ztagent/bindings:
+    get:
+      description: Return the ZTAgent integration binding for an enterprise.
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: enterpriseId
+        required: false
+        schema:
+          example: 1234567891011
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ZtagentBindingsGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+    put:
+      description: Create or replace the ZTAgent integration binding for an enterprise
+        (site and customer identifiers).
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1ZtagentBindingsPutRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ZtagentBindingsPutResponse"
+          description: OK
+      security:
+      - jwtAuth: []
   /v1/devices/{deviceId}/jobs/{jobId}:
     get:
       description: Get device job status
@@ -5041,6 +5099,53 @@ paths:
           description: OK
       security:
       - jwtAuth: []
+  /v1/global/content-filters:
+    get:
+      description: Get basic details for all content filter under the current enterprise
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1GlobalContentFiltersGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+    post:
+      description: Configure a new content filter under the current enterprise
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1GlobalContentFiltersPostRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1GlobalContentFiltersPostResponse"
+          description: OK
+      security:
+      - jwtAuth: []
   /v1/global/lan-segments:
     get:
       description: Get a list of lan-segments under the currently logged in enterprise
@@ -6003,6 +6108,105 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1GlobalAppsCustomAppIdPutResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/global/content-filters/{globalContentFilterId}:
+    delete:
+      description: Delete a content filter under the current enterprise
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ID of the global content filter to remove.
+        explode: false
+        in: path
+        name: globalContentFilterId
+        required: true
+        schema:
+          example: 1234567891011
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1GlobalContentFiltersGlobalContentFilterIdDeleteResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+    get:
+      description: Get the config for a content filter under the current enterprise
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ID of the global content filter whose configuration should be
+          returned.
+        explode: false
+        in: path
+        name: globalContentFilterId
+        required: true
+        schema:
+          example: 1234567891011
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1GlobalContentFiltersGlobalContentFilterIdGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+    put:
+      description: Overwrite a pre-existing content filter under the current enterprise
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ID of the global content filter to replace with the supplied
+          configuration.
+        explode: false
+        in: path
+        name: globalContentFilterId
+        required: true
+        schema:
+          example: 1234567891011
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1GlobalContentFiltersGlobalContentFilterIdPutRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1GlobalContentFiltersGlobalContentFilterIdPutResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -7411,6 +7615,27 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1DevicesSummaryGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/global/domain-categories:
+    get:
+      description: Get all domain categories from the DPI engine
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1GlobalDomainCategoriesGetResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -12823,6 +13048,37 @@ paths:
           description: OK
       security:
       - jwtAuth: []
+  /v2/monitoring/macsec/{deviceId}/status:
+    get:
+      description: Returns the MACsec status for all interfaces on a device
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: deviceId
+        required: true
+        schema:
+          example: 1234567891011
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v2MonitoringMacsecDeviceIdStatusGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
   /v2/monitoring/policy:
     post:
       parameters:
@@ -13333,6 +13589,142 @@ paths:
           description: No Content
       security:
       - jwtAuth: []
+  /v1/software/rollouts:
+    get:
+      description: Returns all the configured upgrade rollouts
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SoftwareRolloutsGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+    post:
+      description: Create upgrade rollout and returns rollout identifier
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1SoftwareRolloutsPostRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SoftwareRolloutsPostResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+    put:
+      description: Modify update rollout
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1SoftwareRolloutsPutRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SoftwareRolloutsPutResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/software/rollouts/{id}:
+    delete:
+      description: Delete given upgrade rollout
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Rollout identifier to delete.
+        example: 42
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 1234567891011
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SoftwareRolloutsIdDeleteResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+    get:
+      description: Returns details about given upgrade rollout
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Rollout identifier to fetch.
+        example: 42
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 1234567891011
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SoftwareRolloutsIdGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
   /v1/software/auto-upgrade/default:
     get:
       parameters:
@@ -13506,6 +13898,33 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1SoftwareRunningSummaryGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/software/rollouts/schedule:
+    post:
+      description: "Schedule rollout to upgrade now, later or user-triggered"
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1SoftwareRolloutsSchedulePostRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SoftwareRolloutsSchedulePostResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -14268,6 +14687,9 @@ components:
             pagerdutyList:
             - example string
             - example string
+            webhookUrlList:
+            - example string
+            - example string
             messageBody: example string
             opsgenieList:
             - example string
@@ -14294,6 +14716,9 @@ components:
           notificationBody:
             duration: ENUM_VALUE
             pagerdutyList:
+            - example string
+            - example string
+            webhookUrlList:
             - example string
             - example string
             messageBody: example string
@@ -14331,6 +14756,9 @@ components:
         notificationBody:
           duration: ENUM_VALUE
           pagerdutyList:
+          - example string
+          - example string
+          webhookUrlList:
           - example string
           - example string
           messageBody: example string
@@ -14391,6 +14819,9 @@ components:
       example:
         duration: ENUM_VALUE
         pagerdutyList:
+        - example string
+        - example string
+        webhookUrlList:
         - example string
         - example string
         messageBody: example string
@@ -14464,6 +14895,12 @@ components:
         teamsList:
           items:
             description: List of teams recipients
+            example: example string
+            type: string
+          type: array
+        webhookUrlList:
+          items:
+            description: List of webhook_url recipients
             example: example string
             type: string
           type: array
@@ -17443,14 +17880,12 @@ components:
             type: string
           type: array
         pdfContent:
-          example: !!binary |-
-            WW5sMFpYTT0=
+          example: Ynl0ZXM=
           format: byte
           type: string
         rawContent:
           items:
-            example: !!binary |-
-              WW5sMFpYTT0=
+            example: Ynl0ZXM=
             format: byte
             type: string
           type: array
@@ -17562,12 +17997,10 @@ components:
     v2AssuranceDownloadUserReportGetResponse:
       additionalProperties: false
       example:
-        pdfContent: !!binary |-
-          WW5sMFpYTT0=
+        pdfContent: Ynl0ZXM=
       properties:
         pdfContent:
-          example: !!binary |-
-            WW5sMFpYTT0=
+          example: Ynl0ZXM=
           format: byte
           type: string
       type: object
@@ -17784,8 +18217,10 @@ components:
         regions:
         - regionId: 123
           regionName: example string
+          regionIsoCode: example string
         - regionId: 123
           regionName: example string
+          regionIsoCode: example string
         serverSites:
         - regionId: 123
           siteId: 1234567891011
@@ -17850,11 +18285,15 @@ components:
       example:
         regionId: 123
         regionName: example string
+        regionIsoCode: example string
       properties:
         regionId:
           example: 123
           format: int32
           type: integer
+        regionIsoCode:
+          example: example string
+          type: string
         regionName:
           example: example string
           type: string
@@ -17964,10 +18403,12 @@ components:
           region:
             regionId: 123
             regionName: example string
+            regionIsoCode: example string
         - numSites: 123
           region:
             regionId: 123
             regionName: example string
+            regionIsoCode: example string
         numFlows: 123
         numApplications: 123
       properties:
@@ -18153,6 +18594,7 @@ components:
         region:
           regionId: 123
           regionName: example string
+          regionIsoCode: example string
       properties:
         numSites:
           example: 123
@@ -18290,6 +18732,7 @@ components:
       example:
         summaries:
         - sessionCount: 123
+          clientUsername: example string
           appServerKey: example string
           clientIp: example string
           serverSiteName: example string
@@ -18299,6 +18742,7 @@ components:
           serverIp: example string
           serverPort: 123
         - sessionCount: 123
+          clientUsername: example string
           appServerKey: example string
           clientIp: example string
           serverSiteName: example string
@@ -18317,6 +18761,7 @@ components:
       additionalProperties: false
       example:
         sessionCount: 123
+        clientUsername: example string
         appServerKey: example string
         clientIp: example string
         serverSiteName: example string
@@ -18330,6 +18775,9 @@ components:
           example: example string
           type: string
         clientIp:
+          example: example string
+          type: string
+        clientUsername:
           example: example string
           type: string
         lanSegments:
@@ -18467,6 +18915,7 @@ components:
             circuits:
             - example string
             - example string
+          clientUsername: example string
           serverFlexAlgos:
           - example string
           - example string
@@ -18584,6 +19033,7 @@ components:
             circuits:
             - example string
             - example string
+          clientUsername: example string
           serverFlexAlgos:
           - example string
           - example string
@@ -18710,6 +19160,7 @@ components:
           circuits:
           - example string
           - example string
+        clientUsername: example string
         serverFlexAlgos:
         - example string
         - example string
@@ -18763,6 +19214,9 @@ components:
           items:
             $ref: "#/components/schemas/assuranceClientSessionEndpointLink"
           type: array
+        clientUsername:
+          example: example string
+          type: string
         firstSeenTs:
           $ref: "#/components/schemas/googleProtobufTimestamp"
         lanSegment:
@@ -19068,6 +19522,7 @@ components:
             circuits:
             - example string
             - example string
+          clientUsername: example string
           serverFlexAlgos:
           - example string
           - example string
@@ -20281,6 +20736,42 @@ components:
           example: example string
           type: string
       type: object
+    v1ZtagentBindingsPutRequest:
+      additionalProperties: false
+      properties:
+        customerId:
+          example: example string
+          type: string
+        enterpriseId:
+          example: 1234567891011
+          format: int64
+          type: integer
+        siteId:
+          example: example string
+          type: string
+      type: object
+    v1ZtagentBindingsPutResponse:
+      additionalProperties: false
+      properties: {}
+      type: object
+    v1ZtagentBindingsGetResponse:
+      additionalProperties: false
+      example:
+        customerId: example string
+        siteId: example string
+        enterpriseId: 1234567891011
+      properties:
+        customerId:
+          example: example string
+          type: string
+        enterpriseId:
+          example: 1234567891011
+          format: int64
+          type: integer
+        siteId:
+          example: example string
+          type: string
+      type: object
     v1DevicesDeviceIdJobsJobIdGetResponse:
       additionalProperties: false
       example:
@@ -21194,29 +21685,11 @@ components:
       additionalProperties: false
       example:
         reportId: 10
-        report: !!binary |-
-          WzM3LDgwLDY4LDcwLDQ1LDQ5LDQ2LDUyLDEwLDM3LDIxMSwyMzUsMjMzLDIyNSwxMCw0OSwzMiw0
-          OCwzMiwxMTEsOTgsMTA2LDEwLDYwLDYwLDQ3LDY3LDExNCwxMDEsOTcsMTE2LDExMSwxMTQsMzIs
-          NDAsNjcsMTA0LDExNCwxMTEsMTA5LDEwNSwxMTcsMTA5LDQxLDEwLDQ3LDgwLDExNCwxMTEsMTAw
-          LDExNyw5OSwxMDEsMTE0LDMyLDQwLDgzLDEwNywxMDUsOTcsNDcsODAsNjgsNzAsMzIsMTA5LDU3
-          LDU2LDQxLDEwLDQ3LDY3LDExNCwxMDEsOTcsMTE2LDEwNSwxMTEsMTEwLDY4LDk3LDExNiwxMDEs
-          MzIsNDAsNjgsNTgsNTAsNDgsNTAsNTAsNDgsNTQsNDgsNTcsNDgsNTQsNTIsNDksNTAsNTUsNDMs
-          NDgsNDgsMzksNDgsNDgsMzksNDEsMTAsNDcsNzcsMTExLDEwMCw2OCw5NywxMTYsMTAxLDMyLDQw
-          LDY4LDU4LDUwLDQ4LDUwLDUwLDQ4LDU0LDQ4LDU3LDQ4LDU0LDUyLDQ5LDUwLDU1LDQzLDQ4LDQ4
-          LDM5LDQ4LDQ4XQ==
+        report: "[37,80,68,70,45,49,46,52,10,37,211,235,233,225,10,49,32,48,32,111,98,106,10,60,60,47,67,114,101,97,116,111,114,32,40,67,104,114,111,109,105,117,109,41,10,47,80,114,111,100,117,99,101,114,32,40,83,107,105,97,47,80,68,70,32,109,57,56,41,10,47,67,114,101,97,116,105,111,110,68,97,116,101,32,40,68,58,50,48,50,50,48,54,48,57,48,54,52,49,50,55,43,48,48,39,48,48,39,41,10,47,77,111,100,68,97,116,101,32,40,68,58,50,48,50,50,48,54,48,57,48,54,52,49,50,55,43,48,48,39,48,48]"
       properties:
         report:
           description: The generated report
-          example: !!binary |-
-            WzM3LDgwLDY4LDcwLDQ1LDQ5LDQ2LDUyLDEwLDM3LDIxMSwyMzUsMjMzLDIyNSwxMCw0OSwzMiw0
-            OCwzMiwxMTEsOTgsMTA2LDEwLDYwLDYwLDQ3LDY3LDExNCwxMDEsOTcsMTE2LDExMSwxMTQsMzIs
-            NDAsNjcsMTA0LDExNCwxMTEsMTA5LDEwNSwxMTcsMTA5LDQxLDEwLDQ3LDgwLDExNCwxMTEsMTAw
-            LDExNyw5OSwxMDEsMTE0LDMyLDQwLDgzLDEwNywxMDUsOTcsNDcsODAsNjgsNzAsMzIsMTA5LDU3
-            LDU2LDQxLDEwLDQ3LDY3LDExNCwxMDEsOTcsMTE2LDEwNSwxMTEsMTEwLDY4LDk3LDExNiwxMDEs
-            MzIsNDAsNjgsNTgsNTAsNDgsNTAsNTAsNDgsNTQsNDgsNTcsNDgsNTQsNTIsNDksNTAsNTUsNDMs
-            NDgsNDgsMzksNDgsNDgsMzksNDEsMTAsNDcsNzcsMTExLDEwMCw2OCw5NywxMTYsMTAxLDMyLDQw
-            LDY4LDU4LDUwLDQ4LDUwLDUwLDQ4LDU0LDQ4LDU3LDQ4LDU0LDUyLDQ5LDUwLDU1LDQzLDQ4LDQ4
-            LDM5LDQ4LDQ4XQ==
+          example: "[37,80,68,70,45,49,46,52,10,37,211,235,233,225,10,49,32,48,32,111,98,106,10,60,60,47,67,114,101,97,116,111,114,32,40,67,104,114,111,109,105,117,109,41,10,47,80,114,111,100,117,99,101,114,32,40,83,107,105,97,47,80,68,70,32,109,57,56,41,10,47,67,114,101,97,116,105,111,110,68,97,116,101,32,40,68,58,50,48,50,50,48,54,48,57,48,54,52,49,50,55,43,48,48,39,48,48,39,41,10,47,77,111,100,68,97,116,101,32,40,68,58,50,48,50,50,48,54,48,57,48,54,52,49,50,55,43,48,48,39,48,48]"
           format: byte
           type: string
         reportId:
@@ -29176,8 +29649,12 @@ components:
             status: ENUM_VALUE
           regionOverride:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           platform: example string
           segments:
           - ospfv2Process:
@@ -34383,8 +34860,12 @@ components:
           maintenanceMode: true
           region:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           softwareVersion: example string
           status: ENUM_VALUE
         - operStaled: true
@@ -34613,8 +35094,12 @@ components:
             status: ENUM_VALUE
           regionOverride:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           platform: example string
           segments:
           - ospfv2Process:
@@ -39820,8 +40305,12 @@ components:
           maintenanceMode: true
           region:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           softwareVersion: example string
           status: ENUM_VALUE
         pageInfo:
@@ -40069,8 +40558,12 @@ components:
           status: ENUM_VALUE
         regionOverride:
           unavailable: true
+          coordinates:
+            latitude: 123.45
+            longitude: 123.45
           name: example string
           id: 123
+          regionIsoCode: example string
         platform: example string
         segments:
         - ospfv2Process:
@@ -45276,8 +45769,12 @@ components:
         maintenanceMode: true
         region:
           unavailable: true
+          coordinates:
+            latitude: 123.45
+            longitude: 123.45
           name: example string
           id: 123
+          regionIsoCode: example string
         softwareVersion: example string
         status: ENUM_VALUE
       properties:
@@ -49004,9 +49501,15 @@ components:
       additionalProperties: false
       example:
         unavailable: true
+        coordinates:
+          latitude: 123.45
+          longitude: 123.45
         name: example string
         id: 123
+        regionIsoCode: example string
       properties:
+        coordinates:
+          $ref: "#/components/schemas/manaV2RegionCoordinates"
         id:
           example: 123
           format: int32
@@ -49014,9 +49517,27 @@ components:
         name:
           example: example string
           type: string
+        regionIsoCode:
+          example: example string
+          type: string
         unavailable:
           example: true
           type: boolean
+      type: object
+    manaV2RegionCoordinates:
+      additionalProperties: false
+      example:
+        latitude: 123.45
+        longitude: 123.45
+      properties:
+        latitude:
+          example: 123.45
+          format: double
+          type: number
+        longitude:
+          example: 123.45
+          format: double
+          type: number
       type: object
     manaV2RoutingPolicy:
       additionalProperties: false
@@ -53820,13 +54341,21 @@ components:
             isVirtual: true
             overrideRegion:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             platformName: example string
             region:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             status: ENUM_VALUE
           - role: ENUM_VALUE
             name: example string
@@ -53834,13 +54363,21 @@ components:
             isVirtual: true
             overrideRegion:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             platformName: example string
             region:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             status: ENUM_VALUE
           siteId: 1234567891011
           siteName: example string
@@ -53851,13 +54388,21 @@ components:
             isVirtual: true
             overrideRegion:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             platformName: example string
             region:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             status: ENUM_VALUE
           - role: ENUM_VALUE
             name: example string
@@ -53865,13 +54410,21 @@ components:
             isVirtual: true
             overrideRegion:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             platformName: example string
             region:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             status: ENUM_VALUE
           siteId: 1234567891011
           siteName: example string
@@ -53891,13 +54444,21 @@ components:
           isVirtual: true
           overrideRegion:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           platformName: example string
           region:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           status: ENUM_VALUE
         - role: ENUM_VALUE
           name: example string
@@ -53905,13 +54466,21 @@ components:
           isVirtual: true
           overrideRegion:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           platformName: example string
           region:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           status: ENUM_VALUE
         siteId: 1234567891011
         siteName: example string
@@ -53937,13 +54506,21 @@ components:
         isVirtual: true
         overrideRegion:
           unavailable: true
+          coordinates:
+            latitude: 123.45
+            longitude: 123.45
           name: example string
           id: 123
+          regionIsoCode: example string
         platformName: example string
         region:
           unavailable: true
+          coordinates:
+            latitude: 123.45
+            longitude: 123.45
           name: example string
           id: 123
+          regionIsoCode: example string
         status: ENUM_VALUE
       properties:
         id:
@@ -54200,8 +54777,12 @@ components:
             status: ENUM_VALUE
           regionOverride:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           platform: example string
           segments:
           - ospfv2Process:
@@ -59407,8 +59988,12 @@ components:
           maintenanceMode: true
           region:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           softwareVersion: example string
           status: ENUM_VALUE
       properties:
@@ -63542,8 +64127,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -68749,8 +69338,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             - operStaled: true
@@ -68979,8 +69572,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -74186,8 +74783,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             prefixSet:
@@ -74527,8 +75128,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -79734,8 +80339,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             - operStaled: true
@@ -79964,8 +80573,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -85171,8 +85784,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             prefixSet:
@@ -88617,8 +89234,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -93824,8 +94445,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             - operStaled: true
@@ -94054,8 +94679,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -99261,8 +99890,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             prefixSet:
@@ -99602,8 +100235,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -104809,8 +105446,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             - operStaled: true
@@ -105039,8 +105680,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -110246,8 +110891,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             prefixSet:
@@ -113703,8 +114352,12 @@ components:
               status: ENUM_VALUE
             regionOverride:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             platform: example string
             segments:
             - ospfv2Process:
@@ -118910,8 +119563,12 @@ components:
             maintenanceMode: true
             region:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             softwareVersion: example string
             status: ENUM_VALUE
           - operStaled: true
@@ -119140,8 +119797,12 @@ components:
               status: ENUM_VALUE
             regionOverride:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             platform: example string
             segments:
             - ospfv2Process:
@@ -124347,8 +125008,12 @@ components:
             maintenanceMode: true
             region:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             softwareVersion: example string
             status: ENUM_VALUE
           prefixSet:
@@ -124688,8 +125353,12 @@ components:
               status: ENUM_VALUE
             regionOverride:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             platform: example string
             segments:
             - ospfv2Process:
@@ -129895,8 +130564,12 @@ components:
             maintenanceMode: true
             region:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             softwareVersion: example string
             status: ENUM_VALUE
           - operStaled: true
@@ -130125,8 +130798,12 @@ components:
               status: ENUM_VALUE
             regionOverride:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             platform: example string
             segments:
             - ospfv2Process:
@@ -135332,8 +136009,12 @@ components:
             maintenanceMode: true
             region:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             softwareVersion: example string
             status: ENUM_VALUE
           prefixSet:
@@ -138831,8 +139512,12 @@ components:
             status: ENUM_VALUE
           regionOverride:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           platform: example string
           segments:
           - ospfv2Process:
@@ -144038,8 +144723,12 @@ components:
           maintenanceMode: true
           region:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           softwareVersion: example string
           status: ENUM_VALUE
         - operStaled: true
@@ -144268,8 +144957,12 @@ components:
             status: ENUM_VALUE
           regionOverride:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           platform: example string
           segments:
           - ospfv2Process:
@@ -149475,8 +150168,12 @@ components:
           maintenanceMode: true
           region:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           softwareVersion: example string
           status: ENUM_VALUE
         prefixSet:
@@ -149916,8 +150613,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -155123,8 +155824,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             - operStaled: true
@@ -155353,8 +156058,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -160560,8 +161269,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             prefixSet:
@@ -160901,8 +161614,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -166108,8 +166825,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             - operStaled: true
@@ -166338,8 +167059,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -171545,8 +172270,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             prefixSet:
@@ -175144,8 +175873,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -180351,8 +181084,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             - operStaled: true
@@ -180581,8 +181318,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -185788,8 +186529,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             prefixSet:
@@ -186129,8 +186874,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -191336,8 +192085,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             - operStaled: true
@@ -191566,8 +192319,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -196773,8 +197530,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             prefixSet:
@@ -200233,8 +200994,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -205440,8 +206205,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             - operStaled: true
@@ -205670,8 +206439,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -210877,8 +211650,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             prefixSet:
@@ -211218,8 +211995,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -216425,8 +217206,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             - operStaled: true
@@ -216655,8 +217440,12 @@ components:
                 status: ENUM_VALUE
               regionOverride:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               platform: example string
               segments:
               - ospfv2Process:
@@ -221862,8 +222651,12 @@ components:
               maintenanceMode: true
               region:
                 unavailable: true
+                coordinates:
+                  latitude: 123.45
+                  longitude: 123.45
                 name: example string
                 id: 123
+                regionIsoCode: example string
               softwareVersion: example string
               status: ENUM_VALUE
             prefixSet:
@@ -227392,8 +228185,12 @@ components:
             status: ENUM_VALUE
           regionOverride:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           platform: example string
           segments:
           - ospfv2Process:
@@ -232599,8 +233396,12 @@ components:
           maintenanceMode: true
           region:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           softwareVersion: example string
           status: ENUM_VALUE
         - operStaled: true
@@ -232829,8 +233630,12 @@ components:
             status: ENUM_VALUE
           regionOverride:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           platform: example string
           segments:
           - ospfv2Process:
@@ -238036,8 +238841,12 @@ components:
           maintenanceMode: true
           region:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           softwareVersion: example string
           status: ENUM_VALUE
       properties:
@@ -259827,11 +260636,19 @@ components:
       example:
         regions:
         - unavailable: true
+          coordinates:
+            latitude: 123.45
+            longitude: 123.45
           name: example string
           id: 123
+          regionIsoCode: example string
         - unavailable: true
+          coordinates:
+            latitude: 123.45
+            longitude: 123.45
           name: example string
           id: 123
+          regionIsoCode: example string
       properties:
         regions:
           items:
@@ -262416,8 +263233,12 @@ components:
               status: ENUM_VALUE
             regionOverride:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             platform: example string
             segments:
             - ospfv2Process:
@@ -267623,8 +268444,12 @@ components:
             maintenanceMode: true
             region:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             softwareVersion: example string
             status: ENUM_VALUE
       properties:
@@ -267865,8 +268690,12 @@ components:
             status: ENUM_VALUE
           regionOverride:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           platform: example string
           segments:
           - ospfv2Process:
@@ -273072,8 +273901,12 @@ components:
           maintenanceMode: true
           region:
             unavailable: true
+            coordinates:
+              latitude: 123.45
+              longitude: 123.45
             name: example string
             id: 123
+            regionIsoCode: example string
           softwareVersion: example string
           status: ENUM_VALUE
       properties:
@@ -273340,8 +274173,12 @@ components:
               status: ENUM_VALUE
             regionOverride:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             platform: example string
             segments:
             - ospfv2Process:
@@ -278547,8 +279384,12 @@ components:
             maintenanceMode: true
             region:
               unavailable: true
+              coordinates:
+                latitude: 123.45
+                longitude: 123.45
               name: example string
               id: 123
+              regionIsoCode: example string
             softwareVersion: example string
             status: ENUM_VALUE
       properties:
@@ -278753,11 +279594,19 @@ components:
       example:
         regions:
         - unavailable: true
+          coordinates:
+            latitude: 123.45
+            longitude: 123.45
           name: example string
           id: 123
+          regionIsoCode: example string
         - unavailable: true
+          coordinates:
+            latitude: 123.45
+            longitude: 123.45
           name: example string
           id: 123
+          regionIsoCode: example string
       properties:
         regions:
           items:
@@ -284908,6 +285757,327 @@ components:
             $ref: "#/components/schemas/manaV2DeviceSnapshot"
           type: array
       type: object
+    v1GlobalDomainCategoriesGetResponse:
+      additionalProperties: false
+      example:
+        domainCategories:
+        - name: example string
+          description: example string
+          id: 1234567891011
+          type: example string
+        - name: example string
+          description: example string
+          id: 1234567891011
+          type: example string
+      properties:
+        domainCategories:
+          items:
+            $ref: "#/components/schemas/manaV2DomainCategory"
+          type: array
+      type: object
+    manaV2DomainCategory:
+      additionalProperties: false
+      example:
+        name: example string
+        description: example string
+        id: 1234567891011
+        type: example string
+      properties:
+        description:
+          description: Optional longer text describing what sites or traffic belong
+            in this category.
+          example: example string
+          type: string
+        id:
+          description: Stable identifier for this domain category in the content-filter
+            catalog.
+          example: 1234567891011
+          format: int64
+          type: integer
+        name:
+          description: Human-readable name of the domain category.
+          example: example string
+          type: string
+        type:
+          description: Optional category classifier or grouping hint from the catalog
+            (e.g. vendor-specific type).
+          example: example string
+          type: string
+      type: object
+    v1GlobalContentFiltersGetResponse:
+      additionalProperties: false
+      example:
+        rows:
+        - createdAt:
+            seconds: 1234567891011
+            nanos: 123
+          globalContentFilterId: 1234567891011
+          lans:
+          - lanName: example string
+          - lanName: example string
+          globalContentFilterName: example string
+          rules:
+          - domainCategory: example string
+            exceptionWildcards:
+            - example string
+            - example string
+          - domainCategory: example string
+            exceptionWildcards:
+            - example string
+            - example string
+          sites:
+          - siteName: example string
+          - siteName: example string
+          updatedAt:
+            seconds: 1234567891011
+            nanos: 123
+        - createdAt:
+            seconds: 1234567891011
+            nanos: 123
+          globalContentFilterId: 1234567891011
+          lans:
+          - lanName: example string
+          - lanName: example string
+          globalContentFilterName: example string
+          rules:
+          - domainCategory: example string
+            exceptionWildcards:
+            - example string
+            - example string
+          - domainCategory: example string
+            exceptionWildcards:
+            - example string
+            - example string
+          sites:
+          - siteName: example string
+          - siteName: example string
+          updatedAt:
+            seconds: 1234567891011
+            nanos: 123
+      properties:
+        rows:
+          items:
+            $ref: "#/components/schemas/v1GlobalContentFiltersGetResponseRow"
+          type: array
+      type: object
+    v1GlobalContentFiltersGetResponseRow:
+      additionalProperties: false
+      example:
+        createdAt:
+          seconds: 1234567891011
+          nanos: 123
+        globalContentFilterId: 1234567891011
+        lans:
+        - lanName: example string
+        - lanName: example string
+        globalContentFilterName: example string
+        rules:
+        - domainCategory: example string
+          exceptionWildcards:
+          - example string
+          - example string
+        - domainCategory: example string
+          exceptionWildcards:
+          - example string
+          - example string
+        sites:
+        - siteName: example string
+        - siteName: example string
+        updatedAt:
+          seconds: 1234567891011
+          nanos: 123
+      properties:
+        createdAt:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+        globalContentFilterId:
+          description: ID for the global content filter.
+          example: 1234567891011
+          format: int64
+          type: integer
+        globalContentFilterName:
+          description: Given name of this global content filter.
+          example: example string
+          type: string
+        lans:
+          items:
+            $ref: "#/components/schemas/v1GlobalContentFiltersGetResponseRowLanEntry"
+          type: array
+        rules:
+          items:
+            $ref: "#/components/schemas/v1GlobalContentFiltersGetResponseRowRuleEntry"
+          type: array
+        sites:
+          items:
+            $ref: "#/components/schemas/v1GlobalContentFiltersGetResponseRowSiteEntry"
+          type: array
+        updatedAt:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+      type: object
+    v1GlobalContentFiltersGetResponseRowLanEntry:
+      additionalProperties: false
+      example:
+        lanName: example string
+      properties:
+        lanName:
+          description: Name of a LAN segment that the filter is applied on.
+          example: example string
+          type: string
+      type: object
+    v1GlobalContentFiltersGetResponseRowRuleEntry:
+      additionalProperties: false
+      example:
+        domainCategory: example string
+        exceptionWildcards:
+        - example string
+        - example string
+      properties:
+        domainCategory:
+          description: Name of the domain category whose traffic is blocked by this
+            rule.
+          example: example string
+          type: string
+        exceptionWildcards:
+          items:
+            description: Wildcard patterns for domains that remain allowed despite
+              the category block.
+            example: example string
+            type: string
+          type: array
+      type: object
+    v1GlobalContentFiltersGetResponseRowSiteEntry:
+      additionalProperties: false
+      example:
+        siteName: example string
+      properties:
+        siteName:
+          description: Display name of a site included in this filter's global or
+            site-list-bounded scope.
+          example: example string
+          type: string
+      type: object
+    v1GlobalContentFiltersPostRequest:
+      additionalProperties: false
+      properties:
+        config:
+          $ref: "#/components/schemas/manaV2GlobalContentFilterConfig"
+      type: object
+    manaV2GlobalContentFilterConfig:
+      additionalProperties: false
+      example:
+        lanNames:
+        - example string
+        - example string
+        name: example string
+        rules:
+        - domainCategoryId: 1234567891011
+          exceptionWildcards:
+          - example string
+          - example string
+        - domainCategoryId: 1234567891011
+          exceptionWildcards:
+          - example string
+          - example string
+        siteListId: 1234567891011
+        useAllSites: true
+      properties:
+        lanNames:
+          items:
+            description: "LAN interface names to scope the filter; when empty, all\
+              \ LANs are included."
+            example: example string
+            type: string
+          type: array
+        name:
+          description: Display name for this global content filter configuration.
+          example: example string
+          type: string
+        rules:
+          items:
+            $ref: "#/components/schemas/manaV2GlobalContentFilterRule"
+          type: array
+        siteListId:
+          description: Site list whose members this content filter applies to; omit
+            the oneof when no site scope is set.
+          example: 1234567891011
+          format: int64
+          type: integer
+        useAllSites:
+          description: "When true, the filter applies to all sites in the tenant (must\
+            \ be the constant true)."
+          example: true
+          type: boolean
+      type: object
+    manaV2GlobalContentFilterRule:
+      additionalProperties: false
+      example:
+        domainCategoryId: 1234567891011
+        exceptionWildcards:
+        - example string
+        - example string
+      properties:
+        domainCategoryId:
+          description: ID of the category whose traffic will be blocked by the content
+            filter.
+          example: 1234567891011
+          format: int64
+          type: integer
+        exceptionWildcards:
+          items:
+            description: List of wildcard strings each representing a selection of
+              domains that are exceptions that will not be blocked even if it is in
+              the provided category
+            example: example string
+            type: string
+          type: array
+      type: object
+    v1GlobalContentFiltersPostResponse:
+      additionalProperties: false
+      example:
+        globalContentFilterId: 1234567891011
+      properties:
+        globalContentFilterId:
+          description: Server-assigned ID for the newly created global content filter.
+          example: 1234567891011
+          format: int64
+          type: integer
+      type: object
+    v1GlobalContentFiltersGlobalContentFilterIdPutRequest:
+      additionalProperties: false
+      properties:
+        config:
+          $ref: "#/components/schemas/manaV2GlobalContentFilterConfig"
+      type: object
+    v1GlobalContentFiltersGlobalContentFilterIdPutResponse:
+      additionalProperties: false
+      properties: {}
+      type: object
+    v1GlobalContentFiltersGlobalContentFilterIdDeleteResponse:
+      additionalProperties: false
+      properties: {}
+      type: object
+    v1GlobalContentFiltersGlobalContentFilterIdGetResponse:
+      additionalProperties: false
+      example:
+        config:
+          lanNames:
+          - example string
+          - example string
+          name: example string
+          rules:
+          - domainCategoryId: 1234567891011
+            exceptionWildcards:
+            - example string
+            - example string
+          - domainCategoryId: 1234567891011
+            exceptionWildcards:
+            - example string
+            - example string
+          siteListId: 1234567891011
+          useAllSites: true
+      properties:
+        config:
+          $ref: "#/components/schemas/manaV2GlobalContentFilterConfig"
+      type: object
     v1GlobalAppsGraphiantGetResponse:
       additionalProperties: false
       example:
@@ -288704,6 +289874,7 @@ components:
             lastUpgradeTs:
               seconds: 1234567891011
               nanos: 123
+            rolloutName: example string
             runningVersion:
               release: ENUM_VALUE
               name: example string
@@ -288712,6 +289883,7 @@ components:
               release: ENUM_VALUE
               name: example string
               version: example string
+            rolloutId: 1234567891011
             deviceId: 1234567891011
             lastDiscoveredTs:
               seconds: 1234567891011
@@ -288787,6 +289959,7 @@ components:
             lastUpgradeTs:
               seconds: 1234567891011
               nanos: 123
+            rolloutName: example string
             runningVersion:
               release: ENUM_VALUE
               name: example string
@@ -288795,6 +289968,7 @@ components:
               release: ENUM_VALUE
               name: example string
               version: example string
+            rolloutId: 1234567891011
             deviceId: 1234567891011
             lastDiscoveredTs:
               seconds: 1234567891011
@@ -288884,6 +290058,7 @@ components:
           lastUpgradeTs:
             seconds: 1234567891011
             nanos: 123
+          rolloutName: example string
           runningVersion:
             release: ENUM_VALUE
             name: example string
@@ -288892,6 +290067,7 @@ components:
             release: ENUM_VALUE
             name: example string
             version: example string
+          rolloutId: 1234567891011
           deviceId: 1234567891011
           lastDiscoveredTs:
             seconds: 1234567891011
@@ -289060,6 +290236,7 @@ components:
         lastUpgradeTs:
           seconds: 1234567891011
           nanos: 123
+        rolloutName: example string
         runningVersion:
           release: ENUM_VALUE
           name: example string
@@ -289068,6 +290245,7 @@ components:
           release: ENUM_VALUE
           name: example string
           version: example string
+        rolloutId: 1234567891011
         deviceId: 1234567891011
         lastDiscoveredTs:
           seconds: 1234567891011
@@ -289090,6 +290268,13 @@ components:
           $ref: "#/components/schemas/googleProtobufTimestamp"
         readyForActivationVersion:
           $ref: "#/components/schemas/upgradeSwVersion"
+        rolloutId:
+          example: 1234567891011
+          format: int64
+          type: integer
+        rolloutName:
+          example: example string
+          type: string
         runningVersion:
           $ref: "#/components/schemas/upgradeSwVersion"
         schedule:
@@ -289208,6 +290393,7 @@ components:
             lastUpgradeTs:
               seconds: 1234567891011
               nanos: 123
+            rolloutName: example string
             runningVersion:
               release: ENUM_VALUE
               name: example string
@@ -289216,6 +290402,7 @@ components:
               release: ENUM_VALUE
               name: example string
               version: example string
+            rolloutId: 1234567891011
             deviceId: 1234567891011
             lastDiscoveredTs:
               seconds: 1234567891011
@@ -289291,6 +290478,7 @@ components:
             lastUpgradeTs:
               seconds: 1234567891011
               nanos: 123
+            rolloutName: example string
             runningVersion:
               release: ENUM_VALUE
               name: example string
@@ -289299,6 +290487,7 @@ components:
               release: ENUM_VALUE
               name: example string
               version: example string
+            rolloutId: 1234567891011
             deviceId: 1234567891011
             lastDiscoveredTs:
               seconds: 1234567891011
@@ -289440,6 +290629,7 @@ components:
             lastUpgradeTs:
               seconds: 1234567891011
               nanos: 123
+            rolloutName: example string
             runningVersion:
               release: ENUM_VALUE
               name: example string
@@ -289448,6 +290638,7 @@ components:
               release: ENUM_VALUE
               name: example string
               version: example string
+            rolloutId: 1234567891011
             deviceId: 1234567891011
             lastDiscoveredTs:
               seconds: 1234567891011
@@ -289523,6 +290714,7 @@ components:
             lastUpgradeTs:
               seconds: 1234567891011
               nanos: 123
+            rolloutName: example string
             runningVersion:
               release: ENUM_VALUE
               name: example string
@@ -289531,6 +290723,7 @@ components:
               release: ENUM_VALUE
               name: example string
               version: example string
+            rolloutId: 1234567891011
             deviceId: 1234567891011
             lastDiscoveredTs:
               seconds: 1234567891011
@@ -297078,6 +298271,33 @@ components:
             type: string
           type: array
       type: object
+    v2MonitoringMacsecDeviceIdStatusGetResponse:
+      additionalProperties: false
+      example:
+        macsecStatuses:
+        - interfaceName: example string
+          status: ENUM_VALUE
+        - interfaceName: example string
+          status: ENUM_VALUE
+      properties:
+        macsecStatuses:
+          items:
+            $ref: "#/components/schemas/v2MonitoringMacsecDeviceIdStatusGetResponseMaCsecStatus"
+          type: array
+      type: object
+    v2MonitoringMacsecDeviceIdStatusGetResponseMaCsecStatus:
+      additionalProperties: false
+      example:
+        interfaceName: example string
+        status: ENUM_VALUE
+      properties:
+        interfaceName:
+          example: example string
+          type: string
+        status:
+          example: ENUM_VALUE
+          type: string
+      type: object
     v1LogsPostRequest:
       additionalProperties: false
       properties:
@@ -297521,7 +298741,9 @@ components:
           dayOfWeek: ENUM_VALUE
           hour: 123
           occurrenceInMonth: 123
+          weekday: ENUM_VALUE
           minute: 123
+          ordinal: ENUM_VALUE
       properties:
         action:
           example: ENUM_VALUE
@@ -297541,7 +298763,9 @@ components:
         dayOfWeek: ENUM_VALUE
         hour: 123
         occurrenceInMonth: 123
+        weekday: ENUM_VALUE
         minute: 123
+        ordinal: ENUM_VALUE
       properties:
         dayOfWeek:
           example: ENUM_VALUE
@@ -297558,6 +298782,12 @@ components:
           example: 123
           format: int32
           type: integer
+        ordinal:
+          example: ENUM_VALUE
+          type: string
+        weekday:
+          example: ENUM_VALUE
+          type: string
       type: object
     v1SoftwareAutoUpgradeDefaultGetResponse:
       additionalProperties: false
@@ -297571,13 +298801,458 @@ components:
             dayOfWeek: ENUM_VALUE
             hour: 123
             occurrenceInMonth: 123
+            weekday: ENUM_VALUE
             minute: 123
+            ordinal: ENUM_VALUE
       properties:
         profile:
           $ref: "#/components/schemas/upgradeUpgradeCanaryProfile"
         release:
           example: ENUM_VALUE
           type: string
+      type: object
+    v1SoftwareRolloutsPostRequest:
+      additionalProperties: false
+      properties:
+        rolloutConfig:
+          $ref: "#/components/schemas/upgradeRolloutConfig"
+      required:
+      - rolloutConfig
+      type: object
+    upgradeRolloutConfig:
+      additionalProperties: false
+      example:
+        schedule:
+          monthly:
+            date: 15
+            weekday: Tuesday
+            ordinal: Second
+          startsAtTs:
+            seconds: 1234567891011
+            nanos: 123
+          yearly:
+            date: 1
+            month: 3
+            weekday: Wednesday
+            ordinal: First
+          weekly:
+            weekday: Monday
+            interval: 2
+        deviceIds:
+        - 0
+        - 0
+        release: Recommended
+        name: Q2 edge upgrade
+        action: InstallActivate
+        description: Upgrade branch sites to release 25.4
+      properties:
+        action:
+          description: "Upgrade action to perform (e.g. install+activate, install\
+            \ only, activate, auto-upgrade). (required)"
+          example: InstallActivate
+          type: string
+        description:
+          description: Optional longer description of the rollout.
+          example: Upgrade branch sites to release 25.4
+          type: string
+        deviceIds:
+          items:
+            description: Device IDs included in the rollout (field name retained for
+              API compatibility).
+            format: int64
+            type: integer
+          type: array
+        name:
+          description: Human-readable rollout name unique within the enterprise. (required)
+          example: Q2 edge upgrade
+          type: string
+        release:
+          description: Target software release for devices in this rollout. (required)
+          example: Recommended
+          type: string
+        schedule:
+          $ref: "#/components/schemas/upgradeRecurringSchedule"
+      required:
+      - action
+      - name
+      - release
+      type: object
+    upgradeRecurringSchedule:
+      additionalProperties: false
+      example:
+        monthly:
+          date: 15
+          weekday: Tuesday
+          ordinal: Second
+        startsAtTs:
+          seconds: 1234567891011
+          nanos: 123
+        yearly:
+          date: 1
+          month: 3
+          weekday: Wednesday
+          ordinal: First
+        weekly:
+          weekday: Monday
+          interval: 2
+      properties:
+        monthly:
+          $ref: "#/components/schemas/upgradeMonthlyRecurrence"
+        startsAtTs:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+        weekly:
+          $ref: "#/components/schemas/upgradeWeeklyRecurrence"
+        yearly:
+          $ref: "#/components/schemas/upgradeYearlyRecurrence"
+      required:
+      - startsAtTs
+      type: object
+    upgradeMonthlyRecurrence:
+      additionalProperties: false
+      example:
+        date: 15
+        weekday: Tuesday
+        ordinal: Second
+      properties:
+        date:
+          description: Calendar day of month (1–31) for fixed-date monthly recurrence;
+            optional if ordinal and weekday are set.
+          example: 15
+          format: int32
+          minimum: 0
+          type: integer
+        ordinal:
+          description: "For nth-weekday-of-month style recurrence; use together with\
+            \ weekday, or use date instead."
+          example: Second
+          type: string
+        weekday:
+          description: Weekday paired with ordinal for monthly nth-weekday recurrence;
+            optional if date is set.
+          example: Tuesday
+          type: string
+      type: object
+    upgradeWeeklyRecurrence:
+      additionalProperties: false
+      example:
+        weekday: Monday
+        interval: 2
+      properties:
+        interval:
+          description: "Which occurrence of the weekday in the month applies for weekly-style\
+            \ recurrence (1–52, aligned with schedule validation). (required)"
+          example: 2
+          format: int32
+          minimum: 0
+          type: integer
+        weekday:
+          description: Day of week for the weekly recurrence. (required)
+          example: Monday
+          type: string
+      required:
+      - interval
+      - weekday
+      type: object
+    upgradeYearlyRecurrence:
+      additionalProperties: false
+      example:
+        date: 1
+        month: 3
+        weekday: Wednesday
+        ordinal: First
+      properties:
+        date:
+          description: Calendar day (1–31) for fixed month+date yearly recurrence.
+          example: 1
+          format: int32
+          minimum: 0
+          type: integer
+        month:
+          description: Month of year (1–12) for yearly recurrence. (required)
+          example: 3
+          format: int32
+          minimum: 0
+          type: integer
+        ordinal:
+          description: "For nth-weekday-in-month yearly recurrence; use with weekday,\
+            \ or use month + date."
+          example: First
+          type: string
+        weekday:
+          description: Weekday paired with ordinal for yearly recurrence.
+          example: Wednesday
+          type: string
+      required:
+      - month
+      type: object
+    v1SoftwareRolloutsPostResponse:
+      additionalProperties: false
+      example:
+        id: 42
+      properties:
+        id:
+          description: Identifier of the created rollout. (required)
+          example: 42
+          format: int64
+          type: integer
+      type: object
+    v1SoftwareRolloutsPutRequest:
+      additionalProperties: false
+      properties:
+        id:
+          description: Rollout identifier to update. (required)
+          example: 42
+          format: int64
+          type: integer
+        rolloutConfig:
+          $ref: "#/components/schemas/upgradeRolloutConfig"
+      required:
+      - id
+      - rolloutConfig
+      type: object
+    v1SoftwareRolloutsPutResponse:
+      additionalProperties: false
+      properties: {}
+      type: object
+    v1SoftwareRolloutsGetResponse:
+      additionalProperties: false
+      example:
+        rollouts:
+        - hasFailed: true
+          rolloutConfig:
+            schedule:
+              monthly:
+                date: 15
+                weekday: Tuesday
+                ordinal: Second
+              startsAtTs:
+                seconds: 1234567891011
+                nanos: 123
+              yearly:
+                date: 1
+                month: 3
+                weekday: Wednesday
+                ordinal: First
+              weekly:
+                weekday: Monday
+                interval: 2
+            deviceIds:
+            - 0
+            - 0
+            release: Recommended
+            name: Q2 edge upgrade
+            action: InstallActivate
+            description: Upgrade branch sites to release 25.4
+          nextRunTs:
+            seconds: 1234567891011
+            nanos: 123
+          numDevices: 3
+          devices:
+          - hostname: edge-site-01
+            deviceId: 1001
+          - hostname: edge-site-01
+            deviceId: 1001
+          id: 42
+          lastRunTs:
+            seconds: 1234567891011
+            nanos: 123
+        - hasFailed: true
+          rolloutConfig:
+            schedule:
+              monthly:
+                date: 15
+                weekday: Tuesday
+                ordinal: Second
+              startsAtTs:
+                seconds: 1234567891011
+                nanos: 123
+              yearly:
+                date: 1
+                month: 3
+                weekday: Wednesday
+                ordinal: First
+              weekly:
+                weekday: Monday
+                interval: 2
+            deviceIds:
+            - 0
+            - 0
+            release: Recommended
+            name: Q2 edge upgrade
+            action: InstallActivate
+            description: Upgrade branch sites to release 25.4
+          nextRunTs:
+            seconds: 1234567891011
+            nanos: 123
+          numDevices: 3
+          devices:
+          - hostname: edge-site-01
+            deviceId: 1001
+          - hostname: edge-site-01
+            deviceId: 1001
+          id: 42
+          lastRunTs:
+            seconds: 1234567891011
+            nanos: 123
+      properties:
+        rollouts:
+          items:
+            $ref: "#/components/schemas/upgradeRollout"
+          type: array
+      type: object
+    upgradeRollout:
+      additionalProperties: false
+      example:
+        hasFailed: true
+        rolloutConfig:
+          schedule:
+            monthly:
+              date: 15
+              weekday: Tuesday
+              ordinal: Second
+            startsAtTs:
+              seconds: 1234567891011
+              nanos: 123
+            yearly:
+              date: 1
+              month: 3
+              weekday: Wednesday
+              ordinal: First
+            weekly:
+              weekday: Monday
+              interval: 2
+          deviceIds:
+          - 0
+          - 0
+          release: Recommended
+          name: Q2 edge upgrade
+          action: InstallActivate
+          description: Upgrade branch sites to release 25.4
+        nextRunTs:
+          seconds: 1234567891011
+          nanos: 123
+        numDevices: 3
+        devices:
+        - hostname: edge-site-01
+          deviceId: 1001
+        - hostname: edge-site-01
+          deviceId: 1001
+        id: 42
+        lastRunTs:
+          seconds: 1234567891011
+          nanos: 123
+      properties:
+        devices:
+          items:
+            $ref: "#/components/schemas/upgradeRolloutDevice"
+          type: array
+        hasFailed:
+          description: True if any device in the rollout has a failed upgrade state.
+          example: true
+          type: boolean
+        id:
+          description: Server-assigned rollout identifier.
+          example: 42
+          format: int64
+          type: integer
+        lastRunTs:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+        nextRunTs:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+        numDevices:
+          description: Count of devices associated with the rollout.
+          example: 3
+          format: int32
+          type: integer
+        rolloutConfig:
+          $ref: "#/components/schemas/upgradeRolloutConfig"
+      type: object
+    upgradeRolloutDevice:
+      additionalProperties: false
+      example:
+        hostname: edge-site-01
+        deviceId: 1001
+      properties:
+        deviceId:
+          description: Device identifier. (required)
+          example: 1001
+          format: int64
+          type: integer
+        hostname:
+          description: Device hostname for display.
+          example: edge-site-01
+          type: string
+      type: object
+    v1SoftwareRolloutsIdGetResponse:
+      additionalProperties: false
+      example:
+        rollout:
+          hasFailed: true
+          rolloutConfig:
+            schedule:
+              monthly:
+                date: 15
+                weekday: Tuesday
+                ordinal: Second
+              startsAtTs:
+                seconds: 1234567891011
+                nanos: 123
+              yearly:
+                date: 1
+                month: 3
+                weekday: Wednesday
+                ordinal: First
+              weekly:
+                weekday: Monday
+                interval: 2
+            deviceIds:
+            - 0
+            - 0
+            release: Recommended
+            name: Q2 edge upgrade
+            action: InstallActivate
+            description: Upgrade branch sites to release 25.4
+          nextRunTs:
+            seconds: 1234567891011
+            nanos: 123
+          numDevices: 3
+          devices:
+          - hostname: edge-site-01
+            deviceId: 1001
+          - hostname: edge-site-01
+            deviceId: 1001
+          id: 42
+          lastRunTs:
+            seconds: 1234567891011
+            nanos: 123
+      properties:
+        rollout:
+          $ref: "#/components/schemas/upgradeRollout"
+      type: object
+    v1SoftwareRolloutsIdDeleteResponse:
+      additionalProperties: false
+      properties: {}
+      type: object
+    v1SoftwareRolloutsSchedulePostRequest:
+      additionalProperties: false
+      properties:
+        failedOnly:
+          description: "When true, only devices previously marked failed are rescheduled."
+          example: true
+          type: boolean
+        id:
+          description: Rollout identifier to schedule. (required)
+          example: 42
+          format: int64
+          type: integer
+        ts:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+      required:
+      - id
+      type: object
+    v1SoftwareRolloutsSchedulePostResponse:
+      additionalProperties: false
+      properties: {}
       type: object
     v1AuthLoginPreGetResponse:
       example:

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ClientFlexAlgo** | Pointer to **string** |  | [optional] 
 **ClientIp** | Pointer to **string** |  | [optional] 
 **ClientLinks** | Pointer to [**[]AssuranceClientSessionEndpointLink**](AssuranceClientSessionEndpointLink.md) |  | [optional] 
+**ClientUsername** | Pointer to **string** |  | [optional] 
 **FirstSeenTs** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **LanSegment** | Pointer to **[]string** |  | [optional] 
 **LastSeenTs** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
@@ -194,6 +195,31 @@ SetClientLinks sets ClientLinks field to given value.
 `func (o *AssuranceClientSession) HasClientLinks() bool`
 
 HasClientLinks returns a boolean if a field has been set.
+
+### GetClientUsername
+
+`func (o *AssuranceClientSession) GetClientUsername() string`
+
+GetClientUsername returns the ClientUsername field if non-nil, zero value otherwise.
+
+### GetClientUsernameOk
+
+`func (o *AssuranceClientSession) GetClientUsernameOk() (*string, bool)`
+
+GetClientUsernameOk returns a tuple with the ClientUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientUsername
+
+`func (o *AssuranceClientSession) SetClientUsername(v string)`
+
+SetClientUsername sets ClientUsername field to given value.
+
+### HasClientUsername
+
+`func (o *AssuranceClientSession) HasClientUsername() bool`
+
+HasClientUsername returns a boolean if a field has been set.
 
 ### GetFirstSeenTs
 

@@ -19,8 +19,10 @@ var _ MappedNullable = &ManaV2Region{}
 
 // ManaV2Region struct for ManaV2Region
 type ManaV2Region struct {
+	Coordinates *ManaV2RegionCoordinates `json:"coordinates,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
+	RegionIsoCode *string `json:"regionIsoCode,omitempty"`
 	Unavailable *bool `json:"unavailable,omitempty"`
 }
 
@@ -39,6 +41,38 @@ func NewManaV2Region() *ManaV2Region {
 func NewManaV2RegionWithDefaults() *ManaV2Region {
 	this := ManaV2Region{}
 	return &this
+}
+
+// GetCoordinates returns the Coordinates field value if set, zero value otherwise.
+func (o *ManaV2Region) GetCoordinates() ManaV2RegionCoordinates {
+	if o == nil || IsNil(o.Coordinates) {
+		var ret ManaV2RegionCoordinates
+		return ret
+	}
+	return *o.Coordinates
+}
+
+// GetCoordinatesOk returns a tuple with the Coordinates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2Region) GetCoordinatesOk() (*ManaV2RegionCoordinates, bool) {
+	if o == nil || IsNil(o.Coordinates) {
+		return nil, false
+	}
+	return o.Coordinates, true
+}
+
+// HasCoordinates returns a boolean if a field has been set.
+func (o *ManaV2Region) HasCoordinates() bool {
+	if o != nil && !IsNil(o.Coordinates) {
+		return true
+	}
+
+	return false
+}
+
+// SetCoordinates gets a reference to the given ManaV2RegionCoordinates and assigns it to the Coordinates field.
+func (o *ManaV2Region) SetCoordinates(v ManaV2RegionCoordinates) {
+	o.Coordinates = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -105,6 +139,38 @@ func (o *ManaV2Region) SetName(v string) {
 	o.Name = &v
 }
 
+// GetRegionIsoCode returns the RegionIsoCode field value if set, zero value otherwise.
+func (o *ManaV2Region) GetRegionIsoCode() string {
+	if o == nil || IsNil(o.RegionIsoCode) {
+		var ret string
+		return ret
+	}
+	return *o.RegionIsoCode
+}
+
+// GetRegionIsoCodeOk returns a tuple with the RegionIsoCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2Region) GetRegionIsoCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.RegionIsoCode) {
+		return nil, false
+	}
+	return o.RegionIsoCode, true
+}
+
+// HasRegionIsoCode returns a boolean if a field has been set.
+func (o *ManaV2Region) HasRegionIsoCode() bool {
+	if o != nil && !IsNil(o.RegionIsoCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegionIsoCode gets a reference to the given string and assigns it to the RegionIsoCode field.
+func (o *ManaV2Region) SetRegionIsoCode(v string) {
+	o.RegionIsoCode = &v
+}
+
 // GetUnavailable returns the Unavailable field value if set, zero value otherwise.
 func (o *ManaV2Region) GetUnavailable() bool {
 	if o == nil || IsNil(o.Unavailable) {
@@ -147,11 +213,17 @@ func (o ManaV2Region) MarshalJSON() ([]byte, error) {
 
 func (o ManaV2Region) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Coordinates) {
+		toSerialize["coordinates"] = o.Coordinates
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.RegionIsoCode) {
+		toSerialize["regionIsoCode"] = o.RegionIsoCode
 	}
 	if !IsNil(o.Unavailable) {
 		toSerialize["unavailable"] = o.Unavailable

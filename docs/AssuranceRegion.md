@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RegionId** | Pointer to **int32** |  | [optional] 
+**RegionIsoCode** | Pointer to **string** |  | [optional] 
 **RegionName** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetRegionId sets RegionId field to given value.
 `func (o *AssuranceRegion) HasRegionId() bool`
 
 HasRegionId returns a boolean if a field has been set.
+
+### GetRegionIsoCode
+
+`func (o *AssuranceRegion) GetRegionIsoCode() string`
+
+GetRegionIsoCode returns the RegionIsoCode field if non-nil, zero value otherwise.
+
+### GetRegionIsoCodeOk
+
+`func (o *AssuranceRegion) GetRegionIsoCodeOk() (*string, bool)`
+
+GetRegionIsoCodeOk returns a tuple with the RegionIsoCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegionIsoCode
+
+`func (o *AssuranceRegion) SetRegionIsoCode(v string)`
+
+SetRegionIsoCode sets RegionIsoCode field to given value.
+
+### HasRegionIsoCode
+
+`func (o *AssuranceRegion) HasRegionIsoCode() bool`
+
+HasRegionIsoCode returns a boolean if a field has been set.
 
 ### GetRegionName
 

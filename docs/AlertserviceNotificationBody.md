@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **PagerdutyList** | Pointer to **[]string** |  | [optional] 
 **RecipientList** | Pointer to **[]string** |  | [optional] 
 **TeamsList** | Pointer to **[]string** |  | [optional] 
+**WebhookUrlList** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -309,6 +310,31 @@ SetTeamsList sets TeamsList field to given value.
 `func (o *AlertserviceNotificationBody) HasTeamsList() bool`
 
 HasTeamsList returns a boolean if a field has been set.
+
+### GetWebhookUrlList
+
+`func (o *AlertserviceNotificationBody) GetWebhookUrlList() []string`
+
+GetWebhookUrlList returns the WebhookUrlList field if non-nil, zero value otherwise.
+
+### GetWebhookUrlListOk
+
+`func (o *AlertserviceNotificationBody) GetWebhookUrlListOk() (*[]string, bool)`
+
+GetWebhookUrlListOk returns a tuple with the WebhookUrlList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhookUrlList
+
+`func (o *AlertserviceNotificationBody) SetWebhookUrlList(v []string)`
+
+SetWebhookUrlList sets WebhookUrlList field to given value.
+
+### HasWebhookUrlList
+
+`func (o *AlertserviceNotificationBody) HasWebhookUrlList() bool`
+
+HasWebhookUrlList returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

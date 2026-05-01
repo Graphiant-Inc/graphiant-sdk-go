@@ -413,6 +413,14 @@
               "example": "example string",
               "description": "List of teams recipients"
             }
+          },
+          "webhookUrlList": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "List of webhook_url recipients"
+            }
           }
         },
         "additionalProperties": false
@@ -2588,6 +2596,10 @@
             "format": "int32",
             "example": 123
           },
+          "regionIsoCode": {
+            "type": "string",
+            "example": "example string"
+          },
           "regionName": {
             "type": "string",
             "example": "example string"
@@ -2981,6 +2993,10 @@
             "type": "string",
             "example": "example string"
           },
+          "clientUsername": {
+            "type": "string",
+            "example": "example string"
+          },
           "lanSegments": {
             "type": "array",
             "items": {
@@ -3086,6 +3102,10 @@
             "items": {
               "$ref": "#/components/schemas/assuranceClientSessionEndpointLink"
             }
+          },
+          "clientUsername": {
+            "type": "string",
+            "example": "example string"
           },
           "firstSeenTs": {
             "$ref": "#/components/schemas/googleProtobufTimestamp"
@@ -4115,6 +4135,49 @@
             "$ref": "#/components/schemas/googleProtobufTimestamp"
           },
           "user": {
+            "type": "string",
+            "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ZtagentBindingsPutRequest": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "enterpriseId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "siteId": {
+            "type": "string",
+            "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ZtagentBindingsPutResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v1ZtagentBindingsGetResponse": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "enterpriseId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "siteId": {
             "type": "string",
             "example": "example string"
           }
@@ -10856,6 +10919,9 @@
       "manaV2Region": {
         "type": "object",
         "properties": {
+          "coordinates": {
+            "$ref": "#/components/schemas/manaV2RegionCoordinates"
+          },
           "id": {
             "type": "integer",
             "format": "int32",
@@ -10865,9 +10931,29 @@
             "type": "string",
             "example": "example string"
           },
+          "regionIsoCode": {
+            "type": "string",
+            "example": "example string"
+          },
           "unavailable": {
             "type": "boolean",
             "example": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2RegionCoordinates": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "example": 123.45
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "example": 123.45
           }
         },
         "additionalProperties": false
@@ -24318,6 +24404,244 @@
         },
         "additionalProperties": false
       },
+      "v1GlobalDomainCategoriesGetResponse": {
+        "type": "object",
+        "properties": {
+          "domainCategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2DomainCategory"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2DomainCategory": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "example": "example string",
+            "description": "Optional longer text describing what sites or traffic belong in this category."
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Stable identifier for this domain category in the content-filter catalog."
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Human-readable name of the domain category."
+          },
+          "type": {
+            "type": "string",
+            "example": "example string",
+            "description": "Optional category classifier or grouping hint from the catalog (e.g. vendor-specific type)."
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1GlobalContentFiltersGetResponse": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1GlobalContentFiltersGetResponseRow"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1GlobalContentFiltersGetResponseRow": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "globalContentFilterId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "ID for the global content filter."
+          },
+          "globalContentFilterName": {
+            "type": "string",
+            "example": "example string",
+            "description": "Given name of this global content filter."
+          },
+          "lans": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1GlobalContentFiltersGetResponseRowLanEntry"
+            }
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1GlobalContentFiltersGetResponseRowRuleEntry"
+            }
+          },
+          "sites": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1GlobalContentFiltersGetResponseRowSiteEntry"
+            }
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1GlobalContentFiltersGetResponseRowLanEntry": {
+        "type": "object",
+        "properties": {
+          "lanName": {
+            "type": "string",
+            "example": "example string",
+            "description": "Name of a LAN segment that the filter is applied on."
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1GlobalContentFiltersGetResponseRowRuleEntry": {
+        "type": "object",
+        "properties": {
+          "domainCategory": {
+            "type": "string",
+            "example": "example string",
+            "description": "Name of the domain category whose traffic is blocked by this rule."
+          },
+          "exceptionWildcards": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "Wildcard patterns for domains that remain allowed despite the category block."
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1GlobalContentFiltersGetResponseRowSiteEntry": {
+        "type": "object",
+        "properties": {
+          "siteName": {
+            "type": "string",
+            "example": "example string",
+            "description": "Display name of a site included in this filter's global or site-list-bounded scope."
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1GlobalContentFiltersPostRequest": {
+        "type": "object",
+        "properties": {
+          "config": {
+            "$ref": "#/components/schemas/manaV2GlobalContentFilterConfig"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2GlobalContentFilterConfig": {
+        "type": "object",
+        "properties": {
+          "lanNames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "LAN interface names to scope the filter; when empty, all LANs are included."
+            }
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Display name for this global content filter configuration."
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2GlobalContentFilterRule"
+            }
+          },
+          "siteListId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Site list whose members this content filter applies to; omit the oneof when no site scope is set."
+          },
+          "useAllSites": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, the filter applies to all sites in the tenant (must be the constant true)."
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2GlobalContentFilterRule": {
+        "type": "object",
+        "properties": {
+          "domainCategoryId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "ID of the category whose traffic will be blocked by the content filter."
+          },
+          "exceptionWildcards": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "List of wildcard strings each representing a selection of domains that are exceptions that will not be blocked even if it is in the provided category"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1GlobalContentFiltersPostResponse": {
+        "type": "object",
+        "properties": {
+          "globalContentFilterId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Server-assigned ID for the newly created global content filter."
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1GlobalContentFiltersGlobalContentFilterIdPutRequest": {
+        "type": "object",
+        "properties": {
+          "config": {
+            "$ref": "#/components/schemas/manaV2GlobalContentFilterConfig"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1GlobalContentFiltersGlobalContentFilterIdPutResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v1GlobalContentFiltersGlobalContentFilterIdDeleteResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v1GlobalContentFiltersGlobalContentFilterIdGetResponse": {
+        "type": "object",
+        "properties": {
+          "config": {
+            "$ref": "#/components/schemas/manaV2GlobalContentFilterConfig"
+          }
+        },
+        "additionalProperties": false
+      },
       "v1GlobalAppsGraphiantGetResponse": {
         "type": "object",
         "properties": {
@@ -27041,6 +27365,15 @@
           },
           "readyForActivationVersion": {
             "$ref": "#/components/schemas/upgradeSwVersion"
+          },
+          "rolloutId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "rolloutName": {
+            "type": "string",
+            "example": "example string"
           },
           "runningVersion": {
             "$ref": "#/components/schemas/upgradeSwVersion"
@@ -31631,6 +31964,32 @@
         },
         "additionalProperties": false
       },
+      "v2MonitoringMacsecDeviceIdStatusGetResponse": {
+        "type": "object",
+        "properties": {
+          "macsecStatuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v2MonitoringMacsecDeviceIdStatusGetResponseMaCsecStatus"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v2MonitoringMacsecDeviceIdStatusGetResponseMaCsecStatus": {
+        "type": "object",
+        "properties": {
+          "interfaceName": {
+            "type": "string",
+            "example": "example string"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
       "v1LogsPostRequest": {
         "type": "object",
         "properties": {
@@ -32098,6 +32457,14 @@
             "type": "integer",
             "format": "int32",
             "example": 123
+          },
+          "ordinal": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "weekday": {
+            "type": "string",
+            "example": "ENUM_VALUE"
           }
         },
         "additionalProperties": false
@@ -32113,6 +32480,305 @@
             "example": "ENUM_VALUE"
           }
         },
+        "additionalProperties": false
+      },
+      "v1SoftwareRolloutsPostRequest": {
+        "type": "object",
+        "properties": {
+          "rolloutConfig": {
+            "$ref": "#/components/schemas/upgradeRolloutConfig"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "rolloutConfig"
+        ]
+      },
+      "upgradeRolloutConfig": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "example": "InstallActivate",
+            "description": "Upgrade action to perform (e.g. install+activate, install only, activate, auto-upgrade). (required)"
+          },
+          "description": {
+            "type": "string",
+            "example": "Upgrade branch sites to release 25.4",
+            "description": "Optional longer description of the rollout."
+          },
+          "deviceIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64",
+              "example": "1001,1002,1003",
+              "description": "Device IDs included in the rollout (field name retained for API compatibility)."
+            }
+          },
+          "name": {
+            "type": "string",
+            "example": "Q2 edge upgrade",
+            "description": "Human-readable rollout name unique within the enterprise. (required)"
+          },
+          "release": {
+            "type": "string",
+            "example": "Recommended",
+            "description": "Target software release for devices in this rollout. (required)"
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/upgradeRecurringSchedule"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "action",
+          "name",
+          "release"
+        ]
+      },
+      "upgradeRecurringSchedule": {
+        "type": "object",
+        "properties": {
+          "monthly": {
+            "$ref": "#/components/schemas/upgradeMonthlyRecurrence"
+          },
+          "startsAtTs": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "weekly": {
+            "$ref": "#/components/schemas/upgradeWeeklyRecurrence"
+          },
+          "yearly": {
+            "$ref": "#/components/schemas/upgradeYearlyRecurrence"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "startsAtTs"
+        ]
+      },
+      "upgradeMonthlyRecurrence": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "integer",
+            "format": "int32",
+            "example": 15,
+            "minimum": 0,
+            "description": "Calendar day of month (1–31) for fixed-date monthly recurrence; optional if ordinal and weekday are set."
+          },
+          "ordinal": {
+            "type": "string",
+            "example": "Second",
+            "description": "For nth-weekday-of-month style recurrence; use together with weekday, or use date instead."
+          },
+          "weekday": {
+            "type": "string",
+            "example": "Tuesday",
+            "description": "Weekday paired with ordinal for monthly nth-weekday recurrence; optional if date is set."
+          }
+        },
+        "additionalProperties": false
+      },
+      "upgradeWeeklyRecurrence": {
+        "type": "object",
+        "properties": {
+          "interval": {
+            "type": "integer",
+            "format": "int32",
+            "example": 2,
+            "minimum": 0,
+            "description": "Which occurrence of the weekday in the month applies for weekly-style recurrence (1–52, aligned with schedule validation). (required)"
+          },
+          "weekday": {
+            "type": "string",
+            "example": "Monday",
+            "description": "Day of week for the weekly recurrence. (required)"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "interval",
+          "weekday"
+        ]
+      },
+      "upgradeYearlyRecurrence": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "integer",
+            "format": "int32",
+            "example": 1,
+            "minimum": 0,
+            "description": "Calendar day (1–31) for fixed month+date yearly recurrence."
+          },
+          "month": {
+            "type": "integer",
+            "format": "int32",
+            "example": 3,
+            "minimum": 0,
+            "description": "Month of year (1–12) for yearly recurrence. (required)"
+          },
+          "ordinal": {
+            "type": "string",
+            "example": "First",
+            "description": "For nth-weekday-in-month yearly recurrence; use with weekday, or use month + date."
+          },
+          "weekday": {
+            "type": "string",
+            "example": "Wednesday",
+            "description": "Weekday paired with ordinal for yearly recurrence."
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "month"
+        ]
+      },
+      "v1SoftwareRolloutsPostResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 42,
+            "description": "Identifier of the created rollout. (required)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SoftwareRolloutsPutRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 42,
+            "description": "Rollout identifier to update. (required)"
+          },
+          "rolloutConfig": {
+            "$ref": "#/components/schemas/upgradeRolloutConfig"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "rolloutConfig"
+        ]
+      },
+      "v1SoftwareRolloutsPutResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v1SoftwareRolloutsGetResponse": {
+        "type": "object",
+        "properties": {
+          "rollouts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/upgradeRollout"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "upgradeRollout": {
+        "type": "object",
+        "properties": {
+          "devices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/upgradeRolloutDevice"
+            }
+          },
+          "hasFailed": {
+            "type": "boolean",
+            "example": true,
+            "description": "True if any device in the rollout has a failed upgrade state."
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 42,
+            "description": "Server-assigned rollout identifier."
+          },
+          "lastRunTs": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "nextRunTs": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "numDevices": {
+            "type": "integer",
+            "format": "int32",
+            "example": 3,
+            "description": "Count of devices associated with the rollout."
+          },
+          "rolloutConfig": {
+            "$ref": "#/components/schemas/upgradeRolloutConfig"
+          }
+        },
+        "additionalProperties": false
+      },
+      "upgradeRolloutDevice": {
+        "type": "object",
+        "properties": {
+          "deviceId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1001,
+            "description": "Device identifier. (required)"
+          },
+          "hostname": {
+            "type": "string",
+            "example": "edge-site-01",
+            "description": "Device hostname for display."
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SoftwareRolloutsIdGetResponse": {
+        "type": "object",
+        "properties": {
+          "rollout": {
+            "$ref": "#/components/schemas/upgradeRollout"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SoftwareRolloutsIdDeleteResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v1SoftwareRolloutsSchedulePostRequest": {
+        "type": "object",
+        "properties": {
+          "failedOnly": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, only devices previously marked failed are rescheduled."
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 42,
+            "description": "Rollout identifier to schedule. (required)"
+          },
+          "ts": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      },
+      "v1SoftwareRolloutsSchedulePostResponse": {
+        "type": "object",
+        "properties": {},
         "additionalProperties": false
       },
       "v1AuthLoginPreGetResponse": {
@@ -35278,6 +35944,91 @@
             }
           }
         }
+      }
+    },
+    "/v1/ztagent/bindings": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "enterpriseId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ZtagentBindingsGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Return the ZTAgent integration binding for an enterprise."
+      },
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ZtagentBindingsPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ZtagentBindingsPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create or replace the ZTAgent integration binding for an enterprise (site and customer identifiers)."
       }
     },
     "/v1/devices/{deviceId}/jobs/{jobId}": {
@@ -40178,6 +40929,80 @@
         "description": "Get all global apps mapped by the current enterprise"
       }
     },
+    "/v1/global/content-filters": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1GlobalContentFiltersPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1GlobalContentFiltersPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Configure a new content filter under the current enterprise"
+      },
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1GlobalContentFiltersGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get basic details for all content filter under the current enterprise"
+      }
+    },
     "/v1/global/lan-segments": {
       "post": {
         "security": [
@@ -41567,6 +42392,144 @@
           }
         },
         "description": "Overwrite the configuration for a global app under the current enterprise"
+      }
+    },
+    "/v1/global/content-filters/{globalContentFilterId}": {
+      "delete": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "globalContentFilterId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the global content filter to remove.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1GlobalContentFiltersGlobalContentFilterIdDeleteResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete a content filter under the current enterprise"
+      },
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "globalContentFilterId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the global content filter whose configuration should be returned.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1GlobalContentFiltersGlobalContentFilterIdGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the config for a content filter under the current enterprise"
+      },
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "globalContentFilterId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the global content filter to replace with the supplied configuration.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1GlobalContentFiltersGlobalContentFilterIdPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1GlobalContentFiltersGlobalContentFilterIdPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Overwrite a pre-existing content filter under the current enterprise"
       }
     },
     "/v1/global/lan-segments/{id}": {
@@ -43594,6 +44557,39 @@
           }
         },
         "description": "Get devices summary for the specified enterprise"
+      }
+    },
+    "/v1/global/domain-categories": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1GlobalDomainCategoriesGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all domain categories from the DPI engine"
       }
     },
     "/v1/enterprise/configuration": {
@@ -51340,6 +52336,50 @@
         }
       }
     },
+    "/v2/monitoring/macsec/{deviceId}/status": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2MonitoringMacsecDeviceIdStatusGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns the MACsec status for all interfaces on a device"
+      }
+    },
     "/v2/monitoring/policy": {
       "post": {
         "security": [
@@ -52129,6 +53169,209 @@
         }
       }
     },
+    "/v1/software/rollouts": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1SoftwareRolloutsPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SoftwareRolloutsPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create upgrade rollout and returns rollout identifier"
+      },
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SoftwareRolloutsGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns all the configured upgrade rollouts"
+      },
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1SoftwareRolloutsPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SoftwareRolloutsPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Modify update rollout"
+      }
+    },
+    "/v1/software/rollouts/{id}": {
+      "delete": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Rollout identifier to delete.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            },
+            "example": 42
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SoftwareRolloutsIdDeleteResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete given upgrade rollout"
+      },
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Rollout identifier to fetch.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            },
+            "example": 42
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SoftwareRolloutsIdGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns details about given upgrade rollout"
+      }
+    },
     "/v1/software/auto-upgrade/default": {
       "get": {
         "security": [
@@ -52394,6 +53637,49 @@
             }
           }
         }
+      }
+    },
+    "/v1/software/rollouts/schedule": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1SoftwareRolloutsSchedulePostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SoftwareRolloutsSchedulePostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Schedule rollout to upgrade now, later or user-triggered"
       }
     },
     "/v1/devices/upgrade/schedule": {

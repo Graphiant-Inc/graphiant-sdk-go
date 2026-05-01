@@ -25,6 +25,7 @@ type AssuranceClientSession struct {
 	ClientFlexAlgo *string `json:"clientFlexAlgo,omitempty"`
 	ClientIp *string `json:"clientIp,omitempty"`
 	ClientLinks []AssuranceClientSessionEndpointLink `json:"clientLinks,omitempty"`
+	ClientUsername *string `json:"clientUsername,omitempty"`
 	FirstSeenTs *GoogleProtobufTimestamp `json:"firstSeenTs,omitempty"`
 	LanSegment []string `json:"lanSegment,omitempty"`
 	LastSeenTs *GoogleProtobufTimestamp `json:"lastSeenTs,omitempty"`
@@ -249,6 +250,38 @@ func (o *AssuranceClientSession) HasClientLinks() bool {
 // SetClientLinks gets a reference to the given []AssuranceClientSessionEndpointLink and assigns it to the ClientLinks field.
 func (o *AssuranceClientSession) SetClientLinks(v []AssuranceClientSessionEndpointLink) {
 	o.ClientLinks = v
+}
+
+// GetClientUsername returns the ClientUsername field value if set, zero value otherwise.
+func (o *AssuranceClientSession) GetClientUsername() string {
+	if o == nil || IsNil(o.ClientUsername) {
+		var ret string
+		return ret
+	}
+	return *o.ClientUsername
+}
+
+// GetClientUsernameOk returns a tuple with the ClientUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceClientSession) GetClientUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientUsername) {
+		return nil, false
+	}
+	return o.ClientUsername, true
+}
+
+// HasClientUsername returns a boolean if a field has been set.
+func (o *AssuranceClientSession) HasClientUsername() bool {
+	if o != nil && !IsNil(o.ClientUsername) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientUsername gets a reference to the given string and assigns it to the ClientUsername field.
+func (o *AssuranceClientSession) SetClientUsername(v string) {
+	o.ClientUsername = &v
 }
 
 // GetFirstSeenTs returns the FirstSeenTs field value if set, zero value otherwise.
@@ -758,6 +791,9 @@ func (o AssuranceClientSession) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ClientLinks) {
 		toSerialize["clientLinks"] = o.ClientLinks
+	}
+	if !IsNil(o.ClientUsername) {
+		toSerialize["clientUsername"] = o.ClientUsername
 	}
 	if !IsNil(o.FirstSeenTs) {
 		toSerialize["firstSeenTs"] = o.FirstSeenTs

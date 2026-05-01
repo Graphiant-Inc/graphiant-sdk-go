@@ -36,6 +36,7 @@ type AlertserviceNotificationBody struct {
 	PagerdutyList []string `json:"pagerdutyList,omitempty"`
 	RecipientList []string `json:"recipientList,omitempty"`
 	TeamsList []string `json:"teamsList,omitempty"`
+	WebhookUrlList []string `json:"webhookUrlList,omitempty"`
 }
 
 // NewAlertserviceNotificationBody instantiates a new AlertserviceNotificationBody object
@@ -407,6 +408,38 @@ func (o *AlertserviceNotificationBody) SetTeamsList(v []string) {
 	o.TeamsList = v
 }
 
+// GetWebhookUrlList returns the WebhookUrlList field value if set, zero value otherwise.
+func (o *AlertserviceNotificationBody) GetWebhookUrlList() []string {
+	if o == nil || IsNil(o.WebhookUrlList) {
+		var ret []string
+		return ret
+	}
+	return o.WebhookUrlList
+}
+
+// GetWebhookUrlListOk returns a tuple with the WebhookUrlList field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertserviceNotificationBody) GetWebhookUrlListOk() ([]string, bool) {
+	if o == nil || IsNil(o.WebhookUrlList) {
+		return nil, false
+	}
+	return o.WebhookUrlList, true
+}
+
+// HasWebhookUrlList returns a boolean if a field has been set.
+func (o *AlertserviceNotificationBody) HasWebhookUrlList() bool {
+	if o != nil && !IsNil(o.WebhookUrlList) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebhookUrlList gets a reference to the given []string and assigns it to the WebhookUrlList field.
+func (o *AlertserviceNotificationBody) SetWebhookUrlList(v []string) {
+	o.WebhookUrlList = v
+}
+
 func (o AlertserviceNotificationBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -449,6 +482,9 @@ func (o AlertserviceNotificationBody) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TeamsList) {
 		toSerialize["teamsList"] = o.TeamsList
+	}
+	if !IsNil(o.WebhookUrlList) {
+		toSerialize["webhookUrlList"] = o.WebhookUrlList
 	}
 	return toSerialize, nil
 }

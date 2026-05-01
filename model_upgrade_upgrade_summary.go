@@ -25,6 +25,8 @@ type UpgradeUpgradeSummary struct {
 	LastRunningVersion *UpgradeSwVersion `json:"lastRunningVersion,omitempty"`
 	LastUpgradeTs *GoogleProtobufTimestamp `json:"lastUpgradeTs,omitempty"`
 	ReadyForActivationVersion *UpgradeSwVersion `json:"readyForActivationVersion,omitempty"`
+	RolloutId *int64 `json:"rolloutId,omitempty"`
+	RolloutName *string `json:"rolloutName,omitempty"`
 	RunningVersion *UpgradeSwVersion `json:"runningVersion,omitempty"`
 	Schedule *UpgradeSchedule `json:"schedule,omitempty"`
 	Status *string `json:"status,omitempty"`
@@ -239,6 +241,70 @@ func (o *UpgradeUpgradeSummary) SetReadyForActivationVersion(v UpgradeSwVersion)
 	o.ReadyForActivationVersion = &v
 }
 
+// GetRolloutId returns the RolloutId field value if set, zero value otherwise.
+func (o *UpgradeUpgradeSummary) GetRolloutId() int64 {
+	if o == nil || IsNil(o.RolloutId) {
+		var ret int64
+		return ret
+	}
+	return *o.RolloutId
+}
+
+// GetRolloutIdOk returns a tuple with the RolloutId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpgradeUpgradeSummary) GetRolloutIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.RolloutId) {
+		return nil, false
+	}
+	return o.RolloutId, true
+}
+
+// HasRolloutId returns a boolean if a field has been set.
+func (o *UpgradeUpgradeSummary) HasRolloutId() bool {
+	if o != nil && !IsNil(o.RolloutId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRolloutId gets a reference to the given int64 and assigns it to the RolloutId field.
+func (o *UpgradeUpgradeSummary) SetRolloutId(v int64) {
+	o.RolloutId = &v
+}
+
+// GetRolloutName returns the RolloutName field value if set, zero value otherwise.
+func (o *UpgradeUpgradeSummary) GetRolloutName() string {
+	if o == nil || IsNil(o.RolloutName) {
+		var ret string
+		return ret
+	}
+	return *o.RolloutName
+}
+
+// GetRolloutNameOk returns a tuple with the RolloutName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpgradeUpgradeSummary) GetRolloutNameOk() (*string, bool) {
+	if o == nil || IsNil(o.RolloutName) {
+		return nil, false
+	}
+	return o.RolloutName, true
+}
+
+// HasRolloutName returns a boolean if a field has been set.
+func (o *UpgradeUpgradeSummary) HasRolloutName() bool {
+	if o != nil && !IsNil(o.RolloutName) {
+		return true
+	}
+
+	return false
+}
+
+// SetRolloutName gets a reference to the given string and assigns it to the RolloutName field.
+func (o *UpgradeUpgradeSummary) SetRolloutName(v string) {
+	o.RolloutName = &v
+}
+
 // GetRunningVersion returns the RunningVersion field value if set, zero value otherwise.
 func (o *UpgradeUpgradeSummary) GetRunningVersion() UpgradeSwVersion {
 	if o == nil || IsNil(o.RunningVersion) {
@@ -362,6 +428,12 @@ func (o UpgradeUpgradeSummary) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ReadyForActivationVersion) {
 		toSerialize["readyForActivationVersion"] = o.ReadyForActivationVersion
+	}
+	if !IsNil(o.RolloutId) {
+		toSerialize["rolloutId"] = o.RolloutId
+	}
+	if !IsNil(o.RolloutName) {
+		toSerialize["rolloutName"] = o.RolloutName
 	}
 	if !IsNil(o.RunningVersion) {
 		toSerialize["runningVersion"] = o.RunningVersion
