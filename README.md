@@ -37,6 +37,7 @@ More product context: [Graphiant Docs](https://docs.graphiant.com).
 | **Automation** | [Graphiant Automation](https://docs.graphiant.com/docs/automation) |
 | **REST API** | [Graphiant Portal REST API](https://docs.graphiant.com/docs/graphiant-portal-rest-api) |
 | **Method index (repo)** | [DefaultAPI.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/DefaultAPI.md) |
+| **OpenAPI bundle (this build)** | [`graphiant_api_docs_v26.4.0.json`](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/graphiant_api_docs_v26.4.0.json) — source for generated paths and models |
 | **Package** | [pkg.go.dev](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go) |
 | **Changelog** | [CHANGELOG.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/CHANGELOG.md) |
 
@@ -476,15 +477,15 @@ brew install openapi-generator  # macOS
 
 # Generate SDK
 openapi-generator generate \
-  -i graphiant_api_docs_v26.4.1.json \
+  -i graphiant_api_docs_v26.4.0.json \
   -g go \
   --git-user-id Graphiant-Inc \
   --git-repo-id graphiant-sdk-go \
   --package-name graphiant_sdk \
-  --additional-properties=packageVersion=26.4.1
+  --additional-properties=packageVersion=26.4.0
 ```
 
-> **Note:** Download the latest API bundle from the Graphiant portal under **Support Hub** → **Developer Tools**. Set **`packageVersion`** to the SDK release you are publishing (this branch: **26.4.1**). The **`-i`** filename reflects the API doc bundle version (here `graphiant_api_docs_v26.4.1.json`) and may stay the same across patch releases when the spec is unchanged.
+> **Note:** Download the latest API bundle from the Graphiant portal under **Support Hub** → **Developer Tools**. Set **`packageVersion`** to the SDK release you are publishing (this branch: **26.4.0**). The **`-i`** filename reflects the API doc bundle version (here `graphiant_api_docs_v26.4.0.json`) and may stay the same across patch releases when the spec is unchanged.
 
 ### Testing
 
