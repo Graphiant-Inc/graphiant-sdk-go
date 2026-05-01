@@ -4,6 +4,47 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.4.0] - 2026-04-30
+
+### Added
+- **API endpoints:**
+  - `GET /v1/global/content-filters`
+  - `POST /v1/global/content-filters`
+  - `DELETE /v1/global/content-filters/{globalContentFilterId}`
+  - `GET /v1/global/content-filters/{globalContentFilterId}`
+  - `PUT /v1/global/content-filters/{globalContentFilterId}`
+  - `GET /v1/global/domain-categories`
+  - `GET /v1/software/rollouts`
+  - `POST /v1/software/rollouts`
+  - `PUT /v1/software/rollouts`
+  - `DELETE /v1/software/rollouts/{id}`
+  - `GET /v1/software/rollouts/{id}`
+  - `POST /v1/software/rollouts/schedule`
+  - `GET /v1/ztagent/bindings`
+  - `PUT /v1/ztagent/bindings`
+  - `GET /v2/monitoring/macsec/{deviceId}/status`
+- **Models:**
+  - Added global content filter types (`v1GlobalContentFilters*`, `manaV2GlobalContentFilterConfig`, `manaV2GlobalContentFilterRule`, and nested row/rule/site/lan entry schemas)
+  - Added domain category types (`v1GlobalDomainCategoriesGetResponse`, `manaV2DomainCategory`)
+  - Added software rollout types (`v1SoftwareRollouts*`, `upgradeRollout`, `upgradeRolloutConfig`, `upgradeRolloutDevice`, `upgradeRecurringSchedule`, `upgradeMonthlyRecurrence`, `upgradeWeeklyRecurrence`, `upgradeYearlyRecurrence`)
+  - Added ZTAgent binding types (`v1ZtagentBindingsGetResponse`, `v1ZtagentBindingsPutRequest`, `v1ZtagentBindingsPutResponse`)
+  - Added MACsec monitoring types (`v2MonitoringMacsecDeviceIdStatusGetResponse` and nested MACsec status schemas)
+  - Added `manaV2RegionCoordinates`
+
+### Changed
+- Updated to API specification version 26.4.0
+- **Version:**
+  - Updated version constant to v26.4.0
+  - Updated API documentation reference to `graphiant_api_docs_v26.4.0.json`
+  - Removed superseded bundle `graphiant_api_docs_v26.3.1.json` from the repository
+- **Documentation:** updated SDK generation example in README to use `graphiant_api_docs_v26.4.0.json` and `packageVersion=26.4.0`; **SECURITY.md** supported-versions table for **26.4.0**
+- **API endpoints (updated):** existing routes regenerated for revised schemas (see regenerated **`DefaultAPI`**); path additions are listed under **Added** above
+- **Models:** updated (OpenAPI spec refresh; representative schema updates include `alertserviceNotificationBody`, `assuranceClientSession`, `assuranceRegion`, `upgradeUpgradeOccurrence`, `upgradeUpgradeSummary`, `v2AssuranceTopologyClientSummariesPostResponseSummary`, `manaV2Region`)
+
+### Removed
+- **API endpoints:** none
+- **Models:** none
+
 ## [26.3.2] - 2026-03-27
 
 ### Added
