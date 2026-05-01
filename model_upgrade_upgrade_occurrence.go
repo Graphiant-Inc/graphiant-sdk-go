@@ -23,6 +23,8 @@ type UpgradeUpgradeOccurrence struct {
 	Hour *int32 `json:"hour,omitempty"`
 	Minute *int32 `json:"minute,omitempty"`
 	OccurrenceInMonth *int32 `json:"occurrenceInMonth,omitempty"`
+	Ordinal *string `json:"ordinal,omitempty"`
+	Weekday *string `json:"weekday,omitempty"`
 }
 
 // NewUpgradeUpgradeOccurrence instantiates a new UpgradeUpgradeOccurrence object
@@ -170,6 +172,70 @@ func (o *UpgradeUpgradeOccurrence) SetOccurrenceInMonth(v int32) {
 	o.OccurrenceInMonth = &v
 }
 
+// GetOrdinal returns the Ordinal field value if set, zero value otherwise.
+func (o *UpgradeUpgradeOccurrence) GetOrdinal() string {
+	if o == nil || IsNil(o.Ordinal) {
+		var ret string
+		return ret
+	}
+	return *o.Ordinal
+}
+
+// GetOrdinalOk returns a tuple with the Ordinal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpgradeUpgradeOccurrence) GetOrdinalOk() (*string, bool) {
+	if o == nil || IsNil(o.Ordinal) {
+		return nil, false
+	}
+	return o.Ordinal, true
+}
+
+// HasOrdinal returns a boolean if a field has been set.
+func (o *UpgradeUpgradeOccurrence) HasOrdinal() bool {
+	if o != nil && !IsNil(o.Ordinal) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrdinal gets a reference to the given string and assigns it to the Ordinal field.
+func (o *UpgradeUpgradeOccurrence) SetOrdinal(v string) {
+	o.Ordinal = &v
+}
+
+// GetWeekday returns the Weekday field value if set, zero value otherwise.
+func (o *UpgradeUpgradeOccurrence) GetWeekday() string {
+	if o == nil || IsNil(o.Weekday) {
+		var ret string
+		return ret
+	}
+	return *o.Weekday
+}
+
+// GetWeekdayOk returns a tuple with the Weekday field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpgradeUpgradeOccurrence) GetWeekdayOk() (*string, bool) {
+	if o == nil || IsNil(o.Weekday) {
+		return nil, false
+	}
+	return o.Weekday, true
+}
+
+// HasWeekday returns a boolean if a field has been set.
+func (o *UpgradeUpgradeOccurrence) HasWeekday() bool {
+	if o != nil && !IsNil(o.Weekday) {
+		return true
+	}
+
+	return false
+}
+
+// SetWeekday gets a reference to the given string and assigns it to the Weekday field.
+func (o *UpgradeUpgradeOccurrence) SetWeekday(v string) {
+	o.Weekday = &v
+}
+
 func (o UpgradeUpgradeOccurrence) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -191,6 +257,12 @@ func (o UpgradeUpgradeOccurrence) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OccurrenceInMonth) {
 		toSerialize["occurrenceInMonth"] = o.OccurrenceInMonth
+	}
+	if !IsNil(o.Ordinal) {
+		toSerialize["ordinal"] = o.Ordinal
+	}
+	if !IsNil(o.Weekday) {
+		toSerialize["weekday"] = o.Weekday
 	}
 	return toSerialize, nil
 }

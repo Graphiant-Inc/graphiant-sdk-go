@@ -21,6 +21,7 @@ var _ MappedNullable = &V2AssuranceTopologyClientSummariesPostResponseSummary{}
 type V2AssuranceTopologyClientSummariesPostResponseSummary struct {
 	AppServerKey *string `json:"appServerKey,omitempty"`
 	ClientIp *string `json:"clientIp,omitempty"`
+	ClientUsername *string `json:"clientUsername,omitempty"`
 	LanSegments []string `json:"lanSegments,omitempty"`
 	ServerIp *string `json:"serverIp,omitempty"`
 	ServerPort *int32 `json:"serverPort,omitempty"`
@@ -107,6 +108,38 @@ func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) HasClientIp() bo
 // SetClientIp gets a reference to the given string and assigns it to the ClientIp field.
 func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) SetClientIp(v string) {
 	o.ClientIp = &v
+}
+
+// GetClientUsername returns the ClientUsername field value if set, zero value otherwise.
+func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) GetClientUsername() string {
+	if o == nil || IsNil(o.ClientUsername) {
+		var ret string
+		return ret
+	}
+	return *o.ClientUsername
+}
+
+// GetClientUsernameOk returns a tuple with the ClientUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) GetClientUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientUsername) {
+		return nil, false
+	}
+	return o.ClientUsername, true
+}
+
+// HasClientUsername returns a boolean if a field has been set.
+func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) HasClientUsername() bool {
+	if o != nil && !IsNil(o.ClientUsername) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientUsername gets a reference to the given string and assigns it to the ClientUsername field.
+func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) SetClientUsername(v string) {
+	o.ClientUsername = &v
 }
 
 // GetLanSegments returns the LanSegments field value if set, zero value otherwise.
@@ -284,6 +317,9 @@ func (o V2AssuranceTopologyClientSummariesPostResponseSummary) ToMap() (map[stri
 	}
 	if !IsNil(o.ClientIp) {
 		toSerialize["clientIp"] = o.ClientIp
+	}
+	if !IsNil(o.ClientUsername) {
+		toSerialize["clientUsername"] = o.ClientUsername
 	}
 	if !IsNil(o.LanSegments) {
 		toSerialize["lanSegments"] = o.LanSegments

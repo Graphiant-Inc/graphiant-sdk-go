@@ -20,6 +20,7 @@ var _ MappedNullable = &AssuranceRegion{}
 // AssuranceRegion struct for AssuranceRegion
 type AssuranceRegion struct {
 	RegionId *int32 `json:"regionId,omitempty"`
+	RegionIsoCode *string `json:"regionIsoCode,omitempty"`
 	RegionName *string `json:"regionName,omitempty"`
 }
 
@@ -72,6 +73,38 @@ func (o *AssuranceRegion) SetRegionId(v int32) {
 	o.RegionId = &v
 }
 
+// GetRegionIsoCode returns the RegionIsoCode field value if set, zero value otherwise.
+func (o *AssuranceRegion) GetRegionIsoCode() string {
+	if o == nil || IsNil(o.RegionIsoCode) {
+		var ret string
+		return ret
+	}
+	return *o.RegionIsoCode
+}
+
+// GetRegionIsoCodeOk returns a tuple with the RegionIsoCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceRegion) GetRegionIsoCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.RegionIsoCode) {
+		return nil, false
+	}
+	return o.RegionIsoCode, true
+}
+
+// HasRegionIsoCode returns a boolean if a field has been set.
+func (o *AssuranceRegion) HasRegionIsoCode() bool {
+	if o != nil && !IsNil(o.RegionIsoCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegionIsoCode gets a reference to the given string and assigns it to the RegionIsoCode field.
+func (o *AssuranceRegion) SetRegionIsoCode(v string) {
+	o.RegionIsoCode = &v
+}
+
 // GetRegionName returns the RegionName field value if set, zero value otherwise.
 func (o *AssuranceRegion) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
@@ -116,6 +149,9 @@ func (o AssuranceRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.RegionId) {
 		toSerialize["regionId"] = o.RegionId
+	}
+	if !IsNil(o.RegionIsoCode) {
+		toSerialize["regionIsoCode"] = o.RegionIsoCode
 	}
 	if !IsNil(o.RegionName) {
 		toSerialize["regionName"] = o.RegionName

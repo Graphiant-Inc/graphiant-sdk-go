@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppServerKey** | Pointer to **string** |  | [optional] 
 **ClientIp** | Pointer to **string** |  | [optional] 
+**ClientUsername** | Pointer to **string** |  | [optional] 
 **LanSegments** | Pointer to **[]string** |  | [optional] 
 **ServerIp** | Pointer to **string** |  | [optional] 
 **ServerPort** | Pointer to **int32** |  | [optional] 
@@ -80,6 +81,31 @@ SetClientIp sets ClientIp field to given value.
 `func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) HasClientIp() bool`
 
 HasClientIp returns a boolean if a field has been set.
+
+### GetClientUsername
+
+`func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) GetClientUsername() string`
+
+GetClientUsername returns the ClientUsername field if non-nil, zero value otherwise.
+
+### GetClientUsernameOk
+
+`func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) GetClientUsernameOk() (*string, bool)`
+
+GetClientUsernameOk returns a tuple with the ClientUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientUsername
+
+`func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) SetClientUsername(v string)`
+
+SetClientUsername sets ClientUsername field to given value.
+
+### HasClientUsername
+
+`func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) HasClientUsername() bool`
+
+HasClientUsername returns a boolean if a field has been set.
 
 ### GetLanSegments
 

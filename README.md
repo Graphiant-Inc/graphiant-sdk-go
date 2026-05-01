@@ -476,15 +476,15 @@ brew install openapi-generator  # macOS
 
 # Generate SDK
 openapi-generator generate \
-  -i graphiant_api_docs_v26.3.1.json \
+  -i graphiant_api_docs_v26.4.1.json \
   -g go \
   --git-user-id Graphiant-Inc \
   --git-repo-id graphiant-sdk-go \
   --package-name graphiant_sdk \
-  --additional-properties=packageVersion=26.3.2
+  --additional-properties=packageVersion=26.4.1
 ```
 
-> **Note:** Download the latest API bundle from the Graphiant portal under **Support Hub** → **Developer Tools**. Set **`packageVersion`** to the SDK release you are publishing (this branch: **26.3.2**). The **`-i`** filename reflects the API doc bundle version (here `graphiant_api_docs_v26.3.1.json`) and may stay the same across patch releases when the spec is unchanged.
+> **Note:** Download the latest API bundle from the Graphiant portal under **Support Hub** → **Developer Tools**. Set **`packageVersion`** to the SDK release you are publishing (this branch: **26.4.1**). The **`-i`** filename reflects the API doc bundle version (here `graphiant_api_docs_v26.4.1.json`) and may stay the same across patch releases when the spec is unchanged.
 
 ### Testing
 

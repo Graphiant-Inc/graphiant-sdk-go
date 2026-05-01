@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **LastRunningVersion** | Pointer to [**UpgradeSwVersion**](UpgradeSwVersion.md) |  | [optional] 
 **LastUpgradeTs** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **ReadyForActivationVersion** | Pointer to [**UpgradeSwVersion**](UpgradeSwVersion.md) |  | [optional] 
+**RolloutId** | Pointer to **int64** |  | [optional] 
+**RolloutName** | Pointer to **string** |  | [optional] 
 **RunningVersion** | Pointer to [**UpgradeSwVersion**](UpgradeSwVersion.md) |  | [optional] 
 **Schedule** | Pointer to [**UpgradeSchedule**](UpgradeSchedule.md) |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
@@ -182,6 +184,56 @@ SetReadyForActivationVersion sets ReadyForActivationVersion field to given value
 `func (o *UpgradeUpgradeSummary) HasReadyForActivationVersion() bool`
 
 HasReadyForActivationVersion returns a boolean if a field has been set.
+
+### GetRolloutId
+
+`func (o *UpgradeUpgradeSummary) GetRolloutId() int64`
+
+GetRolloutId returns the RolloutId field if non-nil, zero value otherwise.
+
+### GetRolloutIdOk
+
+`func (o *UpgradeUpgradeSummary) GetRolloutIdOk() (*int64, bool)`
+
+GetRolloutIdOk returns a tuple with the RolloutId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRolloutId
+
+`func (o *UpgradeUpgradeSummary) SetRolloutId(v int64)`
+
+SetRolloutId sets RolloutId field to given value.
+
+### HasRolloutId
+
+`func (o *UpgradeUpgradeSummary) HasRolloutId() bool`
+
+HasRolloutId returns a boolean if a field has been set.
+
+### GetRolloutName
+
+`func (o *UpgradeUpgradeSummary) GetRolloutName() string`
+
+GetRolloutName returns the RolloutName field if non-nil, zero value otherwise.
+
+### GetRolloutNameOk
+
+`func (o *UpgradeUpgradeSummary) GetRolloutNameOk() (*string, bool)`
+
+GetRolloutNameOk returns a tuple with the RolloutName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRolloutName
+
+`func (o *UpgradeUpgradeSummary) SetRolloutName(v string)`
+
+SetRolloutName sets RolloutName field to given value.
+
+### HasRolloutName
+
+`func (o *UpgradeUpgradeSummary) HasRolloutName() bool`
+
+HasRolloutName returns a boolean if a field has been set.
 
 ### GetRunningVersion
 
