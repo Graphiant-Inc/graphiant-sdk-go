@@ -23,6 +23,7 @@ type V2AssuranceTopologyClientSessionsPostRequest struct {
 	AppServerKey *string `json:"appServerKey,omitempty"`
 	BucketId *string `json:"bucketId,omitempty"`
 	ClientIp *string `json:"clientIp,omitempty"`
+	ExchangeServiceId *int64 `json:"exchangeServiceId,omitempty"`
 	Filter *AssuranceTopologyFilter `json:"filter,omitempty"`
 	FlexAlgoId *int64 `json:"flexAlgoId,omitempty"`
 	SiteId *int64 `json:"siteId,omitempty"`
@@ -174,6 +175,38 @@ func (o *V2AssuranceTopologyClientSessionsPostRequest) SetClientIp(v string) {
 	o.ClientIp = &v
 }
 
+// GetExchangeServiceId returns the ExchangeServiceId field value if set, zero value otherwise.
+func (o *V2AssuranceTopologyClientSessionsPostRequest) GetExchangeServiceId() int64 {
+	if o == nil || IsNil(o.ExchangeServiceId) {
+		var ret int64
+		return ret
+	}
+	return *o.ExchangeServiceId
+}
+
+// GetExchangeServiceIdOk returns a tuple with the ExchangeServiceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V2AssuranceTopologyClientSessionsPostRequest) GetExchangeServiceIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.ExchangeServiceId) {
+		return nil, false
+	}
+	return o.ExchangeServiceId, true
+}
+
+// HasExchangeServiceId returns a boolean if a field has been set.
+func (o *V2AssuranceTopologyClientSessionsPostRequest) HasExchangeServiceId() bool {
+	if o != nil && !IsNil(o.ExchangeServiceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetExchangeServiceId gets a reference to the given int64 and assigns it to the ExchangeServiceId field.
+func (o *V2AssuranceTopologyClientSessionsPostRequest) SetExchangeServiceId(v int64) {
+	o.ExchangeServiceId = &v
+}
+
 // GetFilter returns the Filter field value if set, zero value otherwise.
 func (o *V2AssuranceTopologyClientSessionsPostRequest) GetFilter() AssuranceTopologyFilter {
 	if o == nil || IsNil(o.Filter) {
@@ -323,6 +356,9 @@ func (o V2AssuranceTopologyClientSessionsPostRequest) ToMap() (map[string]interf
 	}
 	if !IsNil(o.ClientIp) {
 		toSerialize["clientIp"] = o.ClientIp
+	}
+	if !IsNil(o.ExchangeServiceId) {
+		toSerialize["exchangeServiceId"] = o.ExchangeServiceId
 	}
 	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter

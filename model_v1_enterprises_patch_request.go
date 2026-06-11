@@ -26,6 +26,7 @@ type V1EnterprisesPatchRequest struct {
 	CompanyName *string `json:"companyName,omitempty"`
 	CreditLimit *int32 `json:"creditLimit,omitempty"`
 	Description *string `json:"description,omitempty"`
+	EnterpriseContract *CommonBillingContract `json:"enterpriseContract,omitempty"`
 	//  (required)
 	EnterpriseId int64 `json:"enterpriseId"`
 	ImpersonationEnabled *bool `json:"impersonationEnabled,omitempty"`
@@ -215,6 +216,38 @@ func (o *V1EnterprisesPatchRequest) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *V1EnterprisesPatchRequest) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetEnterpriseContract returns the EnterpriseContract field value if set, zero value otherwise.
+func (o *V1EnterprisesPatchRequest) GetEnterpriseContract() CommonBillingContract {
+	if o == nil || IsNil(o.EnterpriseContract) {
+		var ret CommonBillingContract
+		return ret
+	}
+	return *o.EnterpriseContract
+}
+
+// GetEnterpriseContractOk returns a tuple with the EnterpriseContract field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1EnterprisesPatchRequest) GetEnterpriseContractOk() (*CommonBillingContract, bool) {
+	if o == nil || IsNil(o.EnterpriseContract) {
+		return nil, false
+	}
+	return o.EnterpriseContract, true
+}
+
+// HasEnterpriseContract returns a boolean if a field has been set.
+func (o *V1EnterprisesPatchRequest) HasEnterpriseContract() bool {
+	if o != nil && !IsNil(o.EnterpriseContract) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnterpriseContract gets a reference to the given CommonBillingContract and assigns it to the EnterpriseContract field.
+func (o *V1EnterprisesPatchRequest) SetEnterpriseContract(v CommonBillingContract) {
+	o.EnterpriseContract = &v
 }
 
 // GetEnterpriseId returns the EnterpriseId field value
@@ -489,6 +522,9 @@ func (o V1EnterprisesPatchRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.EnterpriseContract) {
+		toSerialize["enterpriseContract"] = o.EnterpriseContract
 	}
 	toSerialize["enterpriseId"] = o.EnterpriseId
 	if !IsNil(o.ImpersonationEnabled) {

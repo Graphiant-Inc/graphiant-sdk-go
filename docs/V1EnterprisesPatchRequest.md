@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CompanyName** | Pointer to **string** |  | [optional] 
 **CreditLimit** | Pointer to **int32** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**EnterpriseContract** | Pointer to [**CommonBillingContract**](CommonBillingContract.md) |  | [optional] 
 **EnterpriseId** | **int64** |  (required) | 
 **ImpersonationEnabled** | Pointer to **bool** |  | [optional] 
 **Logo** | Pointer to **string** |  | [optional] 
@@ -161,6 +162,31 @@ SetDescription sets Description field to given value.
 `func (o *V1EnterprisesPatchRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEnterpriseContract
+
+`func (o *V1EnterprisesPatchRequest) GetEnterpriseContract() CommonBillingContract`
+
+GetEnterpriseContract returns the EnterpriseContract field if non-nil, zero value otherwise.
+
+### GetEnterpriseContractOk
+
+`func (o *V1EnterprisesPatchRequest) GetEnterpriseContractOk() (*CommonBillingContract, bool)`
+
+GetEnterpriseContractOk returns a tuple with the EnterpriseContract field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnterpriseContract
+
+`func (o *V1EnterprisesPatchRequest) SetEnterpriseContract(v CommonBillingContract)`
+
+SetEnterpriseContract sets EnterpriseContract field to given value.
+
+### HasEnterpriseContract
+
+`func (o *V1EnterprisesPatchRequest) HasEnterpriseContract() bool`
+
+HasEnterpriseContract returns a boolean if a field has been set.
 
 ### GetEnterpriseId
 

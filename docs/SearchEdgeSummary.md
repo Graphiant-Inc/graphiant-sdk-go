@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **IsHardware** | Pointer to **bool** |  | [optional] 
 **IsNew** | Pointer to **bool** |  | [optional] 
 **IsRequested** | Pointer to **bool** |  | [optional] 
+**IsRequestedStatus** | Pointer to **string** |  | [optional] 
 **LastBootedAt** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **Location** | Pointer to [**ManaV2Location**](ManaV2Location.md) |  | [optional] 
 **Model** | Pointer to **string** |  | [optional] 
@@ -378,6 +379,31 @@ SetIsRequested sets IsRequested field to given value.
 `func (o *SearchEdgeSummary) HasIsRequested() bool`
 
 HasIsRequested returns a boolean if a field has been set.
+
+### GetIsRequestedStatus
+
+`func (o *SearchEdgeSummary) GetIsRequestedStatus() string`
+
+GetIsRequestedStatus returns the IsRequestedStatus field if non-nil, zero value otherwise.
+
+### GetIsRequestedStatusOk
+
+`func (o *SearchEdgeSummary) GetIsRequestedStatusOk() (*string, bool)`
+
+GetIsRequestedStatusOk returns a tuple with the IsRequestedStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsRequestedStatus
+
+`func (o *SearchEdgeSummary) SetIsRequestedStatus(v string)`
+
+SetIsRequestedStatus sets IsRequestedStatus field to given value.
+
+### HasIsRequestedStatus
+
+`func (o *SearchEdgeSummary) HasIsRequestedStatus() bool`
+
+HasIsRequestedStatus returns a boolean if a field has been set.
 
 ### GetLastBootedAt
 

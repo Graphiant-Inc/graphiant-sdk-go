@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **LanSegments** | Pointer to **[]string** |  | [optional] 
 **ServerIp** | Pointer to **string** |  | [optional] 
 **ServerPort** | Pointer to **int32** |  | [optional] 
+**ServerSiteEnterpriseName** | Pointer to **string** |  | [optional] 
 **ServerSiteName** | Pointer to **string** |  | [optional] 
 **SessionCount** | Pointer to **int32** |  | [optional] 
 
@@ -181,6 +182,31 @@ SetServerPort sets ServerPort field to given value.
 `func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) HasServerPort() bool`
 
 HasServerPort returns a boolean if a field has been set.
+
+### GetServerSiteEnterpriseName
+
+`func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) GetServerSiteEnterpriseName() string`
+
+GetServerSiteEnterpriseName returns the ServerSiteEnterpriseName field if non-nil, zero value otherwise.
+
+### GetServerSiteEnterpriseNameOk
+
+`func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) GetServerSiteEnterpriseNameOk() (*string, bool)`
+
+GetServerSiteEnterpriseNameOk returns a tuple with the ServerSiteEnterpriseName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerSiteEnterpriseName
+
+`func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) SetServerSiteEnterpriseName(v string)`
+
+SetServerSiteEnterpriseName sets ServerSiteEnterpriseName field to given value.
+
+### HasServerSiteEnterpriseName
+
+`func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) HasServerSiteEnterpriseName() bool`
+
+HasServerSiteEnterpriseName returns a boolean if a field has been set.
 
 ### GetServerSiteName
 

@@ -32,6 +32,7 @@ type V1EnterprisesPutRequest struct {
 	CompanyName string `json:"companyName"`
 	CreditLimit *int32 `json:"creditLimit,omitempty"`
 	Description *string `json:"description,omitempty"`
+	EnterpriseContract CommonBillingContract `json:"enterpriseContract"`
 	Logo *string `json:"logo,omitempty"`
 	MarketplaceId *string `json:"marketplaceId,omitempty"`
 	SmallLogo *string `json:"smallLogo,omitempty"`
@@ -43,10 +44,11 @@ type _V1EnterprisesPutRequest V1EnterprisesPutRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1EnterprisesPutRequest(accountType string, companyName string) *V1EnterprisesPutRequest {
+func NewV1EnterprisesPutRequest(accountType string, companyName string, enterpriseContract CommonBillingContract) *V1EnterprisesPutRequest {
 	this := V1EnterprisesPutRequest{}
 	this.AccountType = accountType
 	this.CompanyName = companyName
+	this.EnterpriseContract = enterpriseContract
 	return &this
 }
 
@@ -330,6 +332,30 @@ func (o *V1EnterprisesPutRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetEnterpriseContract returns the EnterpriseContract field value
+func (o *V1EnterprisesPutRequest) GetEnterpriseContract() CommonBillingContract {
+	if o == nil {
+		var ret CommonBillingContract
+		return ret
+	}
+
+	return o.EnterpriseContract
+}
+
+// GetEnterpriseContractOk returns a tuple with the EnterpriseContract field value
+// and a boolean to check if the value has been set.
+func (o *V1EnterprisesPutRequest) GetEnterpriseContractOk() (*CommonBillingContract, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnterpriseContract, true
+}
+
+// SetEnterpriseContract sets field value
+func (o *V1EnterprisesPutRequest) SetEnterpriseContract(v CommonBillingContract) {
+	o.EnterpriseContract = v
+}
+
 // GetLogo returns the Logo field value if set, zero value otherwise.
 func (o *V1EnterprisesPutRequest) GetLogo() string {
 	if o == nil || IsNil(o.Logo) {
@@ -459,6 +485,7 @@ func (o V1EnterprisesPutRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	toSerialize["enterpriseContract"] = o.EnterpriseContract
 	if !IsNil(o.Logo) {
 		toSerialize["logo"] = o.Logo
 	}
@@ -478,6 +505,7 @@ func (o *V1EnterprisesPutRequest) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"accountType",
 		"companyName",
+		"enterpriseContract",
 	}
 
 	allProperties := make(map[string]interface{})

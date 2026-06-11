@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **CompanyName** | **string** |  (required) | 
 **CreditLimit** | Pointer to **int32** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**EnterpriseContract** | [**CommonBillingContract**](CommonBillingContract.md) |  | 
 **Logo** | Pointer to **string** |  | [optional] 
 **MarketplaceId** | Pointer to **string** |  | [optional] 
 **SmallLogo** | Pointer to **string** |  | [optional] 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewV1EnterprisesPutRequest
 
-`func NewV1EnterprisesPutRequest(accountType string, companyName string, ) *V1EnterprisesPutRequest`
+`func NewV1EnterprisesPutRequest(accountType string, companyName string, enterpriseContract CommonBillingContract, ) *V1EnterprisesPutRequest`
 
 NewV1EnterprisesPutRequest instantiates a new V1EnterprisesPutRequest object
 This constructor will assign default values to properties that have it defined,
@@ -250,6 +251,26 @@ SetDescription sets Description field to given value.
 `func (o *V1EnterprisesPutRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEnterpriseContract
+
+`func (o *V1EnterprisesPutRequest) GetEnterpriseContract() CommonBillingContract`
+
+GetEnterpriseContract returns the EnterpriseContract field if non-nil, zero value otherwise.
+
+### GetEnterpriseContractOk
+
+`func (o *V1EnterprisesPutRequest) GetEnterpriseContractOk() (*CommonBillingContract, bool)`
+
+GetEnterpriseContractOk returns a tuple with the EnterpriseContract field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnterpriseContract
+
+`func (o *V1EnterprisesPutRequest) SetEnterpriseContract(v CommonBillingContract)`
+
+SetEnterpriseContract sets EnterpriseContract field to given value.
+
 
 ### GetLogo
 

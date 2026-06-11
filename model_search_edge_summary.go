@@ -32,6 +32,7 @@ type SearchEdgeSummary struct {
 	IsHardware *bool `json:"isHardware,omitempty"`
 	IsNew *bool `json:"isNew,omitempty"`
 	IsRequested *bool `json:"isRequested,omitempty"`
+	IsRequestedStatus *string `json:"isRequestedStatus,omitempty"`
 	LastBootedAt *GoogleProtobufTimestamp `json:"lastBootedAt,omitempty"`
 	Location *ManaV2Location `json:"location,omitempty"`
 	Model *string `json:"model,omitempty"`
@@ -482,6 +483,38 @@ func (o *SearchEdgeSummary) HasIsRequested() bool {
 // SetIsRequested gets a reference to the given bool and assigns it to the IsRequested field.
 func (o *SearchEdgeSummary) SetIsRequested(v bool) {
 	o.IsRequested = &v
+}
+
+// GetIsRequestedStatus returns the IsRequestedStatus field value if set, zero value otherwise.
+func (o *SearchEdgeSummary) GetIsRequestedStatus() string {
+	if o == nil || IsNil(o.IsRequestedStatus) {
+		var ret string
+		return ret
+	}
+	return *o.IsRequestedStatus
+}
+
+// GetIsRequestedStatusOk returns a tuple with the IsRequestedStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchEdgeSummary) GetIsRequestedStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.IsRequestedStatus) {
+		return nil, false
+	}
+	return o.IsRequestedStatus, true
+}
+
+// HasIsRequestedStatus returns a boolean if a field has been set.
+func (o *SearchEdgeSummary) HasIsRequestedStatus() bool {
+	if o != nil && !IsNil(o.IsRequestedStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsRequestedStatus gets a reference to the given string and assigns it to the IsRequestedStatus field.
+func (o *SearchEdgeSummary) SetIsRequestedStatus(v string) {
+	o.IsRequestedStatus = &v
 }
 
 // GetLastBootedAt returns the LastBootedAt field value if set, zero value otherwise.
@@ -1076,6 +1109,9 @@ func (o SearchEdgeSummary) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsRequested) {
 		toSerialize["isRequested"] = o.IsRequested
+	}
+	if !IsNil(o.IsRequestedStatus) {
+		toSerialize["isRequestedStatus"] = o.IsRequestedStatus
 	}
 	if !IsNil(o.LastBootedAt) {
 		toSerialize["lastBootedAt"] = o.LastBootedAt

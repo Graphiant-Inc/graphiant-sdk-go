@@ -4,6 +4,37 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.5.0] - 2026-06-10
+
+### Added
+- **API endpoints:**
+  - `GET /v1/extranet-public-vif`
+  - `POST /v1/extranet-public-vif`
+  - `POST /v1/extranet-public-vif/check`
+  - `GET /v1/extranet-public-vif/{id}`
+  - `PUT /v1/extranet-public-vif/{id}`
+  - `DELETE /v1/extranet-public-vif/{id}`
+  - `GET /v1/msp/managed-enterprise-contract-info`
+  - `GET /v1/sites/map/details`
+- **Models:**
+  - Added extranet public VIF types (`v1ExtranetPublicVif*`, `manaV2PublicVif*`, and nested consumer/producer policy, device, dynamic/fixed, and NAT schemas)
+  - Added site map types (`v1SitesMapDetailsGetResponse`, `manaV2LanSegmentSitesMap`, `manaV2SiteInformation`, `manaV2SiteDeviceSummary`, `manaV2SiteLanSegmentDeviceBuckets`)
+  - Added MSP managed enterprise contract types (`v1MspManagedEnterpriseContractInfoGetResponse`, `manaV2ManagedEnterpriseContractInfo`)
+  - Added billing contract types (`commonBillingContract`, `commonBillingTimePeriod`)
+
+### Changed
+- Updated to API specification version 26.5.0
+- **Version:**
+  - Updated version constant to v26.5.0
+  - Updated API documentation reference to `graphiant_api_docs_v26.5.0.json`
+- **Documentation:** updated SDK generation example in README to use `graphiant_api_docs_v26.5.0.json` and `packageVersion=26.5.0`; **SECURITY.md** supported-versions table for **26.5.0**
+- **API endpoints (updated):** existing routes regenerated for revised schemas (see regenerated **`DefaultAPI`**); path additions are listed under **Added** above
+- **Models:** updated (OpenAPI spec refresh; representative schema updates include `assuranceClientSession`, `assuranceSite`, `manaV2ApplicationProfile`, `searchEdgeSummary`, `v1EnterpriseContractPutRequest`, `v1EnterprisesPatchRequest`, `v1EnterprisesPutRequest`, `v2AssuranceApplicationdetailsbynamePostRequest`, `v2AssuranceTopologyClientSessionsPostRequest`, `v2AssuranceTopologyClientSummariesPostRequest`, `v2AssuranceTopologyClientSummariesPostResponseSummary`, `v2AssuranceTopologyOverviewPostRequest`, `v2AssuranceTopologySiteSummariesPostRequest`)
+
+### Removed
+- **API endpoints:** none
+- **Models:** none
+
 ## [26.4.0] - 2026-04-30
 
 ### Added

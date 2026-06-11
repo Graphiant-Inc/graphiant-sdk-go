@@ -20,6 +20,7 @@ var _ MappedNullable = &AssuranceSite{}
 // AssuranceSite struct for AssuranceSite
 type AssuranceSite struct {
 	RegionId *int32 `json:"regionId,omitempty"`
+	SiteEnterpriseName *string `json:"siteEnterpriseName,omitempty"`
 	SiteId *int64 `json:"siteId,omitempty"`
 	SiteName *string `json:"siteName,omitempty"`
 }
@@ -71,6 +72,38 @@ func (o *AssuranceSite) HasRegionId() bool {
 // SetRegionId gets a reference to the given int32 and assigns it to the RegionId field.
 func (o *AssuranceSite) SetRegionId(v int32) {
 	o.RegionId = &v
+}
+
+// GetSiteEnterpriseName returns the SiteEnterpriseName field value if set, zero value otherwise.
+func (o *AssuranceSite) GetSiteEnterpriseName() string {
+	if o == nil || IsNil(o.SiteEnterpriseName) {
+		var ret string
+		return ret
+	}
+	return *o.SiteEnterpriseName
+}
+
+// GetSiteEnterpriseNameOk returns a tuple with the SiteEnterpriseName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceSite) GetSiteEnterpriseNameOk() (*string, bool) {
+	if o == nil || IsNil(o.SiteEnterpriseName) {
+		return nil, false
+	}
+	return o.SiteEnterpriseName, true
+}
+
+// HasSiteEnterpriseName returns a boolean if a field has been set.
+func (o *AssuranceSite) HasSiteEnterpriseName() bool {
+	if o != nil && !IsNil(o.SiteEnterpriseName) {
+		return true
+	}
+
+	return false
+}
+
+// SetSiteEnterpriseName gets a reference to the given string and assigns it to the SiteEnterpriseName field.
+func (o *AssuranceSite) SetSiteEnterpriseName(v string) {
+	o.SiteEnterpriseName = &v
 }
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
@@ -149,6 +182,9 @@ func (o AssuranceSite) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.RegionId) {
 		toSerialize["regionId"] = o.RegionId
+	}
+	if !IsNil(o.SiteEnterpriseName) {
+		toSerialize["siteEnterpriseName"] = o.SiteEnterpriseName
 	}
 	if !IsNil(o.SiteId) {
 		toSerialize["siteId"] = o.SiteId

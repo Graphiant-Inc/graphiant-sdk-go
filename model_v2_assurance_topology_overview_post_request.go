@@ -22,6 +22,7 @@ type V2AssuranceTopologyOverviewPostRequest struct {
 	AppName *string `json:"appName,omitempty"`
 	AppServerKey *string `json:"appServerKey,omitempty"`
 	BucketId *string `json:"bucketId,omitempty"`
+	ExchangeServiceId *int64 `json:"exchangeServiceId,omitempty"`
 	Filter *V2AssuranceTopologyOverviewPostRequestTopologyFilter `json:"filter,omitempty"`
 	FlexAlgoId *int64 `json:"flexAlgoId,omitempty"`
 	SliderTimeWindow *AssuranceTimeWindow `json:"sliderTimeWindow,omitempty"`
@@ -141,6 +142,38 @@ func (o *V2AssuranceTopologyOverviewPostRequest) HasBucketId() bool {
 // SetBucketId gets a reference to the given string and assigns it to the BucketId field.
 func (o *V2AssuranceTopologyOverviewPostRequest) SetBucketId(v string) {
 	o.BucketId = &v
+}
+
+// GetExchangeServiceId returns the ExchangeServiceId field value if set, zero value otherwise.
+func (o *V2AssuranceTopologyOverviewPostRequest) GetExchangeServiceId() int64 {
+	if o == nil || IsNil(o.ExchangeServiceId) {
+		var ret int64
+		return ret
+	}
+	return *o.ExchangeServiceId
+}
+
+// GetExchangeServiceIdOk returns a tuple with the ExchangeServiceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V2AssuranceTopologyOverviewPostRequest) GetExchangeServiceIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.ExchangeServiceId) {
+		return nil, false
+	}
+	return o.ExchangeServiceId, true
+}
+
+// HasExchangeServiceId returns a boolean if a field has been set.
+func (o *V2AssuranceTopologyOverviewPostRequest) HasExchangeServiceId() bool {
+	if o != nil && !IsNil(o.ExchangeServiceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetExchangeServiceId gets a reference to the given int64 and assigns it to the ExchangeServiceId field.
+func (o *V2AssuranceTopologyOverviewPostRequest) SetExchangeServiceId(v int64) {
+	o.ExchangeServiceId = &v
 }
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
@@ -353,6 +386,9 @@ func (o V2AssuranceTopologyOverviewPostRequest) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.BucketId) {
 		toSerialize["bucketId"] = o.BucketId
+	}
+	if !IsNil(o.ExchangeServiceId) {
+		toSerialize["exchangeServiceId"] = o.ExchangeServiceId
 	}
 	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter

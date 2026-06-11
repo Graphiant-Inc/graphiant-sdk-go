@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ContractedCredits** | Pointer to **float32** | Amount of credits billed for a contract term or monthly if no expiration date is provided | [optional] 
+**ContractedCredits** | Pointer to **float32** | Amount of credits billed for a contract term or per month when no expiration is provided. For an MSP tenant, this is the total credits in the MSP billing pool (from which credits are allocated to managed enterprises). | [optional] 
 **ExpirationDate** | Pointer to [**ManaV2TimePeriod**](ManaV2TimePeriod.md) |  | [optional] 
 
 ## Methods

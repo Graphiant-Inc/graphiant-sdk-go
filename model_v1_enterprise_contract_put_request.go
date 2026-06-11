@@ -19,7 +19,7 @@ var _ MappedNullable = &V1EnterpriseContractPutRequest{}
 
 // V1EnterpriseContractPutRequest struct for V1EnterpriseContractPutRequest
 type V1EnterpriseContractPutRequest struct {
-	// Amount of credits billed for a contract term or monthly if no expiration date is provided
+	// Amount of credits billed for a contract term or per month when no expiration is provided. For an MSP tenant, this is the total credits in the MSP billing pool (from which credits are allocated to managed enterprises).
 	ContractedCredits *float32 `json:"contractedCredits,omitempty"`
 	ExpirationDate *ManaV2TimePeriod `json:"expirationDate,omitempty"`
 }

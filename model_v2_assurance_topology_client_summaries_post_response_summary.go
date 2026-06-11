@@ -25,6 +25,7 @@ type V2AssuranceTopologyClientSummariesPostResponseSummary struct {
 	LanSegments []string `json:"lanSegments,omitempty"`
 	ServerIp *string `json:"serverIp,omitempty"`
 	ServerPort *int32 `json:"serverPort,omitempty"`
+	ServerSiteEnterpriseName *string `json:"serverSiteEnterpriseName,omitempty"`
 	ServerSiteName *string `json:"serverSiteName,omitempty"`
 	SessionCount *int32 `json:"sessionCount,omitempty"`
 }
@@ -238,6 +239,38 @@ func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) SetServerPort(v 
 	o.ServerPort = &v
 }
 
+// GetServerSiteEnterpriseName returns the ServerSiteEnterpriseName field value if set, zero value otherwise.
+func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) GetServerSiteEnterpriseName() string {
+	if o == nil || IsNil(o.ServerSiteEnterpriseName) {
+		var ret string
+		return ret
+	}
+	return *o.ServerSiteEnterpriseName
+}
+
+// GetServerSiteEnterpriseNameOk returns a tuple with the ServerSiteEnterpriseName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) GetServerSiteEnterpriseNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ServerSiteEnterpriseName) {
+		return nil, false
+	}
+	return o.ServerSiteEnterpriseName, true
+}
+
+// HasServerSiteEnterpriseName returns a boolean if a field has been set.
+func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) HasServerSiteEnterpriseName() bool {
+	if o != nil && !IsNil(o.ServerSiteEnterpriseName) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerSiteEnterpriseName gets a reference to the given string and assigns it to the ServerSiteEnterpriseName field.
+func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) SetServerSiteEnterpriseName(v string) {
+	o.ServerSiteEnterpriseName = &v
+}
+
 // GetServerSiteName returns the ServerSiteName field value if set, zero value otherwise.
 func (o *V2AssuranceTopologyClientSummariesPostResponseSummary) GetServerSiteName() string {
 	if o == nil || IsNil(o.ServerSiteName) {
@@ -329,6 +362,9 @@ func (o V2AssuranceTopologyClientSummariesPostResponseSummary) ToMap() (map[stri
 	}
 	if !IsNil(o.ServerPort) {
 		toSerialize["serverPort"] = o.ServerPort
+	}
+	if !IsNil(o.ServerSiteEnterpriseName) {
+		toSerialize["serverSiteEnterpriseName"] = o.ServerSiteEnterpriseName
 	}
 	if !IsNil(o.ServerSiteName) {
 		toSerialize["serverSiteName"] = o.ServerSiteName
