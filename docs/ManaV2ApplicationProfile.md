@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**PortRange** | Pointer to **string** | Port Range | [optional] 
 **Ports** | **[]int32** |  | 
 **Protocol** | **int32** | Protocol for the application profile (required) | 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewManaV2ApplicationProfileWithDefaults instantiates a new ManaV2ApplicationProfile object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetPortRange
+
+`func (o *ManaV2ApplicationProfile) GetPortRange() string`
+
+GetPortRange returns the PortRange field if non-nil, zero value otherwise.
+
+### GetPortRangeOk
+
+`func (o *ManaV2ApplicationProfile) GetPortRangeOk() (*string, bool)`
+
+GetPortRangeOk returns a tuple with the PortRange field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPortRange
+
+`func (o *ManaV2ApplicationProfile) SetPortRange(v string)`
+
+SetPortRange sets PortRange field to given value.
+
+### HasPortRange
+
+`func (o *ManaV2ApplicationProfile) HasPortRange() bool`
+
+HasPortRange returns a boolean if a field has been set.
 
 ### GetPorts
 

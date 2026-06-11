@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RegionId** | Pointer to **int32** |  | [optional] 
+**SiteEnterpriseName** | Pointer to **string** |  | [optional] 
 **SiteId** | Pointer to **int64** |  | [optional] 
 **SiteName** | Pointer to **string** |  | [optional] 
 
@@ -51,6 +52,31 @@ SetRegionId sets RegionId field to given value.
 `func (o *AssuranceSite) HasRegionId() bool`
 
 HasRegionId returns a boolean if a field has been set.
+
+### GetSiteEnterpriseName
+
+`func (o *AssuranceSite) GetSiteEnterpriseName() string`
+
+GetSiteEnterpriseName returns the SiteEnterpriseName field if non-nil, zero value otherwise.
+
+### GetSiteEnterpriseNameOk
+
+`func (o *AssuranceSite) GetSiteEnterpriseNameOk() (*string, bool)`
+
+GetSiteEnterpriseNameOk returns a tuple with the SiteEnterpriseName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiteEnterpriseName
+
+`func (o *AssuranceSite) SetSiteEnterpriseName(v string)`
+
+SetSiteEnterpriseName sets SiteEnterpriseName field to given value.
+
+### HasSiteEnterpriseName
+
+`func (o *AssuranceSite) HasSiteEnterpriseName() bool`
+
+HasSiteEnterpriseName returns a boolean if a field has been set.
 
 ### GetSiteId
 

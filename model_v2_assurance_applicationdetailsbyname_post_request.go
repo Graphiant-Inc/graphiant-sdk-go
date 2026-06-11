@@ -22,6 +22,7 @@ type V2AssuranceApplicationdetailsbynamePostRequest struct {
 	AppIdKey *string `json:"appIdKey,omitempty"`
 	AppName *string `json:"appName,omitempty"`
 	BucketId *string `json:"bucketId,omitempty"`
+	ExchangeServiceId *int64 `json:"exchangeServiceId,omitempty"`
 	FlexAlgoId *int64 `json:"flexAlgoId,omitempty"`
 	TimeWindow *AssuranceTimeWindow `json:"timeWindow,omitempty"`
 }
@@ -139,6 +140,38 @@ func (o *V2AssuranceApplicationdetailsbynamePostRequest) SetBucketId(v string) {
 	o.BucketId = &v
 }
 
+// GetExchangeServiceId returns the ExchangeServiceId field value if set, zero value otherwise.
+func (o *V2AssuranceApplicationdetailsbynamePostRequest) GetExchangeServiceId() int64 {
+	if o == nil || IsNil(o.ExchangeServiceId) {
+		var ret int64
+		return ret
+	}
+	return *o.ExchangeServiceId
+}
+
+// GetExchangeServiceIdOk returns a tuple with the ExchangeServiceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V2AssuranceApplicationdetailsbynamePostRequest) GetExchangeServiceIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.ExchangeServiceId) {
+		return nil, false
+	}
+	return o.ExchangeServiceId, true
+}
+
+// HasExchangeServiceId returns a boolean if a field has been set.
+func (o *V2AssuranceApplicationdetailsbynamePostRequest) HasExchangeServiceId() bool {
+	if o != nil && !IsNil(o.ExchangeServiceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetExchangeServiceId gets a reference to the given int64 and assigns it to the ExchangeServiceId field.
+func (o *V2AssuranceApplicationdetailsbynamePostRequest) SetExchangeServiceId(v int64) {
+	o.ExchangeServiceId = &v
+}
+
 // GetFlexAlgoId returns the FlexAlgoId field value if set, zero value otherwise.
 func (o *V2AssuranceApplicationdetailsbynamePostRequest) GetFlexAlgoId() int64 {
 	if o == nil || IsNil(o.FlexAlgoId) {
@@ -221,6 +254,9 @@ func (o V2AssuranceApplicationdetailsbynamePostRequest) ToMap() (map[string]inte
 	}
 	if !IsNil(o.BucketId) {
 		toSerialize["bucketId"] = o.BucketId
+	}
+	if !IsNil(o.ExchangeServiceId) {
+		toSerialize["exchangeServiceId"] = o.ExchangeServiceId
 	}
 	if !IsNil(o.FlexAlgoId) {
 		toSerialize["flexAlgoId"] = o.FlexAlgoId

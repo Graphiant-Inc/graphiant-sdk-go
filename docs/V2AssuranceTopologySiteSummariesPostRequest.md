@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AppName** | Pointer to **string** |  | [optional] 
 **AppServerKey** | Pointer to **string** |  | [optional] 
 **BucketId** | Pointer to **string** |  | [optional] 
+**ExchangeServiceId** | Pointer to **int64** |  | [optional] 
 **Filter** | Pointer to [**AssuranceTopologyFilter**](AssuranceTopologyFilter.md) |  | [optional] 
 **FlexAlgoId** | Pointer to **int64** |  | [optional] 
 **TimeWindow** | Pointer to [**AssuranceTimeWindow**](AssuranceTimeWindow.md) |  | [optional] 
@@ -104,6 +105,31 @@ SetBucketId sets BucketId field to given value.
 `func (o *V2AssuranceTopologySiteSummariesPostRequest) HasBucketId() bool`
 
 HasBucketId returns a boolean if a field has been set.
+
+### GetExchangeServiceId
+
+`func (o *V2AssuranceTopologySiteSummariesPostRequest) GetExchangeServiceId() int64`
+
+GetExchangeServiceId returns the ExchangeServiceId field if non-nil, zero value otherwise.
+
+### GetExchangeServiceIdOk
+
+`func (o *V2AssuranceTopologySiteSummariesPostRequest) GetExchangeServiceIdOk() (*int64, bool)`
+
+GetExchangeServiceIdOk returns a tuple with the ExchangeServiceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExchangeServiceId
+
+`func (o *V2AssuranceTopologySiteSummariesPostRequest) SetExchangeServiceId(v int64)`
+
+SetExchangeServiceId sets ExchangeServiceId field to given value.
+
+### HasExchangeServiceId
+
+`func (o *V2AssuranceTopologySiteSummariesPostRequest) HasExchangeServiceId() bool`
+
+HasExchangeServiceId returns a boolean if a field has been set.
 
 ### GetFilter
 

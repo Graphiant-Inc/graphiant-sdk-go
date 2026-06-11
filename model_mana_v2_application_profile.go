@@ -21,6 +21,8 @@ var _ MappedNullable = &ManaV2ApplicationProfile{}
 
 // ManaV2ApplicationProfile struct for ManaV2ApplicationProfile
 type ManaV2ApplicationProfile struct {
+	// Port Range
+	PortRange *string `json:"portRange,omitempty"`
 	Ports []int32 `json:"ports"`
 	// Protocol for the application profile (required)
 	Protocol int32 `json:"protocol"`
@@ -45,6 +47,38 @@ func NewManaV2ApplicationProfile(ports []int32, protocol int32) *ManaV2Applicati
 func NewManaV2ApplicationProfileWithDefaults() *ManaV2ApplicationProfile {
 	this := ManaV2ApplicationProfile{}
 	return &this
+}
+
+// GetPortRange returns the PortRange field value if set, zero value otherwise.
+func (o *ManaV2ApplicationProfile) GetPortRange() string {
+	if o == nil || IsNil(o.PortRange) {
+		var ret string
+		return ret
+	}
+	return *o.PortRange
+}
+
+// GetPortRangeOk returns a tuple with the PortRange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2ApplicationProfile) GetPortRangeOk() (*string, bool) {
+	if o == nil || IsNil(o.PortRange) {
+		return nil, false
+	}
+	return o.PortRange, true
+}
+
+// HasPortRange returns a boolean if a field has been set.
+func (o *ManaV2ApplicationProfile) HasPortRange() bool {
+	if o != nil && !IsNil(o.PortRange) {
+		return true
+	}
+
+	return false
+}
+
+// SetPortRange gets a reference to the given string and assigns it to the PortRange field.
+func (o *ManaV2ApplicationProfile) SetPortRange(v string) {
+	o.PortRange = &v
 }
 
 // GetPorts returns the Ports field value
@@ -105,6 +139,9 @@ func (o ManaV2ApplicationProfile) MarshalJSON() ([]byte, error) {
 
 func (o ManaV2ApplicationProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.PortRange) {
+		toSerialize["portRange"] = o.PortRange
+	}
 	toSerialize["ports"] = o.Ports
 	toSerialize["protocol"] = o.Protocol
 	return toSerialize, nil

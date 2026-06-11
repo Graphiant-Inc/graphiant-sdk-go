@@ -26,6 +26,7 @@ type AssuranceClientSession struct {
 	ClientIp *string `json:"clientIp,omitempty"`
 	ClientLinks []AssuranceClientSessionEndpointLink `json:"clientLinks,omitempty"`
 	ClientUsername *string `json:"clientUsername,omitempty"`
+	ExchangeServiceName *string `json:"exchangeServiceName,omitempty"`
 	FirstSeenTs *GoogleProtobufTimestamp `json:"firstSeenTs,omitempty"`
 	LanSegment []string `json:"lanSegment,omitempty"`
 	LastSeenTs *GoogleProtobufTimestamp `json:"lastSeenTs,omitempty"`
@@ -282,6 +283,38 @@ func (o *AssuranceClientSession) HasClientUsername() bool {
 // SetClientUsername gets a reference to the given string and assigns it to the ClientUsername field.
 func (o *AssuranceClientSession) SetClientUsername(v string) {
 	o.ClientUsername = &v
+}
+
+// GetExchangeServiceName returns the ExchangeServiceName field value if set, zero value otherwise.
+func (o *AssuranceClientSession) GetExchangeServiceName() string {
+	if o == nil || IsNil(o.ExchangeServiceName) {
+		var ret string
+		return ret
+	}
+	return *o.ExchangeServiceName
+}
+
+// GetExchangeServiceNameOk returns a tuple with the ExchangeServiceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceClientSession) GetExchangeServiceNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ExchangeServiceName) {
+		return nil, false
+	}
+	return o.ExchangeServiceName, true
+}
+
+// HasExchangeServiceName returns a boolean if a field has been set.
+func (o *AssuranceClientSession) HasExchangeServiceName() bool {
+	if o != nil && !IsNil(o.ExchangeServiceName) {
+		return true
+	}
+
+	return false
+}
+
+// SetExchangeServiceName gets a reference to the given string and assigns it to the ExchangeServiceName field.
+func (o *AssuranceClientSession) SetExchangeServiceName(v string) {
+	o.ExchangeServiceName = &v
 }
 
 // GetFirstSeenTs returns the FirstSeenTs field value if set, zero value otherwise.
@@ -794,6 +827,9 @@ func (o AssuranceClientSession) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ClientUsername) {
 		toSerialize["clientUsername"] = o.ClientUsername
+	}
+	if !IsNil(o.ExchangeServiceName) {
+		toSerialize["exchangeServiceName"] = o.ExchangeServiceName
 	}
 	if !IsNil(o.FirstSeenTs) {
 		toSerialize["firstSeenTs"] = o.FirstSeenTs

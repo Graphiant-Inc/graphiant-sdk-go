@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ClientIp** | Pointer to **string** |  | [optional] 
 **ClientLinks** | Pointer to [**[]AssuranceClientSessionEndpointLink**](AssuranceClientSessionEndpointLink.md) |  | [optional] 
 **ClientUsername** | Pointer to **string** |  | [optional] 
+**ExchangeServiceName** | Pointer to **string** |  | [optional] 
 **FirstSeenTs** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **LanSegment** | Pointer to **[]string** |  | [optional] 
 **LastSeenTs** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
@@ -220,6 +221,31 @@ SetClientUsername sets ClientUsername field to given value.
 `func (o *AssuranceClientSession) HasClientUsername() bool`
 
 HasClientUsername returns a boolean if a field has been set.
+
+### GetExchangeServiceName
+
+`func (o *AssuranceClientSession) GetExchangeServiceName() string`
+
+GetExchangeServiceName returns the ExchangeServiceName field if non-nil, zero value otherwise.
+
+### GetExchangeServiceNameOk
+
+`func (o *AssuranceClientSession) GetExchangeServiceNameOk() (*string, bool)`
+
+GetExchangeServiceNameOk returns a tuple with the ExchangeServiceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExchangeServiceName
+
+`func (o *AssuranceClientSession) SetExchangeServiceName(v string)`
+
+SetExchangeServiceName sets ExchangeServiceName field to given value.
+
+### HasExchangeServiceName
+
+`func (o *AssuranceClientSession) HasExchangeServiceName() bool`
+
+HasExchangeServiceName returns a boolean if a field has been set.
 
 ### GetFirstSeenTs
 
