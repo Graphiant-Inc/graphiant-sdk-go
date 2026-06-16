@@ -3,19 +3,40 @@
 #
 # Prerequisites:
 #   - Java 11+ on PATH
-#   - openapi-generator-cli JAR (download from https://openapi-generator.tech/docs/installation)
-#     or install via Homebrew: brew install openapi-generator
+#   - openapi-generator-cli (Homebrew: brew install openapi-generator)
 #
 # Usage:
-#   bash scripts/generate.sh                   # uses api/openapi.yaml
-#   OPENAPI_SPEC=path/to/spec.yaml bash scripts/generate.sh
+#   bash scripts/generate.sh                         # auto-selects JSON bundle, then YAML
+#   OPENAPI_SPEC=api/openapi.yaml bash scripts/generate.sh
+#
+# Note: api/openapi.yaml exceeds SnakeYAML's default 3 MB code-point limit.
+# Use the JSON bundle (api/graphiant_api_docs_*.json) as the default input, or
+# pass JAVA_OPTS to raise the limit when you explicitly want the YAML:
+#   JAVA_OPTS="-Dsnakeyaml.codepoints.max.all=99999999" \
+#   OPENAPI_SPEC=api/openapi.yaml bash scripts/generate.sh
 
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-OPENAPI_SPEC="${OPENAPI_SPEC:-${REPO_ROOT}/api/openapi.yaml}"
-# To use the versioned JSON bundle instead:
-#   OPENAPI_SPEC=api/graphiant_api_docs_v26.5.0.json bash scripts/generate.sh
+
+# Resolve default spec: prefer versioned JSON bundle (no SnakeYAML size limit);
+# fall back to api/openapi.yaml only when no JSON bundle is present.
+if [ -z "${OPENAPI_SPEC:-}" ]; then
+  JSON_BUNDLE="$(ls "${REPO_ROOT}"/api/graphiant_api_docs_*.json 2>/dev/null | sort | tail -1)"
+  if [ -n "${JSON_BUNDLE}" ]; then
+    OPENAPI_SPEC="${JSON_BUNDLE}"
+  elif [ -f "${REPO_ROOT}/api/openapi.yaml" ]; then
+    OPENAPI_SPEC="${REPO_ROOT}/api/openapi.yaml"
+    # Raise SnakeYAML limit for large YAML specs.
+    export JAVA_OPTS="${JAVA_OPTS:+${JAVA_OPTS} }-Dsnakeyaml.codepoints.max.all=99999999"
+  fi
+fi
+
+# If caller passed a YAML spec explicitly, ensure the size limit is raised.
+if [[ "${OPENAPI_SPEC:-}" == *.yaml || "${OPENAPI_SPEC:-}" == *.yml ]]; then
+  export JAVA_OPTS="${JAVA_OPTS:+${JAVA_OPTS} }-Dsnakeyaml.codepoints.max.all=99999999"
+fi
+
 PACKAGE_NAME="${PACKAGE_NAME:-graphiant_sdk}"
 
 # Resolve generator: honour explicit $GENERATOR, then try common install locations.
