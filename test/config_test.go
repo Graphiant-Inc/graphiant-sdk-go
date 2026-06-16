@@ -26,7 +26,7 @@ func GetAuthToken() (*graphiant_sdk.APIClient, string) {
 		V1AuthLoginPost(context.Background()).
 		V1AuthLoginPostRequest(*authReq).
 		Execute()
-	defer httpRes.Body.Close()
+	defer func() { _ = httpRes.Body.Close() }()
 
 	var result struct {
 		Auth        bool   `json:"auth"`

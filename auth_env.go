@@ -18,7 +18,7 @@ const (
 	EnvHost = "GRAPHIANT_HOST"
 	// EnvUsername and EnvPassword are used for POST /v1/auth/login when [EnvAccessToken] is unset.
 	EnvUsername = "GRAPHIANT_USERNAME"
-	EnvPassword = "GRAPHIANT_PASSWORD"
+	EnvPassword = "GRAPHIANT_PASSWORD" // #nosec G101 — env var name constant, not a credential value
 )
 
 // AccessTokenFromEnv returns the trimmed raw access token from [EnvAccessToken], or empty if unset.
@@ -71,7 +71,7 @@ func LoginBearerFromEnvCredentials(ctx context.Context, client *APIClient) (stri
 	authReq.SetPassword(pass)
 	resp, httpRes, err := client.DefaultAPI.V1AuthLoginPost(ctx).V1AuthLoginPostRequest(*authReq).Execute()
 	if httpRes != nil {
-		defer httpRes.Body.Close()
+		defer func() { _ = httpRes.Body.Close() }()
 	}
 	if err != nil {
 		return "", err

@@ -247,7 +247,12 @@ func parameterToJson(obj interface{}) (string, error) {
 // callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	if c.cfg.Debug {
-		dump, err := httputil.DumpRequestOut(request, true)
+		// Clone the request so we can redact the Authorization header without
+		// modifying the live request. Body is excluded (body=false) to prevent
+		// sensitive fields (passwords, API keys, tokens) from appearing in logs.
+		debugReq := request.Clone(request.Context())
+		debugReq.Header.Set("Authorization", "[REDACTED]")
+		dump, err := httputil.DumpRequestOut(debugReq, false)
 		if err != nil {
 			return nil, err
 		}
@@ -260,7 +265,7 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	}
 
 	if c.cfg.Debug {
-		dump, err := httputil.DumpResponse(resp, true)
+		dump, err := httputil.DumpResponse(resp, false)
 		if err != nil {
 			return resp, err
 		}

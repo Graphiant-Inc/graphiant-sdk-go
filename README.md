@@ -1,6 +1,6 @@
 # Graphiant SDK Go
 
-[![Go Version](https://img.shields.io/badge/go-1.21+-blue.svg)](https://golang.org/dl/)
+[![Go Version](https://img.shields.io/badge/go-1.25.11+-blue.svg)](https://golang.org/dl/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Reference](https://pkg.go.dev/badge/github.com/Graphiant-Inc/graphiant-sdk-go.svg)](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Graphiant-Inc/graphiant-sdk-go)](https://goreportcard.com/report/github.com/Graphiant-Inc/graphiant-sdk-go)
@@ -37,7 +37,7 @@ More product context: [Graphiant Docs](https://docs.graphiant.com).
 | **Automation** | [Graphiant Automation](https://docs.graphiant.com/docs/automation) |
 | **REST API** | [Graphiant Portal REST API](https://docs.graphiant.com/docs/graphiant-portal-rest-api) |
 | **Method index (repo)** | [DefaultAPI.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/DefaultAPI.md) |
-| **OpenAPI bundle (this build)** | [`graphiant_api_docs_v26.5.0.json`](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/graphiant_api_docs_v26.5.0.json) — source for generated paths and models |
+| **OpenAPI bundle (this build)** | [`api/graphiant_api_docs_v26.5.0.json`](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/api/graphiant_api_docs_v26.5.0.json) — source for generated paths and models |
 | **Package** | [pkg.go.dev](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go) |
 | **Changelog** | [CHANGELOG.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/CHANGELOG.md) |
 
@@ -433,16 +433,16 @@ func configureDeviceWhenReady(deviceID int64, config graphiant_sdk.V1DevicesDevi
 
 ### Prerequisites
 
-- Go 1.21+ (1.23 recommended)
+- Go 1.25.11+ (enforced by `go.mod`)
 - Git
-- OpenAPI Generator (for code generation)
+- OpenAPI Generator (for code generation) — `brew install openapi-generator`
 
 ### CI/CD Workflows
 
 This repository uses GitHub Actions for continuous integration and deployment:
 
 - **Linting** ([lint.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/lint.yml)): Runs golangci-lint, gofmt, and go vet on pull requests and pushes
-- **Testing** ([test.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/test.yml)): Runs `go test` with race detection and coverage across Go 1.21, 1.22, and 1.23
+- **Testing** ([test.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/test.yml)): Runs `go test` with race detection and coverage across the `stable` and `oldstable` Go releases
 - **Building** ([build.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/build.yml)): Builds and verifies the Go module
 - **Releasing** ([release.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/release.yml)): Creates git tags and GitHub releases (manual trigger, admin-only)
 
@@ -455,15 +455,23 @@ See [.github/workflows/README.md](https://github.com/Graphiant-Inc/graphiant-sdk
 git clone https://github.com/Graphiant-Inc/graphiant-sdk-go
 cd graphiant-sdk-go
 
-# Install dependencies
-go mod tidy
-
-# Build the project
-go build ./...
+# Build
+make build          # go build ./...
 
 # Run tests
-go get github.com/stretchr/testify/assert
-go test ./...
+make test           # go test -v -race ./...
+
+# Lint (skips generated files — configured in .golangci.yml)
+make lint           # golangci-lint run
+
+# Tidy dependencies
+make tidy           # go mod tidy && go mod verify
+```
+
+Or use Go directly:
+
+```bash
+go mod tidy && go build ./... && go test ./...
 ```
 
 ### Code Generation
@@ -471,21 +479,16 @@ go test ./...
 To regenerate the SDK from the latest API specification:
 
 ```bash
-# Install OpenAPI Generator
-brew install openapi-generator  # macOS
-# or download from: https://github.com/OpenAPITools/openapi-generator
+# Quickest path — uses scripts/generate.sh with api/openapi.yaml
+make generate
 
-# Generate SDK
-openapi-generator generate \
-  -i graphiant_api_docs_v26.5.0.json \
-  -g go \
-  --git-user-id Graphiant-Inc \
-  --git-repo-id graphiant-sdk-go \
-  --package-name graphiant_sdk \
-  --additional-properties=packageVersion=26.5.0
+# Or run the script directly (supports OPENAPI_SPEC override)
+OPENAPI_SPEC=api/graphiant_api_docs_v26.5.0.json bash scripts/generate.sh
 ```
 
-> **Note:** Download the latest API bundle from the Graphiant portal under **Support Hub** → **Developer Tools**. Set **`packageVersion`** to the SDK release you are publishing (this branch: **26.5.0**). The **`-i`** filename reflects the API doc bundle version (here `graphiant_api_docs_v26.5.0.json`) and may stay the same across patch releases when the spec is unchanged.
+`scripts/generate.sh` wraps the full `openapi-generator-cli generate` invocation. See the script for options and prerequisites (Java 11+ and `openapi-generator-cli` on PATH).
+
+> **Note:** Download the latest API bundle from the Graphiant portal under **Support Hub** → **Developer Tools** and place it in `api/`. The versioned JSON bundle (`api/graphiant_api_docs_v26.5.0.json`) is the snapshot used for this release; `api/openapi.yaml` is the primary YAML spec. Hand-written files (`auth_env.go`, `api_custom.go`, `version.go`, `client.go`) are never overwritten by the generator — they are listed in `.openapi-generator-ignore`.
 
 ### Testing
 
@@ -526,29 +529,34 @@ export GRAPHIANT_PASSWORD="your_password"          # Required for integration te
 
 Tests that require credentials will automatically skip if `GRAPHIANT_USERNAME` or `GRAPHIANT_PASSWORD` are not set, allowing the test suite to run successfully without credentials.
 
-**Note**: The CI/CD pipeline automatically runs tests across multiple Go versions (1.21-1.23) on every pull request and push to main/develop branches. The pipeline reads credentials from GitHub secrets/variables when available.
+**Note**: The CI/CD pipeline automatically runs tests across the current `stable` and `oldstable` Go releases on every pull request and push to main/develop branches. The pipeline reads credentials from GitHub secrets/variables when available.
 
 ### Project Structure
 
 ```
 graphiant-sdk-go/
-├── api_default.go              # Main API service
-├── api_custom.go               # Convenient wrapper functions
-├── client.go                   # HTTP client implementation
-├── configuration.go            # Configuration management
-├── model_*.go                  # Generated data models
-├── response.go                 # Response handling
-├── utils.go                    # Utility functions
-├── version.go                  # Version information
+├── api_default.go              # Generated — main API service (DO NOT EDIT)
+├── model_*.go                  # Generated — 1,400+ typed models (DO NOT EDIT)
+├── api_custom.go               # Hand-written convenience wrappers
+├── auth_env.go                 # Hand-written environment variable helpers
+├── client.go                   # Hand-written HTTP client implementation
+├── configuration.go            # Hand-written configuration management
+├── response.go                 # Hand-written response handling
+├── utils.go                    # Hand-written utility functions
+├── version.go                  # Hand-written version constant
+├── api/
+│   ├── openapi.yaml            # Primary OpenAPI spec (source of truth for generation)
+│   └── graphiant_api_docs_v26.5.0.json  # Versioned bundle for this release
+├── docs/                       # Generated Markdown documentation
+├── examples/                   # Usage examples
+├── scripts/
+│   └── generate.sh             # SDK regeneration script
 ├── test/                       # Test files
-│   ├── sanity_test.go          # Basic functionality tests
-│   ├── api_default_test.go     # API tests
-│   └── version_test.go         # Version tests
-├── docs/                       # Generated documentation
-│   ├── api/                    # API documentation
-│   ├── examples/               # Usage examples
-│   └── *.md                    # Model documentation
-├── go.mod                      # Go module definition
+├── .gitattributes              # Marks generated files (collapsed in PRs)
+├── .golangci.yml               # Linter config (skips generated files)
+├── .gosec                      # Security scan config
+├── Makefile                    # Developer shortcuts (build/test/lint/generate)
+├── go.mod                      # Go module definition (requires Go 1.25.11+)
 └── README.md                   # This file
 ```
 
@@ -624,17 +632,14 @@ We welcome contributions! Please follow these steps:
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes and ensure they pass local checks:
    ```bash
-   # Format code
+   make build       # compile
+   make test        # go test -v -race ./...
+   make lint        # golangci-lint (skips generated files)
+   make tidy        # go mod tidy && go mod verify
+
+   # Or individually:
    gofmt -s -w .
-   
-   # Run linting
-   golangci-lint run
-   
-   # Run static analysis
    go vet ./...
-   
-   # Run tests
-   go test -v -race ./...
    ```
 4. Commit your changes with a clear message (`git commit -m 'Add amazing feature'`)
 5. Push to the branch (`git push origin feature/amazing-feature`)

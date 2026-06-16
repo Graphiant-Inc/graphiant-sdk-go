@@ -1,8 +1,20 @@
 # OpenAPI Generator Ignore
 auth_env.go
 auth_env_test.go
+# client.go is pinned to preserve the callAPI() security fix — redacts
+# Authorization headers and omits bodies from debug logs (CWE-532).
+client.go
+# configuration.go references the hand-written Version constant; pinned to
+# keep UserAgent = "OpenAPI-Generator/" + Version + "/go" correct.
+configuration.go
 LICENSE
 README.md
 .gitignore
 .gitlab-ci.yml
 .github/workflows/*
+Makefile
+scripts/generate.sh
+.gitattributes
+.golangci.yml
+.gosec
+.bandit
