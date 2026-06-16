@@ -12,11 +12,11 @@ Thank you for your interest in contributing!
    ```
 3. **Set up development environment:**
    ```bash
-   # Ensure Go 1.21+ is installed
+   # Ensure Go 1.25.11+ is installed (enforced by go.mod)
    go version
    
-   # Download dependencies
-   go mod download
+   # Download dependencies and verify
+   make tidy
    ```
 
 ## Development Workflow
@@ -28,29 +28,15 @@ Thank you for your interest in contributing!
 
 2. **Make your changes** and ensure they pass local checks:
    ```bash
-   # Format code
+   make build      # compile
+   make test       # go test -v -race -coverprofile=coverage.out ./...
+   make lint       # golangci-lint (generated files excluded via .golangci.yml)
+   make tidy       # go mod tidy && go mod verify
+
+   # Or individually:
    gofmt -s -w .
-   
-   # Run linting
-   go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-   golangci-lint run
-   
-   # Run static analysis
    go vet ./...
-   
-   # Run tests
    go test -v -race -coverprofile=coverage.out ./...
-   ```
-
-3. **Verify module integrity:**
-   ```bash
-   go mod verify
-   go mod tidy
-   ```
-
-4. **Build the project:**
-   ```bash
-   go build ./...
    ```
 
 5. **Commit with clear messages:**
@@ -68,9 +54,11 @@ The project uses multiple linting tools to ensure code quality:
 
 | Tool | Purpose | Target | CI/CD |
 |------|---------|--------|-------|
-| `golangci-lint` | Comprehensive Go linter | All `.go` files | Yes (lint stage) |
+| `golangci-lint` | Comprehensive Go linter | Hand-written files only (`.golangci.yml` excludes generated) | Yes (lint stage) |
 | `gofmt` | Go code formatting | All `.go` files | Yes (lint stage) |
 | `go vet` | Go static analysis | All `.go` files | Yes (lint stage) |
+
+Generated files (`api_default.go`, `model_*.go`) are excluded from linting via `exclude-generated: true` in `.golangci.yml`. Run `make lint` locally to verify.
 
 **Note:** All linting tools run automatically in CI/CD on every pull request and push to main/develop branches.
 
@@ -116,8 +104,28 @@ Tests that require credentials will automatically skip if `GRAPHIANT_USERNAME` o
 
 - `test/` directory contains all test files
 - Tests use the `testify` framework for assertions
-- Tests are automatically run in CI/CD across Go 1.21, 1.22, and 1.23
+- Tests are automatically run in CI/CD across the current `stable` and `oldstable` Go releases
 - Integration tests that require API access will skip gracefully if credentials are not configured
+
+## Code Generation
+
+Most files in this repo (`api_default.go`, `model_*.go`, `docs/`) are auto-generated from the OpenAPI spec. **Do not edit them directly** — your changes will be overwritten on the next generation run.
+
+The hand-written files are:
+- `auth_env.go` — environment variable helpers
+- `api_custom.go` — convenience wrappers
+- `client.go`, `configuration.go`, `response.go`, `utils.go`, `version.go` — SDK core
+- `test/` — all test files
+
+To regenerate after a spec update:
+
+```bash
+# Place the new spec in api/ then:
+make generate
+# or: OPENAPI_SPEC=api/my-new-spec.json bash scripts/generate.sh
+```
+
+Review `git diff` carefully after generation — pay particular attention to `api_custom.go` and `auth_env.go` in case the generator tries to overwrite them (they are listed in `.openapi-generator-ignore` as protection).
 
 ## Code Standards
 
@@ -154,12 +162,11 @@ func NewClient(config *Configuration) (*Client, error) {
 
 ## Pull Request Checklist
 
-- [ ] Code follows Go style guidelines
-- [ ] Code is formatted with `gofmt`
-- [ ] All tests pass locally
-- [ ] Linting passes (`golangci-lint`, `go vet`)
-- [ ] Module is verified (`go mod verify`)
-- [ ] Dependencies are tidy (`go mod tidy`)
+- [ ] `make build` passes
+- [ ] `make test` passes (all tests green)
+- [ ] `make lint` passes (no new linting errors)
+- [ ] `make tidy` leaves `go.mod` and `go.sum` unchanged
+- [ ] If adding/changing generated code: `make generate` was run and only expected files changed
 - [ ] Commit messages are clear
 - [ ] Commits are signed with GPG (required)
 - [ ] Branch is rebased (no merge commits allowed)

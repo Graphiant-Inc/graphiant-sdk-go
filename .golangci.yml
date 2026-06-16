@@ -1,0 +1,19 @@
+version: "2"
+
+run:
+  timeout: 5m
+
+linters:
+  default: none
+  enable:
+    - errcheck
+    - govet
+    - staticcheck
+    - unused
+    - ineffassign
+  exclusions:
+    # Skip files with "Code generated" header — covers api_default.go and all model_*.go
+    generated: lax
+    # Exclude the generated docs directory from all checks
+    paths:
+      - docs

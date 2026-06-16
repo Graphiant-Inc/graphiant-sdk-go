@@ -1,0 +1,8 @@
+# Generated OpenAPI client files — collapsed in GitHub diffs/PRs
+api_default.go          linguist-generated=true
+model_*.go              linguist-generated=true
+docs/*.md               linguist-generated=true
+graphiant_sdk.test      binary
+
+# Legacy generator helper — not part of the build
+git_push.sh             linguist-vendored=true

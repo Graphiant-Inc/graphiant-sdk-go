@@ -1,0 +1,3 @@
+{
+  "comment": "Run gosec with: gosec -exclude-generated ./... to skip G104 unhandled-error findings in auto-generated OpenAPI client files (api_default.go, model_*.go etc. all carry '// Code generated' headers). G101 in auth_env.go is suppressed inline with #nosec G101 — EnvPassword is an env-var name constant, not a credential."
+}
