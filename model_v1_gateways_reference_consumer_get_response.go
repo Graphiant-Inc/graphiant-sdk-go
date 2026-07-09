@@ -20,6 +20,7 @@ var _ MappedNullable = &V1GatewaysReferenceConsumerGetResponse{}
 // V1GatewaysReferenceConsumerGetResponse struct for V1GatewaysReferenceConsumerGetResponse
 type V1GatewaysReferenceConsumerGetResponse struct {
 	IpsecGatewayDetails *ManaV2IPsecGatewayDetails `json:"ipsecGatewayDetails,omitempty"`
+	IpsecGatewayPeers *ManaV2IPsecGatewayPeersConfig `json:"ipsecGatewayPeers,omitempty"`
 }
 
 // NewV1GatewaysReferenceConsumerGetResponse instantiates a new V1GatewaysReferenceConsumerGetResponse object
@@ -71,6 +72,38 @@ func (o *V1GatewaysReferenceConsumerGetResponse) SetIpsecGatewayDetails(v ManaV2
 	o.IpsecGatewayDetails = &v
 }
 
+// GetIpsecGatewayPeers returns the IpsecGatewayPeers field value if set, zero value otherwise.
+func (o *V1GatewaysReferenceConsumerGetResponse) GetIpsecGatewayPeers() ManaV2IPsecGatewayPeersConfig {
+	if o == nil || IsNil(o.IpsecGatewayPeers) {
+		var ret ManaV2IPsecGatewayPeersConfig
+		return ret
+	}
+	return *o.IpsecGatewayPeers
+}
+
+// GetIpsecGatewayPeersOk returns a tuple with the IpsecGatewayPeers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1GatewaysReferenceConsumerGetResponse) GetIpsecGatewayPeersOk() (*ManaV2IPsecGatewayPeersConfig, bool) {
+	if o == nil || IsNil(o.IpsecGatewayPeers) {
+		return nil, false
+	}
+	return o.IpsecGatewayPeers, true
+}
+
+// HasIpsecGatewayPeers returns a boolean if a field has been set.
+func (o *V1GatewaysReferenceConsumerGetResponse) HasIpsecGatewayPeers() bool {
+	if o != nil && !IsNil(o.IpsecGatewayPeers) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpsecGatewayPeers gets a reference to the given ManaV2IPsecGatewayPeersConfig and assigns it to the IpsecGatewayPeers field.
+func (o *V1GatewaysReferenceConsumerGetResponse) SetIpsecGatewayPeers(v ManaV2IPsecGatewayPeersConfig) {
+	o.IpsecGatewayPeers = &v
+}
+
 func (o V1GatewaysReferenceConsumerGetResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -83,6 +116,9 @@ func (o V1GatewaysReferenceConsumerGetResponse) ToMap() (map[string]interface{},
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.IpsecGatewayDetails) {
 		toSerialize["ipsecGatewayDetails"] = o.IpsecGatewayDetails
+	}
+	if !IsNil(o.IpsecGatewayPeers) {
+		toSerialize["ipsecGatewayPeers"] = o.IpsecGatewayPeers
 	}
 	return toSerialize, nil
 }

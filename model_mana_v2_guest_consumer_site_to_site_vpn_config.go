@@ -21,6 +21,7 @@ var _ MappedNullable = &ManaV2GuestConsumerSiteToSiteVpnConfig{}
 type ManaV2GuestConsumerSiteToSiteVpnConfig struct {
 	Emails []string `json:"emails,omitempty"`
 	IpsecGatewayDetails *ManaV2IPsecGatewayDetails `json:"ipsecGatewayDetails,omitempty"`
+	IpsecGatewayPeers *ManaV2IPsecGatewayPeersConfig `json:"ipsecGatewayPeers,omitempty"`
 	RegionId *int32 `json:"regionId,omitempty"`
 }
 
@@ -105,6 +106,38 @@ func (o *ManaV2GuestConsumerSiteToSiteVpnConfig) SetIpsecGatewayDetails(v ManaV2
 	o.IpsecGatewayDetails = &v
 }
 
+// GetIpsecGatewayPeers returns the IpsecGatewayPeers field value if set, zero value otherwise.
+func (o *ManaV2GuestConsumerSiteToSiteVpnConfig) GetIpsecGatewayPeers() ManaV2IPsecGatewayPeersConfig {
+	if o == nil || IsNil(o.IpsecGatewayPeers) {
+		var ret ManaV2IPsecGatewayPeersConfig
+		return ret
+	}
+	return *o.IpsecGatewayPeers
+}
+
+// GetIpsecGatewayPeersOk returns a tuple with the IpsecGatewayPeers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2GuestConsumerSiteToSiteVpnConfig) GetIpsecGatewayPeersOk() (*ManaV2IPsecGatewayPeersConfig, bool) {
+	if o == nil || IsNil(o.IpsecGatewayPeers) {
+		return nil, false
+	}
+	return o.IpsecGatewayPeers, true
+}
+
+// HasIpsecGatewayPeers returns a boolean if a field has been set.
+func (o *ManaV2GuestConsumerSiteToSiteVpnConfig) HasIpsecGatewayPeers() bool {
+	if o != nil && !IsNil(o.IpsecGatewayPeers) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpsecGatewayPeers gets a reference to the given ManaV2IPsecGatewayPeersConfig and assigns it to the IpsecGatewayPeers field.
+func (o *ManaV2GuestConsumerSiteToSiteVpnConfig) SetIpsecGatewayPeers(v ManaV2IPsecGatewayPeersConfig) {
+	o.IpsecGatewayPeers = &v
+}
+
 // GetRegionId returns the RegionId field value if set, zero value otherwise.
 func (o *ManaV2GuestConsumerSiteToSiteVpnConfig) GetRegionId() int32 {
 	if o == nil || IsNil(o.RegionId) {
@@ -152,6 +185,9 @@ func (o ManaV2GuestConsumerSiteToSiteVpnConfig) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.IpsecGatewayDetails) {
 		toSerialize["ipsecGatewayDetails"] = o.IpsecGatewayDetails
+	}
+	if !IsNil(o.IpsecGatewayPeers) {
+		toSerialize["ipsecGatewayPeers"] = o.IpsecGatewayPeers
 	}
 	if !IsNil(o.RegionId) {
 		toSerialize["regionId"] = o.RegionId

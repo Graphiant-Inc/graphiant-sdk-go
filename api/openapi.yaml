@@ -952,6 +952,32 @@ paths:
           description: OK
       security:
       - jwtAuth: []
+  /v2/assurance/create-ai-adoption-approve-entry:
+    post:
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v2AssuranceCreateAiAdoptionApproveEntryPostRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v2AssuranceCreateAiAdoptionApproveEntryPostResponse"
+          description: OK
+      security:
+      - jwtAuth: []
   /v2/assurance/createclassifiedapplication:
     post:
       parameters:
@@ -1027,6 +1053,39 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v2AssuranceCreateUserReportPostResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v2/assurance/delete-ai-adoption-approve-entry:
+    delete:
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: list of approved app entry identifiers to delete
+        explode: true
+        in: query
+        name: idList
+        required: true
+        schema:
+          example:
+          - example
+          items:
+            example: example string
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v2AssuranceDeleteAiAdoptionApproveEntryDeleteResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -1130,6 +1189,58 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v2AssuranceDownloadUserReportGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v2/assurance/ai-adoption-summary:
+    post:
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v2AssuranceAiAdoptionSummaryPostRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v2AssuranceAiAdoptionSummaryPostResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v2/assurance/get-app-names:
+    post:
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v2AssuranceGetAppNamesPostRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v2AssuranceGetAppNamesPostResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -1595,6 +1706,26 @@ paths:
           description: OK
       security:
       - jwtAuth: []
+  /v2/assurance/read-ai-adoption-approve-entries:
+    get:
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v2AssuranceReadAiAdoptionApproveEntriesGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
   /v2/assurance/read-dnsproxy-list:
     get:
       parameters:
@@ -1632,6 +1763,32 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v2AssuranceReadUserReportListGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v2/assurance/update-ai-adoption-approve-entry:
+    post:
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v2AssuranceUpdateAiAdoptionApproveEntryPostRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v2AssuranceUpdateAiAdoptionApproveEntryPostResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -1762,6 +1919,123 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v2AuditLogsPostResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/ztagent/agents:
+    get:
+      description: List Conceal agents (devices) with pagination and filters.
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: createdDateEnd
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: createdDateStart
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: endpoints
+        required: false
+        schema:
+          example:
+          - example
+          items:
+            example: example string
+            type: string
+          type: array
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: hostname
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          example: 123
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: machineId
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          example: 123
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: tenantId
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: updatedDateEnd
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: updatedDateStart
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ZtagentAgentsGetResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -4526,33 +4800,6 @@ paths:
           description: Accepted
       security:
       - jwtAuth: []
-  /v1/extranet-public-vif/check:
-    post:
-      description: Check Public Vif service
-      parameters:
-      - description: "Bearer token. Format: Bearer <your_token_here>"
-        explode: false
-        in: header
-        name: Authorization
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/v1ExtranetPublicVifCheckPostRequest"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ExtranetPublicVifCheckPostResponse"
-          description: OK
-      security:
-      - jwtAuth: []
   /v1/global/config:
     patch:
       description: Update global objects for an enterprise
@@ -5222,29 +5469,9 @@ paths:
           description: OK
       security:
       - jwtAuth: []
-  /v1/extranet-public-vif:
-    get:
-      description: Get Public Vif summary
-      parameters:
-      - description: "Bearer token. Format: Bearer <your_token_here>"
-        explode: false
-        in: header
-        name: Authorization
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ExtranetPublicVifGetResponse"
-          description: OK
-      security:
-      - jwtAuth: []
+  /v1/pvif:
     post:
-      description: Create Public Vif service
+      description: Create a gateway Public VIF service
       parameters:
       - description: "Bearer token. Format: Bearer <your_token_here>"
         explode: false
@@ -5258,14 +5485,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/v1ExtranetPublicVifPostRequest"
+              $ref: "#/components/schemas/v1PvifPostRequest"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/v1ExtranetPublicVifPostResponse"
+                $ref: "#/components/schemas/v1PvifPostResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -6313,9 +6540,9 @@ paths:
           description: No Content
       security:
       - jwtAuth: []
-  /v1/extranet-public-vif/{id}:
+  /v1/pvif/{id}:
     delete:
-      description: Delete Public Vif service
+      description: Delete a gateway Public VIF service
       parameters:
       - description: "Bearer token. Format: Bearer <your_token_here>"
         explode: false
@@ -6325,7 +6552,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: ""
+      - description: Producer service id
         explode: false
         in: path
         name: id
@@ -6340,42 +6567,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/v1ExtranetPublicVifIdDeleteResponse"
-          description: OK
-      security:
-      - jwtAuth: []
-    get:
-      description: Get Public Vif service
-      parameters:
-      - description: "Bearer token. Format: Bearer <your_token_here>"
-        explode: false
-        in: header
-        name: Authorization
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Public VIF producer policy
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          example: 1234567891011
-          format: int64
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ExtranetPublicVifIdGetResponse"
+                $ref: "#/components/schemas/v1PvifIdDeleteResponse"
           description: OK
       security:
       - jwtAuth: []
     put:
-      description: Update Public Vif service
+      description: Update a gateway Public VIF service
       parameters:
       - description: "Bearer token. Format: Bearer <your_token_here>"
         explode: false
@@ -6385,7 +6582,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Public VIF producer service id
+      - description: Producer service id
         explode: false
         in: path
         name: id
@@ -6399,14 +6596,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/v1ExtranetPublicVifIdPutRequest"
+              $ref: "#/components/schemas/v1PvifIdPutRequest"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/v1ExtranetPublicVifIdPutResponse"
+                $ref: "#/components/schemas/v1PvifIdPutResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -8118,6 +8315,48 @@ paths:
           description: OK
       security:
       - jwtAuth: []
+  /v1/regions/{regionId}/gateways:
+    get:
+      description: List gateway appliances in a region with at least one LAN interface
+        for the given storage provider
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Graphiant region id
+        explode: false
+        in: path
+        name: regionId
+        required: true
+        schema:
+          example: 123
+          format: int32
+          type: integer
+        style: simple
+      - description: Storage provider; only gateways with a LAN interface for this
+          provider are returned
+        explode: true
+        in: query
+        name: storageProvider
+        required: true
+        schema:
+          example: ENUM_VALUE
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1RegionsRegionIdGatewaysGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
   /v1/gateways/summary:
     get:
       parameters:
@@ -9106,6 +9345,38 @@ paths:
           description: OK
       security:
       - jwtAuth: []
+  /v1/lan-segments/interfaces/public:
+    get:
+      description: "Per LAN segment (VRF) on a device: interfaces split by globally\
+        \ routable IPv4 (for Public VIF / BGP)"
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: device id
+        explode: true
+        in: query
+        name: deviceId
+        required: true
+        schema:
+          example: 1234567891011
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1LanSegmentsInterfacesPublicGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
   /v1/msp/managed-enterprise-contract-info:
     get:
       description: Managed enterprises under the MSP with contract and credit allocation
@@ -9206,6 +9477,58 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1PresharedkeyGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/pvif/{id}/details:
+    get:
+      description: Get a gateway Public VIF service
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Producer service id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 1234567891011
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1PvifIdDetailsGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/pvif/summary:
+    get:
+      description: List gateway Public VIF services
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1PvifSummaryGetResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -9608,6 +9931,48 @@ paths:
         schema:
           type: string
         style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: deviceId
+        required: false
+        schema:
+          example: 1234567891011
+          format: int64
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: deviceIds
+        required: false
+        schema:
+          example:
+          - 0
+          items:
+            example: 1234567891011
+            format: int64
+            type: integer
+          type: array
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: gatewayCloudProvider
+        required: false
+        schema:
+          example: ENUM_VALUE
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -16782,6 +17147,7 @@ components:
             affectedRegions: 1234567891011
             affectedSites: 1234567891011
             affectedVrfs: 1234567891011
+            appAiTag: ENUM_VALUE
             appId: 1234567891011
             appIdRecords:
             - affectedHosts: 1234567891011
@@ -16900,6 +17266,7 @@ components:
             affectedRegions: 1234567891011
             affectedSites: 1234567891011
             affectedVrfs: 1234567891011
+            appAiTag: ENUM_VALUE
             appId: 1234567891011
             appIdRecords:
             - affectedHosts: 1234567891011
@@ -17138,6 +17505,7 @@ components:
           affectedRegions: 1234567891011
           affectedSites: 1234567891011
           affectedVrfs: 1234567891011
+          appAiTag: ENUM_VALUE
           appId: 1234567891011
           appIdRecords:
           - affectedHosts: 1234567891011
@@ -17256,6 +17624,7 @@ components:
           affectedRegions: 1234567891011
           affectedSites: 1234567891011
           affectedVrfs: 1234567891011
+          appAiTag: ENUM_VALUE
           appId: 1234567891011
           appIdRecords:
           - affectedHosts: 1234567891011
@@ -17623,6 +17992,7 @@ components:
         affectedRegions: 1234567891011
         affectedSites: 1234567891011
         affectedVrfs: 1234567891011
+        appAiTag: ENUM_VALUE
         appId: 1234567891011
         appIdRecords:
         - affectedHosts: 1234567891011
@@ -17754,6 +18124,9 @@ components:
           example: 1234567891011
           format: int64
           type: integer
+        appAiTag:
+          example: ENUM_VALUE
+          type: string
         appId:
           example: 1234567891011
           format: int64
@@ -17896,6 +18269,7 @@ components:
           affectedRegions: 1234567891011
           affectedSites: 1234567891011
           affectedVrfs: 1234567891011
+          appAiTag: ENUM_VALUE
           appId: 1234567891011
           appIdRecords:
           - affectedHosts: 1234567891011
@@ -20076,6 +20450,573 @@ components:
             $ref: "#/components/schemas/assuranceDnsProxyEntry"
           type: array
       type: object
+    v2AssuranceAiAdoptionSummaryPostRequest:
+      additionalProperties: false
+      properties:
+        timeWindow:
+          $ref: "#/components/schemas/assuranceTimeWindow"
+        userListSize:
+          description: list size of user list in where widget (required)
+          example: 1234567891011
+          format: int64
+          type: integer
+      required:
+      - timeWindow
+      - userListSize
+      type: object
+    v2AssuranceAiAdoptionSummaryPostResponse:
+      additionalProperties: false
+      example:
+        topLevelKpi:
+          dataTransferredKbpsMetric:
+            delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          shadowAiToolsMetric:
+            delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          toolsMetric:
+            delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          usersMetric:
+            delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+        whatWidget:
+          bubbleCategories:
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          topToolsByActiveUsers:
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          topToolsByDataTransferred:
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+        whenWidget:
+          dayOfWeek:
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          hourOfDay:
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          monthlyActiveUsers:
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          monthlyBandwidthTransferred:
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+        whereWidget:
+          topSitesByUsers:
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          topUsersByDataTransferred:
+          - dataSent: 123.45
+            managed: true
+            sessionsDay: 123.45
+            user: example string
+            vrf: example string
+          - dataSent: 123.45
+            managed: true
+            sessionsDay: 123.45
+            user: example string
+            vrf: example string
+          topVrfsByUsers:
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+          - delta: 123.45
+            name: example string
+            percent: 123.45
+            tag: ENUM_VALUE
+            value: 123.45
+      properties:
+        topLevelKpi:
+          $ref: "#/components/schemas/assuranceTopLevelKpi"
+        whatWidget:
+          $ref: "#/components/schemas/assuranceWhatWidget"
+        whenWidget:
+          $ref: "#/components/schemas/assuranceWhenWidget"
+        whereWidget:
+          $ref: "#/components/schemas/assuranceWhereWidget"
+      type: object
+    assuranceTopLevelKpi:
+      additionalProperties: false
+      example:
+        dataTransferredKbpsMetric:
+          delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        shadowAiToolsMetric:
+          delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        toolsMetric:
+          delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        usersMetric:
+          delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+      properties:
+        dataTransferredKbpsMetric:
+          $ref: "#/components/schemas/assuranceKpiMetric"
+        shadowAiToolsMetric:
+          $ref: "#/components/schemas/assuranceKpiMetric"
+        toolsMetric:
+          $ref: "#/components/schemas/assuranceKpiMetric"
+        usersMetric:
+          $ref: "#/components/schemas/assuranceKpiMetric"
+      type: object
+    assuranceKpiMetric:
+      additionalProperties: false
+      example:
+        delta: 123.45
+        name: example string
+        percent: 123.45
+        tag: ENUM_VALUE
+        value: 123.45
+      properties:
+        delta:
+          description: delta value for the metric
+          example: 123.45
+          format: double
+          type: number
+        name:
+          description: name of the metric
+          example: example string
+          type: string
+        percent:
+          description: AI adoption percent for the metric
+          example: 123.45
+          format: double
+          type: number
+        tag:
+          description: AI adoption tag for the metric
+          example: ENUM_VALUE
+          type: string
+        value:
+          description: metric value (required)
+          example: 123.45
+          format: double
+          type: number
+      type: object
+    assuranceWhatWidget:
+      additionalProperties: false
+      example:
+        bubbleCategories:
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        topToolsByActiveUsers:
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        topToolsByDataTransferred:
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+      properties:
+        bubbleCategories:
+          items:
+            $ref: "#/components/schemas/assuranceKpiMetric"
+          type: array
+        topToolsByActiveUsers:
+          items:
+            $ref: "#/components/schemas/assuranceKpiMetric"
+          type: array
+        topToolsByDataTransferred:
+          items:
+            $ref: "#/components/schemas/assuranceKpiMetric"
+          type: array
+      type: object
+    assuranceWhenWidget:
+      additionalProperties: false
+      example:
+        dayOfWeek:
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        hourOfDay:
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        monthlyActiveUsers:
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        monthlyBandwidthTransferred:
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+      properties:
+        dayOfWeek:
+          items:
+            $ref: "#/components/schemas/assuranceKpiMetric"
+          type: array
+        hourOfDay:
+          items:
+            $ref: "#/components/schemas/assuranceKpiMetric"
+          type: array
+        monthlyActiveUsers:
+          items:
+            $ref: "#/components/schemas/assuranceKpiMetric"
+          type: array
+        monthlyBandwidthTransferred:
+          items:
+            $ref: "#/components/schemas/assuranceKpiMetric"
+          type: array
+      type: object
+    assuranceWhereWidget:
+      additionalProperties: false
+      example:
+        topSitesByUsers:
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        topUsersByDataTransferred:
+        - dataSent: 123.45
+          managed: true
+          sessionsDay: 123.45
+          user: example string
+          vrf: example string
+        - dataSent: 123.45
+          managed: true
+          sessionsDay: 123.45
+          user: example string
+          vrf: example string
+        topVrfsByUsers:
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+        - delta: 123.45
+          name: example string
+          percent: 123.45
+          tag: ENUM_VALUE
+          value: 123.45
+      properties:
+        topSitesByUsers:
+          items:
+            $ref: "#/components/schemas/assuranceKpiMetric"
+          type: array
+        topUsersByDataTransferred:
+          items:
+            $ref: "#/components/schemas/assuranceUserDefinition"
+          type: array
+        topVrfsByUsers:
+          items:
+            $ref: "#/components/schemas/assuranceKpiMetric"
+          type: array
+      type: object
+    assuranceUserDefinition:
+      additionalProperties: false
+      example:
+        dataSent: 123.45
+        managed: true
+        sessionsDay: 123.45
+        user: example string
+        vrf: example string
+      properties:
+        dataSent:
+          description: data sent by the user (required)
+          example: 123.45
+          format: double
+          type: number
+        managed:
+          description: whether the user is managed (required)
+          example: true
+          type: boolean
+        sessionsDay:
+          description: daily sessions for the user (required)
+          example: 123.45
+          format: double
+          type: number
+        user:
+          description: user identifier (required)
+          example: example string
+          type: string
+        vrf:
+          description: VRF associated with the user (required)
+          example: example string
+          type: string
+      type: object
+    v2AssuranceCreateAiAdoptionApproveEntryPostRequest:
+      additionalProperties: false
+      properties:
+        approvedAppEntry:
+          $ref: "#/components/schemas/assuranceApprovedAppEntryRequest"
+      required:
+      - approvedAppEntry
+      type: object
+    assuranceApprovedAppEntryRequest:
+      additionalProperties: false
+      properties:
+        appName:
+          description: app name to approve (required)
+          example: example string
+          type: string
+        domain:
+          description: app name to approve
+          example: example string
+          type: string
+        id:
+          description: approved app entry identifier
+          example: example string
+          type: string
+        tagRequested:
+          description: "resulting tag, approved or shadow (required)"
+          example: ENUM_VALUE
+          type: string
+      required:
+      - appName
+      - tagRequested
+      type: object
+    v2AssuranceCreateAiAdoptionApproveEntryPostResponse:
+      additionalProperties: false
+      example:
+        id: example string
+      properties:
+        id:
+          description: identifier of the created approved app entry (required)
+          example: example string
+          type: string
+      type: object
+    v2AssuranceUpdateAiAdoptionApproveEntryPostRequest:
+      additionalProperties: false
+      properties:
+        approvedAppEntry:
+          $ref: "#/components/schemas/assuranceApprovedAppEntryRequest"
+      required:
+      - approvedAppEntry
+      type: object
+    v2AssuranceUpdateAiAdoptionApproveEntryPostResponse:
+      additionalProperties: false
+      properties: {}
+      type: object
+    v2AssuranceDeleteAiAdoptionApproveEntryDeleteResponse:
+      additionalProperties: false
+      properties: {}
+      type: object
+    v2AssuranceReadAiAdoptionApproveEntriesGetResponse:
+      additionalProperties: false
+      example:
+        approvedAppList:
+        - activeUsers: 1234567891011
+          category: example string
+          dataSentKbps: 123.45
+          id: example string
+          tool: example string
+        - activeUsers: 1234567891011
+          category: example string
+          dataSentKbps: 123.45
+          id: example string
+          tool: example string
+      properties:
+        approvedAppList:
+          items:
+            $ref: "#/components/schemas/assuranceApprovedAppEntry"
+          type: array
+      type: object
+    assuranceApprovedAppEntry:
+      additionalProperties: false
+      example:
+        activeUsers: 1234567891011
+        category: example string
+        dataSentKbps: 123.45
+        id: example string
+        tool: example string
+      properties:
+        activeUsers:
+          description: number of active users (required)
+          example: 1234567891011
+          format: int64
+          type: integer
+        category:
+          description: approved AI tool category (required)
+          example: example string
+          type: string
+        dataSentKbps:
+          description: data sent in kbps (required)
+          example: 123.45
+          format: double
+          type: number
+        id:
+          description: approved app entry identifier (required)
+          example: example string
+          type: string
+        tool:
+          description: approved AI tool name (required)
+          example: example string
+          type: string
+      type: object
+    v2AssuranceGetAppNamesPostRequest:
+      additionalProperties: false
+      properties:
+        tags:
+          items:
+            description: app name type to fetch (required)
+            example: ENUM_VALUE
+            type: string
+          type: array
+      required:
+      - tags
+      type: object
+    v2AssuranceGetAppNamesPostResponse:
+      additionalProperties: false
+      example:
+        appNames:
+        - example string
+        - example string
+      properties:
+        appNames:
+          items:
+            description: app names returned (required)
+            example: example string
+            type: string
+          type: array
+      type: object
     v1AuditLogsPostRequest:
       additionalProperties: false
       properties:
@@ -21083,6 +22024,62 @@ components:
           format: int64
           type: integer
         siteId:
+          example: example string
+          type: string
+      type: object
+    v1ZtagentAgentsGetResponse:
+      additionalProperties: false
+      example:
+        agents:
+        - createdAt: example string
+          disabled: true
+          id: example string
+          identifier: example string
+          lastCheckin: example string
+          machine: example string
+        - createdAt: example string
+          disabled: true
+          id: example string
+          identifier: example string
+          lastCheckin: example string
+          machine: example string
+        count: 123
+      properties:
+        agents:
+          items:
+            $ref: "#/components/schemas/concealAgent"
+          type: array
+        count:
+          example: 123
+          format: int32
+          type: integer
+      type: object
+    concealAgent:
+      additionalProperties: false
+      example:
+        createdAt: example string
+        disabled: true
+        id: example string
+        identifier: example string
+        lastCheckin: example string
+        machine: example string
+      properties:
+        createdAt:
+          example: example string
+          type: string
+        disabled:
+          example: true
+          type: boolean
+        id:
+          example: example string
+          type: string
+        identifier:
+          example: example string
+          type: string
+        lastCheckin:
+          example: example string
+          type: string
+        machine:
           example: example string
           type: string
       type: object
@@ -242120,6 +243117,63 @@ components:
             localIkePeerIdentity: example string
             psk: example string
           vpnProfile: example string
+        ipsecGatewayPeers:
+          name: example string
+          remotePeers:
+          - destinationAddress: example string
+            ikeInitiator: true
+            mtu: 123
+            name: example string
+            remoteIkePeerIdentity: example string
+            tcpMss: 123
+            tunnel1:
+              insideIpv4Cidr: example string
+              insideIpv6Cidr: example string
+              localIkePeerIdentity: example string
+              psk: example string
+            tunnel2:
+              insideIpv4Cidr: example string
+              insideIpv6Cidr: example string
+              localIkePeerIdentity: example string
+              psk: example string
+            vpnProfile: example string
+          - destinationAddress: example string
+            ikeInitiator: true
+            mtu: 123
+            name: example string
+            remoteIkePeerIdentity: example string
+            tcpMss: 123
+            tunnel1:
+              insideIpv4Cidr: example string
+              insideIpv6Cidr: example string
+              localIkePeerIdentity: example string
+              psk: example string
+            tunnel2:
+              insideIpv4Cidr: example string
+              insideIpv6Cidr: example string
+              localIkePeerIdentity: example string
+              psk: example string
+            vpnProfile: example string
+          routing:
+            bgp:
+              addressFamilies:
+                key:
+                  family:
+                    addressFamily: ENUM_VALUE
+                    inboundPolicy:
+                      policy: example string
+                    outboundPolicy:
+                      policy: example string
+              holdTimer: 123
+              keepaliveTimer: 123
+              md5Password:
+                md5Password: example string
+              peerAsn: 123
+              sendCommunity: true
+            static:
+              destinationPrefix:
+              - example string
+              - example string
         regionId: 123
       properties:
         emails:
@@ -242129,6 +243183,8 @@ components:
           type: array
         ipsecGatewayDetails:
           $ref: "#/components/schemas/manaV2IPsecGatewayDetails"
+        ipsecGatewayPeers:
+          $ref: "#/components/schemas/manaV2IPsecGatewayPeersConfig"
         regionId:
           example: 123
           format: int32
@@ -242225,6 +243281,133 @@ components:
           example: example string
           type: string
         psk:
+          example: example string
+          type: string
+      type: object
+    manaV2IPsecGatewayPeersConfig:
+      additionalProperties: false
+      example:
+        name: example string
+        remotePeers:
+        - destinationAddress: example string
+          ikeInitiator: true
+          mtu: 123
+          name: example string
+          remoteIkePeerIdentity: example string
+          tcpMss: 123
+          tunnel1:
+            insideIpv4Cidr: example string
+            insideIpv6Cidr: example string
+            localIkePeerIdentity: example string
+            psk: example string
+          tunnel2:
+            insideIpv4Cidr: example string
+            insideIpv6Cidr: example string
+            localIkePeerIdentity: example string
+            psk: example string
+          vpnProfile: example string
+        - destinationAddress: example string
+          ikeInitiator: true
+          mtu: 123
+          name: example string
+          remoteIkePeerIdentity: example string
+          tcpMss: 123
+          tunnel1:
+            insideIpv4Cidr: example string
+            insideIpv6Cidr: example string
+            localIkePeerIdentity: example string
+            psk: example string
+          tunnel2:
+            insideIpv4Cidr: example string
+            insideIpv6Cidr: example string
+            localIkePeerIdentity: example string
+            psk: example string
+          vpnProfile: example string
+        routing:
+          bgp:
+            addressFamilies:
+              key:
+                family:
+                  addressFamily: ENUM_VALUE
+                  inboundPolicy:
+                    policy: example string
+                  outboundPolicy:
+                    policy: example string
+            holdTimer: 123
+            keepaliveTimer: 123
+            md5Password:
+              md5Password: example string
+            peerAsn: 123
+            sendCommunity: true
+          static:
+            destinationPrefix:
+            - example string
+            - example string
+      properties:
+        name:
+          description: Name of the IPsec gateway service
+          example: example string
+          type: string
+        remotePeers:
+          items:
+            $ref: "#/components/schemas/manaV2IPsecGatewayRemotePeer"
+          type: array
+        routing:
+          $ref: "#/components/schemas/manaV2IpsecRoutingConfig"
+      type: object
+    manaV2IPsecGatewayRemotePeer:
+      additionalProperties: false
+      example:
+        destinationAddress: example string
+        ikeInitiator: true
+        mtu: 123
+        name: example string
+        remoteIkePeerIdentity: example string
+        tcpMss: 123
+        tunnel1:
+          insideIpv4Cidr: example string
+          insideIpv6Cidr: example string
+          localIkePeerIdentity: example string
+          psk: example string
+        tunnel2:
+          insideIpv4Cidr: example string
+          insideIpv6Cidr: example string
+          localIkePeerIdentity: example string
+          psk: example string
+        vpnProfile: example string
+      properties:
+        destinationAddress:
+          example: example string
+          type: string
+        ikeInitiator:
+          description: "When true, Graphiant initiates IKE for this peer"
+          example: true
+          type: boolean
+        mtu:
+          example: 123
+          format: int32
+          minimum: 0
+          type: integer
+        name:
+          description: Optional display name or label for this peer; used when generating
+            tunnel names
+          example: example string
+          type: string
+        remoteIkePeerIdentity:
+          description: IKE identity of the remote peer
+          example: example string
+          type: string
+        tcpMss:
+          example: 123
+          format: int32
+          minimum: 0
+          type: integer
+        tunnel1:
+          $ref: "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
+        tunnel2:
+          $ref: "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
+        vpnProfile:
+          description: Enterprise IPsec VPN profile name for this peer
           example: example string
           type: string
       type: object
@@ -242561,6 +243744,63 @@ components:
               localIkePeerIdentity: example string
               psk: example string
             vpnProfile: example string
+          ipsecGatewayPeers:
+            name: example string
+            remotePeers:
+            - destinationAddress: example string
+              ikeInitiator: true
+              mtu: 123
+              name: example string
+              remoteIkePeerIdentity: example string
+              tcpMss: 123
+              tunnel1:
+                insideIpv4Cidr: example string
+                insideIpv6Cidr: example string
+                localIkePeerIdentity: example string
+                psk: example string
+              tunnel2:
+                insideIpv4Cidr: example string
+                insideIpv6Cidr: example string
+                localIkePeerIdentity: example string
+                psk: example string
+              vpnProfile: example string
+            - destinationAddress: example string
+              ikeInitiator: true
+              mtu: 123
+              name: example string
+              remoteIkePeerIdentity: example string
+              tcpMss: 123
+              tunnel1:
+                insideIpv4Cidr: example string
+                insideIpv6Cidr: example string
+                localIkePeerIdentity: example string
+                psk: example string
+              tunnel2:
+                insideIpv4Cidr: example string
+                insideIpv6Cidr: example string
+                localIkePeerIdentity: example string
+                psk: example string
+              vpnProfile: example string
+            routing:
+              bgp:
+                addressFamilies:
+                  key:
+                    family:
+                      addressFamily: ENUM_VALUE
+                      inboundPolicy:
+                        policy: example string
+                      outboundPolicy:
+                        policy: example string
+                holdTimer: 123
+                keepaliveTimer: 123
+                md5Password:
+                  md5Password: example string
+                peerAsn: 123
+                sendCommunity: true
+              static:
+                destinationPrefix:
+                - example string
+                - example string
           regionId: 123
         status: ENUM_VALUE
       properties:
@@ -243841,55 +245081,54 @@ components:
             type: integer
           type: array
       type: object
-    v1ExtranetPublicVifPostRequest:
+    v1PvifPostRequest:
       additionalProperties: false
       properties:
-        consumerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifConsumerPolicy"
-        producerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifProducerPolicy"
-        serviceName:
-          example: example string
-          type: string
-        type:
-          description: Type of the service whether it is application or peering (required)
-          example: ENUM_VALUE
-          type: string
-      required:
-      - consumerPolicy
-      - producerPolicy
-      - type
-      type: object
-    manaV2PublicVifConsumerPolicy:
-      additionalProperties: false
-      properties:
-        lanSegments:
-          items:
-            $ref: "#/components/schemas/manaV2PublicVifConsumerLanSegment"
-          type: array
-        sites:
+        advertisement:
           $ref: "#/components/schemas/manaV2SiteInformation"
-      required:
-      - lanSegments
-      - sites
-      type: object
-    manaV2PublicVifConsumerLanSegment:
-      additionalProperties: false
-      properties:
-        allowedPrefixes:
+        consumerLanSegments:
+          additionalProperties:
+            $ref: "#/components/schemas/manaV2PublicVifGatewayConsumerLanDevices"
+          type: object
+        coveringPrefixes:
           items:
-            description: Allowed prefixes for the Lan Segment (required)
+            description: Prefixes monitored for this service; empty means 0.0.0.0/0
             example: example string
             type: string
           type: array
-        serviceLanSegment:
-          description: LAN segment ID for the service (required)
+        gatewayBgpNeighbors:
+          additionalProperties:
+            $ref: "#/components/schemas/manaV2BgpNeighborConfig"
+          type: object
+        lanSegmentId:
+          description: Producer LAN segment (VRF) on gateway appliances (required)
           example: 1234567891011
           format: int64
           type: integer
+        natPrefixStrategy:
+          $ref: "#/components/schemas/manaV2PublicVifGatewayNatPrefixStrategy"
+        regionId:
+          description: Graphiant region for gateway appliances (required)
+          example: 123
+          format: int32
+          type: integer
+        serviceName:
+          description: Service display name (required)
+          example: example string
+          type: string
+        storageProvider:
+          description: Storage provider; each gateway appliance must match region
+            and provider (required)
+          example: ENUM_VALUE
+          type: string
       required:
-      - allowedPrefixes
-      - serviceLanSegment
+      - consumerLanSegments
+      - gatewayBgpNeighbors
+      - lanSegmentId
+      - natPrefixStrategy
+      - regionId
+      - serviceName
+      - storageProvider
       type: object
     manaV2SiteInformation:
       additionalProperties: false
@@ -243914,1479 +245153,581 @@ components:
             type: integer
           type: array
       type: object
-    manaV2PublicVifProducerPolicy:
+    manaV2PublicVifGatewayConsumerLanDevices:
       additionalProperties: false
+      example:
+        consumerPrefixes:
+        - example string
+        - example string
       properties:
-        devices:
+        consumerPrefixes:
+          items:
+            description: Allow prefixes for this consumer LAN; empty means 0.0.0.0/0
+            example: example string
+            type: string
+          type: array
+      type: object
+    manaV2PublicVifGatewayNatPrefixStrategy:
+      additionalProperties: false
+      example:
+        centralized:
+          consumerPrefix:
+            key: example string
+        decentralized:
+          prefixes:
+            key: example string
+      properties:
+        centralized:
+          $ref: "#/components/schemas/manaV2PublicVifGatewayCentralizedNat"
+        decentralized:
+          $ref: "#/components/schemas/manaV2PublicVifGatewayDecentralizedPrefixes"
+      type: object
+    manaV2PublicVifGatewayCentralizedNat:
+      additionalProperties: false
+      example:
+        consumerPrefix:
+          key: example string
+      properties:
+        consumerPrefix:
           additionalProperties:
-            $ref: "#/components/schemas/manaV2PublicVifDevice"
+            example: example string
+            type: string
           type: object
-        profiles:
-          items:
-            $ref: "#/components/schemas/manaV2ApplicationProfile"
-          type: array
-        serviceLanSegment:
-          description: LAN segment ID for the service (required)
-          example: 1234567891011
-          format: int64
-          type: integer
-        serviceName:
-          description: Public VIF service name (local_extranet_producer_service.name)
-          example: example string
-          type: string
-        sites:
-          $ref: "#/components/schemas/manaV2SiteInformation"
-        sla:
-          $ref: "#/components/schemas/manaV2SlaInformation"
-        vifs:
-          $ref: "#/components/schemas/manaV2PublicVif"
       required:
-      - devices
-      - serviceLanSegment
-      - sites
-      - vifs
+      - consumerPrefix
       type: object
-    manaV2PublicVifDevice:
+    manaV2PublicVifGatewayDecentralizedPrefixes:
       additionalProperties: false
       example:
-        consumerBurstSize: 123
-        consumerBwSite: 123
-        natPools:
-        - example string
-        - example string
+        prefixes:
+          key: example string
       properties:
-        consumerBurstSize:
-          description: Maximum Burst size per device (required)
-          example: 123
-          format: int32
-          minimum: 0
-          type: integer
-        consumerBwSite:
-          description: Maximum Bandwidth allocation per device (required)
-          example: 123
-          format: int32
-          minimum: 0
-          type: integer
-        natPools:
-          items:
-            description: NAT details for the service prefixes (required)
+        prefixes:
+          additionalProperties:
             example: example string
             type: string
-          type: array
+          type: object
       required:
-      - consumerBurstSize
-      - consumerBwSite
-      - natPools
+      - prefixes
       type: object
-    manaV2PublicVif:
+    v1PvifPostResponse:
       additionalProperties: false
       example:
-        coveringPrefixes:
-          entries:
-          - example string
-          - example string
-        fixedPrefixes:
-          entries:
-          - outsideNatPrefix: example string
-            servicePrefix: example string
-          - outsideNatPrefix: example string
-            servicePrefix: example string
-        type: ENUM_VALUE
-      properties:
-        coveringPrefixes:
-          $ref: "#/components/schemas/manaV2PublicVifDynamic"
-        fixedPrefixes:
-          $ref: "#/components/schemas/manaV2PublicVifFixed"
-        type:
-          description: Type of Public VIF dynamic/fixed (required)
-          example: ENUM_VALUE
-          type: string
-      required:
-      - coveringPrefixes
-      - fixedPrefixes
-      - type
-      type: object
-    manaV2PublicVifDynamic:
-      additionalProperties: false
-      example:
-        entries:
-        - example string
-        - example string
-      properties:
-        entries:
-          items:
-            example: example string
-            type: string
-          type: array
-      type: object
-    manaV2PublicVifFixed:
-      additionalProperties: false
-      example:
-        entries:
-        - outsideNatPrefix: example string
-          servicePrefix: example string
-        - outsideNatPrefix: example string
-          servicePrefix: example string
-      properties:
-        entries:
-          items:
-            $ref: "#/components/schemas/manaV2PublicVifFixedNat"
-          type: array
-      type: object
-    manaV2PublicVifFixedNat:
-      additionalProperties: false
-      example:
-        outsideNatPrefix: example string
-        servicePrefix: example string
-      properties:
-        outsideNatPrefix:
-          example: example string
-          type: string
-        servicePrefix:
-          example: example string
-          type: string
-      type: object
-    v1ExtranetPublicVifPostResponse:
-      additionalProperties: false
-      example:
-        consumerPolicy:
-          consumerServiceId: 1234567891011
-          lanSegments:
-          - allowedPrefixes:
-            - example string
-            - example string
-            outboundSecurityRules:
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            serviceLanSegment: 1234567891011
-            trafficRules:
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-          - allowedPrefixes:
-            - example string
-            - example string
-            outboundSecurityRules:
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            serviceLanSegment: 1234567891011
-            trafficRules:
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-          sites:
-            siteLists:
-            - 1234567891011
-            - 1234567891011
-            sites:
-            - 1234567891011
-            - 1234567891011
-        id: 1234567891011
-        producerPolicy:
-          devices:
-            key:
-              consumerBurstSize: 123
-              consumerBwSite: 123
-              natPools:
-              - example string
-              - example string
-          inboundSecurityRules:
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          profiles:
-          - portRange: example string
-            ports:
-            - 123
-            - 123
-            protocol: 123
-          - portRange: example string
-            ports:
-            - 123
-            - 123
-            protocol: 123
-          serviceLanSegment: 1234567891011
-          serviceName: example string
-          sites:
-            siteLists:
-            - 1234567891011
-            - 1234567891011
-            sites:
-            - 1234567891011
-            - 1234567891011
-          sla:
-            backupCircuit: ENUM_VALUE
-            class: ENUM_VALUE
-            primaryCircuit: ENUM_VALUE
-          trafficRules:
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          vifs:
-            coveringPrefixes:
-              entries:
-              - example string
-              - example string
-            fixedPrefixes:
-              entries:
-              - outsideNatPrefix: example string
-                servicePrefix: example string
-              - outsideNatPrefix: example string
-                servicePrefix: example string
-            type: ENUM_VALUE
-        serviceName: example string
-        type: ENUM_VALUE
-      properties:
-        consumerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifConsumerPolicyResponse"
-        id:
-          example: 1234567891011
-          format: int64
-          type: integer
-        producerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifProducerPolicyResponse"
-        serviceName:
-          example: example string
-          type: string
-        type:
-          example: ENUM_VALUE
-          type: string
-      type: object
-    manaV2PublicVifConsumerPolicyResponse:
-      additionalProperties: false
-      example:
-        consumerServiceId: 1234567891011
-        lanSegments:
-        - allowedPrefixes:
-          - example string
-          - example string
-          outboundSecurityRules:
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          serviceLanSegment: 1234567891011
-          trafficRules:
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-        - allowedPrefixes:
-          - example string
-          - example string
-          outboundSecurityRules:
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          serviceLanSegment: 1234567891011
-          trafficRules:
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-        sites:
+        advertiseAllSites: true
+        advertisement:
           siteLists:
           - 1234567891011
           - 1234567891011
           sites:
           - 1234567891011
           - 1234567891011
-      properties:
-        consumerServiceId:
-          example: 1234567891011
-          format: int64
-          type: integer
-        lanSegments:
-          items:
-            $ref: "#/components/schemas/manaV2PublicVifConsumerLanSegmentResponse"
-          type: array
-        sites:
-          $ref: "#/components/schemas/manaV2SiteInformation"
-      type: object
-    manaV2PublicVifConsumerLanSegmentResponse:
-      additionalProperties: false
-      example:
-        allowedPrefixes:
-        - example string
-        - example string
-        outboundSecurityRules:
-        - action: ENUM_VALUE
-          implicit: true
-          match:
-            destinationPort: 123
-            destinationPrefix: example string
-            icmpType: 123
-            protocol: 123
-            sourcePort: 123
-            sourcePrefix: example string
-          policyRuleIndex: 1234567891011
-          seq: 123
-        - action: ENUM_VALUE
-          implicit: true
-          match:
-            destinationPort: 123
-            destinationPrefix: example string
-            icmpType: 123
-            protocol: 123
-            sourcePort: 123
-            sourcePrefix: example string
-          policyRuleIndex: 1234567891011
-          seq: 123
-        serviceLanSegment: 1234567891011
-        trafficRules:
-        - action:
-            backup: ENUM_VALUE
-            class: ENUM_VALUE
-            primary: ENUM_VALUE
-            result: ENUM_VALUE
-          match:
-            destinationPort: 123
-            destinationPrefix: example string
-            icmpType: 123
-            protocol: 123
-            sourcePort: 123
-            sourcePrefix: example string
-          policyRuleIndex: 1234567891011
-          seq: 123
-        - action:
-            backup: ENUM_VALUE
-            class: ENUM_VALUE
-            primary: ENUM_VALUE
-            result: ENUM_VALUE
-          match:
-            destinationPort: 123
-            destinationPrefix: example string
-            icmpType: 123
-            protocol: 123
-            sourcePort: 123
-            sourcePrefix: example string
-          policyRuleIndex: 1234567891011
-          seq: 123
-      properties:
-        allowedPrefixes:
-          items:
-            description: Allowed prefixes for the Lan Segment
-            example: example string
-            type: string
-          type: array
-        outboundSecurityRules:
-          items:
-            $ref: "#/components/schemas/manaV2SecurityPolicyRule"
-          type: array
-        serviceLanSegment:
-          description: LAN segment ID for the service
-          example: 1234567891011
-          format: int64
-          type: integer
-        trafficRules:
-          items:
-            $ref: "#/components/schemas/manaV2TrafficPolicyRule"
-          type: array
-      type: object
-    manaV2PublicVifProducerPolicyResponse:
-      additionalProperties: false
-      example:
-        devices:
+        consumerLanSegments:
           key:
-            consumerBurstSize: 123
-            consumerBwSite: 123
-            natPools:
+            consumerPrefixes:
             - example string
             - example string
-        inboundSecurityRules:
-        - action: ENUM_VALUE
-          implicit: true
-          match:
-            destinationPort: 123
-            destinationPrefix: example string
-            icmpType: 123
-            protocol: 123
-            sourcePort: 123
-            sourcePrefix: example string
-          policyRuleIndex: 1234567891011
-          seq: 123
-        - action: ENUM_VALUE
-          implicit: true
-          match:
-            destinationPort: 123
-            destinationPrefix: example string
-            icmpType: 123
-            protocol: 123
-            sourcePort: 123
-            sourcePrefix: example string
-          policyRuleIndex: 1234567891011
-          seq: 123
-        profiles:
-        - portRange: example string
-          ports:
-          - 123
-          - 123
-          protocol: 123
-        - portRange: example string
-          ports:
-          - 123
-          - 123
-          protocol: 123
-        serviceLanSegment: 1234567891011
+        coveringPrefixes:
+        - example string
+        - example string
+        gatewayBgpNeighbors:
+          key:
+            addressFamilies:
+            - addressFamily: ENUM_VALUE
+              id: 1234567891011
+              inboundPolicy: example string
+              outboundPolicy: example string
+            - addressFamily: ENUM_VALUE
+              id: 1234567891011
+              inboundPolicy: example string
+              outboundPolicy: example string
+            allowAsIn: 123
+            asOverride: true
+            bfd:
+              enabled: true
+              minimumInterval: 123
+              multiplier: 123
+            bfdNeighbor:
+              desiredMinimumTxInterval: 123
+              ifIndex: 123
+              interface: example string
+              lastUpdated:
+                nanos: 123
+                seconds: 1234567891011
+              localDiag: ENUM_VALUE
+              peerAddress: example string
+              remoteDiag: ENUM_VALUE
+              requiredMinimumRxInterval: 123
+              segmentName: example string
+              sourceAddress: example string
+              state: ENUM_VALUE
+              timeInState:
+                nanos: 123
+                seconds: 1234567891011
+              up: true
+            bgpType: ENUM_VALUE
+            defaultOriginate: ENUM_VALUE
+            dynamicNeighborPeers:
+            - lastOperStatusChange:
+                nanos: 123
+                seconds: 1234567891011
+              localAddress: example string
+              operStatus: true
+              peerAsn: 123
+              remoteAddress: example string
+              state: ENUM_VALUE
+            - lastOperStatusChange:
+                nanos: 123
+                seconds: 1234567891011
+              localAddress: example string
+              operStatus: true
+              peerAsn: 123
+              remoteAddress: example string
+              state: ENUM_VALUE
+            enabled: true
+            holdTimer: 123
+            id: 1234567891011
+            keepaliveTimer: 123
+            localAddress: example string
+            localInterface: example string
+            maxPrefix: 10000
+            md5Password: example string
+            multiHop: 5
+            peerAsn: 123
+            remoteAddress: example string
+            removePrivateAs: true
+            sendCommunity: true
+            state: ENUM_VALUE
+            timeSinceLastOperChange:
+              nanos: 123
+              seconds: 1234567891011
+            up: true
+        id: 1234567891011
+        lanSegmentId: 1234567891011
+        natPrefixStrategy:
+          centralized:
+            consumerPrefix:
+              key: example string
+          decentralized:
+            prefixes:
+              key: example string
+        regionId: 123
         serviceName: example string
-        sites:
+        storageProvider: ENUM_VALUE
+      properties:
+        advertiseAllSites:
+          description: True when consumer scope is all symmetric sites (snapshotted
+            on create and update); false when advertisement lists explicit sites or
+            site lists
+          example: true
+          type: boolean
+        advertisement:
+          $ref: "#/components/schemas/manaV2SiteInformation"
+        consumerLanSegments:
+          additionalProperties:
+            $ref: "#/components/schemas/manaV2PublicVifGatewayConsumerLanDevices"
+          type: object
+        coveringPrefixes:
+          items:
+            description: Prefixes monitored for this service
+            example: example string
+            type: string
+          type: array
+        gatewayBgpNeighbors:
+          additionalProperties:
+            $ref: "#/components/schemas/manaV2BgpNeighbor"
+          type: object
+        id:
+          description: Producer service id
+          example: 1234567891011
+          format: int64
+          type: integer
+        lanSegmentId:
+          description: Producer LAN segment (VRF) id
+          example: 1234567891011
+          format: int64
+          type: integer
+        natPrefixStrategy:
+          $ref: "#/components/schemas/manaV2PublicVifGatewayNatPrefixStrategy"
+        regionId:
+          description: Graphiant region for gateway appliances
+          example: 123
+          format: int32
+          type: integer
+        serviceName:
+          description: Service display name
+          example: example string
+          type: string
+        storageProvider:
+          description: Storage provider for gateway appliances
+          example: ENUM_VALUE
+          type: string
+      type: object
+    v1PvifIdPutRequest:
+      additionalProperties: false
+      properties:
+        configuration:
+          $ref: "#/components/schemas/manaV2PublicVifGatewayWriteRequest"
+      required:
+      - configuration
+      type: object
+    manaV2PublicVifGatewayWriteRequest:
+      additionalProperties: false
+      properties:
+        advertisement:
+          $ref: "#/components/schemas/manaV2SiteInformation"
+        consumerLanSegments:
+          additionalProperties:
+            $ref: "#/components/schemas/manaV2PublicVifGatewayConsumerLanDevices"
+          type: object
+        coveringPrefixes:
+          items:
+            description: Prefixes monitored for this service; empty means 0.0.0.0/0
+            example: example string
+            type: string
+          type: array
+        gatewayBgpNeighbors:
+          additionalProperties:
+            $ref: "#/components/schemas/manaV2BgpNeighborConfig"
+          type: object
+        lanSegmentId:
+          description: Producer LAN segment (VRF) on gateway appliances (required)
+          example: 1234567891011
+          format: int64
+          type: integer
+        natPrefixStrategy:
+          $ref: "#/components/schemas/manaV2PublicVifGatewayNatPrefixStrategy"
+        regionId:
+          description: Graphiant region for gateway appliances (required)
+          example: 123
+          format: int32
+          type: integer
+        serviceName:
+          description: Service display name (required)
+          example: example string
+          type: string
+        storageProvider:
+          description: Storage provider; each gateway appliance must match region
+            and provider (required)
+          example: ENUM_VALUE
+          type: string
+      required:
+      - consumerLanSegments
+      - gatewayBgpNeighbors
+      - lanSegmentId
+      - natPrefixStrategy
+      - regionId
+      - serviceName
+      - storageProvider
+      type: object
+    v1PvifIdPutResponse:
+      additionalProperties: false
+      example:
+        advertiseAllSites: true
+        advertisement:
           siteLists:
           - 1234567891011
           - 1234567891011
           sites:
           - 1234567891011
           - 1234567891011
-        sla:
-          backupCircuit: ENUM_VALUE
-          class: ENUM_VALUE
-          primaryCircuit: ENUM_VALUE
-        trafficRules:
-        - action:
-            backup: ENUM_VALUE
-            class: ENUM_VALUE
-            primary: ENUM_VALUE
-            result: ENUM_VALUE
-          match:
-            destinationPort: 123
-            destinationPrefix: example string
-            icmpType: 123
-            protocol: 123
-            sourcePort: 123
-            sourcePrefix: example string
-          policyRuleIndex: 1234567891011
-          seq: 123
-        - action:
-            backup: ENUM_VALUE
-            class: ENUM_VALUE
-            primary: ENUM_VALUE
-            result: ENUM_VALUE
-          match:
-            destinationPort: 123
-            destinationPrefix: example string
-            icmpType: 123
-            protocol: 123
-            sourcePort: 123
-            sourcePrefix: example string
-          policyRuleIndex: 1234567891011
-          seq: 123
-        vifs:
-          coveringPrefixes:
-            entries:
+        consumerLanSegments:
+          key:
+            consumerPrefixes:
             - example string
             - example string
-          fixedPrefixes:
-            entries:
-            - outsideNatPrefix: example string
-              servicePrefix: example string
-            - outsideNatPrefix: example string
-              servicePrefix: example string
-          type: ENUM_VALUE
-      properties:
-        devices:
-          additionalProperties:
-            $ref: "#/components/schemas/manaV2PublicVifDevice"
-          type: object
-        inboundSecurityRules:
-          items:
-            $ref: "#/components/schemas/manaV2SecurityPolicyRule"
-          type: array
-        profiles:
-          items:
-            $ref: "#/components/schemas/manaV2ApplicationProfile"
-          type: array
-        serviceLanSegment:
-          description: LAN segment ID for the service
-          example: 1234567891011
-          format: int64
-          type: integer
-        serviceName:
-          description: Public VIF service name (local_extranet_producer_service.name)
-          example: example string
-          type: string
-        sites:
-          $ref: "#/components/schemas/manaV2SiteInformation"
-        sla:
-          $ref: "#/components/schemas/manaV2SlaInformation"
-        trafficRules:
-          items:
-            $ref: "#/components/schemas/manaV2TrafficPolicyRule"
-          type: array
-        vifs:
-          $ref: "#/components/schemas/manaV2PublicVif"
-      type: object
-    v1ExtranetPublicVifIdPutRequest:
-      additionalProperties: false
-      properties:
-        consumerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifConsumerPolicy"
-        producerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifProducerPolicy"
-      required:
-      - producerPolicy
-      type: object
-    v1ExtranetPublicVifIdPutResponse:
-      additionalProperties: false
-      example:
-        consumerPolicy:
-          consumerServiceId: 1234567891011
-          lanSegments:
-          - allowedPrefixes:
-            - example string
-            - example string
-            outboundSecurityRules:
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            serviceLanSegment: 1234567891011
-            trafficRules:
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-          - allowedPrefixes:
-            - example string
-            - example string
-            outboundSecurityRules:
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            serviceLanSegment: 1234567891011
-            trafficRules:
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-          sites:
-            siteLists:
-            - 1234567891011
-            - 1234567891011
-            sites:
-            - 1234567891011
-            - 1234567891011
+        coveringPrefixes:
+        - example string
+        - example string
+        gatewayBgpNeighbors:
+          key:
+            addressFamilies:
+            - addressFamily: ENUM_VALUE
+              id: 1234567891011
+              inboundPolicy: example string
+              outboundPolicy: example string
+            - addressFamily: ENUM_VALUE
+              id: 1234567891011
+              inboundPolicy: example string
+              outboundPolicy: example string
+            allowAsIn: 123
+            asOverride: true
+            bfd:
+              enabled: true
+              minimumInterval: 123
+              multiplier: 123
+            bfdNeighbor:
+              desiredMinimumTxInterval: 123
+              ifIndex: 123
+              interface: example string
+              lastUpdated:
+                nanos: 123
+                seconds: 1234567891011
+              localDiag: ENUM_VALUE
+              peerAddress: example string
+              remoteDiag: ENUM_VALUE
+              requiredMinimumRxInterval: 123
+              segmentName: example string
+              sourceAddress: example string
+              state: ENUM_VALUE
+              timeInState:
+                nanos: 123
+                seconds: 1234567891011
+              up: true
+            bgpType: ENUM_VALUE
+            defaultOriginate: ENUM_VALUE
+            dynamicNeighborPeers:
+            - lastOperStatusChange:
+                nanos: 123
+                seconds: 1234567891011
+              localAddress: example string
+              operStatus: true
+              peerAsn: 123
+              remoteAddress: example string
+              state: ENUM_VALUE
+            - lastOperStatusChange:
+                nanos: 123
+                seconds: 1234567891011
+              localAddress: example string
+              operStatus: true
+              peerAsn: 123
+              remoteAddress: example string
+              state: ENUM_VALUE
+            enabled: true
+            holdTimer: 123
+            id: 1234567891011
+            keepaliveTimer: 123
+            localAddress: example string
+            localInterface: example string
+            maxPrefix: 10000
+            md5Password: example string
+            multiHop: 5
+            peerAsn: 123
+            remoteAddress: example string
+            removePrivateAs: true
+            sendCommunity: true
+            state: ENUM_VALUE
+            timeSinceLastOperChange:
+              nanos: 123
+              seconds: 1234567891011
+            up: true
         id: 1234567891011
-        producerPolicy:
-          devices:
-            key:
-              consumerBurstSize: 123
-              consumerBwSite: 123
-              natPools:
-              - example string
-              - example string
-          inboundSecurityRules:
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          profiles:
-          - portRange: example string
-            ports:
-            - 123
-            - 123
-            protocol: 123
-          - portRange: example string
-            ports:
-            - 123
-            - 123
-            protocol: 123
-          serviceLanSegment: 1234567891011
-          serviceName: example string
-          sites:
-            siteLists:
-            - 1234567891011
-            - 1234567891011
-            sites:
-            - 1234567891011
-            - 1234567891011
-          sla:
-            backupCircuit: ENUM_VALUE
-            class: ENUM_VALUE
-            primaryCircuit: ENUM_VALUE
-          trafficRules:
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          vifs:
-            coveringPrefixes:
-              entries:
-              - example string
-              - example string
-            fixedPrefixes:
-              entries:
-              - outsideNatPrefix: example string
-                servicePrefix: example string
-              - outsideNatPrefix: example string
-                servicePrefix: example string
-            type: ENUM_VALUE
+        lanSegmentId: 1234567891011
+        natPrefixStrategy:
+          centralized:
+            consumerPrefix:
+              key: example string
+          decentralized:
+            prefixes:
+              key: example string
+        regionId: 123
         serviceName: example string
-        type: ENUM_VALUE
+        storageProvider: ENUM_VALUE
       properties:
-        consumerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifConsumerPolicyResponse"
+        advertiseAllSites:
+          description: True when consumer scope is all symmetric sites (snapshotted
+            on create and update); false when advertisement lists explicit sites or
+            site lists
+          example: true
+          type: boolean
+        advertisement:
+          $ref: "#/components/schemas/manaV2SiteInformation"
+        consumerLanSegments:
+          additionalProperties:
+            $ref: "#/components/schemas/manaV2PublicVifGatewayConsumerLanDevices"
+          type: object
+        coveringPrefixes:
+          items:
+            description: Prefixes monitored for this service
+            example: example string
+            type: string
+          type: array
+        gatewayBgpNeighbors:
+          additionalProperties:
+            $ref: "#/components/schemas/manaV2BgpNeighbor"
+          type: object
         id:
+          description: Producer service id
           example: 1234567891011
           format: int64
           type: integer
-        producerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifProducerPolicyResponse"
+        lanSegmentId:
+          description: Producer LAN segment (VRF) id
+          example: 1234567891011
+          format: int64
+          type: integer
+        natPrefixStrategy:
+          $ref: "#/components/schemas/manaV2PublicVifGatewayNatPrefixStrategy"
+        regionId:
+          description: Graphiant region for gateway appliances
+          example: 123
+          format: int32
+          type: integer
         serviceName:
+          description: Service display name
           example: example string
           type: string
-        type:
+        storageProvider:
+          description: Storage provider for gateway appliances
           example: ENUM_VALUE
           type: string
       type: object
-    v1ExtranetPublicVifIdDeleteResponse:
+    v1PvifIdDeleteResponse:
       additionalProperties: false
       properties: {}
       type: object
-    v1ExtranetPublicVifIdGetResponse:
+    v1PvifIdDetailsGetResponse:
       additionalProperties: false
       example:
-        consumerPolicy:
-          consumerServiceId: 1234567891011
-          lanSegments:
-          - allowedPrefixes:
-            - example string
-            - example string
-            outboundSecurityRules:
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            serviceLanSegment: 1234567891011
-            trafficRules:
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-          - allowedPrefixes:
-            - example string
-            - example string
-            outboundSecurityRules:
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            serviceLanSegment: 1234567891011
-            trafficRules:
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
+        advertiseAllSites: true
+        advertisement:
+          siteLists:
+          - 1234567891011
+          - 1234567891011
           sites:
-            siteLists:
-            - 1234567891011
-            - 1234567891011
-            sites:
-            - 1234567891011
-            - 1234567891011
+          - 1234567891011
+          - 1234567891011
+        consumerLanSegments:
+          key:
+            consumerPrefixes:
+            - example string
+            - example string
+        coveringPrefixes:
+        - example string
+        - example string
+        gatewayBgpNeighbors:
+          key:
+            addressFamilies:
+            - addressFamily: ENUM_VALUE
+              id: 1234567891011
+              inboundPolicy: example string
+              outboundPolicy: example string
+            - addressFamily: ENUM_VALUE
+              id: 1234567891011
+              inboundPolicy: example string
+              outboundPolicy: example string
+            allowAsIn: 123
+            asOverride: true
+            bfd:
+              enabled: true
+              minimumInterval: 123
+              multiplier: 123
+            bfdNeighbor:
+              desiredMinimumTxInterval: 123
+              ifIndex: 123
+              interface: example string
+              lastUpdated:
+                nanos: 123
+                seconds: 1234567891011
+              localDiag: ENUM_VALUE
+              peerAddress: example string
+              remoteDiag: ENUM_VALUE
+              requiredMinimumRxInterval: 123
+              segmentName: example string
+              sourceAddress: example string
+              state: ENUM_VALUE
+              timeInState:
+                nanos: 123
+                seconds: 1234567891011
+              up: true
+            bgpType: ENUM_VALUE
+            defaultOriginate: ENUM_VALUE
+            dynamicNeighborPeers:
+            - lastOperStatusChange:
+                nanos: 123
+                seconds: 1234567891011
+              localAddress: example string
+              operStatus: true
+              peerAsn: 123
+              remoteAddress: example string
+              state: ENUM_VALUE
+            - lastOperStatusChange:
+                nanos: 123
+                seconds: 1234567891011
+              localAddress: example string
+              operStatus: true
+              peerAsn: 123
+              remoteAddress: example string
+              state: ENUM_VALUE
+            enabled: true
+            holdTimer: 123
+            id: 1234567891011
+            keepaliveTimer: 123
+            localAddress: example string
+            localInterface: example string
+            maxPrefix: 10000
+            md5Password: example string
+            multiHop: 5
+            peerAsn: 123
+            remoteAddress: example string
+            removePrivateAs: true
+            sendCommunity: true
+            state: ENUM_VALUE
+            timeSinceLastOperChange:
+              nanos: 123
+              seconds: 1234567891011
+            up: true
         id: 1234567891011
-        producerPolicy:
-          devices:
-            key:
-              consumerBurstSize: 123
-              consumerBwSite: 123
-              natPools:
-              - example string
-              - example string
-          inboundSecurityRules:
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          profiles:
-          - portRange: example string
-            ports:
-            - 123
-            - 123
-            protocol: 123
-          - portRange: example string
-            ports:
-            - 123
-            - 123
-            protocol: 123
-          serviceLanSegment: 1234567891011
-          serviceName: example string
-          sites:
-            siteLists:
-            - 1234567891011
-            - 1234567891011
-            sites:
-            - 1234567891011
-            - 1234567891011
-          sla:
-            backupCircuit: ENUM_VALUE
-            class: ENUM_VALUE
-            primaryCircuit: ENUM_VALUE
-          trafficRules:
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          vifs:
-            coveringPrefixes:
-              entries:
-              - example string
-              - example string
-            fixedPrefixes:
-              entries:
-              - outsideNatPrefix: example string
-                servicePrefix: example string
-              - outsideNatPrefix: example string
-                servicePrefix: example string
-            type: ENUM_VALUE
+        lanSegmentId: 1234567891011
+        natPrefixStrategy:
+          centralized:
+            consumerPrefix:
+              key: example string
+          decentralized:
+            prefixes:
+              key: example string
+        regionId: 123
         serviceName: example string
-        type: ENUM_VALUE
+        storageProvider: ENUM_VALUE
       properties:
-        consumerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifConsumerPolicyResponse"
+        advertiseAllSites:
+          description: True when consumer scope is all symmetric sites (snapshotted
+            on create and update); false when advertisement lists explicit sites or
+            site lists
+          example: true
+          type: boolean
+        advertisement:
+          $ref: "#/components/schemas/manaV2SiteInformation"
+        consumerLanSegments:
+          additionalProperties:
+            $ref: "#/components/schemas/manaV2PublicVifGatewayConsumerLanDevices"
+          type: object
+        coveringPrefixes:
+          items:
+            description: Prefixes monitored for this service
+            example: example string
+            type: string
+          type: array
+        gatewayBgpNeighbors:
+          additionalProperties:
+            $ref: "#/components/schemas/manaV2BgpNeighbor"
+          type: object
         id:
+          description: Producer service id
           example: 1234567891011
           format: int64
           type: integer
-        producerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifProducerPolicyResponse"
-        serviceName:
-          example: example string
-          type: string
-        type:
-          example: ENUM_VALUE
-          type: string
-      type: object
-    v1ExtranetPublicVifCheckPostRequest:
-      additionalProperties: false
-      properties:
-        consumerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifConsumerPolicy"
-        producerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifProducerPolicy"
-        serviceName:
-          example: example string
-          type: string
-        type:
-          description: Type of the service whether it is application or peering (required)
-          example: ENUM_VALUE
-          type: string
-      required:
-      - consumerPolicy
-      - producerPolicy
-      - type
-      type: object
-    v1ExtranetPublicVifCheckPostResponse:
-      additionalProperties: false
-      example:
-        consumerPolicy:
-          consumerServiceId: 1234567891011
-          lanSegments:
-          - allowedPrefixes:
-            - example string
-            - example string
-            outboundSecurityRules:
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            serviceLanSegment: 1234567891011
-            trafficRules:
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-          - allowedPrefixes:
-            - example string
-            - example string
-            outboundSecurityRules:
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action: ENUM_VALUE
-              implicit: true
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            serviceLanSegment: 1234567891011
-            trafficRules:
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-            - action:
-                backup: ENUM_VALUE
-                class: ENUM_VALUE
-                primary: ENUM_VALUE
-                result: ENUM_VALUE
-              match:
-                destinationPort: 123
-                destinationPrefix: example string
-                icmpType: 123
-                protocol: 123
-                sourcePort: 123
-                sourcePrefix: example string
-              policyRuleIndex: 1234567891011
-              seq: 123
-          sites:
-            siteLists:
-            - 1234567891011
-            - 1234567891011
-            sites:
-            - 1234567891011
-            - 1234567891011
-        id: 1234567891011
-        producerPolicy:
-          devices:
-            key:
-              consumerBurstSize: 123
-              consumerBwSite: 123
-              natPools:
-              - example string
-              - example string
-          inboundSecurityRules:
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action: ENUM_VALUE
-            implicit: true
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          profiles:
-          - portRange: example string
-            ports:
-            - 123
-            - 123
-            protocol: 123
-          - portRange: example string
-            ports:
-            - 123
-            - 123
-            protocol: 123
-          serviceLanSegment: 1234567891011
-          serviceName: example string
-          sites:
-            siteLists:
-            - 1234567891011
-            - 1234567891011
-            sites:
-            - 1234567891011
-            - 1234567891011
-          sla:
-            backupCircuit: ENUM_VALUE
-            class: ENUM_VALUE
-            primaryCircuit: ENUM_VALUE
-          trafficRules:
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          - action:
-              backup: ENUM_VALUE
-              class: ENUM_VALUE
-              primary: ENUM_VALUE
-              result: ENUM_VALUE
-            match:
-              destinationPort: 123
-              destinationPrefix: example string
-              icmpType: 123
-              protocol: 123
-              sourcePort: 123
-              sourcePrefix: example string
-            policyRuleIndex: 1234567891011
-            seq: 123
-          vifs:
-            coveringPrefixes:
-              entries:
-              - example string
-              - example string
-            fixedPrefixes:
-              entries:
-              - outsideNatPrefix: example string
-                servicePrefix: example string
-              - outsideNatPrefix: example string
-                servicePrefix: example string
-            type: ENUM_VALUE
-        serviceName: example string
-        type: ENUM_VALUE
-      properties:
-        consumerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifConsumerPolicyResponse"
-        id:
+        lanSegmentId:
+          description: Producer LAN segment (VRF) id
           example: 1234567891011
           format: int64
           type: integer
-        producerPolicy:
-          $ref: "#/components/schemas/manaV2PublicVifProducerPolicyResponse"
+        natPrefixStrategy:
+          $ref: "#/components/schemas/manaV2PublicVifGatewayNatPrefixStrategy"
+        regionId:
+          description: Graphiant region for gateway appliances
+          example: 123
+          format: int32
+          type: integer
         serviceName:
+          description: Service display name
           example: example string
           type: string
-        type:
+        storageProvider:
+          description: Storage provider for gateway appliances
           example: ENUM_VALUE
           type: string
       type: object
-    v1ExtranetPublicVifGetResponse:
+    v1PvifSummaryGetResponse:
       additionalProperties: false
       example:
         summary:
@@ -262600,25 +262941,33 @@ components:
                 lanSegmentExists:
                 - deviceId: 12345678910
                   hostname: example string
+                  siteId: 1234567891011
                 - deviceId: 12345678910
                   hostname: example string
+                  siteId: 1234567891011
                 lanSegmentMissing:
                 - deviceId: 12345678910
                   hostname: example string
+                  siteId: 1234567891011
                 - deviceId: 12345678910
                   hostname: example string
+                  siteId: 1234567891011
             siteListIds:
               key:
                 lanSegmentExists:
                 - deviceId: 12345678910
                   hostname: example string
+                  siteId: 1234567891011
                 - deviceId: 12345678910
                   hostname: example string
+                  siteId: 1234567891011
                 lanSegmentMissing:
                 - deviceId: 12345678910
                   hostname: example string
+                  siteId: 1234567891011
                 - deviceId: 12345678910
                   hostname: example string
+                  siteId: 1234567891011
       properties:
         lanSegmentIds:
           additionalProperties:
@@ -262633,25 +262982,33 @@ components:
             lanSegmentExists:
             - deviceId: 12345678910
               hostname: example string
+              siteId: 1234567891011
             - deviceId: 12345678910
               hostname: example string
+              siteId: 1234567891011
             lanSegmentMissing:
             - deviceId: 12345678910
               hostname: example string
+              siteId: 1234567891011
             - deviceId: 12345678910
               hostname: example string
+              siteId: 1234567891011
         siteListIds:
           key:
             lanSegmentExists:
             - deviceId: 12345678910
               hostname: example string
+              siteId: 1234567891011
             - deviceId: 12345678910
               hostname: example string
+              siteId: 1234567891011
             lanSegmentMissing:
             - deviceId: 12345678910
               hostname: example string
+              siteId: 1234567891011
             - deviceId: 12345678910
               hostname: example string
+              siteId: 1234567891011
       properties:
         siteIds:
           additionalProperties:
@@ -262668,13 +263025,17 @@ components:
         lanSegmentExists:
         - deviceId: 12345678910
           hostname: example string
+          siteId: 1234567891011
         - deviceId: 12345678910
           hostname: example string
+          siteId: 1234567891011
         lanSegmentMissing:
         - deviceId: 12345678910
           hostname: example string
+          siteId: 1234567891011
         - deviceId: 12345678910
           hostname: example string
+          siteId: 1234567891011
       properties:
         lanSegmentExists:
           items:
@@ -262690,6 +263051,7 @@ components:
       example:
         deviceId: 12345678910
         hostname: example string
+        siteId: 1234567891011
       properties:
         deviceId:
           example: 12345678910
@@ -262698,6 +263060,118 @@ components:
           type: integer
         hostname:
           example: example string
+          type: string
+        siteId:
+          example: 1234567891011
+          format: int64
+          type: integer
+      type: object
+    v1LanSegmentsInterfacesPublicGetResponse:
+      additionalProperties: false
+      example:
+        lanSegmentIds:
+          key:
+            privateInterfaces:
+            - interfaceId: 1234567891011
+              ipv4Addresses:
+              - example string
+              - example string
+              name: example string
+              storageProvider: ENUM_VALUE
+            - interfaceId: 1234567891011
+              ipv4Addresses:
+              - example string
+              - example string
+              name: example string
+              storageProvider: ENUM_VALUE
+            publicInterfaces:
+            - interfaceId: 1234567891011
+              ipv4Addresses:
+              - example string
+              - example string
+              name: example string
+              storageProvider: ENUM_VALUE
+            - interfaceId: 1234567891011
+              ipv4Addresses:
+              - example string
+              - example string
+              name: example string
+              storageProvider: ENUM_VALUE
+      properties:
+        lanSegmentIds:
+          additionalProperties:
+            $ref: "#/components/schemas/manaV2LanSegmentPublicInterfacesLists"
+          type: object
+      type: object
+    manaV2LanSegmentPublicInterfacesLists:
+      additionalProperties: false
+      example:
+        privateInterfaces:
+        - interfaceId: 1234567891011
+          ipv4Addresses:
+          - example string
+          - example string
+          name: example string
+          storageProvider: ENUM_VALUE
+        - interfaceId: 1234567891011
+          ipv4Addresses:
+          - example string
+          - example string
+          name: example string
+          storageProvider: ENUM_VALUE
+        publicInterfaces:
+        - interfaceId: 1234567891011
+          ipv4Addresses:
+          - example string
+          - example string
+          name: example string
+          storageProvider: ENUM_VALUE
+        - interfaceId: 1234567891011
+          ipv4Addresses:
+          - example string
+          - example string
+          name: example string
+          storageProvider: ENUM_VALUE
+      properties:
+        privateInterfaces:
+          items:
+            $ref: "#/components/schemas/manaV2LanSegmentPublicInterfaceEntry"
+          type: array
+        publicInterfaces:
+          items:
+            $ref: "#/components/schemas/manaV2LanSegmentPublicInterfaceEntry"
+          type: array
+      type: object
+    manaV2LanSegmentPublicInterfaceEntry:
+      additionalProperties: false
+      example:
+        interfaceId: 1234567891011
+        ipv4Addresses:
+        - example string
+        - example string
+        name: example string
+        storageProvider: ENUM_VALUE
+      properties:
+        interfaceId:
+          description: network.interface id (required)
+          example: 1234567891011
+          format: int64
+          type: integer
+        ipv4Addresses:
+          items:
+            description: IPv4 host/prefix strings from interface_ip_address (non-stale
+              rows)
+            example: example string
+            type: string
+          type: array
+        name:
+          description: Device interface name (BGP local_interface uses this) (required)
+          example: example string
+          type: string
+        storageProvider:
+          description: Interface storage provider (cloud provider for gateway LAN
+            interfaces)
+          example: ENUM_VALUE
           type: string
       type: object
     v1RegionsGetResponse:
@@ -262723,6 +263197,34 @@ components:
           items:
             $ref: "#/components/schemas/manaV2Region"
           type: array
+      type: object
+    v1RegionsRegionIdGatewaysGetResponse:
+      additionalProperties: false
+      example:
+        gateways:
+        - deviceId: 1234567891011
+          hostname: example string
+        - deviceId: 1234567891011
+          hostname: example string
+      properties:
+        gateways:
+          items:
+            $ref: "#/components/schemas/v1RegionsRegionIdGatewaysGetResponseGateway"
+          type: array
+      type: object
+    v1RegionsRegionIdGatewaysGetResponseGateway:
+      additionalProperties: false
+      example:
+        deviceId: 1234567891011
+        hostname: example string
+      properties:
+        deviceId:
+          example: 1234567891011
+          format: int64
+          type: integer
+        hostname:
+          example: example string
+          type: string
       type: object
     v1LanSegmentsGetResponse:
       additionalProperties: false
@@ -282418,6 +282920,63 @@ components:
               localIkePeerIdentity: example string
               psk: example string
             vpnProfile: example string
+          ipsecGatewayPeers:
+            name: example string
+            remotePeers:
+            - destinationAddress: example string
+              ikeInitiator: true
+              mtu: 123
+              name: example string
+              remoteIkePeerIdentity: example string
+              tcpMss: 123
+              tunnel1:
+                insideIpv4Cidr: example string
+                insideIpv6Cidr: example string
+                localIkePeerIdentity: example string
+                psk: example string
+              tunnel2:
+                insideIpv4Cidr: example string
+                insideIpv6Cidr: example string
+                localIkePeerIdentity: example string
+                psk: example string
+              vpnProfile: example string
+            - destinationAddress: example string
+              ikeInitiator: true
+              mtu: 123
+              name: example string
+              remoteIkePeerIdentity: example string
+              tcpMss: 123
+              tunnel1:
+                insideIpv4Cidr: example string
+                insideIpv6Cidr: example string
+                localIkePeerIdentity: example string
+                psk: example string
+              tunnel2:
+                insideIpv4Cidr: example string
+                insideIpv6Cidr: example string
+                localIkePeerIdentity: example string
+                psk: example string
+              vpnProfile: example string
+            routing:
+              bgp:
+                addressFamilies:
+                  key:
+                    family:
+                      addressFamily: ENUM_VALUE
+                      inboundPolicy:
+                        policy: example string
+                      outboundPolicy:
+                        policy: example string
+                holdTimer: 123
+                keepaliveTimer: 123
+                md5Password:
+                  md5Password: example string
+                peerAsn: 123
+                sendCommunity: true
+              static:
+                destinationPrefix:
+                - example string
+                - example string
           regionId: 123
       properties:
         destinationPrefixes:
@@ -282621,9 +283180,68 @@ components:
             localIkePeerIdentity: example string
             psk: example string
           vpnProfile: example string
+        ipsecGatewayPeers:
+          name: example string
+          remotePeers:
+          - destinationAddress: example string
+            ikeInitiator: true
+            mtu: 123
+            name: example string
+            remoteIkePeerIdentity: example string
+            tcpMss: 123
+            tunnel1:
+              insideIpv4Cidr: example string
+              insideIpv6Cidr: example string
+              localIkePeerIdentity: example string
+              psk: example string
+            tunnel2:
+              insideIpv4Cidr: example string
+              insideIpv6Cidr: example string
+              localIkePeerIdentity: example string
+              psk: example string
+            vpnProfile: example string
+          - destinationAddress: example string
+            ikeInitiator: true
+            mtu: 123
+            name: example string
+            remoteIkePeerIdentity: example string
+            tcpMss: 123
+            tunnel1:
+              insideIpv4Cidr: example string
+              insideIpv6Cidr: example string
+              localIkePeerIdentity: example string
+              psk: example string
+            tunnel2:
+              insideIpv4Cidr: example string
+              insideIpv6Cidr: example string
+              localIkePeerIdentity: example string
+              psk: example string
+            vpnProfile: example string
+          routing:
+            bgp:
+              addressFamilies:
+                key:
+                  family:
+                    addressFamily: ENUM_VALUE
+                    inboundPolicy:
+                      policy: example string
+                    outboundPolicy:
+                      policy: example string
+              holdTimer: 123
+              keepaliveTimer: 123
+              md5Password:
+                md5Password: example string
+              peerAsn: 123
+              sendCommunity: true
+            static:
+              destinationPrefix:
+              - example string
+              - example string
       properties:
         ipsecGatewayDetails:
           $ref: "#/components/schemas/manaV2IPsecGatewayDetails"
+        ipsecGatewayPeers:
+          $ref: "#/components/schemas/manaV2IPsecGatewayPeersConfig"
       type: object
     v1SitesDetailsGetResponse:
       additionalProperties: false
@@ -286296,6 +286914,8 @@ components:
           creditGw: 12.34
           regionId: 123
           regionName: example string
+        zeroTrustSummary:
+          userAgentCredits: 12.34
       properties:
         consumptionSummary:
           $ref: "#/components/schemas/manaV2BandwidthConsumptionSummary"
@@ -286307,6 +286927,8 @@ components:
           items:
             $ref: "#/components/schemas/manaV2RegionalAllocation"
           type: array
+        zeroTrustSummary:
+          $ref: "#/components/schemas/manaV2ZeroTrustConsumptionSummary"
       type: object
     manaV2BandwidthConsumptionSummary:
       additionalProperties: false
@@ -286634,6 +287256,18 @@ components:
         regionName:
           example: example string
           type: string
+      type: object
+    manaV2ZeroTrustConsumptionSummary:
+      additionalProperties: false
+      example:
+        userAgentCredits: 12.34
+      properties:
+        userAgentCredits:
+          description: Number of devices that have been installed with the zero trust
+            agent
+          example: 12.34
+          format: float
+          type: number
       type: object
     v1EnterpriseConfigurationPutRequest:
       additionalProperties: false
@@ -301203,6 +301837,7 @@ components:
                 month: 3
                 ordinal: First
                 weekday: Wednesday
+          status: idle
         - devices:
           - deviceId: 1001
             hostname: edge-site-01
@@ -301241,6 +301876,7 @@ components:
                 month: 3
                 ordinal: First
                 weekday: Wednesday
+          status: idle
       properties:
         rollouts:
           items:
@@ -301288,6 +301924,7 @@ components:
               month: 3
               ordinal: First
               weekday: Wednesday
+        status: idle
       properties:
         devices:
           items:
@@ -301313,6 +301950,10 @@ components:
           type: integer
         rolloutConfig:
           $ref: "#/components/schemas/upgradeRolloutConfig"
+        status:
+          description: Status of the upgrade rollout group
+          example: idle
+          type: string
       type: object
     upgradeRolloutDevice:
       additionalProperties: false
@@ -301372,6 +302013,7 @@ components:
                 month: 3
                 ordinal: First
                 weekday: Wednesday
+          status: idle
       properties:
         rollout:
           $ref: "#/components/schemas/upgradeRollout"

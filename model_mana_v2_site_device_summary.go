@@ -21,6 +21,7 @@ var _ MappedNullable = &ManaV2SiteDeviceSummary{}
 type ManaV2SiteDeviceSummary struct {
 	DeviceId *int64 `json:"deviceId,omitempty"`
 	Hostname *string `json:"hostname,omitempty"`
+	SiteId *int64 `json:"siteId,omitempty"`
 }
 
 // NewManaV2SiteDeviceSummary instantiates a new ManaV2SiteDeviceSummary object
@@ -104,6 +105,38 @@ func (o *ManaV2SiteDeviceSummary) SetHostname(v string) {
 	o.Hostname = &v
 }
 
+// GetSiteId returns the SiteId field value if set, zero value otherwise.
+func (o *ManaV2SiteDeviceSummary) GetSiteId() int64 {
+	if o == nil || IsNil(o.SiteId) {
+		var ret int64
+		return ret
+	}
+	return *o.SiteId
+}
+
+// GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2SiteDeviceSummary) GetSiteIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.SiteId) {
+		return nil, false
+	}
+	return o.SiteId, true
+}
+
+// HasSiteId returns a boolean if a field has been set.
+func (o *ManaV2SiteDeviceSummary) HasSiteId() bool {
+	if o != nil && !IsNil(o.SiteId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSiteId gets a reference to the given int64 and assigns it to the SiteId field.
+func (o *ManaV2SiteDeviceSummary) SetSiteId(v int64) {
+	o.SiteId = &v
+}
+
 func (o ManaV2SiteDeviceSummary) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -119,6 +152,9 @@ func (o ManaV2SiteDeviceSummary) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Hostname) {
 		toSerialize["hostname"] = o.Hostname
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
 	}
 	return toSerialize, nil
 }

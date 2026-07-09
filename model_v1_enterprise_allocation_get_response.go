@@ -22,6 +22,7 @@ type V1EnterpriseAllocationGetResponse struct {
 	ConsumptionSummary *ManaV2BandwidthConsumptionSummary `json:"consumptionSummary,omitempty"`
 	ConversionHolders *map[string]ManaV2AllocationConversionHolder `json:"conversionHolders,omitempty"`
 	RegionalAllocations []ManaV2RegionalAllocation `json:"regionalAllocations,omitempty"`
+	ZeroTrustSummary *ManaV2ZeroTrustConsumptionSummary `json:"zeroTrustSummary,omitempty"`
 }
 
 // NewV1EnterpriseAllocationGetResponse instantiates a new V1EnterpriseAllocationGetResponse object
@@ -137,6 +138,38 @@ func (o *V1EnterpriseAllocationGetResponse) SetRegionalAllocations(v []ManaV2Reg
 	o.RegionalAllocations = v
 }
 
+// GetZeroTrustSummary returns the ZeroTrustSummary field value if set, zero value otherwise.
+func (o *V1EnterpriseAllocationGetResponse) GetZeroTrustSummary() ManaV2ZeroTrustConsumptionSummary {
+	if o == nil || IsNil(o.ZeroTrustSummary) {
+		var ret ManaV2ZeroTrustConsumptionSummary
+		return ret
+	}
+	return *o.ZeroTrustSummary
+}
+
+// GetZeroTrustSummaryOk returns a tuple with the ZeroTrustSummary field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1EnterpriseAllocationGetResponse) GetZeroTrustSummaryOk() (*ManaV2ZeroTrustConsumptionSummary, bool) {
+	if o == nil || IsNil(o.ZeroTrustSummary) {
+		return nil, false
+	}
+	return o.ZeroTrustSummary, true
+}
+
+// HasZeroTrustSummary returns a boolean if a field has been set.
+func (o *V1EnterpriseAllocationGetResponse) HasZeroTrustSummary() bool {
+	if o != nil && !IsNil(o.ZeroTrustSummary) {
+		return true
+	}
+
+	return false
+}
+
+// SetZeroTrustSummary gets a reference to the given ManaV2ZeroTrustConsumptionSummary and assigns it to the ZeroTrustSummary field.
+func (o *V1EnterpriseAllocationGetResponse) SetZeroTrustSummary(v ManaV2ZeroTrustConsumptionSummary) {
+	o.ZeroTrustSummary = &v
+}
+
 func (o V1EnterpriseAllocationGetResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -155,6 +188,9 @@ func (o V1EnterpriseAllocationGetResponse) ToMap() (map[string]interface{}, erro
 	}
 	if !IsNil(o.RegionalAllocations) {
 		toSerialize["regionalAllocations"] = o.RegionalAllocations
+	}
+	if !IsNil(o.ZeroTrustSummary) {
+		toSerialize["zeroTrustSummary"] = o.ZeroTrustSummary
 	}
 	return toSerialize, nil
 }

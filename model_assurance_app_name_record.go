@@ -23,6 +23,7 @@ type AssuranceAppNameRecord struct {
 	AffectedRegions *int64 `json:"affectedRegions,omitempty"`
 	AffectedSites *int64 `json:"affectedSites,omitempty"`
 	AffectedVrfs *int64 `json:"affectedVrfs,omitempty"`
+	AppAiTag *string `json:"appAiTag,omitempty"`
 	AppId *int64 `json:"appId,omitempty"`
 	AppIdRecords []AssuranceAppIdRecord `json:"appIdRecords,omitempty"`
 	AppName *string `json:"appName,omitempty"`
@@ -180,6 +181,38 @@ func (o *AssuranceAppNameRecord) HasAffectedVrfs() bool {
 // SetAffectedVrfs gets a reference to the given int64 and assigns it to the AffectedVrfs field.
 func (o *AssuranceAppNameRecord) SetAffectedVrfs(v int64) {
 	o.AffectedVrfs = &v
+}
+
+// GetAppAiTag returns the AppAiTag field value if set, zero value otherwise.
+func (o *AssuranceAppNameRecord) GetAppAiTag() string {
+	if o == nil || IsNil(o.AppAiTag) {
+		var ret string
+		return ret
+	}
+	return *o.AppAiTag
+}
+
+// GetAppAiTagOk returns a tuple with the AppAiTag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceAppNameRecord) GetAppAiTagOk() (*string, bool) {
+	if o == nil || IsNil(o.AppAiTag) {
+		return nil, false
+	}
+	return o.AppAiTag, true
+}
+
+// HasAppAiTag returns a boolean if a field has been set.
+func (o *AssuranceAppNameRecord) HasAppAiTag() bool {
+	if o != nil && !IsNil(o.AppAiTag) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppAiTag gets a reference to the given string and assigns it to the AppAiTag field.
+func (o *AssuranceAppNameRecord) SetAppAiTag(v string) {
+	o.AppAiTag = &v
 }
 
 // GetAppId returns the AppId field value if set, zero value otherwise.
@@ -587,6 +620,9 @@ func (o AssuranceAppNameRecord) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AffectedVrfs) {
 		toSerialize["affectedVrfs"] = o.AffectedVrfs
+	}
+	if !IsNil(o.AppAiTag) {
+		toSerialize["appAiTag"] = o.AppAiTag
 	}
 	if !IsNil(o.AppId) {
 		toSerialize["appId"] = o.AppId

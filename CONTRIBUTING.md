@@ -125,6 +125,8 @@ make generate
 # or: OPENAPI_SPEC=api/my-new-spec.json bash scripts/generate.sh
 ```
 
+`scripts/generate.sh` requires OpenAPI Generator `>= 7.23.0`.
+
 Review `git diff` carefully after generation — pay particular attention to `api_custom.go` and `auth_env.go` in case the generator tries to overwrite them (they are listed in `.openapi-generator-ignore` as protection).
 
 ## Code Standards

@@ -25001,795 +25001,6 @@ func (a *DefaultAPIService) V1ExtranetB2bMonitoringPeeringServiceServiceOvertime
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ExtranetPublicVifCheckPostRequest struct {
-	ctx context.Context
-	ApiService *DefaultAPIService
-	authorization *string
-	v1ExtranetPublicVifCheckPostRequest *V1ExtranetPublicVifCheckPostRequest
-}
-
-// Bearer token. Format: Bearer &lt;your_token_here&gt;
-func (r ApiV1ExtranetPublicVifCheckPostRequest) Authorization(authorization string) ApiV1ExtranetPublicVifCheckPostRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1ExtranetPublicVifCheckPostRequest) V1ExtranetPublicVifCheckPostRequest(v1ExtranetPublicVifCheckPostRequest V1ExtranetPublicVifCheckPostRequest) ApiV1ExtranetPublicVifCheckPostRequest {
-	r.v1ExtranetPublicVifCheckPostRequest = &v1ExtranetPublicVifCheckPostRequest
-	return r
-}
-
-func (r ApiV1ExtranetPublicVifCheckPostRequest) Execute() (*V1ExtranetPublicVifCheckPostResponse, *http.Response, error) {
-	return r.ApiService.V1ExtranetPublicVifCheckPostExecute(r)
-}
-
-/*
-V1ExtranetPublicVifCheckPost Method for V1ExtranetPublicVifCheckPost
-
-Check Public Vif service
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ExtranetPublicVifCheckPostRequest
-*/
-func (a *DefaultAPIService) V1ExtranetPublicVifCheckPost(ctx context.Context) ApiV1ExtranetPublicVifCheckPostRequest {
-	return ApiV1ExtranetPublicVifCheckPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return V1ExtranetPublicVifCheckPostResponse
-func (a *DefaultAPIService) V1ExtranetPublicVifCheckPostExecute(r ApiV1ExtranetPublicVifCheckPostRequest) (*V1ExtranetPublicVifCheckPostResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V1ExtranetPublicVifCheckPostResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetPublicVifCheckPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/extranet-public-vif/check"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
-	if r.v1ExtranetPublicVifCheckPostRequest == nil {
-		return localVarReturnValue, nil, reportError("v1ExtranetPublicVifCheckPostRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	// body params
-	localVarPostBody = r.v1ExtranetPublicVifCheckPostRequest
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["jwtAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1ExtranetPublicVifGetRequest struct {
-	ctx context.Context
-	ApiService *DefaultAPIService
-	authorization *string
-}
-
-// Bearer token. Format: Bearer &lt;your_token_here&gt;
-func (r ApiV1ExtranetPublicVifGetRequest) Authorization(authorization string) ApiV1ExtranetPublicVifGetRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1ExtranetPublicVifGetRequest) Execute() (*V1ExtranetPublicVifGetResponse, *http.Response, error) {
-	return r.ApiService.V1ExtranetPublicVifGetExecute(r)
-}
-
-/*
-V1ExtranetPublicVifGet Method for V1ExtranetPublicVifGet
-
-Get Public Vif summary
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ExtranetPublicVifGetRequest
-*/
-func (a *DefaultAPIService) V1ExtranetPublicVifGet(ctx context.Context) ApiV1ExtranetPublicVifGetRequest {
-	return ApiV1ExtranetPublicVifGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return V1ExtranetPublicVifGetResponse
-func (a *DefaultAPIService) V1ExtranetPublicVifGetExecute(r ApiV1ExtranetPublicVifGetRequest) (*V1ExtranetPublicVifGetResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V1ExtranetPublicVifGetResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetPublicVifGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/extranet-public-vif"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["jwtAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1ExtranetPublicVifIdDeleteRequest struct {
-	ctx context.Context
-	ApiService *DefaultAPIService
-	authorization *string
-	id int64
-}
-
-// Bearer token. Format: Bearer &lt;your_token_here&gt;
-func (r ApiV1ExtranetPublicVifIdDeleteRequest) Authorization(authorization string) ApiV1ExtranetPublicVifIdDeleteRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1ExtranetPublicVifIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1ExtranetPublicVifIdDeleteExecute(r)
-}
-
-/*
-V1ExtranetPublicVifIdDelete Method for V1ExtranetPublicVifIdDelete
-
-Delete Public Vif service
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id 
- @return ApiV1ExtranetPublicVifIdDeleteRequest
-*/
-func (a *DefaultAPIService) V1ExtranetPublicVifIdDelete(ctx context.Context, id int64) ApiV1ExtranetPublicVifIdDeleteRequest {
-	return ApiV1ExtranetPublicVifIdDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return map[string]interface{}
-func (a *DefaultAPIService) V1ExtranetPublicVifIdDeleteExecute(r ApiV1ExtranetPublicVifIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetPublicVifIdDelete")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/extranet-public-vif/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["jwtAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1ExtranetPublicVifIdGetRequest struct {
-	ctx context.Context
-	ApiService *DefaultAPIService
-	authorization *string
-	id int64
-}
-
-// Bearer token. Format: Bearer &lt;your_token_here&gt;
-func (r ApiV1ExtranetPublicVifIdGetRequest) Authorization(authorization string) ApiV1ExtranetPublicVifIdGetRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1ExtranetPublicVifIdGetRequest) Execute() (*V1ExtranetPublicVifIdGetResponse, *http.Response, error) {
-	return r.ApiService.V1ExtranetPublicVifIdGetExecute(r)
-}
-
-/*
-V1ExtranetPublicVifIdGet Method for V1ExtranetPublicVifIdGet
-
-Get Public Vif service
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Public VIF producer policy
- @return ApiV1ExtranetPublicVifIdGetRequest
-*/
-func (a *DefaultAPIService) V1ExtranetPublicVifIdGet(ctx context.Context, id int64) ApiV1ExtranetPublicVifIdGetRequest {
-	return ApiV1ExtranetPublicVifIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return V1ExtranetPublicVifIdGetResponse
-func (a *DefaultAPIService) V1ExtranetPublicVifIdGetExecute(r ApiV1ExtranetPublicVifIdGetRequest) (*V1ExtranetPublicVifIdGetResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V1ExtranetPublicVifIdGetResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetPublicVifIdGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/extranet-public-vif/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["jwtAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1ExtranetPublicVifIdPutRequest struct {
-	ctx context.Context
-	ApiService *DefaultAPIService
-	authorization *string
-	id int64
-	v1ExtranetPublicVifIdPutRequest *V1ExtranetPublicVifIdPutRequest
-}
-
-// Bearer token. Format: Bearer &lt;your_token_here&gt;
-func (r ApiV1ExtranetPublicVifIdPutRequest) Authorization(authorization string) ApiV1ExtranetPublicVifIdPutRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1ExtranetPublicVifIdPutRequest) V1ExtranetPublicVifIdPutRequest(v1ExtranetPublicVifIdPutRequest V1ExtranetPublicVifIdPutRequest) ApiV1ExtranetPublicVifIdPutRequest {
-	r.v1ExtranetPublicVifIdPutRequest = &v1ExtranetPublicVifIdPutRequest
-	return r
-}
-
-func (r ApiV1ExtranetPublicVifIdPutRequest) Execute() (*V1ExtranetPublicVifIdPutResponse, *http.Response, error) {
-	return r.ApiService.V1ExtranetPublicVifIdPutExecute(r)
-}
-
-/*
-V1ExtranetPublicVifIdPut Method for V1ExtranetPublicVifIdPut
-
-Update Public Vif service
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Public VIF producer service id
- @return ApiV1ExtranetPublicVifIdPutRequest
-*/
-func (a *DefaultAPIService) V1ExtranetPublicVifIdPut(ctx context.Context, id int64) ApiV1ExtranetPublicVifIdPutRequest {
-	return ApiV1ExtranetPublicVifIdPutRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return V1ExtranetPublicVifIdPutResponse
-func (a *DefaultAPIService) V1ExtranetPublicVifIdPutExecute(r ApiV1ExtranetPublicVifIdPutRequest) (*V1ExtranetPublicVifIdPutResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V1ExtranetPublicVifIdPutResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetPublicVifIdPut")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/extranet-public-vif/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
-	if r.v1ExtranetPublicVifIdPutRequest == nil {
-		return localVarReturnValue, nil, reportError("v1ExtranetPublicVifIdPutRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	// body params
-	localVarPostBody = r.v1ExtranetPublicVifIdPutRequest
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["jwtAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1ExtranetPublicVifPostRequest struct {
-	ctx context.Context
-	ApiService *DefaultAPIService
-	authorization *string
-	v1ExtranetPublicVifPostRequest *V1ExtranetPublicVifPostRequest
-}
-
-// Bearer token. Format: Bearer &lt;your_token_here&gt;
-func (r ApiV1ExtranetPublicVifPostRequest) Authorization(authorization string) ApiV1ExtranetPublicVifPostRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1ExtranetPublicVifPostRequest) V1ExtranetPublicVifPostRequest(v1ExtranetPublicVifPostRequest V1ExtranetPublicVifPostRequest) ApiV1ExtranetPublicVifPostRequest {
-	r.v1ExtranetPublicVifPostRequest = &v1ExtranetPublicVifPostRequest
-	return r
-}
-
-func (r ApiV1ExtranetPublicVifPostRequest) Execute() (*V1ExtranetPublicVifPostResponse, *http.Response, error) {
-	return r.ApiService.V1ExtranetPublicVifPostExecute(r)
-}
-
-/*
-V1ExtranetPublicVifPost Method for V1ExtranetPublicVifPost
-
-Create Public Vif service
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ExtranetPublicVifPostRequest
-*/
-func (a *DefaultAPIService) V1ExtranetPublicVifPost(ctx context.Context) ApiV1ExtranetPublicVifPostRequest {
-	return ApiV1ExtranetPublicVifPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return V1ExtranetPublicVifPostResponse
-func (a *DefaultAPIService) V1ExtranetPublicVifPostExecute(r ApiV1ExtranetPublicVifPostRequest) (*V1ExtranetPublicVifPostResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V1ExtranetPublicVifPostResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetPublicVifPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/extranet-public-vif"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
-	if r.v1ExtranetPublicVifPostRequest == nil {
-		return localVarReturnValue, nil, reportError("v1ExtranetPublicVifPostRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	// body params
-	localVarPostBody = r.v1ExtranetPublicVifPostRequest
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["jwtAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiV1ExtranetSitesUsageTopPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -42356,11 +41567,39 @@ type ApiV1LanSegmentsGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	authorization *string
+	deviceId *int64
+	deviceIds *[]int64
+	filter *string
+	gatewayCloudProvider *string
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1LanSegmentsGetRequest) Authorization(authorization string) ApiV1LanSegmentsGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1LanSegmentsGetRequest) DeviceId(deviceId int64) ApiV1LanSegmentsGetRequest {
+	r.deviceId = &deviceId
+	return r
+}
+
+// 
+func (r ApiV1LanSegmentsGetRequest) DeviceIds(deviceIds []int64) ApiV1LanSegmentsGetRequest {
+	r.deviceIds = &deviceIds
+	return r
+}
+
+// 
+func (r ApiV1LanSegmentsGetRequest) Filter(filter string) ApiV1LanSegmentsGetRequest {
+	r.filter = &filter
+	return r
+}
+
+// 
+func (r ApiV1LanSegmentsGetRequest) GatewayCloudProvider(gatewayCloudProvider string) ApiV1LanSegmentsGetRequest {
+	r.gatewayCloudProvider = &gatewayCloudProvider
 	return r
 }
 
@@ -42407,6 +41646,161 @@ func (a *DefaultAPIService) V1LanSegmentsGetExecute(r ApiV1LanSegmentsGetRequest
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.deviceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
+	}
+	if r.deviceIds != nil {
+		t := *r.deviceIds
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "deviceIds", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "deviceIds", t, "form", "multi")
+		}
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
+	}
+	if r.gatewayCloudProvider != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gatewayCloudProvider", r.gatewayCloudProvider, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1LanSegmentsInterfacesPublicGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	deviceId *int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1LanSegmentsInterfacesPublicGetRequest) Authorization(authorization string) ApiV1LanSegmentsInterfacesPublicGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+// device id
+func (r ApiV1LanSegmentsInterfacesPublicGetRequest) DeviceId(deviceId int64) ApiV1LanSegmentsInterfacesPublicGetRequest {
+	r.deviceId = &deviceId
+	return r
+}
+
+func (r ApiV1LanSegmentsInterfacesPublicGetRequest) Execute() (*V1LanSegmentsInterfacesPublicGetResponse, *http.Response, error) {
+	return r.ApiService.V1LanSegmentsInterfacesPublicGetExecute(r)
+}
+
+/*
+V1LanSegmentsInterfacesPublicGet Method for V1LanSegmentsInterfacesPublicGet
+
+Per LAN segment (VRF) on a device: interfaces split by globally routable IPv4 (for Public VIF / BGP)
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1LanSegmentsInterfacesPublicGetRequest
+*/
+func (a *DefaultAPIService) V1LanSegmentsInterfacesPublicGet(ctx context.Context) ApiV1LanSegmentsInterfacesPublicGetRequest {
+	return ApiV1LanSegmentsInterfacesPublicGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1LanSegmentsInterfacesPublicGetResponse
+func (a *DefaultAPIService) V1LanSegmentsInterfacesPublicGetExecute(r ApiV1LanSegmentsInterfacesPublicGetRequest) (*V1LanSegmentsInterfacesPublicGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1LanSegmentsInterfacesPublicGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1LanSegmentsInterfacesPublicGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/lan-segments/interfaces/public"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.deviceId == nil {
+		return localVarReturnValue, nil, reportError("deviceId is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -44638,6 +44032,660 @@ func (a *DefaultAPIService) V1PresharedkeyGetExecute(r ApiV1PresharedkeyGetReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiV1PvifIdDeleteRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1PvifIdDeleteRequest) Authorization(authorization string) ApiV1PvifIdDeleteRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1PvifIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.V1PvifIdDeleteExecute(r)
+}
+
+/*
+V1PvifIdDelete Method for V1PvifIdDelete
+
+Delete a gateway Public VIF service
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Producer service id
+ @return ApiV1PvifIdDeleteRequest
+*/
+func (a *DefaultAPIService) V1PvifIdDelete(ctx context.Context, id int64) ApiV1PvifIdDeleteRequest {
+	return ApiV1PvifIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *DefaultAPIService) V1PvifIdDeleteExecute(r ApiV1PvifIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1PvifIdDelete")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/pvif/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1PvifIdDetailsGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1PvifIdDetailsGetRequest) Authorization(authorization string) ApiV1PvifIdDetailsGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1PvifIdDetailsGetRequest) Execute() (*V1PvifIdDetailsGetResponse, *http.Response, error) {
+	return r.ApiService.V1PvifIdDetailsGetExecute(r)
+}
+
+/*
+V1PvifIdDetailsGet Method for V1PvifIdDetailsGet
+
+Get a gateway Public VIF service
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Producer service id
+ @return ApiV1PvifIdDetailsGetRequest
+*/
+func (a *DefaultAPIService) V1PvifIdDetailsGet(ctx context.Context, id int64) ApiV1PvifIdDetailsGetRequest {
+	return ApiV1PvifIdDetailsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1PvifIdDetailsGetResponse
+func (a *DefaultAPIService) V1PvifIdDetailsGetExecute(r ApiV1PvifIdDetailsGetRequest) (*V1PvifIdDetailsGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1PvifIdDetailsGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1PvifIdDetailsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/pvif/{id}/details"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1PvifIdPutRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+	v1PvifIdPutRequest *V1PvifIdPutRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1PvifIdPutRequest) Authorization(authorization string) ApiV1PvifIdPutRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1PvifIdPutRequest) V1PvifIdPutRequest(v1PvifIdPutRequest V1PvifIdPutRequest) ApiV1PvifIdPutRequest {
+	r.v1PvifIdPutRequest = &v1PvifIdPutRequest
+	return r
+}
+
+func (r ApiV1PvifIdPutRequest) Execute() (*V1PvifIdPutResponse, *http.Response, error) {
+	return r.ApiService.V1PvifIdPutExecute(r)
+}
+
+/*
+V1PvifIdPut Method for V1PvifIdPut
+
+Update a gateway Public VIF service
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Producer service id
+ @return ApiV1PvifIdPutRequest
+*/
+func (a *DefaultAPIService) V1PvifIdPut(ctx context.Context, id int64) ApiV1PvifIdPutRequest {
+	return ApiV1PvifIdPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1PvifIdPutResponse
+func (a *DefaultAPIService) V1PvifIdPutExecute(r ApiV1PvifIdPutRequest) (*V1PvifIdPutResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1PvifIdPutResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1PvifIdPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/pvif/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1PvifIdPutRequest == nil {
+		return localVarReturnValue, nil, reportError("v1PvifIdPutRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1PvifIdPutRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1PvifPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v1PvifPostRequest *V1PvifPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1PvifPostRequest) Authorization(authorization string) ApiV1PvifPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1PvifPostRequest) V1PvifPostRequest(v1PvifPostRequest V1PvifPostRequest) ApiV1PvifPostRequest {
+	r.v1PvifPostRequest = &v1PvifPostRequest
+	return r
+}
+
+func (r ApiV1PvifPostRequest) Execute() (*V1PvifPostResponse, *http.Response, error) {
+	return r.ApiService.V1PvifPostExecute(r)
+}
+
+/*
+V1PvifPost Method for V1PvifPost
+
+Create a gateway Public VIF service
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1PvifPostRequest
+*/
+func (a *DefaultAPIService) V1PvifPost(ctx context.Context) ApiV1PvifPostRequest {
+	return ApiV1PvifPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1PvifPostResponse
+func (a *DefaultAPIService) V1PvifPostExecute(r ApiV1PvifPostRequest) (*V1PvifPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1PvifPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1PvifPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/pvif"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1PvifPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v1PvifPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1PvifPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1PvifSummaryGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1PvifSummaryGetRequest) Authorization(authorization string) ApiV1PvifSummaryGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1PvifSummaryGetRequest) Execute() (*V1PvifSummaryGetResponse, *http.Response, error) {
+	return r.ApiService.V1PvifSummaryGetExecute(r)
+}
+
+/*
+V1PvifSummaryGet Method for V1PvifSummaryGet
+
+List gateway Public VIF services
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1PvifSummaryGetRequest
+*/
+func (a *DefaultAPIService) V1PvifSummaryGet(ctx context.Context) ApiV1PvifSummaryGetRequest {
+	return ApiV1PvifSummaryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1PvifSummaryGetResponse
+func (a *DefaultAPIService) V1PvifSummaryGetExecute(r ApiV1PvifSummaryGetRequest) (*V1PvifSummaryGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1PvifSummaryGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1PvifSummaryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/pvif/summary"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiV1QosCircuitProfilesGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -44817,6 +44865,145 @@ func (a *DefaultAPIService) V1RegionsGetExecute(r ApiV1RegionsGetRequest) (*V1Re
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1RegionsRegionIdGatewaysGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	regionId int32
+	storageProvider *string
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1RegionsRegionIdGatewaysGetRequest) Authorization(authorization string) ApiV1RegionsRegionIdGatewaysGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+// Storage provider; only gateways with a LAN interface for this provider are returned
+func (r ApiV1RegionsRegionIdGatewaysGetRequest) StorageProvider(storageProvider string) ApiV1RegionsRegionIdGatewaysGetRequest {
+	r.storageProvider = &storageProvider
+	return r
+}
+
+func (r ApiV1RegionsRegionIdGatewaysGetRequest) Execute() (*V1RegionsRegionIdGatewaysGetResponse, *http.Response, error) {
+	return r.ApiService.V1RegionsRegionIdGatewaysGetExecute(r)
+}
+
+/*
+V1RegionsRegionIdGatewaysGet Method for V1RegionsRegionIdGatewaysGet
+
+List gateway appliances in a region with at least one LAN interface for the given storage provider
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param regionId Graphiant region id
+ @return ApiV1RegionsRegionIdGatewaysGetRequest
+*/
+func (a *DefaultAPIService) V1RegionsRegionIdGatewaysGet(ctx context.Context, regionId int32) ApiV1RegionsRegionIdGatewaysGetRequest {
+	return ApiV1RegionsRegionIdGatewaysGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		regionId: regionId,
+	}
+}
+
+// Execute executes the request
+//  @return V1RegionsRegionIdGatewaysGetResponse
+func (a *DefaultAPIService) V1RegionsRegionIdGatewaysGetExecute(r ApiV1RegionsRegionIdGatewaysGetRequest) (*V1RegionsRegionIdGatewaysGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1RegionsRegionIdGatewaysGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1RegionsRegionIdGatewaysGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/regions/{regionId}/gateways"
+	localVarPath = strings.Replace(localVarPath, "{"+"regionId"+"}", url.PathEscape(parameterValueToString(r.regionId, "regionId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.storageProvider == nil {
+		return localVarReturnValue, nil, reportError("storageProvider is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "storageProvider", r.storageProvider, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -50995,6 +51182,238 @@ func (a *DefaultAPIService) V1ZonesGetExecute(r ApiV1ZonesGetRequest) (*V1ZonesG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiV1ZtagentAgentsGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	createdDateEnd *string
+	createdDateStart *string
+	endpoints *[]string
+	hostname *string
+	limit *int32
+	machineId *string
+	page *int32
+	tenantId *string
+	updatedDateEnd *string
+	updatedDateStart *string
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ZtagentAgentsGetRequest) Authorization(authorization string) ApiV1ZtagentAgentsGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1ZtagentAgentsGetRequest) CreatedDateEnd(createdDateEnd string) ApiV1ZtagentAgentsGetRequest {
+	r.createdDateEnd = &createdDateEnd
+	return r
+}
+
+// 
+func (r ApiV1ZtagentAgentsGetRequest) CreatedDateStart(createdDateStart string) ApiV1ZtagentAgentsGetRequest {
+	r.createdDateStart = &createdDateStart
+	return r
+}
+
+// 
+func (r ApiV1ZtagentAgentsGetRequest) Endpoints(endpoints []string) ApiV1ZtagentAgentsGetRequest {
+	r.endpoints = &endpoints
+	return r
+}
+
+// 
+func (r ApiV1ZtagentAgentsGetRequest) Hostname(hostname string) ApiV1ZtagentAgentsGetRequest {
+	r.hostname = &hostname
+	return r
+}
+
+// 
+func (r ApiV1ZtagentAgentsGetRequest) Limit(limit int32) ApiV1ZtagentAgentsGetRequest {
+	r.limit = &limit
+	return r
+}
+
+// 
+func (r ApiV1ZtagentAgentsGetRequest) MachineId(machineId string) ApiV1ZtagentAgentsGetRequest {
+	r.machineId = &machineId
+	return r
+}
+
+// 
+func (r ApiV1ZtagentAgentsGetRequest) Page(page int32) ApiV1ZtagentAgentsGetRequest {
+	r.page = &page
+	return r
+}
+
+// 
+func (r ApiV1ZtagentAgentsGetRequest) TenantId(tenantId string) ApiV1ZtagentAgentsGetRequest {
+	r.tenantId = &tenantId
+	return r
+}
+
+// 
+func (r ApiV1ZtagentAgentsGetRequest) UpdatedDateEnd(updatedDateEnd string) ApiV1ZtagentAgentsGetRequest {
+	r.updatedDateEnd = &updatedDateEnd
+	return r
+}
+
+// 
+func (r ApiV1ZtagentAgentsGetRequest) UpdatedDateStart(updatedDateStart string) ApiV1ZtagentAgentsGetRequest {
+	r.updatedDateStart = &updatedDateStart
+	return r
+}
+
+func (r ApiV1ZtagentAgentsGetRequest) Execute() (*V1ZtagentAgentsGetResponse, *http.Response, error) {
+	return r.ApiService.V1ZtagentAgentsGetExecute(r)
+}
+
+/*
+V1ZtagentAgentsGet Method for V1ZtagentAgentsGet
+
+List Conceal agents (devices) with pagination and filters.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1ZtagentAgentsGetRequest
+*/
+func (a *DefaultAPIService) V1ZtagentAgentsGet(ctx context.Context) ApiV1ZtagentAgentsGetRequest {
+	return ApiV1ZtagentAgentsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1ZtagentAgentsGetResponse
+func (a *DefaultAPIService) V1ZtagentAgentsGetExecute(r ApiV1ZtagentAgentsGetRequest) (*V1ZtagentAgentsGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ZtagentAgentsGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ZtagentAgentsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/ztagent/agents"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	if r.createdDateEnd != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "createdDateEnd", r.createdDateEnd, "form", "")
+	}
+	if r.createdDateStart != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "createdDateStart", r.createdDateStart, "form", "")
+	}
+	if r.endpoints != nil {
+		t := *r.endpoints
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "endpoints", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "endpoints", t, "form", "multi")
+		}
+	}
+	if r.hostname != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "hostname", r.hostname, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.machineId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "machineId", r.machineId, "form", "")
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	}
+	if r.tenantId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tenantId", r.tenantId, "form", "")
+	}
+	if r.updatedDateEnd != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "updatedDateEnd", r.updatedDateEnd, "form", "")
+	}
+	if r.updatedDateStart != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "updatedDateStart", r.updatedDateStart, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiV1ZtagentBindingsGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -53464,6 +53883,139 @@ func (a *DefaultAPIService) V2AssistantVersionPostExecute(r ApiV2AssistantVersio
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiV2AssuranceAiAdoptionSummaryPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v2AssuranceAiAdoptionSummaryPostRequest *V2AssuranceAiAdoptionSummaryPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV2AssuranceAiAdoptionSummaryPostRequest) Authorization(authorization string) ApiV2AssuranceAiAdoptionSummaryPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV2AssuranceAiAdoptionSummaryPostRequest) V2AssuranceAiAdoptionSummaryPostRequest(v2AssuranceAiAdoptionSummaryPostRequest V2AssuranceAiAdoptionSummaryPostRequest) ApiV2AssuranceAiAdoptionSummaryPostRequest {
+	r.v2AssuranceAiAdoptionSummaryPostRequest = &v2AssuranceAiAdoptionSummaryPostRequest
+	return r
+}
+
+func (r ApiV2AssuranceAiAdoptionSummaryPostRequest) Execute() (*V2AssuranceAiAdoptionSummaryPostResponse, *http.Response, error) {
+	return r.ApiService.V2AssuranceAiAdoptionSummaryPostExecute(r)
+}
+
+/*
+V2AssuranceAiAdoptionSummaryPost Method for V2AssuranceAiAdoptionSummaryPost
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV2AssuranceAiAdoptionSummaryPostRequest
+*/
+func (a *DefaultAPIService) V2AssuranceAiAdoptionSummaryPost(ctx context.Context) ApiV2AssuranceAiAdoptionSummaryPostRequest {
+	return ApiV2AssuranceAiAdoptionSummaryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V2AssuranceAiAdoptionSummaryPostResponse
+func (a *DefaultAPIService) V2AssuranceAiAdoptionSummaryPostExecute(r ApiV2AssuranceAiAdoptionSummaryPostRequest) (*V2AssuranceAiAdoptionSummaryPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V2AssuranceAiAdoptionSummaryPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V2AssuranceAiAdoptionSummaryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/assurance/ai-adoption-summary"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v2AssuranceAiAdoptionSummaryPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v2AssuranceAiAdoptionSummaryPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v2AssuranceAiAdoptionSummaryPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiV2AssuranceApplicationdetailsbynamePostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -54395,6 +54947,139 @@ func (a *DefaultAPIService) V2AssuranceBucketdetailsPostExecute(r ApiV2Assurance
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiV2AssuranceCreateAiAdoptionApproveEntryPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v2AssuranceCreateAiAdoptionApproveEntryPostRequest *V2AssuranceCreateAiAdoptionApproveEntryPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV2AssuranceCreateAiAdoptionApproveEntryPostRequest) Authorization(authorization string) ApiV2AssuranceCreateAiAdoptionApproveEntryPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV2AssuranceCreateAiAdoptionApproveEntryPostRequest) V2AssuranceCreateAiAdoptionApproveEntryPostRequest(v2AssuranceCreateAiAdoptionApproveEntryPostRequest V2AssuranceCreateAiAdoptionApproveEntryPostRequest) ApiV2AssuranceCreateAiAdoptionApproveEntryPostRequest {
+	r.v2AssuranceCreateAiAdoptionApproveEntryPostRequest = &v2AssuranceCreateAiAdoptionApproveEntryPostRequest
+	return r
+}
+
+func (r ApiV2AssuranceCreateAiAdoptionApproveEntryPostRequest) Execute() (*V2AssuranceCreateAiAdoptionApproveEntryPostResponse, *http.Response, error) {
+	return r.ApiService.V2AssuranceCreateAiAdoptionApproveEntryPostExecute(r)
+}
+
+/*
+V2AssuranceCreateAiAdoptionApproveEntryPost Method for V2AssuranceCreateAiAdoptionApproveEntryPost
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV2AssuranceCreateAiAdoptionApproveEntryPostRequest
+*/
+func (a *DefaultAPIService) V2AssuranceCreateAiAdoptionApproveEntryPost(ctx context.Context) ApiV2AssuranceCreateAiAdoptionApproveEntryPostRequest {
+	return ApiV2AssuranceCreateAiAdoptionApproveEntryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V2AssuranceCreateAiAdoptionApproveEntryPostResponse
+func (a *DefaultAPIService) V2AssuranceCreateAiAdoptionApproveEntryPostExecute(r ApiV2AssuranceCreateAiAdoptionApproveEntryPostRequest) (*V2AssuranceCreateAiAdoptionApproveEntryPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V2AssuranceCreateAiAdoptionApproveEntryPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V2AssuranceCreateAiAdoptionApproveEntryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/assurance/create-ai-adoption-approve-entry"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v2AssuranceCreateAiAdoptionApproveEntryPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v2AssuranceCreateAiAdoptionApproveEntryPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v2AssuranceCreateAiAdoptionApproveEntryPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiV2AssuranceCreateDnsproxyEntryPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -54743,6 +55428,149 @@ func (a *DefaultAPIService) V2AssuranceCreateclassifiedapplicationPostExecute(r 
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
 	// body params
 	localVarPostBody = r.v2AssuranceCreateclassifiedapplicationPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV2AssuranceDeleteAiAdoptionApproveEntryDeleteRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	idList *[]string
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV2AssuranceDeleteAiAdoptionApproveEntryDeleteRequest) Authorization(authorization string) ApiV2AssuranceDeleteAiAdoptionApproveEntryDeleteRequest {
+	r.authorization = &authorization
+	return r
+}
+
+// list of approved app entry identifiers to delete
+func (r ApiV2AssuranceDeleteAiAdoptionApproveEntryDeleteRequest) IdList(idList []string) ApiV2AssuranceDeleteAiAdoptionApproveEntryDeleteRequest {
+	r.idList = &idList
+	return r
+}
+
+func (r ApiV2AssuranceDeleteAiAdoptionApproveEntryDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.V2AssuranceDeleteAiAdoptionApproveEntryDeleteExecute(r)
+}
+
+/*
+V2AssuranceDeleteAiAdoptionApproveEntryDelete Method for V2AssuranceDeleteAiAdoptionApproveEntryDelete
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV2AssuranceDeleteAiAdoptionApproveEntryDeleteRequest
+*/
+func (a *DefaultAPIService) V2AssuranceDeleteAiAdoptionApproveEntryDelete(ctx context.Context) ApiV2AssuranceDeleteAiAdoptionApproveEntryDeleteRequest {
+	return ApiV2AssuranceDeleteAiAdoptionApproveEntryDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *DefaultAPIService) V2AssuranceDeleteAiAdoptionApproveEntryDeleteExecute(r ApiV2AssuranceDeleteAiAdoptionApproveEntryDeleteRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V2AssuranceDeleteAiAdoptionApproveEntryDelete")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/assurance/delete-ai-adoption-approve-entry"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.idList == nil {
+		return localVarReturnValue, nil, reportError("idList is required and must be specified")
+	}
+
+	{
+		t := *r.idList
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "idList", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "idList", t, "form", "multi")
+		}
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -55443,6 +56271,139 @@ func (a *DefaultAPIService) V2AssuranceEnterprisesummaryPostExecute(r ApiV2Assur
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiV2AssuranceGetAppNamesPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v2AssuranceGetAppNamesPostRequest *V2AssuranceGetAppNamesPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV2AssuranceGetAppNamesPostRequest) Authorization(authorization string) ApiV2AssuranceGetAppNamesPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV2AssuranceGetAppNamesPostRequest) V2AssuranceGetAppNamesPostRequest(v2AssuranceGetAppNamesPostRequest V2AssuranceGetAppNamesPostRequest) ApiV2AssuranceGetAppNamesPostRequest {
+	r.v2AssuranceGetAppNamesPostRequest = &v2AssuranceGetAppNamesPostRequest
+	return r
+}
+
+func (r ApiV2AssuranceGetAppNamesPostRequest) Execute() (*V2AssuranceGetAppNamesPostResponse, *http.Response, error) {
+	return r.ApiService.V2AssuranceGetAppNamesPostExecute(r)
+}
+
+/*
+V2AssuranceGetAppNamesPost Method for V2AssuranceGetAppNamesPost
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV2AssuranceGetAppNamesPostRequest
+*/
+func (a *DefaultAPIService) V2AssuranceGetAppNamesPost(ctx context.Context) ApiV2AssuranceGetAppNamesPostRequest {
+	return ApiV2AssuranceGetAppNamesPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V2AssuranceGetAppNamesPostResponse
+func (a *DefaultAPIService) V2AssuranceGetAppNamesPostExecute(r ApiV2AssuranceGetAppNamesPostRequest) (*V2AssuranceGetAppNamesPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V2AssuranceGetAppNamesPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V2AssuranceGetAppNamesPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/assurance/get-app-names"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v2AssuranceGetAppNamesPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v2AssuranceGetAppNamesPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v2AssuranceGetAppNamesPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiV2AssuranceGetclassifiedapplicationlistGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -55488,6 +56449,128 @@ func (a *DefaultAPIService) V2AssuranceGetclassifiedapplicationlistGetExecute(r 
 	}
 
 	localVarPath := localBasePath + "/v2/assurance/getclassifiedapplicationlist"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV2AssuranceReadAiAdoptionApproveEntriesGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV2AssuranceReadAiAdoptionApproveEntriesGetRequest) Authorization(authorization string) ApiV2AssuranceReadAiAdoptionApproveEntriesGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV2AssuranceReadAiAdoptionApproveEntriesGetRequest) Execute() (*V2AssuranceReadAiAdoptionApproveEntriesGetResponse, *http.Response, error) {
+	return r.ApiService.V2AssuranceReadAiAdoptionApproveEntriesGetExecute(r)
+}
+
+/*
+V2AssuranceReadAiAdoptionApproveEntriesGet Method for V2AssuranceReadAiAdoptionApproveEntriesGet
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV2AssuranceReadAiAdoptionApproveEntriesGetRequest
+*/
+func (a *DefaultAPIService) V2AssuranceReadAiAdoptionApproveEntriesGet(ctx context.Context) ApiV2AssuranceReadAiAdoptionApproveEntriesGetRequest {
+	return ApiV2AssuranceReadAiAdoptionApproveEntriesGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V2AssuranceReadAiAdoptionApproveEntriesGetResponse
+func (a *DefaultAPIService) V2AssuranceReadAiAdoptionApproveEntriesGetExecute(r ApiV2AssuranceReadAiAdoptionApproveEntriesGetRequest) (*V2AssuranceReadAiAdoptionApproveEntriesGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V2AssuranceReadAiAdoptionApproveEntriesGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V2AssuranceReadAiAdoptionApproveEntriesGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/assurance/read-ai-adoption-approve-entries"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -56955,6 +58038,139 @@ func (a *DefaultAPIService) V2AssuranceUnclassifiedapplicationprofilesummaryPost
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
 	// body params
 	localVarPostBody = r.v2AssuranceUnclassifiedapplicationprofilesummaryPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV2AssuranceUpdateAiAdoptionApproveEntryPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v2AssuranceUpdateAiAdoptionApproveEntryPostRequest *V2AssuranceUpdateAiAdoptionApproveEntryPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV2AssuranceUpdateAiAdoptionApproveEntryPostRequest) Authorization(authorization string) ApiV2AssuranceUpdateAiAdoptionApproveEntryPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV2AssuranceUpdateAiAdoptionApproveEntryPostRequest) V2AssuranceUpdateAiAdoptionApproveEntryPostRequest(v2AssuranceUpdateAiAdoptionApproveEntryPostRequest V2AssuranceUpdateAiAdoptionApproveEntryPostRequest) ApiV2AssuranceUpdateAiAdoptionApproveEntryPostRequest {
+	r.v2AssuranceUpdateAiAdoptionApproveEntryPostRequest = &v2AssuranceUpdateAiAdoptionApproveEntryPostRequest
+	return r
+}
+
+func (r ApiV2AssuranceUpdateAiAdoptionApproveEntryPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.V2AssuranceUpdateAiAdoptionApproveEntryPostExecute(r)
+}
+
+/*
+V2AssuranceUpdateAiAdoptionApproveEntryPost Method for V2AssuranceUpdateAiAdoptionApproveEntryPost
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV2AssuranceUpdateAiAdoptionApproveEntryPostRequest
+*/
+func (a *DefaultAPIService) V2AssuranceUpdateAiAdoptionApproveEntryPost(ctx context.Context) ApiV2AssuranceUpdateAiAdoptionApproveEntryPostRequest {
+	return ApiV2AssuranceUpdateAiAdoptionApproveEntryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *DefaultAPIService) V2AssuranceUpdateAiAdoptionApproveEntryPostExecute(r ApiV2AssuranceUpdateAiAdoptionApproveEntryPostRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V2AssuranceUpdateAiAdoptionApproveEntryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/assurance/update-ai-adoption-approve-entry"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v2AssuranceUpdateAiAdoptionApproveEntryPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v2AssuranceUpdateAiAdoptionApproveEntryPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v2AssuranceUpdateAiAdoptionApproveEntryPostRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
