@@ -4,6 +4,54 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.6.0] - 2026-07-08
+
+### Added
+- **API endpoints:**
+  - `GET /v1/lan-segments/interfaces/public`
+  - `POST /v1/pvif`
+  - `GET /v1/pvif/summary`
+  - `GET /v1/pvif/{id}`
+  - `PUT /v1/pvif/{id}`
+  - `DELETE /v1/pvif/{id}`
+  - `GET /v1/pvif/{id}/details`
+  - `GET /v1/regions/{regionId}/gateways`
+  - `GET /v1/ztagent/agents`
+  - `POST /v2/assurance/ai-adoption-summary`
+  - `POST /v2/assurance/create-ai-adoption-approve-entry`
+  - `DELETE /v2/assurance/delete-ai-adoption-approve-entry`
+  - `POST /v2/assurance/get-app-names`
+  - `GET /v2/assurance/read-ai-adoption-approve-entries`
+  - `POST /v2/assurance/update-ai-adoption-approve-entry`
+- **Models:**
+  - Added PVIF types (`v1Pvif*`, `v1PvifSummaryGetResponse`, `v1PvifIdDetailsGetResponse`)
+  - Added LAN segment public interface types (`v1LanSegmentsInterfacesPublicGetResponse`)
+  - Added regional gateway types (`v1RegionsRegionIdGatewaysGetResponse` and nested gateway schemas)
+  - Added ZTAgent agent listing types (`v1ZtagentAgentsGetResponse`)
+  - Added assurance AI adoption types (`v2AssuranceAiAdoption*`, `v2AssuranceCreateAiAdoptionApproveEntry*`, `v2AssuranceReadAiAdoptionApproveEntriesGetResponse`, `v2AssuranceUpdateAiAdoptionApproveEntryPostRequest`)
+  - Added assurance app name types (`v2AssuranceGetAppNamesPostRequest`, `v2AssuranceGetAppNamesPostResponse`)
+
+### Changed
+- Updated to API specification version 26.6.0
+- **Version:**
+  - Updated version constant to v26.6.0
+  - Updated API documentation reference to `graphiant_api_docs_v26.6.0.json`
+  - Removed superseded bundle `graphiant_api_docs_v26.5.0.json` from the repository
+- **Documentation:** updated SDK generation examples in README and CONTRIBUTING to use `graphiant_api_docs_v26.6.0.json`; **SECURITY.md** supported-versions table for **26.6.0**
+- **Tooling:** `scripts/generate.sh` now requires OpenAPI Generator `>= 7.23.0`
+- **API endpoints (updated):** existing routes regenerated for revised schemas (see regenerated **`DefaultAPI`**); path additions are listed under **Added** above
+- **Models:** updated (OpenAPI spec refresh; representative schema updates include `assuranceAppNameRecord`, `manaV2GuestConsumerSiteToSiteVpnConfig`, `manaV2SiteDeviceSummary`, `upgradeRollout`, `v1EnterpriseAllocationGetResponse`, `v1GatewaysReferenceConsumerGetResponse`)
+
+### Removed
+- **API endpoints:**
+  - `GET /v1/extranet-public-vif`
+  - `POST /v1/extranet-public-vif`
+  - `POST /v1/extranet-public-vif/check`
+  - `GET /v1/extranet-public-vif/{id}`
+  - `PUT /v1/extranet-public-vif/{id}`
+  - `DELETE /v1/extranet-public-vif/{id}`
+- **Models:** removed extranet public VIF client methods and associated generated API surface (`v1ExtranetPublicVif*`); use the new PVIF endpoints instead
+
 ## [26.5.0] - 2026-06-10
 
 ### Added
@@ -395,6 +443,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 | Version | Release Date | Key Features |
 |---------|--------------|--------------|
+| 26.6.0 | 2026-07-08 | API v26.6.0; PVIF endpoints; OpenAPI Generator 7.23+ |
+| 26.5.0 | 2026-06-10 | API v26.5.0; extranet public VIF endpoints |
+| 26.4.0 | 2026-04-30 | API v26.4.0; content filters, software rollouts, MACsec |
 | 26.3.2 | 2026-03-27 | Patch release v26.3.2; docs; same API bundle as 26.3.1 |
 | 26.3.1 | 2026-03-26 | API v26.3.1 support, regenerated SDK/tests |
 | 26.2.1 | 2026-02-26 | API v26.2.1 support, regenerated SDK/tests |

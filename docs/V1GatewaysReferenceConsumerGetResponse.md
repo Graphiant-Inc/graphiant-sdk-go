@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IpsecGatewayDetails** | Pointer to [**ManaV2IPsecGatewayDetails**](ManaV2IPsecGatewayDetails.md) |  | [optional] 
+**IpsecGatewayPeers** | Pointer to [**ManaV2IPsecGatewayPeersConfig**](ManaV2IPsecGatewayPeersConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetIpsecGatewayDetails sets IpsecGatewayDetails field to given value.
 `func (o *V1GatewaysReferenceConsumerGetResponse) HasIpsecGatewayDetails() bool`
 
 HasIpsecGatewayDetails returns a boolean if a field has been set.
+
+### GetIpsecGatewayPeers
+
+`func (o *V1GatewaysReferenceConsumerGetResponse) GetIpsecGatewayPeers() ManaV2IPsecGatewayPeersConfig`
+
+GetIpsecGatewayPeers returns the IpsecGatewayPeers field if non-nil, zero value otherwise.
+
+### GetIpsecGatewayPeersOk
+
+`func (o *V1GatewaysReferenceConsumerGetResponse) GetIpsecGatewayPeersOk() (*ManaV2IPsecGatewayPeersConfig, bool)`
+
+GetIpsecGatewayPeersOk returns a tuple with the IpsecGatewayPeers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpsecGatewayPeers
+
+`func (o *V1GatewaysReferenceConsumerGetResponse) SetIpsecGatewayPeers(v ManaV2IPsecGatewayPeersConfig)`
+
+SetIpsecGatewayPeers sets IpsecGatewayPeers field to given value.
+
+### HasIpsecGatewayPeers
+
+`func (o *V1GatewaysReferenceConsumerGetResponse) HasIpsecGatewayPeers() bool`
+
+HasIpsecGatewayPeers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

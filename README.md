@@ -37,7 +37,7 @@ More product context: [Graphiant Docs](https://docs.graphiant.com).
 | **Automation** | [Graphiant Automation](https://docs.graphiant.com/docs/automation) |
 | **REST API** | [Graphiant Portal REST API](https://docs.graphiant.com/docs/graphiant-portal-rest-api) |
 | **Method index (repo)** | [DefaultAPI.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/docs/DefaultAPI.md) |
-| **OpenAPI bundle (this build)** | [`api/graphiant_api_docs_v26.5.0.json`](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/api/graphiant_api_docs_v26.5.0.json) — source for generated paths and models |
+| **OpenAPI bundle (this build)** | [`api/graphiant_api_docs_v26.6.0.json`](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/api/graphiant_api_docs_v26.6.0.json) — source for generated paths and models |
 | **Package** | [pkg.go.dev](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go) |
 | **Changelog** | [CHANGELOG.md](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/CHANGELOG.md) |
 
@@ -435,7 +435,7 @@ func configureDeviceWhenReady(deviceID int64, config graphiant_sdk.V1DevicesDevi
 
 - Go 1.25.11+ (enforced by `go.mod`)
 - Git
-- OpenAPI Generator (for code generation) — `brew install openapi-generator`
+- OpenAPI Generator 7.23+ (for code generation) — `brew install openapi-generator`
 
 ### CI/CD Workflows
 
@@ -483,12 +483,12 @@ To regenerate the SDK from the latest API specification:
 make generate
 
 # Or run the script directly (supports OPENAPI_SPEC override)
-OPENAPI_SPEC=api/graphiant_api_docs_v26.5.0.json bash scripts/generate.sh
+OPENAPI_SPEC=api/graphiant_api_docs_v26.6.0.json bash scripts/generate.sh
 ```
 
-`scripts/generate.sh` wraps the full `openapi-generator-cli generate` invocation. See the script for options and prerequisites (Java 11+ and `openapi-generator-cli` on PATH).
+`scripts/generate.sh` wraps the full `openapi-generator-cli generate` invocation. See the script for options and prerequisites (Java 11+ and OpenAPI Generator `>= 7.23.0` on PATH).
 
-> **Note:** Download the latest API bundle from the Graphiant portal under **Support Hub** → **Developer Tools** and place it in `api/`. The versioned JSON bundle (`api/graphiant_api_docs_v26.5.0.json`) is the snapshot used for this release; `api/openapi.yaml` is the primary YAML spec. Hand-written files (`auth_env.go`, `api_custom.go`, `version.go`, `client.go`) are never overwritten by the generator — they are listed in `.openapi-generator-ignore`.
+> **Note:** Download the latest API bundle from the Graphiant portal under **Support Hub** → **Developer Tools** and place it in `api/`. The versioned JSON bundle (`api/graphiant_api_docs_v26.6.0.json`) is the snapshot used for this release; `api/openapi.yaml` is the primary YAML spec. Hand-written files (`auth_env.go`, `api_custom.go`, `version.go`, `client.go`) are never overwritten by the generator — they are listed in `.openapi-generator-ignore`.
 
 ### Testing
 
@@ -546,7 +546,7 @@ graphiant-sdk-go/
 ├── version.go                  # Hand-written version constant
 ├── api/
 │   ├── openapi.yaml            # Primary OpenAPI spec (source of truth for generation)
-│   └── graphiant_api_docs_v26.5.0.json  # Versioned bundle for this release
+│   └── graphiant_api_docs_v26.6.0.json  # Versioned bundle for this release
 ├── docs/                       # Generated Markdown documentation
 ├── examples/                   # Usage examples
 ├── scripts/

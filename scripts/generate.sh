@@ -3,7 +3,7 @@
 #
 # Prerequisites:
 #   - Java 11+ on PATH
-#   - openapi-generator-cli (Homebrew: brew install openapi-generator)
+#   - OpenAPI Generator >= 7.23.0 (Homebrew: brew install openapi-generator)
 #
 # Usage:
 #   bash scripts/generate.sh                         # auto-selects JSON bundle, then YAML
@@ -51,6 +51,21 @@ else
   echo "   brew install openapi-generator          # macOS Homebrew"
   echo "   npm install -g @openapitools/openapi-generator-cli"
   echo "   https://openapi-generator.tech/docs/installation"
+  exit 1
+fi
+
+MIN_OPENAPI_GENERATOR_VERSION="${MIN_OPENAPI_GENERATOR_VERSION:-7.23.0}"
+GENERATOR_VERSION_RAW="$("${GENERATOR}" version 2>/dev/null || true)"
+GENERATOR_VERSION="$(printf '%s' "${GENERATOR_VERSION_RAW}" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || true)"
+
+if [ -z "${GENERATOR_VERSION}" ]; then
+  echo "⚠️  Unable to parse ${GENERATOR} version from: ${GENERATOR_VERSION_RAW}"
+  echo "   Expected OpenAPI Generator >= ${MIN_OPENAPI_GENERATOR_VERSION}."
+  echo "   If generation fails unexpectedly, upgrade your generator and retry."
+elif [ "$(printf '%s\n%s\n' "${MIN_OPENAPI_GENERATOR_VERSION}" "${GENERATOR_VERSION}" | sort -V | head -1)" != "${MIN_OPENAPI_GENERATOR_VERSION}" ]; then
+  echo "❌ OpenAPI Generator ${GENERATOR_VERSION} is too old."
+  echo "   Required version: >= ${MIN_OPENAPI_GENERATOR_VERSION}"
+  echo "   Upgrade example: brew upgrade openapi-generator"
   exit 1
 fi
 

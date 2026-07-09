@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AffectedRegions** | Pointer to **int64** |  | [optional] 
 **AffectedSites** | Pointer to **int64** |  | [optional] 
 **AffectedVrfs** | Pointer to **int64** |  | [optional] 
+**AppAiTag** | Pointer to **string** |  | [optional] 
 **AppId** | Pointer to **int64** |  | [optional] 
 **AppIdRecords** | Pointer to [**[]AssuranceAppIdRecord**](AssuranceAppIdRecord.md) |  | [optional] 
 **AppName** | Pointer to **string** |  | [optional] 
@@ -139,6 +140,31 @@ SetAffectedVrfs sets AffectedVrfs field to given value.
 `func (o *AssuranceAppNameRecord) HasAffectedVrfs() bool`
 
 HasAffectedVrfs returns a boolean if a field has been set.
+
+### GetAppAiTag
+
+`func (o *AssuranceAppNameRecord) GetAppAiTag() string`
+
+GetAppAiTag returns the AppAiTag field if non-nil, zero value otherwise.
+
+### GetAppAiTagOk
+
+`func (o *AssuranceAppNameRecord) GetAppAiTagOk() (*string, bool)`
+
+GetAppAiTagOk returns a tuple with the AppAiTag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppAiTag
+
+`func (o *AssuranceAppNameRecord) SetAppAiTag(v string)`
+
+SetAppAiTag sets AppAiTag field to given value.
+
+### HasAppAiTag
+
+`func (o *AssuranceAppNameRecord) HasAppAiTag() bool`
+
+HasAppAiTag returns a boolean if a field has been set.
 
 ### GetAppId
 

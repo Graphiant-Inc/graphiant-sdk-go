@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ConsumptionSummary** | Pointer to [**ManaV2BandwidthConsumptionSummary**](ManaV2BandwidthConsumptionSummary.md) |  | [optional] 
 **ConversionHolders** | Pointer to [**map[string]ManaV2AllocationConversionHolder**](ManaV2AllocationConversionHolder.md) |  | [optional] 
 **RegionalAllocations** | Pointer to [**[]ManaV2RegionalAllocation**](ManaV2RegionalAllocation.md) |  | [optional] 
+**ZeroTrustSummary** | Pointer to [**ManaV2ZeroTrustConsumptionSummary**](ManaV2ZeroTrustConsumptionSummary.md) |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetRegionalAllocations sets RegionalAllocations field to given value.
 `func (o *V1EnterpriseAllocationGetResponse) HasRegionalAllocations() bool`
 
 HasRegionalAllocations returns a boolean if a field has been set.
+
+### GetZeroTrustSummary
+
+`func (o *V1EnterpriseAllocationGetResponse) GetZeroTrustSummary() ManaV2ZeroTrustConsumptionSummary`
+
+GetZeroTrustSummary returns the ZeroTrustSummary field if non-nil, zero value otherwise.
+
+### GetZeroTrustSummaryOk
+
+`func (o *V1EnterpriseAllocationGetResponse) GetZeroTrustSummaryOk() (*ManaV2ZeroTrustConsumptionSummary, bool)`
+
+GetZeroTrustSummaryOk returns a tuple with the ZeroTrustSummary field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetZeroTrustSummary
+
+`func (o *V1EnterpriseAllocationGetResponse) SetZeroTrustSummary(v ManaV2ZeroTrustConsumptionSummary)`
+
+SetZeroTrustSummary sets ZeroTrustSummary field to given value.
+
+### HasZeroTrustSummary
+
+`func (o *V1EnterpriseAllocationGetResponse) HasZeroTrustSummary() bool`
+
+HasZeroTrustSummary returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

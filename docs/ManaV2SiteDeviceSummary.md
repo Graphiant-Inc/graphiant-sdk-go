@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeviceId** | Pointer to **int64** |  | [optional] 
 **Hostname** | Pointer to **string** |  | [optional] 
+**SiteId** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetHostname sets Hostname field to given value.
 `func (o *ManaV2SiteDeviceSummary) HasHostname() bool`
 
 HasHostname returns a boolean if a field has been set.
+
+### GetSiteId
+
+`func (o *ManaV2SiteDeviceSummary) GetSiteId() int64`
+
+GetSiteId returns the SiteId field if non-nil, zero value otherwise.
+
+### GetSiteIdOk
+
+`func (o *ManaV2SiteDeviceSummary) GetSiteIdOk() (*int64, bool)`
+
+GetSiteIdOk returns a tuple with the SiteId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiteId
+
+`func (o *ManaV2SiteDeviceSummary) SetSiteId(v int64)`
+
+SetSiteId sets SiteId field to given value.
+
+### HasSiteId
+
+`func (o *ManaV2SiteDeviceSummary) HasSiteId() bool`
+
+HasSiteId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
