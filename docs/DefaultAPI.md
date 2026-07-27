@@ -183,12 +183,44 @@ Method | HTTP request | Description
 [**V1EnterprisesManagedGet**](DefaultAPI.md#V1EnterprisesManagedGet) | **Get** /v1/enterprises/managed | 
 [**V1EnterprisesPatch**](DefaultAPI.md#V1EnterprisesPatch) | **Patch** /v1/enterprises | 
 [**V1EnterprisesPut**](DefaultAPI.md#V1EnterprisesPut) | **Put** /v1/enterprises | 
+[**V1ExtranetB2bConsumersCustomerIdGet**](DefaultAPI.md#V1ExtranetB2bConsumersCustomerIdGet) | **Get** /v1/extranet/b2b/consumers/{customerId} | 
+[**V1ExtranetB2bConsumersIdDelete**](DefaultAPI.md#V1ExtranetB2bConsumersIdDelete) | **Delete** /v1/extranet/b2b/consumers/{id} | 
+[**V1ExtranetB2bConsumersIdDeviceStatusGet**](DefaultAPI.md#V1ExtranetB2bConsumersIdDeviceStatusGet) | **Get** /v1/extranet/b2b/consumers/{id}/device-status | 
+[**V1ExtranetB2bConsumersIdPrefixesPut**](DefaultAPI.md#V1ExtranetB2bConsumersIdPrefixesPut) | **Put** /v1/extranet/b2b/consumers/{id}/prefixes | 
+[**V1ExtranetB2bConsumersIdPut**](DefaultAPI.md#V1ExtranetB2bConsumersIdPut) | **Put** /v1/extranet/b2b/consumers/{id} | 
+[**V1ExtranetB2bCustomersIdDelete**](DefaultAPI.md#V1ExtranetB2bCustomersIdDelete) | **Delete** /v1/extranet/b2b/customers/{id} | 
+[**V1ExtranetB2bCustomersIdDetailsGet**](DefaultAPI.md#V1ExtranetB2bCustomersIdDetailsGet) | **Get** /v1/extranet/b2b/customers/{id}/details | 
+[**V1ExtranetB2bCustomersIdMatchesSummaryGet**](DefaultAPI.md#V1ExtranetB2bCustomersIdMatchesSummaryGet) | **Get** /v1/extranet/b2b/customers/{id}/matches/summary | 
+[**V1ExtranetB2bCustomersIdPut**](DefaultAPI.md#V1ExtranetB2bCustomersIdPut) | **Put** /v1/extranet/b2b/customers/{id} | 
+[**V1ExtranetB2bCustomersIdRetryPost**](DefaultAPI.md#V1ExtranetB2bCustomersIdRetryPost) | **Post** /v1/extranet/b2b/customers/{id}/retry | 
+[**V1ExtranetB2bCustomersPost**](DefaultAPI.md#V1ExtranetB2bCustomersPost) | **Post** /v1/extranet/b2b/customers | 
+[**V1ExtranetB2bCustomersSummaryGet**](DefaultAPI.md#V1ExtranetB2bCustomersSummaryGet) | **Get** /v1/extranet/b2b/customers/summary | 
+[**V1ExtranetB2bMatchesCustomersPost**](DefaultAPI.md#V1ExtranetB2bMatchesCustomersPost) | **Post** /v1/extranet/b2b/matches/customers | 
+[**V1ExtranetB2bMatchesMatchIdConsumerCheckPost**](DefaultAPI.md#V1ExtranetB2bMatchesMatchIdConsumerCheckPost) | **Post** /v1/extranet/b2b/matches/{matchId}/consumer/check | 
+[**V1ExtranetB2bMatchesMatchIdConsumerPost**](DefaultAPI.md#V1ExtranetB2bMatchesMatchIdConsumerPost) | **Post** /v1/extranet/b2b/matches/{matchId}/consumer | 
+[**V1ExtranetB2bMatchesMatchIdDelete**](DefaultAPI.md#V1ExtranetB2bMatchesMatchIdDelete) | **Delete** /v1/extranet/b2b/matches/{matchId} | 
+[**V1ExtranetB2bMatchesMatchIdDetailsGet**](DefaultAPI.md#V1ExtranetB2bMatchesMatchIdDetailsGet) | **Get** /v1/extranet/b2b/matches/{matchId}/details | 
+[**V1ExtranetB2bMatchesMatchIdGet**](DefaultAPI.md#V1ExtranetB2bMatchesMatchIdGet) | **Get** /v1/extranet/b2b/matches/{matchId} | 
+[**V1ExtranetB2bMatchesMatchIdPut**](DefaultAPI.md#V1ExtranetB2bMatchesMatchIdPut) | **Put** /v1/extranet/b2b/matches/{matchId} | 
+[**V1ExtranetB2bMatchesMatchIdStatusPut**](DefaultAPI.md#V1ExtranetB2bMatchesMatchIdStatusPut) | **Put** /v1/extranet/b2b/matches/{matchId}/status | 
+[**V1ExtranetB2bMatchesPausePut**](DefaultAPI.md#V1ExtranetB2bMatchesPausePut) | **Put** /v1/extranet/b2b/matches/pause | 
+[**V1ExtranetB2bMatchesPost**](DefaultAPI.md#V1ExtranetB2bMatchesPost) | **Post** /v1/extranet/b2b/matches | 
+[**V1ExtranetB2bMatchesReviewPost**](DefaultAPI.md#V1ExtranetB2bMatchesReviewPost) | **Post** /v1/extranet/b2b/matches/review | 
 [**V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePost**](DefaultAPI.md#V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePost) | **Post** /v1/extranet-b2b-monitoring/peering-service/bandwidth-usage | 
 [**V1ExtranetB2bMonitoringPeeringServiceConsumersUsageTopPost**](DefaultAPI.md#V1ExtranetB2bMonitoringPeeringServiceConsumersUsageTopPost) | **Post** /v1/extranet-b2b-monitoring/peering-service/consumers-usage/top | 
 [**V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPost**](DefaultAPI.md#V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPost) | **Post** /v1/extranet-b2b-monitoring/peering-service/consumption-overview | 
 [**V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPost**](DefaultAPI.md#V1ExtranetB2bMonitoringPeeringServiceServiceCustomerListPost) | **Post** /v1/extranet-b2b-monitoring/peering-service/service-customer-list | 
 [**V1ExtranetB2bMonitoringPeeringServiceServiceHealthPost**](DefaultAPI.md#V1ExtranetB2bMonitoringPeeringServiceServiceHealthPost) | **Post** /v1/extranet-b2b-monitoring/peering-service/service-health | 
 [**V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPost**](DefaultAPI.md#V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPost) | **Post** /v1/extranet-b2b-monitoring/peering-service/service-overtime-consumption | 
+[**V1ExtranetB2bProducerIdCustomersGet**](DefaultAPI.md#V1ExtranetB2bProducerIdCustomersGet) | **Get** /v1/extranet/b2b/producer/{id}/customers | 
+[**V1ExtranetB2bProducerIdDelete**](DefaultAPI.md#V1ExtranetB2bProducerIdDelete) | **Delete** /v1/extranet/b2b/producer/{id} | 
+[**V1ExtranetB2bProducerIdDeviceStatusGet**](DefaultAPI.md#V1ExtranetB2bProducerIdDeviceStatusGet) | **Get** /v1/extranet/b2b/producer/{id}/device-status | 
+[**V1ExtranetB2bProducerIdGet**](DefaultAPI.md#V1ExtranetB2bProducerIdGet) | **Get** /v1/extranet/b2b/producer/{id} | 
+[**V1ExtranetB2bProducerIdPut**](DefaultAPI.md#V1ExtranetB2bProducerIdPut) | **Put** /v1/extranet/b2b/producer/{id} | 
+[**V1ExtranetB2bProducerIdStatusPut**](DefaultAPI.md#V1ExtranetB2bProducerIdStatusPut) | **Put** /v1/extranet/b2b/producer/{id}/status | 
+[**V1ExtranetB2bProducerPost**](DefaultAPI.md#V1ExtranetB2bProducerPost) | **Post** /v1/extranet/b2b/producer | 
+[**V1ExtranetB2bProducerReviewPost**](DefaultAPI.md#V1ExtranetB2bProducerReviewPost) | **Post** /v1/extranet/b2b/producer/review | 
+[**V1ExtranetB2bServicesSummaryGet**](DefaultAPI.md#V1ExtranetB2bServicesSummaryGet) | **Get** /v1/extranet/b2b/services/summary | 
 [**V1ExtranetSitesUsageTopPost**](DefaultAPI.md#V1ExtranetSitesUsageTopPost) | **Post** /v1/extranet/sites-usage/top | 
 [**V1ExtranetsB2bConsumerDeviceStatusIdGet**](DefaultAPI.md#V1ExtranetsB2bConsumerDeviceStatusIdGet) | **Get** /v1/extranets-b2b/consumer-device-status/{id} | 
 [**V1ExtranetsB2bConsumerIdDelete**](DefaultAPI.md#V1ExtranetsB2bConsumerIdDelete) | **Delete** /v1/extranets-b2b/consumer/{id} | 
@@ -12778,6 +12810,1654 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## V1ExtranetB2bConsumersCustomerIdGet
+
+> V1ExtranetB2bConsumersCustomerIdGetResponse V1ExtranetB2bConsumersCustomerIdGet(ctx, customerId).Authorization(authorization).ServiceId(serviceId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	customerId := int64(1234567891011) // int64 | Partner customer id
+	serviceId := int64(1234567891011) // int64 | Producer service id (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bConsumersCustomerIdGet(context.Background(), customerId).Authorization(authorization).ServiceId(serviceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bConsumersCustomerIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bConsumersCustomerIdGet`: V1ExtranetB2bConsumersCustomerIdGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bConsumersCustomerIdGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**customerId** | **int64** | Partner customer id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bConsumersCustomerIdGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **serviceId** | **int64** | Producer service id | 
+
+### Return type
+
+[**V1ExtranetB2bConsumersCustomerIdGetResponse**](V1ExtranetB2bConsumersCustomerIdGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bConsumersIdDelete
+
+> map[string]interface{} V1ExtranetB2bConsumersIdDelete(ctx, id).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bConsumersIdDelete(context.Background(), id).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bConsumersIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bConsumersIdDelete`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bConsumersIdDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bConsumersIdDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bConsumersIdDeviceStatusGet
+
+> V1ExtranetB2bConsumersIdDeviceStatusGetResponse V1ExtranetB2bConsumersIdDeviceStatusGet(ctx, id).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bConsumersIdDeviceStatusGet(context.Background(), id).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bConsumersIdDeviceStatusGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bConsumersIdDeviceStatusGet`: V1ExtranetB2bConsumersIdDeviceStatusGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bConsumersIdDeviceStatusGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bConsumersIdDeviceStatusGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1ExtranetB2bConsumersIdDeviceStatusGetResponse**](V1ExtranetB2bConsumersIdDeviceStatusGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bConsumersIdPrefixesPut
+
+> V1ExtranetB2bConsumersIdPrefixesPutResponse V1ExtranetB2bConsumersIdPrefixesPut(ctx, id).Authorization(authorization).V1ExtranetB2bConsumersIdPrefixesPutRequest(v1ExtranetB2bConsumersIdPrefixesPutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | Consumer subscription id
+	v1ExtranetB2bConsumersIdPrefixesPutRequest := *openapiclient.NewV1ExtranetB2bConsumersIdPrefixesPutRequest() // V1ExtranetB2bConsumersIdPrefixesPutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bConsumersIdPrefixesPut(context.Background(), id).Authorization(authorization).V1ExtranetB2bConsumersIdPrefixesPutRequest(v1ExtranetB2bConsumersIdPrefixesPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bConsumersIdPrefixesPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bConsumersIdPrefixesPut`: V1ExtranetB2bConsumersIdPrefixesPutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bConsumersIdPrefixesPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** | Consumer subscription id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bConsumersIdPrefixesPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1ExtranetB2bConsumersIdPrefixesPutRequest** | [**V1ExtranetB2bConsumersIdPrefixesPutRequest**](V1ExtranetB2bConsumersIdPrefixesPutRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bConsumersIdPrefixesPutResponse**](V1ExtranetB2bConsumersIdPrefixesPutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bConsumersIdPut
+
+> V1ExtranetB2bConsumersIdPutResponse V1ExtranetB2bConsumersIdPut(ctx, id).Authorization(authorization).V1ExtranetB2bConsumersIdPutRequest(v1ExtranetB2bConsumersIdPutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | Consumer subscription id
+	v1ExtranetB2bConsumersIdPutRequest := *openapiclient.NewV1ExtranetB2bConsumersIdPutRequest() // V1ExtranetB2bConsumersIdPutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bConsumersIdPut(context.Background(), id).Authorization(authorization).V1ExtranetB2bConsumersIdPutRequest(v1ExtranetB2bConsumersIdPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bConsumersIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bConsumersIdPut`: V1ExtranetB2bConsumersIdPutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bConsumersIdPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** | Consumer subscription id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bConsumersIdPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1ExtranetB2bConsumersIdPutRequest** | [**V1ExtranetB2bConsumersIdPutRequest**](V1ExtranetB2bConsumersIdPutRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bConsumersIdPutResponse**](V1ExtranetB2bConsumersIdPutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bCustomersIdDelete
+
+> V1ExtranetB2bCustomersIdDeleteResponse V1ExtranetB2bCustomersIdDelete(ctx, id).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bCustomersIdDelete(context.Background(), id).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bCustomersIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bCustomersIdDelete`: V1ExtranetB2bCustomersIdDeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bCustomersIdDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bCustomersIdDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1ExtranetB2bCustomersIdDeleteResponse**](V1ExtranetB2bCustomersIdDeleteResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bCustomersIdDetailsGet
+
+> V1ExtranetB2bCustomersIdDetailsGetResponse V1ExtranetB2bCustomersIdDetailsGet(ctx, id).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bCustomersIdDetailsGet(context.Background(), id).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bCustomersIdDetailsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bCustomersIdDetailsGet`: V1ExtranetB2bCustomersIdDetailsGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bCustomersIdDetailsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bCustomersIdDetailsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1ExtranetB2bCustomersIdDetailsGetResponse**](V1ExtranetB2bCustomersIdDetailsGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bCustomersIdMatchesSummaryGet
+
+> V1ExtranetB2bCustomersIdMatchesSummaryGetResponse V1ExtranetB2bCustomersIdMatchesSummaryGet(ctx, id).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | Customer id
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bCustomersIdMatchesSummaryGet(context.Background(), id).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bCustomersIdMatchesSummaryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bCustomersIdMatchesSummaryGet`: V1ExtranetB2bCustomersIdMatchesSummaryGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bCustomersIdMatchesSummaryGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** | Customer id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bCustomersIdMatchesSummaryGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1ExtranetB2bCustomersIdMatchesSummaryGetResponse**](V1ExtranetB2bCustomersIdMatchesSummaryGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bCustomersIdPut
+
+> V1ExtranetB2bCustomersIdPutResponse V1ExtranetB2bCustomersIdPut(ctx, id).Authorization(authorization).V1ExtranetB2bCustomersIdPutRequest(v1ExtranetB2bCustomersIdPutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | 
+	v1ExtranetB2bCustomersIdPutRequest := *openapiclient.NewV1ExtranetB2bCustomersIdPutRequest() // V1ExtranetB2bCustomersIdPutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bCustomersIdPut(context.Background(), id).Authorization(authorization).V1ExtranetB2bCustomersIdPutRequest(v1ExtranetB2bCustomersIdPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bCustomersIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bCustomersIdPut`: V1ExtranetB2bCustomersIdPutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bCustomersIdPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bCustomersIdPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1ExtranetB2bCustomersIdPutRequest** | [**V1ExtranetB2bCustomersIdPutRequest**](V1ExtranetB2bCustomersIdPutRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bCustomersIdPutResponse**](V1ExtranetB2bCustomersIdPutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bCustomersIdRetryPost
+
+> map[string]interface{} V1ExtranetB2bCustomersIdRetryPost(ctx, id).Authorization(authorization).Body(body).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | 
+	body := map[string]interface{}{ ... } // map[string]interface{} | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bCustomersIdRetryPost(context.Background(), id).Authorization(authorization).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bCustomersIdRetryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bCustomersIdRetryPost`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bCustomersIdRetryPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bCustomersIdRetryPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bCustomersPost
+
+> V1ExtranetB2bCustomersPostResponse V1ExtranetB2bCustomersPost(ctx).Authorization(authorization).V1ExtranetB2bCustomersPostRequest(v1ExtranetB2bCustomersPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1ExtranetB2bCustomersPostRequest := *openapiclient.NewV1ExtranetB2bCustomersPostRequest(*openapiclient.NewManaV2ExtranetServiceCustomerInvite(), "example string", "ENUM_VALUE") // V1ExtranetB2bCustomersPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bCustomersPost(context.Background()).Authorization(authorization).V1ExtranetB2bCustomersPostRequest(v1ExtranetB2bCustomersPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bCustomersPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bCustomersPost`: V1ExtranetB2bCustomersPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bCustomersPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bCustomersPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1ExtranetB2bCustomersPostRequest** | [**V1ExtranetB2bCustomersPostRequest**](V1ExtranetB2bCustomersPostRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bCustomersPostResponse**](V1ExtranetB2bCustomersPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bCustomersSummaryGet
+
+> V1ExtranetB2bCustomersSummaryGetResponse V1ExtranetB2bCustomersSummaryGet(ctx).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bCustomersSummaryGet(context.Background()).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bCustomersSummaryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bCustomersSummaryGet`: V1ExtranetB2bCustomersSummaryGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bCustomersSummaryGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bCustomersSummaryGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+[**V1ExtranetB2bCustomersSummaryGetResponse**](V1ExtranetB2bCustomersSummaryGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bMatchesCustomersPost
+
+> V1ExtranetB2bMatchesCustomersPostResponse V1ExtranetB2bMatchesCustomersPost(ctx).Authorization(authorization).V1ExtranetB2bMatchesCustomersPostRequest(v1ExtranetB2bMatchesCustomersPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1ExtranetB2bMatchesCustomersPostRequest := *openapiclient.NewV1ExtranetB2bMatchesCustomersPostRequest() // V1ExtranetB2bMatchesCustomersPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bMatchesCustomersPost(context.Background()).Authorization(authorization).V1ExtranetB2bMatchesCustomersPostRequest(v1ExtranetB2bMatchesCustomersPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bMatchesCustomersPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bMatchesCustomersPost`: V1ExtranetB2bMatchesCustomersPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bMatchesCustomersPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bMatchesCustomersPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1ExtranetB2bMatchesCustomersPostRequest** | [**V1ExtranetB2bMatchesCustomersPostRequest**](V1ExtranetB2bMatchesCustomersPostRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bMatchesCustomersPostResponse**](V1ExtranetB2bMatchesCustomersPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bMatchesMatchIdConsumerCheckPost
+
+> V1ExtranetB2bMatchesMatchIdConsumerCheckPostResponse V1ExtranetB2bMatchesMatchIdConsumerCheckPost(ctx, matchId).Authorization(authorization).V1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest(v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	matchId := int64(1234567891011) // int64 | Match id (URL path :matchId)
+	v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest := *openapiclient.NewV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest() // V1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bMatchesMatchIdConsumerCheckPost(context.Background(), matchId).Authorization(authorization).V1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest(v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bMatchesMatchIdConsumerCheckPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bMatchesMatchIdConsumerCheckPost`: V1ExtranetB2bMatchesMatchIdConsumerCheckPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bMatchesMatchIdConsumerCheckPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**matchId** | **int64** | Match id (URL path :matchId) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest** | [**V1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest**](V1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bMatchesMatchIdConsumerCheckPostResponse**](V1ExtranetB2bMatchesMatchIdConsumerCheckPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bMatchesMatchIdConsumerPost
+
+> V1ExtranetB2bMatchesMatchIdConsumerPostResponse V1ExtranetB2bMatchesMatchIdConsumerPost(ctx, matchId).Authorization(authorization).V1ExtranetB2bMatchesMatchIdConsumerPostRequest(v1ExtranetB2bMatchesMatchIdConsumerPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	matchId := int64(1234567891011) // int64 | Match id (URL path :matchId)
+	v1ExtranetB2bMatchesMatchIdConsumerPostRequest := *openapiclient.NewV1ExtranetB2bMatchesMatchIdConsumerPostRequest() // V1ExtranetB2bMatchesMatchIdConsumerPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bMatchesMatchIdConsumerPost(context.Background(), matchId).Authorization(authorization).V1ExtranetB2bMatchesMatchIdConsumerPostRequest(v1ExtranetB2bMatchesMatchIdConsumerPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bMatchesMatchIdConsumerPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bMatchesMatchIdConsumerPost`: V1ExtranetB2bMatchesMatchIdConsumerPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bMatchesMatchIdConsumerPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**matchId** | **int64** | Match id (URL path :matchId) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bMatchesMatchIdConsumerPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1ExtranetB2bMatchesMatchIdConsumerPostRequest** | [**V1ExtranetB2bMatchesMatchIdConsumerPostRequest**](V1ExtranetB2bMatchesMatchIdConsumerPostRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bMatchesMatchIdConsumerPostResponse**](V1ExtranetB2bMatchesMatchIdConsumerPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bMatchesMatchIdDelete
+
+> V1ExtranetB2bMatchesMatchIdDeleteResponse V1ExtranetB2bMatchesMatchIdDelete(ctx, matchId).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	matchId := int64(1234567891011) // int64 | Match id (URL path :matchId)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bMatchesMatchIdDelete(context.Background(), matchId).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bMatchesMatchIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bMatchesMatchIdDelete`: V1ExtranetB2bMatchesMatchIdDeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bMatchesMatchIdDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**matchId** | **int64** | Match id (URL path :matchId) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bMatchesMatchIdDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1ExtranetB2bMatchesMatchIdDeleteResponse**](V1ExtranetB2bMatchesMatchIdDeleteResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bMatchesMatchIdDetailsGet
+
+> V1ExtranetB2bMatchesMatchIdDetailsGetResponse V1ExtranetB2bMatchesMatchIdDetailsGet(ctx, matchId).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	matchId := int64(1234567891011) // int64 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bMatchesMatchIdDetailsGet(context.Background(), matchId).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bMatchesMatchIdDetailsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bMatchesMatchIdDetailsGet`: V1ExtranetB2bMatchesMatchIdDetailsGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bMatchesMatchIdDetailsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**matchId** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bMatchesMatchIdDetailsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1ExtranetB2bMatchesMatchIdDetailsGetResponse**](V1ExtranetB2bMatchesMatchIdDetailsGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bMatchesMatchIdGet
+
+> V1ExtranetB2bMatchesMatchIdGetResponse V1ExtranetB2bMatchesMatchIdGet(ctx, matchId).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	matchId := int64(1234567891011) // int64 | Match id (URL path :matchId)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bMatchesMatchIdGet(context.Background(), matchId).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bMatchesMatchIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bMatchesMatchIdGet`: V1ExtranetB2bMatchesMatchIdGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bMatchesMatchIdGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**matchId** | **int64** | Match id (URL path :matchId) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bMatchesMatchIdGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1ExtranetB2bMatchesMatchIdGetResponse**](V1ExtranetB2bMatchesMatchIdGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bMatchesMatchIdPut
+
+> V1ExtranetB2bMatchesMatchIdPutResponse V1ExtranetB2bMatchesMatchIdPut(ctx, matchId).Authorization(authorization).V1ExtranetB2bMatchesMatchIdPutRequest(v1ExtranetB2bMatchesMatchIdPutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	matchId := int64(1234567891011) // int64 | Match id (URL path :matchId)
+	v1ExtranetB2bMatchesMatchIdPutRequest := *openapiclient.NewV1ExtranetB2bMatchesMatchIdPutRequest() // V1ExtranetB2bMatchesMatchIdPutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bMatchesMatchIdPut(context.Background(), matchId).Authorization(authorization).V1ExtranetB2bMatchesMatchIdPutRequest(v1ExtranetB2bMatchesMatchIdPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bMatchesMatchIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bMatchesMatchIdPut`: V1ExtranetB2bMatchesMatchIdPutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bMatchesMatchIdPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**matchId** | **int64** | Match id (URL path :matchId) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bMatchesMatchIdPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1ExtranetB2bMatchesMatchIdPutRequest** | [**V1ExtranetB2bMatchesMatchIdPutRequest**](V1ExtranetB2bMatchesMatchIdPutRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bMatchesMatchIdPutResponse**](V1ExtranetB2bMatchesMatchIdPutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bMatchesMatchIdStatusPut
+
+> V1ExtranetB2bMatchesMatchIdStatusPutResponse V1ExtranetB2bMatchesMatchIdStatusPut(ctx, matchId).Authorization(authorization).V1ExtranetB2bMatchesMatchIdStatusPutRequest(v1ExtranetB2bMatchesMatchIdStatusPutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	matchId := int64(1234567891011) // int64 | 
+	v1ExtranetB2bMatchesMatchIdStatusPutRequest := *openapiclient.NewV1ExtranetB2bMatchesMatchIdStatusPutRequest() // V1ExtranetB2bMatchesMatchIdStatusPutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bMatchesMatchIdStatusPut(context.Background(), matchId).Authorization(authorization).V1ExtranetB2bMatchesMatchIdStatusPutRequest(v1ExtranetB2bMatchesMatchIdStatusPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bMatchesMatchIdStatusPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bMatchesMatchIdStatusPut`: V1ExtranetB2bMatchesMatchIdStatusPutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bMatchesMatchIdStatusPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**matchId** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bMatchesMatchIdStatusPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1ExtranetB2bMatchesMatchIdStatusPutRequest** | [**V1ExtranetB2bMatchesMatchIdStatusPutRequest**](V1ExtranetB2bMatchesMatchIdStatusPutRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bMatchesMatchIdStatusPutResponse**](V1ExtranetB2bMatchesMatchIdStatusPutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bMatchesPausePut
+
+> V1ExtranetB2bMatchesPausePutResponse V1ExtranetB2bMatchesPausePut(ctx).Authorization(authorization).V1ExtranetB2bMatchesPausePutRequest(v1ExtranetB2bMatchesPausePutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1ExtranetB2bMatchesPausePutRequest := *openapiclient.NewV1ExtranetB2bMatchesPausePutRequest() // V1ExtranetB2bMatchesPausePutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bMatchesPausePut(context.Background()).Authorization(authorization).V1ExtranetB2bMatchesPausePutRequest(v1ExtranetB2bMatchesPausePutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bMatchesPausePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bMatchesPausePut`: V1ExtranetB2bMatchesPausePutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bMatchesPausePut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bMatchesPausePutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1ExtranetB2bMatchesPausePutRequest** | [**V1ExtranetB2bMatchesPausePutRequest**](V1ExtranetB2bMatchesPausePutRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bMatchesPausePutResponse**](V1ExtranetB2bMatchesPausePutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bMatchesPost
+
+> V1ExtranetB2bMatchesPostResponse V1ExtranetB2bMatchesPost(ctx).Authorization(authorization).V1ExtranetB2bMatchesPostRequest(v1ExtranetB2bMatchesPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1ExtranetB2bMatchesPostRequest := *openapiclient.NewV1ExtranetB2bMatchesPostRequest() // V1ExtranetB2bMatchesPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bMatchesPost(context.Background()).Authorization(authorization).V1ExtranetB2bMatchesPostRequest(v1ExtranetB2bMatchesPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bMatchesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bMatchesPost`: V1ExtranetB2bMatchesPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bMatchesPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bMatchesPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1ExtranetB2bMatchesPostRequest** | [**V1ExtranetB2bMatchesPostRequest**](V1ExtranetB2bMatchesPostRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bMatchesPostResponse**](V1ExtranetB2bMatchesPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bMatchesReviewPost
+
+> V1ExtranetB2bMatchesReviewPostResponse V1ExtranetB2bMatchesReviewPost(ctx).Authorization(authorization).V1ExtranetB2bMatchesReviewPostRequest(v1ExtranetB2bMatchesReviewPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1ExtranetB2bMatchesReviewPostRequest := *openapiclient.NewV1ExtranetB2bMatchesReviewPostRequest() // V1ExtranetB2bMatchesReviewPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bMatchesReviewPost(context.Background()).Authorization(authorization).V1ExtranetB2bMatchesReviewPostRequest(v1ExtranetB2bMatchesReviewPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bMatchesReviewPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bMatchesReviewPost`: V1ExtranetB2bMatchesReviewPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bMatchesReviewPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bMatchesReviewPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1ExtranetB2bMatchesReviewPostRequest** | [**V1ExtranetB2bMatchesReviewPostRequest**](V1ExtranetB2bMatchesReviewPostRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bMatchesReviewPostResponse**](V1ExtranetB2bMatchesReviewPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePost
 
 > V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostResponse V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePost(ctx).Authorization(authorization).V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostRequest(v1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostRequest).Execute()
@@ -13179,6 +14859,644 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bProducerIdCustomersGet
+
+> V1ExtranetB2bProducerIdCustomersGetResponse V1ExtranetB2bProducerIdCustomersGet(ctx, id).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | Producer service id
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bProducerIdCustomersGet(context.Background(), id).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bProducerIdCustomersGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bProducerIdCustomersGet`: V1ExtranetB2bProducerIdCustomersGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bProducerIdCustomersGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** | Producer service id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bProducerIdCustomersGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1ExtranetB2bProducerIdCustomersGetResponse**](V1ExtranetB2bProducerIdCustomersGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bProducerIdDelete
+
+> map[string]interface{} V1ExtranetB2bProducerIdDelete(ctx, id).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bProducerIdDelete(context.Background(), id).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bProducerIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bProducerIdDelete`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bProducerIdDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bProducerIdDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bProducerIdDeviceStatusGet
+
+> V1ExtranetB2bProducerIdDeviceStatusGetResponse V1ExtranetB2bProducerIdDeviceStatusGet(ctx, id).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bProducerIdDeviceStatusGet(context.Background(), id).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bProducerIdDeviceStatusGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bProducerIdDeviceStatusGet`: V1ExtranetB2bProducerIdDeviceStatusGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bProducerIdDeviceStatusGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bProducerIdDeviceStatusGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1ExtranetB2bProducerIdDeviceStatusGetResponse**](V1ExtranetB2bProducerIdDeviceStatusGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bProducerIdGet
+
+> V1ExtranetB2bProducerIdGetResponse V1ExtranetB2bProducerIdGet(ctx, id).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bProducerIdGet(context.Background(), id).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bProducerIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bProducerIdGet`: V1ExtranetB2bProducerIdGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bProducerIdGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bProducerIdGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1ExtranetB2bProducerIdGetResponse**](V1ExtranetB2bProducerIdGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bProducerIdPut
+
+> V1ExtranetB2bProducerIdPutResponse V1ExtranetB2bProducerIdPut(ctx, id).Authorization(authorization).V1ExtranetB2bProducerIdPutRequest(v1ExtranetB2bProducerIdPutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | 
+	v1ExtranetB2bProducerIdPutRequest := *openapiclient.NewV1ExtranetB2bProducerIdPutRequest() // V1ExtranetB2bProducerIdPutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bProducerIdPut(context.Background(), id).Authorization(authorization).V1ExtranetB2bProducerIdPutRequest(v1ExtranetB2bProducerIdPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bProducerIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bProducerIdPut`: V1ExtranetB2bProducerIdPutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bProducerIdPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bProducerIdPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1ExtranetB2bProducerIdPutRequest** | [**V1ExtranetB2bProducerIdPutRequest**](V1ExtranetB2bProducerIdPutRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bProducerIdPutResponse**](V1ExtranetB2bProducerIdPutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bProducerIdStatusPut
+
+> V1ExtranetB2bProducerIdStatusPutResponse V1ExtranetB2bProducerIdStatusPut(ctx, id).Authorization(authorization).V1ExtranetB2bProducerIdStatusPutRequest(v1ExtranetB2bProducerIdStatusPutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	id := int64(1234567891011) // int64 | 
+	v1ExtranetB2bProducerIdStatusPutRequest := *openapiclient.NewV1ExtranetB2bProducerIdStatusPutRequest() // V1ExtranetB2bProducerIdStatusPutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bProducerIdStatusPut(context.Background(), id).Authorization(authorization).V1ExtranetB2bProducerIdStatusPutRequest(v1ExtranetB2bProducerIdStatusPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bProducerIdStatusPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bProducerIdStatusPut`: V1ExtranetB2bProducerIdStatusPutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bProducerIdStatusPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bProducerIdStatusPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1ExtranetB2bProducerIdStatusPutRequest** | [**V1ExtranetB2bProducerIdStatusPutRequest**](V1ExtranetB2bProducerIdStatusPutRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bProducerIdStatusPutResponse**](V1ExtranetB2bProducerIdStatusPutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bProducerPost
+
+> V1ExtranetB2bProducerPostResponse V1ExtranetB2bProducerPost(ctx).Authorization(authorization).V1ExtranetB2bProducerPostRequest(v1ExtranetB2bProducerPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1ExtranetB2bProducerPostRequest := *openapiclient.NewV1ExtranetB2bProducerPostRequest(*openapiclient.NewManaV2ExtranetServiceProducerPolicy(), "example string", "ENUM_VALUE") // V1ExtranetB2bProducerPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bProducerPost(context.Background()).Authorization(authorization).V1ExtranetB2bProducerPostRequest(v1ExtranetB2bProducerPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bProducerPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bProducerPost`: V1ExtranetB2bProducerPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bProducerPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bProducerPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1ExtranetB2bProducerPostRequest** | [**V1ExtranetB2bProducerPostRequest**](V1ExtranetB2bProducerPostRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bProducerPostResponse**](V1ExtranetB2bProducerPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bProducerReviewPost
+
+> V1ExtranetB2bProducerReviewPostResponse V1ExtranetB2bProducerReviewPost(ctx).Authorization(authorization).V1ExtranetB2bProducerReviewPostRequest(v1ExtranetB2bProducerReviewPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1ExtranetB2bProducerReviewPostRequest := *openapiclient.NewV1ExtranetB2bProducerReviewPostRequest(*openapiclient.NewManaV2ExtranetServiceProducerPolicy(), "example string", "ENUM_VALUE") // V1ExtranetB2bProducerReviewPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bProducerReviewPost(context.Background()).Authorization(authorization).V1ExtranetB2bProducerReviewPostRequest(v1ExtranetB2bProducerReviewPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bProducerReviewPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bProducerReviewPost`: V1ExtranetB2bProducerReviewPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bProducerReviewPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bProducerReviewPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1ExtranetB2bProducerReviewPostRequest** | [**V1ExtranetB2bProducerReviewPostRequest**](V1ExtranetB2bProducerReviewPostRequest.md) |  | 
+
+### Return type
+
+[**V1ExtranetB2bProducerReviewPostResponse**](V1ExtranetB2bProducerReviewPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ExtranetB2bServicesSummaryGet
+
+> V1ExtranetB2bServicesSummaryGetResponse V1ExtranetB2bServicesSummaryGet(ctx).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bServicesSummaryGet(context.Background()).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bServicesSummaryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ExtranetB2bServicesSummaryGet`: V1ExtranetB2bServicesSummaryGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1ExtranetB2bServicesSummaryGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ExtranetB2bServicesSummaryGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+[**V1ExtranetB2bServicesSummaryGetResponse**](V1ExtranetB2bServicesSummaryGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -19325,7 +21643,7 @@ Name | Type | Description  | Notes
 
 ## V1GlobalLanSegmentsGet
 
-> V1GlobalLanSegmentsGetResponse V1GlobalLanSegmentsGet(ctx).Authorization(authorization).Execute()
+> V1GlobalLanSegmentsGetResponse V1GlobalLanSegmentsGet(ctx).Authorization(authorization).FilterExtranetProducers(filterExtranetProducers).Execute()
 
 
 
@@ -19345,10 +21663,11 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	filterExtranetProducers := true // bool |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1GlobalLanSegmentsGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1GlobalLanSegmentsGet(context.Background()).Authorization(authorization).FilterExtranetProducers(filterExtranetProducers).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1GlobalLanSegmentsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -19370,6 +21689,7 @@ Other parameters are passed through a pointer to a apiV1GlobalLanSegmentsGetRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **filterExtranetProducers** | **bool** |  | 
 
 ### Return type
 

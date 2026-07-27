@@ -2355,7 +2355,7 @@ func (a *DefaultAPIService) V1AuthLoginCallbackPostExecute(r ApiV1AuthLoginCallb
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthLoginCallbackPost500Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2740,7 +2740,7 @@ func (a *DefaultAPIService) V1AuthLoginSamlGetExecute(r ApiV1AuthLoginSamlGetReq
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthLoginSamlGet401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2751,7 +2751,7 @@ func (a *DefaultAPIService) V1AuthLoginSamlGetExecute(r ApiV1AuthLoginSamlGetReq
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthLoginSamlGet500Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3882,7 +3882,7 @@ func (a *DefaultAPIService) V1AuthRefreshGetExecute(r ApiV1AuthRefreshGetRequest
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthRefreshGet403Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3893,7 +3893,7 @@ func (a *DefaultAPIService) V1AuthRefreshGetExecute(r ApiV1AuthRefreshGetRequest
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthRefreshGet422Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4047,7 +4047,7 @@ func (a *DefaultAPIService) V1AuthSessionGetExecute(r ApiV1AuthSessionGetRequest
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthSessionGet403Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4058,7 +4058,7 @@ func (a *DefaultAPIService) V1AuthSessionGetExecute(r ApiV1AuthSessionGetRequest
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthSessionGet422Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4201,7 +4201,7 @@ func (a *DefaultAPIService) V1AuthSessionRootGetExecute(r ApiV1AuthSessionRootGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthSessionGet403Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4212,7 +4212,7 @@ func (a *DefaultAPIService) V1AuthSessionRootGetExecute(r ApiV1AuthSessionRootGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthSessionGet422Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -24191,6 +24191,3079 @@ func (a *DefaultAPIService) V1EnterprisesPutExecute(r ApiV1EnterprisesPutRequest
 	return localVarHTTPResponse, nil
 }
 
+type ApiV1ExtranetB2bConsumersCustomerIdGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	customerId int64
+	serviceId *int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bConsumersCustomerIdGetRequest) Authorization(authorization string) ApiV1ExtranetB2bConsumersCustomerIdGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+// Producer service id
+func (r ApiV1ExtranetB2bConsumersCustomerIdGetRequest) ServiceId(serviceId int64) ApiV1ExtranetB2bConsumersCustomerIdGetRequest {
+	r.serviceId = &serviceId
+	return r
+}
+
+func (r ApiV1ExtranetB2bConsumersCustomerIdGetRequest) Execute() (*V1ExtranetB2bConsumersCustomerIdGetResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bConsumersCustomerIdGetExecute(r)
+}
+
+/*
+V1ExtranetB2bConsumersCustomerIdGet Method for V1ExtranetB2bConsumersCustomerIdGet
+
+Get extranet service consumer subscription
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param customerId Partner customer id
+ @return ApiV1ExtranetB2bConsumersCustomerIdGetRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bConsumersCustomerIdGet(ctx context.Context, customerId int64) ApiV1ExtranetB2bConsumersCustomerIdGetRequest {
+	return ApiV1ExtranetB2bConsumersCustomerIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		customerId: customerId,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bConsumersCustomerIdGetResponse
+func (a *DefaultAPIService) V1ExtranetB2bConsumersCustomerIdGetExecute(r ApiV1ExtranetB2bConsumersCustomerIdGetRequest) (*V1ExtranetB2bConsumersCustomerIdGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bConsumersCustomerIdGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bConsumersCustomerIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/consumers/{customerId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"customerId"+"}", url.PathEscape(parameterValueToString(r.customerId, "customerId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	if r.serviceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "serviceId", r.serviceId, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bConsumersIdDeleteRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bConsumersIdDeleteRequest) Authorization(authorization string) ApiV1ExtranetB2bConsumersIdDeleteRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bConsumersIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bConsumersIdDeleteExecute(r)
+}
+
+/*
+V1ExtranetB2bConsumersIdDelete Method for V1ExtranetB2bConsumersIdDelete
+
+Delete an extranet service consumer subscription
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id 
+ @return ApiV1ExtranetB2bConsumersIdDeleteRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bConsumersIdDelete(ctx context.Context, id int64) ApiV1ExtranetB2bConsumersIdDeleteRequest {
+	return ApiV1ExtranetB2bConsumersIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *DefaultAPIService) V1ExtranetB2bConsumersIdDeleteExecute(r ApiV1ExtranetB2bConsumersIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bConsumersIdDelete")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/consumers/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bConsumersIdDeviceStatusGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bConsumersIdDeviceStatusGetRequest) Authorization(authorization string) ApiV1ExtranetB2bConsumersIdDeviceStatusGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bConsumersIdDeviceStatusGetRequest) Execute() (*V1ExtranetB2bConsumersIdDeviceStatusGetResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bConsumersIdDeviceStatusGetExecute(r)
+}
+
+/*
+V1ExtranetB2bConsumersIdDeviceStatusGet Method for V1ExtranetB2bConsumersIdDeviceStatusGet
+
+Get extranet consumer device rollout status
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id 
+ @return ApiV1ExtranetB2bConsumersIdDeviceStatusGetRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bConsumersIdDeviceStatusGet(ctx context.Context, id int64) ApiV1ExtranetB2bConsumersIdDeviceStatusGetRequest {
+	return ApiV1ExtranetB2bConsumersIdDeviceStatusGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bConsumersIdDeviceStatusGetResponse
+func (a *DefaultAPIService) V1ExtranetB2bConsumersIdDeviceStatusGetExecute(r ApiV1ExtranetB2bConsumersIdDeviceStatusGetRequest) (*V1ExtranetB2bConsumersIdDeviceStatusGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bConsumersIdDeviceStatusGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bConsumersIdDeviceStatusGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/consumers/{id}/device-status"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bConsumersIdPrefixesPutRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+	v1ExtranetB2bConsumersIdPrefixesPutRequest *V1ExtranetB2bConsumersIdPrefixesPutRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bConsumersIdPrefixesPutRequest) Authorization(authorization string) ApiV1ExtranetB2bConsumersIdPrefixesPutRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bConsumersIdPrefixesPutRequest) V1ExtranetB2bConsumersIdPrefixesPutRequest(v1ExtranetB2bConsumersIdPrefixesPutRequest V1ExtranetB2bConsumersIdPrefixesPutRequest) ApiV1ExtranetB2bConsumersIdPrefixesPutRequest {
+	r.v1ExtranetB2bConsumersIdPrefixesPutRequest = &v1ExtranetB2bConsumersIdPrefixesPutRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bConsumersIdPrefixesPutRequest) Execute() (*V1ExtranetB2bConsumersIdPrefixesPutResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bConsumersIdPrefixesPutExecute(r)
+}
+
+/*
+V1ExtranetB2bConsumersIdPrefixesPut Method for V1ExtranetB2bConsumersIdPrefixesPut
+
+Update extranet service consumer prefix NAT (peering preset)
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Consumer subscription id
+ @return ApiV1ExtranetB2bConsumersIdPrefixesPutRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bConsumersIdPrefixesPut(ctx context.Context, id int64) ApiV1ExtranetB2bConsumersIdPrefixesPutRequest {
+	return ApiV1ExtranetB2bConsumersIdPrefixesPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bConsumersIdPrefixesPutResponse
+func (a *DefaultAPIService) V1ExtranetB2bConsumersIdPrefixesPutExecute(r ApiV1ExtranetB2bConsumersIdPrefixesPutRequest) (*V1ExtranetB2bConsumersIdPrefixesPutResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bConsumersIdPrefixesPutResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bConsumersIdPrefixesPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/consumers/{id}/prefixes"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bConsumersIdPrefixesPutRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bConsumersIdPrefixesPutRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bConsumersIdPrefixesPutRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bConsumersIdPutRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+	v1ExtranetB2bConsumersIdPutRequest *V1ExtranetB2bConsumersIdPutRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bConsumersIdPutRequest) Authorization(authorization string) ApiV1ExtranetB2bConsumersIdPutRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bConsumersIdPutRequest) V1ExtranetB2bConsumersIdPutRequest(v1ExtranetB2bConsumersIdPutRequest V1ExtranetB2bConsumersIdPutRequest) ApiV1ExtranetB2bConsumersIdPutRequest {
+	r.v1ExtranetB2bConsumersIdPutRequest = &v1ExtranetB2bConsumersIdPutRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bConsumersIdPutRequest) Execute() (*V1ExtranetB2bConsumersIdPutResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bConsumersIdPutExecute(r)
+}
+
+/*
+V1ExtranetB2bConsumersIdPut Method for V1ExtranetB2bConsumersIdPut
+
+Update extranet service consumer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Consumer subscription id
+ @return ApiV1ExtranetB2bConsumersIdPutRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bConsumersIdPut(ctx context.Context, id int64) ApiV1ExtranetB2bConsumersIdPutRequest {
+	return ApiV1ExtranetB2bConsumersIdPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bConsumersIdPutResponse
+func (a *DefaultAPIService) V1ExtranetB2bConsumersIdPutExecute(r ApiV1ExtranetB2bConsumersIdPutRequest) (*V1ExtranetB2bConsumersIdPutResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bConsumersIdPutResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bConsumersIdPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/consumers/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bConsumersIdPutRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bConsumersIdPutRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bConsumersIdPutRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bCustomersIdDeleteRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bCustomersIdDeleteRequest) Authorization(authorization string) ApiV1ExtranetB2bCustomersIdDeleteRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bCustomersIdDeleteRequest) Execute() (*V1ExtranetB2bCustomersIdDeleteResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bCustomersIdDeleteExecute(r)
+}
+
+/*
+V1ExtranetB2bCustomersIdDelete Method for V1ExtranetB2bCustomersIdDelete
+
+Delete an extranet service customer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id 
+ @return ApiV1ExtranetB2bCustomersIdDeleteRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bCustomersIdDelete(ctx context.Context, id int64) ApiV1ExtranetB2bCustomersIdDeleteRequest {
+	return ApiV1ExtranetB2bCustomersIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bCustomersIdDeleteResponse
+func (a *DefaultAPIService) V1ExtranetB2bCustomersIdDeleteExecute(r ApiV1ExtranetB2bCustomersIdDeleteRequest) (*V1ExtranetB2bCustomersIdDeleteResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bCustomersIdDeleteResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bCustomersIdDelete")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/customers/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bCustomersIdDetailsGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bCustomersIdDetailsGetRequest) Authorization(authorization string) ApiV1ExtranetB2bCustomersIdDetailsGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bCustomersIdDetailsGetRequest) Execute() (*V1ExtranetB2bCustomersIdDetailsGetResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bCustomersIdDetailsGetExecute(r)
+}
+
+/*
+V1ExtranetB2bCustomersIdDetailsGet Method for V1ExtranetB2bCustomersIdDetailsGet
+
+Get an extranet service customer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id 
+ @return ApiV1ExtranetB2bCustomersIdDetailsGetRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bCustomersIdDetailsGet(ctx context.Context, id int64) ApiV1ExtranetB2bCustomersIdDetailsGetRequest {
+	return ApiV1ExtranetB2bCustomersIdDetailsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bCustomersIdDetailsGetResponse
+func (a *DefaultAPIService) V1ExtranetB2bCustomersIdDetailsGetExecute(r ApiV1ExtranetB2bCustomersIdDetailsGetRequest) (*V1ExtranetB2bCustomersIdDetailsGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bCustomersIdDetailsGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bCustomersIdDetailsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/customers/{id}/details"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bCustomersIdMatchesSummaryGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bCustomersIdMatchesSummaryGetRequest) Authorization(authorization string) ApiV1ExtranetB2bCustomersIdMatchesSummaryGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bCustomersIdMatchesSummaryGetRequest) Execute() (*V1ExtranetB2bCustomersIdMatchesSummaryGetResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bCustomersIdMatchesSummaryGetExecute(r)
+}
+
+/*
+V1ExtranetB2bCustomersIdMatchesSummaryGet Method for V1ExtranetB2bCustomersIdMatchesSummaryGet
+
+Get matched services summary for a customer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Customer id
+ @return ApiV1ExtranetB2bCustomersIdMatchesSummaryGetRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bCustomersIdMatchesSummaryGet(ctx context.Context, id int64) ApiV1ExtranetB2bCustomersIdMatchesSummaryGetRequest {
+	return ApiV1ExtranetB2bCustomersIdMatchesSummaryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bCustomersIdMatchesSummaryGetResponse
+func (a *DefaultAPIService) V1ExtranetB2bCustomersIdMatchesSummaryGetExecute(r ApiV1ExtranetB2bCustomersIdMatchesSummaryGetRequest) (*V1ExtranetB2bCustomersIdMatchesSummaryGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bCustomersIdMatchesSummaryGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bCustomersIdMatchesSummaryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/customers/{id}/matches/summary"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bCustomersIdPutRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+	v1ExtranetB2bCustomersIdPutRequest *V1ExtranetB2bCustomersIdPutRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bCustomersIdPutRequest) Authorization(authorization string) ApiV1ExtranetB2bCustomersIdPutRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bCustomersIdPutRequest) V1ExtranetB2bCustomersIdPutRequest(v1ExtranetB2bCustomersIdPutRequest V1ExtranetB2bCustomersIdPutRequest) ApiV1ExtranetB2bCustomersIdPutRequest {
+	r.v1ExtranetB2bCustomersIdPutRequest = &v1ExtranetB2bCustomersIdPutRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bCustomersIdPutRequest) Execute() (*V1ExtranetB2bCustomersIdPutResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bCustomersIdPutExecute(r)
+}
+
+/*
+V1ExtranetB2bCustomersIdPut Method for V1ExtranetB2bCustomersIdPut
+
+Update an extranet service customer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id 
+ @return ApiV1ExtranetB2bCustomersIdPutRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bCustomersIdPut(ctx context.Context, id int64) ApiV1ExtranetB2bCustomersIdPutRequest {
+	return ApiV1ExtranetB2bCustomersIdPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bCustomersIdPutResponse
+func (a *DefaultAPIService) V1ExtranetB2bCustomersIdPutExecute(r ApiV1ExtranetB2bCustomersIdPutRequest) (*V1ExtranetB2bCustomersIdPutResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bCustomersIdPutResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bCustomersIdPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/customers/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bCustomersIdPutRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bCustomersIdPutRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bCustomersIdPutRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bCustomersIdRetryPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+	body *map[string]interface{}
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bCustomersIdRetryPostRequest) Authorization(authorization string) ApiV1ExtranetB2bCustomersIdRetryPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bCustomersIdRetryPostRequest) Body(body map[string]interface{}) ApiV1ExtranetB2bCustomersIdRetryPostRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiV1ExtranetB2bCustomersIdRetryPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bCustomersIdRetryPostExecute(r)
+}
+
+/*
+V1ExtranetB2bCustomersIdRetryPost Method for V1ExtranetB2bCustomersIdRetryPost
+
+Retry extranet service customer invite
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id 
+ @return ApiV1ExtranetB2bCustomersIdRetryPostRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bCustomersIdRetryPost(ctx context.Context, id int64) ApiV1ExtranetB2bCustomersIdRetryPostRequest {
+	return ApiV1ExtranetB2bCustomersIdRetryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *DefaultAPIService) V1ExtranetB2bCustomersIdRetryPostExecute(r ApiV1ExtranetB2bCustomersIdRetryPostRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bCustomersIdRetryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/customers/{id}/retry"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bCustomersPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v1ExtranetB2bCustomersPostRequest *V1ExtranetB2bCustomersPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bCustomersPostRequest) Authorization(authorization string) ApiV1ExtranetB2bCustomersPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bCustomersPostRequest) V1ExtranetB2bCustomersPostRequest(v1ExtranetB2bCustomersPostRequest V1ExtranetB2bCustomersPostRequest) ApiV1ExtranetB2bCustomersPostRequest {
+	r.v1ExtranetB2bCustomersPostRequest = &v1ExtranetB2bCustomersPostRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bCustomersPostRequest) Execute() (*V1ExtranetB2bCustomersPostResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bCustomersPostExecute(r)
+}
+
+/*
+V1ExtranetB2bCustomersPost Method for V1ExtranetB2bCustomersPost
+
+Create an extranet service customer (partner directory entry)
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1ExtranetB2bCustomersPostRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bCustomersPost(ctx context.Context) ApiV1ExtranetB2bCustomersPostRequest {
+	return ApiV1ExtranetB2bCustomersPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bCustomersPostResponse
+func (a *DefaultAPIService) V1ExtranetB2bCustomersPostExecute(r ApiV1ExtranetB2bCustomersPostRequest) (*V1ExtranetB2bCustomersPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bCustomersPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bCustomersPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/customers"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bCustomersPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bCustomersPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bCustomersPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bCustomersSummaryGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bCustomersSummaryGetRequest) Authorization(authorization string) ApiV1ExtranetB2bCustomersSummaryGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bCustomersSummaryGetRequest) Execute() (*V1ExtranetB2bCustomersSummaryGetResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bCustomersSummaryGetExecute(r)
+}
+
+/*
+V1ExtranetB2bCustomersSummaryGet Method for V1ExtranetB2bCustomersSummaryGet
+
+List extranet service customers for the enterprise
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1ExtranetB2bCustomersSummaryGetRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bCustomersSummaryGet(ctx context.Context) ApiV1ExtranetB2bCustomersSummaryGetRequest {
+	return ApiV1ExtranetB2bCustomersSummaryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bCustomersSummaryGetResponse
+func (a *DefaultAPIService) V1ExtranetB2bCustomersSummaryGetExecute(r ApiV1ExtranetB2bCustomersSummaryGetRequest) (*V1ExtranetB2bCustomersSummaryGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bCustomersSummaryGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bCustomersSummaryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/customers/summary"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bMatchesCustomersPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v1ExtranetB2bMatchesCustomersPostRequest *V1ExtranetB2bMatchesCustomersPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bMatchesCustomersPostRequest) Authorization(authorization string) ApiV1ExtranetB2bMatchesCustomersPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesCustomersPostRequest) V1ExtranetB2bMatchesCustomersPostRequest(v1ExtranetB2bMatchesCustomersPostRequest V1ExtranetB2bMatchesCustomersPostRequest) ApiV1ExtranetB2bMatchesCustomersPostRequest {
+	r.v1ExtranetB2bMatchesCustomersPostRequest = &v1ExtranetB2bMatchesCustomersPostRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesCustomersPostRequest) Execute() (*V1ExtranetB2bMatchesCustomersPostResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bMatchesCustomersPostExecute(r)
+}
+
+/*
+V1ExtranetB2bMatchesCustomersPost Method for V1ExtranetB2bMatchesCustomersPost
+
+Bulk subscribe customers to an extranet service
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1ExtranetB2bMatchesCustomersPostRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bMatchesCustomersPost(ctx context.Context) ApiV1ExtranetB2bMatchesCustomersPostRequest {
+	return ApiV1ExtranetB2bMatchesCustomersPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bMatchesCustomersPostResponse
+func (a *DefaultAPIService) V1ExtranetB2bMatchesCustomersPostExecute(r ApiV1ExtranetB2bMatchesCustomersPostRequest) (*V1ExtranetB2bMatchesCustomersPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bMatchesCustomersPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bMatchesCustomersPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/matches/customers"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bMatchesCustomersPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bMatchesCustomersPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bMatchesCustomersPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	matchId int64
+	v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest *V1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest) Authorization(authorization string) ApiV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest) V1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest(v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest V1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest) ApiV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest {
+	r.v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest = &v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest) Execute() (*V1ExtranetB2bMatchesMatchIdConsumerCheckPostResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bMatchesMatchIdConsumerCheckPostExecute(r)
+}
+
+/*
+V1ExtranetB2bMatchesMatchIdConsumerCheckPost Method for V1ExtranetB2bMatchesMatchIdConsumerCheckPost
+
+Check extranet service consumer configuration
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param matchId Match id (URL path :matchId)
+ @return ApiV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdConsumerCheckPost(ctx context.Context, matchId int64) ApiV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest {
+	return ApiV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		matchId: matchId,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bMatchesMatchIdConsumerCheckPostResponse
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdConsumerCheckPostExecute(r ApiV1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest) (*V1ExtranetB2bMatchesMatchIdConsumerCheckPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bMatchesMatchIdConsumerCheckPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bMatchesMatchIdConsumerCheckPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/matches/{matchId}/consumer/check"
+	localVarPath = strings.Replace(localVarPath, "{"+"matchId"+"}", url.PathEscape(parameterValueToString(r.matchId, "matchId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bMatchesMatchIdConsumerPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	matchId int64
+	v1ExtranetB2bMatchesMatchIdConsumerPostRequest *V1ExtranetB2bMatchesMatchIdConsumerPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bMatchesMatchIdConsumerPostRequest) Authorization(authorization string) ApiV1ExtranetB2bMatchesMatchIdConsumerPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesMatchIdConsumerPostRequest) V1ExtranetB2bMatchesMatchIdConsumerPostRequest(v1ExtranetB2bMatchesMatchIdConsumerPostRequest V1ExtranetB2bMatchesMatchIdConsumerPostRequest) ApiV1ExtranetB2bMatchesMatchIdConsumerPostRequest {
+	r.v1ExtranetB2bMatchesMatchIdConsumerPostRequest = &v1ExtranetB2bMatchesMatchIdConsumerPostRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesMatchIdConsumerPostRequest) Execute() (*V1ExtranetB2bMatchesMatchIdConsumerPostResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bMatchesMatchIdConsumerPostExecute(r)
+}
+
+/*
+V1ExtranetB2bMatchesMatchIdConsumerPost Method for V1ExtranetB2bMatchesMatchIdConsumerPost
+
+Consumer accepts an extranet service match
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param matchId Match id (URL path :matchId)
+ @return ApiV1ExtranetB2bMatchesMatchIdConsumerPostRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdConsumerPost(ctx context.Context, matchId int64) ApiV1ExtranetB2bMatchesMatchIdConsumerPostRequest {
+	return ApiV1ExtranetB2bMatchesMatchIdConsumerPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		matchId: matchId,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bMatchesMatchIdConsumerPostResponse
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdConsumerPostExecute(r ApiV1ExtranetB2bMatchesMatchIdConsumerPostRequest) (*V1ExtranetB2bMatchesMatchIdConsumerPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bMatchesMatchIdConsumerPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bMatchesMatchIdConsumerPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/matches/{matchId}/consumer"
+	localVarPath = strings.Replace(localVarPath, "{"+"matchId"+"}", url.PathEscape(parameterValueToString(r.matchId, "matchId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bMatchesMatchIdConsumerPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bMatchesMatchIdConsumerPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bMatchesMatchIdConsumerPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bMatchesMatchIdDeleteRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	matchId int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bMatchesMatchIdDeleteRequest) Authorization(authorization string) ApiV1ExtranetB2bMatchesMatchIdDeleteRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesMatchIdDeleteRequest) Execute() (*V1ExtranetB2bMatchesMatchIdDeleteResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bMatchesMatchIdDeleteExecute(r)
+}
+
+/*
+V1ExtranetB2bMatchesMatchIdDelete Method for V1ExtranetB2bMatchesMatchIdDelete
+
+Delete an extranet service match
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param matchId Match id (URL path :matchId)
+ @return ApiV1ExtranetB2bMatchesMatchIdDeleteRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdDelete(ctx context.Context, matchId int64) ApiV1ExtranetB2bMatchesMatchIdDeleteRequest {
+	return ApiV1ExtranetB2bMatchesMatchIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		matchId: matchId,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bMatchesMatchIdDeleteResponse
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdDeleteExecute(r ApiV1ExtranetB2bMatchesMatchIdDeleteRequest) (*V1ExtranetB2bMatchesMatchIdDeleteResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bMatchesMatchIdDeleteResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bMatchesMatchIdDelete")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/matches/{matchId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"matchId"+"}", url.PathEscape(parameterValueToString(r.matchId, "matchId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bMatchesMatchIdDetailsGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	matchId int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bMatchesMatchIdDetailsGetRequest) Authorization(authorization string) ApiV1ExtranetB2bMatchesMatchIdDetailsGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesMatchIdDetailsGetRequest) Execute() (*V1ExtranetB2bMatchesMatchIdDetailsGetResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bMatchesMatchIdDetailsGetExecute(r)
+}
+
+/*
+V1ExtranetB2bMatchesMatchIdDetailsGet Method for V1ExtranetB2bMatchesMatchIdDetailsGet
+
+Get match details for consumer accept flow
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param matchId 
+ @return ApiV1ExtranetB2bMatchesMatchIdDetailsGetRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdDetailsGet(ctx context.Context, matchId int64) ApiV1ExtranetB2bMatchesMatchIdDetailsGetRequest {
+	return ApiV1ExtranetB2bMatchesMatchIdDetailsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		matchId: matchId,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bMatchesMatchIdDetailsGetResponse
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdDetailsGetExecute(r ApiV1ExtranetB2bMatchesMatchIdDetailsGetRequest) (*V1ExtranetB2bMatchesMatchIdDetailsGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bMatchesMatchIdDetailsGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bMatchesMatchIdDetailsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/matches/{matchId}/details"
+	localVarPath = strings.Replace(localVarPath, "{"+"matchId"+"}", url.PathEscape(parameterValueToString(r.matchId, "matchId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bMatchesMatchIdGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	matchId int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bMatchesMatchIdGetRequest) Authorization(authorization string) ApiV1ExtranetB2bMatchesMatchIdGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesMatchIdGetRequest) Execute() (*V1ExtranetB2bMatchesMatchIdGetResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bMatchesMatchIdGetExecute(r)
+}
+
+/*
+V1ExtranetB2bMatchesMatchIdGet Method for V1ExtranetB2bMatchesMatchIdGet
+
+Get extranet service match details
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param matchId Match id (URL path :matchId)
+ @return ApiV1ExtranetB2bMatchesMatchIdGetRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdGet(ctx context.Context, matchId int64) ApiV1ExtranetB2bMatchesMatchIdGetRequest {
+	return ApiV1ExtranetB2bMatchesMatchIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		matchId: matchId,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bMatchesMatchIdGetResponse
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdGetExecute(r ApiV1ExtranetB2bMatchesMatchIdGetRequest) (*V1ExtranetB2bMatchesMatchIdGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bMatchesMatchIdGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bMatchesMatchIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/matches/{matchId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"matchId"+"}", url.PathEscape(parameterValueToString(r.matchId, "matchId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bMatchesMatchIdPutRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	matchId int64
+	v1ExtranetB2bMatchesMatchIdPutRequest *V1ExtranetB2bMatchesMatchIdPutRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bMatchesMatchIdPutRequest) Authorization(authorization string) ApiV1ExtranetB2bMatchesMatchIdPutRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesMatchIdPutRequest) V1ExtranetB2bMatchesMatchIdPutRequest(v1ExtranetB2bMatchesMatchIdPutRequest V1ExtranetB2bMatchesMatchIdPutRequest) ApiV1ExtranetB2bMatchesMatchIdPutRequest {
+	r.v1ExtranetB2bMatchesMatchIdPutRequest = &v1ExtranetB2bMatchesMatchIdPutRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesMatchIdPutRequest) Execute() (*V1ExtranetB2bMatchesMatchIdPutResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bMatchesMatchIdPutExecute(r)
+}
+
+/*
+V1ExtranetB2bMatchesMatchIdPut Method for V1ExtranetB2bMatchesMatchIdPut
+
+Update extranet service match
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param matchId Match id (URL path :matchId)
+ @return ApiV1ExtranetB2bMatchesMatchIdPutRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdPut(ctx context.Context, matchId int64) ApiV1ExtranetB2bMatchesMatchIdPutRequest {
+	return ApiV1ExtranetB2bMatchesMatchIdPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		matchId: matchId,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bMatchesMatchIdPutResponse
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdPutExecute(r ApiV1ExtranetB2bMatchesMatchIdPutRequest) (*V1ExtranetB2bMatchesMatchIdPutResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bMatchesMatchIdPutResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bMatchesMatchIdPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/matches/{matchId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"matchId"+"}", url.PathEscape(parameterValueToString(r.matchId, "matchId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bMatchesMatchIdPutRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bMatchesMatchIdPutRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bMatchesMatchIdPutRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bMatchesMatchIdStatusPutRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	matchId int64
+	v1ExtranetB2bMatchesMatchIdStatusPutRequest *V1ExtranetB2bMatchesMatchIdStatusPutRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bMatchesMatchIdStatusPutRequest) Authorization(authorization string) ApiV1ExtranetB2bMatchesMatchIdStatusPutRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesMatchIdStatusPutRequest) V1ExtranetB2bMatchesMatchIdStatusPutRequest(v1ExtranetB2bMatchesMatchIdStatusPutRequest V1ExtranetB2bMatchesMatchIdStatusPutRequest) ApiV1ExtranetB2bMatchesMatchIdStatusPutRequest {
+	r.v1ExtranetB2bMatchesMatchIdStatusPutRequest = &v1ExtranetB2bMatchesMatchIdStatusPutRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesMatchIdStatusPutRequest) Execute() (*V1ExtranetB2bMatchesMatchIdStatusPutResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bMatchesMatchIdStatusPutExecute(r)
+}
+
+/*
+V1ExtranetB2bMatchesMatchIdStatusPut Method for V1ExtranetB2bMatchesMatchIdStatusPut
+
+Pause or resume an extranet service match
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param matchId 
+ @return ApiV1ExtranetB2bMatchesMatchIdStatusPutRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdStatusPut(ctx context.Context, matchId int64) ApiV1ExtranetB2bMatchesMatchIdStatusPutRequest {
+	return ApiV1ExtranetB2bMatchesMatchIdStatusPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		matchId: matchId,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bMatchesMatchIdStatusPutResponse
+func (a *DefaultAPIService) V1ExtranetB2bMatchesMatchIdStatusPutExecute(r ApiV1ExtranetB2bMatchesMatchIdStatusPutRequest) (*V1ExtranetB2bMatchesMatchIdStatusPutResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bMatchesMatchIdStatusPutResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bMatchesMatchIdStatusPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/matches/{matchId}/status"
+	localVarPath = strings.Replace(localVarPath, "{"+"matchId"+"}", url.PathEscape(parameterValueToString(r.matchId, "matchId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bMatchesMatchIdStatusPutRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bMatchesMatchIdStatusPutRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bMatchesMatchIdStatusPutRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bMatchesPausePutRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v1ExtranetB2bMatchesPausePutRequest *V1ExtranetB2bMatchesPausePutRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bMatchesPausePutRequest) Authorization(authorization string) ApiV1ExtranetB2bMatchesPausePutRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesPausePutRequest) V1ExtranetB2bMatchesPausePutRequest(v1ExtranetB2bMatchesPausePutRequest V1ExtranetB2bMatchesPausePutRequest) ApiV1ExtranetB2bMatchesPausePutRequest {
+	r.v1ExtranetB2bMatchesPausePutRequest = &v1ExtranetB2bMatchesPausePutRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesPausePutRequest) Execute() (*V1ExtranetB2bMatchesPausePutResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bMatchesPausePutExecute(r)
+}
+
+/*
+V1ExtranetB2bMatchesPausePut Method for V1ExtranetB2bMatchesPausePut
+
+Pause extranet service matches via customer summary
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1ExtranetB2bMatchesPausePutRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bMatchesPausePut(ctx context.Context) ApiV1ExtranetB2bMatchesPausePutRequest {
+	return ApiV1ExtranetB2bMatchesPausePutRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bMatchesPausePutResponse
+func (a *DefaultAPIService) V1ExtranetB2bMatchesPausePutExecute(r ApiV1ExtranetB2bMatchesPausePutRequest) (*V1ExtranetB2bMatchesPausePutResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bMatchesPausePutResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bMatchesPausePut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/matches/pause"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bMatchesPausePutRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bMatchesPausePutRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bMatchesPausePutRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bMatchesPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v1ExtranetB2bMatchesPostRequest *V1ExtranetB2bMatchesPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bMatchesPostRequest) Authorization(authorization string) ApiV1ExtranetB2bMatchesPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesPostRequest) V1ExtranetB2bMatchesPostRequest(v1ExtranetB2bMatchesPostRequest V1ExtranetB2bMatchesPostRequest) ApiV1ExtranetB2bMatchesPostRequest {
+	r.v1ExtranetB2bMatchesPostRequest = &v1ExtranetB2bMatchesPostRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesPostRequest) Execute() (*V1ExtranetB2bMatchesPostResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bMatchesPostExecute(r)
+}
+
+/*
+V1ExtranetB2bMatchesPost Method for V1ExtranetB2bMatchesPost
+
+Match an extranet service to a customer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1ExtranetB2bMatchesPostRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bMatchesPost(ctx context.Context) ApiV1ExtranetB2bMatchesPostRequest {
+	return ApiV1ExtranetB2bMatchesPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bMatchesPostResponse
+func (a *DefaultAPIService) V1ExtranetB2bMatchesPostExecute(r ApiV1ExtranetB2bMatchesPostRequest) (*V1ExtranetB2bMatchesPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bMatchesPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bMatchesPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/matches"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bMatchesPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bMatchesPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bMatchesPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bMatchesReviewPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v1ExtranetB2bMatchesReviewPostRequest *V1ExtranetB2bMatchesReviewPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bMatchesReviewPostRequest) Authorization(authorization string) ApiV1ExtranetB2bMatchesReviewPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesReviewPostRequest) V1ExtranetB2bMatchesReviewPostRequest(v1ExtranetB2bMatchesReviewPostRequest V1ExtranetB2bMatchesReviewPostRequest) ApiV1ExtranetB2bMatchesReviewPostRequest {
+	r.v1ExtranetB2bMatchesReviewPostRequest = &v1ExtranetB2bMatchesReviewPostRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bMatchesReviewPostRequest) Execute() (*V1ExtranetB2bMatchesReviewPostResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bMatchesReviewPostExecute(r)
+}
+
+/*
+V1ExtranetB2bMatchesReviewPost Method for V1ExtranetB2bMatchesReviewPost
+
+Review extranet service match
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1ExtranetB2bMatchesReviewPostRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bMatchesReviewPost(ctx context.Context) ApiV1ExtranetB2bMatchesReviewPostRequest {
+	return ApiV1ExtranetB2bMatchesReviewPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bMatchesReviewPostResponse
+func (a *DefaultAPIService) V1ExtranetB2bMatchesReviewPostExecute(r ApiV1ExtranetB2bMatchesReviewPostRequest) (*V1ExtranetB2bMatchesReviewPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bMatchesReviewPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bMatchesReviewPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/matches/review"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bMatchesReviewPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bMatchesReviewPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bMatchesReviewPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiV1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -24950,6 +28023,1190 @@ func (a *DefaultAPIService) V1ExtranetB2bMonitoringPeeringServiceServiceOvertime
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
 	// body params
 	localVarPostBody = r.v1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bProducerIdCustomersGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bProducerIdCustomersGetRequest) Authorization(authorization string) ApiV1ExtranetB2bProducerIdCustomersGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerIdCustomersGetRequest) Execute() (*V1ExtranetB2bProducerIdCustomersGetResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bProducerIdCustomersGetExecute(r)
+}
+
+/*
+V1ExtranetB2bProducerIdCustomersGet Method for V1ExtranetB2bProducerIdCustomersGet
+
+List customers matched to an extranet producer service
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Producer service id
+ @return ApiV1ExtranetB2bProducerIdCustomersGetRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdCustomersGet(ctx context.Context, id int64) ApiV1ExtranetB2bProducerIdCustomersGetRequest {
+	return ApiV1ExtranetB2bProducerIdCustomersGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bProducerIdCustomersGetResponse
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdCustomersGetExecute(r ApiV1ExtranetB2bProducerIdCustomersGetRequest) (*V1ExtranetB2bProducerIdCustomersGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bProducerIdCustomersGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bProducerIdCustomersGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/producer/{id}/customers"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bProducerIdDeleteRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bProducerIdDeleteRequest) Authorization(authorization string) ApiV1ExtranetB2bProducerIdDeleteRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bProducerIdDeleteExecute(r)
+}
+
+/*
+V1ExtranetB2bProducerIdDelete Method for V1ExtranetB2bProducerIdDelete
+
+Delete an inter-enterprise extranet service
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id 
+ @return ApiV1ExtranetB2bProducerIdDeleteRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdDelete(ctx context.Context, id int64) ApiV1ExtranetB2bProducerIdDeleteRequest {
+	return ApiV1ExtranetB2bProducerIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdDeleteExecute(r ApiV1ExtranetB2bProducerIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bProducerIdDelete")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/producer/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bProducerIdDeviceStatusGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bProducerIdDeviceStatusGetRequest) Authorization(authorization string) ApiV1ExtranetB2bProducerIdDeviceStatusGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerIdDeviceStatusGetRequest) Execute() (*V1ExtranetB2bProducerIdDeviceStatusGetResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bProducerIdDeviceStatusGetExecute(r)
+}
+
+/*
+V1ExtranetB2bProducerIdDeviceStatusGet Method for V1ExtranetB2bProducerIdDeviceStatusGet
+
+Get extranet producer device rollout status
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id 
+ @return ApiV1ExtranetB2bProducerIdDeviceStatusGetRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdDeviceStatusGet(ctx context.Context, id int64) ApiV1ExtranetB2bProducerIdDeviceStatusGetRequest {
+	return ApiV1ExtranetB2bProducerIdDeviceStatusGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bProducerIdDeviceStatusGetResponse
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdDeviceStatusGetExecute(r ApiV1ExtranetB2bProducerIdDeviceStatusGetRequest) (*V1ExtranetB2bProducerIdDeviceStatusGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bProducerIdDeviceStatusGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bProducerIdDeviceStatusGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/producer/{id}/device-status"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bProducerIdGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bProducerIdGetRequest) Authorization(authorization string) ApiV1ExtranetB2bProducerIdGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerIdGetRequest) Execute() (*V1ExtranetB2bProducerIdGetResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bProducerIdGetExecute(r)
+}
+
+/*
+V1ExtranetB2bProducerIdGet Method for V1ExtranetB2bProducerIdGet
+
+Get an inter-enterprise extranet service
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id 
+ @return ApiV1ExtranetB2bProducerIdGetRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdGet(ctx context.Context, id int64) ApiV1ExtranetB2bProducerIdGetRequest {
+	return ApiV1ExtranetB2bProducerIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bProducerIdGetResponse
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdGetExecute(r ApiV1ExtranetB2bProducerIdGetRequest) (*V1ExtranetB2bProducerIdGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bProducerIdGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bProducerIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/producer/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bProducerIdPutRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+	v1ExtranetB2bProducerIdPutRequest *V1ExtranetB2bProducerIdPutRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bProducerIdPutRequest) Authorization(authorization string) ApiV1ExtranetB2bProducerIdPutRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerIdPutRequest) V1ExtranetB2bProducerIdPutRequest(v1ExtranetB2bProducerIdPutRequest V1ExtranetB2bProducerIdPutRequest) ApiV1ExtranetB2bProducerIdPutRequest {
+	r.v1ExtranetB2bProducerIdPutRequest = &v1ExtranetB2bProducerIdPutRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerIdPutRequest) Execute() (*V1ExtranetB2bProducerIdPutResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bProducerIdPutExecute(r)
+}
+
+/*
+V1ExtranetB2bProducerIdPut Method for V1ExtranetB2bProducerIdPut
+
+Update an inter-enterprise extranet service
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id 
+ @return ApiV1ExtranetB2bProducerIdPutRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdPut(ctx context.Context, id int64) ApiV1ExtranetB2bProducerIdPutRequest {
+	return ApiV1ExtranetB2bProducerIdPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bProducerIdPutResponse
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdPutExecute(r ApiV1ExtranetB2bProducerIdPutRequest) (*V1ExtranetB2bProducerIdPutResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bProducerIdPutResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bProducerIdPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/producer/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bProducerIdPutRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bProducerIdPutRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bProducerIdPutRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bProducerIdStatusPutRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	id int64
+	v1ExtranetB2bProducerIdStatusPutRequest *V1ExtranetB2bProducerIdStatusPutRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bProducerIdStatusPutRequest) Authorization(authorization string) ApiV1ExtranetB2bProducerIdStatusPutRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerIdStatusPutRequest) V1ExtranetB2bProducerIdStatusPutRequest(v1ExtranetB2bProducerIdStatusPutRequest V1ExtranetB2bProducerIdStatusPutRequest) ApiV1ExtranetB2bProducerIdStatusPutRequest {
+	r.v1ExtranetB2bProducerIdStatusPutRequest = &v1ExtranetB2bProducerIdStatusPutRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerIdStatusPutRequest) Execute() (*V1ExtranetB2bProducerIdStatusPutResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bProducerIdStatusPutExecute(r)
+}
+
+/*
+V1ExtranetB2bProducerIdStatusPut Method for V1ExtranetB2bProducerIdStatusPut
+
+Pause or resume an inter-enterprise extranet service
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id 
+ @return ApiV1ExtranetB2bProducerIdStatusPutRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdStatusPut(ctx context.Context, id int64) ApiV1ExtranetB2bProducerIdStatusPutRequest {
+	return ApiV1ExtranetB2bProducerIdStatusPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bProducerIdStatusPutResponse
+func (a *DefaultAPIService) V1ExtranetB2bProducerIdStatusPutExecute(r ApiV1ExtranetB2bProducerIdStatusPutRequest) (*V1ExtranetB2bProducerIdStatusPutResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bProducerIdStatusPutResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bProducerIdStatusPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/producer/{id}/status"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bProducerIdStatusPutRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bProducerIdStatusPutRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bProducerIdStatusPutRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bProducerPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v1ExtranetB2bProducerPostRequest *V1ExtranetB2bProducerPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bProducerPostRequest) Authorization(authorization string) ApiV1ExtranetB2bProducerPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerPostRequest) V1ExtranetB2bProducerPostRequest(v1ExtranetB2bProducerPostRequest V1ExtranetB2bProducerPostRequest) ApiV1ExtranetB2bProducerPostRequest {
+	r.v1ExtranetB2bProducerPostRequest = &v1ExtranetB2bProducerPostRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerPostRequest) Execute() (*V1ExtranetB2bProducerPostResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bProducerPostExecute(r)
+}
+
+/*
+V1ExtranetB2bProducerPost Method for V1ExtranetB2bProducerPost
+
+Create an inter-enterprise extranet service (peering, client-to-server, …)
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1ExtranetB2bProducerPostRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bProducerPost(ctx context.Context) ApiV1ExtranetB2bProducerPostRequest {
+	return ApiV1ExtranetB2bProducerPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bProducerPostResponse
+func (a *DefaultAPIService) V1ExtranetB2bProducerPostExecute(r ApiV1ExtranetB2bProducerPostRequest) (*V1ExtranetB2bProducerPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bProducerPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bProducerPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/producer"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bProducerPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bProducerPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bProducerPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bProducerReviewPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v1ExtranetB2bProducerReviewPostRequest *V1ExtranetB2bProducerReviewPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bProducerReviewPostRequest) Authorization(authorization string) ApiV1ExtranetB2bProducerReviewPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerReviewPostRequest) V1ExtranetB2bProducerReviewPostRequest(v1ExtranetB2bProducerReviewPostRequest V1ExtranetB2bProducerReviewPostRequest) ApiV1ExtranetB2bProducerReviewPostRequest {
+	r.v1ExtranetB2bProducerReviewPostRequest = &v1ExtranetB2bProducerReviewPostRequest
+	return r
+}
+
+func (r ApiV1ExtranetB2bProducerReviewPostRequest) Execute() (*V1ExtranetB2bProducerReviewPostResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bProducerReviewPostExecute(r)
+}
+
+/*
+V1ExtranetB2bProducerReviewPost Method for V1ExtranetB2bProducerReviewPost
+
+Review inter-enterprise extranet service configuration
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1ExtranetB2bProducerReviewPostRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bProducerReviewPost(ctx context.Context) ApiV1ExtranetB2bProducerReviewPostRequest {
+	return ApiV1ExtranetB2bProducerReviewPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bProducerReviewPostResponse
+func (a *DefaultAPIService) V1ExtranetB2bProducerReviewPostExecute(r ApiV1ExtranetB2bProducerReviewPostRequest) (*V1ExtranetB2bProducerReviewPostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bProducerReviewPostResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bProducerReviewPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/producer/review"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1ExtranetB2bProducerReviewPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v1ExtranetB2bProducerReviewPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1ExtranetB2bProducerReviewPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1ExtranetB2bServicesSummaryGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1ExtranetB2bServicesSummaryGetRequest) Authorization(authorization string) ApiV1ExtranetB2bServicesSummaryGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1ExtranetB2bServicesSummaryGetRequest) Execute() (*V1ExtranetB2bServicesSummaryGetResponse, *http.Response, error) {
+	return r.ApiService.V1ExtranetB2bServicesSummaryGetExecute(r)
+}
+
+/*
+V1ExtranetB2bServicesSummaryGet Method for V1ExtranetB2bServicesSummaryGet
+
+List inter-enterprise extranet services
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1ExtranetB2bServicesSummaryGetRequest
+*/
+func (a *DefaultAPIService) V1ExtranetB2bServicesSummaryGet(ctx context.Context) ApiV1ExtranetB2bServicesSummaryGetRequest {
+	return ApiV1ExtranetB2bServicesSummaryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1ExtranetB2bServicesSummaryGetResponse
+func (a *DefaultAPIService) V1ExtranetB2bServicesSummaryGetExecute(r ApiV1ExtranetB2bServicesSummaryGetRequest) (*V1ExtranetB2bServicesSummaryGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1ExtranetB2bServicesSummaryGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1ExtranetB2bServicesSummaryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/extranet/b2b/services/summary"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -36584,11 +40841,18 @@ type ApiV1GlobalLanSegmentsGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	authorization *string
+	filterExtranetProducers *bool
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
 func (r ApiV1GlobalLanSegmentsGetRequest) Authorization(authorization string) ApiV1GlobalLanSegmentsGetRequest {
 	r.authorization = &authorization
+	return r
+}
+
+// 
+func (r ApiV1GlobalLanSegmentsGetRequest) FilterExtranetProducers(filterExtranetProducers bool) ApiV1GlobalLanSegmentsGetRequest {
+	r.filterExtranetProducers = &filterExtranetProducers
 	return r
 }
 
@@ -36635,6 +40899,9 @@ func (a *DefaultAPIService) V1GlobalLanSegmentsGetExecute(r ApiV1GlobalLanSegmen
 		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
 	}
 
+	if r.filterExtranetProducers != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filterExtranetProducers", r.filterExtranetProducers, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

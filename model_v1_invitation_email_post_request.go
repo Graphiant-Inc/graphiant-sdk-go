@@ -32,6 +32,8 @@ type V1InvitationEmailPostRequest struct {
 	ServiceId int64 `json:"serviceId"`
 	//  (required)
 	ServiceName string `json:"serviceName"`
+	// Extranet service type URL segment (e.g. peering_service, client_to_server)
+	ServiceType *string `json:"serviceType,omitempty"`
 }
 
 type _V1InvitationEmailPostRequest V1InvitationEmailPostRequest
@@ -249,6 +251,38 @@ func (o *V1InvitationEmailPostRequest) SetServiceName(v string) {
 	o.ServiceName = v
 }
 
+// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+func (o *V1InvitationEmailPostRequest) GetServiceType() string {
+	if o == nil || IsNil(o.ServiceType) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceType
+}
+
+// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1InvitationEmailPostRequest) GetServiceTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceType) {
+		return nil, false
+	}
+	return o.ServiceType, true
+}
+
+// HasServiceType returns a boolean if a field has been set.
+func (o *V1InvitationEmailPostRequest) HasServiceType() bool {
+	if o != nil && !IsNil(o.ServiceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceType gets a reference to the given string and assigns it to the ServiceType field.
+func (o *V1InvitationEmailPostRequest) SetServiceType(v string) {
+	o.ServiceType = &v
+}
+
 func (o V1InvitationEmailPostRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -272,6 +306,9 @@ func (o V1InvitationEmailPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["matchId"] = o.MatchId
 	toSerialize["serviceId"] = o.ServiceId
 	toSerialize["serviceName"] = o.ServiceName
+	if !IsNil(o.ServiceType) {
+		toSerialize["serviceType"] = o.ServiceType
+	}
 	return toSerialize, nil
 }
 

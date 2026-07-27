@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DataSent** | Pointer to **float64** | data sent by the user (required) | [optional] 
+**DataSent** | Pointer to **float64** | tokens sent by the user (required) | [optional] 
 **Managed** | Pointer to **bool** | whether the user is managed (required) | [optional] 
 **SessionsDay** | Pointer to **float64** | daily sessions for the user (required) | [optional] 
+**TokensUsage** | Pointer to **float64** | token usage (required) | [optional] 
+**TokensUsageDays** | Pointer to **float64** | token usage per day (required) | [optional] 
 **User** | Pointer to **string** | user identifier (required) | [optional] 
 **Vrf** | Pointer to **string** | VRF associated with the user (required) | [optional] 
 
@@ -103,6 +105,56 @@ SetSessionsDay sets SessionsDay field to given value.
 `func (o *AssuranceUserDefinition) HasSessionsDay() bool`
 
 HasSessionsDay returns a boolean if a field has been set.
+
+### GetTokensUsage
+
+`func (o *AssuranceUserDefinition) GetTokensUsage() float64`
+
+GetTokensUsage returns the TokensUsage field if non-nil, zero value otherwise.
+
+### GetTokensUsageOk
+
+`func (o *AssuranceUserDefinition) GetTokensUsageOk() (*float64, bool)`
+
+GetTokensUsageOk returns a tuple with the TokensUsage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokensUsage
+
+`func (o *AssuranceUserDefinition) SetTokensUsage(v float64)`
+
+SetTokensUsage sets TokensUsage field to given value.
+
+### HasTokensUsage
+
+`func (o *AssuranceUserDefinition) HasTokensUsage() bool`
+
+HasTokensUsage returns a boolean if a field has been set.
+
+### GetTokensUsageDays
+
+`func (o *AssuranceUserDefinition) GetTokensUsageDays() float64`
+
+GetTokensUsageDays returns the TokensUsageDays field if non-nil, zero value otherwise.
+
+### GetTokensUsageDaysOk
+
+`func (o *AssuranceUserDefinition) GetTokensUsageDaysOk() (*float64, bool)`
+
+GetTokensUsageDaysOk returns a tuple with the TokensUsageDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokensUsageDays
+
+`func (o *AssuranceUserDefinition) SetTokensUsageDays(v float64)`
+
+SetTokensUsageDays sets TokensUsageDays field to given value.
+
+### HasTokensUsageDays
+
+`func (o *AssuranceUserDefinition) HasTokensUsageDays() bool`
+
+HasTokensUsageDays returns a boolean if a field has been set.
 
 ### GetUser
 

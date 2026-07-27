@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | name of the metric | [optional] 
 **Percent** | Pointer to **float64** | AI adoption percent for the metric | [optional] 
 **Tag** | Pointer to **string** | AI adoption tag for the metric | [optional] 
+**TokenUsage** | Pointer to **float64** | AI adoption token usage value | [optional] 
 **Value** | Pointer to **float64** | metric value (required) | [optional] 
 
 ## Methods
@@ -128,6 +129,31 @@ SetTag sets Tag field to given value.
 `func (o *AssuranceKpiMetric) HasTag() bool`
 
 HasTag returns a boolean if a field has been set.
+
+### GetTokenUsage
+
+`func (o *AssuranceKpiMetric) GetTokenUsage() float64`
+
+GetTokenUsage returns the TokenUsage field if non-nil, zero value otherwise.
+
+### GetTokenUsageOk
+
+`func (o *AssuranceKpiMetric) GetTokenUsageOk() (*float64, bool)`
+
+GetTokenUsageOk returns a tuple with the TokenUsage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenUsage
+
+`func (o *AssuranceKpiMetric) SetTokenUsage(v float64)`
+
+SetTokenUsage sets TokenUsage field to given value.
+
+### HasTokenUsage
+
+`func (o *AssuranceKpiMetric) HasTokenUsage() bool`
+
+HasTokenUsage returns a boolean if a field has been set.
 
 ### GetValue
 

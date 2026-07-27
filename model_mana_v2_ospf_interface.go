@@ -19,6 +19,7 @@ var _ MappedNullable = &ManaV2OspfInterface{}
 
 // ManaV2OspfInterface struct for ManaV2OspfInterface
 type ManaV2OspfInterface struct {
+	Authentication *ManaV2OspfAuthentication `json:"authentication,omitempty"`
 	Bfd *ManaV2BfdInstance `json:"bfd,omitempty"`
 	BfdNeighbors []ManaV2BfdNeighbor `json:"bfdNeighbors,omitempty"`
 	Cost *int32 `json:"cost,omitempty"`
@@ -53,6 +54,38 @@ func NewManaV2OspfInterface() *ManaV2OspfInterface {
 func NewManaV2OspfInterfaceWithDefaults() *ManaV2OspfInterface {
 	this := ManaV2OspfInterface{}
 	return &this
+}
+
+// GetAuthentication returns the Authentication field value if set, zero value otherwise.
+func (o *ManaV2OspfInterface) GetAuthentication() ManaV2OspfAuthentication {
+	if o == nil || IsNil(o.Authentication) {
+		var ret ManaV2OspfAuthentication
+		return ret
+	}
+	return *o.Authentication
+}
+
+// GetAuthenticationOk returns a tuple with the Authentication field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2OspfInterface) GetAuthenticationOk() (*ManaV2OspfAuthentication, bool) {
+	if o == nil || IsNil(o.Authentication) {
+		return nil, false
+	}
+	return o.Authentication, true
+}
+
+// HasAuthentication returns a boolean if a field has been set.
+func (o *ManaV2OspfInterface) HasAuthentication() bool {
+	if o != nil && !IsNil(o.Authentication) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthentication gets a reference to the given ManaV2OspfAuthentication and assigns it to the Authentication field.
+func (o *ManaV2OspfInterface) SetAuthentication(v ManaV2OspfAuthentication) {
+	o.Authentication = &v
 }
 
 // GetBfd returns the Bfd field value if set, zero value otherwise.
@@ -609,6 +642,9 @@ func (o ManaV2OspfInterface) MarshalJSON() ([]byte, error) {
 
 func (o ManaV2OspfInterface) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Authentication) {
+		toSerialize["authentication"] = o.Authentication
+	}
 	if !IsNil(o.Bfd) {
 		toSerialize["bfd"] = o.Bfd
 	}

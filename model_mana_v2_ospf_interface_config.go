@@ -19,6 +19,7 @@ var _ MappedNullable = &ManaV2OspfInterfaceConfig{}
 
 // ManaV2OspfInterfaceConfig struct for ManaV2OspfInterfaceConfig
 type ManaV2OspfInterfaceConfig struct {
+	Authentication *ManaV2NullableOspfAuthenticationConfig `json:"authentication,omitempty"`
 	Bfd *ManaV2NullableBfdInstanceConfig `json:"bfd,omitempty"`
 	Cost *int32 `json:"cost,omitempty"`
 	DeadIntervalValue *ManaV2NullableOspfDeadIntervalValue `json:"deadIntervalValue,omitempty"`
@@ -47,6 +48,38 @@ func NewManaV2OspfInterfaceConfig() *ManaV2OspfInterfaceConfig {
 func NewManaV2OspfInterfaceConfigWithDefaults() *ManaV2OspfInterfaceConfig {
 	this := ManaV2OspfInterfaceConfig{}
 	return &this
+}
+
+// GetAuthentication returns the Authentication field value if set, zero value otherwise.
+func (o *ManaV2OspfInterfaceConfig) GetAuthentication() ManaV2NullableOspfAuthenticationConfig {
+	if o == nil || IsNil(o.Authentication) {
+		var ret ManaV2NullableOspfAuthenticationConfig
+		return ret
+	}
+	return *o.Authentication
+}
+
+// GetAuthenticationOk returns a tuple with the Authentication field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2OspfInterfaceConfig) GetAuthenticationOk() (*ManaV2NullableOspfAuthenticationConfig, bool) {
+	if o == nil || IsNil(o.Authentication) {
+		return nil, false
+	}
+	return o.Authentication, true
+}
+
+// HasAuthentication returns a boolean if a field has been set.
+func (o *ManaV2OspfInterfaceConfig) HasAuthentication() bool {
+	if o != nil && !IsNil(o.Authentication) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthentication gets a reference to the given ManaV2NullableOspfAuthenticationConfig and assigns it to the Authentication field.
+func (o *ManaV2OspfInterfaceConfig) SetAuthentication(v ManaV2NullableOspfAuthenticationConfig) {
+	o.Authentication = &v
 }
 
 // GetBfd returns the Bfd field value if set, zero value otherwise.
@@ -411,6 +444,9 @@ func (o ManaV2OspfInterfaceConfig) MarshalJSON() ([]byte, error) {
 
 func (o ManaV2OspfInterfaceConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Authentication) {
+		toSerialize["authentication"] = o.Authentication
+	}
 	if !IsNil(o.Bfd) {
 		toSerialize["bfd"] = o.Bfd
 	}

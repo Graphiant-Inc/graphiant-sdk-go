@@ -19,12 +19,16 @@ var _ MappedNullable = &AssuranceUserDefinition{}
 
 // AssuranceUserDefinition struct for AssuranceUserDefinition
 type AssuranceUserDefinition struct {
-	// data sent by the user (required)
+	// tokens sent by the user (required)
 	DataSent *float64 `json:"dataSent,omitempty"`
 	// whether the user is managed (required)
 	Managed *bool `json:"managed,omitempty"`
 	// daily sessions for the user (required)
 	SessionsDay *float64 `json:"sessionsDay,omitempty"`
+	// token usage (required)
+	TokensUsage *float64 `json:"tokensUsage,omitempty"`
+	// token usage per day (required)
+	TokensUsageDays *float64 `json:"tokensUsageDays,omitempty"`
 	// user identifier (required)
 	User *string `json:"user,omitempty"`
 	// VRF associated with the user (required)
@@ -144,6 +148,70 @@ func (o *AssuranceUserDefinition) SetSessionsDay(v float64) {
 	o.SessionsDay = &v
 }
 
+// GetTokensUsage returns the TokensUsage field value if set, zero value otherwise.
+func (o *AssuranceUserDefinition) GetTokensUsage() float64 {
+	if o == nil || IsNil(o.TokensUsage) {
+		var ret float64
+		return ret
+	}
+	return *o.TokensUsage
+}
+
+// GetTokensUsageOk returns a tuple with the TokensUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceUserDefinition) GetTokensUsageOk() (*float64, bool) {
+	if o == nil || IsNil(o.TokensUsage) {
+		return nil, false
+	}
+	return o.TokensUsage, true
+}
+
+// HasTokensUsage returns a boolean if a field has been set.
+func (o *AssuranceUserDefinition) HasTokensUsage() bool {
+	if o != nil && !IsNil(o.TokensUsage) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokensUsage gets a reference to the given float64 and assigns it to the TokensUsage field.
+func (o *AssuranceUserDefinition) SetTokensUsage(v float64) {
+	o.TokensUsage = &v
+}
+
+// GetTokensUsageDays returns the TokensUsageDays field value if set, zero value otherwise.
+func (o *AssuranceUserDefinition) GetTokensUsageDays() float64 {
+	if o == nil || IsNil(o.TokensUsageDays) {
+		var ret float64
+		return ret
+	}
+	return *o.TokensUsageDays
+}
+
+// GetTokensUsageDaysOk returns a tuple with the TokensUsageDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceUserDefinition) GetTokensUsageDaysOk() (*float64, bool) {
+	if o == nil || IsNil(o.TokensUsageDays) {
+		return nil, false
+	}
+	return o.TokensUsageDays, true
+}
+
+// HasTokensUsageDays returns a boolean if a field has been set.
+func (o *AssuranceUserDefinition) HasTokensUsageDays() bool {
+	if o != nil && !IsNil(o.TokensUsageDays) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokensUsageDays gets a reference to the given float64 and assigns it to the TokensUsageDays field.
+func (o *AssuranceUserDefinition) SetTokensUsageDays(v float64) {
+	o.TokensUsageDays = &v
+}
+
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *AssuranceUserDefinition) GetUser() string {
 	if o == nil || IsNil(o.User) {
@@ -226,6 +294,12 @@ func (o AssuranceUserDefinition) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SessionsDay) {
 		toSerialize["sessionsDay"] = o.SessionsDay
+	}
+	if !IsNil(o.TokensUsage) {
+		toSerialize["tokensUsage"] = o.TokensUsage
+	}
+	if !IsNil(o.TokensUsageDays) {
+		toSerialize["tokensUsageDays"] = o.TokensUsageDays
 	}
 	if !IsNil(o.User) {
 		toSerialize["user"] = o.User

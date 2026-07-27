@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Authentication** | Pointer to [**ManaV2OspfAuthentication**](ManaV2OspfAuthentication.md) |  | [optional] 
 **Bfd** | Pointer to [**ManaV2BfdInstance**](ManaV2BfdInstance.md) |  | [optional] 
 **BfdNeighbors** | Pointer to [**[]ManaV2BfdNeighbor**](ManaV2BfdNeighbor.md) |  | [optional] 
 **Cost** | Pointer to **int32** |  | [optional] 
@@ -40,6 +41,31 @@ will change when the set of required properties is changed
 NewManaV2OspfInterfaceWithDefaults instantiates a new ManaV2OspfInterface object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAuthentication
+
+`func (o *ManaV2OspfInterface) GetAuthentication() ManaV2OspfAuthentication`
+
+GetAuthentication returns the Authentication field if non-nil, zero value otherwise.
+
+### GetAuthenticationOk
+
+`func (o *ManaV2OspfInterface) GetAuthenticationOk() (*ManaV2OspfAuthentication, bool)`
+
+GetAuthenticationOk returns a tuple with the Authentication field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthentication
+
+`func (o *ManaV2OspfInterface) SetAuthentication(v ManaV2OspfAuthentication)`
+
+SetAuthentication sets Authentication field to given value.
+
+### HasAuthentication
+
+`func (o *ManaV2OspfInterface) HasAuthentication() bool`
+
+HasAuthentication returns a boolean if a field has been set.
 
 ### GetBfd
 
