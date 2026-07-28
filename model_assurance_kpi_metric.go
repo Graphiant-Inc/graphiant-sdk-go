@@ -27,6 +27,8 @@ type AssuranceKpiMetric struct {
 	Percent *float64 `json:"percent,omitempty"`
 	// AI adoption tag for the metric
 	Tag *string `json:"tag,omitempty"`
+	// AI adoption token usage value
+	TokenUsage *float64 `json:"tokenUsage,omitempty"`
 	// metric value (required)
 	Value *float64 `json:"value,omitempty"`
 }
@@ -176,6 +178,38 @@ func (o *AssuranceKpiMetric) SetTag(v string) {
 	o.Tag = &v
 }
 
+// GetTokenUsage returns the TokenUsage field value if set, zero value otherwise.
+func (o *AssuranceKpiMetric) GetTokenUsage() float64 {
+	if o == nil || IsNil(o.TokenUsage) {
+		var ret float64
+		return ret
+	}
+	return *o.TokenUsage
+}
+
+// GetTokenUsageOk returns a tuple with the TokenUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceKpiMetric) GetTokenUsageOk() (*float64, bool) {
+	if o == nil || IsNil(o.TokenUsage) {
+		return nil, false
+	}
+	return o.TokenUsage, true
+}
+
+// HasTokenUsage returns a boolean if a field has been set.
+func (o *AssuranceKpiMetric) HasTokenUsage() bool {
+	if o != nil && !IsNil(o.TokenUsage) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenUsage gets a reference to the given float64 and assigns it to the TokenUsage field.
+func (o *AssuranceKpiMetric) SetTokenUsage(v float64) {
+	o.TokenUsage = &v
+}
+
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *AssuranceKpiMetric) GetValue() float64 {
 	if o == nil || IsNil(o.Value) {
@@ -229,6 +263,9 @@ func (o AssuranceKpiMetric) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Tag) {
 		toSerialize["tag"] = o.Tag
+	}
+	if !IsNil(o.TokenUsage) {
+		toSerialize["tokenUsage"] = o.TokenUsage
 	}
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value

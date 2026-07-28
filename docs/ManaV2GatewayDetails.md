@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Gcp** | Pointer to [**ManaV2GcpGatewayDetails**](ManaV2GcpGatewayDetails.md) |  | [optional] 
 **IpsecGateway** | Pointer to [**ManaV2IPsecGatewayDetails**](ManaV2IPsecGatewayDetails.md) |  | [optional] 
+**IpsecGatewayPeers** | Pointer to [**ManaV2IPsecGatewayPeersConfig**](ManaV2IPsecGatewayPeersConfig.md) |  | [optional] 
 **Oci** | Pointer to [**ManaV2OciGatewayDetails**](ManaV2OciGatewayDetails.md) |  | [optional] 
 **RegionId** | Pointer to **int32** |  | [optional] 
 **Speed** | Pointer to **string** |  | [optional] 
@@ -157,6 +158,31 @@ SetIpsecGateway sets IpsecGateway field to given value.
 `func (o *ManaV2GatewayDetails) HasIpsecGateway() bool`
 
 HasIpsecGateway returns a boolean if a field has been set.
+
+### GetIpsecGatewayPeers
+
+`func (o *ManaV2GatewayDetails) GetIpsecGatewayPeers() ManaV2IPsecGatewayPeersConfig`
+
+GetIpsecGatewayPeers returns the IpsecGatewayPeers field if non-nil, zero value otherwise.
+
+### GetIpsecGatewayPeersOk
+
+`func (o *ManaV2GatewayDetails) GetIpsecGatewayPeersOk() (*ManaV2IPsecGatewayPeersConfig, bool)`
+
+GetIpsecGatewayPeersOk returns a tuple with the IpsecGatewayPeers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpsecGatewayPeers
+
+`func (o *ManaV2GatewayDetails) SetIpsecGatewayPeers(v ManaV2IPsecGatewayPeersConfig)`
+
+SetIpsecGatewayPeers sets IpsecGatewayPeers field to given value.
+
+### HasIpsecGatewayPeers
+
+`func (o *ManaV2GatewayDetails) HasIpsecGatewayPeers() bool`
+
+HasIpsecGatewayPeers returns a boolean if a field has been set.
 
 ### GetOci
 

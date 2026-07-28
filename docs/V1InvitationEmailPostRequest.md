@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **MatchId** | **int64** |  (required) | 
 **ServiceId** | **int64** |  (required) | 
 **ServiceName** | **string** |  (required) | 
+**ServiceType** | Pointer to **string** | Extranet service type URL segment (e.g. peering_service, client_to_server) | [optional] 
 
 ## Methods
 
@@ -185,6 +186,31 @@ and a boolean to check if the value has been set.
 
 SetServiceName sets ServiceName field to given value.
 
+
+### GetServiceType
+
+`func (o *V1InvitationEmailPostRequest) GetServiceType() string`
+
+GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
+
+### GetServiceTypeOk
+
+`func (o *V1InvitationEmailPostRequest) GetServiceTypeOk() (*string, bool)`
+
+GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceType
+
+`func (o *V1InvitationEmailPostRequest) SetServiceType(v string)`
+
+SetServiceType sets ServiceType field to given value.
+
+### HasServiceType
+
+`func (o *V1InvitationEmailPostRequest) HasServiceType() bool`
+
+HasServiceType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

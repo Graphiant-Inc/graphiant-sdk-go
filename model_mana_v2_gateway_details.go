@@ -24,6 +24,7 @@ type ManaV2GatewayDetails struct {
 	Description *string `json:"description,omitempty"`
 	Gcp *ManaV2GcpGatewayDetails `json:"gcp,omitempty"`
 	IpsecGateway *ManaV2IPsecGatewayDetails `json:"ipsecGateway,omitempty"`
+	IpsecGatewayPeers *ManaV2IPsecGatewayPeersConfig `json:"ipsecGatewayPeers,omitempty"`
 	Oci *ManaV2OciGatewayDetails `json:"oci,omitempty"`
 	RegionId *int32 `json:"regionId,omitempty"`
 	Speed *string `json:"speed,omitempty"`
@@ -207,6 +208,38 @@ func (o *ManaV2GatewayDetails) SetIpsecGateway(v ManaV2IPsecGatewayDetails) {
 	o.IpsecGateway = &v
 }
 
+// GetIpsecGatewayPeers returns the IpsecGatewayPeers field value if set, zero value otherwise.
+func (o *ManaV2GatewayDetails) GetIpsecGatewayPeers() ManaV2IPsecGatewayPeersConfig {
+	if o == nil || IsNil(o.IpsecGatewayPeers) {
+		var ret ManaV2IPsecGatewayPeersConfig
+		return ret
+	}
+	return *o.IpsecGatewayPeers
+}
+
+// GetIpsecGatewayPeersOk returns a tuple with the IpsecGatewayPeers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2GatewayDetails) GetIpsecGatewayPeersOk() (*ManaV2IPsecGatewayPeersConfig, bool) {
+	if o == nil || IsNil(o.IpsecGatewayPeers) {
+		return nil, false
+	}
+	return o.IpsecGatewayPeers, true
+}
+
+// HasIpsecGatewayPeers returns a boolean if a field has been set.
+func (o *ManaV2GatewayDetails) HasIpsecGatewayPeers() bool {
+	if o != nil && !IsNil(o.IpsecGatewayPeers) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpsecGatewayPeers gets a reference to the given ManaV2IPsecGatewayPeersConfig and assigns it to the IpsecGatewayPeers field.
+func (o *ManaV2GatewayDetails) SetIpsecGatewayPeers(v ManaV2IPsecGatewayPeersConfig) {
+	o.IpsecGatewayPeers = &v
+}
+
 // GetOci returns the Oci field value if set, zero value otherwise.
 func (o *ManaV2GatewayDetails) GetOci() ManaV2OciGatewayDetails {
 	if o == nil || IsNil(o.Oci) {
@@ -359,6 +392,9 @@ func (o ManaV2GatewayDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IpsecGateway) {
 		toSerialize["ipsecGateway"] = o.IpsecGateway
+	}
+	if !IsNil(o.IpsecGatewayPeers) {
+		toSerialize["ipsecGatewayPeers"] = o.IpsecGatewayPeers
 	}
 	if !IsNil(o.Oci) {
 		toSerialize["oci"] = o.Oci

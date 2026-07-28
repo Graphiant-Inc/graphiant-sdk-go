@@ -4,6 +4,80 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.7.0] - 2026-07-27
+
+### Added
+- **API endpoints (B2B Extranet — consumers):**
+  - `GET /v1/extranet/b2b/consumers/{customerId}`
+  - `DELETE /v1/extranet/b2b/consumers/{id}`
+  - `PUT /v1/extranet/b2b/consumers/{id}`
+  - `GET /v1/extranet/b2b/consumers/{id}/device-status`
+  - `PUT /v1/extranet/b2b/consumers/{id}/prefixes`
+- **API endpoints (B2B Extranet — customers):**
+  - `POST /v1/extranet/b2b/customers`
+  - `GET /v1/extranet/b2b/customers/summary`
+  - `DELETE /v1/extranet/b2b/customers/{id}`
+  - `PUT /v1/extranet/b2b/customers/{id}`
+  - `GET /v1/extranet/b2b/customers/{id}/details`
+  - `GET /v1/extranet/b2b/customers/{id}/matches/summary`
+  - `POST /v1/extranet/b2b/customers/{id}/retry`
+- **API endpoints (B2B Extranet — matches):**
+  - `POST /v1/extranet/b2b/matches`
+  - `POST /v1/extranet/b2b/matches/customers`
+  - `PUT /v1/extranet/b2b/matches/pause`
+  - `POST /v1/extranet/b2b/matches/review`
+  - `DELETE /v1/extranet/b2b/matches/{matchId}`
+  - `GET /v1/extranet/b2b/matches/{matchId}`
+  - `PUT /v1/extranet/b2b/matches/{matchId}`
+  - `GET /v1/extranet/b2b/matches/{matchId}/details`
+  - `POST /v1/extranet/b2b/matches/{matchId}/consumer`
+  - `POST /v1/extranet/b2b/matches/{matchId}/consumer/check`
+  - `PUT /v1/extranet/b2b/matches/{matchId}/status`
+- **API endpoints (B2B Extranet — producer):**
+  - `POST /v1/extranet/b2b/producer`
+  - `POST /v1/extranet/b2b/producer/review`
+  - `DELETE /v1/extranet/b2b/producer/{id}`
+  - `GET /v1/extranet/b2b/producer/{id}`
+  - `PUT /v1/extranet/b2b/producer/{id}`
+  - `GET /v1/extranet/b2b/producer/{id}/customers`
+  - `GET /v1/extranet/b2b/producer/{id}/device-status`
+  - `PUT /v1/extranet/b2b/producer/{id}/status`
+- **API endpoints (B2B Extranet — monitoring & services):**
+  - `GET /v1/extranet/b2b/services/summary`
+  - `POST /v1/extranet/b2b/monitoring/peering-service/bandwidth-usage`
+  - `POST /v1/extranet/b2b/monitoring/peering-service/consumers-usage-top`
+  - `POST /v1/extranet/b2b/monitoring/peering-service/consumption-overview`
+  - `POST /v1/extranet/b2b/monitoring/peering-service/service-customer-list`
+  - `POST /v1/extranet/b2b/monitoring/peering-service/service-health`
+  - `POST /v1/extranet/b2b/monitoring/peering-service/service-overtime-consumption`
+  - `POST /v1/extranet/sites/usage-top`
+- **Models (new):**
+  - Added B2B extranet match types (`ManaV2B2bExtranetMatch`, `ManaV2B2bExtranetMatchConsumerDetails`, `ManaV2B2BExtranetMatchConsumerDetailsCustomer`, `ManaV2B2BExtranetMatchConsumerDetailsProducerPrefix`, `ManaV2B2BExtranetMatchConsumerDetailsService`)
+  - Added extranet consumer/producer policy types (`ManaV2ExtranetServiceConsumerPolicy`, `ManaV2ExtranetServiceProducerPolicy`, `ManaV2ExtranetServiceProducerCustomer`, `ManaV2ExtranetServicePolicyResponse`)
+  - Added extranet service summary types (`ManaV2ExtranetServiceSummary`, `ManaV2ExtranetServiceCustomerSummary`, `ManaV2ExtranetServiceCustomerMatchSummary`, `ManaV2ExtranetServiceCustomerInvite`)
+  - Added extranet NAT translation types (`ManaV2ExtranetNatTranslationMode`, `ManaV2ExtranetNatTranslationCentralized`, `ManaV2ExtranetNatTranslationDecentralized`, `ManaV2ExtranetNatTranslationPeerToPeer`, `ManaV2ExtranetNatTranslationPeerToPeerPrefix`, `ManaV2ExtranetNatTranslationDevicePrefixes`)
+  - Added `ManaV2ExtranetConsumerLanPrefixes`
+  - Added OSPF authentication types (`ManaV2OspfAuthentication`, `ManaV2NullableOspfAuthenticationConfig`)
+  - Added `V1ExtranetB2b*` request/response types for all new consumer, customer, match, producer, and services endpoints
+
+### Changed
+- Updated to API specification version 26.7.0
+- **Version:**
+  - Updated version constant to v26.7.0
+  - Updated API documentation reference to `graphiant_api_docs_v26.7.0.json`
+  - Removed superseded bundle `graphiant_api_docs_v26.6.0.json` from the repository
+- **Documentation:** updated SDK generation examples in README to use `graphiant_api_docs_v26.7.0.json`; **SECURITY.md** supported-versions table updated for **26.7.0**
+- **Models (updated):**
+  - `AssuranceKpiMetric`: added `tokenUsage` field
+  - `AssuranceUserDefinition`: added `tokensUsage` and `tokensUsageDays` fields
+  - `ManaV2GatewayDetails`: added `ipsecGatewayPeers` field
+  - `ManaV2OspfInterfaceConfig`: added `authentication` field
+  - `V1InvitationEmailPostRequest`: added `serviceType` field
+
+### Removed
+- **API endpoints:** none
+- **Models:** none
+
 ## [26.6.0] - 2026-07-08
 
 ### Added
