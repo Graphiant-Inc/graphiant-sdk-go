@@ -21,14 +21,18 @@ var _ MappedNullable = &AlertserviceZendeskDetails{}
 
 // AlertserviceZendeskDetails struct for AlertserviceZendeskDetails
 type AlertserviceZendeskDetails struct {
-	// zendesk api token (required)
-	ZendeskApiToken string `json:"zendeskApiToken"`
+	// zendesk api token (deprecated, use zendesk_client_secret)
+	ZendeskApiToken *string `json:"zendeskApiToken,omitempty"`
 	// zendesk assignee id (required)
 	ZendeskAssigneeId string `json:"zendeskAssigneeId"`
 	// zendesk base url (required)
 	ZendeskBaseUrl string `json:"zendeskBaseUrl"`
-	// zendesk email (required)
-	ZendeskEmail string `json:"zendeskEmail"`
+	// zendesk oauth client id (required)
+	ZendeskClientId string `json:"zendeskClientId"`
+	// zendesk oauth client secret (required)
+	ZendeskClientSecret string `json:"zendeskClientSecret"`
+	// zendesk email (deprecated, use zendesk_client_id)
+	ZendeskEmail *string `json:"zendeskEmail,omitempty"`
 }
 
 type _AlertserviceZendeskDetails AlertserviceZendeskDetails
@@ -37,12 +41,12 @@ type _AlertserviceZendeskDetails AlertserviceZendeskDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertserviceZendeskDetails(zendeskApiToken string, zendeskAssigneeId string, zendeskBaseUrl string, zendeskEmail string) *AlertserviceZendeskDetails {
+func NewAlertserviceZendeskDetails(zendeskAssigneeId string, zendeskBaseUrl string, zendeskClientId string, zendeskClientSecret string) *AlertserviceZendeskDetails {
 	this := AlertserviceZendeskDetails{}
-	this.ZendeskApiToken = zendeskApiToken
 	this.ZendeskAssigneeId = zendeskAssigneeId
 	this.ZendeskBaseUrl = zendeskBaseUrl
-	this.ZendeskEmail = zendeskEmail
+	this.ZendeskClientId = zendeskClientId
+	this.ZendeskClientSecret = zendeskClientSecret
 	return &this
 }
 
@@ -54,28 +58,36 @@ func NewAlertserviceZendeskDetailsWithDefaults() *AlertserviceZendeskDetails {
 	return &this
 }
 
-// GetZendeskApiToken returns the ZendeskApiToken field value
+// GetZendeskApiToken returns the ZendeskApiToken field value if set, zero value otherwise.
 func (o *AlertserviceZendeskDetails) GetZendeskApiToken() string {
-	if o == nil {
+	if o == nil || IsNil(o.ZendeskApiToken) {
 		var ret string
 		return ret
 	}
-
-	return o.ZendeskApiToken
+	return *o.ZendeskApiToken
 }
 
-// GetZendeskApiTokenOk returns a tuple with the ZendeskApiToken field value
+// GetZendeskApiTokenOk returns a tuple with the ZendeskApiToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertserviceZendeskDetails) GetZendeskApiTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ZendeskApiToken) {
 		return nil, false
 	}
-	return &o.ZendeskApiToken, true
+	return o.ZendeskApiToken, true
 }
 
-// SetZendeskApiToken sets field value
+// HasZendeskApiToken returns a boolean if a field has been set.
+func (o *AlertserviceZendeskDetails) HasZendeskApiToken() bool {
+	if o != nil && !IsNil(o.ZendeskApiToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetZendeskApiToken gets a reference to the given string and assigns it to the ZendeskApiToken field.
 func (o *AlertserviceZendeskDetails) SetZendeskApiToken(v string) {
-	o.ZendeskApiToken = v
+	o.ZendeskApiToken = &v
 }
 
 // GetZendeskAssigneeId returns the ZendeskAssigneeId field value
@@ -126,28 +138,84 @@ func (o *AlertserviceZendeskDetails) SetZendeskBaseUrl(v string) {
 	o.ZendeskBaseUrl = v
 }
 
-// GetZendeskEmail returns the ZendeskEmail field value
-func (o *AlertserviceZendeskDetails) GetZendeskEmail() string {
+// GetZendeskClientId returns the ZendeskClientId field value
+func (o *AlertserviceZendeskDetails) GetZendeskClientId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ZendeskEmail
+	return o.ZendeskClientId
 }
 
-// GetZendeskEmailOk returns a tuple with the ZendeskEmail field value
+// GetZendeskClientIdOk returns a tuple with the ZendeskClientId field value
 // and a boolean to check if the value has been set.
-func (o *AlertserviceZendeskDetails) GetZendeskEmailOk() (*string, bool) {
+func (o *AlertserviceZendeskDetails) GetZendeskClientIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ZendeskEmail, true
+	return &o.ZendeskClientId, true
 }
 
-// SetZendeskEmail sets field value
+// SetZendeskClientId sets field value
+func (o *AlertserviceZendeskDetails) SetZendeskClientId(v string) {
+	o.ZendeskClientId = v
+}
+
+// GetZendeskClientSecret returns the ZendeskClientSecret field value
+func (o *AlertserviceZendeskDetails) GetZendeskClientSecret() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ZendeskClientSecret
+}
+
+// GetZendeskClientSecretOk returns a tuple with the ZendeskClientSecret field value
+// and a boolean to check if the value has been set.
+func (o *AlertserviceZendeskDetails) GetZendeskClientSecretOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ZendeskClientSecret, true
+}
+
+// SetZendeskClientSecret sets field value
+func (o *AlertserviceZendeskDetails) SetZendeskClientSecret(v string) {
+	o.ZendeskClientSecret = v
+}
+
+// GetZendeskEmail returns the ZendeskEmail field value if set, zero value otherwise.
+func (o *AlertserviceZendeskDetails) GetZendeskEmail() string {
+	if o == nil || IsNil(o.ZendeskEmail) {
+		var ret string
+		return ret
+	}
+	return *o.ZendeskEmail
+}
+
+// GetZendeskEmailOk returns a tuple with the ZendeskEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertserviceZendeskDetails) GetZendeskEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.ZendeskEmail) {
+		return nil, false
+	}
+	return o.ZendeskEmail, true
+}
+
+// HasZendeskEmail returns a boolean if a field has been set.
+func (o *AlertserviceZendeskDetails) HasZendeskEmail() bool {
+	if o != nil && !IsNil(o.ZendeskEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetZendeskEmail gets a reference to the given string and assigns it to the ZendeskEmail field.
 func (o *AlertserviceZendeskDetails) SetZendeskEmail(v string) {
-	o.ZendeskEmail = v
+	o.ZendeskEmail = &v
 }
 
 func (o AlertserviceZendeskDetails) MarshalJSON() ([]byte, error) {
@@ -160,10 +228,16 @@ func (o AlertserviceZendeskDetails) MarshalJSON() ([]byte, error) {
 
 func (o AlertserviceZendeskDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["zendeskApiToken"] = o.ZendeskApiToken
+	if !IsNil(o.ZendeskApiToken) {
+		toSerialize["zendeskApiToken"] = o.ZendeskApiToken
+	}
 	toSerialize["zendeskAssigneeId"] = o.ZendeskAssigneeId
 	toSerialize["zendeskBaseUrl"] = o.ZendeskBaseUrl
-	toSerialize["zendeskEmail"] = o.ZendeskEmail
+	toSerialize["zendeskClientId"] = o.ZendeskClientId
+	toSerialize["zendeskClientSecret"] = o.ZendeskClientSecret
+	if !IsNil(o.ZendeskEmail) {
+		toSerialize["zendeskEmail"] = o.ZendeskEmail
+	}
 	return toSerialize, nil
 }
 
@@ -172,10 +246,10 @@ func (o *AlertserviceZendeskDetails) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"zendeskApiToken",
 		"zendeskAssigneeId",
 		"zendeskBaseUrl",
-		"zendeskEmail",
+		"zendeskClientId",
+		"zendeskClientSecret",
 	}
 
 	allProperties := make(map[string]interface{})

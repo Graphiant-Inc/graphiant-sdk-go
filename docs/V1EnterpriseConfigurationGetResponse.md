@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AdaptiveFecConfig** | Pointer to [**ManaV2AdaptiveFecConfiguration**](ManaV2AdaptiveFecConfiguration.md) |  | [optional] 
 **Configuration** | Pointer to [**ManaV2EnterpriseConfiguration**](ManaV2EnterpriseConfiguration.md) |  | [optional] 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewV1EnterpriseConfigurationGetResponseWithDefaults instantiates a new V1EnterpriseConfigurationGetResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAdaptiveFecConfig
+
+`func (o *V1EnterpriseConfigurationGetResponse) GetAdaptiveFecConfig() ManaV2AdaptiveFecConfiguration`
+
+GetAdaptiveFecConfig returns the AdaptiveFecConfig field if non-nil, zero value otherwise.
+
+### GetAdaptiveFecConfigOk
+
+`func (o *V1EnterpriseConfigurationGetResponse) GetAdaptiveFecConfigOk() (*ManaV2AdaptiveFecConfiguration, bool)`
+
+GetAdaptiveFecConfigOk returns a tuple with the AdaptiveFecConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdaptiveFecConfig
+
+`func (o *V1EnterpriseConfigurationGetResponse) SetAdaptiveFecConfig(v ManaV2AdaptiveFecConfiguration)`
+
+SetAdaptiveFecConfig sets AdaptiveFecConfig field to given value.
+
+### HasAdaptiveFecConfig
+
+`func (o *V1EnterpriseConfigurationGetResponse) HasAdaptiveFecConfig() bool`
+
+HasAdaptiveFecConfig returns a boolean if a field has been set.
 
 ### GetConfiguration
 

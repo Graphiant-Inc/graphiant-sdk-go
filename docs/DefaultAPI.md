@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**V1AccountMfaPut**](DefaultAPI.md#V1AccountMfaPut) | **Put** /v1/account/mfa | 
 [**V1AccountPasswordPatch**](DefaultAPI.md#V1AccountPasswordPatch) | **Patch** /v1/account/password | 
 [**V1ActivityLogsPost**](DefaultAPI.md#V1ActivityLogsPost) | **Post** /v1/activity/logs | 
+[**V1AdaptiveFecPut**](DefaultAPI.md#V1AdaptiveFecPut) | **Put** /v1/adaptive-fec | 
 [**V1AppsAppSummaryPost**](DefaultAPI.md#V1AppsAppSummaryPost) | **Post** /v1/apps/app-summary | 
 [**V1AppsBandwidthPost**](DefaultAPI.md#V1AppsBandwidthPost) | **Post** /v1/apps/bandwidth | 
 [**V1AppsDeviceDeviceIdTopPost**](DefaultAPI.md#V1AppsDeviceDeviceIdTopPost) | **Post** /v1/apps/device/{deviceId}/top | 
@@ -1047,6 +1048,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V1ActivityLogsPostResponse**](V1ActivityLogsPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1AdaptiveFecPut
+
+> map[string]interface{} V1AdaptiveFecPut(ctx).Authorization(authorization).V1AdaptiveFecPutRequest(v1AdaptiveFecPutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1AdaptiveFecPutRequest := *openapiclient.NewV1AdaptiveFecPutRequest() // V1AdaptiveFecPutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1AdaptiveFecPut(context.Background()).Authorization(authorization).V1AdaptiveFecPutRequest(v1AdaptiveFecPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1AdaptiveFecPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AdaptiveFecPut`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1AdaptiveFecPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1AdaptiveFecPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1AdaptiveFecPutRequest** | [**V1AdaptiveFecPutRequest**](V1AdaptiveFecPutRequest.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
@@ -15440,7 +15509,7 @@ Name | Type | Description  | Notes
 
 ## V1ExtranetB2bServicesSummaryGet
 
-> V1ExtranetB2bServicesSummaryGetResponse V1ExtranetB2bServicesSummaryGet(ctx).Authorization(authorization).Execute()
+> V1ExtranetB2bServicesSummaryGetResponse V1ExtranetB2bServicesSummaryGet(ctx).Authorization(authorization).ServiceType(serviceType).Execute()
 
 
 
@@ -15460,10 +15529,11 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	serviceType := "ENUM_VALUE" // string | Optional filter by branded service type (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bServicesSummaryGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1ExtranetB2bServicesSummaryGet(context.Background()).Authorization(authorization).ServiceType(serviceType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1ExtranetB2bServicesSummaryGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15485,6 +15555,7 @@ Other parameters are passed through a pointer to a apiV1ExtranetB2bServicesSumma
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **serviceType** | **string** | Optional filter by branded service type | 
 
 ### Return type
 
