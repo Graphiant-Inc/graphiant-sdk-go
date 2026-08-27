@@ -4,6 +4,29 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.8.0] - 2026-08-26
+
+### Added
+- **API endpoints:**
+  - `PUT /v1/adaptive-fec`
+- **Models (new):**
+  - `ManaV2AdaptiveFecConfiguration` (`adaptiveFecEnabled`, `slaClasses`)
+  - `V1AdaptiveFecPutRequest`
+
+### Changed
+- Updated to API specification version 26.8.0
+- **Version:**
+  - Updated version constant to v26.8.0
+  - Updated API documentation reference to `graphiant_api_docs_v26.8.0.json`
+- **Documentation:** updated SDK generation examples in README to use `graphiant_api_docs_v26.8.0.json`; **SECURITY.md** supported-versions table updated for **26.8.0**
+- **Models (updated):**
+  - `AlertserviceZendeskDetails`: added required `zendeskClientId` and `zendeskClientSecret` (OAuth); `zendeskApiToken` and `zendeskEmail` are now optional and deprecated
+  - `V1EnterpriseConfigurationGetResponse`: added `adaptiveFecConfig` field
+
+### Removed
+- **API endpoints:** none
+- **Models:** none
+
 ## [26.7.0] - 2026-07-27
 
 ### Added

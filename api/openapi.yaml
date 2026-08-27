@@ -8993,6 +8993,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: Optional filter by branded service type
+        explode: true
+        in: query
+        name: serviceType
+        required: false
+        schema:
+          example: ENUM_VALUE
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -10961,6 +10970,33 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1GlobalSyncPostResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/adaptive-fec:
+    put:
+      description: Update adaptive FEC settings for an enterprise
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1AdaptiveFecPutRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1AdaptiveFecPutResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -15679,13 +15715,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_v1_auth_login_saml_get_401_response"
+                $ref: "#/components/schemas/_v1_auth_mfa_post_500_response"
           description: Missing email parameter
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_v1_auth_login_saml_get_500_response"
+                $ref: "#/components/schemas/_v1_auth_mfa_post_500_response"
           description: Internal server error
   /v1/auth/login/callback:
     post:
@@ -15708,7 +15744,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_v1_auth_login_callback_post_500_response"
+                $ref: "#/components/schemas/_v1_auth_mfa_post_500_response"
           description: Internal server error
   /v1/auth/user:
     get:
@@ -15826,13 +15862,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_v1_auth_refresh_get_403_response"
+                $ref: "#/components/schemas/_v1_auth_mfa_post_500_response"
           description: Forbidden - Could not refresh token
         "422":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_v1_auth_refresh_get_422_response"
+                $ref: "#/components/schemas/_v1_auth_mfa_post_500_response"
           description: Unprocessable Entity
         "500":
           content:
@@ -15875,13 +15911,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_v1_auth_session_get_403_response"
+                $ref: "#/components/schemas/_v1_auth_mfa_post_500_response"
           description: Forbidden - Token expired
         "422":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_v1_auth_session_get_422_response"
+                $ref: "#/components/schemas/_v1_auth_mfa_post_500_response"
           description: Unprocessable Entity - GRPC error
         "500":
           content:
@@ -15914,13 +15950,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_v1_auth_session_get_403_response"
+                $ref: "#/components/schemas/_v1_auth_mfa_post_500_response"
           description: Forbidden - Token expired
         "422":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_v1_auth_session_get_422_response"
+                $ref: "#/components/schemas/_v1_auth_mfa_post_500_response"
           description: Unprocessable Entity - GRPC error
         "500":
           content:
@@ -16760,6 +16796,8 @@ components:
           zendeskApiToken: example string
           zendeskAssigneeId: example string
           zendeskBaseUrl: example string
+          zendeskClientId: example string
+          zendeskClientSecret: example string
           zendeskEmail: example string
       properties:
         opsgenieKey:
@@ -16783,10 +16821,12 @@ components:
         zendeskApiToken: example string
         zendeskAssigneeId: example string
         zendeskBaseUrl: example string
+        zendeskClientId: example string
+        zendeskClientSecret: example string
         zendeskEmail: example string
       properties:
         zendeskApiToken:
-          description: zendesk api token (required)
+          description: "zendesk api token (deprecated, use zendesk_client_secret)"
           example: example string
           type: string
         zendeskAssigneeId:
@@ -16797,15 +16837,23 @@ components:
           description: zendesk base url (required)
           example: example string
           type: string
+        zendeskClientId:
+          description: zendesk oauth client id (required)
+          example: example string
+          type: string
+        zendeskClientSecret:
+          description: zendesk oauth client secret (required)
+          example: example string
+          type: string
         zendeskEmail:
-          description: zendesk email (required)
+          description: "zendesk email (deprecated, use zendesk_client_id)"
           example: example string
           type: string
       required:
-      - zendeskApiToken
       - zendeskAssigneeId
       - zendeskBaseUrl
-      - zendeskEmail
+      - zendeskClientId
+      - zendeskClientSecret
       type: object
     v2IntegrationPostResponse:
       additionalProperties: false
@@ -16822,6 +16870,8 @@ components:
               zendeskApiToken: example string
               zendeskAssigneeId: example string
               zendeskBaseUrl: example string
+              zendeskClientId: example string
+              zendeskClientSecret: example string
               zendeskEmail: example string
           enterpriseId: example string
           id: 1234567891011
@@ -16847,6 +16897,8 @@ components:
             zendeskApiToken: example string
             zendeskAssigneeId: example string
             zendeskBaseUrl: example string
+            zendeskClientId: example string
+            zendeskClientSecret: example string
             zendeskEmail: example string
         enterpriseId: example string
         id: 1234567891011
@@ -16947,6 +16999,8 @@ components:
               zendeskApiToken: example string
               zendeskAssigneeId: example string
               zendeskBaseUrl: example string
+              zendeskClientId: example string
+              zendeskClientSecret: example string
               zendeskEmail: example string
           enterpriseId: example string
           id: 1234567891011
@@ -16965,6 +17019,8 @@ components:
               zendeskApiToken: example string
               zendeskAssigneeId: example string
               zendeskBaseUrl: example string
+              zendeskClientId: example string
+              zendeskClientSecret: example string
               zendeskEmail: example string
           enterpriseId: example string
           id: 1234567891011
@@ -294160,12 +294216,36 @@ components:
     v1EnterpriseConfigurationGetResponse:
       additionalProperties: false
       example:
+        adaptiveFecConfig:
+          adaptiveFecEnabled: true
+          slaClasses:
+          - ENUM_VALUE
+          - ENUM_VALUE
         configuration:
           encryption: ENUM_VALUE
           useEncryption: true
       properties:
+        adaptiveFecConfig:
+          $ref: "#/components/schemas/manaV2AdaptiveFecConfiguration"
         configuration:
           $ref: "#/components/schemas/manaV2EnterpriseConfiguration"
+      type: object
+    manaV2AdaptiveFecConfiguration:
+      additionalProperties: false
+      example:
+        adaptiveFecEnabled: true
+        slaClasses:
+        - ENUM_VALUE
+        - ENUM_VALUE
+      properties:
+        adaptiveFecEnabled:
+          example: true
+          type: boolean
+        slaClasses:
+          items:
+            example: ENUM_VALUE
+            type: string
+          type: array
       type: object
     v1EnterpriseContractPutRequest:
       additionalProperties: false
@@ -296759,6 +296839,16 @@ components:
           type: integer
       type: object
     v1DevicesDeviceIdControllerPeersPutResponse:
+      additionalProperties: false
+      properties: {}
+      type: object
+    v1AdaptiveFecPutRequest:
+      additionalProperties: false
+      properties:
+        configuration:
+          $ref: "#/components/schemas/manaV2AdaptiveFecConfiguration"
+      type: object
+    v1AdaptiveFecPutResponse:
       additionalProperties: false
       properties: {}
       type: object
@@ -309266,66 +309356,10 @@ components:
           example: Internal error
           type: string
       type: object
-    _v1_auth_login_saml_get_401_response:
-      example:
-        error: Missing email query parameter
-      properties:
-        error:
-          example: Missing email query parameter
-          type: string
-      type: object
-    _v1_auth_login_saml_get_500_response:
-      example:
-        error: Invalid email
-      properties:
-        error:
-          example: Invalid email
-          type: string
-      type: object
-    _v1_auth_login_callback_post_500_response:
-      example:
-        error: Invalid saml response
-      properties:
-        error:
-          example: Invalid saml response
-          type: string
-      type: object
     _v1_auth_refresh_get_200_response:
       oneOf:
       - $ref: "#/components/schemas/v1AuthLoginPostResponse"
       - $ref: "#/components/schemas/v1AuthRefreshGetEntryPointResponse"
-    _v1_auth_refresh_get_403_response:
-      example:
-        error: Could not refresh token
-      properties:
-        error:
-          example: Could not refresh token
-          type: string
-      type: object
-    _v1_auth_refresh_get_422_response:
-      example:
-        error: error details
-      properties:
-        error:
-          example: error details
-          type: string
-      type: object
-    _v1_auth_session_get_403_response:
-      example:
-        error: Token expired
-      properties:
-        error:
-          example: Token expired
-          type: string
-      type: object
-    _v1_auth_session_get_422_response:
-      example:
-        error: GRPC error details
-      properties:
-        error:
-          example: GRPC error details
-          type: string
-      type: object
   securitySchemes:
     jwtAuth:
       description: Use `Bearer <token>`

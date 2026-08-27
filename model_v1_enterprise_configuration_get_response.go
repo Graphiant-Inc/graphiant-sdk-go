@@ -19,6 +19,7 @@ var _ MappedNullable = &V1EnterpriseConfigurationGetResponse{}
 
 // V1EnterpriseConfigurationGetResponse struct for V1EnterpriseConfigurationGetResponse
 type V1EnterpriseConfigurationGetResponse struct {
+	AdaptiveFecConfig *ManaV2AdaptiveFecConfiguration `json:"adaptiveFecConfig,omitempty"`
 	Configuration *ManaV2EnterpriseConfiguration `json:"configuration,omitempty"`
 }
 
@@ -37,6 +38,38 @@ func NewV1EnterpriseConfigurationGetResponse() *V1EnterpriseConfigurationGetResp
 func NewV1EnterpriseConfigurationGetResponseWithDefaults() *V1EnterpriseConfigurationGetResponse {
 	this := V1EnterpriseConfigurationGetResponse{}
 	return &this
+}
+
+// GetAdaptiveFecConfig returns the AdaptiveFecConfig field value if set, zero value otherwise.
+func (o *V1EnterpriseConfigurationGetResponse) GetAdaptiveFecConfig() ManaV2AdaptiveFecConfiguration {
+	if o == nil || IsNil(o.AdaptiveFecConfig) {
+		var ret ManaV2AdaptiveFecConfiguration
+		return ret
+	}
+	return *o.AdaptiveFecConfig
+}
+
+// GetAdaptiveFecConfigOk returns a tuple with the AdaptiveFecConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1EnterpriseConfigurationGetResponse) GetAdaptiveFecConfigOk() (*ManaV2AdaptiveFecConfiguration, bool) {
+	if o == nil || IsNil(o.AdaptiveFecConfig) {
+		return nil, false
+	}
+	return o.AdaptiveFecConfig, true
+}
+
+// HasAdaptiveFecConfig returns a boolean if a field has been set.
+func (o *V1EnterpriseConfigurationGetResponse) HasAdaptiveFecConfig() bool {
+	if o != nil && !IsNil(o.AdaptiveFecConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdaptiveFecConfig gets a reference to the given ManaV2AdaptiveFecConfiguration and assigns it to the AdaptiveFecConfig field.
+func (o *V1EnterpriseConfigurationGetResponse) SetAdaptiveFecConfig(v ManaV2AdaptiveFecConfiguration) {
+	o.AdaptiveFecConfig = &v
 }
 
 // GetConfiguration returns the Configuration field value if set, zero value otherwise.
@@ -81,6 +114,9 @@ func (o V1EnterpriseConfigurationGetResponse) MarshalJSON() ([]byte, error) {
 
 func (o V1EnterpriseConfigurationGetResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AdaptiveFecConfig) {
+		toSerialize["adaptiveFecConfig"] = o.AdaptiveFecConfig
+	}
 	if !IsNil(o.Configuration) {
 		toSerialize["configuration"] = o.Configuration
 	}
