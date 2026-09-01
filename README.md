@@ -674,6 +674,7 @@ The changelog follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) f
 
 - [Graphiant SDK Python](https://github.com/Graphiant-Inc/graphiant-sdk-python)
 - [Graphiant Playbooks](https://github.com/Graphiant-Inc/graphiant-playbooks)
+- [Graphiant Terraform Provider](https://github.com/Graphiant-Inc/terraform-provider-graphiant)
 
 ---
 
