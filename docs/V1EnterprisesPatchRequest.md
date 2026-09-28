@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdminEmail** | Pointer to **string** |  | [optional] 
+**BackboneApisEnabled** | Pointer to **bool** |  | [optional] 
 **CloudProvider** | Pointer to **string** |  | [optional] 
 **CompanyName** | Pointer to **string** |  | [optional] 
 **CreditLimit** | Pointer to **int32** |  | [optional] 
@@ -62,6 +63,31 @@ SetAdminEmail sets AdminEmail field to given value.
 `func (o *V1EnterprisesPatchRequest) HasAdminEmail() bool`
 
 HasAdminEmail returns a boolean if a field has been set.
+
+### GetBackboneApisEnabled
+
+`func (o *V1EnterprisesPatchRequest) GetBackboneApisEnabled() bool`
+
+GetBackboneApisEnabled returns the BackboneApisEnabled field if non-nil, zero value otherwise.
+
+### GetBackboneApisEnabledOk
+
+`func (o *V1EnterprisesPatchRequest) GetBackboneApisEnabledOk() (*bool, bool)`
+
+GetBackboneApisEnabledOk returns a tuple with the BackboneApisEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackboneApisEnabled
+
+`func (o *V1EnterprisesPatchRequest) SetBackboneApisEnabled(v bool)`
+
+SetBackboneApisEnabled sets BackboneApisEnabled field to given value.
+
+### HasBackboneApisEnabled
+
+`func (o *V1EnterprisesPatchRequest) HasBackboneApisEnabled() bool`
+
+HasBackboneApisEnabled returns a boolean if a field has been set.
 
 ### GetCloudProvider
 

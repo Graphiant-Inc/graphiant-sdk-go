@@ -375,6 +375,24 @@ Method | HTTP request | Description
 [**V1QosCircuitProfilesGet**](DefaultAPI.md#V1QosCircuitProfilesGet) | **Get** /v1/qos/circuit-profiles | 
 [**V1RegionsGet**](DefaultAPI.md#V1RegionsGet) | **Get** /v1/regions | 
 [**V1RegionsRegionIdGatewaysGet**](DefaultAPI.md#V1RegionsRegionIdGatewaysGet) | **Get** /v1/regions/{regionId}/gateways | 
+[**V1SdkAutomationPlaybookBundlesGet**](DefaultAPI.md#V1SdkAutomationPlaybookBundlesGet) | **Get** /v1/sdk-automation/playbook/bundles | 
+[**V1SdkAutomationPlaybookConfigsConfigIdDelete**](DefaultAPI.md#V1SdkAutomationPlaybookConfigsConfigIdDelete) | **Delete** /v1/sdk-automation/playbook/configs/{configId} | 
+[**V1SdkAutomationPlaybookConfigsConfigIdDryRunGet**](DefaultAPI.md#V1SdkAutomationPlaybookConfigsConfigIdDryRunGet) | **Get** /v1/sdk-automation/playbook/configs/{configId}/dry-run | 
+[**V1SdkAutomationPlaybookConfigsConfigIdDryRunPost**](DefaultAPI.md#V1SdkAutomationPlaybookConfigsConfigIdDryRunPost) | **Post** /v1/sdk-automation/playbook/configs/{configId}/dry-run | 
+[**V1SdkAutomationPlaybookConfigsConfigIdGet**](DefaultAPI.md#V1SdkAutomationPlaybookConfigsConfigIdGet) | **Get** /v1/sdk-automation/playbook/configs/{configId} | 
+[**V1SdkAutomationPlaybookConfigsConfigIdPut**](DefaultAPI.md#V1SdkAutomationPlaybookConfigsConfigIdPut) | **Put** /v1/sdk-automation/playbook/configs/{configId} | 
+[**V1SdkAutomationPlaybookConfigsConfigIdStagePut**](DefaultAPI.md#V1SdkAutomationPlaybookConfigsConfigIdStagePut) | **Put** /v1/sdk-automation/playbook/configs/{configId}/stage | 
+[**V1SdkAutomationPlaybookConfigsGet**](DefaultAPI.md#V1SdkAutomationPlaybookConfigsGet) | **Get** /v1/sdk-automation/playbook/configs | 
+[**V1SdkAutomationPlaybookConfigsPost**](DefaultAPI.md#V1SdkAutomationPlaybookConfigsPost) | **Post** /v1/sdk-automation/playbook/configs | 
+[**V1SdkAutomationPlaybookJobsGet**](DefaultAPI.md#V1SdkAutomationPlaybookJobsGet) | **Get** /v1/sdk-automation/playbook/jobs | 
+[**V1SdkAutomationPlaybookJobsJobIdAbortPut**](DefaultAPI.md#V1SdkAutomationPlaybookJobsJobIdAbortPut) | **Put** /v1/sdk-automation/playbook/jobs/{jobId}/abort | 
+[**V1SdkAutomationPlaybookJobsJobIdApprovePut**](DefaultAPI.md#V1SdkAutomationPlaybookJobsJobIdApprovePut) | **Put** /v1/sdk-automation/playbook/jobs/{jobId}/approve | 
+[**V1SdkAutomationPlaybookJobsJobIdGet**](DefaultAPI.md#V1SdkAutomationPlaybookJobsJobIdGet) | **Get** /v1/sdk-automation/playbook/jobs/{jobId} | 
+[**V1SdkAutomationPlaybookJobsJobIdLogsGet**](DefaultAPI.md#V1SdkAutomationPlaybookJobsJobIdLogsGet) | **Get** /v1/sdk-automation/playbook/jobs/{jobId}/logs | 
+[**V1SdkAutomationPlaybookJobsJobIdResumePost**](DefaultAPI.md#V1SdkAutomationPlaybookJobsJobIdResumePost) | **Post** /v1/sdk-automation/playbook/jobs/{jobId}/resume | 
+[**V1SdkAutomationPlaybookJobsJobIdRunPost**](DefaultAPI.md#V1SdkAutomationPlaybookJobsJobIdRunPost) | **Post** /v1/sdk-automation/playbook/jobs/{jobId}/run | 
+[**V1SdkAutomationPlaybookModuleSlotsGet**](DefaultAPI.md#V1SdkAutomationPlaybookModuleSlotsGet) | **Get** /v1/sdk-automation/playbook/module-slots | 
+[**V1SdkAutomationPlaybookTemplatesGet**](DefaultAPI.md#V1SdkAutomationPlaybookTemplatesGet) | **Get** /v1/sdk-automation/playbook/templates | 
 [**V1SearchGet**](DefaultAPI.md#V1SearchGet) | **Get** /v1/search | 
 [**V1SiteDetailsSitelistsPost**](DefaultAPI.md#V1SiteDetailsSitelistsPost) | **Post** /v1/site/details/sitelists | 
 [**V1SiteIdDetailsInterfacesGet**](DefaultAPI.md#V1SiteIdDetailsInterfacesGet) | **Get** /v1/site/{id}/details/interfaces | 
@@ -505,6 +523,7 @@ Method | HTTP request | Description
 [**V2MonitoringExtranetServiceStatusGet**](DefaultAPI.md#V2MonitoringExtranetServiceStatusGet) | **Get** /v2/monitoring/extranet/service-status | 
 [**V2MonitoringExtranetSiteStatusGet**](DefaultAPI.md#V2MonitoringExtranetSiteStatusGet) | **Get** /v2/monitoring/extranet/site-status | 
 [**V2MonitoringExtranetStatusDetailsGet**](DefaultAPI.md#V2MonitoringExtranetStatusDetailsGet) | **Get** /v2/monitoring/extranet/status-details | 
+[**V2MonitoringFecStatsGet**](DefaultAPI.md#V2MonitoringFecStatsGet) | **Get** /v2/monitoring/fec-stats | 
 [**V2MonitoringIkeErrorHistoryPost**](DefaultAPI.md#V2MonitoringIkeErrorHistoryPost) | **Post** /v2/monitoring/ike-error-history | 
 [**V2MonitoringInterfacePost**](DefaultAPI.md#V2MonitoringInterfacePost) | **Post** /v2/monitoring/interface | 
 [**V2MonitoringIpsecPost**](DefaultAPI.md#V2MonitoringIpsecPost) | **Post** /v2/monitoring/ipsec | 
@@ -10063,7 +10082,7 @@ Name | Type | Description  | Notes
 
 ## V1DevicesSummaryGet
 
-> V1DevicesSummaryGetResponse V1DevicesSummaryGet(ctx).Authorization(authorization).Execute()
+> V1DevicesSummaryGetResponse V1DevicesSummaryGet(ctx).Authorization(authorization).ShowExcluded(showExcluded).Execute()
 
 
 
@@ -10083,10 +10102,11 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	showExcluded := true // bool | Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1DevicesSummaryGet(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1DevicesSummaryGet(context.Background()).Authorization(authorization).ShowExcluded(showExcluded).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1DevicesSummaryGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10108,6 +10128,7 @@ Other parameters are passed through a pointer to a apiV1DevicesSummaryGetRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **showExcluded** | **bool** | Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false. | 
 
 ### Return type
 
@@ -11863,7 +11884,7 @@ Name | Type | Description  | Notes
 
 ## V1EdgesSummaryGet
 
-> V1EdgesSummaryGetResponse V1EdgesSummaryGet(ctx).Authorization(authorization).EnterpriseId(enterpriseId).IsRequested(isRequested).UpgradeSummary(upgradeSummary).Execute()
+> V1EdgesSummaryGetResponse V1EdgesSummaryGet(ctx).Authorization(authorization).EnterpriseId(enterpriseId).IsRequested(isRequested).ShowExcluded(showExcluded).UpgradeSummary(upgradeSummary).Execute()
 
 
 
@@ -11883,11 +11904,12 @@ func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	enterpriseId := int64(1234567891011) // int64 |  (optional)
 	isRequested := true // bool |  (optional)
+	showExcluded := true // bool | Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false. (optional)
 	upgradeSummary := true // bool |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1EdgesSummaryGet(context.Background()).Authorization(authorization).EnterpriseId(enterpriseId).IsRequested(isRequested).UpgradeSummary(upgradeSummary).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1EdgesSummaryGet(context.Background()).Authorization(authorization).EnterpriseId(enterpriseId).IsRequested(isRequested).ShowExcluded(showExcluded).UpgradeSummary(upgradeSummary).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1EdgesSummaryGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11911,6 +11933,7 @@ Name | Type | Description  | Notes
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **enterpriseId** | **int64** |  | 
  **isRequested** | **bool** |  | 
+ **showExcluded** | **bool** | Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false. | 
  **upgradeSummary** | **bool** |  | 
 
 ### Return type
@@ -26214,6 +26237,1298 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## V1SdkAutomationPlaybookBundlesGet
+
+> V1SdkAutomationPlaybookBundlesGetResponse V1SdkAutomationPlaybookBundlesGet(ctx).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookBundlesGet(context.Background()).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookBundlesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookBundlesGet`: V1SdkAutomationPlaybookBundlesGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookBundlesGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookBundlesGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookBundlesGetResponse**](V1SdkAutomationPlaybookBundlesGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookConfigsConfigIdDelete
+
+> V1SdkAutomationPlaybookConfigsConfigIdDelete(ctx, configId).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	configId := "example string" // string | Config id to delete
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdDelete(context.Background(), configId).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** | Config id to delete | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookConfigsConfigIdDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookConfigsConfigIdDryRunGet
+
+> V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse V1SdkAutomationPlaybookConfigsConfigIdDryRunGet(ctx, configId).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	configId := "example string" // string | Config id whose latest dry-run job status is requested
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdDryRunGet(context.Background(), configId).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdDryRunGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookConfigsConfigIdDryRunGet`: V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdDryRunGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** | Config id whose latest dry-run job status is requested | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookConfigsConfigIdDryRunGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse**](V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookConfigsConfigIdDryRunPost
+
+> V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse V1SdkAutomationPlaybookConfigsConfigIdDryRunPost(ctx, configId).Authorization(authorization).V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest(v1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	configId := "example string" // string | Staged config id to dry-run
+	v1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest := *openapiclient.NewV1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest() // V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdDryRunPost(context.Background(), configId).Authorization(authorization).V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest(v1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdDryRunPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookConfigsConfigIdDryRunPost`: V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdDryRunPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** | Staged config id to dry-run | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest** | [**V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest**](V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest.md) |  | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse**](V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookConfigsConfigIdGet
+
+> V1SdkAutomationPlaybookConfigsConfigIdGetResponse V1SdkAutomationPlaybookConfigsConfigIdGet(ctx, configId).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	configId := "example string" // string | Config id to fetch
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdGet(context.Background(), configId).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookConfigsConfigIdGet`: V1SdkAutomationPlaybookConfigsConfigIdGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** | Config id to fetch | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookConfigsConfigIdGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1SdkAutomationPlaybookConfigsConfigIdGetResponse**](V1SdkAutomationPlaybookConfigsConfigIdGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookConfigsConfigIdPut
+
+> V1SdkAutomationPlaybookConfigsConfigIdPutResponse V1SdkAutomationPlaybookConfigsConfigIdPut(ctx, configId).Authorization(authorization).V1SdkAutomationPlaybookConfigsConfigIdPutRequest(v1SdkAutomationPlaybookConfigsConfigIdPutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	configId := "example string" // string | Config id from the URL path (:configId)
+	v1SdkAutomationPlaybookConfigsConfigIdPutRequest := *openapiclient.NewV1SdkAutomationPlaybookConfigsConfigIdPutRequest() // V1SdkAutomationPlaybookConfigsConfigIdPutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdPut(context.Background(), configId).Authorization(authorization).V1SdkAutomationPlaybookConfigsConfigIdPutRequest(v1SdkAutomationPlaybookConfigsConfigIdPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookConfigsConfigIdPut`: V1SdkAutomationPlaybookConfigsConfigIdPutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** | Config id from the URL path (:configId) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookConfigsConfigIdPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1SdkAutomationPlaybookConfigsConfigIdPutRequest** | [**V1SdkAutomationPlaybookConfigsConfigIdPutRequest**](V1SdkAutomationPlaybookConfigsConfigIdPutRequest.md) |  | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookConfigsConfigIdPutResponse**](V1SdkAutomationPlaybookConfigsConfigIdPutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookConfigsConfigIdStagePut
+
+> V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse V1SdkAutomationPlaybookConfigsConfigIdStagePut(ctx, configId).Authorization(authorization).V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest(v1SdkAutomationPlaybookConfigsConfigIdStagePutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	configId := "example string" // string | Config id to stage
+	v1SdkAutomationPlaybookConfigsConfigIdStagePutRequest := *openapiclient.NewV1SdkAutomationPlaybookConfigsConfigIdStagePutRequest() // V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdStagePut(context.Background(), configId).Authorization(authorization).V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest(v1SdkAutomationPlaybookConfigsConfigIdStagePutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdStagePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookConfigsConfigIdStagePut`: V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookConfigsConfigIdStagePut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** | Config id to stage | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookConfigsConfigIdStagePutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1SdkAutomationPlaybookConfigsConfigIdStagePutRequest** | [**V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest**](V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest.md) |  | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse**](V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookConfigsGet
+
+> V1SdkAutomationPlaybookConfigsGetResponse V1SdkAutomationPlaybookConfigsGet(ctx).Authorization(authorization).NameContains(nameContains).After(after).First(first).Status(status).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	nameContains := "example string" // string | Optional filter: case-insensitive substring match on config display name; empty returns all (optional)
+	after := "example string" // string |  (optional)
+	first := int32(123) // int32 |  (optional)
+	status := []string{"ENUM_VALUE"} // []string | Optional status filter (e.g. STAGED, PAUSED); empty returns all (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookConfigsGet(context.Background()).Authorization(authorization).NameContains(nameContains).After(after).First(first).Status(status).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookConfigsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookConfigsGet`: V1SdkAutomationPlaybookConfigsGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookConfigsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookConfigsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **nameContains** | **string** | Optional filter: case-insensitive substring match on config display name; empty returns all | 
+ **after** | **string** |  | 
+ **first** | **int32** |  | 
+ **status** | **[]string** | Optional status filter (e.g. STAGED, PAUSED); empty returns all | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookConfigsGetResponse**](V1SdkAutomationPlaybookConfigsGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookConfigsPost
+
+> V1SdkAutomationPlaybookConfigsPostResponse V1SdkAutomationPlaybookConfigsPost(ctx).Authorization(authorization).V1SdkAutomationPlaybookConfigsPostRequest(v1SdkAutomationPlaybookConfigsPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1SdkAutomationPlaybookConfigsPostRequest := *openapiclient.NewV1SdkAutomationPlaybookConfigsPostRequest() // V1SdkAutomationPlaybookConfigsPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookConfigsPost(context.Background()).Authorization(authorization).V1SdkAutomationPlaybookConfigsPostRequest(v1SdkAutomationPlaybookConfigsPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookConfigsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookConfigsPost`: V1SdkAutomationPlaybookConfigsPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookConfigsPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookConfigsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1SdkAutomationPlaybookConfigsPostRequest** | [**V1SdkAutomationPlaybookConfigsPostRequest**](V1SdkAutomationPlaybookConfigsPostRequest.md) |  | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookConfigsPostResponse**](V1SdkAutomationPlaybookConfigsPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookJobsGet
+
+> V1SdkAutomationPlaybookJobsGetResponse V1SdkAutomationPlaybookJobsGet(ctx).Authorization(authorization).NameContains(nameContains).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	nameContains := "example string" // string | Optional filter: case-insensitive substring match on the owning config's display name; empty returns all (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookJobsGet(context.Background()).Authorization(authorization).NameContains(nameContains).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookJobsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookJobsGet`: V1SdkAutomationPlaybookJobsGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookJobsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookJobsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **nameContains** | **string** | Optional filter: case-insensitive substring match on the owning config&#39;s display name; empty returns all | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookJobsGetResponse**](V1SdkAutomationPlaybookJobsGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookJobsJobIdAbortPut
+
+> V1SdkAutomationPlaybookJobsJobIdAbortPutResponse V1SdkAutomationPlaybookJobsJobIdAbortPut(ctx, jobId).Authorization(authorization).Body(body).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	jobId := "example string" // string | In-progress job id to abort
+	body := map[string]interface{}{ ... } // map[string]interface{} | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookJobsJobIdAbortPut(context.Background(), jobId).Authorization(authorization).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdAbortPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookJobsJobIdAbortPut`: V1SdkAutomationPlaybookJobsJobIdAbortPutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdAbortPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | In-progress job id to abort | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookJobsJobIdAbortPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookJobsJobIdAbortPutResponse**](V1SdkAutomationPlaybookJobsJobIdAbortPutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookJobsJobIdApprovePut
+
+> V1SdkAutomationPlaybookJobsJobIdApprovePutResponse V1SdkAutomationPlaybookJobsJobIdApprovePut(ctx, jobId).Authorization(authorization).V1SdkAutomationPlaybookJobsJobIdApprovePutRequest(v1SdkAutomationPlaybookJobsJobIdApprovePutRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	jobId := "example string" // string | Job id in DRY_RUN_COMPLETE to approve for deploy
+	v1SdkAutomationPlaybookJobsJobIdApprovePutRequest := *openapiclient.NewV1SdkAutomationPlaybookJobsJobIdApprovePutRequest() // V1SdkAutomationPlaybookJobsJobIdApprovePutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookJobsJobIdApprovePut(context.Background(), jobId).Authorization(authorization).V1SdkAutomationPlaybookJobsJobIdApprovePutRequest(v1SdkAutomationPlaybookJobsJobIdApprovePutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdApprovePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookJobsJobIdApprovePut`: V1SdkAutomationPlaybookJobsJobIdApprovePutResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdApprovePut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job id in DRY_RUN_COMPLETE to approve for deploy | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookJobsJobIdApprovePutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1SdkAutomationPlaybookJobsJobIdApprovePutRequest** | [**V1SdkAutomationPlaybookJobsJobIdApprovePutRequest**](V1SdkAutomationPlaybookJobsJobIdApprovePutRequest.md) |  | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookJobsJobIdApprovePutResponse**](V1SdkAutomationPlaybookJobsJobIdApprovePutResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookJobsJobIdGet
+
+> V1SdkAutomationPlaybookJobsJobIdGetResponse V1SdkAutomationPlaybookJobsJobIdGet(ctx, jobId).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	jobId := "example string" // string | Job id to fetch
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookJobsJobIdGet(context.Background(), jobId).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookJobsJobIdGet`: V1SdkAutomationPlaybookJobsJobIdGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job id to fetch | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookJobsJobIdGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1SdkAutomationPlaybookJobsJobIdGetResponse**](V1SdkAutomationPlaybookJobsJobIdGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookJobsJobIdLogsGet
+
+> V1SdkAutomationPlaybookJobsJobIdLogsGetResponse V1SdkAutomationPlaybookJobsJobIdLogsGet(ctx, jobId).Authorization(authorization).Phase(phase).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	jobId := "example string" // string | Job id whose logs are requested
+	phase := "ENUM_VALUE" // string | Optional phase filter (dry_run / deploy / post_deploy_check); unset returns all (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookJobsJobIdLogsGet(context.Background(), jobId).Authorization(authorization).Phase(phase).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdLogsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookJobsJobIdLogsGet`: V1SdkAutomationPlaybookJobsJobIdLogsGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdLogsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job id whose logs are requested | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookJobsJobIdLogsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **phase** | **string** | Optional phase filter (dry_run / deploy / post_deploy_check); unset returns all | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookJobsJobIdLogsGetResponse**](V1SdkAutomationPlaybookJobsJobIdLogsGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookJobsJobIdResumePost
+
+> V1SdkAutomationPlaybookJobsJobIdResumePostResponse V1SdkAutomationPlaybookJobsJobIdResumePost(ctx, jobId).Authorization(authorization).V1SdkAutomationPlaybookJobsJobIdResumePostRequest(v1SdkAutomationPlaybookJobsJobIdResumePostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	jobId := "example string" // string | Job id parked in AWAITING_REAUTH to resume
+	v1SdkAutomationPlaybookJobsJobIdResumePostRequest := *openapiclient.NewV1SdkAutomationPlaybookJobsJobIdResumePostRequest() // V1SdkAutomationPlaybookJobsJobIdResumePostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookJobsJobIdResumePost(context.Background(), jobId).Authorization(authorization).V1SdkAutomationPlaybookJobsJobIdResumePostRequest(v1SdkAutomationPlaybookJobsJobIdResumePostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdResumePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookJobsJobIdResumePost`: V1SdkAutomationPlaybookJobsJobIdResumePostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdResumePost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job id parked in AWAITING_REAUTH to resume | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookJobsJobIdResumePostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1SdkAutomationPlaybookJobsJobIdResumePostRequest** | [**V1SdkAutomationPlaybookJobsJobIdResumePostRequest**](V1SdkAutomationPlaybookJobsJobIdResumePostRequest.md) |  | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookJobsJobIdResumePostResponse**](V1SdkAutomationPlaybookJobsJobIdResumePostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookJobsJobIdRunPost
+
+> V1SdkAutomationPlaybookJobsJobIdRunPostResponse V1SdkAutomationPlaybookJobsJobIdRunPost(ctx, jobId).Authorization(authorization).V1SdkAutomationPlaybookJobsJobIdRunPostRequest(v1SdkAutomationPlaybookJobsJobIdRunPostRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	jobId := "example string" // string | Prior job id whose config is re-run
+	v1SdkAutomationPlaybookJobsJobIdRunPostRequest := *openapiclient.NewV1SdkAutomationPlaybookJobsJobIdRunPostRequest() // V1SdkAutomationPlaybookJobsJobIdRunPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookJobsJobIdRunPost(context.Background(), jobId).Authorization(authorization).V1SdkAutomationPlaybookJobsJobIdRunPostRequest(v1SdkAutomationPlaybookJobsJobIdRunPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdRunPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookJobsJobIdRunPost`: V1SdkAutomationPlaybookJobsJobIdRunPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdRunPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Prior job id whose config is re-run | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookJobsJobIdRunPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+ **v1SdkAutomationPlaybookJobsJobIdRunPostRequest** | [**V1SdkAutomationPlaybookJobsJobIdRunPostRequest**](V1SdkAutomationPlaybookJobsJobIdRunPostRequest.md) |  | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookJobsJobIdRunPostResponse**](V1SdkAutomationPlaybookJobsJobIdRunPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookModuleSlotsGet
+
+> V1SdkAutomationPlaybookModuleSlotsGetResponse V1SdkAutomationPlaybookModuleSlotsGet(ctx).Authorization(authorization).BundleKey(bundleKey).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	bundleKey := "example string" // string | Catalog key from playbook_catalog_playbook (e.g. system_bundle) (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookModuleSlotsGet(context.Background()).Authorization(authorization).BundleKey(bundleKey).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookModuleSlotsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookModuleSlotsGet`: V1SdkAutomationPlaybookModuleSlotsGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookModuleSlotsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookModuleSlotsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **bundleKey** | **string** | Catalog key from playbook_catalog_playbook (e.g. system_bundle) | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookModuleSlotsGetResponse**](V1SdkAutomationPlaybookModuleSlotsGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SdkAutomationPlaybookTemplatesGet
+
+> V1SdkAutomationPlaybookTemplatesGetResponse V1SdkAutomationPlaybookTemplatesGet(ctx).Authorization(authorization).BundleKey(bundleKey).ModuleKeys(moduleKeys).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	bundleKey := "example string" // string | Catalog key from playbook_catalog_playbook (e.g. system_bundle) (optional)
+	moduleKeys := []string{"example string"} // []string | Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample) (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookTemplatesGet(context.Background()).Authorization(authorization).BundleKey(bundleKey).ModuleKeys(moduleKeys).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookTemplatesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookTemplatesGet`: V1SdkAutomationPlaybookTemplatesGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookTemplatesGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookTemplatesGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **bundleKey** | **string** | Catalog key from playbook_catalog_playbook (e.g. system_bundle) | 
+ **moduleKeys** | **[]string** | Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample) | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookTemplatesGetResponse**](V1SdkAutomationPlaybookTemplatesGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V1SearchGet
 
 > V1SearchGetResponse V1SearchGet(ctx).Authorization(authorization).MaxResults(maxResults).Search(search).Execute()
@@ -35008,6 +36323,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V2MonitoringExtranetStatusDetailsGetResponse**](V2MonitoringExtranetStatusDetailsGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2MonitoringFecStatsGet
+
+> V2MonitoringFecStatsGetResponse V2MonitoringFecStatsGet(ctx).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V2MonitoringFecStatsGet(context.Background()).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2MonitoringFecStatsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2MonitoringFecStatsGet`: V2MonitoringFecStatsGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V2MonitoringFecStatsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2MonitoringFecStatsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+[**V2MonitoringFecStatsGetResponse**](V2MonitoringFecStatsGetResponse.md)
 
 ### Authorization
 

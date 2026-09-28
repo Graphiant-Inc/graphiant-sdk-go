@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **LanSegmentId** | **int64** | Producer LAN segment (VRF) on gateway appliances (required) | 
 **NatPrefixStrategy** | [**ManaV2PublicVifGatewayNatPrefixStrategy**](ManaV2PublicVifGatewayNatPrefixStrategy.md) |  | 
 **RegionId** | **int32** | Graphiant region for gateway appliances (required) | 
-**ServiceName** | **string** | Service display name (required) | 
+**ServiceName** | **string** | Producer service name (letters, digits, hyphens only) (required) | 
 **StorageProvider** | **string** | Storage provider; each gateway appliance must match region and provider (required) | 
 
 ## Methods

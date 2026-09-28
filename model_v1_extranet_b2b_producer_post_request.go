@@ -22,7 +22,7 @@ var _ MappedNullable = &V1ExtranetB2bProducerPostRequest{}
 // V1ExtranetB2bProducerPostRequest struct for V1ExtranetB2bProducerPostRequest
 type V1ExtranetB2bProducerPostRequest struct {
 	Policy ManaV2ExtranetServiceProducerPolicy `json:"policy"`
-	//  (required)
+	// Producer service name (letters, digits, hyphens only) (required)
 	ServiceName string `json:"serviceName"`
 	// Branded extranet service type (peering_service, client_to_server, …) (required)
 	ServiceType string `json:"serviceType"`

@@ -4,6 +4,47 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.9.0] - 2026-09-25
+
+No breaking changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).
+
+### Added
+- **API endpoints:**
+  - `GET /v1/sdk-automation/playbook/bundles`
+  - `GET`/`POST /v1/sdk-automation/playbook/configs`
+  - `GET`/`PUT`/`DELETE /v1/sdk-automation/playbook/configs/{configId}`
+  - `GET`/`POST /v1/sdk-automation/playbook/configs/{configId}/dry-run`
+  - `PUT /v1/sdk-automation/playbook/configs/{configId}/stage`
+  - `GET /v1/sdk-automation/playbook/jobs`
+  - `GET /v1/sdk-automation/playbook/jobs/{jobId}`
+  - `GET /v1/sdk-automation/playbook/jobs/{jobId}/logs`
+  - `POST /v1/sdk-automation/playbook/jobs/{jobId}/run`
+  - `PUT /v1/sdk-automation/playbook/jobs/{jobId}/approve`
+  - `POST /v1/sdk-automation/playbook/jobs/{jobId}/resume`
+  - `PUT /v1/sdk-automation/playbook/jobs/{jobId}/abort`
+  - `GET /v1/sdk-automation/playbook/module-slots`
+  - `GET /v1/sdk-automation/playbook/templates`
+  - `GET /v2/monitoring/fec-stats`
+- **Models (new):**
+  - `SdkAutomationCatalogBundle`, `SdkAutomationCatalogModuleSlot`, `SdkAutomationModuleFile`, `SdkAutomationTemplateFile`, `SdkAutomationPlaybookConfig`, `SdkAutomationPlaybookConfigSummary`, `SdkAutomationPlaybookJob`, `SdkAutomationValidationError`
+  - `V2MonitoringFecStatsGetResponse` (`currentRepairLevel`, `effectiveQoe`, `unrepairableRate`, rx/tx histograms and stats), `StatsmonV2FecRxStats`, `StatsmonV2FecTxStats`, `StatsmonV2FecRxRepairLevel`, `StatsmonV2FecTxRepairLevel`, `StatsmonV2RepairLevel`, `StatsmonV2RepairLevelScore`
+- **`GET`/`POST /v1/edges-summary`, `GET /v1/devices-summary`:** added optional `showExcluded` query/request parameter (default `false`)
+- **`IamEnterprise`, `V1EnterprisesPatchRequest`:** added `backboneApisEnabled` field, surfaced on `GET /v1/enterprises`, `GET /v1/enterprises/managed`, and `GET /v1/users/{id}/enterprises`
+- **`CommonUserInfo`:** added `bearerToken` field, surfaced in device/enterprise snapshot responses (`GET /v1/device/snapshot`, `GET /v1/device/snapshot/{deviceId}`, `GET /v1/enterprise/snapshot`)
+
+### Changed
+- Updated to API specification version 26.9.0
+- **Version:**
+  - Updated version constant to v26.9.0
+  - Updated API documentation reference to `graphiant_api_docs_v26.9.0.json`
+- **Documentation:** updated SDK generation examples in README to use `graphiant_api_docs_v26.9.0.json`; **SECURITY.md** supported-versions table updated for **26.9.0**
+- **Models (updated):**
+  - `ManaV2PublicVifGatewayWriteRequest`, `V1PvifPostRequest`, `V1ExtranetB2bProducerPostRequest`, `V1ExtranetB2bProducerReviewPostRequest`: clarified `serviceName` description — producer service name must be letters, digits, or hyphens only (no schema/type change)
+
+### Removed
+- **API endpoints:** none
+- **Models:** none
+
 ## [26.8.0] - 2026-08-26
 
 ### Added

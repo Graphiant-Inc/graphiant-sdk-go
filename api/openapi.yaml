@@ -1924,7 +1924,7 @@ paths:
       - jwtAuth: []
   /v1/ztagent/agents:
     get:
-      description: List Conceal agents (devices) with pagination and filters.
+      description: List ZTAgent agents (devices) with pagination and filters.
       parameters:
       - description: "Bearer token. Format: Bearer <your_token_here>"
         explode: false
@@ -8500,6 +8500,17 @@ paths:
         schema:
           type: string
         style: simple
+      - description: Include devices excluded from Graphiant API lists. Ignored for
+          non-Graphiant callers. Default false.
+        example: true
+        explode: true
+        in: query
+        name: showExcluded
+        required: false
+        schema:
+          example: true
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -13319,6 +13330,630 @@ paths:
           description: OK
       security:
       - jwtAuth: []
+  /v1/sdk-automation/playbook/jobs/{jobId}/abort:
+    put:
+      description: Abort an in-progress playbook job
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: In-progress job id to abort
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdAbortPutRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdAbortPutResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/jobs/{jobId}/approve:
+    put:
+      description: "Gate: execute play (deploy) after dry-run passes"
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Job id in DRY_RUN_COMPLETE to approve for deploy
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdApprovePutRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdApprovePutResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/configs:
+    get:
+      description: Pending Executions table
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "Optional filter: case-insensitive substring match on config\
+          \ display name; empty returns all"
+        explode: true
+        in: query
+        name: nameContains
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: after
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: first
+        required: false
+        schema:
+          example: 123
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: "Optional status filter (e.g. STAGED, PAUSED); empty returns\
+          \ all"
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          example:
+          - example
+          items:
+            example: ENUM_VALUE
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookConfigsGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+    post:
+      description: Validate & create a config (validate_only=true skips persist for
+        Validate Bundle)
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1SdkAutomationPlaybookConfigsPostRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookConfigsPostResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/configs/{configId}:
+    delete:
+      description: Delete a playbook config
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Config id to delete
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No Content
+      security:
+      - jwtAuth: []
+    get:
+      description: Get a playbook config including its module YAML files
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Config id to fetch
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+    put:
+      description: Validate & update config YAML
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Config id from the URL path (:configId)
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdPutRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdPutResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/templates:
+    get:
+      description: Download starter playbook & sample config templates for a bundle
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Catalog key from playbook_catalog_playbook (e.g. system_bundle)
+        explode: true
+        in: query
+        name: bundleKey
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      - description: Optional catalog module keys to narrow the response; empty returns
+          the whole bundle (playbook + every module sample)
+        explode: true
+        in: query
+        name: moduleKeys
+        required: false
+        schema:
+          example:
+          - example
+          items:
+            example: example string
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookTemplatesGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/configs/{configId}/dry-run:
+    get:
+      description: Get the latest dry-run / pipeline job status for a config
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Config id whose latest dry-run job status is requested
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+    post:
+      description: "Mandatory dry-run; creates a job, runs ansible --check"
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Staged config id to dry-run
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/jobs/{jobId}:
+    get:
+      description: Get a playbook job by id
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Job id to fetch
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/jobs/{jobId}/logs:
+    get:
+      description: "Get masked ansible logs for a job, optionally filtered by phase"
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Job id whose logs are requested
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      - description: Optional phase filter (dry_run / deploy / post_deploy_check);
+          unset returns all
+        explode: true
+        in: query
+        name: phase
+        required: false
+        schema:
+          example: ENUM_VALUE
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdLogsGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/bundles:
+    get:
+      description: List catalog bundles for the UI picklist
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookBundlesGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/jobs:
+    get:
+      description: List playbook job history
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "Optional filter: case-insensitive substring match on the owning\
+          \ config's display name; empty returns all"
+        explode: true
+        in: query
+        name: nameContains
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookJobsGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/module-slots:
+    get:
+      description: List module slots for a catalog bundle
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Catalog key from playbook_catalog_playbook (e.g. system_bundle)
+        explode: true
+        in: query
+        name: bundleKey
+        required: false
+        schema:
+          example: example string
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookModuleSlotsGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/jobs/{jobId}/run:
+    post:
+      description: Re-run; starts from dry-run unless skip_dry_run=true
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Prior job id whose config is re-run
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdRunPostRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdRunPostResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/jobs/{jobId}/resume:
+    post:
+      description: Resume a run parked in awaiting_reauth with the caller's re-authed
+        token
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Job id parked in AWAITING_REAUTH to resume
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdResumePostRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdResumePostResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v1/sdk-automation/playbook/configs/{configId}/stage:
+    put:
+      description: Save name + notes and mark config as staged (must already be validated)
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Config id to stage
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          example: example string
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdStagePutRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdStagePutResponse"
+          description: OK
+      security:
+      - jwtAuth: []
   /v1/edges-hardware/assigned:
     get:
       parameters:
@@ -13375,6 +14010,17 @@ paths:
         explode: true
         in: query
         name: isRequested
+        required: false
+        schema:
+          example: true
+          type: boolean
+        style: form
+      - description: Include devices excluded from Graphiant API lists. Ignored for
+          non-Graphiant callers. Default false.
+        example: true
+        explode: true
+        in: query
+        name: showExcluded
         required: false
         schema:
           example: true
@@ -14648,6 +15294,27 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v2MonitoringExtranetSiteStatusGetResponse"
+          description: OK
+      security:
+      - jwtAuth: []
+  /v2/monitoring/fec-stats:
+    get:
+      description: Returns the FEC stats for the given device
+      parameters:
+      - description: "Bearer token. Format: Bearer <your_token_here>"
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v2MonitoringFecStatsGetResponse"
           description: OK
       security:
       - jwtAuth: []
@@ -24555,6 +25222,7 @@ components:
         - acceptEula: true
           accountType: ENUM_VALUE
           adminEmail: example string
+          backboneApisEnabled: true
           cloudProvider: ENUM_VALUE
           companyName: example string
           counts:
@@ -24611,6 +25279,7 @@ components:
         - acceptEula: true
           accountType: ENUM_VALUE
           adminEmail: example string
+          backboneApisEnabled: true
           cloudProvider: ENUM_VALUE
           companyName: example string
           counts:
@@ -24676,6 +25345,7 @@ components:
         acceptEula: true
         accountType: ENUM_VALUE
         adminEmail: example string
+        backboneApisEnabled: true
         cloudProvider: ENUM_VALUE
         companyName: example string
         counts:
@@ -24739,6 +25409,9 @@ components:
         adminEmail:
           example: example string
           type: string
+        backboneApisEnabled:
+          example: true
+          type: boolean
         cloudProvider:
           example: ENUM_VALUE
           type: string
@@ -24931,6 +25604,7 @@ components:
         - acceptEula: true
           accountType: ENUM_VALUE
           adminEmail: example string
+          backboneApisEnabled: true
           cloudProvider: ENUM_VALUE
           companyName: example string
           counts:
@@ -24987,6 +25661,7 @@ components:
         - acceptEula: true
           accountType: ENUM_VALUE
           adminEmail: example string
+          backboneApisEnabled: true
           cloudProvider: ENUM_VALUE
           companyName: example string
           counts:
@@ -25054,6 +25729,9 @@ components:
         adminEmail:
           example: example string
           type: string
+        backboneApisEnabled:
+          example: true
+          type: boolean
         cloudProvider:
           example: ENUM_VALUE
           type: string
@@ -25344,6 +26022,7 @@ components:
         - acceptEula: true
           accountType: ENUM_VALUE
           adminEmail: example string
+          backboneApisEnabled: true
           cloudProvider: ENUM_VALUE
           companyName: example string
           counts:
@@ -25400,6 +26079,7 @@ components:
         - acceptEula: true
           accountType: ENUM_VALUE
           adminEmail: example string
+          backboneApisEnabled: true
           cloudProvider: ENUM_VALUE
           companyName: example string
           counts:
@@ -243498,7 +244178,7 @@ components:
         policy:
           $ref: "#/components/schemas/manaV2ExtranetServiceProducerPolicy"
         serviceName:
-          description: ' (required)'
+          description: "Producer service name (letters, digits, hyphens only) (required)"
           example: example string
           type: string
         serviceType:
@@ -244172,7 +244852,7 @@ components:
         policy:
           $ref: "#/components/schemas/manaV2ExtranetServiceProducerPolicy"
         serviceName:
-          description: ' (required)'
+          description: "Producer service name (letters, digits, hyphens only) (required)"
           example: example string
           type: string
         serviceType:
@@ -251726,7 +252406,7 @@ components:
           format: int32
           type: integer
         serviceName:
-          description: Service display name (required)
+          description: "Producer service name (letters, digits, hyphens only) (required)"
           example: example string
           type: string
         storageProvider:
@@ -252015,7 +252695,7 @@ components:
           format: int32
           type: integer
         serviceName:
-          description: Service display name (required)
+          description: "Producer service name (letters, digits, hyphens only) (required)"
           example: example string
           type: string
         storageProvider:
@@ -294336,6 +295016,7 @@ components:
       example:
         firstSnapshot:
           author:
+            bearerToken: example string
             enterpriseId: 1234567891011
             exp: 1234567891011
             originalEnterpriseId: 1234567891011
@@ -294389,6 +295070,7 @@ components:
           name: 6-1-24-status-check
         secondSnapshot:
           author:
+            bearerToken: example string
             enterpriseId: 1234567891011
             exp: 1234567891011
             originalEnterpriseId: 1234567891011
@@ -294442,6 +295124,7 @@ components:
           name: 6-1-24-status-check
         thirdSnapshot:
           author:
+            bearerToken: example string
             enterpriseId: 1234567891011
             exp: 1234567891011
             originalEnterpriseId: 1234567891011
@@ -294505,6 +295188,7 @@ components:
       additionalProperties: false
       example:
         author:
+          bearerToken: example string
           enterpriseId: 1234567891011
           exp: 1234567891011
           originalEnterpriseId: 1234567891011
@@ -294581,6 +295265,7 @@ components:
     commonUserInfo:
       additionalProperties: false
       example:
+        bearerToken: example string
         enterpriseId: 1234567891011
         exp: 1234567891011
         originalEnterpriseId: 1234567891011
@@ -294607,6 +295292,9 @@ components:
         timeZone: example string
         userId: example string
       properties:
+        bearerToken:
+          example: example string
+          type: string
         enterpriseId:
           example: 1234567891011
           format: int64
@@ -294716,6 +295404,7 @@ components:
       example:
         snapshots:
         - author:
+            bearerToken: example string
             enterpriseId: 1234567891011
             exp: 1234567891011
             originalEnterpriseId: 1234567891011
@@ -294768,6 +295457,7 @@ components:
           id: 1234567891011
           name: 6-1-24-status-check
         - author:
+            bearerToken: example string
             enterpriseId: 1234567891011
             exp: 1234567891011
             originalEnterpriseId: 1234567891011
@@ -294875,6 +295565,7 @@ components:
           snapshotCount: 123
           snapshots:
           - author:
+              bearerToken: example string
               enterpriseId: 1234567891011
               exp: 1234567891011
               originalEnterpriseId: 1234567891011
@@ -294927,6 +295618,7 @@ components:
             id: 1234567891011
             name: 6-1-24-status-check
           - author:
+              bearerToken: example string
               enterpriseId: 1234567891011
               exp: 1234567891011
               originalEnterpriseId: 1234567891011
@@ -294988,6 +295680,7 @@ components:
           snapshotCount: 123
           snapshots:
           - author:
+              bearerToken: example string
               enterpriseId: 1234567891011
               exp: 1234567891011
               originalEnterpriseId: 1234567891011
@@ -295040,6 +295733,7 @@ components:
             id: 1234567891011
             name: 6-1-24-status-check
           - author:
+              bearerToken: example string
               enterpriseId: 1234567891011
               exp: 1234567891011
               originalEnterpriseId: 1234567891011
@@ -295099,6 +295793,7 @@ components:
             count: 123
             snapshots:
             - author:
+                bearerToken: example string
                 enterpriseId: 1234567891011
                 exp: 1234567891011
                 originalEnterpriseId: 1234567891011
@@ -295151,6 +295846,7 @@ components:
               id: 1234567891011
               name: 6-1-24-status-check
             - author:
+                bearerToken: example string
                 enterpriseId: 1234567891011
                 exp: 1234567891011
                 originalEnterpriseId: 1234567891011
@@ -295222,6 +295918,7 @@ components:
         snapshotCount: 123
         snapshots:
         - author:
+            bearerToken: example string
             enterpriseId: 1234567891011
             exp: 1234567891011
             originalEnterpriseId: 1234567891011
@@ -295274,6 +295971,7 @@ components:
           id: 1234567891011
           name: 6-1-24-status-check
         - author:
+            bearerToken: example string
             enterpriseId: 1234567891011
             exp: 1234567891011
             originalEnterpriseId: 1234567891011
@@ -295360,6 +296058,7 @@ components:
         count: 123
         snapshots:
         - author:
+            bearerToken: example string
             enterpriseId: 1234567891011
             exp: 1234567891011
             originalEnterpriseId: 1234567891011
@@ -295412,6 +296111,7 @@ components:
           id: 1234567891011
           name: 6-1-24-status-check
         - author:
+            bearerToken: example string
             enterpriseId: 1234567891011
             exp: 1234567891011
             originalEnterpriseId: 1234567891011
@@ -299516,6 +300216,864 @@ components:
           example: example string
           type: string
       type: object
+    v1SdkAutomationPlaybookBundlesGetResponse:
+      additionalProperties: false
+      example:
+        bundles:
+        - description: example string
+          key: example string
+          name: example string
+        - description: example string
+          key: example string
+          name: example string
+      properties:
+        bundles:
+          items:
+            $ref: "#/components/schemas/sdkAutomationCatalogBundle"
+          type: array
+      type: object
+    sdkAutomationCatalogBundle:
+      additionalProperties: false
+      example:
+        description: example string
+        key: example string
+        name: example string
+      properties:
+        description:
+          description: Short description of the bundle
+          example: example string
+          type: string
+        key:
+          description: Stable catalog key (e.g. system_bundle); used as CreatePlaybookConfigRequest.bundle_key
+          example: example string
+          type: string
+        name:
+          description: Display name for the UI picklist
+          example: example string
+          type: string
+      type: object
+    v1SdkAutomationPlaybookModuleSlotsGetResponse:
+      additionalProperties: false
+      example:
+        modules:
+        - bundleKey: example string
+          description: example string
+          fileDistinguisher: example string
+          isRequired: true
+          moduleKey: example string
+          name: example string
+        - bundleKey: example string
+          description: example string
+          fileDistinguisher: example string
+          isRequired: true
+          moduleKey: example string
+          name: example string
+      properties:
+        modules:
+          items:
+            $ref: "#/components/schemas/sdkAutomationCatalogModuleSlot"
+          type: array
+      type: object
+    sdkAutomationCatalogModuleSlot:
+      additionalProperties: false
+      example:
+        bundleKey: example string
+        description: example string
+        fileDistinguisher: example string
+        isRequired: true
+        moduleKey: example string
+        name: example string
+      properties:
+        bundleKey:
+          description: Owning catalog playbook key (e.g. system_bundle)
+          example: example string
+          type: string
+        description:
+          description: Short description of the module slot
+          example: example string
+          type: string
+        fileDistinguisher:
+          description: "Top-level YAML key from playbook_catalog_module the UI uses\
+            \ to map an uploaded file to this module (e.g. device_system, interfaces,\
+            \ circuits)"
+          example: example string
+          type: string
+        isRequired:
+          description: "When true, create/validate must include this module_key"
+          example: true
+          type: boolean
+        moduleKey:
+          description: Stable catalog key from playbook_catalog_module (e.g. system_config_file);
+            used as ModuleFile.module_key
+          example: example string
+          type: string
+        name:
+          description: Display name for the module slot
+          example: example string
+          type: string
+      type: object
+    v1SdkAutomationPlaybookTemplatesGetResponse:
+      additionalProperties: false
+      example:
+        collectionVersion: example string
+        files:
+        - content: example string
+          filename: example string
+          moduleKey: example string
+          sourcePath: example string
+        - content: example string
+          filename: example string
+          moduleKey: example string
+          sourcePath: example string
+      properties:
+        collectionVersion:
+          description: graphiant.naas collection version the files were read from
+          example: example string
+          type: string
+        files:
+          items:
+            $ref: "#/components/schemas/sdkAutomationTemplateFile"
+          type: array
+      type: object
+    sdkAutomationTemplateFile:
+      additionalProperties: false
+      example:
+        content: example string
+        filename: example string
+        moduleKey: example string
+        sourcePath: example string
+      properties:
+        content:
+          description: "File contents, verbatim from the collection"
+          example: example string
+          type: string
+        filename:
+          description: Suggested download name (e.g. sample_interface_config.yaml)
+          example: example string
+          type: string
+        moduleKey:
+          description: Catalog module key; empty for the bundle-level playbook not
+            scoped to a slot
+          example: example string
+          type: string
+        sourcePath:
+          description: Path within the collection for provenance (e.g. playbooks/interface_management.yml)
+          example: example string
+          type: string
+      type: object
+    v1SdkAutomationPlaybookConfigsPostRequest:
+      additionalProperties: false
+      properties:
+        bundleKey:
+          description: Catalog key from playbook_catalog_playbook (e.g. system_bundle)
+          example: example string
+          type: string
+        files:
+          items:
+            $ref: "#/components/schemas/sdkAutomationModuleFile"
+          type: array
+        validateOnly:
+          description: "When true, validate without persisting (Validate Bundle);\
+            \ when false, create on success"
+          example: true
+          type: boolean
+      type: object
+    sdkAutomationModuleFile:
+      additionalProperties: false
+      example:
+        content: example string
+        filename: example string
+        moduleKey: example string
+      properties:
+        content:
+          description: YAML file contents
+          example: example string
+          type: string
+        filename:
+          description: Original upload filename (informational; not used for routing)
+          example: example string
+          type: string
+        moduleKey:
+          description: Catalog key from playbook_catalog_module (e.g. system_config_file)
+          example: example string
+          type: string
+      type: object
+    v1SdkAutomationPlaybookConfigsPostResponse:
+      additionalProperties: false
+      example:
+        configId: example string
+        errors:
+        - message: example string
+          moduleKey: example string
+          type: ENUM_VALUE
+        - message: example string
+          moduleKey: example string
+          type: ENUM_VALUE
+      properties:
+        configId:
+          description: Created config id when validation succeeds and validate_only
+            is false; empty otherwise
+          example: example string
+          type: string
+        errors:
+          items:
+            $ref: "#/components/schemas/sdkAutomationValidationError"
+          type: array
+      type: object
+    sdkAutomationValidationError:
+      additionalProperties: false
+      example:
+        message: example string
+        moduleKey: example string
+        type: ENUM_VALUE
+      properties:
+        message:
+          description: Human-readable validation error detail
+          example: example string
+          type: string
+        moduleKey:
+          description: Catalog module key when the error is scoped to a module; unset
+            otherwise
+          example: example string
+          type: string
+        type:
+          description: Error category (syntax or schema)
+          example: ENUM_VALUE
+          type: string
+      type: object
+    v1SdkAutomationPlaybookConfigsGetResponse:
+      additionalProperties: false
+      example:
+        configs:
+        - configId: example string
+          createdByUserId: example string
+          jobStatus: ENUM_VALUE
+          name: example string
+          runId: example string
+          runNumber: 123
+          startedAt:
+            nanos: 123
+            seconds: 1234567891011
+          startedByUserId: example string
+          status: ENUM_VALUE
+          updatedAt:
+            nanos: 123
+            seconds: 1234567891011
+        - configId: example string
+          createdByUserId: example string
+          jobStatus: ENUM_VALUE
+          name: example string
+          runId: example string
+          runNumber: 123
+          startedAt:
+            nanos: 123
+            seconds: 1234567891011
+          startedByUserId: example string
+          status: ENUM_VALUE
+          updatedAt:
+            nanos: 123
+            seconds: 1234567891011
+        pageInfo:
+          currentPage: 1
+          endCursor: xxxxxxy
+          hasNextPage: true
+          hasPrevPage: true
+          startCursor: xxxxxx
+          totalPages: 4
+          totalRecords: 400
+      properties:
+        configs:
+          items:
+            $ref: "#/components/schemas/sdkAutomationPlaybookConfigSummary"
+          type: array
+        pageInfo:
+          $ref: "#/components/schemas/commonPageInfo"
+      type: object
+    sdkAutomationPlaybookConfigSummary:
+      additionalProperties: false
+      example:
+        configId: example string
+        createdByUserId: example string
+        jobStatus: ENUM_VALUE
+        name: example string
+        runId: example string
+        runNumber: 123
+        startedAt:
+          nanos: 123
+          seconds: 1234567891011
+        startedByUserId: example string
+        status: ENUM_VALUE
+        updatedAt:
+          nanos: 123
+          seconds: 1234567891011
+      properties:
+        configId:
+          description: Config id
+          example: example string
+          type: string
+        createdByUserId:
+          description: IAM user id of the config creator; UI resolves the display
+            name
+          example: example string
+          type: string
+        jobStatus:
+          description: Latest run status; unset when the config has no run yet
+          example: ENUM_VALUE
+          type: string
+        name:
+          description: Display name
+          example: example string
+          type: string
+        runId:
+          description: Latest job id for this config; empty if never run
+          example: example string
+          type: string
+        runNumber:
+          description: Per-config run counter; 0 if never run
+          example: 123
+          format: int32
+          type: integer
+        startedAt:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+        startedByUserId:
+          description: IAM user id of who launched the latest run
+          example: example string
+          type: string
+        status:
+          description: Config lifecycle status
+          example: ENUM_VALUE
+          type: string
+        updatedAt:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+      type: object
+    v1SdkAutomationPlaybookConfigsConfigIdGetResponse:
+      additionalProperties: false
+      example:
+        config:
+          bundleKey: example string
+          configId: example string
+          createdByUserId: example string
+          description: example string
+          files:
+          - content: example string
+            filename: example string
+            moduleKey: example string
+          - content: example string
+            filename: example string
+            moduleKey: example string
+          name: example string
+          status: ENUM_VALUE
+      properties:
+        config:
+          $ref: "#/components/schemas/sdkAutomationPlaybookConfig"
+      type: object
+    sdkAutomationPlaybookConfig:
+      additionalProperties: false
+      example:
+        bundleKey: example string
+        configId: example string
+        createdByUserId: example string
+        description: example string
+        files:
+        - content: example string
+          filename: example string
+          moduleKey: example string
+        - content: example string
+          filename: example string
+          moduleKey: example string
+        name: example string
+        status: ENUM_VALUE
+      properties:
+        bundleKey:
+          description: Catalog key from playbook_catalog_playbook (e.g. system_bundle)
+          example: example string
+          type: string
+        configId:
+          description: Config id
+          example: example string
+          type: string
+        createdByUserId:
+          description: IAM user id of the config creator; UI resolves the display
+            name
+          example: example string
+          type: string
+        description:
+          description: Description / deployment notes
+          example: example string
+          type: string
+        files:
+          items:
+            $ref: "#/components/schemas/sdkAutomationModuleFile"
+          type: array
+        name:
+          description: Display name
+          example: example string
+          type: string
+        status:
+          description: Config lifecycle status (draft / staged / paused)
+          example: ENUM_VALUE
+          type: string
+      type: object
+    v1SdkAutomationPlaybookConfigsConfigIdPutRequest:
+      additionalProperties: false
+      properties:
+        description:
+          description: Optional description / notes update
+          example: example string
+          type: string
+        files:
+          items:
+            $ref: "#/components/schemas/sdkAutomationModuleFile"
+          type: array
+        name:
+          description: Optional display name update
+          example: example string
+          type: string
+      type: object
+    v1SdkAutomationPlaybookConfigsConfigIdPutResponse:
+      additionalProperties: false
+      example:
+        errors:
+        - message: example string
+          moduleKey: example string
+          type: ENUM_VALUE
+        - message: example string
+          moduleKey: example string
+          type: ENUM_VALUE
+        isValid: true
+      properties:
+        errors:
+          items:
+            $ref: "#/components/schemas/sdkAutomationValidationError"
+          type: array
+        isValid:
+          description: True when validation succeeded and the update was applied
+          example: true
+          type: boolean
+      type: object
+    v1SdkAutomationPlaybookConfigsConfigIdStagePutRequest:
+      additionalProperties: false
+      properties:
+        description:
+          description: Deployment notes shown in the pending-executions UI
+          example: example string
+          type: string
+        name:
+          description: Required display name for the staged config
+          example: example string
+          type: string
+      type: object
+    v1SdkAutomationPlaybookConfigsConfigIdStagePutResponse:
+      additionalProperties: false
+      example:
+        status: ENUM_VALUE
+      properties:
+        status:
+          description: Config status after staging (typically STAGED)
+          example: ENUM_VALUE
+          type: string
+      type: object
+    v1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest:
+      additionalProperties: false
+      properties:
+        verboseLogs:
+          description: "When true, request ansible -vvv for this dry-run"
+          example: true
+          type: boolean
+      type: object
+    v1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse:
+      additionalProperties: false
+      example:
+        jobId: example string
+        status: ENUM_VALUE
+      properties:
+        jobId:
+          description: Created job id for the dry-run
+          example: example string
+          type: string
+        status:
+          description: Initial job status after enqueue (typically QUEUED or DRY_RUNNING)
+          example: ENUM_VALUE
+          type: string
+      type: object
+    v1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse:
+      additionalProperties: false
+      example:
+        job:
+          collectionVersion: example string
+          configDescription: example string
+          configId: example string
+          configName: example string
+          deployEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          deployStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          dryRunEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          dryRunStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          failedPhase: ENUM_VALUE
+          jobId: example string
+          logsAvailable: true
+          postDeployCheckStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          runDurationMs: 1234567891011
+          runEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          runNumber: 123
+          runnerJobId: example string
+          sdkVersion: example string
+          startedByUserId: example string
+          status: ENUM_VALUE
+          verboseLogs: true
+      properties:
+        job:
+          $ref: "#/components/schemas/sdkAutomationPlaybookJob"
+      type: object
+    sdkAutomationPlaybookJob:
+      additionalProperties: false
+      example:
+        collectionVersion: example string
+        configDescription: example string
+        configId: example string
+        configName: example string
+        deployEndedAt:
+          nanos: 123
+          seconds: 1234567891011
+        deployStartedAt:
+          nanos: 123
+          seconds: 1234567891011
+        dryRunEndedAt:
+          nanos: 123
+          seconds: 1234567891011
+        dryRunStartedAt:
+          nanos: 123
+          seconds: 1234567891011
+        failedPhase: ENUM_VALUE
+        jobId: example string
+        logsAvailable: true
+        postDeployCheckStartedAt:
+          nanos: 123
+          seconds: 1234567891011
+        runDurationMs: 1234567891011
+        runEndedAt:
+          nanos: 123
+          seconds: 1234567891011
+        runNumber: 123
+        runnerJobId: example string
+        sdkVersion: example string
+        startedByUserId: example string
+        status: ENUM_VALUE
+        verboseLogs: true
+      properties:
+        collectionVersion:
+          description: graphiant.naas collection version used for this run
+          example: example string
+          type: string
+        configDescription:
+          description: Config description / notes frozen at job creation (from config_snapshot);
+            empty for older jobs
+          example: example string
+          type: string
+        configId:
+          description: Owning playbook config id
+          example: example string
+          type: string
+        configName:
+          description: Config display name frozen at job creation (from config_snapshot);
+            empty for older jobs
+          example: example string
+          type: string
+        deployEndedAt:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+        deployStartedAt:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+        dryRunEndedAt:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+        dryRunStartedAt:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+        failedPhase:
+          description: "When status is FAILED, which phase failed; unset when not\
+            \ failed"
+          example: ENUM_VALUE
+          type: string
+        jobId:
+          description: Unique id of this playbook job run
+          example: example string
+          type: string
+        logsAvailable:
+          description: True when ansible logs are available for this run
+          example: true
+          type: boolean
+        postDeployCheckStartedAt:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+        runDurationMs:
+          description: Wall-clock duration in milliseconds from dry_run_started_at
+            to run_ended_at; unset until run_ended_at is set
+          example: 1234567891011
+          format: int64
+          type: integer
+        runEndedAt:
+          $ref: "#/components/schemas/googleProtobufTimestamp"
+        runNumber:
+          description: Per-config run counter (1-based for started runs)
+          example: 123
+          format: int32
+          type: integer
+        runnerJobId:
+          description: "External ansible runner job id, if the backend assigned one"
+          example: example string
+          type: string
+        sdkVersion:
+          description: SDK version used for this run
+          example: example string
+          type: string
+        startedByUserId:
+          description: IAM UserInfo.user_id of who started this run; UI resolves the
+            display name
+          example: example string
+          type: string
+        status:
+          description: Gated pipeline state (dry-run / deploy / post-deploy-check)
+          example: ENUM_VALUE
+          type: string
+        verboseLogs:
+          description: Whether ansible -vvv was requested for the latest phase of
+            this run
+          example: true
+          type: boolean
+      type: object
+    v1SdkAutomationPlaybookJobsJobIdApprovePutRequest:
+      additionalProperties: false
+      properties:
+        verboseLogs:
+          description: "When true, request ansible -vvv for the deploy phase"
+          example: true
+          type: boolean
+      type: object
+    v1SdkAutomationPlaybookJobsJobIdApprovePutResponse:
+      additionalProperties: false
+      example:
+        status: ENUM_VALUE
+      properties:
+        status:
+          description: Job status after approve was accepted
+          example: ENUM_VALUE
+          type: string
+      type: object
+    v1SdkAutomationPlaybookJobsGetResponse:
+      additionalProperties: false
+      example:
+        jobs:
+        - collectionVersion: example string
+          configDescription: example string
+          configId: example string
+          configName: example string
+          deployEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          deployStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          dryRunEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          dryRunStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          failedPhase: ENUM_VALUE
+          jobId: example string
+          logsAvailable: true
+          postDeployCheckStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          runDurationMs: 1234567891011
+          runEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          runNumber: 123
+          runnerJobId: example string
+          sdkVersion: example string
+          startedByUserId: example string
+          status: ENUM_VALUE
+          verboseLogs: true
+        - collectionVersion: example string
+          configDescription: example string
+          configId: example string
+          configName: example string
+          deployEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          deployStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          dryRunEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          dryRunStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          failedPhase: ENUM_VALUE
+          jobId: example string
+          logsAvailable: true
+          postDeployCheckStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          runDurationMs: 1234567891011
+          runEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          runNumber: 123
+          runnerJobId: example string
+          sdkVersion: example string
+          startedByUserId: example string
+          status: ENUM_VALUE
+          verboseLogs: true
+        pageInfo:
+          currentPage: 1
+          endCursor: xxxxxxy
+          hasNextPage: true
+          hasPrevPage: true
+          startCursor: xxxxxx
+          totalPages: 4
+          totalRecords: 400
+      properties:
+        jobs:
+          items:
+            $ref: "#/components/schemas/sdkAutomationPlaybookJob"
+          type: array
+        pageInfo:
+          $ref: "#/components/schemas/commonPageInfo"
+      type: object
+    v1SdkAutomationPlaybookJobsJobIdGetResponse:
+      additionalProperties: false
+      example:
+        job:
+          collectionVersion: example string
+          configDescription: example string
+          configId: example string
+          configName: example string
+          deployEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          deployStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          dryRunEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          dryRunStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          failedPhase: ENUM_VALUE
+          jobId: example string
+          logsAvailable: true
+          postDeployCheckStartedAt:
+            nanos: 123
+            seconds: 1234567891011
+          runDurationMs: 1234567891011
+          runEndedAt:
+            nanos: 123
+            seconds: 1234567891011
+          runNumber: 123
+          runnerJobId: example string
+          sdkVersion: example string
+          startedByUserId: example string
+          status: ENUM_VALUE
+          verboseLogs: true
+      properties:
+        job:
+          $ref: "#/components/schemas/sdkAutomationPlaybookJob"
+      type: object
+    v1SdkAutomationPlaybookJobsJobIdRunPostRequest:
+      additionalProperties: false
+      properties:
+        skipDryRun:
+          description: "When true, skip dry-run and gate and deploy directly"
+          example: true
+          type: boolean
+        verboseLogs:
+          description: "When true, request ansible -vvv for the new run"
+          example: true
+          type: boolean
+      type: object
+    v1SdkAutomationPlaybookJobsJobIdRunPostResponse:
+      additionalProperties: false
+      example:
+        jobId: example string
+        status: ENUM_VALUE
+      properties:
+        jobId:
+          description: Newly created job id for the re-run
+          example: example string
+          type: string
+        status:
+          description: Initial status of the new job
+          example: ENUM_VALUE
+          type: string
+      type: object
+    v1SdkAutomationPlaybookJobsJobIdAbortPutRequest:
+      additionalProperties: false
+      properties: {}
+      type: object
+    v1SdkAutomationPlaybookJobsJobIdAbortPutResponse:
+      additionalProperties: false
+      example:
+        status: ENUM_VALUE
+      properties:
+        status:
+          description: Job status after abort (typically ABORTED)
+          example: ENUM_VALUE
+          type: string
+      type: object
+    v1SdkAutomationPlaybookJobsJobIdResumePostRequest:
+      additionalProperties: false
+      properties:
+        isDeploy:
+          description: "When true, resume straight into deploy; otherwise resume as\
+            \ a dry-run"
+          example: true
+          type: boolean
+        verboseLogs:
+          description: "When true, request ansible -vvv for the resumed phase"
+          example: true
+          type: boolean
+      type: object
+    v1SdkAutomationPlaybookJobsJobIdResumePostResponse:
+      additionalProperties: false
+      example:
+        jobId: example string
+        status: ENUM_VALUE
+      properties:
+        jobId:
+          description: Resumed job id
+          example: example string
+          type: string
+        status:
+          description: Job status after resume was accepted
+          example: ENUM_VALUE
+          type: string
+      type: object
+    v1SdkAutomationPlaybookJobsJobIdLogsGetResponse:
+      additionalProperties: false
+      example:
+        lines:
+        - example string
+        - example string
+      properties:
+        lines:
+          items:
+            description: Masked ansible log lines for the job (and optional phase)
+            example: example string
+            type: string
+          type: array
+      type: object
     searchSearchFilter:
       additionalProperties: false
       properties:
@@ -300076,6 +301634,11 @@ components:
       properties:
         filter:
           $ref: "#/components/schemas/v1EdgesSummaryPostRequestFilter"
+        showExcluded:
+          description: Include devices excluded from Graphiant API lists. Ignored
+            for non-Graphiant callers. Default false.
+          example: true
+          type: boolean
       type: object
     v1EdgesSummaryPostRequestFilter:
       additionalProperties: false
@@ -308033,6 +309596,243 @@ components:
         status:
           example: ENUM_VALUE
           type: string
+      type: object
+    v2MonitoringFecStatsGetResponse:
+      additionalProperties: false
+      example:
+        currentRepairLevel: 12.34
+        effectiveQoe: 12.34
+        rxRepairLevelHistogram:
+          repairLevel:
+          - sample:
+              status: ENUM_VALUE
+              ts:
+                nanos: 123
+                seconds: 1234567891011
+              value: 123.45
+            score:
+              jitter: 12.34
+              latency: 12.34
+              loss: 12.34
+          - sample:
+              status: ENUM_VALUE
+              ts:
+                nanos: 123
+                seconds: 1234567891011
+              value: 123.45
+            score:
+              jitter: 12.34
+              latency: 12.34
+              loss: 12.34
+        rxStats:
+          erasureRecoveredPackets: 12345678910
+          erasureUnrepairablePackets: 12345678910
+          repairLevel: 12.34
+          repairPackets: 12345678910
+        txRepairLevelHistogram:
+          repairLevel:
+          - sample:
+              status: ENUM_VALUE
+              ts:
+                nanos: 123
+                seconds: 1234567891011
+              value: 123.45
+            score:
+              jitter: 12.34
+              latency: 12.34
+              loss: 12.34
+          - sample:
+              status: ENUM_VALUE
+              ts:
+                nanos: 123
+                seconds: 1234567891011
+              value: 123.45
+            score:
+              jitter: 12.34
+              latency: 12.34
+              loss: 12.34
+        txStats:
+          protectedPackets: 12345678910
+          repairLevel: 12.34
+          sentRepairPackets: 12345678910
+          unprotectedPackets: 12345678910
+        unrepairableRate: 12.34
+      properties:
+        currentRepairLevel:
+          example: 12.34
+          format: float
+          type: number
+        effectiveQoe:
+          example: 12.34
+          format: float
+          type: number
+        rxRepairLevelHistogram:
+          $ref: "#/components/schemas/statsmonV2FecRxRepairLevel"
+        rxStats:
+          $ref: "#/components/schemas/statsmonV2FecRxStats"
+        txRepairLevelHistogram:
+          $ref: "#/components/schemas/statsmonV2FecTxRepairLevel"
+        txStats:
+          $ref: "#/components/schemas/statsmonV2FecTxStats"
+        unrepairableRate:
+          example: 12.34
+          format: float
+          type: number
+      type: object
+    statsmonV2FecRxRepairLevel:
+      additionalProperties: false
+      example:
+        repairLevel:
+        - sample:
+            status: ENUM_VALUE
+            ts:
+              nanos: 123
+              seconds: 1234567891011
+            value: 123.45
+          score:
+            jitter: 12.34
+            latency: 12.34
+            loss: 12.34
+        - sample:
+            status: ENUM_VALUE
+            ts:
+              nanos: 123
+              seconds: 1234567891011
+            value: 123.45
+          score:
+            jitter: 12.34
+            latency: 12.34
+            loss: 12.34
+      properties:
+        repairLevel:
+          items:
+            $ref: "#/components/schemas/statsmonV2RepairLevel"
+          type: array
+      type: object
+    statsmonV2RepairLevel:
+      additionalProperties: false
+      example:
+        sample:
+          status: ENUM_VALUE
+          ts:
+            nanos: 123
+            seconds: 1234567891011
+          value: 123.45
+        score:
+          jitter: 12.34
+          latency: 12.34
+          loss: 12.34
+      properties:
+        sample:
+          $ref: "#/components/schemas/statsmonV2StatsSample"
+        score:
+          $ref: "#/components/schemas/statsmonV2RepairLevelScore"
+      type: object
+    statsmonV2RepairLevelScore:
+      additionalProperties: false
+      example:
+        jitter: 12.34
+        latency: 12.34
+        loss: 12.34
+      properties:
+        jitter:
+          example: 12.34
+          format: float
+          type: number
+        latency:
+          example: 12.34
+          format: float
+          type: number
+        loss:
+          example: 12.34
+          format: float
+          type: number
+      type: object
+    statsmonV2FecRxStats:
+      additionalProperties: false
+      example:
+        erasureRecoveredPackets: 12345678910
+        erasureUnrepairablePackets: 12345678910
+        repairLevel: 12.34
+        repairPackets: 12345678910
+      properties:
+        erasureRecoveredPackets:
+          example: 12345678910
+          format: int64
+          minimum: 0
+          type: integer
+        erasureUnrepairablePackets:
+          example: 12345678910
+          format: int64
+          minimum: 0
+          type: integer
+        repairLevel:
+          example: 12.34
+          format: float
+          type: number
+        repairPackets:
+          example: 12345678910
+          format: int64
+          minimum: 0
+          type: integer
+      type: object
+    statsmonV2FecTxRepairLevel:
+      additionalProperties: false
+      example:
+        repairLevel:
+        - sample:
+            status: ENUM_VALUE
+            ts:
+              nanos: 123
+              seconds: 1234567891011
+            value: 123.45
+          score:
+            jitter: 12.34
+            latency: 12.34
+            loss: 12.34
+        - sample:
+            status: ENUM_VALUE
+            ts:
+              nanos: 123
+              seconds: 1234567891011
+            value: 123.45
+          score:
+            jitter: 12.34
+            latency: 12.34
+            loss: 12.34
+      properties:
+        repairLevel:
+          items:
+            $ref: "#/components/schemas/statsmonV2RepairLevel"
+          type: array
+      type: object
+    statsmonV2FecTxStats:
+      additionalProperties: false
+      example:
+        protectedPackets: 12345678910
+        repairLevel: 12.34
+        sentRepairPackets: 12345678910
+        unprotectedPackets: 12345678910
+      properties:
+        protectedPackets:
+          example: 12345678910
+          format: int64
+          minimum: 0
+          type: integer
+        repairLevel:
+          example: 12.34
+          format: float
+          type: number
+        sentRepairPackets:
+          example: 12345678910
+          format: int64
+          minimum: 0
+          type: integer
+        unprotectedPackets:
+          example: 12345678910
+          format: int64
+          minimum: 0
+          type: integer
       type: object
     v1LogsPostRequest:
       additionalProperties: false

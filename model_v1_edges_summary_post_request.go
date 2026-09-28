@@ -20,6 +20,8 @@ var _ MappedNullable = &V1EdgesSummaryPostRequest{}
 // V1EdgesSummaryPostRequest struct for V1EdgesSummaryPostRequest
 type V1EdgesSummaryPostRequest struct {
 	Filter *V1EdgesSummaryPostRequestFilter `json:"filter,omitempty"`
+	// Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.
+	ShowExcluded *bool `json:"showExcluded,omitempty"`
 }
 
 // NewV1EdgesSummaryPostRequest instantiates a new V1EdgesSummaryPostRequest object
@@ -71,6 +73,38 @@ func (o *V1EdgesSummaryPostRequest) SetFilter(v V1EdgesSummaryPostRequestFilter)
 	o.Filter = &v
 }
 
+// GetShowExcluded returns the ShowExcluded field value if set, zero value otherwise.
+func (o *V1EdgesSummaryPostRequest) GetShowExcluded() bool {
+	if o == nil || IsNil(o.ShowExcluded) {
+		var ret bool
+		return ret
+	}
+	return *o.ShowExcluded
+}
+
+// GetShowExcludedOk returns a tuple with the ShowExcluded field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1EdgesSummaryPostRequest) GetShowExcludedOk() (*bool, bool) {
+	if o == nil || IsNil(o.ShowExcluded) {
+		return nil, false
+	}
+	return o.ShowExcluded, true
+}
+
+// HasShowExcluded returns a boolean if a field has been set.
+func (o *V1EdgesSummaryPostRequest) HasShowExcluded() bool {
+	if o != nil && !IsNil(o.ShowExcluded) {
+		return true
+	}
+
+	return false
+}
+
+// SetShowExcluded gets a reference to the given bool and assigns it to the ShowExcluded field.
+func (o *V1EdgesSummaryPostRequest) SetShowExcluded(v bool) {
+	o.ShowExcluded = &v
+}
+
 func (o V1EdgesSummaryPostRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -83,6 +117,9 @@ func (o V1EdgesSummaryPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
+	}
+	if !IsNil(o.ShowExcluded) {
+		toSerialize["showExcluded"] = o.ShowExcluded
 	}
 	return toSerialize, nil
 }

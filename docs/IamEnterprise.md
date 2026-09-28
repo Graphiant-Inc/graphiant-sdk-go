@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AcceptEula** | Pointer to **bool** |  | [optional] 
 **AccountType** | Pointer to **string** |  | [optional] 
 **AdminEmail** | Pointer to **string** |  | [optional] 
+**BackboneApisEnabled** | Pointer to **bool** |  | [optional] 
 **CloudProvider** | Pointer to **string** |  | [optional] 
 **CompanyName** | Pointer to **string** |  | [optional] 
 **Counts** | Pointer to [**IamCounts**](IamCounts.md) |  | [optional] 
@@ -118,6 +119,31 @@ SetAdminEmail sets AdminEmail field to given value.
 `func (o *IamEnterprise) HasAdminEmail() bool`
 
 HasAdminEmail returns a boolean if a field has been set.
+
+### GetBackboneApisEnabled
+
+`func (o *IamEnterprise) GetBackboneApisEnabled() bool`
+
+GetBackboneApisEnabled returns the BackboneApisEnabled field if non-nil, zero value otherwise.
+
+### GetBackboneApisEnabledOk
+
+`func (o *IamEnterprise) GetBackboneApisEnabledOk() (*bool, bool)`
+
+GetBackboneApisEnabledOk returns a tuple with the BackboneApisEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackboneApisEnabled
+
+`func (o *IamEnterprise) SetBackboneApisEnabled(v bool)`
+
+SetBackboneApisEnabled sets BackboneApisEnabled field to given value.
+
+### HasBackboneApisEnabled
+
+`func (o *IamEnterprise) HasBackboneApisEnabled() bool`
+
+HasBackboneApisEnabled returns a boolean if a field has been set.
 
 ### GetCloudProvider
 

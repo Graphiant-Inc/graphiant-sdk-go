@@ -22,6 +22,7 @@ type IamEnterprise struct {
 	AcceptEula *bool `json:"acceptEula,omitempty"`
 	AccountType *string `json:"accountType,omitempty"`
 	AdminEmail *string `json:"adminEmail,omitempty"`
+	BackboneApisEnabled *bool `json:"backboneApisEnabled,omitempty"`
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	CompanyName *string `json:"companyName,omitempty"`
 	Counts *IamCounts `json:"counts,omitempty"`
@@ -152,6 +153,38 @@ func (o *IamEnterprise) HasAdminEmail() bool {
 // SetAdminEmail gets a reference to the given string and assigns it to the AdminEmail field.
 func (o *IamEnterprise) SetAdminEmail(v string) {
 	o.AdminEmail = &v
+}
+
+// GetBackboneApisEnabled returns the BackboneApisEnabled field value if set, zero value otherwise.
+func (o *IamEnterprise) GetBackboneApisEnabled() bool {
+	if o == nil || IsNil(o.BackboneApisEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.BackboneApisEnabled
+}
+
+// GetBackboneApisEnabledOk returns a tuple with the BackboneApisEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IamEnterprise) GetBackboneApisEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.BackboneApisEnabled) {
+		return nil, false
+	}
+	return o.BackboneApisEnabled, true
+}
+
+// HasBackboneApisEnabled returns a boolean if a field has been set.
+func (o *IamEnterprise) HasBackboneApisEnabled() bool {
+	if o != nil && !IsNil(o.BackboneApisEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetBackboneApisEnabled gets a reference to the given bool and assigns it to the BackboneApisEnabled field.
+func (o *IamEnterprise) SetBackboneApisEnabled(v bool) {
+	o.BackboneApisEnabled = &v
 }
 
 // GetCloudProvider returns the CloudProvider field value if set, zero value otherwise.
@@ -716,6 +749,9 @@ func (o IamEnterprise) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AdminEmail) {
 		toSerialize["adminEmail"] = o.AdminEmail
+	}
+	if !IsNil(o.BackboneApisEnabled) {
+		toSerialize["backboneApisEnabled"] = o.BackboneApisEnabled
 	}
 	if !IsNil(o.CloudProvider) {
 		toSerialize["cloudProvider"] = o.CloudProvider

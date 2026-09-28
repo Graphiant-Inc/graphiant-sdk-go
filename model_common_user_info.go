@@ -19,6 +19,7 @@ var _ MappedNullable = &CommonUserInfo{}
 
 // CommonUserInfo struct for CommonUserInfo
 type CommonUserInfo struct {
+	BearerToken *string `json:"bearerToken,omitempty"`
 	EnterpriseId *int64 `json:"enterpriseId,omitempty"`
 	Exp *int64 `json:"exp,omitempty"`
 	OriginalEnterpriseId *int64 `json:"originalEnterpriseId,omitempty"`
@@ -42,6 +43,38 @@ func NewCommonUserInfo() *CommonUserInfo {
 func NewCommonUserInfoWithDefaults() *CommonUserInfo {
 	this := CommonUserInfo{}
 	return &this
+}
+
+// GetBearerToken returns the BearerToken field value if set, zero value otherwise.
+func (o *CommonUserInfo) GetBearerToken() string {
+	if o == nil || IsNil(o.BearerToken) {
+		var ret string
+		return ret
+	}
+	return *o.BearerToken
+}
+
+// GetBearerTokenOk returns a tuple with the BearerToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonUserInfo) GetBearerTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.BearerToken) {
+		return nil, false
+	}
+	return o.BearerToken, true
+}
+
+// HasBearerToken returns a boolean if a field has been set.
+func (o *CommonUserInfo) HasBearerToken() bool {
+	if o != nil && !IsNil(o.BearerToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetBearerToken gets a reference to the given string and assigns it to the BearerToken field.
+func (o *CommonUserInfo) SetBearerToken(v string) {
+	o.BearerToken = &v
 }
 
 // GetEnterpriseId returns the EnterpriseId field value if set, zero value otherwise.
@@ -246,6 +279,9 @@ func (o CommonUserInfo) MarshalJSON() ([]byte, error) {
 
 func (o CommonUserInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BearerToken) {
+		toSerialize["bearerToken"] = o.BearerToken
+	}
 	if !IsNil(o.EnterpriseId) {
 		toSerialize["enterpriseId"] = o.EnterpriseId
 	}

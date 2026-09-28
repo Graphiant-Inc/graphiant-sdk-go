@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Policy** | [**ManaV2ExtranetServiceProducerPolicy**](ManaV2ExtranetServiceProducerPolicy.md) |  | 
-**ServiceName** | **string** |  (required) | 
+**ServiceName** | **string** | Producer service name (letters, digits, hyphens only) (required) | 
 **ServiceType** | **string** | Branded extranet service type (peering_service, client_to_server, …) (required) | 
 
 ## Methods

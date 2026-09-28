@@ -30,7 +30,7 @@ type V1PvifPostRequest struct {
 	NatPrefixStrategy ManaV2PublicVifGatewayNatPrefixStrategy `json:"natPrefixStrategy"`
 	// Graphiant region for gateway appliances (required)
 	RegionId int32 `json:"regionId"`
-	// Service display name (required)
+	// Producer service name (letters, digits, hyphens only) (required)
 	ServiceName string `json:"serviceName"`
 	// Storage provider; each gateway appliance must match region and provider (required)
 	StorageProvider string `json:"storageProvider"`
