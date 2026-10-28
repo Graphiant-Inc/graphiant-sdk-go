@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppName** | Pointer to **string** |  | [optional] 
+**Category** | Pointer to **string** |  | [optional] 
 **ClassificationEntryId** | Pointer to **string** |  | [optional] 
 **IpPrefixList** | Pointer to **[]string** |  | [optional] 
 **PortList** | Pointer to **[]string** |  | [optional] 
@@ -53,6 +54,31 @@ SetAppName sets AppName field to given value.
 `func (o *AssuranceClassifiedApplication) HasAppName() bool`
 
 HasAppName returns a boolean if a field has been set.
+
+### GetCategory
+
+`func (o *AssuranceClassifiedApplication) GetCategory() string`
+
+GetCategory returns the Category field if non-nil, zero value otherwise.
+
+### GetCategoryOk
+
+`func (o *AssuranceClassifiedApplication) GetCategoryOk() (*string, bool)`
+
+GetCategoryOk returns a tuple with the Category field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCategory
+
+`func (o *AssuranceClassifiedApplication) SetCategory(v string)`
+
+SetCategory sets Category field to given value.
+
+### HasCategory
+
+`func (o *AssuranceClassifiedApplication) HasCategory() bool`
+
+HasCategory returns a boolean if a field has been set.
 
 ### GetClassificationEntryId
 

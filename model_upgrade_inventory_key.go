@@ -19,6 +19,8 @@ var _ MappedNullable = &UpgradeInventoryKey{}
 
 // UpgradeInventoryKey struct for UpgradeInventoryKey
 type UpgradeInventoryKey struct {
+	// Blob storage container this image was indexed from. Same model + version can exist in more than one container Empty for rows indexed before multi-container support.
+	Container *string `json:"container,omitempty"`
 	Model *int32 `json:"model,omitempty"`
 	Version *string `json:"version,omitempty"`
 }
@@ -38,6 +40,38 @@ func NewUpgradeInventoryKey() *UpgradeInventoryKey {
 func NewUpgradeInventoryKeyWithDefaults() *UpgradeInventoryKey {
 	this := UpgradeInventoryKey{}
 	return &this
+}
+
+// GetContainer returns the Container field value if set, zero value otherwise.
+func (o *UpgradeInventoryKey) GetContainer() string {
+	if o == nil || IsNil(o.Container) {
+		var ret string
+		return ret
+	}
+	return *o.Container
+}
+
+// GetContainerOk returns a tuple with the Container field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpgradeInventoryKey) GetContainerOk() (*string, bool) {
+	if o == nil || IsNil(o.Container) {
+		return nil, false
+	}
+	return o.Container, true
+}
+
+// HasContainer returns a boolean if a field has been set.
+func (o *UpgradeInventoryKey) HasContainer() bool {
+	if o != nil && !IsNil(o.Container) {
+		return true
+	}
+
+	return false
+}
+
+// SetContainer gets a reference to the given string and assigns it to the Container field.
+func (o *UpgradeInventoryKey) SetContainer(v string) {
+	o.Container = &v
 }
 
 // GetModel returns the Model field value if set, zero value otherwise.
@@ -114,6 +148,9 @@ func (o UpgradeInventoryKey) MarshalJSON() ([]byte, error) {
 
 func (o UpgradeInventoryKey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Container) {
+		toSerialize["container"] = o.Container
+	}
 	if !IsNil(o.Model) {
 		toSerialize["model"] = o.Model
 	}

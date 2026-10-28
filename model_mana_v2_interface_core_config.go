@@ -36,6 +36,7 @@ type ManaV2InterfaceCoreConfig struct {
 	Ipsec *ManaV2InterfaceIPsecConfig `json:"ipsec,omitempty"`
 	Ipv4 *ManaV2InterfaceIpConfig `json:"ipv4,omitempty"`
 	Ipv6 *ManaV2InterfaceIpConfig `json:"ipv6,omitempty"`
+	IsMaintenanceWan *bool `json:"isMaintenanceWan,omitempty"`
 	Lan *string `json:"lan,omitempty"`
 	LldpEnabled *bool `json:"lldpEnabled,omitempty"`
 	Loopback *bool `json:"loopback,omitempty"`
@@ -618,6 +619,38 @@ func (o *ManaV2InterfaceCoreConfig) HasIpv6() bool {
 // SetIpv6 gets a reference to the given ManaV2InterfaceIpConfig and assigns it to the Ipv6 field.
 func (o *ManaV2InterfaceCoreConfig) SetIpv6(v ManaV2InterfaceIpConfig) {
 	o.Ipv6 = &v
+}
+
+// GetIsMaintenanceWan returns the IsMaintenanceWan field value if set, zero value otherwise.
+func (o *ManaV2InterfaceCoreConfig) GetIsMaintenanceWan() bool {
+	if o == nil || IsNil(o.IsMaintenanceWan) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMaintenanceWan
+}
+
+// GetIsMaintenanceWanOk returns a tuple with the IsMaintenanceWan field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2InterfaceCoreConfig) GetIsMaintenanceWanOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsMaintenanceWan) {
+		return nil, false
+	}
+	return o.IsMaintenanceWan, true
+}
+
+// HasIsMaintenanceWan returns a boolean if a field has been set.
+func (o *ManaV2InterfaceCoreConfig) HasIsMaintenanceWan() bool {
+	if o != nil && !IsNil(o.IsMaintenanceWan) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMaintenanceWan gets a reference to the given bool and assigns it to the IsMaintenanceWan field.
+func (o *ManaV2InterfaceCoreConfig) SetIsMaintenanceWan(v bool) {
+	o.IsMaintenanceWan = &v
 }
 
 // GetLan returns the Lan field value if set, zero value otherwise.
@@ -1352,6 +1385,9 @@ func (o ManaV2InterfaceCoreConfig) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ipv6) {
 		toSerialize["ipv6"] = o.Ipv6
+	}
+	if !IsNil(o.IsMaintenanceWan) {
+		toSerialize["isMaintenanceWan"] = o.IsMaintenanceWan
 	}
 	if !IsNil(o.Lan) {
 		toSerialize["lan"] = o.Lan

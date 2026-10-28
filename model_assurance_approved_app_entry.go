@@ -21,6 +21,8 @@ var _ MappedNullable = &AssuranceApprovedAppEntry{}
 type AssuranceApprovedAppEntry struct {
 	// number of active users (required)
 	ActiveUsers *int64 `json:"activeUsers,omitempty"`
+	// bucket id
+	BucketId *string `json:"bucketId,omitempty"`
 	// approved AI tool category (required)
 	Category *string `json:"category,omitempty"`
 	// data sent in kbps (required)
@@ -78,6 +80,38 @@ func (o *AssuranceApprovedAppEntry) HasActiveUsers() bool {
 // SetActiveUsers gets a reference to the given int64 and assigns it to the ActiveUsers field.
 func (o *AssuranceApprovedAppEntry) SetActiveUsers(v int64) {
 	o.ActiveUsers = &v
+}
+
+// GetBucketId returns the BucketId field value if set, zero value otherwise.
+func (o *AssuranceApprovedAppEntry) GetBucketId() string {
+	if o == nil || IsNil(o.BucketId) {
+		var ret string
+		return ret
+	}
+	return *o.BucketId
+}
+
+// GetBucketIdOk returns a tuple with the BucketId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceApprovedAppEntry) GetBucketIdOk() (*string, bool) {
+	if o == nil || IsNil(o.BucketId) {
+		return nil, false
+	}
+	return o.BucketId, true
+}
+
+// HasBucketId returns a boolean if a field has been set.
+func (o *AssuranceApprovedAppEntry) HasBucketId() bool {
+	if o != nil && !IsNil(o.BucketId) {
+		return true
+	}
+
+	return false
+}
+
+// SetBucketId gets a reference to the given string and assigns it to the BucketId field.
+func (o *AssuranceApprovedAppEntry) SetBucketId(v string) {
+	o.BucketId = &v
 }
 
 // GetCategory returns the Category field value if set, zero value otherwise.
@@ -220,6 +254,9 @@ func (o AssuranceApprovedAppEntry) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ActiveUsers) {
 		toSerialize["activeUsers"] = o.ActiveUsers
+	}
+	if !IsNil(o.BucketId) {
+		toSerialize["bucketId"] = o.BucketId
 	}
 	if !IsNil(o.Category) {
 		toSerialize["category"] = o.Category

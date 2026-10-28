@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Ipsec** | Pointer to [**ManaV2InterfaceIPsecConfig**](ManaV2InterfaceIPsecConfig.md) |  | [optional] 
 **Ipv4** | Pointer to [**ManaV2InterfaceIpConfig**](ManaV2InterfaceIpConfig.md) |  | [optional] 
 **Ipv6** | Pointer to [**ManaV2InterfaceIpConfig**](ManaV2InterfaceIpConfig.md) |  | [optional] 
+**IsMaintenanceWan** | Pointer to **bool** |  | [optional] 
 **Lan** | Pointer to **string** |  | [optional] 
 **LldpEnabled** | Pointer to **bool** |  | [optional] 
 **Loopback** | Pointer to **bool** |  | [optional] 
@@ -486,6 +487,31 @@ SetIpv6 sets Ipv6 field to given value.
 `func (o *ManaV2InterfaceCoreConfig) HasIpv6() bool`
 
 HasIpv6 returns a boolean if a field has been set.
+
+### GetIsMaintenanceWan
+
+`func (o *ManaV2InterfaceCoreConfig) GetIsMaintenanceWan() bool`
+
+GetIsMaintenanceWan returns the IsMaintenanceWan field if non-nil, zero value otherwise.
+
+### GetIsMaintenanceWanOk
+
+`func (o *ManaV2InterfaceCoreConfig) GetIsMaintenanceWanOk() (*bool, bool)`
+
+GetIsMaintenanceWanOk returns a tuple with the IsMaintenanceWan field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsMaintenanceWan
+
+`func (o *ManaV2InterfaceCoreConfig) SetIsMaintenanceWan(v bool)`
+
+SetIsMaintenanceWan sets IsMaintenanceWan field to given value.
+
+### HasIsMaintenanceWan
+
+`func (o *ManaV2InterfaceCoreConfig) HasIsMaintenanceWan() bool`
+
+HasIsMaintenanceWan returns a boolean if a field has been set.
 
 ### GetLan
 

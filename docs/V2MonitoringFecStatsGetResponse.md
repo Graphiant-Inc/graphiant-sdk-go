@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CurrentRepairLevel** | Pointer to **float32** |  | [optional] 
+**CurrentRxSlaMetricsWithRepair** | Pointer to [**StatsmonV2RepairLevelScore**](StatsmonV2RepairLevelScore.md) |  | [optional] 
+**CurrentTxSlaMetricsWithRepair** | Pointer to [**StatsmonV2RepairLevelScore**](StatsmonV2RepairLevelScore.md) |  | [optional] 
 **EffectiveQoe** | Pointer to **float32** |  | [optional] 
 **RxRepairLevelHistogram** | Pointer to [**StatsmonV2FecRxRepairLevel**](StatsmonV2FecRxRepairLevel.md) |  | [optional] 
 **RxStats** | Pointer to [**StatsmonV2FecRxStats**](StatsmonV2FecRxStats.md) |  | [optional] 
@@ -55,6 +57,56 @@ SetCurrentRepairLevel sets CurrentRepairLevel field to given value.
 `func (o *V2MonitoringFecStatsGetResponse) HasCurrentRepairLevel() bool`
 
 HasCurrentRepairLevel returns a boolean if a field has been set.
+
+### GetCurrentRxSlaMetricsWithRepair
+
+`func (o *V2MonitoringFecStatsGetResponse) GetCurrentRxSlaMetricsWithRepair() StatsmonV2RepairLevelScore`
+
+GetCurrentRxSlaMetricsWithRepair returns the CurrentRxSlaMetricsWithRepair field if non-nil, zero value otherwise.
+
+### GetCurrentRxSlaMetricsWithRepairOk
+
+`func (o *V2MonitoringFecStatsGetResponse) GetCurrentRxSlaMetricsWithRepairOk() (*StatsmonV2RepairLevelScore, bool)`
+
+GetCurrentRxSlaMetricsWithRepairOk returns a tuple with the CurrentRxSlaMetricsWithRepair field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrentRxSlaMetricsWithRepair
+
+`func (o *V2MonitoringFecStatsGetResponse) SetCurrentRxSlaMetricsWithRepair(v StatsmonV2RepairLevelScore)`
+
+SetCurrentRxSlaMetricsWithRepair sets CurrentRxSlaMetricsWithRepair field to given value.
+
+### HasCurrentRxSlaMetricsWithRepair
+
+`func (o *V2MonitoringFecStatsGetResponse) HasCurrentRxSlaMetricsWithRepair() bool`
+
+HasCurrentRxSlaMetricsWithRepair returns a boolean if a field has been set.
+
+### GetCurrentTxSlaMetricsWithRepair
+
+`func (o *V2MonitoringFecStatsGetResponse) GetCurrentTxSlaMetricsWithRepair() StatsmonV2RepairLevelScore`
+
+GetCurrentTxSlaMetricsWithRepair returns the CurrentTxSlaMetricsWithRepair field if non-nil, zero value otherwise.
+
+### GetCurrentTxSlaMetricsWithRepairOk
+
+`func (o *V2MonitoringFecStatsGetResponse) GetCurrentTxSlaMetricsWithRepairOk() (*StatsmonV2RepairLevelScore, bool)`
+
+GetCurrentTxSlaMetricsWithRepairOk returns a tuple with the CurrentTxSlaMetricsWithRepair field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrentTxSlaMetricsWithRepair
+
+`func (o *V2MonitoringFecStatsGetResponse) SetCurrentTxSlaMetricsWithRepair(v StatsmonV2RepairLevelScore)`
+
+SetCurrentTxSlaMetricsWithRepair sets CurrentTxSlaMetricsWithRepair field to given value.
+
+### HasCurrentTxSlaMetricsWithRepair
+
+`func (o *V2MonitoringFecStatsGetResponse) HasCurrentTxSlaMetricsWithRepair() bool`
+
+HasCurrentTxSlaMetricsWithRepair returns a boolean if a field has been set.
 
 ### GetEffectiveQoe
 

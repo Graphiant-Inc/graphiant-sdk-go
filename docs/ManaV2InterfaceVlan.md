@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **OperUpdatedAt** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **ParentMacAddress** | Pointer to **string** |  | [optional] 
+**PppoeInterfaces** | Pointer to [**[]ManaV2Interface**](ManaV2Interface.md) |  | [optional] 
 **SecurityZone** | Pointer to **string** |  | [optional] 
 **SpeedMbps** | Pointer to **int32** |  | [optional] 
 **TcpMss** | Pointer to **int32** |  | [optional] 
@@ -498,6 +499,31 @@ SetParentMacAddress sets ParentMacAddress field to given value.
 `func (o *ManaV2InterfaceVlan) HasParentMacAddress() bool`
 
 HasParentMacAddress returns a boolean if a field has been set.
+
+### GetPppoeInterfaces
+
+`func (o *ManaV2InterfaceVlan) GetPppoeInterfaces() []ManaV2Interface`
+
+GetPppoeInterfaces returns the PppoeInterfaces field if non-nil, zero value otherwise.
+
+### GetPppoeInterfacesOk
+
+`func (o *ManaV2InterfaceVlan) GetPppoeInterfacesOk() (*[]ManaV2Interface, bool)`
+
+GetPppoeInterfacesOk returns a tuple with the PppoeInterfaces field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPppoeInterfaces
+
+`func (o *ManaV2InterfaceVlan) SetPppoeInterfaces(v []ManaV2Interface)`
+
+SetPppoeInterfaces sets PppoeInterfaces field to given value.
+
+### HasPppoeInterfaces
+
+`func (o *ManaV2InterfaceVlan) HasPppoeInterfaces() bool`
+
+HasPppoeInterfaces returns a boolean if a field has been set.
 
 ### GetSecurityZone
 

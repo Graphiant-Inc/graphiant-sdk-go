@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccountType** | Pointer to **string** |  | [optional] 
 **BearerToken** | Pointer to **string** |  | [optional] 
 **EnterpriseId** | Pointer to **int64** |  | [optional] 
 **Exp** | Pointer to **int64** |  | [optional] 
@@ -30,6 +31,31 @@ will change when the set of required properties is changed
 NewCommonUserInfoWithDefaults instantiates a new CommonUserInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccountType
+
+`func (o *CommonUserInfo) GetAccountType() string`
+
+GetAccountType returns the AccountType field if non-nil, zero value otherwise.
+
+### GetAccountTypeOk
+
+`func (o *CommonUserInfo) GetAccountTypeOk() (*string, bool)`
+
+GetAccountTypeOk returns a tuple with the AccountType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountType
+
+`func (o *CommonUserInfo) SetAccountType(v string)`
+
+SetAccountType sets AccountType field to given value.
+
+### HasAccountType
+
+`func (o *CommonUserInfo) HasAccountType() bool`
+
+HasAccountType returns a boolean if a field has been set.
 
 ### GetBearerToken
 

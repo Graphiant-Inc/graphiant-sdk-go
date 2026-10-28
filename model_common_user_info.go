@@ -19,6 +19,7 @@ var _ MappedNullable = &CommonUserInfo{}
 
 // CommonUserInfo struct for CommonUserInfo
 type CommonUserInfo struct {
+	AccountType *string `json:"accountType,omitempty"`
 	BearerToken *string `json:"bearerToken,omitempty"`
 	EnterpriseId *int64 `json:"enterpriseId,omitempty"`
 	Exp *int64 `json:"exp,omitempty"`
@@ -43,6 +44,38 @@ func NewCommonUserInfo() *CommonUserInfo {
 func NewCommonUserInfoWithDefaults() *CommonUserInfo {
 	this := CommonUserInfo{}
 	return &this
+}
+
+// GetAccountType returns the AccountType field value if set, zero value otherwise.
+func (o *CommonUserInfo) GetAccountType() string {
+	if o == nil || IsNil(o.AccountType) {
+		var ret string
+		return ret
+	}
+	return *o.AccountType
+}
+
+// GetAccountTypeOk returns a tuple with the AccountType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonUserInfo) GetAccountTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AccountType) {
+		return nil, false
+	}
+	return o.AccountType, true
+}
+
+// HasAccountType returns a boolean if a field has been set.
+func (o *CommonUserInfo) HasAccountType() bool {
+	if o != nil && !IsNil(o.AccountType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountType gets a reference to the given string and assigns it to the AccountType field.
+func (o *CommonUserInfo) SetAccountType(v string) {
+	o.AccountType = &v
 }
 
 // GetBearerToken returns the BearerToken field value if set, zero value otherwise.
@@ -279,6 +312,9 @@ func (o CommonUserInfo) MarshalJSON() ([]byte, error) {
 
 func (o CommonUserInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountType) {
+		toSerialize["accountType"] = o.AccountType
+	}
 	if !IsNil(o.BearerToken) {
 		toSerialize["bearerToken"] = o.BearerToken
 	}

@@ -391,6 +391,7 @@ Method | HTTP request | Description
 [**V1SdkAutomationPlaybookJobsJobIdLogsGet**](DefaultAPI.md#V1SdkAutomationPlaybookJobsJobIdLogsGet) | **Get** /v1/sdk-automation/playbook/jobs/{jobId}/logs | 
 [**V1SdkAutomationPlaybookJobsJobIdResumePost**](DefaultAPI.md#V1SdkAutomationPlaybookJobsJobIdResumePost) | **Post** /v1/sdk-automation/playbook/jobs/{jobId}/resume | 
 [**V1SdkAutomationPlaybookJobsJobIdRunPost**](DefaultAPI.md#V1SdkAutomationPlaybookJobsJobIdRunPost) | **Post** /v1/sdk-automation/playbook/jobs/{jobId}/run | 
+[**V1SdkAutomationPlaybookJobsJobIdSnapshotGet**](DefaultAPI.md#V1SdkAutomationPlaybookJobsJobIdSnapshotGet) | **Get** /v1/sdk-automation/playbook/jobs/{jobId}/snapshot | 
 [**V1SdkAutomationPlaybookModuleSlotsGet**](DefaultAPI.md#V1SdkAutomationPlaybookModuleSlotsGet) | **Get** /v1/sdk-automation/playbook/module-slots | 
 [**V1SdkAutomationPlaybookTemplatesGet**](DefaultAPI.md#V1SdkAutomationPlaybookTemplatesGet) | **Get** /v1/sdk-automation/playbook/templates | 
 [**V1SearchGet**](DefaultAPI.md#V1SearchGet) | **Get** /v1/search | 
@@ -468,6 +469,7 @@ Method | HTTP request | Description
 [**V2AssuranceBucketServicesPost**](DefaultAPI.md#V2AssuranceBucketServicesPost) | **Post** /v2/assurance/bucket-services | 
 [**V2AssuranceBucketTopologiesPost**](DefaultAPI.md#V2AssuranceBucketTopologiesPost) | **Post** /v2/assurance/bucket-topologies | 
 [**V2AssuranceBucketdetailsPost**](DefaultAPI.md#V2AssuranceBucketdetailsPost) | **Post** /v2/assurance/bucketdetails | 
+[**V2AssuranceCategorizeAiAppPost**](DefaultAPI.md#V2AssuranceCategorizeAiAppPost) | **Post** /v2/assurance/categorize-ai-app | 
 [**V2AssuranceCreateAiAdoptionApproveEntryPost**](DefaultAPI.md#V2AssuranceCreateAiAdoptionApproveEntryPost) | **Post** /v2/assurance/create-ai-adoption-approve-entry | 
 [**V2AssuranceCreateDnsproxyEntryPost**](DefaultAPI.md#V2AssuranceCreateDnsproxyEntryPost) | **Post** /v2/assurance/create-dnsproxy-entry | 
 [**V2AssuranceCreateUserReportPost**](DefaultAPI.md#V2AssuranceCreateUserReportPost) | **Post** /v2/assurance/create-user-report | 
@@ -481,6 +483,7 @@ Method | HTTP request | Description
 [**V2AssuranceGetAppNamesPost**](DefaultAPI.md#V2AssuranceGetAppNamesPost) | **Post** /v2/assurance/get-app-names | 
 [**V2AssuranceGetclassifiedapplicationlistGet**](DefaultAPI.md#V2AssuranceGetclassifiedapplicationlistGet) | **Get** /v2/assurance/getclassifiedapplicationlist | 
 [**V2AssuranceReadAiAdoptionApproveEntriesGet**](DefaultAPI.md#V2AssuranceReadAiAdoptionApproveEntriesGet) | **Get** /v2/assurance/read-ai-adoption-approve-entries | 
+[**V2AssuranceReadAiAdoptionCategoryEntriesGet**](DefaultAPI.md#V2AssuranceReadAiAdoptionCategoryEntriesGet) | **Get** /v2/assurance/read-ai-adoption-category-entries | 
 [**V2AssuranceReadDnsproxyListGet**](DefaultAPI.md#V2AssuranceReadDnsproxyListGet) | **Get** /v2/assurance/read-dnsproxy-list | 
 [**V2AssuranceReadUserReportListGet**](DefaultAPI.md#V2AssuranceReadUserReportListGet) | **Get** /v2/assurance/read-user-report-list | 
 [**V2AssuranceScoredetailsPost**](DefaultAPI.md#V2AssuranceScoredetailsPost) | **Post** /v2/assurance/scoredetails | 
@@ -5841,7 +5844,7 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	deviceId := int64(1000000) // int64 | Valid configured device ID > 0
-	vrfNames := []string{"management"} // []string | Valid configured VRF name
+	vrfNames := []string{[]string{"management"}} // []string | Valid configured VRF name
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -5868,7 +5871,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **deviceId** | **int64** | Valid configured device ID &gt; 0 | 
- **vrfNames** | **[]string** | Valid configured VRF name | 
+ **vrfNames** | **[][]string** | Valid configured VRF name | 
 
 ### Return type
 
@@ -6349,7 +6352,7 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	deviceId := int64(1000000) // int64 | Valid configured device ID > 0
-	vrfNames := []string{"management"} // []string | Valid configured VRF name
+	vrfNames := []string{[]string{"management"}} // []string | Valid configured VRF name
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -6376,7 +6379,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **deviceId** | **int64** | Valid configured device ID &gt; 0 | 
- **vrfNames** | **[]string** | Valid configured VRF name | 
+ **vrfNames** | **[][]string** | Valid configured VRF name | 
 
 ### Return type
 
@@ -6419,7 +6422,7 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	deviceId := int64(1000000) // int64 | Valid configured device ID > 0
-	vrfName := []string{"management"} // []string | Valid configured VRF names
+	vrfName := []string{[]string{"management"}} // []string | Valid configured VRF names
 	body := map[string]interface{}{ ... } // map[string]interface{} | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -6447,7 +6450,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **deviceId** | **int64** | Valid configured device ID &gt; 0 | 
- **vrfName** | **[]string** | Valid configured VRF names | 
+ **vrfName** | **[][]string** | Valid configured VRF names | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -7513,7 +7516,7 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	deviceId := int64(1234567891011) // int64 | 
-	circuitNames := []string{"isp"} // []string | Circuit name configured of wan interface (optional)
+	circuitNames := []string{[]string{"isp"}} // []string | Circuit name configured of wan interface (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -7544,7 +7547,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
 
- **circuitNames** | **[]string** | Circuit name configured of wan interface | 
+ **circuitNames** | **[][]string** | Circuit name configured of wan interface | 
 
 ### Return type
 
@@ -9558,7 +9561,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	deviceSerials := []string{"example string"} // []string |  (optional)
+	deviceSerials := []string{[]string{"example string"}} // []string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -9582,7 +9585,7 @@ Other parameters are passed through a pointer to a apiV1DevicesInventorySerialNu
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
- **deviceSerials** | **[]string** |  | 
+ **deviceSerials** | **[][]string** |  | 
 
 ### Return type
 
@@ -9897,7 +9900,7 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	deviceId := int64(1000000) // int64 | Valid configured device ID > 0
-	protocols := []string{"[OSPF,BGP,connected]"} // []string | List of protocols names for which route count is needed
+	protocols := []string{[]string{"[OSPF,BGP,connected]"}} // []string | List of protocols names for which route count is needed
 	vrfName := "management" // string | Valid configured VRF names
 
 	configuration := openapiclient.NewConfiguration()
@@ -9925,7 +9928,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **deviceId** | **int64** | Valid configured device ID &gt; 0 | 
- **protocols** | **[]string** | List of protocols names for which route count is needed | 
+ **protocols** | **[][]string** | List of protocols names for which route count is needed | 
  **vrfName** | **string** | Valid configured VRF names | 
 
 ### Return type
@@ -12656,7 +12659,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	enterpriseIds := []int64{int64(1234567891011)} // []int64 | Lists enterprises (optional)
+	enterpriseIds := []int64{[]int64{int64(1234567891011)}} // []int64 | Lists enterprises (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -12682,7 +12685,7 @@ Other parameters are passed through a pointer to a apiV1EnterprisesGetRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
- **enterpriseIds** | **[]int64** | Lists enterprises | 
+ **enterpriseIds** | **[][]int64** | Lists enterprises | 
 
 ### Return type
 
@@ -24398,7 +24401,7 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	deviceId := int64(1234567891011) // int64 |  (optional)
-	deviceIds := []int64{int64(1234567891011)} // []int64 |  (optional)
+	deviceIds := []int64{[]int64{int64(1234567891011)}} // []int64 |  (optional)
 	filter := "example string" // string |  (optional)
 	gatewayCloudProvider := "ENUM_VALUE" // string |  (optional)
 
@@ -24427,7 +24430,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **deviceId** | **int64** |  | 
- **deviceIds** | **[]int64** |  | 
+ **deviceIds** | **[][]int64** |  | 
  **filter** | **string** |  | 
  **gatewayCloudProvider** | **string** |  | 
 
@@ -26764,7 +26767,7 @@ func main() {
 	nameContains := "example string" // string | Optional filter: case-insensitive substring match on config display name; empty returns all (optional)
 	after := "example string" // string |  (optional)
 	first := int32(123) // int32 |  (optional)
-	status := []string{"ENUM_VALUE"} // []string | Optional status filter (e.g. STAGED, PAUSED); empty returns all (optional)
+	status := []string{[]string{"ENUM_VALUE"}} // []string | Optional status filter (e.g. STAGED, PAUSED); empty returns all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -26793,7 +26796,7 @@ Name | Type | Description  | Notes
  **nameContains** | **string** | Optional filter: case-insensitive substring match on config display name; empty returns all | 
  **after** | **string** |  | 
  **first** | **int32** |  | 
- **status** | **[]string** | Optional status filter (e.g. STAGED, PAUSED); empty returns all | 
+ **status** | **[][]string** | Optional status filter (e.g. STAGED, PAUSED); empty returns all | 
 
 ### Return type
 
@@ -26883,7 +26886,7 @@ Name | Type | Description  | Notes
 
 ## V1SdkAutomationPlaybookJobsGet
 
-> V1SdkAutomationPlaybookJobsGetResponse V1SdkAutomationPlaybookJobsGet(ctx).Authorization(authorization).NameContains(nameContains).Execute()
+> V1SdkAutomationPlaybookJobsGetResponse V1SdkAutomationPlaybookJobsGet(ctx).Authorization(authorization).NameContains(nameContains).Status(status).Execute()
 
 
 
@@ -26904,10 +26907,11 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	nameContains := "example string" // string | Optional filter: case-insensitive substring match on the owning config's display name; empty returns all (optional)
+	status := []string{[]string{"ENUM_VALUE"}} // []string | Optional status filter (e.g. COMPLETE, FAILED); empty returns all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookJobsGet(context.Background()).Authorization(authorization).NameContains(nameContains).Execute()
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookJobsGet(context.Background()).Authorization(authorization).NameContains(nameContains).Status(status).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookJobsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -26930,6 +26934,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **nameContains** | **string** | Optional filter: case-insensitive substring match on the owning config&#39;s display name; empty returns all | 
+ **status** | **[][]string** | Optional status filter (e.g. COMPLETE, FAILED); empty returns all | 
 
 ### Return type
 
@@ -27391,6 +27396,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## V1SdkAutomationPlaybookJobsJobIdSnapshotGet
+
+> V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse V1SdkAutomationPlaybookJobsJobIdSnapshotGet(ctx, jobId).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	jobId := "example string" // string | Job id whose snapshot is requested
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1SdkAutomationPlaybookJobsJobIdSnapshotGet(context.Background(), jobId).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdSnapshotGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SdkAutomationPlaybookJobsJobIdSnapshotGet`: V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1SdkAutomationPlaybookJobsJobIdSnapshotGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job id whose snapshot is requested | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SdkAutomationPlaybookJobsJobIdSnapshotGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+
+### Return type
+
+[**V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse**](V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V1SdkAutomationPlaybookModuleSlotsGet
 
 > V1SdkAutomationPlaybookModuleSlotsGetResponse V1SdkAutomationPlaybookModuleSlotsGet(ctx).Authorization(authorization).BundleKey(bundleKey).Execute()
@@ -27482,7 +27559,7 @@ import (
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	bundleKey := "example string" // string | Catalog key from playbook_catalog_playbook (e.g. system_bundle) (optional)
-	moduleKeys := []string{"example string"} // []string | Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample) (optional)
+	moduleKeys := []string{[]string{"example string"}} // []string | Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample) (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -27509,7 +27586,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **bundleKey** | **string** | Catalog key from playbook_catalog_playbook (e.g. system_bundle) | 
- **moduleKeys** | **[]string** | Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample) | 
+ **moduleKeys** | **[][]string** | Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample) | 
 
 ### Return type
 
@@ -27891,9 +27968,9 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	lanSegmentIds := []int64{int64(1234567891011)} // []int64 |  (optional)
-	siteIds := []int64{int64(1234567891011)} // []int64 |  (optional)
-	siteListIds := []int64{int64(1234567891011)} // []int64 |  (optional)
+	lanSegmentIds := []int64{[]int64{int64(1234567891011)}} // []int64 |  (optional)
+	siteIds := []int64{[]int64{int64(1234567891011)}} // []int64 |  (optional)
+	siteListIds := []int64{[]int64{int64(1234567891011)}} // []int64 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -27919,9 +27996,9 @@ Other parameters are passed through a pointer to a apiV1SitesMapDetailsGetReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
- **lanSegmentIds** | **[]int64** |  | 
- **siteIds** | **[]int64** |  | 
- **siteListIds** | **[]int64** |  | 
+ **lanSegmentIds** | **[][]int64** |  | 
+ **siteIds** | **[][]int64** |  | 
+ **siteListIds** | **[][]int64** |  | 
 
 ### Return type
 
@@ -30785,7 +30862,7 @@ func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
 	createdDateEnd := "example string" // string |  (optional)
 	createdDateStart := "example string" // string |  (optional)
-	endpoints := []string{"example string"} // []string |  (optional)
+	endpoints := []string{[]string{"example string"}} // []string |  (optional)
 	hostname := "example string" // string |  (optional)
 	limit := int32(123) // int32 |  (optional)
 	machineId := "example string" // string |  (optional)
@@ -30820,7 +30897,7 @@ Name | Type | Description  | Notes
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **createdDateEnd** | **string** |  | 
  **createdDateStart** | **string** |  | 
- **endpoints** | **[]string** |  | 
+ **endpoints** | **[][]string** |  | 
  **hostname** | **string** |  | 
  **limit** | **int32** |  | 
  **machineId** | **string** |  | 
@@ -32643,6 +32720,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## V2AssuranceCategorizeAiAppPost
+
+> map[string]interface{} V2AssuranceCategorizeAiAppPost(ctx).Authorization(authorization).V2AssuranceCategorizeAiAppPostRequest(v2AssuranceCategorizeAiAppPostRequest).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v2AssuranceCategorizeAiAppPostRequest := *openapiclient.NewV2AssuranceCategorizeAiAppPostRequest() // V2AssuranceCategorizeAiAppPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V2AssuranceCategorizeAiAppPost(context.Background()).Authorization(authorization).V2AssuranceCategorizeAiAppPostRequest(v2AssuranceCategorizeAiAppPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2AssuranceCategorizeAiAppPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2AssuranceCategorizeAiAppPost`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V2AssuranceCategorizeAiAppPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2AssuranceCategorizeAiAppPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v2AssuranceCategorizeAiAppPostRequest** | [**V2AssuranceCategorizeAiAppPostRequest**](V2AssuranceCategorizeAiAppPostRequest.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V2AssuranceCreateAiAdoptionApproveEntryPost
 
 > V2AssuranceCreateAiAdoptionApproveEntryPostResponse V2AssuranceCreateAiAdoptionApproveEntryPost(ctx).Authorization(authorization).V2AssuranceCreateAiAdoptionApproveEntryPostRequest(v2AssuranceCreateAiAdoptionApproveEntryPostRequest).Execute()
@@ -32927,7 +33070,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	idList := []string{"example string"} // []string | list of approved app entry identifiers to delete
+	idList := []string{[]string{"example string"}} // []string | list of approved app entry identifiers to delete
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -32953,7 +33096,7 @@ Other parameters are passed through a pointer to a apiV2AssuranceDeleteAiAdoptio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
- **idList** | **[]string** | list of approved app entry identifiers to delete | 
+ **idList** | **[][]string** | list of approved app entry identifiers to delete | 
 
 ### Return type
 
@@ -33123,7 +33266,7 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
-	classificationEntryIdList := []string{"example string"} // []string |  (optional)
+	classificationEntryIdList := []string{[]string{"example string"}} // []string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -33149,7 +33292,7 @@ Other parameters are passed through a pointer to a apiV2AssuranceDeleteclassifie
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
- **classificationEntryIdList** | **[]string** |  | 
+ **classificationEntryIdList** | **[][]string** |  | 
 
 ### Return type
 
@@ -33478,6 +33621,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V2AssuranceReadAiAdoptionApproveEntriesGetResponse**](V2AssuranceReadAiAdoptionApproveEntriesGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2AssuranceReadAiAdoptionCategoryEntriesGet
+
+> V2AssuranceReadAiAdoptionCategoryEntriesGetResponse V2AssuranceReadAiAdoptionCategoryEntriesGet(ctx).Authorization(authorization).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V2AssuranceReadAiAdoptionCategoryEntriesGet(context.Background()).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V2AssuranceReadAiAdoptionCategoryEntriesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2AssuranceReadAiAdoptionCategoryEntriesGet`: V2AssuranceReadAiAdoptionCategoryEntriesGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V2AssuranceReadAiAdoptionCategoryEntriesGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2AssuranceReadAiAdoptionCategoryEntriesGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+[**V2AssuranceReadAiAdoptionCategoryEntriesGetResponse**](V2AssuranceReadAiAdoptionCategoryEntriesGetResponse.md)
 
 ### Authorization
 

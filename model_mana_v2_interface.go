@@ -42,6 +42,8 @@ type ManaV2Interface struct {
 	Name *string `json:"name,omitempty"`
 	OperUpdatedAt *GoogleProtobufTimestamp `json:"operUpdatedAt,omitempty"`
 	PhyAddress *string `json:"phyAddress,omitempty"`
+	PppoeInterface *ManaV2PpPoEInterface `json:"pppoeInterface,omitempty"`
+	PppoeInterfaces []ManaV2Interface `json:"pppoeInterfaces,omitempty"`
 	Protocol *string `json:"protocol,omitempty"`
 	SecurityZone *string `json:"securityZone,omitempty"`
 	SfpOpticalStrength []ManaV2InterfaceSfpOpticalStrength `json:"sfpOpticalStrength,omitempty"`
@@ -809,6 +811,70 @@ func (o *ManaV2Interface) SetPhyAddress(v string) {
 	o.PhyAddress = &v
 }
 
+// GetPppoeInterface returns the PppoeInterface field value if set, zero value otherwise.
+func (o *ManaV2Interface) GetPppoeInterface() ManaV2PpPoEInterface {
+	if o == nil || IsNil(o.PppoeInterface) {
+		var ret ManaV2PpPoEInterface
+		return ret
+	}
+	return *o.PppoeInterface
+}
+
+// GetPppoeInterfaceOk returns a tuple with the PppoeInterface field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2Interface) GetPppoeInterfaceOk() (*ManaV2PpPoEInterface, bool) {
+	if o == nil || IsNil(o.PppoeInterface) {
+		return nil, false
+	}
+	return o.PppoeInterface, true
+}
+
+// HasPppoeInterface returns a boolean if a field has been set.
+func (o *ManaV2Interface) HasPppoeInterface() bool {
+	if o != nil && !IsNil(o.PppoeInterface) {
+		return true
+	}
+
+	return false
+}
+
+// SetPppoeInterface gets a reference to the given ManaV2PpPoEInterface and assigns it to the PppoeInterface field.
+func (o *ManaV2Interface) SetPppoeInterface(v ManaV2PpPoEInterface) {
+	o.PppoeInterface = &v
+}
+
+// GetPppoeInterfaces returns the PppoeInterfaces field value if set, zero value otherwise.
+func (o *ManaV2Interface) GetPppoeInterfaces() []ManaV2Interface {
+	if o == nil || IsNil(o.PppoeInterfaces) {
+		var ret []ManaV2Interface
+		return ret
+	}
+	return o.PppoeInterfaces
+}
+
+// GetPppoeInterfacesOk returns a tuple with the PppoeInterfaces field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2Interface) GetPppoeInterfacesOk() ([]ManaV2Interface, bool) {
+	if o == nil || IsNil(o.PppoeInterfaces) {
+		return nil, false
+	}
+	return o.PppoeInterfaces, true
+}
+
+// HasPppoeInterfaces returns a boolean if a field has been set.
+func (o *ManaV2Interface) HasPppoeInterfaces() bool {
+	if o != nil && !IsNil(o.PppoeInterfaces) {
+		return true
+	}
+
+	return false
+}
+
+// SetPppoeInterfaces gets a reference to the given []ManaV2Interface and assigns it to the PppoeInterfaces field.
+func (o *ManaV2Interface) SetPppoeInterfaces(v []ManaV2Interface) {
+	o.PppoeInterfaces = v
+}
+
 // GetProtocol returns the Protocol field value if set, zero value otherwise.
 func (o *ManaV2Interface) GetProtocol() string {
 	if o == nil || IsNil(o.Protocol) {
@@ -1271,6 +1337,12 @@ func (o ManaV2Interface) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PhyAddress) {
 		toSerialize["phyAddress"] = o.PhyAddress
+	}
+	if !IsNil(o.PppoeInterface) {
+		toSerialize["pppoeInterface"] = o.PppoeInterface
+	}
+	if !IsNil(o.PppoeInterfaces) {
+		toSerialize["pppoeInterfaces"] = o.PppoeInterfaces
 	}
 	if !IsNil(o.Protocol) {
 		toSerialize["protocol"] = o.Protocol

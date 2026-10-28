@@ -37,6 +37,7 @@ type ManaV2InterfaceVlan struct {
 	Name *string `json:"name,omitempty"`
 	OperUpdatedAt *GoogleProtobufTimestamp `json:"operUpdatedAt,omitempty"`
 	ParentMacAddress *string `json:"parentMacAddress,omitempty"`
+	PppoeInterfaces []ManaV2Interface `json:"pppoeInterfaces,omitempty"`
 	SecurityZone *string `json:"securityZone,omitempty"`
 	SpeedMbps *int32 `json:"speedMbps,omitempty"`
 	TcpMss *int32 `json:"tcpMss,omitempty"`
@@ -639,6 +640,38 @@ func (o *ManaV2InterfaceVlan) SetParentMacAddress(v string) {
 	o.ParentMacAddress = &v
 }
 
+// GetPppoeInterfaces returns the PppoeInterfaces field value if set, zero value otherwise.
+func (o *ManaV2InterfaceVlan) GetPppoeInterfaces() []ManaV2Interface {
+	if o == nil || IsNil(o.PppoeInterfaces) {
+		var ret []ManaV2Interface
+		return ret
+	}
+	return o.PppoeInterfaces
+}
+
+// GetPppoeInterfacesOk returns a tuple with the PppoeInterfaces field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2InterfaceVlan) GetPppoeInterfacesOk() ([]ManaV2Interface, bool) {
+	if o == nil || IsNil(o.PppoeInterfaces) {
+		return nil, false
+	}
+	return o.PppoeInterfaces, true
+}
+
+// HasPppoeInterfaces returns a boolean if a field has been set.
+func (o *ManaV2InterfaceVlan) HasPppoeInterfaces() bool {
+	if o != nil && !IsNil(o.PppoeInterfaces) {
+		return true
+	}
+
+	return false
+}
+
+// SetPppoeInterfaces gets a reference to the given []ManaV2Interface and assigns it to the PppoeInterfaces field.
+func (o *ManaV2InterfaceVlan) SetPppoeInterfaces(v []ManaV2Interface) {
+	o.PppoeInterfaces = v
+}
+
 // GetSecurityZone returns the SecurityZone field value if set, zero value otherwise.
 func (o *ManaV2InterfaceVlan) GetSecurityZone() string {
 	if o == nil || IsNil(o.SecurityZone) {
@@ -926,6 +959,9 @@ func (o ManaV2InterfaceVlan) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ParentMacAddress) {
 		toSerialize["parentMacAddress"] = o.ParentMacAddress
+	}
+	if !IsNil(o.PppoeInterfaces) {
+		toSerialize["pppoeInterfaces"] = o.PppoeInterfaces
 	}
 	if !IsNil(o.SecurityZone) {
 		toSerialize["securityZone"] = o.SecurityZone
