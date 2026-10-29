@@ -20,6 +20,7 @@ var _ MappedNullable = &V1SdkAutomationPlaybookJobsJobIdLogsGetResponse{}
 // V1SdkAutomationPlaybookJobsJobIdLogsGetResponse struct for V1SdkAutomationPlaybookJobsJobIdLogsGetResponse
 type V1SdkAutomationPlaybookJobsJobIdLogsGetResponse struct {
 	Lines []string `json:"lines,omitempty"`
+	PageInfo *CommonPageInfo `json:"pageInfo,omitempty"`
 }
 
 // NewV1SdkAutomationPlaybookJobsJobIdLogsGetResponse instantiates a new V1SdkAutomationPlaybookJobsJobIdLogsGetResponse object
@@ -71,6 +72,38 @@ func (o *V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) SetLines(v []string) {
 	o.Lines = v
 }
 
+// GetPageInfo returns the PageInfo field value if set, zero value otherwise.
+func (o *V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) GetPageInfo() CommonPageInfo {
+	if o == nil || IsNil(o.PageInfo) {
+		var ret CommonPageInfo
+		return ret
+	}
+	return *o.PageInfo
+}
+
+// GetPageInfoOk returns a tuple with the PageInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) GetPageInfoOk() (*CommonPageInfo, bool) {
+	if o == nil || IsNil(o.PageInfo) {
+		return nil, false
+	}
+	return o.PageInfo, true
+}
+
+// HasPageInfo returns a boolean if a field has been set.
+func (o *V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) HasPageInfo() bool {
+	if o != nil && !IsNil(o.PageInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetPageInfo gets a reference to the given CommonPageInfo and assigns it to the PageInfo field.
+func (o *V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) SetPageInfo(v CommonPageInfo) {
+	o.PageInfo = &v
+}
+
 func (o V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -83,6 +116,9 @@ func (o V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) ToMap() (map[string]int
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Lines) {
 		toSerialize["lines"] = o.Lines
+	}
+	if !IsNil(o.PageInfo) {
+		toSerialize["pageInfo"] = o.PageInfo
 	}
 	return toSerialize, nil
 }

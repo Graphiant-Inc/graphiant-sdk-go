@@ -27,6 +27,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **OperUpdatedAt** | Pointer to [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **PhyAddress** | Pointer to **string** |  | [optional] 
+**PppoeInterface** | Pointer to [**ManaV2PpPoEInterface**](ManaV2PpPoEInterface.md) |  | [optional] 
+**PppoeInterfaces** | Pointer to [**[]ManaV2Interface**](ManaV2Interface.md) |  | [optional] 
 **Protocol** | Pointer to **string** |  | [optional] 
 **SecurityZone** | Pointer to **string** |  | [optional] 
 **SfpOpticalStrength** | Pointer to [**[]ManaV2InterfaceSfpOpticalStrength**](ManaV2InterfaceSfpOpticalStrength.md) |  | [optional] 
@@ -633,6 +635,56 @@ SetPhyAddress sets PhyAddress field to given value.
 `func (o *ManaV2Interface) HasPhyAddress() bool`
 
 HasPhyAddress returns a boolean if a field has been set.
+
+### GetPppoeInterface
+
+`func (o *ManaV2Interface) GetPppoeInterface() ManaV2PpPoEInterface`
+
+GetPppoeInterface returns the PppoeInterface field if non-nil, zero value otherwise.
+
+### GetPppoeInterfaceOk
+
+`func (o *ManaV2Interface) GetPppoeInterfaceOk() (*ManaV2PpPoEInterface, bool)`
+
+GetPppoeInterfaceOk returns a tuple with the PppoeInterface field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPppoeInterface
+
+`func (o *ManaV2Interface) SetPppoeInterface(v ManaV2PpPoEInterface)`
+
+SetPppoeInterface sets PppoeInterface field to given value.
+
+### HasPppoeInterface
+
+`func (o *ManaV2Interface) HasPppoeInterface() bool`
+
+HasPppoeInterface returns a boolean if a field has been set.
+
+### GetPppoeInterfaces
+
+`func (o *ManaV2Interface) GetPppoeInterfaces() []ManaV2Interface`
+
+GetPppoeInterfaces returns the PppoeInterfaces field if non-nil, zero value otherwise.
+
+### GetPppoeInterfacesOk
+
+`func (o *ManaV2Interface) GetPppoeInterfacesOk() (*[]ManaV2Interface, bool)`
+
+GetPppoeInterfacesOk returns a tuple with the PppoeInterfaces field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPppoeInterfaces
+
+`func (o *ManaV2Interface) SetPppoeInterfaces(v []ManaV2Interface)`
+
+SetPppoeInterfaces sets PppoeInterfaces field to given value.
+
+### HasPppoeInterfaces
+
+`func (o *ManaV2Interface) HasPppoeInterfaces() bool`
+
+HasPppoeInterfaces returns a boolean if a field has been set.
 
 ### GetProtocol
 

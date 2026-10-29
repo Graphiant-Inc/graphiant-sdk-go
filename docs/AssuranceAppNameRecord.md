@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **ExchangeService** | Pointer to [**[]AssuranceExchangeServiceIdentifier**](AssuranceExchangeServiceIdentifier.md) |  | [optional] 
 **FlexAlgo** | Pointer to [**[]AssuranceFlexAlgoIdentifier**](AssuranceFlexAlgoIdentifier.md) |  | [optional] 
 **FlowsAnalyzed** | Pointer to **int64** |  | [optional] 
+**IsAiApp** | Pointer to **bool** |  | [optional] 
 **Recommendation** | Pointer to **string** |  | [optional] 
 **RiskStatus** | Pointer to **string** |  | [optional] 
 **ThreatScore** | Pointer to **int64** |  | [optional] 
@@ -390,6 +391,31 @@ SetFlowsAnalyzed sets FlowsAnalyzed field to given value.
 `func (o *AssuranceAppNameRecord) HasFlowsAnalyzed() bool`
 
 HasFlowsAnalyzed returns a boolean if a field has been set.
+
+### GetIsAiApp
+
+`func (o *AssuranceAppNameRecord) GetIsAiApp() bool`
+
+GetIsAiApp returns the IsAiApp field if non-nil, zero value otherwise.
+
+### GetIsAiAppOk
+
+`func (o *AssuranceAppNameRecord) GetIsAiAppOk() (*bool, bool)`
+
+GetIsAiAppOk returns a tuple with the IsAiApp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsAiApp
+
+`func (o *AssuranceAppNameRecord) SetIsAiApp(v bool)`
+
+SetIsAiApp sets IsAiApp field to given value.
+
+### HasIsAiApp
+
+`func (o *AssuranceAppNameRecord) HasIsAiApp() bool`
+
+HasIsAiApp returns a boolean if a field has been set.
 
 ### GetRecommendation
 

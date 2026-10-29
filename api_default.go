@@ -17,7 +17,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"reflect"
 )
 
 
@@ -2490,7 +2489,7 @@ func (a *DefaultAPIService) V1AuthLoginCallbackPostExecute(r ApiV1AuthLoginCallb
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthLoginCallbackPost500Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2875,7 +2874,7 @@ func (a *DefaultAPIService) V1AuthLoginSamlGetExecute(r ApiV1AuthLoginSamlGetReq
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthLoginSamlGet401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2886,7 +2885,7 @@ func (a *DefaultAPIService) V1AuthLoginSamlGetExecute(r ApiV1AuthLoginSamlGetReq
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthLoginSamlGet500Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4017,7 +4016,7 @@ func (a *DefaultAPIService) V1AuthRefreshGetExecute(r ApiV1AuthRefreshGetRequest
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthRefreshGet403Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4028,7 +4027,7 @@ func (a *DefaultAPIService) V1AuthRefreshGetExecute(r ApiV1AuthRefreshGetRequest
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthRefreshGet422Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4182,7 +4181,7 @@ func (a *DefaultAPIService) V1AuthSessionGetExecute(r ApiV1AuthSessionGetRequest
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthSessionGet403Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4193,7 +4192,7 @@ func (a *DefaultAPIService) V1AuthSessionGetExecute(r ApiV1AuthSessionGetRequest
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthSessionGet422Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4336,7 +4335,7 @@ func (a *DefaultAPIService) V1AuthSessionRootGetExecute(r ApiV1AuthSessionRootGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthSessionGet403Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4347,7 +4346,7 @@ func (a *DefaultAPIService) V1AuthSessionRootGetExecute(r ApiV1AuthSessionRootGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v V1AuthMfaPost500Response
+			var v V1AuthSessionGet422Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10733,17 +10732,7 @@ func (a *DefaultAPIService) V1DeviceRoutingOspfv2StatisticsGetExecute(r ApiV1Dev
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
-	{
-		t := *r.vrfNames
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "vrfNames", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "vrfNames", t, "form", "multi")
-		}
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "vrfNames", r.vrfNames, "deepObject", "csv")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -11859,17 +11848,7 @@ func (a *DefaultAPIService) V1DeviceRoutingOspfv3StatisticsGetExecute(r ApiV1Dev
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
-	{
-		t := *r.vrfNames
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "vrfNames", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "vrfNames", t, "form", "multi")
-		}
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "vrfNames", r.vrfNames, "deepObject", "csv")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -12024,17 +12003,7 @@ func (a *DefaultAPIService) V1DeviceRoutingRibRouteCountPostExecute(r ApiV1Devic
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
-	{
-		t := *r.vrfName
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "vrfName", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "vrfName", t, "form", "multi")
-		}
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "vrfName", r.vrfName, "deepObject", "csv")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -14138,15 +14107,7 @@ func (a *DefaultAPIService) V1DevicesDeviceIdCircuitsVrfAssociationsGetExecute(r
 	}
 
 	if r.circuitNames != nil {
-		t := *r.circuitNames
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "circuitNames", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "circuitNames", t, "form", "multi")
-		}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "circuitNames", r.circuitNames, "deepObject", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -17935,15 +17896,7 @@ func (a *DefaultAPIService) V1DevicesInventorySerialNumDeleteExecute(r ApiV1Devi
 	}
 
 	if r.deviceSerials != nil {
-		t := *r.deviceSerials
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "deviceSerials", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "deviceSerials", t, "form", "multi")
-		}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "deviceSerials", r.deviceSerials, "deepObject", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -18635,17 +18588,7 @@ func (a *DefaultAPIService) V1DevicesRoutingVrfProtocolRouteCountGetExecute(r Ap
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
-	{
-		t := *r.protocols
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "protocols", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "protocols", t, "form", "multi")
-		}
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "protocols", r.protocols, "deepObject", "csv")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "vrfName", r.vrfName, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -23884,15 +23827,7 @@ func (a *DefaultAPIService) V1EnterprisesGetExecute(r ApiV1EnterprisesGetRequest
 	}
 
 	if r.enterpriseIds != nil {
-		t := *r.enterpriseIds
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "enterpriseIds", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "enterpriseIds", t, "form", "multi")
-		}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enterpriseIds", r.enterpriseIds, "deepObject", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -46082,15 +46017,7 @@ func (a *DefaultAPIService) V1LanSegmentsGetExecute(r ApiV1LanSegmentsGetRequest
 		parameterAddToHeaderOrQuery(localVarQueryParams, "deviceId", r.deviceId, "form", "")
 	}
 	if r.deviceIds != nil {
-		t := *r.deviceIds
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "deviceIds", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "deviceIds", t, "form", "multi")
-		}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "deviceIds", r.deviceIds, "deepObject", "csv")
 	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
@@ -50512,15 +50439,7 @@ func (a *DefaultAPIService) V1SdkAutomationPlaybookConfigsGetExecute(r ApiV1SdkA
 		parameterAddToHeaderOrQuery(localVarQueryParams, "first", r.first, "form", "")
 	}
 	if r.status != nil {
-		t := *r.status
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "status", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "status", t, "form", "multi")
-		}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "deepObject", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -50731,6 +50650,7 @@ type ApiV1SdkAutomationPlaybookJobsGetRequest struct {
 	ApiService *DefaultAPIService
 	authorization *string
 	nameContains *string
+	status *[]string
 }
 
 // Bearer token. Format: Bearer &lt;your_token_here&gt;
@@ -50742,6 +50662,12 @@ func (r ApiV1SdkAutomationPlaybookJobsGetRequest) Authorization(authorization st
 // Optional filter: case-insensitive substring match on the owning config&#39;s display name; empty returns all
 func (r ApiV1SdkAutomationPlaybookJobsGetRequest) NameContains(nameContains string) ApiV1SdkAutomationPlaybookJobsGetRequest {
 	r.nameContains = &nameContains
+	return r
+}
+
+// Optional status filter (e.g. COMPLETE, FAILED); empty returns all
+func (r ApiV1SdkAutomationPlaybookJobsGetRequest) Status(status []string) ApiV1SdkAutomationPlaybookJobsGetRequest {
+	r.status = &status
 	return r
 }
 
@@ -50790,6 +50716,9 @@ func (a *DefaultAPIService) V1SdkAutomationPlaybookJobsGetExecute(r ApiV1SdkAuto
 
 	if r.nameContains != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "nameContains", r.nameContains, "form", "")
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "deepObject", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -51293,7 +51222,7 @@ func (r ApiV1SdkAutomationPlaybookJobsJobIdLogsGetRequest) Execute() (*V1SdkAuto
 /*
 V1SdkAutomationPlaybookJobsJobIdLogsGet Method for V1SdkAutomationPlaybookJobsJobIdLogsGet
 
-Get masked ansible logs for a job, optionally filtered by phase
+Get masked ansible logs for a job, optionally filtered by phase and paged with first / after
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param jobId Job id whose logs are requested
@@ -51682,6 +51611,134 @@ func (a *DefaultAPIService) V1SdkAutomationPlaybookJobsJobIdRunPostExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiV1SdkAutomationPlaybookJobsJobIdSnapshotGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	jobId string
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1SdkAutomationPlaybookJobsJobIdSnapshotGetRequest) Authorization(authorization string) ApiV1SdkAutomationPlaybookJobsJobIdSnapshotGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1SdkAutomationPlaybookJobsJobIdSnapshotGetRequest) Execute() (*V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse, *http.Response, error) {
+	return r.ApiService.V1SdkAutomationPlaybookJobsJobIdSnapshotGetExecute(r)
+}
+
+/*
+V1SdkAutomationPlaybookJobsJobIdSnapshotGet Method for V1SdkAutomationPlaybookJobsJobIdSnapshotGet
+
+Get the frozen config inputs captured for this job at creation
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job id whose snapshot is requested
+ @return ApiV1SdkAutomationPlaybookJobsJobIdSnapshotGetRequest
+*/
+func (a *DefaultAPIService) V1SdkAutomationPlaybookJobsJobIdSnapshotGet(ctx context.Context, jobId string) ApiV1SdkAutomationPlaybookJobsJobIdSnapshotGetRequest {
+	return ApiV1SdkAutomationPlaybookJobsJobIdSnapshotGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobId: jobId,
+	}
+}
+
+// Execute executes the request
+//  @return V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse
+func (a *DefaultAPIService) V1SdkAutomationPlaybookJobsJobIdSnapshotGetExecute(r ApiV1SdkAutomationPlaybookJobsJobIdSnapshotGetRequest) (*V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1SdkAutomationPlaybookJobsJobIdSnapshotGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/sdk-automation/playbook/jobs/{jobId}/snapshot"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiV1SdkAutomationPlaybookModuleSlotsGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -51889,15 +51946,7 @@ func (a *DefaultAPIService) V1SdkAutomationPlaybookTemplatesGetExecute(r ApiV1Sd
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bundleKey", r.bundleKey, "form", "")
 	}
 	if r.moduleKeys != nil {
-		t := *r.moduleKeys
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "moduleKeys", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "moduleKeys", t, "form", "multi")
-		}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "moduleKeys", r.moduleKeys, "deepObject", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -52698,37 +52747,13 @@ func (a *DefaultAPIService) V1SitesMapDetailsGetExecute(r ApiV1SitesMapDetailsGe
 	}
 
 	if r.lanSegmentIds != nil {
-		t := *r.lanSegmentIds
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "lanSegmentIds", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "lanSegmentIds", t, "form", "multi")
-		}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lanSegmentIds", r.lanSegmentIds, "deepObject", "csv")
 	}
 	if r.siteIds != nil {
-		t := *r.siteIds
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "siteIds", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "siteIds", t, "form", "multi")
-		}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "siteIds", r.siteIds, "deepObject", "csv")
 	}
 	if r.siteListIds != nil {
-		t := *r.siteListIds
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "siteListIds", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "siteListIds", t, "form", "multi")
-		}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "siteListIds", r.siteListIds, "deepObject", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -58209,15 +58234,7 @@ func (a *DefaultAPIService) V1ZtagentAgentsGetExecute(r ApiV1ZtagentAgentsGetReq
 		parameterAddToHeaderOrQuery(localVarQueryParams, "createdDateStart", r.createdDateStart, "form", "")
 	}
 	if r.endpoints != nil {
-		t := *r.endpoints
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "endpoints", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "endpoints", t, "form", "multi")
-		}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endpoints", r.endpoints, "deepObject", "csv")
 	}
 	if r.hostname != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "hostname", r.hostname, "form", "")
@@ -61842,6 +61859,139 @@ func (a *DefaultAPIService) V2AssuranceBucketdetailsPostExecute(r ApiV2Assurance
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiV2AssuranceCategorizeAiAppPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v2AssuranceCategorizeAiAppPostRequest *V2AssuranceCategorizeAiAppPostRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV2AssuranceCategorizeAiAppPostRequest) Authorization(authorization string) ApiV2AssuranceCategorizeAiAppPostRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV2AssuranceCategorizeAiAppPostRequest) V2AssuranceCategorizeAiAppPostRequest(v2AssuranceCategorizeAiAppPostRequest V2AssuranceCategorizeAiAppPostRequest) ApiV2AssuranceCategorizeAiAppPostRequest {
+	r.v2AssuranceCategorizeAiAppPostRequest = &v2AssuranceCategorizeAiAppPostRequest
+	return r
+}
+
+func (r ApiV2AssuranceCategorizeAiAppPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.V2AssuranceCategorizeAiAppPostExecute(r)
+}
+
+/*
+V2AssuranceCategorizeAiAppPost Method for V2AssuranceCategorizeAiAppPost
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV2AssuranceCategorizeAiAppPostRequest
+*/
+func (a *DefaultAPIService) V2AssuranceCategorizeAiAppPost(ctx context.Context) ApiV2AssuranceCategorizeAiAppPostRequest {
+	return ApiV2AssuranceCategorizeAiAppPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *DefaultAPIService) V2AssuranceCategorizeAiAppPostExecute(r ApiV2AssuranceCategorizeAiAppPostRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V2AssuranceCategorizeAiAppPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/assurance/categorize-ai-app"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v2AssuranceCategorizeAiAppPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v2AssuranceCategorizeAiAppPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v2AssuranceCategorizeAiAppPostRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiV2AssuranceCreateAiAdoptionApproveEntryPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -62437,17 +62587,7 @@ func (a *DefaultAPIService) V2AssuranceDeleteAiAdoptionApproveEntryDeleteExecute
 		return localVarReturnValue, nil, reportError("idList is required and must be specified")
 	}
 
-	{
-		t := *r.idList
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "idList", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "idList", t, "form", "multi")
-		}
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "idList", r.idList, "deepObject", "csv")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -62832,15 +62972,7 @@ func (a *DefaultAPIService) V2AssuranceDeleteclassifiedapplicationDeleteExecute(
 	}
 
 	if r.classificationEntryIdList != nil {
-		t := *r.classificationEntryIdList
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "classificationEntryIdList", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "classificationEntryIdList", t, "form", "multi")
-		}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "classificationEntryIdList", r.classificationEntryIdList, "deepObject", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -63466,6 +63598,128 @@ func (a *DefaultAPIService) V2AssuranceReadAiAdoptionApproveEntriesGetExecute(r 
 	}
 
 	localVarPath := localBasePath + "/v2/assurance/read-ai-adoption-approve-entries"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV2AssuranceReadAiAdoptionCategoryEntriesGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV2AssuranceReadAiAdoptionCategoryEntriesGetRequest) Authorization(authorization string) ApiV2AssuranceReadAiAdoptionCategoryEntriesGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV2AssuranceReadAiAdoptionCategoryEntriesGetRequest) Execute() (*V2AssuranceReadAiAdoptionCategoryEntriesGetResponse, *http.Response, error) {
+	return r.ApiService.V2AssuranceReadAiAdoptionCategoryEntriesGetExecute(r)
+}
+
+/*
+V2AssuranceReadAiAdoptionCategoryEntriesGet Method for V2AssuranceReadAiAdoptionCategoryEntriesGet
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV2AssuranceReadAiAdoptionCategoryEntriesGetRequest
+*/
+func (a *DefaultAPIService) V2AssuranceReadAiAdoptionCategoryEntriesGet(ctx context.Context) ApiV2AssuranceReadAiAdoptionCategoryEntriesGetRequest {
+	return ApiV2AssuranceReadAiAdoptionCategoryEntriesGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V2AssuranceReadAiAdoptionCategoryEntriesGetResponse
+func (a *DefaultAPIService) V2AssuranceReadAiAdoptionCategoryEntriesGetExecute(r ApiV2AssuranceReadAiAdoptionCategoryEntriesGetRequest) (*V2AssuranceReadAiAdoptionCategoryEntriesGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V2AssuranceReadAiAdoptionCategoryEntriesGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V2AssuranceReadAiAdoptionCategoryEntriesGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/assurance/read-ai-adoption-category-entries"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

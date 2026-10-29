@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ActiveUsers** | Pointer to **int64** | number of active users (required) | [optional] 
+**BucketId** | Pointer to **string** | bucket id | [optional] 
 **Category** | Pointer to **string** | approved AI tool category (required) | [optional] 
 **DataSentKbps** | Pointer to **float64** | data sent in kbps (required) | [optional] 
 **Id** | Pointer to **string** | approved app entry identifier (required) | [optional] 
@@ -53,6 +54,31 @@ SetActiveUsers sets ActiveUsers field to given value.
 `func (o *AssuranceApprovedAppEntry) HasActiveUsers() bool`
 
 HasActiveUsers returns a boolean if a field has been set.
+
+### GetBucketId
+
+`func (o *AssuranceApprovedAppEntry) GetBucketId() string`
+
+GetBucketId returns the BucketId field if non-nil, zero value otherwise.
+
+### GetBucketIdOk
+
+`func (o *AssuranceApprovedAppEntry) GetBucketIdOk() (*string, bool)`
+
+GetBucketIdOk returns a tuple with the BucketId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBucketId
+
+`func (o *AssuranceApprovedAppEntry) SetBucketId(v string)`
+
+SetBucketId sets BucketId field to given value.
+
+### HasBucketId
+
+`func (o *AssuranceApprovedAppEntry) HasBucketId() bool`
+
+HasBucketId returns a boolean if a field has been set.
 
 ### GetCategory
 

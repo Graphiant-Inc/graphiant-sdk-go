@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Container** | Pointer to **string** | Blob storage container this image was indexed from. Same model + version can exist in more than one container Empty for rows indexed before multi-container support. | [optional] 
 **Model** | Pointer to **int32** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewUpgradeInventoryKeyWithDefaults instantiates a new UpgradeInventoryKey object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetContainer
+
+`func (o *UpgradeInventoryKey) GetContainer() string`
+
+GetContainer returns the Container field if non-nil, zero value otherwise.
+
+### GetContainerOk
+
+`func (o *UpgradeInventoryKey) GetContainerOk() (*string, bool)`
+
+GetContainerOk returns a tuple with the Container field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContainer
+
+`func (o *UpgradeInventoryKey) SetContainer(v string)`
+
+SetContainer sets Container field to given value.
+
+### HasContainer
+
+`func (o *UpgradeInventoryKey) HasContainer() bool`
+
+HasContainer returns a boolean if a field has been set.
 
 ### GetModel
 

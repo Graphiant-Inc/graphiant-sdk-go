@@ -28,6 +28,7 @@ type ManaV2InterfaceVlanConfig struct {
 	Lan *string `json:"lan,omitempty"`
 	LldpEnabled *bool `json:"lldpEnabled,omitempty"`
 	MaxTransmissionUnit *int32 `json:"maxTransmissionUnit,omitempty"`
+	PppoeInterfaces *map[string]ManaV2NullablePpPoEInterfaceConfig `json:"pppoeInterfaces,omitempty"`
 	SecurityZone *string `json:"securityZone,omitempty"`
 	TcpMss *int32 `json:"tcpMss,omitempty"`
 	TcpMssV4 *int32 `json:"tcpMssV4,omitempty"`
@@ -343,6 +344,38 @@ func (o *ManaV2InterfaceVlanConfig) SetMaxTransmissionUnit(v int32) {
 	o.MaxTransmissionUnit = &v
 }
 
+// GetPppoeInterfaces returns the PppoeInterfaces field value if set, zero value otherwise.
+func (o *ManaV2InterfaceVlanConfig) GetPppoeInterfaces() map[string]ManaV2NullablePpPoEInterfaceConfig {
+	if o == nil || IsNil(o.PppoeInterfaces) {
+		var ret map[string]ManaV2NullablePpPoEInterfaceConfig
+		return ret
+	}
+	return *o.PppoeInterfaces
+}
+
+// GetPppoeInterfacesOk returns a tuple with the PppoeInterfaces field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManaV2InterfaceVlanConfig) GetPppoeInterfacesOk() (*map[string]ManaV2NullablePpPoEInterfaceConfig, bool) {
+	if o == nil || IsNil(o.PppoeInterfaces) {
+		return nil, false
+	}
+	return o.PppoeInterfaces, true
+}
+
+// HasPppoeInterfaces returns a boolean if a field has been set.
+func (o *ManaV2InterfaceVlanConfig) HasPppoeInterfaces() bool {
+	if o != nil && !IsNil(o.PppoeInterfaces) {
+		return true
+	}
+
+	return false
+}
+
+// SetPppoeInterfaces gets a reference to the given map[string]ManaV2NullablePpPoEInterfaceConfig and assigns it to the PppoeInterfaces field.
+func (o *ManaV2InterfaceVlanConfig) SetPppoeInterfaces(v map[string]ManaV2NullablePpPoEInterfaceConfig) {
+	o.PppoeInterfaces = &v
+}
+
 // GetSecurityZone returns the SecurityZone field value if set, zero value otherwise.
 func (o *ManaV2InterfaceVlanConfig) GetSecurityZone() string {
 	if o == nil || IsNil(o.SecurityZone) {
@@ -635,6 +668,9 @@ func (o ManaV2InterfaceVlanConfig) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MaxTransmissionUnit) {
 		toSerialize["maxTransmissionUnit"] = o.MaxTransmissionUnit
+	}
+	if !IsNil(o.PppoeInterfaces) {
+		toSerialize["pppoeInterfaces"] = o.PppoeInterfaces
 	}
 	if !IsNil(o.SecurityZone) {
 		toSerialize["securityZone"] = o.SecurityZone

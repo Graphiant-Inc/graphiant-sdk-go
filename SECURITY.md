@@ -4,19 +4,20 @@
 
 We actively support the following versions with security updates:
 
-| Version | Supported          | Notes                                        |
-|---------| ------------------ |----------------------------------------------|
-| 26.9.x  | :white_check_mark: | Current stable release (latest: **26.9.0**)  |
-| 26.8.x  | :white_check_mark: | Previous stable release (latest: **26.8.0**) |
-| 26.7.x  | :white_check_mark: | Older supported release                      |
-| 26.6.x  | :white_check_mark: | Older supported release                      |
-| 26.5.x  | :white_check_mark: | Older supported release                      |
-| 26.4.x  | :white_check_mark: | Older supported release                      |
-| 26.3.x  | :white_check_mark: | Older supported release                      |
-| 26.2.x  | :white_check_mark: | Older supported release                      |
-| 26.1.x  | :white_check_mark: | Older supported release                      |
-| 25.12.x | :white_check_mark: | Legacy release                               |
-| < 25.12 | :x:                | No longer supported                          |
+| Version | Supported          | Notes                                         |
+|---------| ------------------ |-----------------------------------------------|
+| 26.10.x | :white_check_mark: | Current stable release (latest: **26.10.0**)  |
+| 26.9.x  | :white_check_mark: | Previous stable release (latest: **26.9.0**)  |
+| 26.8.x  | :white_check_mark: | Older supported release                       |
+| 26.7.x  | :white_check_mark: | Older supported release                       |
+| 26.6.x  | :white_check_mark: | Older supported release                       |
+| 26.5.x  | :white_check_mark: | Older supported release                       |
+| 26.4.x  | :white_check_mark: | Older supported release                       |
+| 26.3.x  | :white_check_mark: | Older supported release                       |
+| 26.2.x  | :white_check_mark: | Older supported release                       |
+| 26.1.x  | :white_check_mark: | Older supported release                       |
+| 25.12.x | :white_check_mark: | Legacy release                                |
+| < 25.12 | :x:                | No longer supported                           |
 
 **Note:** We recommend always using the latest version to ensure you have the most recent security patches.
 
@@ -185,4 +186,4 @@ For security concerns, please contact: **security@graphiant.com**
 
 ---
 
-**Last Updated**: 2026-07-27
+**Last Updated**: 2026-10-28

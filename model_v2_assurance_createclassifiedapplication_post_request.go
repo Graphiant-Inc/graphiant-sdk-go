@@ -20,6 +20,7 @@ var _ MappedNullable = &V2AssuranceCreateclassifiedapplicationPostRequest{}
 // V2AssuranceCreateclassifiedapplicationPostRequest struct for V2AssuranceCreateclassifiedapplicationPostRequest
 type V2AssuranceCreateclassifiedapplicationPostRequest struct {
 	AppName *string `json:"appName,omitempty"`
+	Category *string `json:"category,omitempty"`
 	IpPrefixList []string `json:"ipPrefixList,omitempty"`
 	PortList []string `json:"portList,omitempty"`
 	ProtocolList []string `json:"protocolList,omitempty"`
@@ -72,6 +73,38 @@ func (o *V2AssuranceCreateclassifiedapplicationPostRequest) HasAppName() bool {
 // SetAppName gets a reference to the given string and assigns it to the AppName field.
 func (o *V2AssuranceCreateclassifiedapplicationPostRequest) SetAppName(v string) {
 	o.AppName = &v
+}
+
+// GetCategory returns the Category field value if set, zero value otherwise.
+func (o *V2AssuranceCreateclassifiedapplicationPostRequest) GetCategory() string {
+	if o == nil || IsNil(o.Category) {
+		var ret string
+		return ret
+	}
+	return *o.Category
+}
+
+// GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V2AssuranceCreateclassifiedapplicationPostRequest) GetCategoryOk() (*string, bool) {
+	if o == nil || IsNil(o.Category) {
+		return nil, false
+	}
+	return o.Category, true
+}
+
+// HasCategory returns a boolean if a field has been set.
+func (o *V2AssuranceCreateclassifiedapplicationPostRequest) HasCategory() bool {
+	if o != nil && !IsNil(o.Category) {
+		return true
+	}
+
+	return false
+}
+
+// SetCategory gets a reference to the given string and assigns it to the Category field.
+func (o *V2AssuranceCreateclassifiedapplicationPostRequest) SetCategory(v string) {
+	o.Category = &v
 }
 
 // GetIpPrefixList returns the IpPrefixList field value if set, zero value otherwise.
@@ -182,6 +215,9 @@ func (o V2AssuranceCreateclassifiedapplicationPostRequest) ToMap() (map[string]i
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AppName) {
 		toSerialize["appName"] = o.AppName
+	}
+	if !IsNil(o.Category) {
+		toSerialize["category"] = o.Category
 	}
 	if !IsNil(o.IpPrefixList) {
 		toSerialize["ipPrefixList"] = o.IpPrefixList

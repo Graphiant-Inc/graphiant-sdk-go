@@ -20,6 +20,7 @@ var _ MappedNullable = &AssuranceClassifiedApplication{}
 // AssuranceClassifiedApplication struct for AssuranceClassifiedApplication
 type AssuranceClassifiedApplication struct {
 	AppName *string `json:"appName,omitempty"`
+	Category *string `json:"category,omitempty"`
 	ClassificationEntryId *string `json:"classificationEntryId,omitempty"`
 	IpPrefixList []string `json:"ipPrefixList,omitempty"`
 	PortList []string `json:"portList,omitempty"`
@@ -73,6 +74,38 @@ func (o *AssuranceClassifiedApplication) HasAppName() bool {
 // SetAppName gets a reference to the given string and assigns it to the AppName field.
 func (o *AssuranceClassifiedApplication) SetAppName(v string) {
 	o.AppName = &v
+}
+
+// GetCategory returns the Category field value if set, zero value otherwise.
+func (o *AssuranceClassifiedApplication) GetCategory() string {
+	if o == nil || IsNil(o.Category) {
+		var ret string
+		return ret
+	}
+	return *o.Category
+}
+
+// GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceClassifiedApplication) GetCategoryOk() (*string, bool) {
+	if o == nil || IsNil(o.Category) {
+		return nil, false
+	}
+	return o.Category, true
+}
+
+// HasCategory returns a boolean if a field has been set.
+func (o *AssuranceClassifiedApplication) HasCategory() bool {
+	if o != nil && !IsNil(o.Category) {
+		return true
+	}
+
+	return false
+}
+
+// SetCategory gets a reference to the given string and assigns it to the Category field.
+func (o *AssuranceClassifiedApplication) SetCategory(v string) {
+	o.Category = &v
 }
 
 // GetClassificationEntryId returns the ClassificationEntryId field value if set, zero value otherwise.
@@ -215,6 +248,9 @@ func (o AssuranceClassifiedApplication) ToMap() (map[string]interface{}, error) 
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AppName) {
 		toSerialize["appName"] = o.AppName
+	}
+	if !IsNil(o.Category) {
+		toSerialize["category"] = o.Category
 	}
 	if !IsNil(o.ClassificationEntryId) {
 		toSerialize["classificationEntryId"] = o.ClassificationEntryId

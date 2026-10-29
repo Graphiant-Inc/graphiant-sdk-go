@@ -20,6 +20,8 @@ var _ MappedNullable = &V2MonitoringFecStatsGetResponse{}
 // V2MonitoringFecStatsGetResponse struct for V2MonitoringFecStatsGetResponse
 type V2MonitoringFecStatsGetResponse struct {
 	CurrentRepairLevel *float32 `json:"currentRepairLevel,omitempty"`
+	CurrentRxSlaMetricsWithRepair *StatsmonV2RepairLevelScore `json:"currentRxSlaMetricsWithRepair,omitempty"`
+	CurrentTxSlaMetricsWithRepair *StatsmonV2RepairLevelScore `json:"currentTxSlaMetricsWithRepair,omitempty"`
 	EffectiveQoe *float32 `json:"effectiveQoe,omitempty"`
 	RxRepairLevelHistogram *StatsmonV2FecRxRepairLevel `json:"rxRepairLevelHistogram,omitempty"`
 	RxStats *StatsmonV2FecRxStats `json:"rxStats,omitempty"`
@@ -75,6 +77,70 @@ func (o *V2MonitoringFecStatsGetResponse) HasCurrentRepairLevel() bool {
 // SetCurrentRepairLevel gets a reference to the given float32 and assigns it to the CurrentRepairLevel field.
 func (o *V2MonitoringFecStatsGetResponse) SetCurrentRepairLevel(v float32) {
 	o.CurrentRepairLevel = &v
+}
+
+// GetCurrentRxSlaMetricsWithRepair returns the CurrentRxSlaMetricsWithRepair field value if set, zero value otherwise.
+func (o *V2MonitoringFecStatsGetResponse) GetCurrentRxSlaMetricsWithRepair() StatsmonV2RepairLevelScore {
+	if o == nil || IsNil(o.CurrentRxSlaMetricsWithRepair) {
+		var ret StatsmonV2RepairLevelScore
+		return ret
+	}
+	return *o.CurrentRxSlaMetricsWithRepair
+}
+
+// GetCurrentRxSlaMetricsWithRepairOk returns a tuple with the CurrentRxSlaMetricsWithRepair field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V2MonitoringFecStatsGetResponse) GetCurrentRxSlaMetricsWithRepairOk() (*StatsmonV2RepairLevelScore, bool) {
+	if o == nil || IsNil(o.CurrentRxSlaMetricsWithRepair) {
+		return nil, false
+	}
+	return o.CurrentRxSlaMetricsWithRepair, true
+}
+
+// HasCurrentRxSlaMetricsWithRepair returns a boolean if a field has been set.
+func (o *V2MonitoringFecStatsGetResponse) HasCurrentRxSlaMetricsWithRepair() bool {
+	if o != nil && !IsNil(o.CurrentRxSlaMetricsWithRepair) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentRxSlaMetricsWithRepair gets a reference to the given StatsmonV2RepairLevelScore and assigns it to the CurrentRxSlaMetricsWithRepair field.
+func (o *V2MonitoringFecStatsGetResponse) SetCurrentRxSlaMetricsWithRepair(v StatsmonV2RepairLevelScore) {
+	o.CurrentRxSlaMetricsWithRepair = &v
+}
+
+// GetCurrentTxSlaMetricsWithRepair returns the CurrentTxSlaMetricsWithRepair field value if set, zero value otherwise.
+func (o *V2MonitoringFecStatsGetResponse) GetCurrentTxSlaMetricsWithRepair() StatsmonV2RepairLevelScore {
+	if o == nil || IsNil(o.CurrentTxSlaMetricsWithRepair) {
+		var ret StatsmonV2RepairLevelScore
+		return ret
+	}
+	return *o.CurrentTxSlaMetricsWithRepair
+}
+
+// GetCurrentTxSlaMetricsWithRepairOk returns a tuple with the CurrentTxSlaMetricsWithRepair field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V2MonitoringFecStatsGetResponse) GetCurrentTxSlaMetricsWithRepairOk() (*StatsmonV2RepairLevelScore, bool) {
+	if o == nil || IsNil(o.CurrentTxSlaMetricsWithRepair) {
+		return nil, false
+	}
+	return o.CurrentTxSlaMetricsWithRepair, true
+}
+
+// HasCurrentTxSlaMetricsWithRepair returns a boolean if a field has been set.
+func (o *V2MonitoringFecStatsGetResponse) HasCurrentTxSlaMetricsWithRepair() bool {
+	if o != nil && !IsNil(o.CurrentTxSlaMetricsWithRepair) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentTxSlaMetricsWithRepair gets a reference to the given StatsmonV2RepairLevelScore and assigns it to the CurrentTxSlaMetricsWithRepair field.
+func (o *V2MonitoringFecStatsGetResponse) SetCurrentTxSlaMetricsWithRepair(v StatsmonV2RepairLevelScore) {
+	o.CurrentTxSlaMetricsWithRepair = &v
 }
 
 // GetEffectiveQoe returns the EffectiveQoe field value if set, zero value otherwise.
@@ -281,6 +347,12 @@ func (o V2MonitoringFecStatsGetResponse) ToMap() (map[string]interface{}, error)
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CurrentRepairLevel) {
 		toSerialize["currentRepairLevel"] = o.CurrentRepairLevel
+	}
+	if !IsNil(o.CurrentRxSlaMetricsWithRepair) {
+		toSerialize["currentRxSlaMetricsWithRepair"] = o.CurrentRxSlaMetricsWithRepair
+	}
+	if !IsNil(o.CurrentTxSlaMetricsWithRepair) {
+		toSerialize["currentTxSlaMetricsWithRepair"] = o.CurrentTxSlaMetricsWithRepair
 	}
 	if !IsNil(o.EffectiveQoe) {
 		toSerialize["effectiveQoe"] = o.EffectiveQoe

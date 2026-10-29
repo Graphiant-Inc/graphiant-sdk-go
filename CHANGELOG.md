@@ -4,6 +4,42 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.10.0] - 2026-10-28
+
+No breaking changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).
+
+### Added
+- **API endpoints:**
+  - `GET /v1/sdk-automation/playbook/jobs/{jobId}/snapshot`
+  - `POST /v2/assurance/categorize-ai-app`
+  - `GET /v2/assurance/read-ai-adoption-category-entries`
+- **Models (new):**
+  - `ManaV2PpPoEInterface` (PPPoE operational state), `ManaV2PpPoEInterfaceConfig` and `ManaV2NullablePpPoEInterfaceConfig` (PPPoE interface configuration)
+  - `SdkAutomationPlaybookJobSnapshot`, `V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse`
+  - `V2AssuranceCategorizeAiAppPostRequest` (`appName`, `bucketId`, `isAiApp`)
+  - `V2AssuranceReadAiAdoptionCategoryEntriesGetResponse` (`aiCategorizedAppList`)
+- **PPPoE interface support:** added `pppoeInterface`/`pppoeInterfaces` to `ManaV2Interface` and `ManaV2InterfaceVlan`, and `pppoeInterfaces` config maps to `ManaV2InterfaceConfig` and `ManaV2InterfaceVlanConfig`; surfaced across device read/draft/config/interface/version endpoints (e.g. `GET /v1/devices`, `GET /v1/devices/{deviceId}`, `PUT /v1/devices/{deviceId}/config`)
+- **`ManaV2InterfaceCoreConfig`:** added `isMaintenanceWan` field
+- **`CommonUserInfo`:** added `accountType` field, surfaced in device/enterprise snapshot author (`GET /v1/device/snapshot`, `GET /v1/device/snapshot/{deviceId}`)
+- **`AssuranceAppNameRecord`:** added `isAiApp` field
+- **`AssuranceApprovedAppEntry`:** added `bucketId` field
+- **`AssuranceClassifiedApplication`, `V2AssuranceCreateclassifiedapplicationPostRequest`:** added `category` field
+- **`UpgradeInventoryKey`:** added `container` field
+- **`V1SdkAutomationPlaybookJobsJobIdLogsGetResponse`:** added `pageInfo` field
+- **`V2MonitoringFecStatsGetResponse`:** added `currentRxSlaMetricsWithRepair` and `currentTxSlaMetricsWithRepair` fields
+
+### Changed
+- Updated to API specification version 26.10.0
+- **Version:**
+  - Updated version constant to v26.10.0
+  - Updated API documentation reference to `graphiant_api_docs_v26.10.0.json`
+- **Documentation:** updated SDK generation examples in README to use `graphiant_api_docs_v26.10.0.json`; **SECURITY.md** supported-versions table updated for **26.10.0**
+- **Generated code:** `oneOf` unmarshal failures now include the underlying error detail in the returned message (e.g. `V1AuthRefreshGet200Response`)
+
+### Removed
+- **API endpoints:** none
+- **Models:** none
+
 ## [26.9.0] - 2026-09-28
 
 No breaking changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).

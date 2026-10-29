@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Loopback** | Pointer to **bool** |  | [optional] 
 **Macsec** | Pointer to [**ManaV2NullableMaCsecConfiguration**](ManaV2NullableMaCsecConfiguration.md) |  | [optional] 
 **MaxTransmissionUnit** | Pointer to **int32** |  | [optional] 
+**PppoeInterfaces** | Pointer to [**map[string]ManaV2NullablePpPoEInterfaceConfig**](ManaV2NullablePpPoEInterfaceConfig.md) |  | [optional] 
 **SecurityZone** | Pointer to **string** |  | [optional] 
 **Speed** | Pointer to **int64** |  | [optional] 
 **Subinterfaces** | Pointer to [**map[string]ManaV2NullableInterfaceVlanConfig**](ManaV2NullableInterfaceVlanConfig.md) |  | [optional] 
@@ -369,6 +370,31 @@ SetMaxTransmissionUnit sets MaxTransmissionUnit field to given value.
 `func (o *ManaV2InterfaceConfig) HasMaxTransmissionUnit() bool`
 
 HasMaxTransmissionUnit returns a boolean if a field has been set.
+
+### GetPppoeInterfaces
+
+`func (o *ManaV2InterfaceConfig) GetPppoeInterfaces() map[string]ManaV2NullablePpPoEInterfaceConfig`
+
+GetPppoeInterfaces returns the PppoeInterfaces field if non-nil, zero value otherwise.
+
+### GetPppoeInterfacesOk
+
+`func (o *ManaV2InterfaceConfig) GetPppoeInterfacesOk() (*map[string]ManaV2NullablePpPoEInterfaceConfig, bool)`
+
+GetPppoeInterfacesOk returns a tuple with the PppoeInterfaces field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPppoeInterfaces
+
+`func (o *ManaV2InterfaceConfig) SetPppoeInterfaces(v map[string]ManaV2NullablePpPoEInterfaceConfig)`
+
+SetPppoeInterfaces sets PppoeInterfaces field to given value.
+
+### HasPppoeInterfaces
+
+`func (o *ManaV2InterfaceConfig) HasPppoeInterfaces() bool`
+
+HasPppoeInterfaces returns a boolean if a field has been set.
 
 ### GetSecurityZone
 

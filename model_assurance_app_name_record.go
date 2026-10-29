@@ -33,6 +33,7 @@ type AssuranceAppNameRecord struct {
 	ExchangeService []AssuranceExchangeServiceIdentifier `json:"exchangeService,omitempty"`
 	FlexAlgo []AssuranceFlexAlgoIdentifier `json:"flexAlgo,omitempty"`
 	FlowsAnalyzed *int64 `json:"flowsAnalyzed,omitempty"`
+	IsAiApp *bool `json:"isAiApp,omitempty"`
 	Recommendation *string `json:"recommendation,omitempty"`
 	RiskStatus *string `json:"riskStatus,omitempty"`
 	ThreatScore *int64 `json:"threatScore,omitempty"`
@@ -503,6 +504,38 @@ func (o *AssuranceAppNameRecord) SetFlowsAnalyzed(v int64) {
 	o.FlowsAnalyzed = &v
 }
 
+// GetIsAiApp returns the IsAiApp field value if set, zero value otherwise.
+func (o *AssuranceAppNameRecord) GetIsAiApp() bool {
+	if o == nil || IsNil(o.IsAiApp) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAiApp
+}
+
+// GetIsAiAppOk returns a tuple with the IsAiApp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceAppNameRecord) GetIsAiAppOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAiApp) {
+		return nil, false
+	}
+	return o.IsAiApp, true
+}
+
+// HasIsAiApp returns a boolean if a field has been set.
+func (o *AssuranceAppNameRecord) HasIsAiApp() bool {
+	if o != nil && !IsNil(o.IsAiApp) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAiApp gets a reference to the given bool and assigns it to the IsAiApp field.
+func (o *AssuranceAppNameRecord) SetIsAiApp(v bool) {
+	o.IsAiApp = &v
+}
+
 // GetRecommendation returns the Recommendation field value if set, zero value otherwise.
 func (o *AssuranceAppNameRecord) GetRecommendation() string {
 	if o == nil || IsNil(o.Recommendation) {
@@ -650,6 +683,9 @@ func (o AssuranceAppNameRecord) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FlowsAnalyzed) {
 		toSerialize["flowsAnalyzed"] = o.FlowsAnalyzed
+	}
+	if !IsNil(o.IsAiApp) {
+		toSerialize["isAiApp"] = o.IsAiApp
 	}
 	if !IsNil(o.Recommendation) {
 		toSerialize["recommendation"] = o.Recommendation

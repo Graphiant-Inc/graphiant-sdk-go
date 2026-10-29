@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Lines** | Pointer to **[]string** |  | [optional] 
+**PageInfo** | Pointer to [**CommonPageInfo**](CommonPageInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetLines sets Lines field to given value.
 `func (o *V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) HasLines() bool`
 
 HasLines returns a boolean if a field has been set.
+
+### GetPageInfo
+
+`func (o *V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) GetPageInfo() CommonPageInfo`
+
+GetPageInfo returns the PageInfo field if non-nil, zero value otherwise.
+
+### GetPageInfoOk
+
+`func (o *V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) GetPageInfoOk() (*CommonPageInfo, bool)`
+
+GetPageInfoOk returns a tuple with the PageInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPageInfo
+
+`func (o *V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) SetPageInfo(v CommonPageInfo)`
+
+SetPageInfo sets PageInfo field to given value.
+
+### HasPageInfo
+
+`func (o *V1SdkAutomationPlaybookJobsJobIdLogsGetResponse) HasPageInfo() bool`
+
+HasPageInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
