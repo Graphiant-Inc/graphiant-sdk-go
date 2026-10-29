@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [26.10.0] - 2026-10-28
 
-No breaking changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).
+No breaking API changes (per [oasdiff](https://github.com/oasdiff/oasdiff)). **Breaking:** minimum Go version is now **1.26.10** (see *Security*).
 
 ### Added
 - **API endpoints:**
@@ -39,6 +39,12 @@ No breaking changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).
 ### Removed
 - **API endpoints:** none
 - **Models:** none
+
+### Security
+- **Go toolchain:** `go.mod` now requires **Go 1.26.10** (was `go 1.25`). `govulncheck` reported 35 reachable Go standard library vulnerabilities in code paths the SDK calls (`net/http`, `net/url`, `crypto/tls`, `crypto/x509` and others, e.g. GO-2025-4007, GO-2025-4008, GO-2025-4010 through GO-2026-6809). Fixes for the most recent ones are only in Go 1.26.x, and Go 1.25 is no longer supported upstream. `govulncheck ./...` now reports no vulnerabilities.
+
+### Documentation
+- README, CONTRIBUTING and SECURITY updated for the **Go 1.26.10+** minimum; workflows README now matches the `stable` / `oldstable` test matrix.
 
 ## [26.9.0] - 2026-09-28
 
