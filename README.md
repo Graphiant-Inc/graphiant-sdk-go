@@ -1,6 +1,6 @@
 # Graphiant SDK Go
 
-[![Go Version](https://img.shields.io/badge/go-1.25.11+-blue.svg)](https://golang.org/dl/)
+[![Go Version](https://img.shields.io/badge/go-1.26.10+-blue.svg)](https://golang.org/dl/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Reference](https://pkg.go.dev/badge/github.com/Graphiant-Inc/graphiant-sdk-go.svg)](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Graphiant-Inc/graphiant-sdk-go)](https://goreportcard.com/report/github.com/Graphiant-Inc/graphiant-sdk-go)
@@ -433,7 +433,7 @@ func configureDeviceWhenReady(deviceID int64, config graphiant_sdk.V1DevicesDevi
 
 ### Prerequisites
 
-- Go 1.25.11+ (enforced by `go.mod`)
+- Go 1.26.10+ (enforced by `go.mod`)
 - Git
 - OpenAPI Generator 7.23+ (for code generation) — `brew install openapi-generator`
 
@@ -556,7 +556,7 @@ graphiant-sdk-go/
 ├── .golangci.yml               # Linter config (skips generated files)
 ├── .gosec                      # Security scan config
 ├── Makefile                    # Developer shortcuts (build/test/lint/generate)
-├── go.mod                      # Go module definition (requires Go 1.25.11+)
+├── go.mod                      # Go module definition (requires Go 1.26.10+)
 └── README.md                   # This file
 ```
 

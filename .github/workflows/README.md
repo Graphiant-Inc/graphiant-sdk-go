@@ -11,11 +11,11 @@ Comprehensive linting workflow that runs multiple code quality checks in paralle
 
 ### `test.yml` - Testing
 Runs all tests for the SDK:
-- **`test` job** - Matrix job testing against Go 1.21, 1.22, 1.23:
+- **`test` job** - Matrix job testing against Go `stable` and `oldstable`:
   - Unit tests with `go test`
   - Race condition detection (`-race`)
   - Code coverage reporting
-  - Coverage reports uploaded to Codecov (Go 1.23 only)
+  - Coverage reports uploaded to Codecov (`stable` only)
   - **Credential Support**: Optionally reads `GRAPHIANT_HOST`, `GRAPHIANT_USERNAME`, and `GRAPHIANT_PASSWORD` from GitHub secrets/variables
   - Tests that require credentials will automatically skip if credentials are not configured
 

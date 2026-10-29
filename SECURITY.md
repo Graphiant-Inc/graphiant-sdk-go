@@ -97,6 +97,7 @@ We take security vulnerabilities seriously. If you discover a security vulnerabi
   ```
 - **Minimal Dependencies**: Only include necessary dependencies
 - **Version Pinning**: Use specific versions in `go.mod` for production
+- **Go Toolchain**: `go.mod` requires **Go 1.26.10+** so the SDK is built with a standard library that includes current security fixes (`net/http`, `net/url`, `crypto/tls`, `crypto/x509`, and others the SDK calls)
 
 ### CI/CD Security
 
