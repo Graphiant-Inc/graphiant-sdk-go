@@ -12,7 +12,7 @@ Thank you for your interest in contributing!
    ```
 3. **Set up development environment:**
    ```bash
-   # Ensure Go 1.26.10+ is installed (enforced by go.mod)
+   # Ensure Go 1.26.11+ is installed (enforced by go.mod)
    go version
    
    # Download dependencies and verify
@@ -30,13 +30,11 @@ Thank you for your interest in contributing!
    ```bash
    make build      # compile
    make test       # go test -v -race -coverprofile=coverage.out ./...
+   make fmt        # gofmt hand-maintained files (make fmt-check to verify)
+   make vet        # go vet ./...
    make lint       # golangci-lint (generated files excluded via .golangci.yml)
+   make vulncheck  # govulncheck: known vulnerabilities in reachable code
    make tidy       # go mod tidy && go mod verify
-
-   # Or individually:
-   gofmt -s -w .
-   go vet ./...
-   go test -v -race -coverprofile=coverage.out ./...
    ```
 
 5. **Commit with clear messages:**
@@ -54,13 +52,14 @@ The project uses multiple linting tools to ensure code quality:
 
 | Tool | Purpose | Target | CI/CD |
 |------|---------|--------|-------|
-| `golangci-lint` | Comprehensive Go linter | Hand-written files only (`.golangci.yml` excludes generated) | Yes (lint stage) |
-| `gofmt` | Go code formatting | All `.go` files | Yes (lint stage) |
-| `go vet` | Go static analysis | All `.go` files | Yes (lint stage) |
+| `golangci-lint` | Comprehensive Go linter (`make lint`) | Hand-written files only (`.golangci.yml` excludes generated) | Yes |
+| `gofmt` | Go code formatting (`make fmt-check`) | Hand-maintained files (see below) | Yes |
+| `go vet` | Go static analysis (`make vet`) | All packages | Yes |
+| `govulncheck` | Known vulnerabilities in reachable code, including the Go standard library (`make vulncheck`) | All packages | Yes, plus a weekly scheduled run |
 
-Generated files (`api_default.go`, `model_*.go`) are excluded from linting via `exclude-generated: true` in `.golangci.yml`. Run `make lint` locally to verify.
+Generated files (`api_default.go`, `model_*.go` and others carrying a `Code generated` header) are excluded from golangci-lint via `generated: lax` in `.golangci.yml`, and from gofmt checks because they are kept exactly as OpenAPI Generator writes them. Files pinned in `.openapi-generator-ignore` (such as `client.go` and `configuration.go`) are maintained by hand and are format-checked. `scripts/handwritten-go-files.sh` prints the list.
 
-**Note:** All linting tools run automatically in CI/CD on every pull request and push to main/develop branches.
+**Note:** All checks run in CI on every pull request and push to main/develop that touches Go code or lint configuration. govulncheck also runs weekly so newly published vulnerabilities are caught without a code change; if it fails, bump the `go` version in `go.mod` or the affected module.
 
 ## Testing
 

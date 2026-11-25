@@ -21,24 +21,23 @@ import (
 	"log"
 	"mime/multipart"
 	"net/http"
-	"net/http/httputil"
 	"net/url"
 	"os"
 	"path/filepath"
 	"reflect"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
 	"unicode/utf8"
-
 )
 
 var (
 	JsonCheck       = regexp.MustCompile(`(?i:(?:application|text)/(?:[^;]+\+)?json)`)
 	XmlCheck        = regexp.MustCompile(`(?i:(?:application|text)/(?:[^;]+\+)?xml)`)
 	queryParamSplit = regexp.MustCompile(`(^|&)([^&]+)`)
-	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
+	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
 // APIClient manages communication with the Graphiant APIs API v1.0.0
@@ -125,7 +124,7 @@ func typeCheckParameter(obj interface{}, expected string, name string) error {
 	return nil
 }
 
-func parameterValueToString( obj interface{}, key string ) string {
+func parameterValueToString(obj interface{}, key string) string {
 	if reflect.TypeOf(obj).Kind() != reflect.Ptr {
 		if actualObj, ok := obj.(interface{ GetActualInstanceValue() interface{} }); ok {
 			return fmt.Sprintf("%v", actualObj.GetActualInstanceValue())
@@ -133,11 +132,11 @@ func parameterValueToString( obj interface{}, key string ) string {
 
 		return fmt.Sprintf("%v", obj)
 	}
-	var param,ok = obj.(MappedNullable)
+	var param, ok = obj.(MappedNullable)
 	if !ok {
 		return ""
 	}
-	dataMap,err := param.ToMap()
+	dataMap, err := param.ToMap()
 	if err != nil {
 		return ""
 	}
@@ -153,85 +152,85 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 		value = "null"
 	} else {
 		switch v.Kind() {
-			case reflect.Invalid:
-				value = "invalid"
+		case reflect.Invalid:
+			value = "invalid"
 
-			case reflect.Struct:
-				if t,ok := obj.(MappedNullable); ok {
-					dataMap,err := t.ToMap()
-					if err != nil {
-						return
-					}
-					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, style, collectionType)
+		case reflect.Struct:
+			if t, ok := obj.(MappedNullable); ok {
+				dataMap, err := t.ToMap()
+				if err != nil {
 					return
 				}
-				if t, ok := obj.(time.Time); ok {
-					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339Nano), style, collectionType)
-					return
-				}
-				value = v.Type().String() + " value"
-			case reflect.Slice:
-				var indValue = reflect.ValueOf(obj)
-				if indValue == reflect.ValueOf(nil) {
-					return
-				}
-				var lenIndValue = indValue.Len()
-				for i:=0;i<lenIndValue;i++ {
-					var arrayValue = indValue.Index(i)
-					var keyPrefixForCollectionType = keyPrefix
-					if style == "deepObject" {
-						keyPrefixForCollectionType = keyPrefix + "[" + strconv.Itoa(i) + "]"
-					}
-					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefixForCollectionType, arrayValue.Interface(), style, collectionType)
-				}
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, style, collectionType)
 				return
-
-			case reflect.Map:
-				var indValue = reflect.ValueOf(obj)
-				if indValue == reflect.ValueOf(nil) {
-					return
-				}
-				iter := indValue.MapRange()
-				for iter.Next() {
-					k,v := iter.Key(), iter.Value()
-					parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), style, collectionType)
-				}
+			}
+			if t, ok := obj.(time.Time); ok {
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339Nano), style, collectionType)
 				return
-
-			case reflect.Interface:
-				fallthrough
-			case reflect.Ptr:
-				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), style, collectionType)
+			}
+			value = v.Type().String() + " value"
+		case reflect.Slice:
+			var indValue = reflect.ValueOf(obj)
+			if indValue == reflect.ValueOf(nil) {
 				return
+			}
+			var lenIndValue = indValue.Len()
+			for i := 0; i < lenIndValue; i++ {
+				var arrayValue = indValue.Index(i)
+				var keyPrefixForCollectionType = keyPrefix
+				if style == "deepObject" {
+					keyPrefixForCollectionType = keyPrefix + "[" + strconv.Itoa(i) + "]"
+				}
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefixForCollectionType, arrayValue.Interface(), style, collectionType)
+			}
+			return
 
-			case reflect.Int, reflect.Int8, reflect.Int16,
-				reflect.Int32, reflect.Int64:
-				value = strconv.FormatInt(v.Int(), 10)
-			case reflect.Uint, reflect.Uint8, reflect.Uint16,
-				reflect.Uint32, reflect.Uint64, reflect.Uintptr:
-				value = strconv.FormatUint(v.Uint(), 10)
-			case reflect.Float32, reflect.Float64:
-				value = strconv.FormatFloat(v.Float(), 'g', -1, 32)
-			case reflect.Bool:
-				value = strconv.FormatBool(v.Bool())
-			case reflect.String:
-				value = v.String()
-			default:
-				value = v.Type().String() + " value"
+		case reflect.Map:
+			var indValue = reflect.ValueOf(obj)
+			if indValue == reflect.ValueOf(nil) {
+				return
+			}
+			iter := indValue.MapRange()
+			for iter.Next() {
+				k, v := iter.Key(), iter.Value()
+				parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), style, collectionType)
+			}
+			return
+
+		case reflect.Interface:
+			fallthrough
+		case reflect.Ptr:
+			parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), style, collectionType)
+			return
+
+		case reflect.Int, reflect.Int8, reflect.Int16,
+			reflect.Int32, reflect.Int64:
+			value = strconv.FormatInt(v.Int(), 10)
+		case reflect.Uint, reflect.Uint8, reflect.Uint16,
+			reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+			value = strconv.FormatUint(v.Uint(), 10)
+		case reflect.Float32, reflect.Float64:
+			value = strconv.FormatFloat(v.Float(), 'g', -1, 32)
+		case reflect.Bool:
+			value = strconv.FormatBool(v.Bool())
+		case reflect.String:
+			value = v.String()
+		default:
+			value = v.Type().String() + " value"
 		}
 	}
 
 	switch valuesMap := headerOrQueryParams.(type) {
-		case url.Values:
-			if collectionType == "csv" && valuesMap.Get(keyPrefix) != "" {
-				valuesMap.Set(keyPrefix, valuesMap.Get(keyPrefix) + "," + value)
-			} else {
-				valuesMap.Add(keyPrefix, value)
-			}
-			break
-		case map[string]string:
-			valuesMap[keyPrefix] = value
-			break
+	case url.Values:
+		if collectionType == "csv" && valuesMap.Get(keyPrefix) != "" {
+			valuesMap.Set(keyPrefix, valuesMap.Get(keyPrefix)+","+value)
+		} else {
+			valuesMap.Add(keyPrefix, value)
+		}
+		break
+	case map[string]string:
+		valuesMap[keyPrefix] = value
+		break
 	}
 }
 
@@ -245,18 +244,15 @@ func parameterToJson(obj interface{}) (string, error) {
 }
 
 // callAPI do the request.
+//
+// When Debug is enabled, only redacted request/response metadata is logged:
+// the HTTP method, the URL with query values and secret-bearing path segments
+// masked, the status line, and header names with credential values masked.
+// Request and response bodies are never logged, because they can carry
+// passwords, API keys, tokens and other secrets.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	if c.cfg.Debug {
-		// Clone the request so we can redact the Authorization header without
-		// modifying the live request. Body is excluded (body=false) to prevent
-		// sensitive fields (passwords, API keys, tokens) from appearing in logs.
-		debugReq := request.Clone(request.Context())
-		debugReq.Header.Set("Authorization", "[REDACTED]")
-		dump, err := httputil.DumpRequestOut(debugReq, false)
-		if err != nil {
-			return nil, err
-		}
-		log.Printf("\n%s\n", string(dump))
+		log.Printf("\nHTTP request: %s %s\n%s", request.Method, redactURL(request.URL), redactHeaders(request.Header))
 	}
 
 	resp, err := c.cfg.HTTPClient.Do(request)
@@ -265,13 +261,90 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	}
 
 	if c.cfg.Debug {
-		dump, err := httputil.DumpResponse(resp, false)
-		if err != nil {
-			return resp, err
-		}
-		log.Printf("\n%s\n", string(dump))
+		log.Printf("\nHTTP response: %s %s\n%s", resp.Proto, resp.Status, redactHeaders(resp.Header))
 	}
 	return resp, err
+}
+
+const redacted = "[REDACTED]"
+
+// Headers whose values are always masked in debug logs.
+var sensitiveHeaderNames = map[string]bool{
+	"Authorization":       true,
+	"Proxy-Authorization": true,
+	"Cookie":              true,
+	"Set-Cookie":          true,
+}
+
+// Any other header whose name suggests a credential is masked too, which
+// covers custom headers added through Configuration.AddDefaultHeader.
+var sensitiveHeaderPattern = regexp.MustCompile(`(?i)auth|token|secret|key|pass|session|cookie|signature|credential`)
+
+// Path segments that follow these segments are secrets (for example
+// POST /v1/diagnostic/ping-stop/{token}).
+var secretPathPrefixes = map[string]bool{"ping-stop": true}
+
+var emailPattern = regexp.MustCompile(`^[^@/]+@[^@/]+$`)
+
+// redactURL returns the URL with user info removed, every query value masked
+// and email addresses or secret path parameters replaced by a placeholder.
+func redactURL(u *url.URL) string {
+	if u == nil {
+		return ""
+	}
+	r := *u
+	r.User = nil
+	r.Fragment = ""
+	r.RawFragment = ""
+	segments := strings.Split(r.EscapedPath(), "/")
+	for i, seg := range segments {
+		unescaped, err := url.PathUnescape(seg)
+		if err != nil {
+			unescaped = seg
+		}
+		if emailPattern.MatchString(unescaped) || (i > 0 && secretPathPrefixes[segments[i-1]]) {
+			segments[i] = redacted
+		}
+	}
+	r.RawPath = ""
+	r.Path = ""
+	query := r.Query()
+	keys := make([]string, 0, len(query))
+	for k := range query {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	parts := make([]string, 0, len(keys))
+	for _, k := range keys {
+		parts = append(parts, url.QueryEscape(k)+"="+redacted)
+	}
+	out := r.Scheme + "://" + r.Host + strings.Join(segments, "/")
+	if len(parts) > 0 {
+		out += "?" + strings.Join(parts, "&")
+	}
+	return out
+}
+
+// redactHeaders renders headers one per line in a stable order, masking the
+// values of credential-bearing headers.
+func redactHeaders(h http.Header) string {
+	names := make([]string, 0, len(h))
+	for name := range h {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	var b strings.Builder
+	for _, name := range names {
+		canonical := http.CanonicalHeaderKey(name)
+		if sensitiveHeaderNames[canonical] || sensitiveHeaderPattern.MatchString(canonical) {
+			fmt.Fprintf(&b, "%s: %s\n", canonical, redacted)
+			continue
+		}
+		for _, v := range h[name] {
+			fmt.Fprintf(&b, "%s: %s\n", canonical, v)
+		}
+	}
+	return b.String()
 }
 
 // Allow modification of underlying config for alternate implementations and testing
@@ -281,9 +354,9 @@ func (c *APIClient) GetConfig() *Configuration {
 }
 
 type formFile struct {
-		fileBytes []byte
-		fileName string
-		formFileName string
+	fileBytes    []byte
+	fileName     string
+	formFileName string
 }
 
 // prepareRequest build the request
@@ -337,11 +410,11 @@ func (c *APIClient) prepareRequest(
 				w.Boundary()
 				part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
 				if err != nil {
-						return nil, err
+					return nil, err
 				}
 				_, err = part.Write(formFile.fileBytes)
 				if err != nil {
-						return nil, err
+					return nil, err
 				}
 			}
 		}

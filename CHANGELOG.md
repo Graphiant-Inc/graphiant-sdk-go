@@ -4,6 +4,20 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Security
+- **Go toolchain:** `go.mod` now requires **Go 1.26.11** (was 1.26.10) to pick up the fix for GO-2026-6859 (HTTP/1 server crash from a `MaxBytesReader` header race in `net/http`), which `govulncheck` reported as reachable through the SDK's HTTP client. `govulncheck ./...` now reports no vulnerabilities.
+- **Debug logging:** with `Configuration.Debug` enabled, `callAPI` no longer dumps raw requests and responses. It logs only the method, the URL with every query value and secret-bearing path segment (email addresses, `ping-stop` tokens) replaced by `[REDACTED]`, the status line, and headers with credential values (`Authorization`, cookies, and any header whose name suggests a key, token, secret or password) masked. Previously, password-reset and email-verification tokens passed as query parameters, user emails in paths, custom default headers and `Set-Cookie` values could appear in debug logs. Bodies are still never logged. Resolves CodeQL alert `go/clear-text-logging`.
+
+### Changed
+- **CI checks (aligned with terraform-provider-graphiant):** the Lint workflow now also runs a **gofmt** check and **govulncheck**, and runs weekly so newly published Go vulnerabilities are reported without a code change. New Makefile targets `vet`, `fmt`, `fmt-check` and `vulncheck`; `make lint` now runs golangci-lint via `go run`, so it no longer needs a local install.
+- **Formatting:** `api_custom.go`, `client.go` and `configuration.go` are now gofmt-formatted (whitespace only). gofmt checks apply to hand-maintained files; generated files are left as OpenAPI Generator writes them.
+
+### Documentation
+- README, CONTRIBUTING and SECURITY updated for the **Go 1.26.11+** minimum.
+- README, CONTRIBUTING and workflows README list the new checks and Makefile targets.
+
 ## [26.10.0] - 2026-10-28
 
 No breaking API changes (per [oasdiff](https://github.com/oasdiff/oasdiff)). **Breaking:** minimum Go version is now **1.26.10** (see *Security*).
