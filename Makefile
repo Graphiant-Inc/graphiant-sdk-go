@@ -1,4 +1,8 @@
-.PHONY: build test lint tidy generate clean help
+.PHONY: build test vet fmt fmt-check lint vulncheck tidy generate clean help
+
+# Hand-maintained Go files (see scripts/handwritten-go-files.sh). Generated
+# files are left as OpenAPI Generator writes them.
+HANDWRITTEN_GO = $(shell bash scripts/handwritten-go-files.sh)
 
 OPENAPI_SPEC     ?= api/openapi.yaml
 OPENAPI_JAR      ?= $(shell which openapi-generator-cli 2>/dev/null || echo openapi-generator-cli)
@@ -12,9 +16,30 @@ build:
 test:
 	go test -v -race -coverprofile=coverage.out -covermode=atomic ./...
 
-## lint: Run golangci-lint (skips generated files via .golangci.yml)
+## vet: Run go vet
+vet:
+	go vet ./...
+
+## fmt: Format hand-maintained Go files
+fmt:
+	gofmt -w $(HANDWRITTEN_GO)
+
+## fmt-check: Fail if any hand-maintained Go file is not gofmt-formatted
+fmt-check:
+	@unformatted="$$(gofmt -l $(HANDWRITTEN_GO))"; \
+	if [ -n "$$unformatted" ]; then \
+		echo "The following files are not gofmt-formatted (run 'make fmt'):"; \
+		echo "$$unformatted"; \
+		exit 1; \
+	fi
+
+## lint: Run golangci-lint (same config as CI; skips generated files via .golangci.yml)
 lint:
-	golangci-lint run --timeout=5m
+	go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest run --timeout=5m ./...
+
+## vulncheck: Report known vulnerabilities in reachable code (Go toolchain and modules)
+vulncheck:
+	go run golang.org/x/vuln/cmd/govulncheck@latest ./...
 
 ## tidy: Tidy and verify go.mod / go.sum
 tidy:

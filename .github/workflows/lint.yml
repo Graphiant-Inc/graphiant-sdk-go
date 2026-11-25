@@ -3,21 +3,32 @@ name: Lint SDK
 on:
   pull_request:
     paths:
-      - '*.go'
-      - 'test/**'
+      - '**.go'
       - 'go.mod'
       - 'go.sum'
+      - 'Makefile'
+      - '.golangci.yml'
+      - '.openapi-generator-ignore'
+      - 'scripts/handwritten-go-files.sh'
       - '.github/workflows/lint.yml'
   push:
     branches:
       - main
       - develop
     paths:
-      - '*.go'
-      - 'test/**'
+      - '**.go'
       - 'go.mod'
       - 'go.sum'
+      - 'Makefile'
+      - '.golangci.yml'
+      - '.openapi-generator-ignore'
+      - 'scripts/handwritten-go-files.sh'
       - '.github/workflows/lint.yml'
+  # Weekly run so newly published Go standard library and module
+  # vulnerabilities are reported even when no Go code changes.
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -26,6 +37,7 @@ jobs:
   golangci-lint:
     name: Go Linting
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -45,6 +57,7 @@ jobs:
   govet:
     name: Go Vet
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -59,4 +72,40 @@ jobs:
         run: go mod download
 
       - name: Run go vet
-        run: go vet ./...
+        run: make vet
+
+  gofmt:
+    name: gofmt
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
+
+      # Checks hand-maintained files only; generated files are left as
+      # OpenAPI Generator writes them (see scripts/handwritten-go-files.sh).
+      - name: Check formatting
+        run: make fmt-check
+
+  govulncheck:
+    name: govulncheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
+
+      - name: Run govulncheck
+        run: make vulncheck

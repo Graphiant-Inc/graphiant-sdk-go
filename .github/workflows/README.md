@@ -6,8 +6,12 @@ This directory contains GitHub Actions workflows for the Graphiant SDK Go packag
 
 ### `lint.yml` - Code Quality Checks
 Comprehensive linting workflow that runs multiple code quality checks in parallel:
-- **golangci-lint** - Comprehensive Go linter (runs multiple linters)
-- **go vet** - Go static analysis tool
+- **golangci-lint** - Comprehensive Go linter (runs multiple linters; generated files excluded)
+- **go vet** - Go static analysis tool (`make vet`)
+- **gofmt** - Fails if a hand-maintained Go file is not gofmt-formatted (`make fmt-check`; generated files are skipped)
+- **govulncheck** - Reports known vulnerabilities in reachable code, including the Go standard library (`make vulncheck`)
+
+Runs on pull requests and pushes to `main`/`develop` that touch Go code or lint configuration, weekly on Monday 06:00 UTC (so new Go security releases are caught without a code change), and on demand (`workflow_dispatch`).
 
 ### `test.yml` - Testing
 Runs all tests for the SDK:
