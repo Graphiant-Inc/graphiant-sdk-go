@@ -19,6 +19,8 @@ var _ MappedNullable = &AssuranceKpiMetric{}
 
 // AssuranceKpiMetric struct for AssuranceKpiMetric
 type AssuranceKpiMetric struct {
+	// AI endpoint tag for the metric
+	AiEndpointTag *string `json:"aiEndpointTag,omitempty"`
 	// delta value for the metric
 	Delta *float64 `json:"delta,omitempty"`
 	// name of the metric
@@ -48,6 +50,38 @@ func NewAssuranceKpiMetric() *AssuranceKpiMetric {
 func NewAssuranceKpiMetricWithDefaults() *AssuranceKpiMetric {
 	this := AssuranceKpiMetric{}
 	return &this
+}
+
+// GetAiEndpointTag returns the AiEndpointTag field value if set, zero value otherwise.
+func (o *AssuranceKpiMetric) GetAiEndpointTag() string {
+	if o == nil || IsNil(o.AiEndpointTag) {
+		var ret string
+		return ret
+	}
+	return *o.AiEndpointTag
+}
+
+// GetAiEndpointTagOk returns a tuple with the AiEndpointTag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceKpiMetric) GetAiEndpointTagOk() (*string, bool) {
+	if o == nil || IsNil(o.AiEndpointTag) {
+		return nil, false
+	}
+	return o.AiEndpointTag, true
+}
+
+// HasAiEndpointTag returns a boolean if a field has been set.
+func (o *AssuranceKpiMetric) HasAiEndpointTag() bool {
+	if o != nil && !IsNil(o.AiEndpointTag) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiEndpointTag gets a reference to the given string and assigns it to the AiEndpointTag field.
+func (o *AssuranceKpiMetric) SetAiEndpointTag(v string) {
+	o.AiEndpointTag = &v
 }
 
 // GetDelta returns the Delta field value if set, zero value otherwise.
@@ -252,6 +286,9 @@ func (o AssuranceKpiMetric) MarshalJSON() ([]byte, error) {
 
 func (o AssuranceKpiMetric) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AiEndpointTag) {
+		toSerialize["aiEndpointTag"] = o.AiEndpointTag
+	}
 	if !IsNil(o.Delta) {
 		toSerialize["delta"] = o.Delta
 	}

@@ -4,15 +4,38 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [26.11.0] - 2026-11-25
+
+No breaking API changes (per [oasdiff](https://github.com/oasdiff/oasdiff)). **Breaking:** minimum Go version is now **1.26.11** (see *Security*).
+
+### Added
+- **API endpoints:**
+  - `GET /v1/msp/regions/expected-inter-region-latencies`
+  - `PATCH /v1/msp/regions/expected-inter-region-latencies`
+- **Models (new):**
+  - `ManaV2InterRegionLatencyMatrix` (`sourceRegionLatencies`), `ManaV2DestinationRegionLatencies` (`destinationRegionLatencies`)
+  - `V1MspRegionsExpectedInterRegionLatenciesGetResponse` (`interRegionLatencyMatrix`, `sourceRegionMissingDestinations`), `V1MspRegionsExpectedInterRegionLatenciesGetResponseMissingDestinationRegions` (`destinationRegionIds`)
+  - `V1MspRegionsExpectedInterRegionLatenciesPatchRequest` (`interRegionLatencyMatrix`)
+- **`AssuranceAppNameRecord`:** added `aiEndpointTag` field
+- **`AssuranceKpiMetric`:** added `aiEndpointTag` field
+
+### Changed
+- Updated to API specification version 26.11.0
+- **Version:**
+  - Updated version constant to v26.11.0
+  - Updated API documentation reference to `graphiant_api_docs_v26.11.0.json` (replaces `graphiant_api_docs_v26.10.0.json`)
+- **Documentation:** updated SDK generation examples in README to use `graphiant_api_docs_v26.11.0.json`; **SECURITY.md** supported-versions table updated for **26.11.0**
+- **Generated code:** reordering and formatting only, with no change in behavior (`CommonPageRequest` field order, `V1AuthRefreshGet200Response` `oneOf` error handling)
+- **CI checks (aligned with terraform-provider-graphiant):** the Lint workflow now also runs a **gofmt** check and **govulncheck**, and runs weekly so newly published Go vulnerabilities are reported without a code change. New Makefile targets `vet`, `fmt`, `fmt-check` and `vulncheck`; `make lint` now runs golangci-lint via `go run`, so it no longer needs a local install.
+- **Formatting:** `api_custom.go`, `client.go` and `configuration.go` are now gofmt-formatted (whitespace only). gofmt checks apply to hand-maintained files; generated files are left as OpenAPI Generator writes them.
+
+### Removed
+- **API endpoints:** none
+- **Models:** none
 
 ### Security
 - **Go toolchain:** `go.mod` now requires **Go 1.26.11** (was 1.26.10) to pick up the fix for GO-2026-6859 (HTTP/1 server crash from a `MaxBytesReader` header race in `net/http`), which `govulncheck` reported as reachable through the SDK's HTTP client. `govulncheck ./...` now reports no vulnerabilities.
 - **Debug logging:** with `Configuration.Debug` enabled, `callAPI` no longer dumps raw requests and responses. It logs only the method, the URL with every query value and secret-bearing path segment (email addresses, `ping-stop` tokens) replaced by `[REDACTED]`, the status line, and headers with credential values (`Authorization`, cookies, and any header whose name suggests a key, token, secret or password) masked. Previously, password-reset and email-verification tokens passed as query parameters, user emails in paths, custom default headers and `Set-Cookie` values could appear in debug logs. Bodies are still never logged. Resolves CodeQL alert `go/clear-text-logging`.
-
-### Changed
-- **CI checks (aligned with terraform-provider-graphiant):** the Lint workflow now also runs a **gofmt** check and **govulncheck**, and runs weekly so newly published Go vulnerabilities are reported without a code change. New Makefile targets `vet`, `fmt`, `fmt-check` and `vulncheck`; `make lint` now runs golangci-lint via `go run`, so it no longer needs a local install.
-- **Formatting:** `api_custom.go`, `client.go` and `configuration.go` are now gofmt-formatted (whitespace only). gofmt checks apply to hand-maintained files; generated files are left as OpenAPI Generator writes them.
 
 ### Documentation
 - README, CONTRIBUTING and SECURITY updated for the **Go 1.26.11+** minimum.

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AffectedRegions** | Pointer to **int64** |  | [optional] 
 **AffectedSites** | Pointer to **int64** |  | [optional] 
 **AffectedVrfs** | Pointer to **int64** |  | [optional] 
+**AiEndpointTag** | Pointer to **string** |  | [optional] 
 **AppAiTag** | Pointer to **string** |  | [optional] 
 **AppId** | Pointer to **int64** |  | [optional] 
 **AppIdRecords** | Pointer to [**[]AssuranceAppIdRecord**](AssuranceAppIdRecord.md) |  | [optional] 
@@ -141,6 +142,31 @@ SetAffectedVrfs sets AffectedVrfs field to given value.
 `func (o *AssuranceAppNameRecord) HasAffectedVrfs() bool`
 
 HasAffectedVrfs returns a boolean if a field has been set.
+
+### GetAiEndpointTag
+
+`func (o *AssuranceAppNameRecord) GetAiEndpointTag() string`
+
+GetAiEndpointTag returns the AiEndpointTag field if non-nil, zero value otherwise.
+
+### GetAiEndpointTagOk
+
+`func (o *AssuranceAppNameRecord) GetAiEndpointTagOk() (*string, bool)`
+
+GetAiEndpointTagOk returns a tuple with the AiEndpointTag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiEndpointTag
+
+`func (o *AssuranceAppNameRecord) SetAiEndpointTag(v string)`
+
+SetAiEndpointTag sets AiEndpointTag field to given value.
+
+### HasAiEndpointTag
+
+`func (o *AssuranceAppNameRecord) HasAiEndpointTag() bool`
+
+HasAiEndpointTag returns a boolean if a field has been set.
 
 ### GetAppAiTag
 

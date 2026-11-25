@@ -19,11 +19,11 @@ var _ MappedNullable = &CommonPageRequest{}
 
 // CommonPageRequest struct for CommonPageRequest
 type CommonPageRequest struct {
-	After *string `json:"after,omitempty"`
 	Before *string `json:"before,omitempty"`
-	First *int32 `json:"first,omitempty"`
 	Last *int32 `json:"last,omitempty"`
 	Token *string `json:"token,omitempty"`
+	After *string `json:"after,omitempty"`
+	First *int32 `json:"first,omitempty"`
 }
 
 // NewCommonPageRequest instantiates a new CommonPageRequest object
@@ -41,38 +41,6 @@ func NewCommonPageRequest() *CommonPageRequest {
 func NewCommonPageRequestWithDefaults() *CommonPageRequest {
 	this := CommonPageRequest{}
 	return &this
-}
-
-// GetAfter returns the After field value if set, zero value otherwise.
-func (o *CommonPageRequest) GetAfter() string {
-	if o == nil || IsNil(o.After) {
-		var ret string
-		return ret
-	}
-	return *o.After
-}
-
-// GetAfterOk returns a tuple with the After field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CommonPageRequest) GetAfterOk() (*string, bool) {
-	if o == nil || IsNil(o.After) {
-		return nil, false
-	}
-	return o.After, true
-}
-
-// HasAfter returns a boolean if a field has been set.
-func (o *CommonPageRequest) HasAfter() bool {
-	if o != nil && !IsNil(o.After) {
-		return true
-	}
-
-	return false
-}
-
-// SetAfter gets a reference to the given string and assigns it to the After field.
-func (o *CommonPageRequest) SetAfter(v string) {
-	o.After = &v
 }
 
 // GetBefore returns the Before field value if set, zero value otherwise.
@@ -105,38 +73,6 @@ func (o *CommonPageRequest) HasBefore() bool {
 // SetBefore gets a reference to the given string and assigns it to the Before field.
 func (o *CommonPageRequest) SetBefore(v string) {
 	o.Before = &v
-}
-
-// GetFirst returns the First field value if set, zero value otherwise.
-func (o *CommonPageRequest) GetFirst() int32 {
-	if o == nil || IsNil(o.First) {
-		var ret int32
-		return ret
-	}
-	return *o.First
-}
-
-// GetFirstOk returns a tuple with the First field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CommonPageRequest) GetFirstOk() (*int32, bool) {
-	if o == nil || IsNil(o.First) {
-		return nil, false
-	}
-	return o.First, true
-}
-
-// HasFirst returns a boolean if a field has been set.
-func (o *CommonPageRequest) HasFirst() bool {
-	if o != nil && !IsNil(o.First) {
-		return true
-	}
-
-	return false
-}
-
-// SetFirst gets a reference to the given int32 and assigns it to the First field.
-func (o *CommonPageRequest) SetFirst(v int32) {
-	o.First = &v
 }
 
 // GetLast returns the Last field value if set, zero value otherwise.
@@ -203,6 +139,70 @@ func (o *CommonPageRequest) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetAfter returns the After field value if set, zero value otherwise.
+func (o *CommonPageRequest) GetAfter() string {
+	if o == nil || IsNil(o.After) {
+		var ret string
+		return ret
+	}
+	return *o.After
+}
+
+// GetAfterOk returns a tuple with the After field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonPageRequest) GetAfterOk() (*string, bool) {
+	if o == nil || IsNil(o.After) {
+		return nil, false
+	}
+	return o.After, true
+}
+
+// HasAfter returns a boolean if a field has been set.
+func (o *CommonPageRequest) HasAfter() bool {
+	if o != nil && !IsNil(o.After) {
+		return true
+	}
+
+	return false
+}
+
+// SetAfter gets a reference to the given string and assigns it to the After field.
+func (o *CommonPageRequest) SetAfter(v string) {
+	o.After = &v
+}
+
+// GetFirst returns the First field value if set, zero value otherwise.
+func (o *CommonPageRequest) GetFirst() int32 {
+	if o == nil || IsNil(o.First) {
+		var ret int32
+		return ret
+	}
+	return *o.First
+}
+
+// GetFirstOk returns a tuple with the First field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonPageRequest) GetFirstOk() (*int32, bool) {
+	if o == nil || IsNil(o.First) {
+		return nil, false
+	}
+	return o.First, true
+}
+
+// HasFirst returns a boolean if a field has been set.
+func (o *CommonPageRequest) HasFirst() bool {
+	if o != nil && !IsNil(o.First) {
+		return true
+	}
+
+	return false
+}
+
+// SetFirst gets a reference to the given int32 and assigns it to the First field.
+func (o *CommonPageRequest) SetFirst(v int32) {
+	o.First = &v
+}
+
 func (o CommonPageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -213,20 +213,20 @@ func (o CommonPageRequest) MarshalJSON() ([]byte, error) {
 
 func (o CommonPageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.After) {
-		toSerialize["after"] = o.After
-	}
 	if !IsNil(o.Before) {
 		toSerialize["before"] = o.Before
-	}
-	if !IsNil(o.First) {
-		toSerialize["first"] = o.First
 	}
 	if !IsNil(o.Last) {
 		toSerialize["last"] = o.Last
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.After) {
+		toSerialize["after"] = o.After
+	}
+	if !IsNil(o.First) {
+		toSerialize["first"] = o.First
 	}
 	return toSerialize, nil
 }

@@ -46870,6 +46870,265 @@ func (a *DefaultAPIService) V1MspManagedEnterpriseContractInfoGetExecute(r ApiV1
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiV1MspRegionsExpectedInterRegionLatenciesGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1MspRegionsExpectedInterRegionLatenciesGetRequest) Authorization(authorization string) ApiV1MspRegionsExpectedInterRegionLatenciesGetRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1MspRegionsExpectedInterRegionLatenciesGetRequest) Execute() (*V1MspRegionsExpectedInterRegionLatenciesGetResponse, *http.Response, error) {
+	return r.ApiService.V1MspRegionsExpectedInterRegionLatenciesGetExecute(r)
+}
+
+/*
+V1MspRegionsExpectedInterRegionLatenciesGet Method for V1MspRegionsExpectedInterRegionLatenciesGet
+
+Get one-way reference latencies between source-destination region combinations.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1MspRegionsExpectedInterRegionLatenciesGetRequest
+*/
+func (a *DefaultAPIService) V1MspRegionsExpectedInterRegionLatenciesGet(ctx context.Context) ApiV1MspRegionsExpectedInterRegionLatenciesGetRequest {
+	return ApiV1MspRegionsExpectedInterRegionLatenciesGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return V1MspRegionsExpectedInterRegionLatenciesGetResponse
+func (a *DefaultAPIService) V1MspRegionsExpectedInterRegionLatenciesGetExecute(r ApiV1MspRegionsExpectedInterRegionLatenciesGetRequest) (*V1MspRegionsExpectedInterRegionLatenciesGetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1MspRegionsExpectedInterRegionLatenciesGetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1MspRegionsExpectedInterRegionLatenciesGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/msp/regions/expected-inter-region-latencies"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1MspRegionsExpectedInterRegionLatenciesPatchRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	authorization *string
+	v1MspRegionsExpectedInterRegionLatenciesPatchRequest *V1MspRegionsExpectedInterRegionLatenciesPatchRequest
+}
+
+// Bearer token. Format: Bearer &lt;your_token_here&gt;
+func (r ApiV1MspRegionsExpectedInterRegionLatenciesPatchRequest) Authorization(authorization string) ApiV1MspRegionsExpectedInterRegionLatenciesPatchRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiV1MspRegionsExpectedInterRegionLatenciesPatchRequest) V1MspRegionsExpectedInterRegionLatenciesPatchRequest(v1MspRegionsExpectedInterRegionLatenciesPatchRequest V1MspRegionsExpectedInterRegionLatenciesPatchRequest) ApiV1MspRegionsExpectedInterRegionLatenciesPatchRequest {
+	r.v1MspRegionsExpectedInterRegionLatenciesPatchRequest = &v1MspRegionsExpectedInterRegionLatenciesPatchRequest
+	return r
+}
+
+func (r ApiV1MspRegionsExpectedInterRegionLatenciesPatchRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.V1MspRegionsExpectedInterRegionLatenciesPatchExecute(r)
+}
+
+/*
+V1MspRegionsExpectedInterRegionLatenciesPatch Method for V1MspRegionsExpectedInterRegionLatenciesPatch
+
+Upsert one-way reference latencies between source-destination region combinations, keeping omitted combinations the same as before.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1MspRegionsExpectedInterRegionLatenciesPatchRequest
+*/
+func (a *DefaultAPIService) V1MspRegionsExpectedInterRegionLatenciesPatch(ctx context.Context) ApiV1MspRegionsExpectedInterRegionLatenciesPatchRequest {
+	return ApiV1MspRegionsExpectedInterRegionLatenciesPatchRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *DefaultAPIService) V1MspRegionsExpectedInterRegionLatenciesPatchExecute(r ApiV1MspRegionsExpectedInterRegionLatenciesPatchRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.V1MspRegionsExpectedInterRegionLatenciesPatch")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/msp/regions/expected-inter-region-latencies"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authorization == nil {
+		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
+	}
+	if r.v1MspRegionsExpectedInterRegionLatenciesPatchRequest == nil {
+		return localVarReturnValue, nil, reportError("v1MspRegionsExpectedInterRegionLatenciesPatchRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	// body params
+	localVarPostBody = r.v1MspRegionsExpectedInterRegionLatenciesPatchRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["jwtAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiV1NatEntriesDeviceIdGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
