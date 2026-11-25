@@ -1,6 +1,6 @@
 # Graphiant SDK Go
 
-[![Go Version](https://img.shields.io/badge/go-1.26.10+-blue.svg)](https://golang.org/dl/)
+[![Go Version](https://img.shields.io/badge/go-1.26.11+-blue.svg)](https://golang.org/dl/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Reference](https://pkg.go.dev/badge/github.com/Graphiant-Inc/graphiant-sdk-go.svg)](https://pkg.go.dev/github.com/Graphiant-Inc/graphiant-sdk-go)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Graphiant-Inc/graphiant-sdk-go)](https://goreportcard.com/report/github.com/Graphiant-Inc/graphiant-sdk-go)
@@ -433,7 +433,7 @@ func configureDeviceWhenReady(deviceID int64, config graphiant_sdk.V1DevicesDevi
 
 ### Prerequisites
 
-- Go 1.26.10+ (enforced by `go.mod`)
+- Go 1.26.11+ (enforced by `go.mod`)
 - Git
 - OpenAPI Generator 7.23+ (for code generation) — `brew install openapi-generator`
 
@@ -441,7 +441,7 @@ func configureDeviceWhenReady(deviceID int64, config graphiant_sdk.V1DevicesDevi
 
 This repository uses GitHub Actions for continuous integration and deployment:
 
-- **Linting** ([lint.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/lint.yml)): Runs golangci-lint, gofmt, and go vet on pull requests and pushes
+- **Linting** ([lint.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/lint.yml)): Runs golangci-lint, gofmt, go vet and govulncheck on pull requests and pushes, plus a weekly govulncheck run
 - **Testing** ([test.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/test.yml)): Runs `go test` with race detection and coverage across the `stable` and `oldstable` Go releases
 - **Building** ([build.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/build.yml)): Builds and verifies the Go module
 - **Releasing** ([release.yml](https://github.com/Graphiant-Inc/graphiant-sdk-go/blob/main/.github/workflows/release.yml)): Creates git tags and GitHub releases (manual trigger, admin-only)
@@ -461,8 +461,13 @@ make build          # go build ./...
 # Run tests
 make test           # go test -v -race ./...
 
-# Lint (skips generated files — configured in .golangci.yml)
-make lint           # golangci-lint run
+# Format and lint (skip generated files)
+make fmt            # gofmt hand-maintained files (make fmt-check to verify)
+make vet            # go vet ./...
+make lint           # golangci-lint run (configured in .golangci.yml)
+
+# Check for known vulnerabilities (Go toolchain and modules)
+make vulncheck      # govulncheck ./...
 
 # Tidy dependencies
 make tidy           # go mod tidy && go mod verify
@@ -556,7 +561,7 @@ graphiant-sdk-go/
 ├── .golangci.yml               # Linter config (skips generated files)
 ├── .gosec                      # Security scan config
 ├── Makefile                    # Developer shortcuts (build/test/lint/generate)
-├── go.mod                      # Go module definition (requires Go 1.26.10+)
+├── go.mod                      # Go module definition (requires Go 1.26.11+)
 └── README.md                   # This file
 ```
 
