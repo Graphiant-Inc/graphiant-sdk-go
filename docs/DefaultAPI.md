@@ -355,6 +355,8 @@ Method | HTTP request | Description
 [**V1LldpInterfaceIdVendorsGet**](DefaultAPI.md#V1LldpInterfaceIdVendorsGet) | **Get** /v1/lldp/{interfaceId}/vendors | 
 [**V1LogsPost**](DefaultAPI.md#V1LogsPost) | **Post** /v1/logs | 
 [**V1MspManagedEnterpriseContractInfoGet**](DefaultAPI.md#V1MspManagedEnterpriseContractInfoGet) | **Get** /v1/msp/managed-enterprise-contract-info | 
+[**V1MspRegionsExpectedInterRegionLatenciesGet**](DefaultAPI.md#V1MspRegionsExpectedInterRegionLatenciesGet) | **Get** /v1/msp/regions/expected-inter-region-latencies | 
+[**V1MspRegionsExpectedInterRegionLatenciesPatch**](DefaultAPI.md#V1MspRegionsExpectedInterRegionLatenciesPatch) | **Patch** /v1/msp/regions/expected-inter-region-latencies | 
 [**V1NatEntriesDeviceIdGet**](DefaultAPI.md#V1NatEntriesDeviceIdGet) | **Get** /v1/nat/entries/{deviceId} | 
 [**V1NatUtilizationDeviceIdGet**](DefaultAPI.md#V1NatUtilizationDeviceIdGet) | **Get** /v1/nat/utilization/{deviceId} | 
 [**V1OnboardingCloudinitDelete**](DefaultAPI.md#V1OnboardingCloudinitDelete) | **Delete** /v1/onboarding/cloudinit | 
@@ -24861,6 +24863,140 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1MspRegionsExpectedInterRegionLatenciesGet
+
+> V1MspRegionsExpectedInterRegionLatenciesGetResponse V1MspRegionsExpectedInterRegionLatenciesGet(ctx).Authorization(authorization).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1MspRegionsExpectedInterRegionLatenciesGet(context.Background()).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1MspRegionsExpectedInterRegionLatenciesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1MspRegionsExpectedInterRegionLatenciesGet`: V1MspRegionsExpectedInterRegionLatenciesGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1MspRegionsExpectedInterRegionLatenciesGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1MspRegionsExpectedInterRegionLatenciesGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+[**V1MspRegionsExpectedInterRegionLatenciesGetResponse**](V1MspRegionsExpectedInterRegionLatenciesGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1MspRegionsExpectedInterRegionLatenciesPatch
+
+> map[string]interface{} V1MspRegionsExpectedInterRegionLatenciesPatch(ctx).Authorization(authorization).V1MspRegionsExpectedInterRegionLatenciesPatchRequest(v1MspRegionsExpectedInterRegionLatenciesPatchRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Graphiant-Inc/graphiant-sdk-go"
+)
+
+func main() {
+	authorization := "authorization_example" // string | Bearer token. Format: Bearer <your_token_here>
+	v1MspRegionsExpectedInterRegionLatenciesPatchRequest := *openapiclient.NewV1MspRegionsExpectedInterRegionLatenciesPatchRequest() // V1MspRegionsExpectedInterRegionLatenciesPatchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.V1MspRegionsExpectedInterRegionLatenciesPatch(context.Background()).Authorization(authorization).V1MspRegionsExpectedInterRegionLatenciesPatchRequest(v1MspRegionsExpectedInterRegionLatenciesPatchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.V1MspRegionsExpectedInterRegionLatenciesPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1MspRegionsExpectedInterRegionLatenciesPatch`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.V1MspRegionsExpectedInterRegionLatenciesPatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1MspRegionsExpectedInterRegionLatenciesPatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** | Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1MspRegionsExpectedInterRegionLatenciesPatchRequest** | [**V1MspRegionsExpectedInterRegionLatenciesPatchRequest**](V1MspRegionsExpectedInterRegionLatenciesPatchRequest.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

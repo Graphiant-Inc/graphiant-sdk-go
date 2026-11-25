@@ -23,6 +23,7 @@ type AssuranceAppNameRecord struct {
 	AffectedRegions *int64 `json:"affectedRegions,omitempty"`
 	AffectedSites *int64 `json:"affectedSites,omitempty"`
 	AffectedVrfs *int64 `json:"affectedVrfs,omitempty"`
+	AiEndpointTag *string `json:"aiEndpointTag,omitempty"`
 	AppAiTag *string `json:"appAiTag,omitempty"`
 	AppId *int64 `json:"appId,omitempty"`
 	AppIdRecords []AssuranceAppIdRecord `json:"appIdRecords,omitempty"`
@@ -182,6 +183,38 @@ func (o *AssuranceAppNameRecord) HasAffectedVrfs() bool {
 // SetAffectedVrfs gets a reference to the given int64 and assigns it to the AffectedVrfs field.
 func (o *AssuranceAppNameRecord) SetAffectedVrfs(v int64) {
 	o.AffectedVrfs = &v
+}
+
+// GetAiEndpointTag returns the AiEndpointTag field value if set, zero value otherwise.
+func (o *AssuranceAppNameRecord) GetAiEndpointTag() string {
+	if o == nil || IsNil(o.AiEndpointTag) {
+		var ret string
+		return ret
+	}
+	return *o.AiEndpointTag
+}
+
+// GetAiEndpointTagOk returns a tuple with the AiEndpointTag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssuranceAppNameRecord) GetAiEndpointTagOk() (*string, bool) {
+	if o == nil || IsNil(o.AiEndpointTag) {
+		return nil, false
+	}
+	return o.AiEndpointTag, true
+}
+
+// HasAiEndpointTag returns a boolean if a field has been set.
+func (o *AssuranceAppNameRecord) HasAiEndpointTag() bool {
+	if o != nil && !IsNil(o.AiEndpointTag) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiEndpointTag gets a reference to the given string and assigns it to the AiEndpointTag field.
+func (o *AssuranceAppNameRecord) SetAiEndpointTag(v string) {
+	o.AiEndpointTag = &v
 }
 
 // GetAppAiTag returns the AppAiTag field value if set, zero value otherwise.
@@ -653,6 +686,9 @@ func (o AssuranceAppNameRecord) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AffectedVrfs) {
 		toSerialize["affectedVrfs"] = o.AffectedVrfs
+	}
+	if !IsNil(o.AiEndpointTag) {
+		toSerialize["aiEndpointTag"] = o.AiEndpointTag
 	}
 	if !IsNil(o.AppAiTag) {
 		toSerialize["appAiTag"] = o.AppAiTag

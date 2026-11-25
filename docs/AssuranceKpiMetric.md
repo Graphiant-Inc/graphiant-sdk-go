@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AiEndpointTag** | Pointer to **string** | AI endpoint tag for the metric | [optional] 
 **Delta** | Pointer to **float64** | delta value for the metric | [optional] 
 **Name** | Pointer to **string** | name of the metric | [optional] 
 **Percent** | Pointer to **float64** | AI adoption percent for the metric | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewAssuranceKpiMetricWithDefaults instantiates a new AssuranceKpiMetric object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAiEndpointTag
+
+`func (o *AssuranceKpiMetric) GetAiEndpointTag() string`
+
+GetAiEndpointTag returns the AiEndpointTag field if non-nil, zero value otherwise.
+
+### GetAiEndpointTagOk
+
+`func (o *AssuranceKpiMetric) GetAiEndpointTagOk() (*string, bool)`
+
+GetAiEndpointTagOk returns a tuple with the AiEndpointTag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiEndpointTag
+
+`func (o *AssuranceKpiMetric) SetAiEndpointTag(v string)`
+
+SetAiEndpointTag sets AiEndpointTag field to given value.
+
+### HasAiEndpointTag
+
+`func (o *AssuranceKpiMetric) HasAiEndpointTag() bool`
+
+HasAiEndpointTag returns a boolean if a field has been set.
 
 ### GetDelta
 

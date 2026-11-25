@@ -4,6 +4,33 @@ All notable changes to the Graphiant SDK Go will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.11.0] - 2026-11-25
+
+No breaking changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).
+
+### Added
+- **API endpoints:**
+  - `GET /v1/msp/regions/expected-inter-region-latencies`
+  - `PATCH /v1/msp/regions/expected-inter-region-latencies`
+- **Models (new):**
+  - `ManaV2InterRegionLatencyMatrix` (`sourceRegionLatencies`), `ManaV2DestinationRegionLatencies` (`destinationRegionLatencies`)
+  - `V1MspRegionsExpectedInterRegionLatenciesGetResponse` (`interRegionLatencyMatrix`, `sourceRegionMissingDestinations`), `V1MspRegionsExpectedInterRegionLatenciesGetResponseMissingDestinationRegions` (`destinationRegionIds`)
+  - `V1MspRegionsExpectedInterRegionLatenciesPatchRequest` (`interRegionLatencyMatrix`)
+- **`AssuranceAppNameRecord`:** added `aiEndpointTag` field
+- **`AssuranceKpiMetric`:** added `aiEndpointTag` field
+
+### Changed
+- Updated to API specification version 26.11.0
+- **Version:**
+  - Updated version constant to v26.11.0
+  - Updated API documentation reference to `graphiant_api_docs_v26.11.0.json` (replaces `graphiant_api_docs_v26.10.0.json`)
+- **Documentation:** updated SDK generation examples in README to use `graphiant_api_docs_v26.11.0.json`; **SECURITY.md** supported-versions table updated for **26.11.0**
+- **Generated code:** reordering and formatting only, with no change in behavior (`CommonPageRequest` field order, `V1AuthRefreshGet200Response` `oneOf` error handling)
+
+### Removed
+- **API endpoints:** none
+- **Models:** none
+
 ## [26.10.0] - 2026-10-28
 
 No breaking API changes (per [oasdiff](https://github.com/oasdiff/oasdiff)). **Breaking:** minimum Go version is now **1.26.10** (see *Security*).
